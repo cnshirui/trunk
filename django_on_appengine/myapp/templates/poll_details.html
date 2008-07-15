@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{poll.question}}
+{% endblock %}
+
+{% block contents %}
+<div class="poll">
+{{poll.question}} 
+<br />
+{{poll.created_on|date}}
+</div>
+<br />
+<form action="." method="post">
+{% for choice in choices %}
+<div class="choice">
+{{ choice.choice }} <input type="radio" name="value" value="{{ choice.key }}">
+</div>
+{% endfor %}
+<input type="submit" name="dovote" value="Choose" />
+</form>
+<br />
+<a href="./results/">See results</a>
+{% endblock %}

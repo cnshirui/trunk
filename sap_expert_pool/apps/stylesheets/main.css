@@ -1,0 +1,13 @@
+body {
+  font-family: Verdana, Helvetica, sans-serif;
+  background-color: #DDDDDD;
+}
+
+.contents{
+  width: 70%;
+	float: right;
+}
+.sidebar{
+   width: 25%;
+	 float: left;
+}

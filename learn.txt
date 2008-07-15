@@ -1,0 +1,25 @@
+1. install python 2.5.2,google_appengine
+2. config app.yaml
+3. edit helloworld.py
+4. run: dev_appserver.py helloworld/
+5. upload: appcfg.py update helloworld/
+
+
+dev_appserver.py --datastore_path="." helloworld/
+dev_appserver.py --clear_datastore/-c helloworld/
+
+madapple.sap@gmail.com
+madapplesep i052130
+MadApple@SAP
+SEP: SAP Expert Pool
+
+-- Django
+1. python setup.py install
+2. django-admin.py startproject appproject
+3. create main.py and app.yaml
+4. python manage.py startapp myapp
+
+
+
+-- Komodo IDE
+D:\AppEngine\google_appengine\dev_appserver.py
