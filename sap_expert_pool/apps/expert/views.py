@@ -24,6 +24,25 @@ def create(request):
     payload = dict(expertform=expertform)
     return render('create.html', payload)
 
+def search(request):
+    if request.method == 'GET':
+        searchform = bforms.SearchForm()
+        
+    if request.method == 'POST':
+        searchform = bforms.SearchForm(request.POST)
+        if searchform.is_valid():
+            searchcondition = searchform.save()
+            con1 = searchcondition.con1
+            con2 = searchcondition.con2
+            #experts = models.Expert.gql("WHERE city = :city1 or city = :city2", city1=con1, city2=con2)
+            experts = models.Expert.gql("WHERE city = :1", "*hai") 
+            payload = dict(experts=experts)
+            return render('search_result.html', payload)
+    payload = dict(searchform=searchform)
+    return render('search.html', payload)
+
+#def search_result(request):
+
 def expert_detail(request, expert_key):
     expert = models.Expert.get(expert_key)
     if request.method == 'POST':

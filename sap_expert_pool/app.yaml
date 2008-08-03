@@ -10,7 +10,7 @@ handlers:
   mime_type: image/x-icon
   
 - url: /stylesheets
-  static_dir: apps/stylesheets  
+  static_dir: apps/stylesheets
   
 - url: /.*
   script: main.py
