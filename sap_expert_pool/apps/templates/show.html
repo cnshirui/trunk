@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block contents %}
-<div class="expert">
+<div>
 Name: {{expert.name}}<br/>
 Birthday: {{expert.birthday}}<br/>
 Gender: {{expert.gender}}<br/>
@@ -14,4 +14,7 @@ City: {{expert.city}}<br/>
 Join Date: {{expert.sap_experience}}<br/>
 Manager: {{expert.manager}}<br/>
 </div>
+
+<a href="/expert/edit/{{expert.key}}">Edit</a>
+
 {% endblock %}

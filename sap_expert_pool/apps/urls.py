@@ -7,7 +7,8 @@ urlpatterns = patterns('',
     (r'^$', 'apps.expert.views.index'),
     (r'^create/$', 'apps.expert.views.create'),
     (r'^search/$', 'apps.expert.views.search'), 
-    (r'^expert/(?P<expert_key>[^\.^/]+)/$', 'apps.expert.views.expert_detail'),
+    (r'^show/(?P<expert_key>[^\.^/]+)/$', 'apps.expert.views.show'),
+    (r'^edit/(?P<expert_key>[^\.^/]+)/$', 'apps.expert.views.edit'),
     #(r'^search/$', 'apps.expert.views.search_result'), 
     
     

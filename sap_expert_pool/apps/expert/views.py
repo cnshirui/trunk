@@ -41,11 +41,22 @@ def search(request):
     payload = dict(searchform=searchform)
     return render('search.html', payload)
 
-#def search_result(request):
-
-def expert_detail(request, expert_key):
+def show(request, expert_key):
     expert = models.Expert.get(expert_key)
     if request.method == 'POST':
-        return HttpResponseRedirect('./results/')
+        return HttpResponseRedirect('./results/')    
     payload = dict(expert = expert)
-    return render('expert_details.html', payload)
+    return render('show.html', payload)
+
+def edit(request, expert_key):
+    if request.method == 'GET':
+        expert = models.Expert.get(expert_key)
+        expertform = bforms.ExpertForm(instance = expert)        
+        
+    if request.method == 'POST':
+        expertform = bforms.ExpertForm(request.POST)
+        if expertform.is_valid():
+            expert = expertform.save()
+            return HttpResponseRedirect(expert.get_absolute_url())
+    payload = dict(expertform=expertform)
+    return render('edit.html', payload)

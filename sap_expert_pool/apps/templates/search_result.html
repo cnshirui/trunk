@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block contents %}
+
+<h3>Search Result</h3>
+<ul>
+{% if experts %}    
+{% for expert in experts %}
+<li>
+<a href="{{expert.get_absolute_url}}">{{expert.name}}</a>
+
+</li>
+{% endfor %}
+{% endif %}
+</ul>
+
+{% endblock %}
