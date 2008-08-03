@@ -13,7 +13,7 @@ class Expert(db.Model):
         return '%s' %self.name
 
     def get_absolute_url(self):
-        return '/expert/show/%s/' % self.key()
+        return '/show/%s/' % self.key()
     
 class SearchCondition(db.Model):
     con1 = db.StringProperty()

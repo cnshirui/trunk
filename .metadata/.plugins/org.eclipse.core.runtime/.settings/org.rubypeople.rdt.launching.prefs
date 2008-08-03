@@ -1,0 +1,4 @@
+#Sun Aug 03 21:41:58 CST 2008
+useRubyDebug=true
+org.rubypeople.rdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="40,org.rubypeople.rdt.launching.JRubyVMType13,1217770913843">\r\n<vmType id\="org.rubypeople.rdt.launching.JRubyVMType">\r\n<vm id\="1217770913843" name\="jruby-1.1" path\="D\:\\svn_trunk\\v4\\jruby-1.1"/>\r\n</vmType>\r\n</vmSettings>\r\n
+eclipse.preferences.version=1

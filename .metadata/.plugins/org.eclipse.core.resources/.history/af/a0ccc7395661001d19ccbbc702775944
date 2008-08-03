@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block contents %}
+
+<form action="." method="post">
+{{expertform.as_p}}
+<input type="submit" name="save_expert" value="Save Edit" />
+</form>
+
+{% endblock %}

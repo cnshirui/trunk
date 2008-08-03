@@ -1,0 +1,65 @@
+
+*** LOCAL GEMS ***
+
+actionmailer (2.0.2)
+    Service layer for easy email delivery and testing.
+
+actionpack (2.0.2)
+    Web-flow and rendering framework putting the VC in MVC.
+
+activerecord (2.0.2)
+    Implements the ActiveRecord pattern for ORM.
+
+activerecord-jdbc-adapter (0.8)
+    JDBC adapter for ActiveRecord, for use within JRuby on Rails.
+
+activeresource (2.0.2)
+    Think Active Record for web resources.
+
+activesupport (2.0.2)
+    Support and utility classes used by the Rails framework.
+
+cgi_multipart_eof_fix (2.5.0)
+    Fix an exploitable bug in CGI multipart parsing.
+
+gem_plugin (0.2.3)
+    A plugin system based on rubygems that uses dependencies only
+
+jruby-openssl (0.2.3, 0.2.1)
+    OpenSSL add-on for JRuby
+
+json-jruby (1.1.2)
+    A JSON implementation as a JRuby extension
+
+mongrel (1.1.4)
+    A small fast HTTP library and server that runs Rails, Camping, Nitro
+    and Iowa apps.
+
+rails (2.0.2)
+    Web-application framework with template engine, control-flow layer,
+    and ORM.
+
+rake (0.8.1)
+    Ruby based make-like utility.
+
+recaptcha (0.1.47)
+    description of gem
+
+rmagick4j (0.3.3)
+    RMagick4J is a JRuby back end for RMagick.
+
+rspec (1.1.3)
+    RSpec-1.1.3 (build 20080131122909) - BDD for Ruby
+    http://rspec.rubyforge.org/
+
+ruby-debug-base (0.10.0)
+    Java implementation of Fast Ruby Debugger
+
+ruby-debug-ide (0.1.10)
+    IDE interface for ruby-debug.
+
+rubyzip (0.9.1)
+    rubyzip is a ruby module for reading and writing zip files
+
+sources (0.0.1)
+    This package provides download sources for remote gem installation

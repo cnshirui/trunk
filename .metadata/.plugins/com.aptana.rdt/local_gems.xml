@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gems>
+	<gem>
+		<name>recaptcha</name>
+		<version>0.1.47</version>
+		<description>description of gem</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>jruby-openssl</name>
+		<version>0.2.3</version>
+		<description>OpenSSL add-on for JRuby</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>ruby-debug-base</name>
+		<version>0.10.0</version>
+		<description>Java implementation of Fast Ruby Debugger</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>activesupport</name>
+		<version>2.0.2</version>
+		<description>Support and utility classes used by the Rails framework.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>activerecord</name>
+		<version>2.0.2</version>
+		<description>Implements the ActiveRecord pattern for ORM.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>jruby-openssl</name>
+		<version>0.2.1</version>
+		<description>OpenSSL add-on for JRuby</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>json-jruby</name>
+		<version>1.1.2</version>
+		<description>A JSON implementation as a JRuby extension</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>activerecord-jdbc-adapter</name>
+		<version>0.8</version>
+		<description>JDBC adapter for ActiveRecord, for use within JRuby on Rails.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>activeresource</name>
+		<version>2.0.2</version>
+		<description>Think Active Record for web resources.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>ruby-debug-ide</name>
+		<version>0.1.10</version>
+		<description>IDE interface for ruby-debug.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>rake</name>
+		<version>0.8.1</version>
+		<description>Ruby based make-like utility.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>actionpack</name>
+		<version>2.0.2</version>
+		<description>Web-flow and rendering framework putting the VC in MVC.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>mongrel</name>
+		<version>1.1.4</version>
+		<description>A small fast HTTP library and server that runs Rails, Camping, Nitro and Iowa apps.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>sources</name>
+		<version>0.0.1</version>
+		<description>This package provides download sources for remote gem installation</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>gem_plugin</name>
+		<version>0.2.3</version>
+		<description>A plugin system based on rubygems that uses dependencies only</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>rails</name>
+		<version>2.0.2</version>
+		<description>Web-application framework with template engine, control-flow layer, and ORM.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>rmagick4j</name>
+		<version>0.3.3</version>
+		<description>RMagick4J is a JRuby back end for RMagick.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>actionmailer</name>
+		<version>2.0.2</version>
+		<description>Service layer for easy email delivery and testing.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>cgi_multipart_eof_fix</name>
+		<version>2.5.0</version>
+		<description>Fix an exploitable bug in CGI multipart parsing.</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>rubyzip</name>
+		<version>0.9.1</version>
+		<description>rubyzip is a ruby module for reading and writing zip files</description>
+		<platform>ruby</platform>
+	</gem>
+	<gem>
+		<name>rspec</name>
+		<version>1.1.3</version>
+		<description>RSpec-1.1.3 (build 20080131122909) - BDD for Ruby http://rspec.rubyforge.org/</description>
+		<platform>ruby</platform>
+	</gem>
+</gems>

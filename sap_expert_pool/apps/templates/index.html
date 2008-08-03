@@ -31,15 +31,9 @@ SAP Expert Pool
 {% block sidebar %}
 <h3>Action</h3>
 <ul>
-<li>
-<a href="/create/"> Create a new Expert</a>
-</li>
-</ul>
-
-<ul>
-<li>
-<a href="/search/"> Search registered Experts</a>
-</li>
+<li><a href="{{ url }}">{{ url_linktext }}</a></li>
+<li><a href="/create/"> Create a new Expert</a></li>
+<li><a href="/search/"> Search existing Experts</a></li>
 </ul>
 
 <h3>Recent Experts</h3>
