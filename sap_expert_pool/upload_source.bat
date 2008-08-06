@@ -1,3 +1,3 @@
 @echo off
-python ..\..\appcfg.py update ..\sap_expert_pool
+python D:\AppEngine\google_appengine\appcfg.py update ..\sap_expert_pool
 pause
