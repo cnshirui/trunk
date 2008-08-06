@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="8b018003-da50-432f-8a5d-5a813b18c381" kpf_version="4" name="guestbook.kpf">
+<preference-set idref="8b018003-da50-432f-8a5d-5a813b18c381">
+  <boolean id="import_live">1</boolean>
+</preference-set>
+</project>
