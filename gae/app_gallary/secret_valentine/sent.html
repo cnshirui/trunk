@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Message has been sent</title>
+</head>
+<body>
+  <h1>Message has been sent</h1>
+
+  <table><tr><td width="640">  
+  <p>Your message has been successfully sent.{% if mime_message %}
+  The source code for the email is very similar to the following:
+  <blockquote style="border: 1px solid black; background: #ffffd0;
+  padding: 8"><code=red>
+  <pre>{{ mime_message }}</pre>
+  </code></blockquote>{% endif %}
+  </td></tr></table>
+
+  <p>Click <a href="compose">here</a> to send another.
+
+</body>
+</html>

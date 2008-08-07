@@ -1,0 +1,23 @@
+Somebody, who wants to be known only as {{ secret_name }}, but we
+know as {{ nickname }} has sent you a "secret valentine".  The
+message reads as following:
+
+----------------------------------------------------------------------
+{{ salutation }} {{ receiver_name }},
+
+You will not know who I am from this message, but I have
+{{ feeling_type }} feelings for you.  When I think of you,
+it makes me {{ thinking_activity }}.  Know that you are on my
+mind and that I am never far from you.  I shall Forever be
+your {{ will_be }}.
+
+Yours {{ good_bye }},
+
+{{ secret_name }}
+
+
+
+
+----------------------------------------------------------------------
+
+

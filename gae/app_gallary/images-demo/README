@@ -1,0 +1,13 @@
+Images-demo demonstrates the capabilities of the Google App Engine images API.
+It lets you interactively apply the available transforms to a selected image.
+
+A running version of the demo is available at http://images-demo.appspot.com/
+
+You can include your own images in the 'samples' directory.
+
+The images api uses the Python Imaging Library locally to transform images
+during testing on your local machine. You'll need to download the PIL module
+and install it on your local machine to use the imaging api with the SDK.
+
+http://code.google.com/appengine/docs/images/installingPIL.html
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Browsing pictures in {{album_name}}{% endblock %}
+{% block content %}
+Album contains {{num_results}} pictures.
+<table>
+{% for row in pics %}
+<tr>
+{% for image in row %}
+<td>
+  <a href='/show_image/{{image.key}}'>
+      <img src='/thumbnail/{{image.key}}'>
+  </a>
+  <div class='imgsubmitter'>{{image.submitter}}</div>
+</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+<a href='/'>Browse albums</a><br>
+<a href='/upload/{{album_key}}'>Upload new image</a>
+{% endblock content %}

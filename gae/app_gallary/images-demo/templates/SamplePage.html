@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Sample transformations</h3>
+Results are shown in both JPEG and PNG format.
+<br />
+Also try the <a href="/tryit?image={{ image|escape }}">configurable sample page</a>.
+<hr />
+
+{% for transform in transform_list %}
+ {{ transform }}<br />
+ <img src='/imagedata?image={{ image|escape }}&{{ transform|escape }}' />
+ <img src='/imagedata?image={{ image|escape }}&{{ transform|escape }}&format=png' />
+ <br />
+{% endfor %}
+{% endblock %}
