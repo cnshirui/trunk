@@ -1,0 +1,258 @@
+{% extends "main.html" %}
+
+{% block title %}{{title}} - System Admin{% endblock %}
+
+{% block blogcontainer %}
+
+<!-- Dependency -->
+<script src="http://yui.yahooapis.com/2.5.2/build/yahoo/yahoo-min.js"></script>
+<!-- Used for Custom Events and event listener bindings -->
+<script src="http://yui.yahooapis.com/2.5.2/build/event/event-min.js"></script>
+<!-- Connection Manager -->
+<script src="http://yui.yahooapis.com/2.5.2/build/connection/connection-min.js"></script>
+<!-- JSON Utility -->
+<script src="http://yui.yahooapis.com/2.5.2/build/json/json-min.js"></script>
+
+<!--DataTable-->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/datatable/assets/skins/sam/datatable.css" />
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/element/element-beta-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/datasource/datasource-beta-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/datatable/datatable-beta-min.js"></script>
+
+<!--my yui grid render-->
+<script type="text/javascript" src="/jscripts/albumlist.grid.js"></script>
+<script type="text/javascript" src="/jscripts/menulist.grid.js"></script>
+
+<div class="yui-g">
+<div id="admincontainer" class=" yui-skin-sam">
+<script>
+    var handleFailure = function(o) {
+        if (o.responseText !== undefined) {
+            alert("Client RPC Request Error, please retry.");
+        }
+    }
+</script>
+<div id="adminmenu">
+    <a href="/admin" onfocus="this.blur()">System Configuration</a>  <a href="/admin/more" onfocus="this.blur()">Resource Management</a>
+</div>
+<fieldset>
+    <legend>Page Admin</legend>
+    <div class="fieldsetdiv">
+        Page List:
+        <table id="pagetable">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Date</th>
+                <th>Permalink</th>
+                <th> &nbsp;</th>
+            </tr>
+            {% for entry in pages %}
+            <tr>
+                <td>{{entry.title}}</td>
+                <td>{{entry.author.email}}</td>
+                <td>{{entry.date|date:"m/d/y"}}</td>
+                <td>
+                    <a href="{{entry.full_permalink}}" target="_blank">{{entry.full_permalink}}</a>
+                </td>
+                <td>
+                    <a href='/editBlog?blogId={{entry.key.id}}' target="_blank">edit</a> &nbsp;
+                    <a href='/deleteBlog?blogId={{entry.key.id}}' target="_blank">delete</a>
+                </td>
+            </tr>
+            {% endfor%}
+        </table>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Menu Admin</legend>
+    <div class="fieldsetdiv">
+        Menu List:
+            <div id="menudiv">
+            <table id="menutable">
+                <thead><tr>
+                    <th>Title</th>
+                    <th>Permalink</th>
+                    <th>Target</th>
+                    <th>Order</th>
+                    <th>Valid</th>
+                    <th>Id</th>
+                    <th>Delete</th>
+                    <th>Add</th>
+                </tr></thead>
+                <tbody>
+                {% for entry in menus %}
+                <tr id="menu_{{entry.key.id}}">
+                    <td>{{entry.title}}</td>
+                    <td>{{entry.permalink}}</td>
+                    <td>{{entry.target}}</td>
+                    <td>{{entry.order}}</td>
+                    <td>{{entry.valid}}</td>
+                    <td>{{entry.key.id}}</td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                {% endfor%}
+                </tbody>
+            </table>
+            </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Album Configuration</legend>
+    <div class="fieldsetdiv">
+        Album List:
+        <div id="albumdiv">
+        <table id="albumtable">
+            <thead><tr>
+                <th>Picasaweb</th>
+                <th>Owner</th>
+                <th>Type</th>
+                <th>Access</th>
+                <th>Valid</th>
+                <th>Id</th>
+                <th></th>
+                <th></th>
+            </tr></thead>
+            <tbody>
+            {% for album in albums %}
+            <tr>
+                <td>{{album.album_username}}</td>
+                <td>{{album.owner.email}}</td>
+                <td>{{album.album_type}}</td>
+                <td>{{album.access}}</td>
+                <td>{{album.valid}}</td>
+                <td>{{album.key.id}}</td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            {% endfor%}
+            </tbody>
+        </table>
+       </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Session Token Management</legend>
+    <div class="fieldsetdiv">
+        Sesseion Token List:
+        <table id="tokentable">
+            <tr>
+                <th>User Email</th>
+                <th>Target Service</th>
+                <th>Session Token</th>
+                <th> &nbsp;</th>
+            </tr>
+            {% for token in session_tokens %}
+            <tr>
+                <td>{{token.user_email}}</td>
+                <td>{{token.target_service}}</td>
+                <td>{{token.session_token}}</td>
+                <td>
+                    <a href="javascript:deleteSessionToken('{{token.user_email}}','{{token.target_service}}')"
+                       id="{{token.user_email}}_{{token.target_service}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor%}
+        </table>
+    </div>
+    <script>
+        function deleteSessionToken(user_email, target_service) {
+            var sUrl = "/rpc?action=DeleteSessionToken&arg0=\"" + user_email + "\"&arg1=\"" + target_service +
+                       "\"&time=" + new Date().getTime();
+            var deleteSessionTokenSuccess = function(o) {
+                if (o.responseText !== undefined) {
+                    var src_obj = document.getElementById(o.argument.user_email + "_" + o.argument.target_service);
+                    document.getElementById("tokentable").deleteRow(src_obj.parentNode.parentNode.rowIndex);
+                    alert("Delete session token successfully.");
+                }
+            }
+            var callback =
+            {
+                success:deleteSessionTokenSuccess,
+                failure:handleFailure,
+                argument:{user_email:user_email,target_service:target_service}
+            };
+            YAHOO.util.Connect.asyncRequest('GET', sUrl, callback);
+        }
+    </script>
+</fieldset>
+<fieldset>
+    <legend>System Cache Management</legend>
+    <div class="fieldsetdiv">
+        Memcache statistics for this application:
+        <table>
+            <tr>
+                <th>hits</th>
+                <td><span id="cache_stats.hits">{{cache_stats.hits}}</span></td>
+                <td><span class="fieldsetcomment">Number of cache get requests resulting in a cache hit.</span>
+                </td>
+            </tr>
+            <tr>
+                <th>misses</th>
+                <td><span id="cache_stats.misses">{{cache_stats.misses}}</span></td>
+                <td><span class="fieldsetcomment">Number of cache get requests resulting in a cache miss.</span>
+                </td>
+            </tr>
+            <tr>
+                <th>byte_hits</th>
+                <td><span id="cache_stats.byte_hits">{{cache_stats.byte_hits}}</span></td>
+                <td><span class="fieldsetcomment">Sum of bytes transferred on get requests. Rolls over to zero on overflow.</span>
+                </td>
+            </tr>
+            <tr>
+                <th>items</th>
+                <td><span id="cache_stats.items">{{cache_stats.items}}</span></td>
+                <td><span class="fieldsetcomment">Number of key/value pairs in the cache. </span></td>
+            </tr>
+            <tr>
+                <th>bytes</th>
+                <td><span id="cache_stats.bytes">{{cache_stats.bytes}}</span></td>
+                <td><span class="fieldsetcomment">Total size of all items in the cache.</span></td>
+            </tr>
+            <tr>
+                <th>oldest_item_age</th>
+                <td><span id="cache_stats.oldest_item_age">{{cache_stats.oldest_item_age}}</span></td>
+                <td><span class="fieldsetcomment">How long in seconds since the oldest item in the cache was accessed.
+                        Effectively, this indicates how long a new item will survive in the cache without being
+                        accessed. This is _not_ the amount of time that has elapsed since the item was created.</span>
+                </td>
+            </tr>
+        </table>
+        <input type="button" value="Refresh Memcache statistics" onClick="flushAllMemcache(false);" class="submit">
+        <input type="button" value="Flush All the Memcache" onClick="flushAllMemcache(true);" class="submit">
+    </div>
+    <script>
+        function flushAllMemcache(flush) {
+            var sUrl = "/rpc?action=FlushAllMemcache&arg0=" + flush + "&time=" + new Date().getTime();
+            var flushAllMemcacheSuccess = function(o) {
+                if (o.responseText !== undefined) {
+                    var cache_stats = YAHOO.lang.JSON.parse(o.responseText);
+                    document.getElementById("cache_stats.hits").innerHTML = cache_stats.hits;
+                    document.getElementById("cache_stats.misses").innerHTML = cache_stats.misses;
+                    document.getElementById("cache_stats.byte_hits").innerHTML = cache_stats.byte_hits;
+                    document.getElementById("cache_stats.items").innerHTML = cache_stats.items;
+                    document.getElementById("cache_stats.bytes").innerHTML = cache_stats.bytes;
+                    document.getElementById("cache_stats.oldest_item_age").innerHTML = cache_stats.oldest_item_age;
+                    if (o.argument.flush) {
+                        alert("Flush all the memcache successfully.");
+                    } else {
+                        alert("Refresh memcache statistics successfully.");
+                    }
+                }
+            }
+            var callback =
+            {
+                success:flushAllMemcacheSuccess,
+                failure:handleFailure,
+                argument:{flush:flush}
+            };
+            YAHOO.util.Connect.asyncRequest('GET', sUrl, callback);
+        }
+    </script>
+</fieldset>
+</div>
+</div>
+{% endblock %}
+

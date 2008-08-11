@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+
+{% block title %}{{title}} - Albums{% endblock %}
+
+{% block blogcontainer %}
+
+<script type="text/javascript">
+    function showAlbumByUser(obj){
+        var username = obj[obj.selectedIndex].value;
+        window.location.href = "/albums/"+username;
+    }
+</script>
+<div class="yui-g" id="albumsdiv">
+
+    <div id="albuminfo">
+        <H3>Albums</H3>
+        <p>
+            Please select a picasaweb user to show the albums.
+            <select id="username" onchange="showAlbumByUser(this)">
+                {% for username_ in usernames %}
+                <option {%ifequal username_ username %} selected {%endifequal%} value={{username_}}>{{username_}}</option>
+                {% endfor %}
+            </select>
+        <p>
+            Here are the album list of user {{username}}:
+    </div>
+    <div id="albums">
+        {% for album in albums %}
+          <div class="album_thumbnail">
+           <div class="album_thumbnail_img">
+                {% for thumbnail in album.media.thumbnail%}
+                {% if forloop.first %}
+                   <a href="/albums/{{username}}/{{album.name.text}}" onFocus='this.blur()'><img src="{{thumbnail.url}}"/></a>
+                {% endif %}
+                {% endfor %}
+           </div>
+            <div class="album_thumbnail_title"><b>{{album.media.title}} </b>({{album.numphotos.text}})  <br>
+               {{album.datetime|date:"m/d/y"}}
+            </div>
+         </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

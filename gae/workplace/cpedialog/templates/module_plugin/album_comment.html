@@ -1,0 +1,10 @@
+<DIV id=album_comment>
+    <H3>Recent Album comments</H3>
+    <div>
+        <div style="padding-bottom:2px"> <input id="id" name="id" size="15" value="{%if user%}{{user.email}}{%endif%}" {%if user%}readonly{%endif%}> <label for="id">name</label> </div>
+        <div> <input id="msg" name="msg" size="15"> <label for="msg">greeting</label> <img src="/img/comment_add.png" alt="Add your greeting" onclick="submitGreeting(false,this)">
+            <img src="/img/comment_add.png" alt="refresh" onclick="submitGreeting(true,this)"> </div>
+        <div id="greetings"> 
+        </div>
+    </div>
+</DIV>

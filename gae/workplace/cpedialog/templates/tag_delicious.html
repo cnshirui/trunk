@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+
+{% block title %}{{title}} - {{tag}}{% endblock %}
+
+
+{% block blog %}
+    <div id=bloglist>
+
+    {% if posts %}
+      {% for post in posts %}
+        <DIV class="post">
+        <H3 class=post-title>
+            <a href='{{post.link}}' target="_blank">{{post.title}}</a>
+        </H3>
+            <p> </p>
+            {% if post.tags %}
+            <p>
+                Tags:
+                {% for tag in post.tags %}
+                <a href="/delicious/{{ tag|urlencode }}">{{ tag }}</a>{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            </p><br>
+            {% endif %}
+            
+        </DIV>
+        <br><br>
+        {% endfor %}
+     {% else %}
+        <div class="post">
+            <div class="post-title">No Matches</div>
+            <h2>No posts tagged with '{{ tag }}'</h2>
+            <div class="post-body">
+                <p>It's possible that an article with the tag was removed.</p>
+                <p>Please try another tag or use the full-text search.</p>
+            </div>
+        </div>
+     {% endif %}
+
+    </div>
+
+{% endblock %}
+

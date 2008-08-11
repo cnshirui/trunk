@@ -1,0 +1,34 @@
+<div class="menu_top">
+    <div id="userinfo">
+        {% if user %}
+        <b>{{ user.email }}</b> |
+        {% if user_is_admin %}
+        <a href='/admin'>System Configuration</a> |
+        <a href='http://appengine.google.com/a/cpedia.com' target="_blank">Manage Site</a> |
+        {% endif %}
+        {% endif %}
+        <a href="https://www.google.com/accounts/ManageAccount" target="_blank">My Account</a> |
+        <A href="{{ url }}">{{ url_linktext }}</A>
+    </div>
+    <div>
+        <div class="yui-gd">
+        <div class="yui-u first">
+            <font size="6em"><a href="/" style="border-bottom:none !important;">CPEDIA's ZONE</a></font> BETA
+        </div>
+        <div class="yui-u">
+            <div align="right" style="padding-top:10px">
+            <FORM action=/search><INPUT size=30 name=q> <INPUT type=submit value="Search site" name=projectsearch>
+                <INPUT type=submit value="Search the Web" name=websearch>
+            </FORM>
+            </div>            
+        </div>
+        </div>
+    </div>
+    <div>
+    <ul id="navbar">
+         {% for menu in nav_menus %}
+           <li><a href="{{menu.permalink}}" target="{{menu.target}}">{{menu.title}}</a></li>
+         {% endfor %}
+    </ul>
+    </div>
+</div>

@@ -1,0 +1,181 @@
+{% extends "main.html" %}
+
+{% block title %}{{title}} - {{blog.title}}{% endblock %}
+
+{% block blogcontainer %}
+
+<!-- Skin CSS file -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/assets/skins/sam/skin.css">
+<!-- Utility Dependencies -->
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/element/element-beta-min.js"></script>
+<!-- Needed for Menus, Buttons and Overlays used in the Toolbar -->
+<script src="http://yui.yahooapis.com/2.5.2/build/container/container_core-min.js"></script>
+<!-- Source file for Rich Text Editor-->
+<script src="http://yui.yahooapis.com/2.5.2/build/editor/simpleeditor-beta-min.js"></script>
+
+<div class="yui-g">
+<div id="blogview">
+<div>
+<H2 class=date-header> {{blog.date|date:"l, F m, Y"}} </H2>
+
+<div class="post">
+    <H3 class=post-title>
+        {%if blog.permalink %}
+        <a href="/{{blog.relative_permalink}}">{{blog.title}}</a>
+        {% else %}
+        <a href="/viewBlog?blogId={{ blog.key.id }}">{{blog.title}}</a>
+        {% endif %}
+    </H3>
+
+    <DIV class=post-body>
+        {{blog.content}}
+    </DIV>
+
+    <DIV class=post-footer>
+        {% if blog.tags %}
+        <p>
+            Tags:
+            {% for tag in blog.tags %}
+            <a href="/tag/{{ tag|urlencode }}">{{ tag }}</a>{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        </p><br>
+        {% endif %}
+        <P>
+            <SPAN class=post-author>Posted by {{blog.author.nickname}} </SPAN>
+                    <SPAN class=post-timestamp>at
+                        <A class=timestamp-link href="/{{blog.relative_permalink}}">{{blog.date|date:"H:i A"}}</A>
+                    </SPAN>
+        </P>
+
+        <P>
+            {% ifequal administrator 1 %}
+
+        <p style='text-align: right;'>:<a href='/edit/blog/{{blog.key.id}}'>edit</a>: :
+            <a href='/delete/blog/{{blog.key.id}}'>delete</a>:</p>
+        {% endifequal %}
+
+        {% ifnotequal reaction.lastModifiedDate Null %}
+        Edited at {{blog.lastModifiedDate}} by {{blog.lastModifiedBy}}.
+        {% endifnotequal %}
+    </DIV>
+</div>
+{% ifnotequal reactions.count 0 %}
+<br> <br>
+
+<div class="commentlabel">
+    <h4> Reactions</h4>
+</div>
+{% for reaction in reactions %}
+{% if reaction.author%}
+{% ifequal reaction.author reaction.weblog.author%}
+<div class='author comment'>
+{% else %}
+<div class='{% cycle comment,comment1 %}'>
+{% endifequal %}
+{% else %}
+<div class='{% cycle comment,comment1 %}'>
+{% endif %}
+            <p> {% if reaction.authorWebsite %}
+                <a href="{{reaction.authorWebsite}}">
+                {% endif%}
+                <b>{%if not reaction.author %}{{reaction.user}}{%else%}{{reaction.author.email|email_username}}{% endif %}</b> |
+                {% if reaction.authorWebsite %}
+                </a>
+                {% endif%}
+                {{reaction.date|date:"Y-m-d H:i"}} | 
+                {% ifnotequal reaction.userIp Null %}
+                IP:{{reaction.userIp}}
+                {% endifnotequal %}
+            </p>
+
+            <DIV class=post-body>
+                <img height="32" width="32" class="avatar" src="{%if not reaction.author %}{{reaction.authorEmail|gravatar}}{%else%}{{reaction.author.email|gravatar}}{% endif %}"/>
+                <p>{{reaction.content}}</p>
+            </DIV>
+            <DIV class=post-footer>
+                    <span class='comment-timestamp'>
+                        {% ifequal administrator 1 %}
+                        <p style='text-align: right;'>:<a
+                                href='/edit/comment/{{reaction.key.id}}'>edit</a>: :
+                            <a href='/delete/comment/{{reaction.key.id}}'>delete</a>:</p>
+                        {% endifequal %}
+
+                        {% ifnotequal reaction.lastModifiedDate Null %}
+                        Edited at {{reaction.lastModifiedDate}} by {{reaction.lastModifiedBy}}.
+                        {% endifnotequal %}
+                    </span>
+            </DIV>
+        </div>
+        <br>
+        {% endfor %}
+        {% endifnotequal %}
+        <br> <br> <br>
+        <div class="commentlabel">
+            <h4> Add a reaction </h4>
+        </div>
+        <form method=post action='/addBlogReaction?blogId={{blog.key.id}}' onsubmit="return parseBlogContent()" id="reactionForm">
+            <h2 class="comments-post">About You</h2>
+            <div>
+                <input id="name_input" name='name_input' type=text size="60"
+                       value="{% if user %}{{user.nickname}}{%endif%}" {% if user %}readonly{%endif%}>
+
+                <label for="name_input"><b>Name</b> (required)</label>
+            </div>
+            <div>
+                <input id="mail" name="mail" type=text size="60" value="{% if user %}{{user.email}}{%endif%}"
+                {% if user %}readonly{%endif%}>
+                <label for="mail"><b>Mail</b> (required)</label>
+            </div>
+            <div>
+                <input id="website" name="website" type=text size="60">
+                <label for="website"><b>Website</b></label>
+            </div>
+            <h2 class="comments-post">Comment</h2>
+
+            <div id="blogpost">
+                <textarea id="text_input" name="text_input" rows="12" cols="60"></textarea>
+            </div>
+            <br>
+            <input name=submit_addreply type=submit value=submit> <br> <br>
+        </form>
+        <script>
+            (function() {
+                var Dom = YAHOO.util.Dom,
+                        Event = YAHOO.util.Event;
+
+                var myConfig = {
+                    height: '150px',
+                    width: '520px',
+                    dompath: true
+                };
+
+                var myEditor = new YAHOO.widget.SimpleEditor('text_input', myConfig);
+                myEditor.render();
+
+            })();
+
+            function parseBlogContent(){
+                //form validator:
+                     var name_input = document.forms["reactionForm"]["name_input"];
+                     if(name_input.value==""){
+                         alert("Please input your name.");
+                         name_input.focus();
+                         return false;
+                     }
+                     var mail = document.forms["reactionForm"]["mail"];
+                     if(mail.value==""){
+                         alert("Please input your email address.");
+                         mail.focus();
+                         return false;
+                     }
+                var editor = YAHOO.widget.EditorInfo.getEditorById("text_input");
+                editor.saveHTML();        
+                return true;
+            }
+
+        </script>
+    </div>
+</div>
+</div>
+{% endblock %}
