@@ -1,0 +1,17 @@
+ 驱动器 D 中的卷是 SOFTWARE
+ 卷的序列号是 7479-AB37
+
+ D:\gc_trunk\gae\workplace\sep_v1\apps\images 的目录
+
+2008-08-25  22:17    <DIR>          .
+2008-08-25  22:17    <DIR>          ..
+2008-08-25  21:47             6,312 base.jpg
+2008-08-23  15:24           194,982 CreateExpertPage.jpg
+2008-08-23  15:25            33,705 DisplayResultPage.jpg
+2008-08-23  15:28            12,533 EditPage.jpg
+2008-08-07  03:24             3,638 favicon.ico
+2008-08-23  15:08           187,536 HomePage.jpg
+2008-08-25  22:17                 0 list.txt
+2008-08-23  15:26           224,447 SearchPage.jpg
+               8 个文件        663,153 字节
+               2 个目录  1,714,438,144 可用字节

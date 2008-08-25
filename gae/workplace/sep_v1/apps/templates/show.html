@@ -1,0 +1,38 @@
+<style>
+	#edit_image {
+		float: right;
+		width: 30%;
+	}
+	
+	#edit {
+		float: left;
+		width: 70%;	
+	}
+</style>
+
+{% extends 'base.html' %}
+
+{% block title %}
+{{expert.name}}
+{% endblock %}
+
+{% block contents %}
+<div id='edit'>
+<ul>Name: {{expert.name}}</ul>
+<ul>Birthday: {{expert.birthday}}</ul>
+<ul>Gender: {{expert.gender}}</ul>
+<ul>Nationality: {{expert.nationality}}</ul>
+<ul>City: {{expert.city}}</ul>
+<ul>Sap_experience: {{expert.sap_experience}}</ul>
+<ul>Manager: {{expert.manager}}</ul>
+
+<ul>
+<a href="/edit/{{expert.key}}">Edit</a>
+</ul>
+</div>
+
+<div id='edit_image'>
+<img src="/image/EditPage.jpg" width=200 height=200>
+</div>
+
+{% endblock %}

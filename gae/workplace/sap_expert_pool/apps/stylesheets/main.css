@@ -1,24 +1,13 @@
 body {
-	font-family: Verdana, Helvetica, sans-serif;
-	background-color: #DDDDDD;
+  font-family: Verdana, Helvetica, sans-serif;
+  background-color: #DDDDDD;
 }
 
 .contents{
-	width: 70%;
+  width: 70%;
 	float: right;
 }
 .sidebar{
-	width: 25%;
-	float: left;
+   width: 25%;
+	 float: left;
 }
-.title{
-	width: 60%;
-	float: left;
-	font: 40px verdana bold;
-}
-.login{
-	width: 40%;	
-	float: right;
-	text-align: right;
-}
-

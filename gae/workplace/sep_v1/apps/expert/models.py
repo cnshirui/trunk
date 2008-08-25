@@ -1,6 +1,4 @@
 from google.appengine.ext import db
-from google.appengine.api import users
-from google.appengine.ext import webapp
 
 class Expert(db.Model):
     name = db.StringProperty()
@@ -19,9 +17,7 @@ class Expert(db.Model):
     
 class SearchCondition(db.Model):
     knowledge_area = db.StringProperty()
-    #con2 = db.StringProperty()
+#    con2 = db.StringProperty()
 
     def get_absolute_url(self):
-        return '/expert/%s/' % self.key()
-    
-   
+        return '/expert/%s/' % self.key()    

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<form action="." method="post">
+{{expertform.as_p}}
+<input type="submit" name="create_expert" value="Create Expert" />
+</form>
+
+<img src="/image/CreateExpertPage.jpg"  width=600 height=200>
+
+{% endblock %}

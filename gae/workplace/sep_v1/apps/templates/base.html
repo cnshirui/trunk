@@ -9,11 +9,12 @@ SAP Expert Pool
 </title>
 <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 <div>
-	<div id='title'>
-		<h1>SAP Expert Pool</h1>
+	<div id='title' class="title">
+		SAP Expert Pool
 	</div>
-	<!div id='login'/div>
-			
+	<div id='login' class="login">
+		<font size="2">{{ user_name }}</font> <a href="{{ url }}">{{ url_linktext }}</a>
+	</div>
 </div>
 
 </head>
@@ -30,7 +31,7 @@ SAP Expert Pool
 {% block sidebar %}
 <h3>Action</h3>
 <ul>
-
+<li><a href="/">Home</a></li>
 <li><a href="/create/"> Create a new Expert</a></li>
 <li><a href="/search/"> Search existing Experts</a></li>
 </ul>
@@ -44,6 +45,10 @@ SAP Expert Pool
 </li>
 {% endfor %}
 </ul>
+
+<br/><br/>
+<img src="/image/base.jpg" width=130 height=130>
+
 {% endblock %}
 </div>
 

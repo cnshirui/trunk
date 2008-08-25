@@ -6,15 +6,15 @@
 
 {% block contents %}
 <div>
-Name: {{expert.name}}<br/>
-Birthday: {{expert.birthday}}<br/>
-Gender: {{expert.gender}}<br/>
-Nationality: {{expert.nationality}}<br/>
-City: {{expert.city}}<br/>
-Join Date: {{expert.sap_experience}}<br/>
-Manager: {{expert.manager}}<br/>
+<ul><br>Name: {{expert.name}}<br/></ul>
+<ul><br>Birthday: {{expert.birthday}}<br/></ul>
+<ul><br>Gender: {{expert.gender}}<br/></ul>
+<ul><br>Nationality: {{expert.nationality}}<br/></ul>
+<ul><br>City: {{expert.city}}<br/></ul>
+<ul><br>Sap_experience: {{expert.sap_experience}}<br/></ul>
+<ul><br>Manager: {{expert.manager}}<br/></ul>
 </div>
-
+<ul>
 <a href="/edit/{{expert.key}}">Edit</a>
-
+</ul>
 {% endblock %}
