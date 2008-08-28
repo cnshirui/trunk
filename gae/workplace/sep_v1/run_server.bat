@@ -1,3 +1,3 @@
 @echo off
-python ..\..\dev_appserver.py ..\sap_expert_pool -p 4000
+python D:\perforce\gc_trunk\gae\google_appengine\dev_appserver.py ..\sep_v1 -p 4000
 pause

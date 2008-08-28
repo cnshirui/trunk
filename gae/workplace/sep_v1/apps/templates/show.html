@@ -1,12 +1,12 @@
 <style>
 	#edit_image {
 		float: right;
-		width: 30%;
+		width: 60%;
 	}
 	
 	#edit {
 		float: left;
-		width: 70%;	
+		width: 40%;	
 	}
 </style>
 
@@ -18,13 +18,13 @@
 
 {% block contents %}
 <div id='edit'>
-<ul>Name: {{expert.name}}</ul>
-<ul>Birthday: {{expert.birthday}}</ul>
-<ul>Gender: {{expert.gender}}</ul>
+<ul> Name:        {{expert.name}}</ul>
+<ul>Birthday:    {{expert.birthday}}</ul>
+<ul>Gender:      {{expert.gender}}</ul>
 <ul>Nationality: {{expert.nationality}}</ul>
-<ul>City: {{expert.city}}</ul>
-<ul>Sap_experience: {{expert.sap_experience}}</ul>
-<ul>Manager: {{expert.manager}}</ul>
+<ul>City:        {{expert.city}}</ul>
+<ul>Experience:  {{expert.sap_experience}}</ul>
+<ul>Manager:     {{expert.manager}}</ul>
 
 <ul>
 <a href="/edit/{{expert.key}}">Edit</a>

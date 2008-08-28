@@ -46,7 +46,7 @@ def search(request):
         if searchform.is_valid():
             searchcondition = searchform.save()
             knowledge_area = searchcondition.knowledge_area
-            experts = models.Expert.gql("WHERE sap_experience < :1",  knowledge_area + "\0xEF\0xBF\0xBD")
+            experts = models.Expert.gql("WHERE sap_experience = %:1%",  knowledge_area)
             payload = dict(experts=experts)
             return respond(request, 'search_result.html', payload)
     payload = dict(searchform=searchform)

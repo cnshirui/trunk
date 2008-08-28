@@ -15,7 +15,8 @@ body {
 .title{
 	width: 60%;
 	float: left;
-	font: 40px verdana bold;
+	font: 40px verdana bolder;
+	color: red;
 }
 .login{
 	width: 40%;	
