@@ -106,6 +106,13 @@
         function init() {
           loadFriends();
 
+          // load spring graph
+          var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
+          html += "id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''";
+          html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'/>";
+
+          document.getElementById('roamer').innerHTML = html;
+
           google.load("visualization", "1");
           gadgets.window.adjustHeight();
         }
@@ -119,6 +126,7 @@
         <div id="chartdiv" style="float:left;"></div>
         </div>
         <div style="float:left; width:100%;">
+        <div id='roamer'></div>
         <div id='friends'></div>
         </div>
       </div>
