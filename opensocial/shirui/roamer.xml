@@ -107,7 +107,6 @@
           loadFriends();
 
           google.load("visualization", "1");
-          google.setOnLoadCallback(drawChart);
           gadgets.window.adjustHeight();
         }
         
