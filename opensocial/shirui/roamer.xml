@@ -98,9 +98,6 @@
           });
           html.push('</div>');
           document.getElementById('friends').innerHTML = html.join('');
-          
-          cnt = cnt*100;
-          drawCompChart(cnt);
         }
 
         function init() {
@@ -121,13 +118,13 @@
       </script>
 
       <div id='main' style="float:left;">
+        <div id='roamer'></div>
         <div style="float:left; width:100%;">
-        <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"></div>
-        <div id="chartdiv" style="float:left;"></div>
+            <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"></div>
+            <div id="chartdiv" style="float:left;"></div>
         </div>
         <div style="float:left; width:100%;">
-        <div id='roamer'></div>
-        <div id='friends'></div>
+            <div id='friends'></div>
         </div>
       </div>
     ]]></Content>
