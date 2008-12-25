@@ -17,7 +17,7 @@
 
 	<script language="JavaScript" charset="gb2312">
 		function init() {
-			while(false) {
+			while(true) {
 				if(confirm("你真的喜欢明明哥么？", "嗯，是的！", "米有啊！")) {
 					break;
 				}
