@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="Your App Name">
+  <Require feature="flash"/>
+  <Require feature="views"/>
+  <Require feature="dynamic-height"/>
+  <Require feature="opensocial-0.7"/>
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+  <!--
+    The JS-Side javascript code lib used in the Flash API.
+  -->
+  <script src="http://some-where/opensocial-flashapi.js" type="text/javascript"></script>
+
+  <!-- The flash element -->
+  <div id="flashcontainer" style="text-align: center;"></div>
+
+  <!-- Embed the swf file -->
+  <script type="text/javascript">
+    flashAPI.embedFlash(
+      "http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf",
+      "flashcontainer", "9", {
+        quality: "high",
+        wmode: "window",
+        allowScriptAccess: "always"
+      });
+  </script>
+]]>
+</Content>
+</Module>
