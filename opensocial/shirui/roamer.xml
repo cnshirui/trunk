@@ -73,14 +73,24 @@
                     thumbnails[person.getId()] = person.getField('thumbnailUrl');
                 }
             });
+
             html.push('</div>');
             document.getElementById('friends').innerHTML = html.join('');
 
-            var friends_xml = "";
+            // construct xml for flex component
+            var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
+            viewerFriends.each(   function(person) {
+                var id = person.getId();
+                if(id) {
+                    friends_xml += "<person><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail><friends>";
+                }
+            });  
+            friends_xml += "</friends></person>";
+            prompt("combile xml", friends_xml);
         }
 
         function init() {
-            loadFriendsByUser("");
+            // loadFriendsByUser("");
 
             // load spring graph
             var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
