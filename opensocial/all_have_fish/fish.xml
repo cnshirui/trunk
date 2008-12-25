@@ -41,7 +41,7 @@
 			quality: "high",
 			wmode: "transparent",
 			bgcolor: "#869ca7",
-			width: 780, height: 480,
+			width: "780", height: "480",
 			allowScriptAccess: "always"
 		});
 	</script>
