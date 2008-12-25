@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="gb2312"?>
 <Module>
- <ModulePrefs title="年年有余">
+ <ModulePrefs title="all_have_fish">
   <Require feature="opensocial-0.8"/>
  </ModulePrefs>
  <Content type="html">
