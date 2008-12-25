@@ -25,11 +25,11 @@
       <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
               id="ExternalInterfaceExample" width="780" height="480"
               codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">
-          <param name="movie" value="fish.swf" />
+          <param name="movie" value="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf" />
           <param name="quality" value="high" />
           <param name="bgcolor" value="#869ca7" />
           <param name="allowScriptAccess" value="sameDomain" />
-          <embed src="fish.swf" quality="high" bgcolor="#869ca7"
+          <embed src="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf" quality="high" bgcolor="#869ca7"
                  width="780" height="480" name="ExternalInterfaceExample" align="middle"
                  play="true" loop="false" quality="high" allowScriptAccess="sameDomain"
                  type="application/x-shockwave-flash"
