@@ -8,7 +8,7 @@
   
   <![CDATA[
   
-  <script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
+<script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
     <script type="text/javascript">
@@ -28,6 +28,12 @@
                 var opt_params = {};
                 req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
                 selectedName =  usernames[uid];
+
+                me = new Array();
+                me.push('<div><b>', usernames[uid], '</b><br>');
+                me.push('<img src="', thumbnails[uid], '" />');
+                me.push('</div>');
+                document.getElementById('me').innerHTML = me.join('');
             }
             req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
 
@@ -43,12 +49,14 @@
             var viewer = data.get('viewer').getData();
             var viewerFriends = data.get('viewerFriends').getData();
 
-            me = new Array();
-            me.push('<div><b>', viewer.getDisplayName(), '</b><br>');
-			me.push('<a href="#" onclick="loadFriendsByUser(' + viewer.getId() + '); return false;">');
-            me.push('<img src="', viewer.getField('thumbnailUrl'), '" />');
-            me.push('</div>');
-            document.getElementById('me').innerHTML = me.join('');
+            if(!selectedName) {
+                me = new Array();
+                me.push('<div><b>', viewer.getDisplayName(), '</b><br>');
+                me.push('<a href="#" onclick="loadFriendsByUser(' + viewer.getId() + '); return false;">');
+                me.push('<img src="', viewer.getField('thumbnailUrl'), '" />');
+                me.push('</div>');
+                document.getElementById('me').innerHTML = me.join('');
+            }
 
             html = new Array();
             html.push('<div style="float:left; margin:5px; padding:5px;">');
