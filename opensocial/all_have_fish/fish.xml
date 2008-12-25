@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Module>
+ <ModulePrefs title="年年有余">
+  <Require feature="opensocial-0.8"/>
+ </ModulePrefs>
+ <Content type="html">
+ <![CDATA[
+
+  <script language="JavaScript">
+      function init() {
+          while(true) {
+              if(confirm("你真的喜欢明明哥么？")) {
+                  break;
+              }
+              else {
+                  alert("你骗人！哈哈！");
+              }
+          }
+      }
+      
+      gadgets.util.registerOnLoadHandler(init);
+  </script>
+
+  <div id='main'>
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+              id="ExternalInterfaceExample" width="780" height="480"
+              codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">
+          <param name="movie" value="fish.swf" />
+          <param name="quality" value="high" />
+          <param name="bgcolor" value="#869ca7" />
+          <param name="allowScriptAccess" value="sameDomain" />
+          <embed src="fish.swf" quality="high" bgcolor="#869ca7"
+                 width="780" height="480" name="ExternalInterfaceExample" align="middle"
+                 play="true" loop="false" quality="high" allowScriptAccess="sameDomain"
+                 type="application/x-shockwave-flash"
+                 pluginspage="http://www.macromedia.com/go/getflashplayer">
+          </embed>
+      </object>
+  </div> 
+      
+ ]]>
+ </Content>
+</Module>
