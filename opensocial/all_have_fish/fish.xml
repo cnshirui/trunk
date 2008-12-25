@@ -6,6 +6,7 @@
  <Content type="html">
  <![CDATA[
 
+  <script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
   <script type="text/javascript" src="http://www.google.com/jsapi"></script>
   
   <script language="JavaScript" charset="gb2312">
