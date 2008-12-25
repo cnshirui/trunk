@@ -18,22 +18,15 @@
 
         function loadFriendsByUser(uid) {
             var req = opensocial.newDataRequest();
-            var viewer;
 
             if(uid.length == 0) {
                 uid = "VIEWER";
             }
             else {
-                viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
+                var viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
                 var opt_params = {};
                 req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
                 selectedName =  usernames[uid];
-
-                me = new Array();
-                me.push('<div><b>', usernames[uid], '</b><br>');
-                me.push('<img src="', thumbnails[uid], '" />');
-                me.push('</div>');
-                document.getElementById('me').innerHTML = me.join('');
             }
             req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
 
@@ -46,18 +39,27 @@
         }
 
         function onLoadFriendsByUser(data) {
-            var viewer = data.get('viewer').getData();
             var viewerFriends = data.get('viewerFriends').getData();
 
-            if(!selectedName) {
-                me = new Array();
-                me.push('<div><b>', viewer.getDisplayName(), '</b><br>');
-                me.push('<a href="#" onclick="loadFriendsByUser(' + viewer.getId() + '); return false;">');
-                me.push('<img src="', viewer.getField('thumbnailUrl'), '" />');
-                me.push('</div>');
-                document.getElementById('me').innerHTML = me.join('');
+            var uid = "";
+            if(selectedName) {
+                uid = selectedName;
             }
+            else {
+                var viewer = data.get('viewer').getData();
+                uid = viewer.getId();
+                usernames[uid] = viewer.getDisplayName();
+                thumbnails[uid] = viewer.getField('thumbnailUrl');
+            }
+            
+            // show my or selected photo
+            me = new Array();
+            me.push('<div><b>', usernames[uid], '</b><br>');
+            me.push('<img src="', thumbnails[uid], '" />');
+            me.push('</div>');
+            document.getElementById('me').innerHTML = me.join('');
 
+            // show friends' photo
             html = new Array();
             html.push('<div style="float:left; margin:5px; padding:5px;">');
 
@@ -73,6 +75,8 @@
             });
             html.push('</div>');
             document.getElementById('friends').innerHTML = html.join('');
+
+            var friends_xml = "";
         }
 
         function init() {
@@ -82,7 +86,7 @@
             var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
             html += "id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''";
             html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'/>";
-            document.getElementById('roamer').innerHTML = html;
+            // document.getElementById('roamer').innerHTML = html;
 
             google.load("visualization", "1");
             gadgets.window.adjustHeight();
