@@ -3,6 +3,7 @@
  <ModulePrefs title="all_have_fish">
   <Require feature="flash"/>
   <Require feature="views"/>
+  <Require feature="dynamic-height"/>
   <Require feature="opensocial-0.8"/>
  </ModulePrefs>
  <Content type="html">
@@ -40,7 +41,7 @@
 			quality: "high",
 			wmode: "transparent",
 			bgcolor: "#869ca7",
-			width: "780", height: "680",
+			width: 780, height: 480,
 			allowScriptAccess: "always"
 		});
 	</script>
