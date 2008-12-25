@@ -30,11 +30,13 @@
           <param name="bgcolor" value="#869ca7" />
           <param name="allowScriptAccess" value="always" />
           
-          <embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'
+          
+      </object>
+	  
+		  <embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'
             id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''
             src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'>
-          </embed>
-      </object>
+          </embed>	  
   </div> 
       
  ]]>
