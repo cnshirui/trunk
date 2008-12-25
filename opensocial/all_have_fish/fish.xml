@@ -35,6 +35,11 @@
                  type="application/x-shockwave-flash"
                  pluginspage="http://www.macromedia.com/go/getflashplayer">
           </embed>
+          
+          <embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'
+            id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''
+            src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'>
+          </embed>
       </object>
   </div> 
       
