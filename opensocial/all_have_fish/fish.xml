@@ -6,6 +6,8 @@
  <Content type="html">
  <![CDATA[
 
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  
   <script language="JavaScript" charset="gb2312">
       function init() {
           while(true) {
