@@ -82,7 +82,7 @@
             viewerFriends.each(   function(person) {
                 var id = person.getId();
                 if(id) {
-                    friends_xml += "<person><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail><friends>";
+                    friends_xml += "<person><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></person>";
                 }
             });  
             friends_xml += "</friends></person>";
