@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="gb2312"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Module>
  <ModulePrefs title="all_have_fish">
   <Require feature="opensocial-0.8"/>
@@ -9,11 +9,11 @@
   <script language="JavaScript">
       function init() {
           while(true) {
-              if(confirm("你真的喜欢明明哥么？", "嗯，是的！", "米有啊！")) {
+              if(confirm("浣犵湡鐨勫枩娆㈡槑鏄庡摜涔堬紵", "鍡紝鏄殑锛�", "绫虫湁鍟婏紒")) {
                   break;
               }
               else {
-                  alert("你骗人！哈哈！");
+                  alert("浣犻獥浜猴紒鍝堝搱锛�");
               }
           }
       }
