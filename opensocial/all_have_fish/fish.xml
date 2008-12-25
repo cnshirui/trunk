@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="GB2312"?>
+<?xml version="1.0" encoding="gb2312"?>
 <Module>
  <ModulePrefs title="年年有余">
   <Require feature="opensocial-0.8"/>
@@ -9,7 +9,7 @@
   <script language="JavaScript">
       function init() {
           while(true) {
-              if(confirm("你真的喜欢明明哥么？")) {
+              if(confirm("你真的喜欢明明哥么？", "嗯，是的！", "米有啊！")) {
                   break;
               }
               else {
