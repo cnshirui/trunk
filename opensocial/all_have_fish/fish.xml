@@ -28,11 +28,10 @@
           <param name="movie" value="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf" />
           <param name="quality" value="high" />
           <param name="bgcolor" value="#869ca7" />
-          <param name="allowScriptAccess" value="sameDomain" />
-          <embed src="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf" quality="high" bgcolor="#869ca7"
+          <embed src="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf"
+                 quality="high" bgcolor="#869ca7"
                  width="780" height="480" name="ExternalInterfaceExample" align="middle"
-                 play="true" loop="false" quality="high" allowScriptAccess="sameDomain"
-                 type="application/x-shockwave-flash"
+                 play="true" loop="false" quality="high" type="application/x-shockwave-flash"
                  pluginspage="http://www.macromedia.com/go/getflashplayer">
           </embed>
       </object>
