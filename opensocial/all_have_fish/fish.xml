@@ -3,7 +3,6 @@
  <ModulePrefs title="all_have_fish">
   <Require feature="flash"/>
   <Require feature="views"/>
-  <Require feature="dynamic-height"/>
   <Require feature="opensocial-0.8"/>
  </ModulePrefs>
  <Content type="html">
