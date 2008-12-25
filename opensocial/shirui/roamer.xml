@@ -45,6 +45,7 @@
 
             me = new Array();
             me.push('<div><b>', viewer.getDisplayName(), '</b><br>');
+			me.push('<a href="#" onclick="loadFriendsByUser(' + viewer.getId() + '); return false;">');
             me.push('<img src="', viewer.getField('thumbnailUrl'), '" />');
             me.push('</div>');
             document.getElementById('me').innerHTML = me.join('');
@@ -86,7 +87,6 @@
         <div id='roamer'></div>
         <div style="float:left; width:100%;">
             <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"></div>
-            <div id="chartdiv" style="float:left;"></div>
         </div>
         <div style="float:left; width:100%;">
             <div id='friends'></div>
