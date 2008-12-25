@@ -6,7 +6,7 @@
  <Content type="html">
  <![CDATA[
 
-  <script language="JavaScript">
+  <script language="JavaScript" charset="gb2312">
       function init() {
           while(true) {
               if(confirm("你真的喜欢明明哥么?？", "嗯，是的！", "米有啊！")) {
@@ -28,10 +28,11 @@
           <param name="movie" value="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf" />
           <param name="quality" value="high" />
           <param name="bgcolor" value="#869ca7" />
-          <embed src="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf"
-                 quality="high" bgcolor="#869ca7"
+          <param name="allowScriptAccess" value="always" />
+          <embed src="http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf" quality="high" bgcolor="#869ca7"
                  width="780" height="480" name="ExternalInterfaceExample" align="middle"
-                 play="true" loop="false" quality="high" type="application/x-shockwave-flash"
+                 play="true" loop="false" quality="high" allowScriptAccess="always"
+                 type="application/x-shockwave-flash"
                  pluginspage="http://www.macromedia.com/go/getflashplayer">
           </embed>
       </object>
