@@ -13,18 +13,18 @@
 
     <script type="text/javascript">
 
-       // ExternalInterface use
-       function thisMovie(movieName) {
-           if (navigator.appName.indexOf("Microsoft") != -1) {
-               return window[movieName];
-           } else {
-               return document[movieName];
-           }
-       }
-       function sendToActionScript(value) {
-           thisMovie("PersonDemo").sendToActionScript(value);
-       }
-         
+        // ExternalInterface use
+        function thisMovie(movieName) {
+            if (navigator.appName.indexOf("Microsoft") != -1) {
+                return window[movieName];
+            } else {
+                return document[movieName];
+            }
+        }
+        function sendToActionScript(value) {
+            thisMovie("PersonDemo").sendToActionScript(value);
+        }
+
         var usernames = {};
         var thumbnails = {};
         var selectedID = '';
@@ -64,7 +64,7 @@
                 usernames[uid] = viewer.getDisplayName();
                 thumbnails[uid] = viewer.getField('thumbnailUrl');
             }
-            
+
             // show my or selected photo
             me = new Array();
             me.push('<div><b>', usernames[uid], '</b><br>');
@@ -99,7 +99,7 @@
                 }
             });  
             friends_xml += "</friends></person>";
-            
+
             sendToActionScript(friends_xml);
         }
 
@@ -127,7 +127,7 @@
         <div style="float:left; width:100%;">
             <div id='friends'></div>
         </div>
-    </div>
+    </div>    
       
     ]]></Content>
 </Module>
