@@ -13,6 +13,10 @@
   
     <script type="text/javascript">
     
+      var usernames = {};
+      var thumbnails = {};
+      var selectedID = '';
+    
       // ExternalInterface use
       function thisMovie(movieName) {
           if(navigator.appName.indexOf("Microsoft") != -1) {
@@ -25,10 +29,6 @@
       function sendToActionScript(value) {
           thisMovie("PersonDemo").sendToActionScript(value);
       }
-
-      var usernames = {};
-      var thumbnails = {};
-      var selectedID = '';
 
       function loadFriendsByUser(uid) {
           var req = opensocial.newDataRequest();
@@ -112,13 +112,6 @@
 
       function init() {
           loadFriendsByUser("");
-
-          // load spring graph
-          var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
-          html += "id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''";
-          html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf'/>";
-          document.getElementById('roamer').innerHTML = html;
-
           google.load("visualization", "1");
           gadgets.window.adjustHeight();
       }
@@ -127,15 +120,25 @@
     
     </script>
     
-    <div id='main' style="float:left;">
-        <div id='roamer'></div>
-        <div style="float:left; width:100%;">
-            <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"></div>
-        </div>
-        <div style="float:left; width:100%;">
-            <div id='friends'></div>
-        </div>
-    </div>
+
+	
+	<!-- The flash element -->
+	<div id="flashcontainer" style="text-align: center;"></div>
+    <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"/>
+	<div id='friends'/></div>	
+
+	<!-- Embed the swf file -->
+	<script type="text/javascript">
+		flashAPI.embedFlash(
+		"http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
+		"flashcontainer", "9", {
+			quality: "high",
+			bgcolor: "#869ca7",
+			width: "780",
+			height: "480",
+			allowScriptAccess: "always"
+		});
+	</script>	
       
     ]]></Content>
 </Module>
