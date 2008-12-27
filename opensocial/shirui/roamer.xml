@@ -17,6 +17,18 @@
       var usernames = {};
       var thumbnails = {};
       var selectedID = '';
+	  
+	  // add by external interface
+     var jsReady = false;
+	 
+     function isReady() {
+         return jsReady;
+     }
+	 
+     function pageInit() {
+         jsReady = true;
+         document.forms["form1"].output.value += "\n" + "JavaScript is ready.\n";
+     }	  
     
       // ExternalInterface use
       function thisMovie(movieName) {
@@ -123,10 +135,18 @@
     
 
 	
-	<!-- The flash element -->
-	<div id='flashcontainer'></div>
-    <div id='me'></div>
-	<div id='friends'></div>	
+	<div id='main'>
+			<div id='flashcontainer'></div>
+			<div id='me'></div>
+			<div id='friends'></div>	
+
+	     <form name="form1" onsubmit="return false;">
+			 <input type="text" name="input" value="" />
+			 <input type="button" value="Send" onclick="sendToActionScript(this.form.input.value);" /><br />
+			 <textarea cols="60" rows="20" name="output" readonly="true">Initializing...</textarea>
+		 </form>
+	</div>
+
 
 	<!-- Embed the swf file -->
 	<script type="text/javascript">
