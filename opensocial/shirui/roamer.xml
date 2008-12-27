@@ -12,6 +12,19 @@
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
     <script type="text/javascript">
+
+       // ExternalInterface use
+       function thisMovie(movieName) {
+           if (navigator.appName.indexOf("Microsoft") != -1) {
+               return window[movieName];
+           } else {
+               return document[movieName];
+           }
+       }
+       function sendToActionScript(value) {
+           thisMovie("PersonDemo").sendToActionScript(value);
+       }
+         
         var usernames = {};
         var thumbnails = {};
         var selectedID = '';
@@ -82,7 +95,7 @@
             viewerFriends.each(   function(person) {
                 var id = person.getId();
                 if(id) {
-                    friends_xml += "<person><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></person>";
+                    friends_xml += "<friend><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
                 }
             });  
             friends_xml += "</friends></person>";
@@ -95,7 +108,7 @@
             // load spring graph
             var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
             html += "id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''";
-            html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'/>";
+            html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf'/>";
             // document.getElementById('roamer').innerHTML = html;
 
             google.load("visualization", "1");
