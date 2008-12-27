@@ -124,8 +124,8 @@
 
 	
 	<!-- The flash element -->
-	<div id="flashcontainer" style="text-align: center;"></div>
-    <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"></div>
+	<div id='flashcontainer'></div>
+    <div id='me'></div>
 	<div id='friends'></div>	
 
 	<!-- Embed the swf file -->
