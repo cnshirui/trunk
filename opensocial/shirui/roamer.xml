@@ -8,9 +8,9 @@
   
   <![CDATA[
   
-    <script type="text/javascript" src="http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js"/>
-	<script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"/>
-    <script type="text/javascript" src="http://www.google.com/jsapi"/>
+    <script type="text/javascript" src="http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js"></script>
+	<script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
   
     <script type="text/javascript">
     
@@ -125,8 +125,8 @@
 	
 	<!-- The flash element -->
 	<div id="flashcontainer" style="text-align: center;"></div>
-    <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"/>
-	<div id='friends'/></div>	
+    <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"></div>
+	<div id='friends'></div>	
 
 	<!-- Embed the swf file -->
 	<script type="text/javascript">
