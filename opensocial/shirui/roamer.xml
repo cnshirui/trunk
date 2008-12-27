@@ -125,12 +125,15 @@
 
       function init() {
           loadFriendsByUser("");
+		  
+		  pageInit();
           google.load("visualization", "1");
           gadgets.window.adjustHeight();
       }
 
       gadgets.util.registerOnLoadHandler(init);
-    
+
+    pageInit()
     </script>
     
 
