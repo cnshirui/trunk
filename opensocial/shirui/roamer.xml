@@ -99,7 +99,8 @@
                 }
             });  
             friends_xml += "</friends></person>";
-            prompt("combile xml", friends_xml);
+            
+            sendToActionScript(friends_xml);
         }
 
         function init() {
