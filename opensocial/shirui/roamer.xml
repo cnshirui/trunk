@@ -133,6 +133,7 @@
 		flashAPI.embedFlash(
 		"http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
 		"flashcontainer", "9", {
+			id: "PersonDemo",
 			quality: "high",
 			bgcolor: "#869ca7",
 			width: "780",
