@@ -22,7 +22,7 @@
         }
 
         function sendToActionScript(value) {
-            getSwf("flashcontainer").sendToActionScript(value);
+            getSwf("campus_roamer").sendToActionScript(value);
         }
 
         function loadFriendsByUser(uid) {
