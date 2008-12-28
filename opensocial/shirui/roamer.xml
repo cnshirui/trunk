@@ -8,157 +8,127 @@
   
   <![CDATA[
   
-    <script type="text/javascript" src="http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js"></script>
-	<script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
+<script type="text/javascript" src="http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js"></script>
+    <script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-  
+
     <script type="text/javascript">
-    
-      var usernames = {};
-      var thumbnails = {};
-      var selectedID = '';
-	  
-	  // add by external interface
-     var jsReady = false;
-	 
-     function isReady() {
-         return jsReady;
-     }
-	 
-     function pageInit() {
-         jsReady = true;
-         document.forms["form1"].output.value += "\n" + "JavaScript is ready.\n";
-     }	  
-	  
-	function getSwf(swfName) {
-		return document.getElementById(swfName);
-	}	  
 
-      function sendToActionScript(value) {
-          getSwf("PersonDemo").sendToActionScript(value);
-      }
+        var usernames = {};
+        var thumbnails = {};
+        var selectedID = '';
 
-      function loadFriendsByUser(uid) {
-          var req = opensocial.newDataRequest();
+        function getSwf(swfName) {
+            return document.getElementById(swfName);
+        }
 
-          if(uid.length == 0) {
-              uid = "VIEWER";
-          }
-          else {
-              var viewer = opensocial.newIdSpec({
-                  "userId" : uid,
-                  "groupId" : "SELF"
-              });
-              var opt_params = {};
-              req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
-              selectedID =  uid;
-          }
-          req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
+        function sendToActionScript(value) {
+            getSwf("PersonDemo").sendToActionScript(value);
+        }
 
-          var viewerFriends = opensocial.newIdSpec({
-              "userId" : uid,
-              "groupId" : "FRIENDS"
-          });
-          var opt_params = {};
-          opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 20;
-          req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
+        function loadFriendsByUser(uid) {
+            var req = opensocial.newDataRequest();
 
-          req.send(onLoadFriendsByUser);
-      }
+            if(uid.length == 0) {
+                uid = "VIEWER";
+            }
+            else {
+                var viewer = opensocial.newIdSpec({
+                    "userId" : uid,
+                    "groupId" : "SELF"
+                });
+                var opt_params = {};
+                req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
+                selectedID =  uid;
+            }
+            req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
 
-      function onLoadFriendsByUser(data) {
-          var viewerFriends = data.get('viewerFriends').getData();
+            var viewerFriends = opensocial.newIdSpec({
+                "userId" : uid,
+                "groupId" : "FRIENDS"
+            });
+            var opt_params = {};
+            opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 20;
+            req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
 
-          var uid = "";
-          if(selectedID) {
-              uid = selectedID;
-          }
-          else {
-              var viewer = data.get('viewer').getData();
-              uid = viewer.getId();
-              usernames[uid] = viewer.getDisplayName();
-              thumbnails[uid] = viewer.getField('thumbnailUrl');
-          }
+            req.send(onLoadFriendsByUser);
+        }
 
-          // show my or selected photo
-          me = new Array();
-          me.push('<div><b>', usernames[uid], '</b><br>');
-          me.push('<img src="', thumbnails[uid], '" />');
-          me.push('</div>');
-          document.getElementById('me').innerHTML = me.join('');
+        function onLoadFriendsByUser(data) {
+            var viewerFriends = data.get('viewerFriends').getData();
 
-          // show friends' photo
-          html = new Array();
-          html.push('<div style="float:left; margin:5px; padding:5px;">');
+            var uid = "";
+            if(selectedID) {
+                uid = selectedID;
+            }
+            else {
+                var viewer = data.get('viewer').getData();
+                uid = viewer.getId();
+                usernames[uid] = viewer.getDisplayName();
+                thumbnails[uid] = viewer.getField('thumbnailUrl');
+            }
 
-          viewerFriends.each(   function(person) {
-              if (person.getId()) {
-                  html.push('<div style="float:left; width:50px; margin:5px; height:100px; padding:5px;">');
-                  html.push('<a href="#" onclick="loadFriendsByUser(' + person.getId() + '); return false;"><img src="', person.getField('thumbnailUrl'), '" border="0" /></a><br>');
-                  html.push(person.getDisplayName());
-                  html.push('</div>');
-                  usernames[person.getId()] = person.getDisplayName();
-                  thumbnails[person.getId()] = person.getField('thumbnailUrl');
-              }
-          });
+            // show my or selected photo
+            me = new Array();
+            me.push('<div><b>', usernames[uid], '</b><br>');
+            me.push('<img src="', thumbnails[uid], '" />');
+            me.push('</div>');
+            document.getElementById('me').innerHTML = me.join('');
 
-          html.push('</div>');
-          document.getElementById('friends').innerHTML = html.join('');
+            // show friends' photo
+            html = new Array();
+            html.push('<div style="float:left; margin:5px; padding:5px;">');
 
-          // construct xml for flex component
-          var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
-          viewerFriends.each(   function(person) {
-              var id = person.getId();
-              if(id) {
-                  friends_xml += "<friend><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
-              }
-          });
-          friends_xml += "</friends></person>";
+            viewerFriends.each(   function(person) {
+                if (person.getId()) {
+                    html.push('<div style="float:left; width:50px; margin:5px; height:100px; padding:5px;">');
+                    html.push('<a href="#" onclick="loadFriendsByUser(' + person.getId() + '); return false;"><img src="', person.getField('thumbnailUrl'), '" border="0" /></a><br>');
+                    html.push(person.getDisplayName());
+                    html.push('</div>');
+                    usernames[person.getId()] = person.getDisplayName();
+                    thumbnails[person.getId()] = person.getField('thumbnailUrl');
+                }
+            });
 
-          sendToActionScript(friends_xml);
-      }
+            html.push('</div>');
+            document.getElementById('friends').innerHTML = html.join('');
 
-      function init() {
-          loadFriendsByUser("");
-		  
-		  pageInit();
-          google.load("visualization", "1");
-          gadgets.window.adjustHeight();
-      }
+            // construct xml for flex component
+            var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
+            viewerFriends.each(   function(person) {
+                var id = person.getId();
+                if(id) {
+                    friends_xml += "<friend><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
+                }
+            });
+            friends_xml += "</friends></person>";
 
-      gadgets.util.registerOnLoadHandler(init);
+            sendToActionScript(friends_xml);
+        }
 
-    pageInit()
+        function init() {
+            loadFriendsByUser("");
+
+            // load spring graph
+            var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
+            html += "id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''";
+            html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'/>";
+            document.getElementById('roamer').innerHTML = html;        
+
+            google.load("visualization", "1");
+            gadgets.window.adjustHeight();
+        }
+
+        gadgets.util.registerOnLoadHandler(init);
+        pageInit();
     </script>
-    
 
-	
-	<div id='main'>
-			<div id='flashcontainer'></div>
-			<div id='me'></div>
-			<div id='friends'></div>	
+    <div id='main'>
+        <div id='flashcontainer'></div>
+        <div id='me'></div>
+        <div id='friends'></div>
+    </div>
 
-	     <form name="form1" onsubmit="return false;">
-			 <input type="text" name="input" value="" />
-			 <input type="button" value="Send" onclick="sendToActionScript(this.form.input.value);" /><br />
-			 <textarea cols="60" rows="20" name="output" readonly="true">Initializing...</textarea>
-		 </form>
-	</div>
-
-
-	<!-- Embed the swf file -->
-	<script type="text/javascript">
-		flashAPI.embedFlash(
-		"http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
-		"flashcontainer", "9", {
-			id: "PersonDemo",
-			quality: "high",
-			bgcolor: "#869ca7",
-			width: "780",
-			height: "480",
-			allowScriptAccess: "always"
-		});
-	</script>	
       
     ]]></Content>
 </Module>
