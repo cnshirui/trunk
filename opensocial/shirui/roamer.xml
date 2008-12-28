@@ -22,7 +22,7 @@
         }
 
         function sendToActionScript(value) {
-            getSwf("PersonDemo").sendToActionScript(value);
+            getSwf("flashcontainer").sendToActionScript(value);
         }
 
         function loadFriendsByUser(uid) {
@@ -110,7 +110,7 @@
 
             // load spring graph
             var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
-            html += "id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''";
+            html += "id='campus_roamer' wmode='transparent' version='true' flashvars=''";
             html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'/>";
             document.getElementById('flashcontainer').innerHTML = html;        
 
@@ -119,7 +119,6 @@
         }
 
         gadgets.util.registerOnLoadHandler(init);
-        pageInit();
     </script>
 
     <div id='main'>
