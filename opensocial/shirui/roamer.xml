@@ -8,7 +8,6 @@
   
   <![CDATA[
   
-<script type="text/javascript" src="http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js"></script>
     <script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
@@ -113,7 +112,7 @@
             var html = "<embed width='600' height='400' type='application/x-shockwave-flash' allowscriptaccess='sameDomain'";
             html += "id='flash_xcelsius_analytic_32Srwyarg2GyC9eDCAG608' wmode='transparent' version='true' flashvars=''";
             html += "src='http://shirui.googlecode.com/svn/trunk/opensocial/shirui/roamer.swf'/>";
-            document.getElementById('roamer').innerHTML = html;        
+            document.getElementById('flashcontainer').innerHTML = html;        
 
             google.load("visualization", "1");
             gadgets.window.adjustHeight();
