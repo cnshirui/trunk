@@ -7,7 +7,7 @@
   <Content type="html">
   
   <![CDATA[
-  
+
     <script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
@@ -23,6 +23,10 @@
 
         function sendToActionScript(value) {
             getSwf("campus_roamer").sendToActionScript(value);
+        }
+
+        function testExternalInterface(value) {
+            alert("I am " + value);
         }
 
         function loadFriendsByUser(uid) {
@@ -135,9 +139,9 @@
         <div id='flashcontainer'></div>
         <div id='me'></div>
         <div id='friends'></div>
-    </div>  
-  
+    </div>
+
   ]]>
-    
+  
   </Content>
 </Module>
