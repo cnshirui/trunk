@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-  <ModulePrefs title="Who is rich?">
+  <ModulePrefs title="Campus Roamer">
+    <Require feature="flash"/>
     <Require feature="opensocial-0.8"/>
-    <Require feature="dynamic-height"/>
   </ModulePrefs>
   <Content type="html">
   
@@ -135,8 +135,9 @@
         <div id='flashcontainer'></div>
         <div id='me'></div>
         <div id='friends'></div>
-    </div>
-
-      
-    ]]></Content>
+    </div>  
+  
+  ]]>
+    
+  </Content>
 </Module>
