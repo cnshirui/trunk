@@ -29,7 +29,7 @@
     }
 
     function sendToActionScript(value) {
-        thisMovie("PersonDemo").sendToActionScript(value);
+        thisMovie("flash_container").sendToActionScript(value);
     }
 
     function testExternalInterface(value) {
