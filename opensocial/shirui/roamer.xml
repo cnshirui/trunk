@@ -16,6 +16,10 @@
 
     var jsReady = false;
 
+    var usernames = {};
+    var thumbnails = {};
+    var selectedID = '';
+
     function isReady() {
         return jsReady;
     }
@@ -28,22 +32,81 @@
         alert("I am " + value);
     }
 
+
+    function loadFriends(uid) {
+        var req = opensocial.newDataRequest();
+
+        if(uid == null) {
+            uid = "VIEWER";
+        }
+        else {
+            var viewer = opensocial.newIdSpec({
+                "userId" : uid,
+                "groupId" : "SELF"
+            });
+            var opt_params = {};
+            req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
+            selectedID =  uid;
+        }
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
+
+        var viewerFriends = opensocial.newIdSpec({
+            "userId" : uid,
+            "groupId" : "FRIENDS"
+        });
+        var opt_params = {};
+        opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 40;
+        req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
+
+        req.send(onLoadFriends);
+    }
+
+    function onLoadFriends(data) {
+        var viewerFriends = data.get('viewerFriends').getData();
+
+        var uid = "";
+        if(selectedID) {
+            uid = selectedID;
+        }
+        else {
+            var viewer = data.get('viewer').getData();
+            uid = viewer.getId();
+            usernames[uid] = viewer.getDisplayName();
+            thumbnails[uid] = viewer.getField('thumbnailUrl');
+        }
+
+        // construct xml for flex component
+        var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
+        viewerFriends.each(   function(person) {
+            var id = person.getId();
+            usernames[person.getId()] = person.getDisplayName();
+            thumbnails[person.getId()] = person.getField('thumbnailUrl');
+            
+            if(id) {
+                friends_xml += "<friend><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
+            }
+        });
+        friends_xml += "</friends></person>";
+
+        sendToActionScript(friends_xml);
+    }
+
+
     function init() {
         jsReady = true;
 
+        loadFriends();
+
         // load spring graph
-        flashAPI.embedFlash("http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
-        "flash_container", "9", {width: 780, height: 480, quality: "high", allowScriptAccess: "always"});
+        // "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf"
+        flashAPI.embedFlash("PersonDemo.swf?" + Math.random().toString(),
+        "flash_container", "9", {width: 770, height: 450, quality: "high", allowScriptAccess: "always"});
     }
 
     gadgets.util.registerOnLoadHandler(init);
 </script>
 
 <div id='main'>
-     <form name="form1" onsubmit="return false;">
-         <input type="text" name="input" value="" />
-         <input type="button" value="Send" onclick="sendToActionScript(this.form.input.value);" /><br />
-     </form>
     <div id='flash_container'></div>
     <div id='me'></div>
     <div id='friends'></div>
