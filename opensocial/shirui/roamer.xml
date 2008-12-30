@@ -20,24 +20,35 @@
         return jsReady;
     }
 
+    function thisMovie(movieName) {
+        if (navigator.appName.indexOf("Microsoft") != -1) {
+            return window[movieName];
+        } else {
+            return document[movieName];
+        }
+    }
+
+    function sendToActionScript(value) {
+        thisMovie("PersonDemo").sendToActionScript(value);
+    }
+
     function testExternalInterface(value) {
         alert("I am " + value);
     }
 
     function init() {
         jsReady = true;
-        
+
         // load spring graph
         flashAPI.embedFlash("http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
         "flash_container", "9", {width: 780, height: 480, quality: "high", allowScriptAccess: "always"});
     }
 
-
-
     gadgets.util.registerOnLoadHandler(init);
 </script>
 
 <div id='main'>
+    <input type="button" value="Send" onclick="sendToActionScript(new Date());" />
     <div id='flash_container'></div>
     <div id='me'></div>
     <div id='friends'></div>
