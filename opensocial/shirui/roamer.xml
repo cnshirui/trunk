@@ -110,23 +110,12 @@
         }
 
         function init() {
-            loadFriendsByUser("");
+            //loadFriendsByUser("");
 
             // load spring graph
-			var html = "<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'";
-			html += "id='campus_roamer' width='100%' height='100%'";
-			html += "codebase='http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab'>";
-			html += "<param name='movie' value='PersonDemo.swf' />";
-			html += "<param name='quality' value='high' />";
-			html += "<param name='bgcolor' value='#869ca7' />";
-			html += "<param name='allowScriptAccess' value='sameDomain' />";
-			html += "<embed src='PersonDemo.swf' quality='high' bgcolor='#869ca7'";
-			html += "width='100%' height='100%' name='campus_roamer' align='middle'";
-			html += "play='true' loop='false' quality='high' allowScriptAccess='sameDomain'";
-			html += "type='application/x-shockwave-flash' pluginspage='http://www.adobe.com/go/getflashplayer'>";
-			html += "</embed>";
-			html += "</object>";
-			document.getElementById('flashcontainer').innerHTML = html;      
+            var swfUrl = "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf";
+            gadgets.flash.embedCachedFlash(swfUrl, "flashcontainer", {id: "OpenSocial", width: 780, height: 480 });
+    
 
             google.load("visualization", "1");
             gadgets.window.adjustHeight();
