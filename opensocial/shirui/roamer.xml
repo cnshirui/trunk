@@ -21,10 +21,12 @@
     function getFlexApp(appName)
     {
         if(navigator.appName.indexOf("Microsoft") != -1) {
-            return window[appName];
+            // return window[appName];
+            return document[appName];
         }
         else {
-            return document[appName];
+            // return document[appName];
+            return document.getElementById(appName)
         }
     }
 
