@@ -20,6 +20,7 @@
 
     function getFlexApp(appName)
     {
+        alert("hi5: " + navigator.appName);
         if(navigator.appName.indexOf("Microsoft") != -1) {
             return window[appName];
         }
@@ -27,7 +28,6 @@
             return document[appName];
         }
     }
-
 
     function sendToActionScript(value) {
         getFlexApp("flash_container").sendToActionScript(value);
