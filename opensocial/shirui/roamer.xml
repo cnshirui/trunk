@@ -40,7 +40,10 @@
 </script>
 
 <div id='main'>
-    <input type="button" value="Send" onclick="sendToActionScript(new Date());" />
+     <form name="form1" onsubmit="return false;">
+         <input type="text" name="input" value="" />
+         <input type="button" value="Send" onclick="sendToActionScript(this.form.input.value);" /><br />
+     </form>
     <div id='flash_container'></div>
     <div id='me'></div>
     <div id='friends'></div>
