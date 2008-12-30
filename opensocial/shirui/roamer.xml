@@ -26,11 +26,13 @@
 
     function init() {
         jsReady = true;
+        
+        // load spring graph
+        flashAPI.embedFlash("http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
+        "flash_container", "9", {width: 780, height: 480, quality: "high", allowScriptAccess: "always"});
     }
 
-    // load spring graph
-    flashAPI.embedFlash("http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
-    "flash_container", "9", {width: 780, height: 480, quality: "high", allowScriptAccess: "always"});
+
 
     gadgets.util.registerOnLoadHandler(init);
 </script>
