@@ -33,7 +33,7 @@
         thisMovie("flash_container").sendToActionScript(value);
     }
 
-    function testExternalInterface(value) {
+    function callJavaScript(value) {
         alert("I am " + value);
     }
 
