@@ -114,7 +114,7 @@
 
             // load spring graph
             var swfUrl = "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf";
-            gadgets.flash.embedCachedFlash(swfUrl, "flashcontainer", {id: "OpenSocial", width: 780, height: 480 });
+            gadgets.flash.embedFlash(swfUrl, "flashcontainer", 9, {id: "OpenSocial", width: 780, height: 480 });
     
 
             // google.load("visualization", "1");
