@@ -110,15 +110,15 @@
         }
 
         function init() {
-            //loadFriendsByUser("");
+            // loadFriendsByUser("");
 
             // load spring graph
             var swfUrl = "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf";
             gadgets.flash.embedCachedFlash(swfUrl, "flashcontainer", {id: "OpenSocial", width: 780, height: 480 });
     
 
-            google.load("visualization", "1");
-            gadgets.window.adjustHeight();
+            // google.load("visualization", "1");
+            // gadgets.window.adjustHeight();
         }
 
         gadgets.util.registerOnLoadHandler(init);
