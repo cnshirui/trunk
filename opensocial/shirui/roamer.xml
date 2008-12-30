@@ -20,17 +20,8 @@
         return jsReady;
     }
 
-    function thisMovie(movieName) {
-        var appName = navigator.appName;
-        if (navigator.appName.indexOf("Microsoft") != -1) {
-            return document[movieName];
-        } else {
-            return document.getElementById(movieName);
-        }
-    }
-
     function sendToActionScript(value) {
-        thisMovie("flash_container").sendToActionScript(value);
+        flashAPI.thisFlash().sendToActionScript(value);
     }
 
     function callJavaScript(value) {
