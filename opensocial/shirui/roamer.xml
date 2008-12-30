@@ -14,20 +14,10 @@
 
 <script type="text/javascript">
 
-     var jsReady = false;
-     
-     function isReady() {
-         return jsReady;
-     }
+    var jsReady = false;
 
-    function getFlexApp(appName)
-    {
-        if(navigator.appName.indexOf("Microsoft") != -1) {
-            return document[appName];
-        }
-        else {
-            return document.getElementById(appName)
-        }
+    function isReady() {
+        return jsReady;
     }
 
     function testExternalInterface(value) {
@@ -36,12 +26,11 @@
 
     function init() {
         jsReady = true;
-
-        // load spring graph
-        var swf_url = "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf";
-        flashAPI.embedFlash(swf_url, "flash_container", "9",
-            {width: 780, height: 480, quality: "high", allowScriptAccess: "always"});
     }
+
+    // load spring graph
+    flashAPI.embedFlash("http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf",
+    "flash_container", "9", {width: 780, height: 480, quality: "high", allowScriptAccess: "always"});
 
     gadgets.util.registerOnLoadHandler(init);
 </script>
