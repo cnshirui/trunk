@@ -32,7 +32,7 @@
 
     function sendToActionScript(value) {
         // getFlexApp("flash_container").sendToActionScript(value);
-        getFlexApp("flash_container").showAlert(value);
+        getFlexApp("flash_container").sendToActionScript(value);
     }
 
     function testExternalInterface(value) {
