@@ -18,6 +18,12 @@
     var thumbnails = {};
     var selectedID = '';
 
+     var jsReady = false;
+     
+     function isReady() {
+         return jsReady;
+     }
+
     function getFlexApp(appName)
     {
         if(navigator.appName.indexOf("Microsoft") != -1) {
@@ -121,6 +127,7 @@
 
     function init() {
         // loadFriendsByUser("");
+        jsReady = true;
 
         // load spring graph
         var swf_url = "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf";
