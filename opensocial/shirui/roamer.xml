@@ -52,7 +52,8 @@
             "groupId" : "FRIENDS"
         });
         var opt_params = {};
-        opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 40;
+        opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 10;
+        opt_params[opensocial.DataRequest.SortOrder] = "TOP_FRIENDS";
         req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
 
         req.send(onLoadFriends);
