@@ -21,17 +21,14 @@
     var selectedID = '';
 
     function isReady() {
+        loadFriends();
+
         return jsReady;
     }
 
     function sendToActionScript(value) {
         flashAPI.thisFlash().sendToActionScript(value);
     }
-
-    function callJavaScript(value) {
-        alert("I am " + value);
-    }
-
 
     function loadFriends(uid) {
         var req = opensocial.newDataRequest();
@@ -81,7 +78,7 @@
             var id = person.getId();
             usernames[person.getId()] = person.getDisplayName();
             thumbnails[person.getId()] = person.getField('thumbnailUrl');
-            
+
             if(id) {
                 friends_xml += "<friend><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
             }
@@ -94,8 +91,6 @@
 
     function init() {
         jsReady = true;
-
-        loadFriends();
 
         // load spring graph
         // "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf"
