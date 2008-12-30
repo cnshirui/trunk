@@ -95,7 +95,7 @@
         // load spring graph
         // "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf"
         flashAPI.embedFlash("PersonDemo.swf?" + Math.random().toString(),
-        "flash_container", "9", {width: 780, height: 450, quality: "high", allowScriptAccess: "always"});
+        "flash_container", "9", {width: 796, height: 475, quality: "high", allowScriptAccess: "always"});
     }
 
     gadgets.util.registerOnLoadHandler(init);
