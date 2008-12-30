@@ -21,10 +21,11 @@
     }
 
     function thisMovie(movieName) {
+        var appName = navigator.appName;
         if (navigator.appName.indexOf("Microsoft") != -1) {
-            return window[movieName];
-        } else {
             return document[movieName];
+        } else {
+            return document.getElementById(movieName);
         }
     }
 
