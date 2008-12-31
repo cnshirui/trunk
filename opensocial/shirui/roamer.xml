@@ -52,7 +52,7 @@
             "groupId" : "FRIENDS"
         });
         var opt_params = {};
-        opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 60;
+        opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
         opt_params[opensocial.DataRequest.PeopleRequestFields.SORT_ORDER] =
                 opensocial.DataRequest.SortOrder.TOP_FRIENDS;
         req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
@@ -62,6 +62,7 @@
 
     function onLoadFriends(data) {
         var viewerFriends = data.get('viewerFriends').getData();
+        alert(viewerFriends.length);
 
         var uid = "";
         if(selectedID) {
