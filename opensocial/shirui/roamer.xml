@@ -53,8 +53,8 @@
         });
         var opt_params = {};
         opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 80;
-        opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.TOP_FRIENDS;
-        opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.TOP_FRIENDS;
+        // opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.TOP_FRIENDS;
+        // opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.TOP_FRIENDS;
         req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
 
         req.send(onLoadFriends);
