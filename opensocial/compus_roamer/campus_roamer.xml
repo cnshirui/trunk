@@ -52,7 +52,7 @@
             "groupId" : "FRIENDS"
         });
         var opt_params = {};
-        opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
+        opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 300;
         // opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.TOP_FRIENDS;
         // opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.TOP_FRIENDS;
         req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
@@ -62,7 +62,7 @@
 
     function onLoadFriends(data) {
         var viewerFriends = data.get('viewerFriends').getData();
-		alert(viewerFriends.length);
+		alert(viewerFriends);
 
         var uid = "";
         if(selectedID) {
