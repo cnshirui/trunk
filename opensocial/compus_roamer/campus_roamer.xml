@@ -62,7 +62,7 @@
 
     function onLoadFriends(data) {
         var viewerFriends = data.get('viewerFriends').getData();
-		alert(viewerFriends);
+		alert(viewerFriends.size());
 
         var uid = "";
         if(selectedID) {
