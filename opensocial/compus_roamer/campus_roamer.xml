@@ -81,6 +81,8 @@
         var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
 		var array = viewerFriends.asArray();
 		var randomIDs = chooseRadmon10(friendCount);
+		alert(friendCount);
+		alert(randomIDs);
 		for(i=0; i<randomIDs.length; i++) {
 			var person = array[randomIDs[i]];
             var id = person.getId();
@@ -93,6 +95,7 @@
             thumbnails[person.getId()] = person.getField('thumbnailUrl');			
         }
         friends_xml += "</friends></person>";
+		prompt("are you sure?", friends_xml);
 
         // prompt("All friends", friends_xml);
         sendToActionScript(friends_xml);
