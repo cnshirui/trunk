@@ -62,7 +62,8 @@
 
     function onLoadFriends(data) {
         var viewerFriends = data.get('viewerFriends').getData();
-		alert(viewerFriends.size());
+		var friendCount = viewerFriends.size();
+		var hitFlag = {};
 
         var uid = "";
         if(selectedID) {
@@ -78,21 +79,47 @@
         // construct xml for flex component
         var index = 0;
         var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
-        viewerFriends.each( function(person) {
+		var array = viewerFriends.asArray();
+		var randomIDs = chooseRadmon10(friendCount);
+		for(i=0; i<randomIDs.length; i++) {
+			var person = array[randomIDs[i]];
             var id = person.getId();
-            usernames[person.getId()] = person.getDisplayName();
-            thumbnails[person.getId()] = person.getField('thumbnailUrl');
-
             if(id) {
                 friends_xml += "<friend index='" + index.toString() + "'><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
                 index = index + 1;
             }
+			
+            usernames[person.getId()] = person.getDisplayName();
+            thumbnails[person.getId()] = person.getField('thumbnailUrl');			
         });
         friends_xml += "</friends></person>";
 
         // prompt("All friends", friends_xml);
         sendToActionScript(friends_xml);
     }
+	
+	function chooseRadmon10(length) {
+		var array = new Array();
+		var hitFlag = {};
+		
+		if(length <= 10) {
+			for(i=0; i<length; i++) {
+				array.push(i);
+			}
+		}
+		else {
+			for(i=0; i<10; i++) {
+				var id;
+				do {
+					 id = Math.floor(Math.random()*length);
+				} while(hitFlag[id]);
+
+				array.push(id);
+				hitFlag[id] = true;
+			}
+		}
+		return array;
+	}
 
 
     function init() {
