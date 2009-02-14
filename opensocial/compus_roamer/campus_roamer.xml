@@ -91,7 +91,7 @@
 			
             usernames[person.getId()] = person.getDisplayName();
             thumbnails[person.getId()] = person.getField('thumbnailUrl');			
-        });
+        }
         friends_xml += "</friends></person>";
 
         // prompt("All friends", friends_xml);
