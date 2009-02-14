@@ -54,9 +54,9 @@
         var opt_params = {};
         opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 10;
         // TOP_FRIENDS
-        opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.NAME;
+        // opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.NAME;
         // TOP_FRIENDS
-        opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.ALL;
+        // opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.ALL;
         req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
 
         req.send(onLoadFriends);
@@ -101,7 +101,7 @@
         jsReady = true;
 
         // load spring graph
-        // "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf"
+        // "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf"
         flashAPI.embedFlash("CampusRoamer.swf?" + Math.random().toString(),
         "flash_container", "9", {width: 790, height: 470, quality: "high", allowScriptAccess: "always"});
     }
