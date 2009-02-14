@@ -53,10 +53,8 @@
         });
         var opt_params = {};
         opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
-        // TOP_FRIENDS
-        opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.NAME;
-        // TOP_FRIENDS
-        opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.ALL;
+        // opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.TOP_FRIENDS;
+        // opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.TOP_FRIENDS;
         req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
 
         req.send(onLoadFriends);
@@ -64,6 +62,8 @@
 
     function onLoadFriends(data) {
         var viewerFriends = data.get('viewerFriends').getData();
+		var friendCount = viewerFriends.size();
+		var hitFlag = {};
 
         var uid = "";
         if(selectedID) {
@@ -79,29 +79,56 @@
         // construct xml for flex component
         var index = 0;
         var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
-        viewerFriends.each( function(person) {
+		var array = viewerFriends.asArray();
+		var randomIDs = chooseRadmon10(friendCount);
+		alert(friendCount);
+		alert(randomIDs);
+		for(i=0; i<randomIDs.length; i++) {
+			var person = array[randomIDs[i]];
             var id = person.getId();
             usernames[person.getId()] = person.getDisplayName();
-            thumbnails[person.getId()] = person.getField('thumbnailUrl');
-
+            thumbnails[person.getId()] = person.getField('thumbnailUrl');				
             if(id) {
                 friends_xml += "<friend index='" + index.toString() + "'><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
                 index = index + 1;
-            }
-        });
+            }		
+        }
         friends_xml += "</friends></person>";
-        prompt("are you sure?", friends_xml);
+		prompt("are you sure?", friends_xml);
 
         // prompt("All friends", friends_xml);
         sendToActionScript(friends_xml);
     }
+	
+	function chooseRadmon10(length) {
+		var array = new Array();
+		var hitFlag = {};
+		
+		if(length <= 10) {
+			for(i=0; i<length; i++) {
+				array.push(i);
+			}
+		}
+		else {
+			for(i=0; i<10; i++) {
+				var id;
+				do {
+					 id = Math.floor(Math.random()*length);
+				} while(hitFlag[id]);
+
+				array.push(id);
+				hitFlag[id] = true;
+			}
+		}
+		return array;
+	}
 
 
     function init() {
         jsReady = true;
 
         // load spring graph
-        // "http://shirui.googlecode.com/svn/trunk/opensocial/shirui/PersonDemo.swf"
+        // "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf"
         flashAPI.embedFlash("CampusRoamer.swf?" + Math.random().toString(),
         "flash_container", "9", {width: 790, height: 470, quality: "high", allowScriptAccess: "always"});
     }
