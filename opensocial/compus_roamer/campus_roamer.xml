@@ -90,7 +90,6 @@
             }
         });
         friends_xml += "</friends></person>";
-        prompt("are you sure?", friends_xml);
 
         // prompt("All friends", friends_xml);
         sendToActionScript(friends_xml);
