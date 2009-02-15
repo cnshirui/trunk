@@ -54,7 +54,7 @@
         var opt_params = {};
         opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 10;
         // TOP_FRIENDS
-        opt_params[opensocial.DataRequest.PeopleRequest.Fields.SORT_ORDER] = opensocial.DataRequest.SortOrder.NAME;
+        opt_params[opensocial.DataRequest.PeopleRequestFields.SORT_ORDER] = opensocial.DataRequest.SortOrder.NAME;
         // TOP_FRIENDS
         // opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.ALL;
         req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
