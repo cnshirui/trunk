@@ -100,8 +100,8 @@
         jsReady = true;
 
         // load spring graph
-        // "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf"
-        flashAPI.embedFlash("CampusRoamer.swf?" + Math.random().toString(),
+        var swf_path = "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf?"
+        flashAPI.embedFlash(swf_path + Math.random().toString(),
         "flash_container", "9", {width: 790, height: 470, quality: "high", allowScriptAccess: "always"});
     }
 
