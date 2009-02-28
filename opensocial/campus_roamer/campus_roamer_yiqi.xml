@@ -33,6 +33,14 @@
 		return "http://www.yiqi.com/home.php?tab=parlor&uid=";
 		// return "http://xiaonei.com/profile.do?id=";
 	}
+	
+	function sum_object(object) {
+		var result = "";
+		for(name in object) {
+			result += name + ": " + navigator[name] + "<br/>";
+		}
+		return result;
+	}	
 
     function loadFriends(uid) {
 		
@@ -68,6 +76,7 @@
     }
 
     function onLoadFriends(data) {
+		prompt(sum_object(data));
         var viewerFriends = data.get('viewerFriends').getData();
 
         var uid = "";
