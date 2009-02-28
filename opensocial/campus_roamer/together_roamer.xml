@@ -69,8 +69,9 @@
 		  req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
 		  // req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
 		  
-			var idspec = opensocial.newIdSpec({'userId': uid, 'groupId':'SELF'});
-			req.add(req.newFetchPeopleRequest(idspec), 'viewerFriends');	
+		  var viewerFriends = opensocial.newIdSpec({ "userId" : uid, "groupId" : "FRIENDS" });
+		  var opt_params = {};
+		  req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');	
 			// req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
 
