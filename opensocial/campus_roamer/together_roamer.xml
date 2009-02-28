@@ -14,6 +14,7 @@
 <script type="text/javascript">
 
     var jsReady = false;
+	var withID = false;
 
     var usernames = {};
     var thumbnails = {};
@@ -61,6 +62,8 @@
 		  var opt_params = {};
 		  req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');	
 */
+			withID = true;
+			
 		  var viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
 		  var opt_params = {};
 		  req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
@@ -93,8 +96,9 @@
         var index = 0;
         var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
 		if(viewerFriends) {
-			var person = viewerFriends.asArray()[0];
-			viewerFriends.each( function(person) {
+		
+			var array = withID? viewerFriends.asArray() : viewerFriends;
+			array.each( function(person) {
 				var id = person.getId();
 				usernames[person.getId()] = person.getDisplayName();
 				thumbnails[person.getId()] = person.getField('thumbnailUrl');
