@@ -46,8 +46,7 @@
 		// prompt("uid", uid);
         var req = opensocial.newDataRequest();
 
-		// uid == null
-        if(true) {	
+        if(uid == null) {	
 			req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
 			req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
@@ -94,7 +93,8 @@
         var index = 0;
         var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
 		if(viewerFriends) {
-			viewerFriends.asArray().each( function(person) {
+			var person = viewerFriends.asArray()[0];
+			viewerFriends.each( function(person) {
 				var id = person.getId();
 				usernames[person.getId()] = person.getDisplayName();
 				thumbnails[person.getId()] = person.getField('thumbnailUrl');
