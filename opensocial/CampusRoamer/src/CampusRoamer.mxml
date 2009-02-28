@@ -89,7 +89,7 @@
 	            }
 	            
 	            // for test
-	            // test();
+	            test();
 			}
 			
 			public function checkInitialStatus(text:String):void{
