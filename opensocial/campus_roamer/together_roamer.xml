@@ -71,7 +71,7 @@
 		  
 			var idspec = opensocial.newIdSpec({'userId': uid, 'groupId':'SELF'});
 			req.add(req.newFetchPeopleRequest(idspec), 'viewerFriends');	
-			req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
+			// req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
 
         req.send(onLoadFriends);
@@ -96,9 +96,7 @@
         var index = 0;
         var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
 		if(viewerFriends) {
-		
 			var array = viewerFriends.asArray();
-			//withID ? viewerFriends.asArray() : viewerFriends;
 			for(var i=0; i<array.length; i++) {
 				var person = array[i];
 				var id = person.getId();
