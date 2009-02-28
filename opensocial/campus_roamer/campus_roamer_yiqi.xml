@@ -29,11 +29,9 @@
         flashAPI.thisFlash().sendToActionScript(value);
     }
 	
-	function getProfilePage(id) {
-		if(!id) {
-			id = "";
-		}
-		return "http://www.yiqi.com/home.php?tab=parlor&uid=" + id;
+	function getProfilePath() {
+		return "http://www.yiqi.com/home.php?tab=parlor&uid=";
+		// return "http://xiaonei.com/profile.do?id=";
 	}
 
     function loadFriends(uid) {
@@ -48,9 +46,8 @@
                 "userId" : uid,
                 "groupId" : "SELF"
             });
-
-			prompt("UID", uid);
-            req.add(req.newFetchPeopleRequest(viewer), 'viewer');
+            var opt_params = {};
+            req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
             selectedID =  uid;
         }
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
@@ -99,7 +96,7 @@
         });
         friends_xml += "</friends></person>";
 
-        prompt("All friends", friends_xml);
+        // prompt("All friends", friends_xml);
         sendToActionScript(friends_xml);
     }
 

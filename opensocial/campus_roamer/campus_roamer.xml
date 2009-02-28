@@ -12,7 +12,6 @@
 
 
 <script type="text/javascript">
-	// http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js
 
     var jsReady = false;
 
@@ -106,9 +105,9 @@
 
         // load spring graph
 		var swf_path = "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf"
-        flashAPI.embedFlash(swf_path + "?" + Math.random().toString(),
+        flashAPI.embedFlash(swf_path,
         "flash_container", "9", {width: 790, height: 470, quality: "high", allowScriptAccess: "always"});
-		// 790x470, or 850x600
+		// 790x470, or 850x600,  + "?" + Math.random().toString()
     }
 
     gadgets.util.registerOnLoadHandler(init);
