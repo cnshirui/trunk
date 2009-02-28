@@ -47,8 +47,10 @@
         var req = opensocial.newDataRequest();
 
         if(uid == null) {
-			req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
-			req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
+			dataRequest.add(dataRequest.newFetchPeopleRequest(opensocial.DataRequest.Group.OWNER_FRIENDS));
+			
+			//req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
+			//req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
         else {
 		  var viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
@@ -107,7 +109,7 @@
 
         // load spring graph
 		var swf_path = "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf";
-        flashAPI.embedFlash(swf_path + "?" + Math.random().toString(),
+        flashAPI.embedFlash(swf_path,
         "flash_container", "9", {width: 790, height: 470, quality: "high", allowScriptAccess: "always"});
 		// 790x470, or 850x600,  + "?" + Math.random().toString()
     }
