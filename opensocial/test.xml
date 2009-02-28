@@ -12,7 +12,11 @@
   function getData() {    
   
       var myenv = opensocial.getEnvironment();
-	  prompt("Domain?", myenv.getDomain());
+	  var result = "";
+	  for(name in myenv) {
+		result += name ": " + myenv[name] + "; ";
+	  }
+	  prompt("Domain?", result + myenv.getDomain());
 	  
     var req = opensocial.newDataRequest();
     req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
