@@ -43,7 +43,7 @@
 	}	
 
     function loadFriends(uid) {
-		
+		prompt(uid);
         var req = opensocial.newDataRequest();
 
         if(uid == null) {
