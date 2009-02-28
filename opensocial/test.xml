@@ -31,6 +31,7 @@
     html += ':<br><ul>';
     var viewerFriends = dataResponse.get('viewerFriends').getData();
     viewerFriends.each(function(person) {
+	  html += '<li>' + person.getId() + '</li>';
       html += '<li>' + person.getDisplayName() + '</li>';
     });
     html += '</ul>';
