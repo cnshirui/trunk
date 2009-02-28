@@ -46,22 +46,25 @@
 		// prompt("uid", uid);
         var req = opensocial.newDataRequest();
 
-        if(uid == null) {
-			 //req.add(req.newFetchPersonRequest('VIEWER'), 'viewer');
-			 //req.add(req.newFetchPeopleRequest('VIEWER_FRIENDS'), 'viewerFriends');
-			
+        if(uid == null) {	
 			req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
 			req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
         else {
+		/*
 		  var viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
 		  var opt_params = {};
 		  req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
-		  // req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
+		  req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
 						
 		  var viewerFriends = opensocial.newIdSpec({ "userId" : uid, "groupId" : "FRIENDS" });
 		  var opt_params = {};
-		  req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');		
+		  req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');	
+*/
+			
+			var idspec = opensocial.newIdSpec({'userId': uid, 'groupId':'SELF'});
+
+			req.add(req.newFetchAlbumsRequest(idspec), 'viewerFriends');	
         }
 
         req.send(onLoadFriends);
