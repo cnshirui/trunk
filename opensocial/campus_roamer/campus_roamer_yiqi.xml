@@ -29,6 +29,13 @@
     function sendToActionScript(value) {
         flashAPI.thisFlash().sendToActionScript(value);
     }
+	
+	function getProfilePage(id) {
+		if(!id) {
+			id = "";
+		}
+		return "http://www.yiqi.com/home.php?tab=parlor&uid=" + id;
+	}
 
     function loadFriends(uid) {
         var req = opensocial.newDataRequest();
@@ -91,7 +98,7 @@
         });
         friends_xml += "</friends></person>";
 
-        // prompt("All friends", friends_xml);
+        prompt("All friends", friends_xml);
         sendToActionScript(friends_xml);
     }
 
