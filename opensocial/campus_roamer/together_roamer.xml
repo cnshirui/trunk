@@ -47,11 +47,11 @@
         var req = opensocial.newDataRequest();
 
         if(uid == null) {
-			 req.add(req.newFetchPersonRequest('VIEWER'), 'viewer');
-			 req.add(req.newFetchPeopleRequest('VIEWER_FRIENDS'), 'viewerFriends');
+			 //req.add(req.newFetchPersonRequest('VIEWER'), 'viewer');
+			 //req.add(req.newFetchPeopleRequest('VIEWER_FRIENDS'), 'viewerFriends');
 			
-			//req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
-			//req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
+			req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
+			req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
         else {
 		  var viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
