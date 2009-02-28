@@ -51,27 +51,16 @@
 			req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
         else {
-            var viewer = opensocial.newIdSpec({
-                "userId" : uid,
-                "groupId" : "SELF"
-            });
-            var opt_params = {};
-            req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
-            selectedID =  uid;
-			
-			req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
-
-			var viewerFriends = opensocial.newIdSpec({
-				"userId" : uid,
-				"groupId" : "FRIENDS"
-			});
-			var opt_params = {};
-			opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
-			// TOP_FRIENDS
-			opt_params[opensocial.DataRequest.PeopleRequestFields.SORT_ORDER] = opensocial.DataRequest.SortOrder.NAME;
-			// TOP_FRIENDS
-			// opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.ALL;
-			req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');			
+          var req = opensocial.newDataRequest();
+		  var viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
+		  var opt_params = {};
+		  req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
+		  req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
+						
+		  var viewerFriends = opensocial.newIdSpec({ "userId" : uid, "groupId" : "FRIENDS" });
+		  var opt_params = {};
+		  opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 400;
+		  req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');		
         }
 
         req.send(onLoadFriends);
