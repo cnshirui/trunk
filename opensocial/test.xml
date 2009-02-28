@@ -10,6 +10,10 @@
    * Request for friend information when the page loads.  
    */
   function getData() {    
+  
+      var myenv = opensocial.getEnvironment();
+	  prompt("Domain?", myenv.getDomain());
+	  
     var req = opensocial.newDataRequest();
     req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
     req.send(greetUser);  
