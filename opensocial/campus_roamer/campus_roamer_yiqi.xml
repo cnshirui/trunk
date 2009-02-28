@@ -37,7 +37,7 @@
 	}
 
     function loadFriends(uid) {
-		prompt("UID", uid);
+		
         var req = opensocial.newDataRequest();
 
         if(uid == null) {
@@ -49,6 +49,7 @@
                 "groupId" : "SELF"
             });
 
+			prompt("UID", uid);
             req.add(req.newFetchPeopleRequest(viewer), 'viewer');
             selectedID =  uid;
         }
