@@ -43,7 +43,7 @@
 	}	
 
     function loadFriends(uid) {
-		prompt("uid", uid);
+		// prompt("uid", uid);
         var req = opensocial.newDataRequest();
 
         if(uid == null) {
@@ -78,7 +78,7 @@
     }
 
     function onLoadFriends(data) {
-		prompt("onLoadFriends(data)", sum_object(data));
+		//prompt("onLoadFriends(data)", sum_object(data));
         var viewerFriends = data.get('viewerFriends').getData();
 
         var uid = "";
@@ -117,7 +117,7 @@
 
         // load spring graph
 		var swf_path = "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf";
-        flashAPI.embedFlash(swf_path + "?" + Math.random().toString(),
+        flashAPI.embedFlash(swf_path + "?12345",
         "flash_container", "9", {width: 790, height: 470, quality: "high", allowScriptAccess: "always"});
 		// 790x470, or 850x600,  + "?" + Math.random().toString()
     }
