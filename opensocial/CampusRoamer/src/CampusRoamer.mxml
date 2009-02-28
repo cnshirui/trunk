@@ -193,7 +193,7 @@
 			}
 			
 			public function gotDoubleClick(): void {
-				help1.visible = false;
+//				help.visible = false;
 			}
 			
 			private function test():void {	
