@@ -1,0 +1,29 @@
+http://116.227.18.129/campus_roamer.xml
+http://shirui.googlecode.com/svn/trunk/opensocial/compus_roamer/campus_roamer.xml
+http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf?0.6019083083705182
+http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf?0.4042594469017329
+
+ExternalInterface.call("getProfilePath");
+
+"http://www.yiqi.com/home.php?tab=parlor&uid="
+http://xiaonei.com/profile.do?id=50836
+
+
+中国足球笑话之周星驰版
+华安和师爷 
+　　师爷：一平二负共三场不胜四停五伤六废竟敢提七八九名十分大胆 
+　　华安：十射九偏凑得八传七断六停五失四高尚且三心二意一等下流 
+　　　　　　　　　　　　 
+　　师爷：粗粗鲁鲁毛毛糙糙场场平平输输 
+　　华安：糊糊涂涂庸庸碌碌年年失失败败 
+　　　　　　　　　　　　 
+　　师爷：球场里跑不动射不准 小小国足可笑可笑 
+　　华安：对手前又击腹又踹裆 叫声老外提防提防
+李煜.虞美人 
+　　上联：中国男足几多愁 
+　　下联：恰似一群太监上青楼 
+　　横批：没人会射 
+　　姊妹篇 
+　　上联：再问中国男足有多忧 
+　　下联：又似一群妓女守青楼 
+　　横批：总是被射 

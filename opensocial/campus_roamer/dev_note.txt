@@ -1,2 +1,0 @@
-http://116.227.18.129/campus_roamer.xml
-http://shirui.googlecode.com/svn/trunk/opensocial/compus_roamer/campus_roamer.xml

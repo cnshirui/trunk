@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:ui="flash.ui.*" creationComplete="init()">	
+	
+	<!-- PersonItemView.mxml is the UI component that displays one PersonItem, which
+		is pointed to by our "data" property. -->
+		
+	<mx:Style>
+		.text {
+			color: #222222;
+			font-family: Verdana;
+		}
+		
+		.midImage {
+			horizontalAlign: center;
+			verticalAlign: middle;
+		}
+	</mx:Style>		
+
+	<mx:Box borderStyle="solid" cornerRadius="2.5">
+		<mx:Image id="image" source="{data.imageUrl}" toolTip="{data.name}" styleName="midImage"
+			scaleX="{app.scaleFactor}" scaleY="{app.scaleFactor}"  alpha="1.0"/>
+	</mx:Box>
+		
+	<mx:Label text="{data.name}" width="{image.width > 50 ? image.width : 50}" textAlign="center" styleName="text" fontSize="10"/>
+	
+	<mx:contextMenu>
+		<ui:ContextMenu id="myContextMenu"/>
+	</mx:contextMenu>
+	
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.core.Application;
+			
+			[Bindable]
+			private var app:CampusRoamer = CampusRoamer(Application.application);
+			
+			private function init():void {
+				// removeDefaultItems
+	            myContextMenu.hideBuiltInItems();
+	            var defaultItems:ContextMenuBuiltInItems = myContextMenu.builtInItems;
+	            defaultItems.print = false;
+	            
+	            // addCustomMenuItems
+	            var menuLabel:String = "go to Profile Page";
+	            var item:ContextMenuItem = new ContextMenuItem(menuLabel);
+	            myContextMenu.customItems.push(item);
+	            item.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItemSelectHandler);
+	            myContextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, menuSelectHandler);	            
+			}
+			
+	        private function menuItemSelectHandler(event:ContextMenuEvent):void {
+	            trace("menuItemSelectHandler: " + event);
+	            
+	            var request:URLRequest = new URLRequest(getProfilePage(data.id));
+	            navigateToURL(request, "_blank");	            
+	        }
+	        
+	        private function getProfilePage(id:String):String {
+	        	return ExternalInterface.call("getProfilePath") + id;
+	        }
+	        
+	        private function menuSelectHandler(event:ContextMenuEvent):void {
+	            trace("menuSelectHandler: " + event);
+	        }	        
+        	        	
+			public function doubleClick(event: Event): void {
+				data.getFriends();
+				app.gotDoubleClick();
+			}
+		]]>
+	</mx:Script>
+</mx:VBox>
