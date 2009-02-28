@@ -46,7 +46,8 @@
 		// prompt("uid", uid);
         var req = opensocial.newDataRequest();
 
-        if(uid == null) {	
+		// uid == null
+        if(true) {	
 			req.add(req.newFetchPersonRequest(opensocial.DataRequest.PersonId.VIEWER), 'viewer');
 			req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS), 'viewerFriends');
         }
