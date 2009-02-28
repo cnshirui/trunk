@@ -37,13 +37,13 @@
 	function sum_object(object) {
 		var result = "";
 		for(name in object) {
-			result += name + ": " + navigator[name] + "<br/>";
+			result += name + ": " + object[name] + "<br/>";
 		}
 		return result;
 	}	
 
     function loadFriends(uid) {
-		prompt(uid);
+		prompt("uid", uid);
         var req = opensocial.newDataRequest();
 
         if(uid == null) {
@@ -76,7 +76,7 @@
     }
 
     function onLoadFriends(data) {
-		prompt(sum_object(data));
+		prompt("onLoadFriends(data)", sum_object(data));
         var viewerFriends = data.get('viewerFriends').getData();
 
         var uid = "";
