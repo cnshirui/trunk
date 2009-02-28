@@ -9,6 +9,10 @@ ExternalInterface.call("getProfilePath");
 http://xiaonei.com/profile.do?id=50836
 
 
+http://www.yiqi.com/opensocial/applications/preview/214257
+http://apps.xiaonei.com/campus_roamer
+
+
 中国足球笑话之周星驰版
 华安和师爷 
 　　师爷：一平二负共三场不胜四停五伤六废竟敢提七八九名十分大胆 
