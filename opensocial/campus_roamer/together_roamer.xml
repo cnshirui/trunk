@@ -64,7 +64,7 @@
 			
 			var idspec = opensocial.newIdSpec({'userId': uid, 'groupId':'SELF'});
 
-			req.add(req.newFetchAlbumsRequest(idspec), 'viewerFriends');	
+			req.add(req.newFetchPeopleRequest(idspec), 'viewerFriends');	
         }
 
         req.send(onLoadFriends);
