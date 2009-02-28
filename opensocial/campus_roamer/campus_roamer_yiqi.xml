@@ -2,7 +2,7 @@
 <Module>
   <ModulePrefs title="Campus Roamer">
     <Require feature="flash"/>
-    <Require feature="opensocial-0.8"/>
+    <Require feature="opensocial-0.7"/>
   </ModulePrefs>
   <Content type="html">
   
@@ -12,7 +12,6 @@
 
 
 <script type="text/javascript">
-	// http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js
 
     var jsReady = false;
 
