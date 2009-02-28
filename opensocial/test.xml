@@ -14,7 +14,7 @@
       var myenv = opensocial.getEnvironment();
 	  var result = "";
 	  for(name in myenv) {
-		result += name ": " + myenv[name] + "; ";
+		result += name + ": " + myenv[name] + "; ";
 	  }
 	  prompt("Domain?", result + myenv.getDomain());
 	  
