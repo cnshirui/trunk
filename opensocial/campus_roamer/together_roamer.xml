@@ -97,7 +97,8 @@
         var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
 		if(viewerFriends) {
 		
-			var array = withID? viewerFriends.asArray() : viewerFriends;
+			var array = viewerFriends.asArray();
+			//withID ? viewerFriends.asArray() : viewerFriends;
 			for(var i=0; i<array.length; i++) {
 				var person = array[i];
 				var id = person.getId();
