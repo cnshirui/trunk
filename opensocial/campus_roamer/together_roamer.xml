@@ -14,7 +14,6 @@
 <script type="text/javascript">
 
     var jsReady = false;
-	var withID = false;
 
     var usernames = {};
     var thumbnails = {};
@@ -62,7 +61,7 @@
 		  var opt_params = {};
 		  req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');	
 */
-			withID = true;
+		 selectedID =  uid;
 			
 		  var viewer = opensocial.newIdSpec({ "userId" : uid, "groupId" : "SELF" });
 		  var opt_params = {};
