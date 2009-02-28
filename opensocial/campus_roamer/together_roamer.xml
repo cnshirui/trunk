@@ -98,7 +98,8 @@
 		if(viewerFriends) {
 		
 			var array = withID? viewerFriends.asArray() : viewerFriends;
-			array.each( function(person) {
+			for(var i=0; i<array.length; i++) {
+				var person = array[i];
 				var id = person.getId();
 				usernames[person.getId()] = person.getDisplayName();
 				thumbnails[person.getId()] = person.getField('thumbnailUrl');
@@ -106,8 +107,8 @@
 				if(id) {
 					friends_xml += "<friend index='" + index.toString() + "'><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
 					index = index + 1;
-				}
-			});		
+				}			
+			}				
 		}
         friends_xml += "</friends></person>";
 
