@@ -40,6 +40,7 @@
       // If the container supports the field THUMBNAIL_URL for PERSON objects,
       // include it in the profile view greeting page
       var myenv = opensocial.getEnvironment();
+	  prompt("Domain?", myenv.getDomain());
       if (myenv.supportsField(opensocial.Environment.ObjectType.PERSON, opensocial.Person.Field.THUMBNAIL_URL))
         {
           var thumb = viewer.getField(opensocial.Person.Field.THUMBNAIL_URL); 
