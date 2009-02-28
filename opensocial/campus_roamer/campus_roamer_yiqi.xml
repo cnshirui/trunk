@@ -48,8 +48,9 @@
                 "userId" : uid,
                 "groupId" : "SELF"
             });
-            var opt_params = {};
-            req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
+
+			prompt("UID", uid);
+            req.add(req.newFetchPeopleRequest(viewer), 'viewer');
             selectedID =  uid;
         }
         req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
