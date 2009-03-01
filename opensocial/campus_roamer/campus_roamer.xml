@@ -95,7 +95,7 @@
         });
         friends_xml += "</friends></person>";
 
-        prompt("All friends", friends_xml);
+        // prompt("All friends", friends_xml);
         sendToActionScript(friends_xml);
     }
 
