@@ -2,7 +2,7 @@
 <Module>
   <ModulePrefs title="Campus Roamer">
     <Require feature="flash"/>
-    <Require feature="opensocial-0.8"/>
+    <Require feature="opensocial-0.7"/>
   </ModulePrefs>
   <Content type="html">
   
