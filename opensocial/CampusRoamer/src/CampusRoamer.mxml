@@ -200,7 +200,7 @@
 			}
 			
 			private function test():void {	
-				receivedFromJavaScript(samplePerson);										
+//				receivedFromJavaScript(samplePerson);										
 			}
 			
 			private function gotoApplicationPage():void {
