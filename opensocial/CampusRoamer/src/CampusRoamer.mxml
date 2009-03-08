@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fc="http://www.adobe.com/2006/fc"
 	layout="absolute" creationComplete="init()" xmlns:ns1="bridge.*">
+	
 	<mx:Style>
 		.text {
 			color: #222222;
 			font-family: Verdana;
 		}
 	</mx:Style>
-
+	
 	<fc:SpringGraph id="s" backgroundColor="#ffffff" 
 		lineColor="#333388" left="0" right="0" top="0" bottom="0"
 		itemRenderer="PersonItemView" repulsionFactor="{rep.value}">
 	</fc:SpringGraph>
 	
-	<mx:Label x="10" y="10" text="Campus Roamer" styleName="text" fontSize="15"/>
-	<mx:Text fontSize="9" textAlign="left" styleName="text"
-		htmlText="&lt;a href=&quot;http://apps.xiaonei.com/campus_roamer&quot;&gt;http://apps.xiaonei.com/campus_roamer&lt;/a&gt;" x="10" y="32"/>
+	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="15"/>
+	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
+		text="http://apps.xiaonei.com/campus_roamer" click="gotoApplicationPage()"/>
 		
-	<mx:Label x="10" y="48" text="Double-click an Person to see his/her friends" fontSize="10" styleName="text" id="help0"/>
-	<mx:Label x="10" y="64" text="Right-click to navigate his/her profile page" fontSize="10" styleName="text" id="help1"/>
+	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="10" styleName="text" id="help0"/>
+	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="10" styleName="text" id="help1"/>
 			
 	<mx:HSlider x="270" y="9" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
-	<mx:Label x="379" y="10" text="zoom in/out thumbnail size"/>
+	<mx:Label x="379" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"/>
 	<mx:HSlider id="rep" x="270" y="28" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
-	<mx:Label x="379" y="28" text="modify distance between people"/>
+	<mx:Label x="379" y="28" text="@Resource(bundle='resources', key='TIPS_DISTANCE')"/>
 			
 	<mx:TextArea id="output" x="300" y="10" width="450" height="100" visible="false"/>
 	<mx:XML id="samplePerson" source="samplePerson.xml" />
 	
 	<mx:Script>
 		<![CDATA[
+			import flash.net.navigateToURL;
+			
+			import mx.controls.Alert;
+			import mx.managers.CursorManager;
 			import mx.managers.PopUpManager;
 			import mx.managers.CursorManagerPriority;
-			import mx.managers.CursorManager;
 			import com.google.ccc.chinasocial.api.API;
-			import mx.controls.Alert;
 			import com.adobe.flex.extras.controls.springgraph.Graph;
 			
 			[Bindable]
@@ -89,7 +92,7 @@
 	            }
 	            
 	            // for test
-	            // test();
+	            test();
 			}
 			
 			public function checkInitialStatus(text:String):void{
@@ -198,6 +201,10 @@
 			
 			private function test():void {	
 				receivedFromJavaScript(samplePerson);										
+			}
+			
+			private function gotoApplicationPage():void {
+				navigateToURL(new URLRequest("http://apps.xiaonei.com/campus_roamer"), "_blank");
 			}
 			
 		]]>

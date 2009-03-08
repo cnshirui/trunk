@@ -30,6 +30,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.resources.ResourceManager;
 			import mx.controls.Alert;
 			import mx.core.Application;
 			
@@ -43,7 +44,7 @@
 	            defaultItems.print = false;
 	            
 	            // addCustomMenuItems
-	            var menuLabel:String = "go to Profile Page";
+	            var menuLabel:String = ResourceManager.getInstance().getString('resources', 'GOTO_PROFILE_PAGE');
 	            var item:ContextMenuItem = new ContextMenuItem(menuLabel);
 	            myContextMenu.customItems.push(item);
 	            item.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItemSelectHandler);
