@@ -1,0 +1,44 @@
+<% @page_heading = _('Sidebar') %>
+<% subtabs_for(:themes) %>
+
+
+  <p><%= _("Drag and drop to change the sidebar items displayed on this blog.  To remove items from the sidebar just click remove  Changes are saved immediately, but not activated until you click the 'Publish' button")%>.</p>
+
+  <%= form_remote_tag(:url=>{:action=>'publish'},
+                      :loading => "new Element.show('update_spinner')")  %>
+  <div class="paginate r">
+    <input value="<%= _('Publish changes')%>" class="submit" type="submit"/>
+  </div>
+  <div id="messages">&nbsp;</div>
+
+  <div id="sidebar-config">
+    <div id="available" class="dropbox">
+      <h2><%= _("Available Items")%></h2>
+      <div id="available_box">
+        <%= render :partial => 'availables', :object => @available %>
+      </div>
+    </div>
+
+    <div id="cnt-active">
+      <h2 id="hdr-active">
+        <%= _("Active Sidebar items")%>
+        <%= image_tag "spinner-blue.gif", :id => 'update_spinner',
+                      :style => 'display:none;' -%>
+      </h2>
+      <div id="active" class="dropbox">
+        <%= render :partial => 'actives', :object => @active %>
+      </div>
+    </div>
+    <br clear="all" />
+
+	  <div class="paginate r">
+	    <input value="<%= _('Publish changes')%>" class="submit" type="submit"/>
+	  </div>
+
+  </div>
+  
+<h2><%= _("Get more plugins") %></h2>
+  <p>You can download and install sidebar plugins from our official <a href="http://wiki.github.com/fdv/typo/typo-plugins-list">plugin repository</a>. All you have to do is upload the theme directory in your vendor/plugins directory. You can aso run</p> 
+  
+  <p><code>script/plugins install http://svn.typosphere.org/plugins/myplugin.</code></p>
+  

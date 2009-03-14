@@ -1,0 +1,10 @@
+<p>
+  <%= hidden_field_tag "confirmed", params[:confirmed] %>
+  <%= hidden_field_tag "published", params[:published] %>
+  <%= hidden_field_tag "bulkop", "",{:id=>"bulkop"} %>
+  <%= submit_tag _("Delete Checked Items"), {:class => 'submit',:onclick=>"getElementById('bulkop').value='Delete Checked Items'"} %> &nbsp;
+  <%= submit_tag _("Mark Checked Items as Ham"), {:class => 'submit',:onclick=>"getElementById('bulkop').value='Mark Checked Items as Ham'"} %>
+  <%= submit_tag _("Mark Checked Items as Spam"), {:class => 'submit',:onclick=>"getElementById('bulkop').value='Mark Checked Items as Spam'"} %>
+  <%= submit_tag _("Confirm Classification of Checked Items"), {:class => 'submit', :onclick=>"getElementById('bulkop').value='Confirm Classification of Checked Items'"} %>
+  <%= submit_tag _("Delete all spam"), {:class => 'submit', :onclick=>"getElementById('bulkop').value='Delete all spam'"}%>
+</p>

@@ -1,0 +1,38 @@
+<% @page_heading =  _("Feedback for") + " #{ this_blog.settings['blog_name'] }" %>
+<% subtabs_for(:feedback) %>
+
+<div class="search">
+  <% form_tag({:action => 'index'}, :method => :get) do %>
+  <label for="search"><%= _("Search Comments and Trackbacks that contain")%>...:</label><br /> 
+  <input type="text" id="feedback_search" name="search" value="<%=h params[:search] %>" size="30" />
+  <%= submit_tag _("Search") %>
+  <% end %>
+</div>
+
+<div class="list">
+  <% form_tag({:action => 'bulkops'}, :method => :post) do %>
+  <%= render :partial => 'button' %>
+
+  <%= hidden_field_tag "search", params[:search]%>
+  <%= hidden_field_tag "page", params[:page]%>
+  <table>
+    <tr>
+      <th><input class="feedback_check" type="checkbox" name="checkall" id="checkall" onclick="check_all(this);"/></th>
+      <th><%= _("Status")%></th>
+      <th><%= _("Article")%></th>
+      <th><%= _("Author")%></th>
+      <th><%= _("Comment Excerpt")%></th>
+      <th><%= _("IP")%></th>
+    </tr>
+    <tr class="menubar">
+      <td colspan="6">&nbsp;</td>
+    </tr>
+    <%= render :partial => 'item', :collection => @feedback %>
+    <tr><td class="paginate" colspan="9"><%= will_paginate @feedback %></td></tr>
+  </table>
+
+  <%= render :partial => 'button' %>
+  <% end %>
+</div>
+
+

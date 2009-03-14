@@ -1,0 +1,10 @@
+  <% @page_heading = _('Manage tags') %>
+  <% subtabs_for(:content) %>
+  
+  <div class="list" id="tags">	
+    <%= render :partial => 'tags' %>
+  </div>                      
+  
+  <div class="paginate">
+    <%= will_paginate @tags %>
+	</div>

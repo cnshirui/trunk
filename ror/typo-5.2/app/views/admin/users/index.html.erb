@@ -1,0 +1,29 @@
+<% @page_heading = _('Users') + ' <span> &raquo; '+ link_to(_('add new'), :action=>'new') +'</span>' %>
+<% subtabs_for(:users) %>
+
+<div class="list">
+  <table>
+    <tr>
+      <th><%= _("Username") %></th>
+      <th><%= _("Name") %></th>
+      <th><%= _("Email") %></th>
+      <th><%= _("Profile") %></th>
+      <th><%= _("Articles") %></th>
+      <th><%= _("Comments") %></th>
+    </tr>
+    <tr class="menubar">
+      <td colspan="6">&nbsp;</td>
+    </tr>
+    <% for user in @users -%>
+    <tr <%= alternate_class %>>
+      <td><%= link_to_edit user.login, user%></td>
+      <td> <%= user.name %></td>
+      <td><%= mail_to user.email, user.login%></td>
+      <td><%= _(user.profile.nicename) %></td>
+      <td><%= Article.count :conditions => "user_id = #{user.id}"  %></td>
+      <td><%= Comment.count :conditions => "user_id = #{user.id}"  %></td>
+    </tr>  
+    <% end -%>
+    <tr><td colspan="8" class="paginate"><%= will_paginate @users %></td></tr>
+  </table>
+</div>

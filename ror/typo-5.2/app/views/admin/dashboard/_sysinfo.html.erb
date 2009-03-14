@@ -1,0 +1,13 @@
+<div class="dashboard-small">
+  <h3><%= _("System information") %></h3>
+  <ul> 
+    <li><%= _("You're running Typo %s", TYPO_VERSION) %></li>
+  </ul>
+  <h3><%= _("Statistics") %></h3>
+  <ul> 
+    <li> <%= _("Total posts : %d", @statposts) %></li>
+    <li> <%= _("Your posts : %d" , @statuserposts) %></li>
+    <li> <%= _("Total comments : %d" , @statcomments) %></li>
+    <li> <%= _("Spam comments : %d" , @statspam) %></li>
+  </ul>
+</div>

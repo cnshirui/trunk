@@ -1,0 +1,29 @@
+software:
+  name: Software
+  permalink: software
+  position: 1
+
+hardware:
+  name: Hardware
+  permalink: hardware
+  position: 2
+
+personal:
+  name: Personal
+  permalink: personal
+  position: 3
+
+lifeonmars:
+  name: Life On Mars
+  permalink: life-on-mars
+  position: 4
+
+strangelynamed:
+  name: "The Permalink doesn't match"
+  permalink: weird-permalink
+  position: 5
+
+xmltest:
+  name: "this & that"
+  permalink: this-and-that
+  position: 6

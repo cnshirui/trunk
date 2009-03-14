@@ -1,0 +1,9 @@
+<div id="loginform">
+	<%= content_tag :h3, link_to(image_tag("/images/admin/typologo.gif", :alt=>"Typo website"), "http://typosphere.org") %>
+  <div class="form admin">
+    <div id="flash">
+      <%= render_flash rescue nil %>
+    </div>
+    <%= render :partial => "shared/loginform" %>
+  </div>
+</div>

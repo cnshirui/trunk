@@ -1,0 +1,30 @@
+	<% @page_heading = _('Read') %>
+  <% subtabs_for(:settings) %>
+	<% form_tag :action => 'update' do %>
+
+<div class="admin">
+	<fieldset id="read">
+		<ul>
+			<li>
+				<label for="limit_article_display" class="float"><%= _("Display")%> </label>
+				<input name="setting[limit_article_display]" size="4" id="limit_article_display" type="text" value="<%= this_blog.limit_article_display %>" />
+				<%= _("articles on my homepage by default")%>
+			</li>
+			<li>
+			    <label for="limit_rss_display" class="float"><%= _("Display")%> </label>
+			    <input name="setting[limit_rss_display]" size="4" id="limit_rss_display" type="text" value="<%= this_blog.limit_rss_display %>" />
+				<%= _("articles in my news feed by default")%>.
+			</li>
+			<li class="checkbox">
+				<label class="float" for="show_extended_on_rss"><%= _("Show full article on feed")%>:</label>
+			    <input name="setting[show_extended_on_rss]" id="show_extended_on_rss" type="checkbox" value="1" <%= 'checked="checked"' if this_blog.show_extended_on_rss%> />
+			    <input name="setting[show_extended_on_rss]" type="hidden" value="0" />
+			</li>
+		</ul>
+	</fieldset>
+  <%= hidden_field_tag 'from', 'read' %>
+
+	<%= render :partial => 'submit' %>
+
+</div>
+  <% end %>

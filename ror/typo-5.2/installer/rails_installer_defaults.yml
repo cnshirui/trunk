@@ -1,0 +1,5 @@
+--- 
+rails-environment: production
+database: mysql
+web-server: mongrel
+threads: 2

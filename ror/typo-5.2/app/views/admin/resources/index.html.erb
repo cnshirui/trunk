@@ -1,0 +1,10 @@
+  <% @page_heading = _('Uploads') + ' <span> &raquo; ' + link_to(_("add new"), :action => 'new') + '</span>' %>
+  <% subtabs_for(:content) %>
+
+  <div class="list" id="resources">	
+    <%= render :partial => 'resources' -%>
+  </div>
+	<div class="paginate">
+    <%= will_paginate @resources %>
+	</div>
+	

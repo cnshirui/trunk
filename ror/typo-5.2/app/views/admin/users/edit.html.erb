@@ -1,0 +1,10 @@
+  <% @page_heading = _('Edit User') %>
+  <% subtabs_for(:users) %>
+  <% form_tag :action=>"edit", :id => @user.id do %>
+
+  <div class="admin">
+    <%= render :partial => "form" %>
+  </div>
+
+  <%= cancel_or_save %>
+  <% end %>

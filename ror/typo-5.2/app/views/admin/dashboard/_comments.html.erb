@@ -1,0 +1,15 @@
+<div class="dashboard">
+  <h3><%= _("Last Comments") %></h3>
+  <ul>
+    <% if @comments.size == 0 %>
+      <li><%= _("No comments yet") %></li>
+    <% else %>
+      <% for comment in @comments -%>
+        <li>
+          <%= link_to_permalink comment, h(_("by %s on %s", comment.author, comment.article.title)) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <hr />
+</div>

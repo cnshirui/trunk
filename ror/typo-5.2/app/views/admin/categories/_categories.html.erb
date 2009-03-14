@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th><%= _("Title") %></th>
+    <th><%= _("Posts") %></th>
+  </tr>
+  <tr class="menubar">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <%= render_void_table(@categories.size, 2)  %>
+  
+  <% for category in @categories -%>
+  <tr <%= alternate_class -%> id="category_<%= category.id -%>">
+    <td><%= link_to_edit category.name, category %></td>
+    <td><%= link_to_permalink category, pluralize(category.articles.size, _('no articles') , _('1 article'), __('%d articles')) %></td>
+  </tr>  
+  <% end -%>
+</table>

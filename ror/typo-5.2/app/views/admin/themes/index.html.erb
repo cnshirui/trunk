@@ -1,0 +1,32 @@
+<% @page_heading = _('Choose a theme') %>
+<% subtabs_for(:themes) %>
+
+<% i = 0 %>
+<% for theme in @themes %>
+<% i = i+1 %>
+<div class="theme">
+  <div>
+    <% if theme.path == @active.path -%>
+      <%= image_tag(url_for(:action => 'preview', :theme => theme.name, :skip_relative_url_root => true)) %>
+    <% else %>
+      <%= link_to(image_tag(url_for(:action => 'preview', :theme => theme.name, :skip_relative_url_root => true)), :action => 'switchto', :theme => theme.name) %>
+    <% end %>
+    </div>
+  <%= theme.description_html %>
+  <% if theme.path == @active.path -%>
+  <em>(<%= _("Active theme")%>)</em>
+  <% end -%>
+</div>
+<% if i == 3 %>
+  <% i = 0%>
+  <hr class="clear" />
+<% end %>
+<% end %>
+
+<hr class="clear" />
+
+<h2><%= _("Get more themes")%> </h2>
+<p>
+    <%= _("You can download third party themes from officially supported %s ", link_to(_("Typogarden"), 'http://typogarden.org'))%> <%= _("To install a theme you  just need to upload the theme folder into your themes directory. Once a theme is uploaded, you should see it on this page.") %>
+</p>
+

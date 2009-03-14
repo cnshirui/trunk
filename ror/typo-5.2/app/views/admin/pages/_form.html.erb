@@ -1,0 +1,30 @@
+<%= error_messages_for 'page' %>
+<!--[form:pages]-->
+<ul class="admin">
+  <li>
+    <label for="page_title" class="block title"><%= _("Title")%></label>
+    <%= text_field 'page', 'title', :class => 'large'  %>
+  </li>
+  <li>
+    <div style="float: right; width: 230px;">
+      <label class="block content"><%= _("Options") %></label>
+      <p class="paginate r">
+          <label for="page_name"><%= _("Permalink")%>:</label><br />
+          <%= text_field 'page', 'name', :size => 25  %>
+          <label for="page_published"><%= _("Online")%>:</label>
+          <%= check_box 'page', 'published'  %><br />
+        <%= link_to_destroy_with_profiles @page%>
+        <%= save( _("Publish") + " &raquo;") %>
+      </p>
+    </div>
+    <div id="editor">
+      <label for="page_body" class="block content"><%= _("Content")%></label>
+      <% unless current_user.editor == 2 -%>
+        <script type="text/javascript">edToolbar('page_body');</script>
+      <% end -%>
+      <%= t_textarea 'page', 'body', {:height => '300', :class => 'large'} %> 
+      <%= render_macros(@macros) unless current_user.editor == 2 %>
+    </div>
+    <%= hidden_field_tag 'text_filter', this_blog.text_filter %>
+  </li>
+</ul>
