@@ -14,19 +14,19 @@
 		itemRenderer="PersonItemView" repulsionFactor="{rep.value}">
 	</fc:SpringGraph>
 	
-	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="15"/>
+	<mx:Label x="536" y="10" text="@Resource(bundle='resources', key='TIPS_DISTANCE')" fontSize="12" width="109"/>
+	<mx:Button x="643"  y="9" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
+	<mx:HSlider x="225" y="10" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
+	<mx:Label x="339" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"  fontSize="12" width="80"/>
+	<mx:HSlider id="rep" x="427" y="10" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
+	
+	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
 		text="http://apps.xiaonei.com/campus_roamer" click="gotoApplicationPage()"/>
 		
-	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="10" styleName="text" id="help0"/>
-	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="10" styleName="text" id="help1"/>
+	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
+	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
 			
-	<mx:HSlider x="270" y="9" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
-	<mx:Label x="379" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"/>
-	<mx:HSlider id="rep" x="270" y="28" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
-	<mx:Label x="379" y="28" text="@Resource(bundle='resources', key='TIPS_DISTANCE')"/>
-			
-	<mx:TextArea id="output" x="300" y="10" width="450" height="100" visible="false"/>
 	<mx:XML id="samplePerson" source="samplePerson.xml" />
 	
 	<mx:Script>
@@ -65,30 +65,30 @@
 						ExternalInterface.addCallback("sendToActionScript", receivedFromJavaScript);
 						
 	                    if (checkJavaScriptReady()) {
-	                        outputText("JavaScript is ready.\n");
-	                        
 						     api = new API(["sample"]);
 						     api.setDesiredFetchPeopleFields(["PROFILE_URL"]);
-						     api.setDesiredFetchPeopleCount(20);
+						     api.setDesiredFetchPeopleCount(1000);
 						     api.start(); 		
-						     outputText("ExternalInterface is ready.\n");     	
+						     trace("ExternalInterface is ready.\n");     
+						     
+						     ExternalInterface.call("loadFriends");
 	                    } 
 	                    else {
-	                        outputText("JavaScript is not ready, creating timer.\n");
+	                        trace("JavaScript is not ready, creating timer.\n");
 	                        var readyTimer:Timer = new Timer(2000, 0);
 	                        readyTimer.addEventListener(TimerEvent.TIMER, timerHandler);
 	                        readyTimer.start();
 	                    }
 	                } 
 	                catch (error:SecurityError) {
-	                    outputText("A SecurityError occurred: " + error.message + "\n");
+	                    trace("A SecurityError occurred: " + error.message + "\n");
 	                } 
 	                catch (error:Error) {
-	                    outputText("An Error occurred: " + error.message + "\n");
+	                    trace("An Error occurred: " + error.message + "\n");
 	                }
 	            } 
 	            else {
-	                outputText("External interface is not available for this container.");
+	                trace("External interface is not available for this container.");
 	            }
 	            
 	            // for test
@@ -109,28 +109,16 @@
 			}			
 			
 	        private function checkJavaScriptReady():Boolean {
-	            var isReady:Boolean = ExternalInterface.call("isReady");
-	            return isReady;
+	            return ExternalInterface.call("isReady");
 	        }	
 	        
 	        private function timerHandler(event:TimerEvent):void {
-	            outputText("Checking JavaScript status...\n");
-	            var isReady:Boolean = checkJavaScriptReady();
-	            if (isReady) {
-	                outputText("JavaScript is ready.\n");
+	            trace("Checking JavaScript status...\n");
+	            if (checkJavaScriptReady()) {
+	                trace("JavaScript is ready.\n");
 	                Timer(event.target).stop();
 	            }
 	        }	   
-	        
-	        public function outputText(value:String):void {
-	        	if(value.indexOf("\n") == -1) {
-	        		value += "\n";
-	        	}
-	        	
-	        	var text:String = output.text;
-	        	text = text + value;
-	        	output.text = text;
-	        }    
 	        
 	        public function receivedFromJavaScript(value:String):void {
 	        	// the first time to close init dialog
@@ -138,7 +126,7 @@
 	        	
 	        	var person:XML = XML(value);
 	        	var linkTo:PersonItem = addItem(person.id[0], person.name[0], person.thumbnail[0], null);
-	        	outputText(person.id[0].toString() + ": " + person.name[0].toString());
+	        	trace(person.id[0].toString() + ": " + person.name[0].toString());
 	        	
 	        	var friends:XMLList = person.friends.friend;
 	        	var randomIndexes:Array = chooseRadmon10(friends.length());
@@ -146,7 +134,7 @@
 	        	for each(var index:int in randomIndexes) {
 	        		var friend:XML = friends[index];
 	        		addItem(friend.id[0], friend.name[0], friend.thumbnail[0], linkTo);
-	        		outputText(friend.id[0].toString() + ": " + friend.name[0].toString());
+	        		trace(friend.id[0].toString() + ": " + friend.name[0].toString());
 	        	}
 	        	
 	        	CursorManager.removeBusyCursor();
@@ -205,6 +193,12 @@
 			
 			private function gotoApplicationPage():void {
 				navigateToURL(new URLRequest("http://apps.xiaonei.com/campus_roamer"), "_blank");
+			}
+			
+			private function reset():void
+			{
+				ExternalInterface.call("reset");
+				init();
 			}
 			
 		]]>

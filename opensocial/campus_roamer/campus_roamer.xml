@@ -8,7 +8,7 @@
   
   <![CDATA[
 
-<script src="http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/opensocial-flashapi.js" type="text/javascript"></script>
+<script src="http://web93131016.w1.web335.net.cn/campus_roamer/opensocial-flashapi.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
@@ -20,8 +20,6 @@
     var selectedID = '';
 
     function isReady() {
-        loadFriends();
-
         return jsReady;
     }
 
@@ -104,11 +102,17 @@
         jsReady = true;
 
         // load spring graph
-		var swf_path = "http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/CampusRoamer.swf";
+		var swf_path = "http://web93131016.w1.web335.net.cn/campus_roamer/CampusRoamer.swf"+ "?" + Math.random().toString();
         flashAPI.embedFlash(swf_path + "?" + Math.random().toString(),
         "flash_container", "9", {width: 790, height: 470, quality: "high", allowScriptAccess: "always"});
-		// 790x470, or 850x600,  + "?" + Math.random().toString()
+		// 790x470, or 850x600,  
     }
+	
+	function reset() {
+		usernames = {};
+		thumbnails = {};
+		selectedID = '';		
+	}
 
     gadgets.util.registerOnLoadHandler(init);
 </script>

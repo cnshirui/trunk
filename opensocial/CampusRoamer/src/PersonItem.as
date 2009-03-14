@@ -54,7 +54,6 @@ package
 			}
 			
 			selectedID = this.id;
-			app.outputText(this.id + " is seeking friends");
 			ExternalInterface.call("loadFriends", this.id);
 			
 			CursorManager.setCursor(app.inProgressCursor, CursorManagerPriority.HIGH, -8, -8);
