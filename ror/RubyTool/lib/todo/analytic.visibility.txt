@@ -1,0 +1,57 @@
+Summary: --bugfix-- ADAPT01172193
+Reviewed by Robin Salkeld, Francis Hu
+What and how:
+Before: In analytic creation, the default visibility is only based on template.
+Now: In analytic creation, the default visibility is based on datasets and templates. As long as one dataset or the template is private, the analytic will be private.
+
+I did some change:
+1. after selecting datasets, use Ajax to update analytic's visibility.
+2. add AnalyticController#render_wizard_visibility_picker and _wizard_visibility_picker.rhtml to render the lastest visibility.
+\
+
+http://localhost:3000/users/datasets/IWWEjXWyjqS3amNbRu1q2k?page=7
+
+
+
+make_visibility_picker
+
+
+          <%
+            # analytic's visibility also based on datasets
+            visibility = :public
+            if(@dataset_id)
+                dataset = Dataset.find(@dataset_id)
+                visibility = dataset.visibility if(dataset)
+            end
+          %>
+
+
+<%= visibility_picker_for form.object_name, visibility %>
+
+
+<div id="visibility_setting"></div>
+
+get_visibility
+
+AccessControlViewHelper
+
+
+    <%= button_to_function "Next &gt;", remote_function(:update => "suggested_tags",
+                                                                                    :url => { :action => 'suggest_tags', :id => @analytic },
+                                                                                    :with => "'datasets='+choosen_datasets()",
+                                                                                    :complete => "gotoDescribeStage();") 
+    %>     
+
+
+
+function choosen_datasets() {
+    var dataset_ids = [];
+    var pat_dataset = /(^data_inputs\[)[0-9]+(\]\[dataset_id\]$)/;
+    Form.getInputs('analytic_data_form', 'hidden').each(
+      function(box) { 
+          if(pat_dataset.test(box.name))
+              dataset_ids.push(box.value)
+      }
+    );
+    return dataset_ids;
+}
