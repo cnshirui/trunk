@@ -1,23 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Module>
-  <ModulePrefs title="Campus Roamer">
-    <Require feature="flash"/>
-    <Require feature="opensocial-0.8"/>
-  </ModulePrefs>
-  <Content type="html">
-  
-  <![CDATA[
-
-<script src="http://web93131016.w1.web335.net.cn/campus_roamer/opensocial-flashapi.js" type="text/javascript"></script>
-
-<div id='main'>
-    <div id='flash_container'></div>
-    <div id='me'></div>
-    <div id='friends'></div>
-</div>
-
-<script type=text/javascript'>
-
 var jsReady = false;
 
 var usernames = {};
@@ -125,10 +105,3 @@ function reset() {
 }
 
 gadgets.util.registerOnLoadHandler(init);
-
-</script>
-
-  ]]>
-  
-  </Content>
-</Module>
