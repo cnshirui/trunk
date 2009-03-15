@@ -14,15 +14,15 @@
 		itemRenderer="PersonItemView" repulsionFactor="{rep.value}">
 	</fc:SpringGraph>
 	
-	<mx:Label x="536" y="10" text="@Resource(bundle='resources', key='TIPS_DISTANCE')" fontSize="12" width="109"/>
-	<mx:Button x="643"  y="9" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
+	<mx:Label x="536" y="10" text="@Resource(bundle='resources', key='TIPS_DISTANCE')" fontSize="12" styleName="text" width="109"/>
 	<mx:HSlider x="225" y="10" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
-	<mx:Label x="339" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"  fontSize="12" width="80"/>
+	<mx:Label x="339" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"  fontSize="12" styleName="text" width="80"/>
 	<mx:HSlider id="rep" x="427" y="10" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
+	<mx:Button x="643"  y="9" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
 	
 	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
-		text="http://apps.xiaonei.com/campus_roamer" click="gotoApplicationPage()"/>
+		text="http://apps.xiaonei.com/campus_roamer?3" click="gotoApplicationPage()"/>
 		
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
@@ -33,7 +33,6 @@
 		<![CDATA[
 			import flash.net.navigateToURL;
 			
-			import mx.controls.Alert;
 			import mx.managers.CursorManager;
 			import mx.managers.PopUpManager;
 			import mx.managers.CursorManagerPriority;
@@ -46,9 +45,9 @@
 					
 			[Bindable]
 			public var scaleFactor: Number = 0.618;
+			
 			private var items: Graph;
 			
-			private var api:API;
 			private var initProgressWindow:InitialProgressWindow;
 			
 			private function init(): void {
@@ -65,10 +64,7 @@
 						ExternalInterface.addCallback("sendToActionScript", receivedFromJavaScript);
 						
 	                    if (checkJavaScriptReady()) {
-						     api = new API(["sample"]);
-						     api.setDesiredFetchPeopleFields(["PROFILE_URL"]);
-						     api.setDesiredFetchPeopleCount(1000);
-						     api.start(); 		
+						     new API(["sample"]).start();
 						     trace("ExternalInterface is ready.\n");     
 						     
 						     ExternalInterface.call("loadFriends");
