@@ -10,51 +10,33 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Used 19 times in query history.
+# Used 29 times in query history.
 - kind: Archive
   properties:
   - name: date
     direction: desc
 
-# Unused in query history -- copied from input.
-- kind: Greeting
-  properties:
-  - name: date
-    direction: desc
-
-# Used 19 times in query history.
+# Used 29 times in query history.
 - kind: Menu
   properties:
   - name: valid
   - name: order
 
-# Used 19 times in query history.
+# Used 29 times in query history.
 - kind: Tag
   properties:
   - name: valid
   - name: tag
 
-# Used 5 times in query history.
+# Used 8 times in query history.
 - kind: Weblog
   properties:
   - name: entrytype
   - name: date
     direction: desc
 
-# Used 2 times in query history.
+# Used 3 times in query history.
 - kind: Weblog
   properties:
   - name: lastCommentedDate
     direction: desc
-
-# Unused in query history -- copied from input.
-- kind: Weblog
-  properties:
-  - name: permalink
-    direction: desc
-
-# Unused in query history -- copied from input.
-- kind: WeblogReactions
-  properties:
-  - name: weblog
-  - name: date
