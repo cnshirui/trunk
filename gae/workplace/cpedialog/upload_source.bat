@@ -1,3 +1,3 @@
 @echo off
-python ..\..\google_appengine\appcfg.py update ..\cpedialog
+python d:\dev\google_appengine\appcfg.py update ..\cpedialog
 pause

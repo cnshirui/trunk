@@ -1,4 +1,4 @@
-1. install python 2.5.2,google_appengine
+1. install python 2.5.2, google_appengine
 2. config app.yaml
 3. edit helloworld.py
 4. run: dev_appserver.py helloworld/
@@ -21,6 +21,14 @@ SEP: SAP Expert Pool
 4. python manage.py startapp myapp
 
 
-
--- Komodo IDE
-D:\AppEngine\google_appengine\dev_appserver.py
+-- AppEngine with Eclipse
+1. install PyDev in Eclipse: http://pydev.sourceforge.net/updates/
+2. install python, config python interpreter in eclipse
+3. import appengine project, set python-path in project properties:
+   - google_appengine
+   - google_appengine\lib\django
+   - google_appengine\lib\webob
+   - google_appengine\lib\yaml\lib
+4. config run dialog
+   - main module - d:\dev\google_appengine\dev_appsserver.py
+   - args: ${project_loc} --port=9999

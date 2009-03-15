@@ -5,7 +5,7 @@ blog = {
     "author": "Rui Shi",
     "email": "shiruide@gmail.com",   # This must be the email address of a registered administrator for the application due to mail api restrictions.
     "description": "Shi Rui's Blog powered by Google AppEngine.",
-    "root_url": "http://www.whohar.com",
+    "root_url": "http://rshi.appspot.com",
     "cache_time": 0,      # You can override this default for each page through a handler's call to view.ViewPage(cache_time=...)
 }
 
