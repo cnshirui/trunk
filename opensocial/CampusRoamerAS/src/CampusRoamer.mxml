@@ -22,7 +22,7 @@
 	
 	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
-		text="http://apps.xiaonei.com/campus_roamer" click="gotoApplicationPage()"/>
+		text="http://apps.xiaonei.com/campus_roamer?4" click="gotoApplicationPage()"/>
 		
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
@@ -31,13 +31,29 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import org.opensocial.client.base.Address;
+			import org.opensocial.client.base.Collection;
+			import org.opensocial.client.base.Person;
+			import org.opensocial.client.base.DataRequest;
+			import org.opensocial.client.base.IdSpec;
+			import org.opensocial.client.base.ResponseItem;
+			import org.opensocial.client.jswrapper.GadgetsViews;
+			import org.opensocial.client.jswrapper.Environment;
+			import org.opensocial.client.ui.DebugInfo;
+			import org.opensocial.client.util.Logger;
+			import org.opensocial.client.jswrapper.OpensocialClient;
+			import org.opensocial.client.base.OpensocialEvent;
 			import flash.net.navigateToURL;
 			
 			import mx.managers.CursorManager;
 			import mx.managers.PopUpManager;
 			import mx.managers.CursorManagerPriority;
-			import com.google.ccc.chinasocial.api.API;
 			import com.adobe.flex.extras.controls.springgraph.Graph;
+			
+/* 			import org.opensocial.client.base.*;
+			import org.opensocial.client.jswrapper.*;
+			import org.opensocial.client.ui.*;
+			import org.opensocial.client.util.*; */			
 			
 			[Bindable]
             [Embed(source="progress_loader_15x15px.swf")]
@@ -48,51 +64,145 @@
 			
 			private var items: Graph;
 			
+			private var client:OpensocialClient;
+			
 			private var initProgressWindow:InitialProgressWindow;
 			
 			private function init(): void {
-				initProgressWindow = new InitialProgressWindow();
+	/* 			initProgressWindow = new InitialProgressWindow();
 				PopUpManager.addPopUp(initProgressWindow, this, true);
 				PopUpManager.centerPopUp(initProgressWindow);	
-							
+						 */	
 				items = new Graph();
 				
 	            checkInitialStatus("Check JavaScript: ");
 	            
-	            if (ExternalInterface.available) {
-	                try {
-						ExternalInterface.addCallback("sendToActionScript", receivedFromJavaScript);
-						
-	                    if (checkJavaScriptReady()) {
-						     new API(["sample"]).start();
-						     trace("ExternalInterface is ready.\n");     
-						     
-						     ExternalInterface.call("loadFriends");
-	                    } 
-	                    else {
-	                        trace("JavaScript is not ready, creating timer.\n");
-	                        var readyTimer:Timer = new Timer(2000, 0);
-	                        readyTimer.addEventListener(TimerEvent.TIMER, timerHandler);
-	                        readyTimer.start();
-	                    }
-	                } 
-	                catch (error:SecurityError) {
-	                    trace("A SecurityError occurred: " + error.message + "\n");
-	                } 
-	                catch (error:Error) {
-	                    trace("An Error occurred: " + error.message + "\n");
-	                }
-	            } 
-	            else {
-	                trace("External interface is not available for this container.");
-	            }
+			    // Create the output box for information displaying
+			    DebugInfo.create(this, 2, 100, 500, 350);	            
+	            
+			    client = new OpensocialClient();
+			    client.logger = new Logger(DebugInfo.print);
+			    client.logger.log(new Date());
+			    client.addEventListener(OpensocialEvent.READY, onReady);
+			    client.start();	                    	
 	            
 	            // for test
 	            test();
 			}
 			
-			public function checkInitialStatus(text:String):void{
-				if(initProgressWindow && initProgressWindow.parent && initProgressWindow.visible){
+			public function onReady(event:OpensocialEvent):void {
+			    client.logger.info(Environment.getDomain());
+			    client.logger.info(GadgetsViews.getCurrentView());
+			
+			    fetchMe();
+			    fetchFriends();
+			    //sendMessage();
+			    //createActivity();
+			    //makeRequest();
+			    loadFriends();
+			}	
+			
+			private function loadFriends():void {
+				
+			}		
+			
+  private function fetchMe():void {
+    
+    var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
+    
+    var params:Object = DataRequest.newPeopleRequestParams(0, 1, [Person.Field.CURRENT_LOCATION]);
+
+    client.fetchPerson(IdSpec.PersonId.VIEWER, function(r:ResponseItem):void {
+      try {
+        var p:Person = r.getData();
+        client.logger.info(p.getDisplayName() + (hasLocation ? p.getFieldData(Person.Field.CURRENT_LOCATION, Address).toString() : ""));
+        drawPerson(p, 0);
+      } catch (e:Error) {
+        client.logger.info(e);
+      }
+    }, params);
+  }
+  
+  private function fetchFriends(start:int = 0):void {
+    
+    
+    var idSpec:IdSpec = IdSpec.newInstance(IdSpec.PersonId.VIEWER, IdSpec.GroupId.FRIENDS);
+    
+    var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
+    var params:Object = DataRequest.newPeopleRequestParams(start, 5);
+    
+    client.fetchPeople(idSpec, function(r:ResponseItem):void {
+      try {
+        var c:Collection = r.getData();
+        client.logger.info(c.toDebugString());
+        
+        var arr:Array = c.getArray();
+        for (var i:int = 0; i < arr.length; i++) {
+          var p:Person = arr[i];
+          client.logger.info(p.getDisplayName());
+          drawPerson(p, i + 1);
+        }
+        if (c.getRemainingSize() > 0) {
+          fetchFriends(c.getNextOffset());
+        }
+      } catch (e:Error) {
+        client.logger.info(e);
+      }
+    }, params);
+  }		
+  
+  private function drawPerson(person:Person, index:int):void {
+    var box:Sprite = new Sprite();
+    box.x = 2 + (index % 3) * 180;
+    box.y = (Math.floor(index / 3)) * 70 + 2;
+    box.filters = [getFilter()];
+    addChild(box);
+
+    var name:TextField = new TextField();
+    name.x = 2;
+    name.y = 2;
+    var txtfmt:TextFormat = new TextFormat();
+    txtfmt.size = 12;
+    txtfmt.font = "arial";
+    txtfmt.color = 0xFFFFFF;
+    name.defaultTextFormat = txtfmt;
+    name.text = person.getDisplayName();
+    box.addChild(name);
+    
+    var url:String = person.getFieldString(Person.Field.THUMBNAIL_URL);
+    
+    //client.logger.info(url);
+    
+    if (url != null) {
+      var request:URLRequest = new URLRequest(url);
+      var thumb:Loader = new Loader();
+      box.addChild(thumb);
+      thumb.x = 2;
+      thumb.y = 20 + 2;
+      thumb.load(request);
+      
+      thumb.contentLoaderInfo.addEventListener(Event.COMPLETE, 
+          function(event:Event):void {
+            thumb.width = 32;
+            thumb.height = 32;
+          }, false, 0, true);
+    }
+  }  	
+
+  private function getFilter():DropShadowFilter {
+    var filter:DropShadowFilter = new DropShadowFilter();
+    filter.inner = false;
+    filter.angle = 120;
+    filter.strength = 0.8;
+    filter.distance = 2;
+    filter.quality = BitmapFilterQuality.MEDIUM;
+    return filter;
+  }
+  			
+			private function checkInitialStatus(text:String):void{
+				if(initProgressWindow 
+					&& initProgressWindow.parent 
+					&& initProgressWindow.visible){
 					initProgressWindow.traceStatus(text);
 				}
 			}
@@ -104,18 +214,6 @@
 				}
 			}			
 			
-	        private function checkJavaScriptReady():Boolean {
-	            return ExternalInterface.call("isReady");
-	        }	
-	        
-	        private function timerHandler(event:TimerEvent):void {
-	            trace("Checking JavaScript status...\n");
-	            if (checkJavaScriptReady()) {
-	                trace("JavaScript is ready.\n");
-	                Timer(event.target).stop();
-	            }
-	        }	   
-	        
 	        public function receivedFromJavaScript(value:String):void {
 	        	// the first time to close init dialog
 	        	setTimeout(removeInitProgressWindow, 1000);
@@ -193,7 +291,6 @@
 			
 			private function reset():void
 			{
-				ExternalInterface.call("reset");
 				init();
 			}
 			
