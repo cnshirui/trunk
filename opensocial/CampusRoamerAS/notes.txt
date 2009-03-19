@@ -1,0 +1,25 @@
+  private function onFetchMe(r:ResponseItem):void {
+      try {
+        var p:Person = r.getData();
+        client.logger.info(p.getDisplayName() + (hasLocation ? p.getFieldData(Person.Field.CURRENT_LOCATION, Address).toString() : ""));
+        drawPerson(p, 0);
+      } catch (e:Error) {
+        client.logger.info(e);
+      }  	
+  }
+  
+  TypeError: Error #1034: Type Coercion failed: cannot convert org.opensocial.client.ui::DebugInfo@827b881 to mx.core.IUIComponent.
+	at mx.core::Container/http://www.adobe.com/2006/flex/mx/internal::addingChild()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\core\Container.as:3251]
+	at mx.core::Container/addChildAt()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\core\Container.as:2200]
+	at mx.core::Container/addChild()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\core\Container.as:2140]
+	at org.opensocial.client.ui::DebugInfo$/create()[D:\perforce\gc_trunk\opensocial\CampusRoamerAS\src\org\opensocial\client\ui\DebugInfo.as:74]
+	at CampusRoamer/init()[D:\perforce\gc_trunk\opensocial\CampusRoamerAS\src\CampusRoamer.mxml:81]
+	at CampusRoamer/___CampusRoamer_Application1_creationComplete()[D:\perforce\gc_trunk\opensocial\CampusRoamerAS\src\CampusRoamer.mxml:3]
+	at flash.events::EventDispatcher/dispatchEventFunction()
+	at flash.events::EventDispatcher/dispatchEvent()
+	at mx.core::UIComponent/dispatchEvent()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\core\UIComponent.as:9051]
+	at mx.core::UIComponent/set initialized()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\core\UIComponent.as:1167]
+	at mx.managers::LayoutManager/doPhasedInstantiation()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\managers\LayoutManager.as:698]
+	at Function/http://adobe.com/AS3/2006/builtin::apply()
+	at mx.core::UIComponent/callLaterDispatcher2()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\core\UIComponent.as:8460]
+	at mx.core::UIComponent/callLaterDispatcher()[E:\dev\3.0.x\frameworks\projects\framework\src\mx\core\UIComponent.as:8403]

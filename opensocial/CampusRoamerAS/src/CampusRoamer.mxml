@@ -26,11 +26,15 @@
 		
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
+	
+	<mx:Canvas id="_debugInfo" width="400" height="300" right="189" bottom="154"/>
 			
 	<mx:XML id="samplePerson" source="samplePerson.xml" />
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Text;
+			import mx.containers.Panel;
 			import org.opensocial.client.base.Address;
 			import org.opensocial.client.base.Collection;
 			import org.opensocial.client.base.Person;
@@ -43,17 +47,13 @@
 			import org.opensocial.client.util.Logger;
 			import org.opensocial.client.jswrapper.OpensocialClient;
 			import org.opensocial.client.base.OpensocialEvent;
+			
 			import flash.net.navigateToURL;
 			
 			import mx.managers.CursorManager;
 			import mx.managers.PopUpManager;
 			import mx.managers.CursorManagerPriority;
 			import com.adobe.flex.extras.controls.springgraph.Graph;
-			
-/* 			import org.opensocial.client.base.*;
-			import org.opensocial.client.jswrapper.*;
-			import org.opensocial.client.ui.*;
-			import org.opensocial.client.util.*; */			
 			
 			[Bindable]
             [Embed(source="progress_loader_15x15px.swf")]
@@ -63,9 +63,7 @@
 			public var scaleFactor: Number = 0.618;
 			
 			private var items: Graph;
-			
 			private var client:OpensocialClient;
-			
 			private var initProgressWindow:InitialProgressWindow;
 			
 			private function init(): void {
@@ -78,7 +76,7 @@
 	            checkInitialStatus("Check JavaScript: ");
 	            
 			    // Create the output box for information displaying
-			    DebugInfo.create(this, 2, 100, 500, 350);	            
+			    DebugInfo.create(_debugInfo, 2, 100, 500, 350);	            
 	            
 			    client = new OpensocialClient();
 			    client.logger = new Logger(DebugInfo.print);
@@ -106,109 +104,93 @@
 				
 			}		
 			
-  private function fetchMe():void {
-    
-    var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
-    
-    var params:Object = DataRequest.newPeopleRequestParams(0, 1, [Person.Field.CURRENT_LOCATION]);
+			private function fetchMe():void {
+				var params:Object = DataRequest.newPeopleRequestParams(0, 1, [Person.Field.CURRENT_LOCATION]);
+				client.fetchPerson(IdSpec.PersonId.VIEWER, onFetchMe, params);
+			}
 
-    client.fetchPerson(IdSpec.PersonId.VIEWER, function(r:ResponseItem):void {
-      try {
-        var p:Person = r.getData();
-        client.logger.info(p.getDisplayName() + (hasLocation ? p.getFieldData(Person.Field.CURRENT_LOCATION, Address).toString() : ""));
-        drawPerson(p, 0);
-      } catch (e:Error) {
-        client.logger.info(e);
-      }
-    }, params);
-  }
-  
-  private function fetchFriends(start:int = 0):void {
-    
-    
-    var idSpec:IdSpec = IdSpec.newInstance(IdSpec.PersonId.VIEWER, IdSpec.GroupId.FRIENDS);
-    
-    var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
-    var params:Object = DataRequest.newPeopleRequestParams(start, 5);
-    
-    client.fetchPeople(idSpec, function(r:ResponseItem):void {
-      try {
-        var c:Collection = r.getData();
-        client.logger.info(c.toDebugString());
-        
-        var arr:Array = c.getArray();
-        for (var i:int = 0; i < arr.length; i++) {
-          var p:Person = arr[i];
-          client.logger.info(p.getDisplayName());
-          drawPerson(p, i + 1);
-        }
-        if (c.getRemainingSize() > 0) {
-          fetchFriends(c.getNextOffset());
-        }
-      } catch (e:Error) {
-        client.logger.info(e);
-      }
-    }, params);
-  }		
-  
-  private function drawPerson(person:Person, index:int):void {
-    var box:Sprite = new Sprite();
-    box.x = 2 + (index % 3) * 180;
-    box.y = (Math.floor(index / 3)) * 70 + 2;
-    box.filters = [getFilter()];
-    addChild(box);
+			private function onFetchMe(r:ResponseItem):void {
+				var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
+				var p:Person = r.getData();
+				client.logger.info(p.getDisplayName() + (hasLocation ? p.getFieldData(Person.Field.CURRENT_LOCATION, Address).toString() : ""));
+			}
 
-    var name:TextField = new TextField();
-    name.x = 2;
-    name.y = 2;
-    var txtfmt:TextFormat = new TextFormat();
-    txtfmt.size = 12;
-    txtfmt.font = "arial";
-    txtfmt.color = 0xFFFFFF;
-    name.defaultTextFormat = txtfmt;
-    name.text = person.getDisplayName();
-    box.addChild(name);
-    
-    var url:String = person.getFieldString(Person.Field.THUMBNAIL_URL);
-    
-    //client.logger.info(url);
-    
-    if (url != null) {
-      var request:URLRequest = new URLRequest(url);
-      var thumb:Loader = new Loader();
-      box.addChild(thumb);
-      thumb.x = 2;
-      thumb.y = 20 + 2;
-      thumb.load(request);
-      
-      thumb.contentLoaderInfo.addEventListener(Event.COMPLETE, 
-          function(event:Event):void {
-            thumb.width = 32;
-            thumb.height = 32;
-          }, false, 0, true);
-    }
-  }  	
+			private function fetchFriends(start:int = 0):void {
+				var idSpec:IdSpec = IdSpec.newInstance(IdSpec.PersonId.VIEWER, IdSpec.GroupId.FRIENDS);
 
-  private function getFilter():DropShadowFilter {
-    var filter:DropShadowFilter = new DropShadowFilter();
-    filter.inner = false;
-    filter.angle = 120;
-    filter.strength = 0.8;
-    filter.distance = 2;
-    filter.quality = BitmapFilterQuality.MEDIUM;
-    return filter;
-  }
-  			
+				var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
+				var params:Object = DataRequest.newPeopleRequestParams(start, 5);
+
+				client.fetchPeople(idSpec, onFetchFriends, params);
+			}		
+
+			private function onFetchFriends(r:ResponseItem):void {
+				var c:Collection = r.getData();
+				client.logger.info(c.toDebugString());
+
+				var arr:Array = c.getArray();
+				for (var i:int = 0; i < arr.length; i++) {
+					var p:Person = arr[i];
+					client.logger.info(p.getDisplayName());
+				}
+				if (c.getRemainingSize() > 0) {
+					fetchFriends(c.getNextOffset());
+				}
+			}
+
+			/*   private function drawPerson(person:Person, index:int):void {
+			   var box:Canvas = new Canvas();
+			   box.x = 2 + (index % 3) * 180;
+			   box.y = (Math.floor(index / 3)) * 70 + 2;
+			   box.filters = [getFilter()];
+			   addChild(box);
+
+			   var name:Text = new Text();
+			   name.x = 2;
+			   name.y = 2;
+			   name.text = person.getDisplayName();
+			   box.addChild(name);
+
+			   var url:String = person.getFieldString(Person.Field.THUMBNAIL_URL);
+
+			   client.logger.info(url);
+
+			   if (url != null) {
+			   var request:URLRequest = new URLRequest(url);
+			   var thumb:Loader = new Loader();
+			   box.addChild(thumb);
+			   thumb.x = 2;
+			   thumb.y = 20 + 2;
+			   thumb.load(request);
+
+			   thumb.contentLoaderInfo.addEventListener(Event.COMPLETE,
+			   function(event:Event):void {
+			   thumb.width = 32;
+			   thumb.height = 32;
+			   }, false, 0, true);
+			   }
+			 }   */	
+
+			private function getFilter():DropShadowFilter {
+				var filter:DropShadowFilter = new DropShadowFilter();
+				filter.inner = false;
+				filter.angle = 120;
+				filter.strength = 0.8;
+				filter.distance = 2;
+				filter.quality = BitmapFilterQuality.MEDIUM;
+				return filter;
+			}
+
 			private function checkInitialStatus(text:String):void{
 				if(initProgressWindow 
 					&& initProgressWindow.parent 
-					&& initProgressWindow.visible){
+					&& initProgressWindow.visible) {
 					initProgressWindow.traceStatus(text);
 				}
 			}
 			
-			public function removeInitProgressWindow():void{
-				if(initProgressWindow){
+			public function removeInitProgressWindow():void {
+				if(initProgressWindow) {
 					initProgressWindow.visible = false;
 					PopUpManager.removePopUp(initProgressWindow);
 				}
@@ -220,7 +202,6 @@
 	        	
 	        	var person:XML = XML(value);
 	        	var linkTo:PersonItem = addItem(person.id[0], person.name[0], person.thumbnail[0], null);
-	        	trace(person.id[0].toString() + ": " + person.name[0].toString());
 	        	
 	        	var friends:XMLList = person.friends.friend;
 	        	var randomIndexes:Array = chooseRadmon10(friends.length());
@@ -280,6 +261,7 @@
 			public function gotDoubleClick(): void {
 //				help.visible = false;
 			}
+
 			
 			private function test():void {	
 //				receivedFromJavaScript(samplePerson);										
