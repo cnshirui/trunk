@@ -20,8 +20,9 @@
 package org.opensocial.client.ui {
 
 import flash.display.DisplayObjectContainer;
-import flash.text.TextField;
 import flash.text.TextFormat;
+
+import mx.controls.Text;
 
 /**
  * A debugging output box for Adobe Flash IDE developers. 
@@ -29,7 +30,7 @@ import flash.text.TextFormat;
  * 
  * @author yiziwu@google.com (Yizi Wu)
  */
-public class DebugInfo extends TextField {
+public class DebugInfo extends Text {
 
   private static var instance:DebugInfo = null;
 
@@ -39,15 +40,7 @@ public class DebugInfo extends TextField {
    * @param color The text color.
    */  
   public function DebugInfo(color:uint = 0xFFFFFF) {
-    multiline = true;
-    mouseWheelEnabled = true;
-    selectable = true; 
-    wordWrap = true;
-    var txtfmt:TextFormat = new TextFormat();
-    txtfmt.size = 12;
-    txtfmt.font = "courier";
-    txtfmt.color = color;
-    this.defaultTextFormat = txtfmt;
+
   }
 
   /**
@@ -91,8 +84,7 @@ public class DebugInfo extends TextField {
       // The app instance never creates it, nothing will be printed.
       return;
     }
-    instance.appendText(text);
-    instance.scrollV = instance.maxScrollV;
+    instance.text += text;
   }
 }
 }
