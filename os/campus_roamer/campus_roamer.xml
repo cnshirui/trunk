@@ -8,7 +8,7 @@
   
   <![CDATA[
 
-<script src="http://web93131016.w1.web335.net.cn/campus_roamer/opensocial-flashapi.js" type="text/javascript"></script>
+<script src="opensocial-flashapi.js" type="text/javascript"></script>
 
 <div id='main'>
     <div id='flash_container'></div>
@@ -107,9 +107,9 @@ function init() {
     jsReady = true;
 
     // load spring graph
-    var swf_path = "http://web93131016.w1.web335.net.cn/campus_roamer/CampusRoamer.swf"+ "?" + Math.random().toString();
-    flashAPI.embedFlash(swf_path + "?" + Math.random().toString(),
-        "flash_container", "9", {
+    // var swf_path = "http://web93131016.w1.web335.net.cn/campus_roamer/CampusRoamer.swf" + "?" + Math.random().toString();
+    flashAPI.embedFlash("CampusRoamer.swf" + "?" + Math.random().toString(), "flash_container", "9", 
+		{
             width: 790,
             height: 470,
             quality: "high",
