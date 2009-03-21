@@ -20,6 +20,9 @@
 	<mx:HSlider id="rep" x="427" y="10" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
 	<mx:Button x="643"  y="9" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
 	
+	<mx:Button id="_showBefore" x="530"  y="46" label="Before 10" fontSize="11" styleName="text" click="showBefore()" width="105" enabled="false"/>
+	<mx:Button id="_showNext" x="643"  y="46" label="Next 10" fontSize="11" styleName="text" click="showNext()" width="105"/>
+	
 	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
 		text="http://apps.xiaonei.com/campus_roamer" click="gotoApplicationPage()"/>
@@ -27,10 +30,11 @@
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
 			
-	<mx:XML id="samplePerson" source="samplePerson.xml" />
-	
+<!--	<mx:XML id="personsXML" source="personsByName.xml" />
+-->	
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import flash.net.navigateToURL;
 			
 			import mx.managers.CursorManager;
@@ -46,9 +50,20 @@
 			[Bindable]
 			public var scaleFactor: Number = 0.618;
 			
+			// spring graph
 			private var items: Graph;
 			
+			// init progress popup window
 			private var initProgressWindow:InitialProgressWindow;
+			
+			// display friends with pagination
+			private const DISPLAY_COUNT:int = 10;
+			private var currentPerson:PersonItem;
+			private var currentFriends:XMLList;
+			private var nextAvailable:int = 0;
+			
+			// undo/redo map
+			private var existingPersons:Array = [];
 			
 			private function init(): void {
 				initProgressWindow = new InitialProgressWindow();
@@ -59,33 +74,17 @@
 				
 	            checkInitialStatus("Check JavaScript: ");
 	            
-	            if (ExternalInterface.available) {
-	                try {
-						ExternalInterface.addCallback("sendToActionScript", receivedFromJavaScript);
-						
-	                    if (checkJavaScriptReady()) {
-						     new API(["sample"]).start();
-						     trace("ExternalInterface is ready.\n");     
-						     
-						     ExternalInterface.call("loadFriends");
-	                    } 
-	                    else {
-	                        trace("JavaScript is not ready, creating timer.\n");
-	                        var readyTimer:Timer = new Timer(2000, 0);
-	                        readyTimer.addEventListener(TimerEvent.TIMER, timerHandler);
-	                        readyTimer.start();
-	                    }
-	                } 
-	                catch (error:SecurityError) {
-	                    trace("A SecurityError occurred: " + error.message + "\n");
-	                } 
-	                catch (error:Error) {
-	                    trace("An Error occurred: " + error.message + "\n");
-	                }
-	            } 
-	            else {
-	                trace("External interface is not available for this container.");
-	            }
+				ExternalInterface.addCallback("sendToActionScript", receivedFromJavaScript);
+				
+                if (checkJavaScriptReady()) {
+				     new API(["sample"]).start();
+				     ExternalInterface.call("loadFriends");
+                } 
+                else {
+                    var readyTimer:Timer = new Timer(2000, 0);
+                    readyTimer.addEventListener(TimerEvent.TIMER, timerHandler);
+                    readyTimer.start();
+                }
 	            
 	            // for test
 	            test();
@@ -109,9 +108,7 @@
 	        }	
 	        
 	        private function timerHandler(event:TimerEvent):void {
-	            trace("Checking JavaScript status...\n");
 	            if (checkJavaScriptReady()) {
-	                trace("JavaScript is ready.\n");
 	                Timer(event.target).stop();
 	            }
 	        }	   
@@ -121,44 +118,22 @@
 	        	setTimeout(removeInitProgressWindow, 1000);
 	        	
 	        	var person:XML = XML(value);
-	        	var linkTo:PersonItem = addItem(person.id[0], person.name[0], person.thumbnail[0], null);
+	        	currentPerson= addItem(person.id[0], person.name[0], person.thumbnail[0], null);
+	        	existingPersons.push(currentPerson);
 	        	trace(person.id[0].toString() + ": " + person.name[0].toString());
 	        	
-	        	var friends:XMLList = person.friends.friend;
-	        	var randomIndexes:Array = chooseRadmon10(friends.length());
+	        	currentFriends = person.friends.friend as XMLList;
 	        	
-	        	for each(var index:int in randomIndexes) {
-	        		var friend:XML = friends[index];
-	        		addItem(friend.id[0], friend.name[0], friend.thumbnail[0], linkTo);
+	        	for(var i:int=0; i<DISPLAY_COUNT; i++) {
+	        		var friend:XML = currentFriends[i];
+	        		addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson);
 	        	}
+	        	nextAvailable += DISPLAY_COUNT;
 	        	
 	        	CursorManager.removeBusyCursor();
 				CursorManager.removeAllCursors();
 	        } 		
 	        
-	        private function chooseRadmon10(length:int):Array {
-				var array:Array = [];
-				var hitFlag:Dictionary = new Dictionary();
-				
-				if(length <= 10) {
-					for(var i:int=0; i<length; i++) {
-						array.push(i);
-					}
-				}
-				else {
-					for(i=0; i<10; i++) {
-						var id:int;
-						do {
-							 id = Math.floor(Math.random()*length);
-						} while(hitFlag[id]);
-		
-						array.push(id);
-						hitFlag[id] = true;
-					}
-				}
-				return array;
-			}	        
-			
 			public function addItem(id: String, name: String, image:String, linkTo: PersonItem): PersonItem {
 				var newItem: PersonItem = new PersonItem(id, name, image);
 				items.add(newItem);
@@ -168,22 +143,13 @@
 				s.dataProvider = items;
 				return newItem;
 			}
-		
-			public function createItems(items: XMLList, linkTo: PersonItem): void {
-				for(var i: int = 0; i < items.length(); i++) {
-					var friend:XML = items[i];
-					var id:String = friend.id[0];
-					var name:String = friend.name[0];
-					addItem(id, name, null, linkTo);
-				}
-			}
 			
 			public function gotDoubleClick(): void {
-//				help.visible = false;
+//				receivedFromJavaScript(personsXML.person[1]);
 			}
 			
 			private function test():void {	
-				receivedFromJavaScript(samplePerson);										
+//				receivedFromJavaScript(personsXML.person[0]);										
 			}
 			
 			private function gotoApplicationPage():void {
@@ -194,6 +160,52 @@
 			{
 				ExternalInterface.call("reset");
 				init();
+			}
+			
+			private function showNext():void
+			{
+				clearCurrentLinked();
+				var max:int = Math.min(nextAvailable+DISPLAY_COUNT, currentFriends.length())
+	        	for(var i:int=nextAvailable; i<max; i++) {
+	        		var friend:XML = currentFriends[i];
+	        		addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson);
+	        		nextAvailable++;
+	        	}
+				updateButtonStatus();
+			}
+			
+			private function showBefore():void {
+				clearCurrentLinked();
+				var min:int = Math.max(nextAvailable-DISPLAY_COUNT, 0)
+	        	for(var i:int=nextAvailable-1; i>min; i--) {
+	        		var friend:XML = currentFriends[i];
+	        		addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson);
+	        		nextAvailable--;
+	        	}
+				updateButtonStatus();
+			}
+			
+			private function clearCurrentLinked():void {
+				for each(var item:PersonItem in items.nodes) {
+					if(existingPersons.indexOf(item)==-1 && items.linked(currentPerson, item)) {
+						items.remove(item);
+					}
+				}				
+			}
+			
+			private function updateButtonStatus():void {
+	        	if(nextAvailable+DISPLAY_COUNT>=currentFriends.length()) {
+	        		_showNext.enabled = false;
+	        	}
+	        	else {
+	        		_showNext.enabled = true;
+	        	}	
+	        	if(nextAvailable-DISPLAY_COUNT<0) {
+	        		_showBefore.enabled = false;
+	        	}	        	
+	        	else {
+	        		_showBefore.enabled = true;
+	        	}	        				
 			}
 			
 		]]>

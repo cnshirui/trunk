@@ -34,9 +34,6 @@ package
 		private static var app:CampusRoamer = CampusRoamer(Application.application);
 		private static var selectedID:String;
 		
-		private var friends: XMLList;
-		private var createSimilarsASAP: Boolean = false;
-		
 		public function PersonItem(itemId: String, name: String, image:String) {
 			super(itemId);
 			this.name = name;
@@ -47,8 +44,7 @@ package
 			}
 		}
 		
-		public function getFriends():void {
-			
+ 		public function getFriends():void {
 			if(selectedID == this.id) {
 				return;
 			}
@@ -58,17 +54,6 @@ package
 			
 			CursorManager.setCursor(app.inProgressCursor, CursorManagerPriority.HIGH, -8, -8);
 			CursorManager.setBusyCursor();
-	    }		
-		
-		public function createSimilars(): void {
-			if(friends == null) {
-				createSimilarsASAP = true;
-				return;
-			}
-			
-			var app: CampusRoamer = CampusRoamer(Application.application);
-			app.createItems(friends, this);
-			friends = null;
-		}
+	    }	 	
 	}
 }
