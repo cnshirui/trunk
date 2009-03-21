@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs 
+    title="SampleApp"
+    description="Just a sample to demo Opensocial Flash Client SDK."
+    height="500"> 
+  <Require feature="opensocial-0.8"/>
+  <Require feature="flash"/>
+  <Require feature="views"/>
+  <Require feature="rpc"/>
+  <Require feature="settitle"/>
+  <Require feature="dynamic-height"/>
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+
+<script src="http://www.unickway.org.cn/asClient/release/org/opensocial/client/jswrapper/javascript/opensocial-flashsdk.js" type="text/javascript"></script>
+
+<h1 style="font-size:32px; font-weight:bold; font-family:verdana; text-align: center;">Sample App</h1>
+<div id="flashcontainer" style="text-align: center;"></div>
+
+<script type="text/javascript">
+  opensocial.flash.embedFlash(
+     "SampleApp.swf",
+     "flashcontainer",
+     "9.0.115.0", 
+     {
+        width: "600",
+        height: "500",
+        quality: "high",
+        wmode: "window",
+        allowScriptAccess: "always"
+     });
+     
+  gadgets.window.adjustHeight();
+</script>
+
+]]>
+</Content>
+</Module>

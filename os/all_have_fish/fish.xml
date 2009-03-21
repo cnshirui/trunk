@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+ <ModulePrefs title="all_have_fish">
+  <Require feature="flash"/>
+  <Require feature="views"/>
+  <Require feature="dynamic-height"/>
+  <Require feature="opensocial-0.8"/>
+ </ModulePrefs>
+ <Content type="html">
+ <![CDATA[
+  
+	<!--
+		The JS-Side javascript code lib used in the Flash API.
+	  -->
+	<script src="http://opensocial-resources-zh.googlecode.com/svn/trunk/opensocial-flashapi/samples/opensocial-flashapi.js"
+			type="text/javascript"></script>
+
+	<script language="JavaScript" charset="gb2312">
+		function init() {
+			while(true) {
+				if(confirm("你真的喜欢明明哥么？", "嗯，是的！", "米有啊！")) {
+					break;
+				}
+				else {
+					alert("你骗人！哈哈！");
+				}
+			}
+		}
+
+		gadgets.util.registerOnLoadHandler(init);
+	</script>
+
+	<!-- The flash element -->
+	<div id="flashcontainer" style="text-align: center;"></div>
+
+	<!-- Embed the swf file -->
+	<script type="text/javascript">
+		flashAPI.embedFlash(
+		"http://shirui.googlecode.com/svn/trunk/opensocial/all_have_fish/fish.swf",
+		"flashcontainer", "9", {
+			quality: "high",
+			bgcolor: "#869ca7",
+			width: "780",
+			height: "480",
+			allowScriptAccess: "always"
+		});
+	</script>
+      
+ ]]>
+ </Content>
+</Module>
