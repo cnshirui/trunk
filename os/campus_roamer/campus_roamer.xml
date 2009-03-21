@@ -60,8 +60,8 @@ function loadFriends(uid) {
     });
     var opt_params = {};
     opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
-    // TOP_FRIENDS, NAME
-    opt_params[opensocial.DataRequest.PeopleRequestFields.SORT_ORDER] = opensocial.DataRequest.SortOrder.TOP_FRIENDS;
+    // TOP_FRIENDS,	NAME
+    opt_params[opensocial.DataRequest.PeopleRequestFields.SORT_ORDER] = opensocial.DataRequest.SortOrder.NAME;
     // TOP_FRIENDS, ALL
     // opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.ALL;
     req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
@@ -107,8 +107,8 @@ function init() {
     jsReady = true;
 
     // load spring graph
-    // var swf_path = "http://web93131016.w1.web335.net.cn/campus_roamer/CampusRoamer.swf" + "?" + Math.random().toString();
-    flashAPI.embedFlash("CampusRoamer.swf" + "?" + Math.random().toString(), "flash_container", "9", 
+    // var swf_path = "http://web93131016.w1.web335.net.cn/campus_roamer/CampusRoamer.swf"+ "?" + Math.random().toString();
+    flashAPI.embedFlash("CampusRoamer.swf", "flash_container", "9", 
 		{
             width: 790,
             height: 470,
