@@ -22,7 +22,7 @@
 	
 	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
-		text="http://apps.xiaonei.com/campus_roamer?4" click="gotoApplicationPage()"/>
+		text="http://apps.xiaonei.com/campus_roamer?5" click="gotoApplicationPage()"/>
 		
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
@@ -33,6 +33,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import mx.controls.Text;
 			import mx.containers.Panel;
 			import org.opensocial.client.base.Address;
@@ -93,16 +94,13 @@
 			    client.logger.info(GadgetsViews.getCurrentView());
 			
 			    fetchMe();
-			    fetchFriends();
+//			    fetchFriends();
 			    //sendMessage();
 			    //createActivity();
 			    //makeRequest();
-			    loadFriends();
+//			    loadFriends();
 			}	
 			
-			private function loadFriends():void {
-				
-			}		
 			
 			private function fetchMe():void {
 				var params:Object = DataRequest.newPeopleRequestParams(0, 1, [Person.Field.CURRENT_LOCATION]);
@@ -110,17 +108,22 @@
 			}
 
 			private function onFetchMe(r:ResponseItem):void {
-				var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
 				var p:Person = r.getData();
-				client.logger.info(p.getDisplayName() + (hasLocation ? p.getFieldData(Person.Field.CURRENT_LOCATION, Address).toString() : ""));
+				Alert.show("id; " + p.getId());
+				fetchFriends(p.getId());
+				
 			}
-
-			private function fetchFriends(start:int = 0):void {
+    
+			private function fetchFriends(uid:String, start:int = 0):void {
+				if(!uid) {
+					uid = IdSpec.PersonId.VIEWER;
+				}
+				else {
+					idSpec = IdSpec.newInstance(uid, IdSpec.GroupId.SELF);
+				}
+				
 				var idSpec:IdSpec = IdSpec.newInstance(IdSpec.PersonId.VIEWER, IdSpec.GroupId.FRIENDS);
-
-				var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
-				var params:Object = DataRequest.newPeopleRequestParams(start, 5);
-
+				var params:Object = DataRequest.newPeopleRequestParams(start, 15);
 				client.fetchPeople(idSpec, onFetchFriends, params);
 			}		
 
@@ -133,12 +136,87 @@
 					var p:Person = arr[i];
 					client.logger.info(p.getDisplayName());
 				}
-				if (c.getRemainingSize() > 0) {
+/*  				if (c.getRemainingSize() > 0) {
 					fetchFriends(c.getNextOffset());
-				}
+				}  */
 			}
+			
+		private function hashObject(object:Object):String
+		{
+			var value:String= object.toString() + " => Hash \n";
+			for(var key:String in object)
+			{
+				value += key + ": " + object[key] + "\n";
+			}
+			return value;
+		}
+			/*
+			   private function loadFriends(uid:String = "") {
+			   var req = opensocial.newDataRequest();
 
-			/*   private function drawPerson(person:Person, index:int):void {
+			   if(uid == null) {
+			   uid = "VIEWER";
+			   }
+			   else {
+			   var viewer = opensocial.newIdSpec({
+			   "userId" : uid,
+			   "groupId" : "SELF"
+			   });
+			   var opt_params = {};
+			   req.add(req.newFetchPeopleRequest(viewer, opt_params), 'viewer');
+			   selectedID =  uid;
+			   }
+			   req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
+
+			   var viewerFriends = opensocial.newIdSpec({
+			   "userId" : uid,
+			   "groupId" : "FRIENDS"
+			   });
+			   var opt_params = {};
+			   opt_params[opensocial.DataRequest.PeopleRequestFields.MAX] = 1000;
+			   // TOP_FRIENDS, NAME
+			   opt_params[opensocial.DataRequest.PeopleRequestFields.SORT_ORDER] = opensocial.DataRequest.SortOrder.TOP_FRIENDS;
+			   // TOP_FRIENDS, ALL
+			   // opt_params[opensocial.DataRequest.PeopleRequestFields.FILTER] = opensocial.DataRequest.FilterType.ALL;
+			   req.add(req.newFetchPeopleRequest(viewerFriends, opt_params), 'viewerFriends');
+
+			   req.send(onLoadFriends);
+			   }
+
+			   function onLoadFriends(data) {
+			   var viewerFriends = data.get('viewerFriends').getData();
+
+			   var uid = "";
+			   if(selectedID) {
+			   uid = selectedID;
+			   }
+			   else {
+			   var viewer = data.get('viewer').getData();
+			   uid = viewer.getId();
+			   usernames[uid] = viewer.getDisplayName();
+			   thumbnails[uid] = viewer.getField('thumbnailUrl');
+			   }
+
+			   // construct xml for flex component
+			   var index = 0;
+			   var friends_xml = "<person><id>" + uid + "</id><name>" + usernames[uid] + "</name><thumbnail>" + thumbnails[uid] + "</thumbnail><friends>";
+			   viewerFriends.each( function(person) {
+			   var id = person.getId();
+			   usernames[person.getId()] = person.getDisplayName();
+			   thumbnails[person.getId()] = person.getField('thumbnailUrl');
+
+			   if(id) {
+			   friends_xml += "<friend index='" + index.toString() + "'><id>" + id + "</id><name>" + usernames[id] + "</name><thumbnail>" + thumbnails[id] + "</thumbnail></friend>";
+			   index = index + 1;
+			   }
+			   });
+			   friends_xml += "</friends></person>";
+
+			   `				//    prompt("All friends", friends_xml);
+			   sendToActionScript(friends_xml);
+			   }
+
+			   private function drawPerson(person:Person, index:int):void {
 			   var box:Canvas = new Canvas();
 			   box.x = 2 + (index % 3) * 180;
 			   box.y = (Math.floor(index / 3)) * 70 + 2;
@@ -169,7 +247,7 @@
 			   thumb.height = 32;
 			   }, false, 0, true);
 			   }
-			 }   */	
+			 }   */
 
 			private function getFilter():DropShadowFilter {
 				var filter:DropShadowFilter = new DropShadowFilter();
