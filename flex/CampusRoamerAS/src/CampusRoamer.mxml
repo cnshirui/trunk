@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fc="http://www.adobe.com/2006/fc"
+	layout="absolute" creationComplete="init()" xmlns:ns1="bridge.*">
+	
+	<mx:Style>
+		.text {
+			color: #222222;
+			font-family: Verdana;
+		}
+	</mx:Style>
+	
+	<fc:SpringGraph id="s" backgroundColor="#ffffff" 
+		lineColor="#333388" left="0" right="0" top="0" bottom="0"
+		itemRenderer="PersonItemView" repulsionFactor="{rep.value}">
+	</fc:SpringGraph>
+	
+	<mx:Label x="536" y="10" text="@Resource(bundle='resources', key='TIPS_DISTANCE')" fontSize="12" styleName="text" width="109"/>
+	<mx:HSlider x="225" y="10" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
+	<mx:Label x="339" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"  fontSize="12" styleName="text" width="80"/>
+	<mx:HSlider id="rep" x="427" y="10" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
+	<mx:Button x="643"  y="9" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
+	
+	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
+	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
+		text="http://apps.xiaonei.com/campus_roamer?4" click="gotoApplicationPage()"/>
+		
+	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
+	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
+			
+	<mx:XML id="samplePerson" source="samplePerson.xml" />
+	
+	<mx:Script>
+		<![CDATA[
+			import org.opensocial.client.base.Address;
+			import org.opensocial.client.base.Collection;
+			import org.opensocial.client.base.Person;
+			import org.opensocial.client.base.DataRequest;
+			import org.opensocial.client.base.IdSpec;
+			import org.opensocial.client.base.ResponseItem;
+			import org.opensocial.client.jswrapper.GadgetsViews;
+			import org.opensocial.client.jswrapper.Environment;
+			import org.opensocial.client.ui.DebugInfo;
+			import org.opensocial.client.util.Logger;
+			import org.opensocial.client.jswrapper.OpensocialClient;
+			import org.opensocial.client.base.OpensocialEvent;
+			import flash.net.navigateToURL;
+			
+			import mx.managers.CursorManager;
+			import mx.managers.PopUpManager;
+			import mx.managers.CursorManagerPriority;
+			import com.adobe.flex.extras.controls.springgraph.Graph;
+			
+/* 			import org.opensocial.client.base.*;
+			import org.opensocial.client.jswrapper.*;
+			import org.opensocial.client.ui.*;
+			import org.opensocial.client.util.*; */			
+			
+			[Bindable]
+            [Embed(source="progress_loader_15x15px.swf")]
+            public var inProgressCursor:Class;
+					
+			[Bindable]
+			public var scaleFactor: Number = 0.618;
+			
+			private var items: Graph;
+			
+			private var client:OpensocialClient;
+			
+			private var initProgressWindow:InitialProgressWindow;
+			
+			private function init(): void {
+	/* 			initProgressWindow = new InitialProgressWindow();
+				PopUpManager.addPopUp(initProgressWindow, this, true);
+				PopUpManager.centerPopUp(initProgressWindow);	
+						 */	
+				items = new Graph();
+				
+	            checkInitialStatus("Check JavaScript: ");
+	            
+			    // Create the output box for information displaying
+			    DebugInfo.create(this, 2, 100, 500, 350);	            
+	            
+			    client = new OpensocialClient();
+			    client.logger = new Logger(DebugInfo.print);
+			    client.logger.log(new Date());
+			    client.addEventListener(OpensocialEvent.READY, onReady);
+			    client.start();	                    	
+	            
+	            // for test
+	            test();
+			}
+			
+			public function onReady(event:OpensocialEvent):void {
+			    client.logger.info(Environment.getDomain());
+			    client.logger.info(GadgetsViews.getCurrentView());
+			
+			    fetchMe();
+			    fetchFriends();
+			    //sendMessage();
+			    //createActivity();
+			    //makeRequest();
+			    loadFriends();
+			}	
+			
+			private function loadFriends():void {
+				
+			}		
+			
+  private function fetchMe():void {
+    
+    var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
+    
+    var params:Object = DataRequest.newPeopleRequestParams(0, 1, [Person.Field.CURRENT_LOCATION]);
+
+    client.fetchPerson(IdSpec.PersonId.VIEWER, function(r:ResponseItem):void {
+      try {
+        var p:Person = r.getData();
+        client.logger.info(p.getDisplayName() + (hasLocation ? p.getFieldData(Person.Field.CURRENT_LOCATION, Address).toString() : ""));
+        drawPerson(p, 0);
+      } catch (e:Error) {
+        client.logger.info(e);
+      }
+    }, params);
+  }
+  
+  private function fetchFriends(start:int = 0):void {
+    
+    
+    var idSpec:IdSpec = IdSpec.newInstance(IdSpec.PersonId.VIEWER, IdSpec.GroupId.FRIENDS);
+    
+    var hasLocation:Boolean = Environment.supportsField(Environment.ObjectType.PERSON, Person.Field.CURRENT_LOCATION);
+    var params:Object = DataRequest.newPeopleRequestParams(start, 5);
+    
+    client.fetchPeople(idSpec, function(r:ResponseItem):void {
+      try {
+        var c:Collection = r.getData();
+        client.logger.info(c.toDebugString());
+        
+        var arr:Array = c.getArray();
+        for (var i:int = 0; i < arr.length; i++) {
+          var p:Person = arr[i];
+          client.logger.info(p.getDisplayName());
+          drawPerson(p, i + 1);
+        }
+        if (c.getRemainingSize() > 0) {
+          fetchFriends(c.getNextOffset());
+        }
+      } catch (e:Error) {
+        client.logger.info(e);
+      }
+    }, params);
+  }		
+  
+  private function drawPerson(person:Person, index:int):void {
+    var box:Sprite = new Sprite();
+    box.x = 2 + (index % 3) * 180;
+    box.y = (Math.floor(index / 3)) * 70 + 2;
+    box.filters = [getFilter()];
+    addChild(box);
+
+    var name:TextField = new TextField();
+    name.x = 2;
+    name.y = 2;
+    var txtfmt:TextFormat = new TextFormat();
+    txtfmt.size = 12;
+    txtfmt.font = "arial";
+    txtfmt.color = 0xFFFFFF;
+    name.defaultTextFormat = txtfmt;
+    name.text = person.getDisplayName();
+    box.addChild(name);
+    
+    var url:String = person.getFieldString(Person.Field.THUMBNAIL_URL);
+    
+    //client.logger.info(url);
+    
+    if (url != null) {
+      var request:URLRequest = new URLRequest(url);
+      var thumb:Loader = new Loader();
+      box.addChild(thumb);
+      thumb.x = 2;
+      thumb.y = 20 + 2;
+      thumb.load(request);
+      
+      thumb.contentLoaderInfo.addEventListener(Event.COMPLETE, 
+          function(event:Event):void {
+            thumb.width = 32;
+            thumb.height = 32;
+          }, false, 0, true);
+    }
+  }  	
+
+  private function getFilter():DropShadowFilter {
+    var filter:DropShadowFilter = new DropShadowFilter();
+    filter.inner = false;
+    filter.angle = 120;
+    filter.strength = 0.8;
+    filter.distance = 2;
+    filter.quality = BitmapFilterQuality.MEDIUM;
+    return filter;
+  }
+  			
+			private function checkInitialStatus(text:String):void{
+				if(initProgressWindow 
+					&& initProgressWindow.parent 
+					&& initProgressWindow.visible){
+					initProgressWindow.traceStatus(text);
+				}
+			}
+			
+			public function removeInitProgressWindow():void{
+				if(initProgressWindow){
+					initProgressWindow.visible = false;
+					PopUpManager.removePopUp(initProgressWindow);
+				}
+			}			
+			
+	        public function receivedFromJavaScript(value:String):void {
+	        	// the first time to close init dialog
+	        	setTimeout(removeInitProgressWindow, 1000);
+	        	
+	        	var person:XML = XML(value);
+	        	var linkTo:PersonItem = addItem(person.id[0], person.name[0], person.thumbnail[0], null);
+	        	trace(person.id[0].toString() + ": " + person.name[0].toString());
+	        	
+	        	var friends:XMLList = person.friends.friend;
+	        	var randomIndexes:Array = chooseRadmon10(friends.length());
+	        	
+	        	for each(var index:int in randomIndexes) {
+	        		var friend:XML = friends[index];
+	        		addItem(friend.id[0], friend.name[0], friend.thumbnail[0], linkTo);
+	        		trace(friend.id[0].toString() + ": " + friend.name[0].toString());
+	        	}
+	        	
+	        	CursorManager.removeBusyCursor();
+				CursorManager.removeAllCursors();
+	        } 		
+	        
+	        private function chooseRadmon10(length:int):Array {
+				var array:Array = [];
+				var hitFlag:Dictionary = new Dictionary();
+				
+				if(length <= 10) {
+					for(var i:int=0; i<length; i++) {
+						array.push(i);
+					}
+				}
+				else {
+					for(i=0; i<10; i++) {
+						var id:int;
+						do {
+							 id = Math.floor(Math.random()*length);
+						} while(hitFlag[id]);
+		
+						array.push(id);
+						hitFlag[id] = true;
+					}
+				}
+				return array;
+			}	        
+			
+			public function addItem(id: String, name: String, image:String, linkTo: PersonItem): PersonItem {
+				var newItem: PersonItem = new PersonItem(id, name, image);
+				items.add(newItem);
+				if(linkTo != null) {
+					items.link(newItem, linkTo);
+				}
+				s.dataProvider = items;
+				return newItem;
+			}
+		
+			public function createItems(items: XMLList, linkTo: PersonItem): void {
+				for(var i: int = 0; i < items.length(); i++) {
+					var friend:XML = items[i];
+					var id:String = friend.id[0];
+					var name:String = friend.name[0];
+					addItem(id, name, null, linkTo);
+				}
+			}
+			
+			public function gotDoubleClick(): void {
+//				help.visible = false;
+			}
+			
+			private function test():void {	
+//				receivedFromJavaScript(samplePerson);										
+			}
+			
+			private function gotoApplicationPage():void {
+				navigateToURL(new URLRequest("http://apps.xiaonei.com/campus_roamer"), "_blank");
+			}
+			
+			private function reset():void
+			{
+				init();
+			}
+			
+		]]>
+	</mx:Script>
+</mx:Application>
