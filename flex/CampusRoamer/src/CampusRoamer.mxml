@@ -130,7 +130,6 @@
 	        	for each(var index:int in randomIndexes) {
 	        		var friend:XML = friends[index];
 	        		addItem(friend.id[0], friend.name[0], friend.thumbnail[0], linkTo);
-	        		trace(friend.id[0].toString() + ": " + friend.name[0].toString());
 	        	}
 	        	
 	        	CursorManager.removeBusyCursor();
