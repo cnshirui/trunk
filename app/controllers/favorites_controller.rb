@@ -29,10 +29,10 @@ class FavoritesController < ApplicationController
     users = favorites.map { |item|  User.find_by_uid(item.guest_uid) }
     p "^^^^^^^^^^^^^^^^^^^^^^^^"
     p users.inspect
-    users = users ? users.uniq! : []
+    users = users ? users.uniq : []
     p "^^^^^^^^^^^^^^^^^^^^^^^^"
     p users.inspect
-    users = users ? users.compact! : []
+    users = users ? users.compact : []
     p "^^^^^^^^^^^^^^^^^^^^^^^^"
     p users.inspect
     render :xml => users.to_xml
