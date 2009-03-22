@@ -1,0 +1,18 @@
+<p>
+  <b>Uid:</b>
+  <%=h @user.uid %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @user.name %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%=h @user.image_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
