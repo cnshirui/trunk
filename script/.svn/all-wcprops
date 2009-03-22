@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/298/trunk/ror/roamer/script
+END
+console
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/298/trunk/ror/roamer/script/console
+END
+server
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/298/trunk/ror/roamer/script/server
+END
+dbconsole
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/298/trunk/ror/roamer/script/dbconsole
+END
+destroy
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/298/trunk/ror/roamer/script/destroy
+END
+runner
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/298/trunk/ror/roamer/script/runner
+END
+about
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/298/trunk/ror/roamer/script/about
+END
+generate
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/298/trunk/ror/roamer/script/generate
+END
+plugin
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/298/trunk/ror/roamer/script/plugin
+END

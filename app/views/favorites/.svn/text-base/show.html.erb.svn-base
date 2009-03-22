@@ -1,0 +1,13 @@
+<p>
+  <b>Host uid:</b>
+  <%=h @favorite.host_uid %>
+</p>
+
+<p>
+  <b>Guest uid:</b>
+  <%=h @favorite.guest_uid %>
+</p>
+
+
+<%= link_to 'Edit', edit_favorite_path(@favorite) %> |
+<%= link_to 'Back', favorites_path %>

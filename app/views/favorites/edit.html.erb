@@ -1,0 +1,20 @@
+<h1>Editing favorite</h1>
+
+<% form_for(@favorite) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :host_uid %><br />
+    <%= f.text_field :host_uid %>
+  </p>
+  <p>
+    <%= f.label :guest_uid %><br />
+    <%= f.text_field :guest_uid %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @favorite %> |
+<%= link_to 'Back', favorites_path %>
