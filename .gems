@@ -1,1 +1,1 @@
-rails --version 2.2.0 --source gems.github.com
+rails --version 2.2.0 --source http://github.com/rails
