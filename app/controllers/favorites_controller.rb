@@ -26,6 +26,7 @@ class FavoritesController < ApplicationController
     require 'pp'
     p favorites.inspect
     users = favorites.map { |item|  User.find_by_uid(item.guest_uid) }
+    p favorites.inspect
     users = users ? users.uniq! : []
     users = users ? users.compact! : []
     render :xml => users.to_xml
