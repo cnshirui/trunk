@@ -6,13 +6,15 @@
 //  accompanying this product.
 //
 ////////////////////////////////////////////////////////////////////////////////
-
 package
 {
 	import com.adobe.flex.extras.controls.springgraph.Item;
 	
+	import flash.events.TimerEvent;
 	import flash.external.ExternalInterface;
+	import flash.utils.Timer;
 	
+	import mx.controls.Alert;
 	import mx.core.Application;
 	import mx.managers.CursorManager;
 	import mx.managers.CursorManagerPriority;
@@ -20,40 +22,43 @@ package
 	/**
 	 * Represents a single Person item. When created, it uses the person web service
 	 * to find out its title, icon, and similar products.
-	 * 
+	 *
 	 * @author Mark Shepherd
 	 */
 	public class PersonItem extends Item
 	{
 		[Bindable]
-		public var name: String;
-		
+		public var name:String;
+
 		[Bindable]
-		public var imageUrl: String;
-				
+		public var imageUrl:String;
+
 		private static var app:CampusRoamer = CampusRoamer(Application.application);
 		private static var selectedID:String;
-		
-		public function PersonItem(itemId: String, name: String, image:String) {
+
+		public function PersonItem(itemId:String, name:String, image:String)
+		{
 			super(itemId);
 			this.name = name;
 			this.imageUrl = image;
-			
-			if(selectedID == null) {
+
+			if (selectedID == null)
+			{
 				selectedID = itemId;
 			}
 		}
-		
- 		public function getFriends():void {
-			if(selectedID == this.id) {
-				return;
+
+		public function getFriends():void
+		{
+			if (selectedID == this.id)
+			{
+				return ;
 			}
-			
+
 			selectedID = this.id;
 			ExternalInterface.call("loadFriends", this.id);
-			
-			CursorManager.setCursor(app.inProgressCursor, CursorManagerPriority.HIGH, -8, -8);
-			CursorManager.setBusyCursor();
-	    }	 	
+
+			app.setBusyCursor();
+		}
 	}
 }

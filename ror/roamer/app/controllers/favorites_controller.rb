@@ -24,7 +24,7 @@ class FavoritesController < ApplicationController
   def list
     favorites = Favorite.find(:all, :conditions => "host_uid = #{params[:id]}")
     users = favorites.map { |item|  User.find_by_uid(item.guest_uid) }
-    users.uniq!.compact!
+    users = users ? users.uniq!.compact! : []
     render :xml => users.to_xml
   end
 

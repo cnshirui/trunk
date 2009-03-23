@@ -13,15 +13,15 @@
 		lineColor="#333388" left="0" right="0" top="0" bottom="0"
 		itemRenderer="PersonItemView" repulsionFactor="{rep.value}">
 	</fc:SpringGraph>
-	
+		
 	<mx:Label x="536" y="10" text="@Resource(bundle='resources', key='TIPS_DISTANCE')" fontSize="12" styleName="text" width="109"/>
 	<mx:HSlider x="225" y="10" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
 	<mx:Label x="339" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"  fontSize="12" styleName="text" width="80"/>
 	<mx:HSlider id="rep" x="427" y="10" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
-	<mx:Button x="643"  y="9" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
-	
-	<mx:Button id="_showBefore" x="530" y="46" label="@Resource(bundle='resources', key='SHOW_NEXT')" fontSize="11" styleName="text" click="showBefore()" width="105" enabled="false"/>
-	<mx:Button id="_showNext" x="643" y="46" label="@Resource(bundle='resources', key='SHOW_BEFORE')" fontSize="11" styleName="text" click="showNext()" width="105"/>
+	<mx:Button id="_showBefore" x="233" y="37" label="@Resource(bundle='resources', key='SHOW_NEXT')" fontSize="11" styleName="text" click="showBefore()" width="80" enabled="false"/>
+	<mx:Button id="_showNext" x="321" y="37" label="@Resource(bundle='resources', key='SHOW_BEFORE')" fontSize="11" styleName="text" click="showNext()" width="74"/>
+	<mx:Button x="408"  y="37" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
+	<mx:ComboBox id="_selectFavorites" x="521" y="37" dataProvider="{favorites}" width="150" color="0x000000" close="closeSelectHandler(event);"/>
 	
 	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
@@ -29,42 +29,54 @@
 		
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
-			
-<!--	<mx:XML id="personsXML" source="personsByName.xml" />
--->	
+
+	<mx:XML id="personsXML" source="personsByNameAll.xml" />
+
 	<mx:Script>
 		<![CDATA[
+			import mx.collections.ArrayCollection;
 			import mx.controls.Alert;
 			import flash.net.navigateToURL;
-			
+
 			import mx.managers.CursorManager;
 			import mx.managers.PopUpManager;
 			import mx.managers.CursorManagerPriority;
 			import com.google.ccc.chinasocial.api.API;
 			import com.adobe.flex.extras.controls.springgraph.Graph;
 			
+			private var _test:Boolean = false;
+			private var _autoClose:Boolean = false;
+
 			[Bindable]
-            [Embed(source="progress_loader_15x15px.swf")]
-            public var inProgressCursor:Class;
-					
+			[Embed(source="progress_loader_15x15px.swf")]
+			public var inProgressCursor:Class;
+
 			[Bindable]
-			public var scaleFactor: Number = 0.618;
-			
+			public var scaleFactor:Number = 0.618;
+
 			// spring graph
-			private var items: Graph;
-			
+			private var items:Graph;
+
 			// init progress popup window
 			private var initProgressWindow:InitialProgressWindow;
-			
+
+			// users
+			[Bindable]
+			public var viewerID:String = null;
+			private var currentPerson:PersonItem;
+
 			// display friends with pagination
 			private const DISPLAY_COUNT:int = 10;
-			private var currentPerson:PersonItem;
 			private var currentFriends:XMLList;
 			private var page:Pagination;
-			
+
 			// undo/redo map
-			private var existingPersons:Array = [];
-			
+			private var latestAddPersons:Array = [];
+			private var existingPersons:Dictionary = new Dictionary();
+
+			[Bindable]
+			public var favorites:ArrayCollection = new ArrayCollection([{label:"Select in favorites", data:0}]);
+
 			private function init():void
 			{
 				initProgressWindow = new InitialProgressWindow();
@@ -79,7 +91,9 @@
 
 				if (checkJavaScriptReady())
 				{
-					new API(["sample"]).start();
+					var app:API = new API(["sample"]);
+					app.initialize();
+					app.start();
 					ExternalInterface.call("loadFriends");
 				}
 				else
@@ -90,9 +104,67 @@
 				}
 
 				// for test
-				test();
+				if(_test)
+				{
+					receivedFromJavaScript(personsXML.person[0]);
+				}
 			}
 
+			public function getFavorites():void
+			{
+				var url:String = "http://roamer.heroku.com/favorites/list/" + viewerID;
+				var loader:URLLoader = new URLLoader();
+				loader.addEventListener(Event.COMPLETE, onGetFavorites);
+				loader.load(new URLRequest(url));
+			}
+
+			private function onGetFavorites(event:Event):void
+			{
+				var list:XML = new XML(event.target.data);
+				var users:XMLList = list.user;
+				
+				var label:Object = favorites.removeItemAt(0);
+				favorites.removeAll();
+				favorites.addItem(label);
+				
+				for each(var user:XML in list.user)
+				{
+					favorites.addItem({label: user.name[0].toString(), data: user.uid[0].toString()});
+				}
+				
+				_selectFavorites.open();
+				_autoClose = true;
+				
+				// set timer to close combobox
+	 			var readyTimer:Timer = new Timer(1500, 0);
+				readyTimer.addEventListener(TimerEvent.TIMER, onAutoCloseSelect);
+				readyTimer.start(); 				
+			}
+			
+			private function onAutoCloseSelect(event:TimerEvent):void
+			{
+				Timer(event.target).stop();
+				_selectFavorites.close();
+			}
+			
+			public function setBusyCursor():void
+			{
+				CursorManager.setCursor(this.inProgressCursor, CursorManagerPriority.HIGH, -8, -8);
+				CursorManager.setBusyCursor();
+							
+				// set timer to remove busy cursor in 10s
+	 			var readyTimer:Timer = new Timer(3000, 0);
+				readyTimer.addEventListener(TimerEvent.TIMER, onSetBusyCursor);
+				readyTimer.start(); 
+			}
+	
+	 		private function onSetBusyCursor(event:TimerEvent):void
+			{
+				Timer(event.target).stop();
+				CursorManager.removeBusyCursor();
+				CursorManager.removeAllCursors();	
+			} 	
+			
 			public function checkInitialStatus(text:String):void
 			{
 				if (initProgressWindow && initProgressWindow.parent && initProgressWindow.visible)
@@ -129,21 +201,23 @@
 				setTimeout(removeInitProgressWindow, 1000);
 
 				var person:XML = XML(value);
+				if (!viewerID)
+				{
+					viewerID = person.id[0];
+					getFavorites();
+				}
 				currentPerson = addItem(person.id[0], person.name[0], person.thumbnail[0], null);
-				existingPersons.push(currentPerson);
-				trace(person.id[0].toString() + ": " + person.name[0].toString());
+				existingPersons[currentPerson.id] = true;
 
 				currentFriends = person.friends.friend as XMLList;
 				page = new Pagination(currentFriends.length(), DISPLAY_COUNT);
 
+				latestAddPersons = [];
 				for each(var i:int in page.getNext())
 				{
 					var friend:XML = currentFriends[i];
-					addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson);
+					latestAddPersons.push(addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson));
 				}
-
-				CursorManager.removeBusyCursor();
-				CursorManager.removeAllCursors();
 			}
 
 			public function addItem(id:String, name:String, image:String, linkTo:PersonItem):PersonItem
@@ -158,14 +232,12 @@
 				return newItem;
 			}
 
-			public function gotDoubleClick():void
+			public function gotDoubleClick(uid:String):void
 			{
-//				receivedFromJavaScript(personsXML.person[1]);
-			}
-
-			private function test():void
-			{
-//				receivedFromJavaScript(personsXML.person[0]);
+				if(_test)
+				{
+					receivedFromJavaScript(personsXML.person.(id == uid));
+				}
 			}
 
 			private function gotoApplicationPage():void
@@ -187,7 +259,7 @@
 					for each(var i:int in page.getNext())
 					{
 						var friend:XML = currentFriends[i];
-						addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson);
+						latestAddPersons.push(addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson));
 					}
 				}
 				updateButtonStatus();
@@ -201,7 +273,7 @@
 					for each(var i:int in page.getBefore())
 					{
 						var friend:XML = currentFriends[i];
-						addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson);
+						latestAddPersons.push(addItem(friend.id[0], friend.name[0], friend.thumbnail[0], currentPerson));
 					}
 				}
 				updateButtonStatus();
@@ -209,20 +281,32 @@
 
 			private function clearCurrentLinked():void
 			{
-				for each(var item:PersonItem in items.nodes)
+				for each(var item:PersonItem in latestAddPersons)
 				{
-					if (existingPersons.indexOf(item) == -1 && items.linked(currentPerson, item))
+					if (items.linked(currentPerson, item) && !existingPersons[item.id])
 					{
 						items.remove(item);
 					}
 				}
+				latestAddPersons = [];
 			}
 
 			private function updateButtonStatus():void
 			{
 				_showNext.enabled = page.nextAvailable();
 				_showBefore.enabled = page.beforeAvaiable();
-			}			
+			}
+
+			private function closeSelectHandler(event:Event):void
+			{
+				if(!_autoClose)
+				{
+					ExternalInterface.call("loadFriends", ComboBox(event.target).selectedItem.data);
+					setBusyCursor();
+				}
+				_autoClose = false;
+				_selectFavorites.selectedIndex = 0;
+			}
 		]]>
 	</mx:Script>
 </mx:Application>

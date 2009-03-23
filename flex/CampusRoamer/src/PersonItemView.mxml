@@ -27,12 +27,35 @@
 		<ui:ContextMenu id="myContextMenu"/>
 	</mx:contextMenu>
 	
+	<mx:HTTPService contentType="application/xml"
+			id="favoriteCreateRequest"
+			url="http://roamer.heroku.com/favorites/create"
+			useProxy="false" method="POST">
+		<mx:request xmlns="">
+			<favorite>
+				<host_uid>
+					{app.viewerID}
+				</host_uid>
+				<guest_uid>
+					{(data as PersonItem).id}
+				</guest_uid>
+				<guest_name>
+					{(data as PersonItem).name}
+				</guest_name>
+				<guest_image_url>
+					{(data as PersonItem).imageUrl}
+				</guest_image_url>
+			</favorite>
+		</mx:request>	
+	</mx:HTTPService>
+	
 	
 	<mx:Script>
 		<![CDATA[
-			import mx.resources.ResourceManager;
-			import mx.controls.Alert;
+			import mx.events.CloseEvent;
 			import mx.core.Application;
+			import mx.controls.Alert;
+			import mx.resources.ResourceManager;
 			
 			[Bindable]
 			private var app:CampusRoamer = CampusRoamer(Application.application);
@@ -47,28 +70,43 @@
 	            var menuLabel:String = ResourceManager.getInstance().getString('resources', 'GOTO_PROFILE_PAGE');
 	            var item:ContextMenuItem = new ContextMenuItem(menuLabel);
 	            myContextMenu.customItems.push(item);
-	            item.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItemSelectHandler);
-	            myContextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, menuSelectHandler);	            
+	            item.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, gotoProfile);
+	            
+	            menuLabel = ResourceManager.getInstance().getString('resources', 'ADD_TO_FAVORITE');
+	            item = new ContextMenuItem(menuLabel);
+	            myContextMenu.customItems.push(item);
+				item.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, addToFavorite);	            	            
+//	            myContextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, menuSelectHandler);	            
 			}
 			
-	        private function menuItemSelectHandler(event:ContextMenuEvent):void {
-	            trace("menuItemSelectHandler: " + event);
-	            
+	        private function gotoProfile(event:ContextMenuEvent):void {
 	            var request:URLRequest = new URLRequest(getProfilePage(data.id));
 	            navigateToURL(request, "_blank");	            
+	        }
+	        
+	        private function addToFavorite(event:ContextMenuEvent):void {
+               	Alert.yesLabel = "Yes";
+                Alert.noLabel = "No";
+                Alert.show("Are you sure to add him/her in favorites?", "Add to Favorite", 3, this, alertClickHandler);	        	
+	        }	        
+	        
+	        private function alertClickHandler(event:CloseEvent):void
+	        {
+                if (event.detail==Alert.YES)
+                {
+                	 favoriteCreateRequest.send();
+                }
+                app.getFavorites();
 	        }
 	        
 	        private function getProfilePage(id:String):String {
 	        	return ExternalInterface.call("getProfilePath") + id;
 	        }
 	        
-	        private function menuSelectHandler(event:ContextMenuEvent):void {
-	            trace("menuSelectHandler: " + event);
-	        }	        
-        	        	
 			public function doubleClick(event: Event): void {
-				data.getFriends();
-				app.gotDoubleClick();
+				var p:PersonItem = data as PersonItem;
+				p.getFriends();
+				app.gotDoubleClick(p.id);
 			}
 		]]>
 	</mx:Script>
