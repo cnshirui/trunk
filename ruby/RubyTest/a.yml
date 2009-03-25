@@ -1,0 +1,8 @@
+class a:
+  email: hlxwell@china.com
+  username: hlxwell
+  password: !str 123321
+
+class b:
+  email:
+  address:

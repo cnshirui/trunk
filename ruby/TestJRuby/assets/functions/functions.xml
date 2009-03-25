@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<functions>
+  <exclude>PLN[A-Z]*</exclude>
+  <exclude>SRC[A-Z]*</exclude>
+  <exclude>EV[A-Z]*</exclude>
+  <exclude>OSAMT</exclude>
+</functions>

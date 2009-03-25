@@ -1,0 +1,152 @@
+2	2004 Athens Olympic Game Daily Statistic	--lq4Gxli02HHNhE7DAH0m	public	XcelsiusTemplate
+4	ACME Co Ltd Analysis Result by Region	NqnF7jrei4iMpWLpX1ih0x	public	XcelsiusTemplate
+6	ACME Co Ltd Monthly Sales Analysis Result	PuYQjwUUjcy9167ApUWw35	public	XcelsiusTemplate
+8	Population, House Seats and Electoral College Votes in America by State	mMRpnMpRgJC2RIsIt4HV0r	public	XcelsiusTemplate
+22	Bank of America Revenue with projected rate of change	DzKzd2jijUehIsc3zRjV0M	public	XcelsiusTemplate
+28	Bob and teammates	eojtlKVigFyCd6rpres62d	public	XcelsiusTemplate
+30	One Boy's Weight Status Statistic	ZDJqIuvdhbWQU0FYf23422	public	XcelsiusTemplate
+34	Canadian Housing Comparison	HR2jNawCgKej3iewjaWz0p	public	XcelsiusTemplate
+36	Car Price Prediction	wlFTBQ08gMWSawcyUhES09	public	XcelsiusTemplate
+38	One Child's Growth	vhATtbQjg2OsiO7TFz7J0E	public	XcelsiusTemplate
+42	Population Comparison of China, USA and Japan from 1992 to 2002	KEqGQYBOjR2nTZfYKi3m2L	public	XcelsiusTemplate
+46	COLUMBUS McKINNON 2007 Analysis	vZUg0C4wihq_x5Mfx4Vs1W	public	XcelsiusTemplate
+48	Comparison against UN Security Council Members	vZ6M7FfNhnW1IhQ4vpWg3U	public	XcelsiusTemplate
+52	Country Comparison in Education, GDP per capita, etc.	a2iY_ty8gsGUL8TFfcEZ3L	public	XcelsiusTemplate
+54	Digital SLRs Contribution by State	Bp_hhij2hDS79Gvk_1Mt3x	public	XcelsiusTemplate
+56	Economy Data Analize By States	5kke9XO6hrqg_1rhJnNO2H	public	XcelsiusTemplate
+58	Electricity Usage Calculator	KIW9FNB3hUSMFm7aJ2Nf2R	public	XcelsiusTemplate
+60	Family car comparison	TAeHRfDfgWuJXsy9tbLR3l	public	XcelsiusTemplate
+62	Financial Analysis	XPacctrWjw6Hty0YGrn90h	public	XcelsiusTemplate
+66	Game Picking	pbw_AkGIhiuSqzJAn6MI2j	public	XcelsiusTemplate
+68	Garden Center Sales.	CAKhMtnrgsusALQGX1HI3y	public	XcelsiusTemplate
+70	2005 GDP Analysis	F4GbUWCqiZGNGNrCMudJ2q	public	XcelsiusTemplate
+72	GDP vs Population of 10 Countries	DoCl8UIriJ210oc2wadc3x	public	XcelsiusTemplate
+74	Global Temperature Trend Analytic	hmWRA6rQgvOfA9cxFHqI0D	public	XcelsiusTemplate
+78	IPS Resource Distribution by Mission	sA4hdBtgiWOXK4iB4bBl0y	public	XcelsiusTemplate
+80	Income Satatement Comparison of IT Company	3yZaXAVKiRSBitxmWYio2z	public	XcelsiusTemplate
+84	MBO budget	aaVdvxuNgim62cr2GwEp1G	public	XcelsiusTemplate
+88	GDP per capital vs military expenditure in 2003	p_C3amK-hwCMc_3vuwhK2o	public	XcelsiusTemplate
+90	GDP per capital vs military expenditure in 2003 (Web Services Version)	RLUzKe2HhtK-5GonNkG533	public	XcelsiusTemplate
+92	Monthly Budget	PySevN7zgsOuVjptGZeD1R	public	XcelsiusTemplate
+94	Movie Rating Statistic	KWk0Kb6XijWvrB7XsCfv3u	public	XcelsiusTemplate
+96	Summer Olympics Medal Count of Some Countries, 1992-2004	ESwUmR9Wim6YzhcMNSMJ1E	public	XcelsiusTemplate
+98	Opera Revenue vs. Norway Economic Indicators, 2004-2007	EriUW76-jEKPEoioN9QD22	public	XcelsiusTemplate
+100	My Annual Finance Data Statistic	QpxxmZuIgN__QQDjUfyJ2I	public	XcelsiusTemplate
+102	Average Daily Nutrition	Il6DEUaggnSMc_K0zbc12N	public	XcelsiusTemplate
+104	Pipeline Dashboard by Stage	byFxLRcCh66WSr037rnl16	public	XcelsiusTemplate
+110	Presidential Election vs Income	69byxZxSiomAQJh33yQK0j	public	XcelsiusTemplate
+112	Profitability Analysis of Oakley	pFftR-A5iz_ax2wrdUZ53A	public	XcelsiusTemplate
+118	R&D Planning for 2008 and Future	r6hqjwy3gcatLVTj3tjY2A	public	XcelsiusTemplate
+120	Region Comparison in Energy Use, GDP and Population, 1991-2002	aKEzQ0P2it_6Mw5MrRhO3u	public	XcelsiusTemplate
+122	Resource Ajustment for 2008 and Future	Gv6YlCI8h4S-JG40mxPR1Y	public	XcelsiusTemplate
+124	Resource Planning for 2008 and Future	Px_2C7AviOGaosGGpdrF2j	public	XcelsiusTemplate
+130	Sales Analysis of ACME Hardware	vM9WFqlejre2oSNLtCTV2-	public	XcelsiusTemplate
+132	SDC 2006 Marathon Attendance	Lv9CO6AMhgirc5gUD_ao2W	public	XcelsiusTemplate
+136	Standard Income Statement	4599jPOjgReYmRjMCAqh1m	public	XcelsiusTemplate
+138	Plan in June 2008	HtI9MY_wjaijq9vkc1VF2R	public	XcelsiusTemplate
+140	Average monthly temperature comparison of some cities	8vdmHi-ZiOSmczIi3xvz0Z	public	XcelsiusTemplate
+144	Top 10 Terminations by 2 Metrics	uOYz16dyjBWGyRwRx9B_24	public	XcelsiusTemplate
+146	Top 20 Businesses By Country	gjH06V7Og4OUK7oLTTlh3b	public	XcelsiusTemplate
+148	US Area By State	yVxKKqAeg5m2-WbphORb3O	public	XcelsiusTemplate
+150	US Historical Population 1790-2000	a7-KTULuh3mzWQb32Tlm3C	public	XcelsiusTemplate
+152	Veronica and Friends	KtAoNpNFhrSFviWVfWIv3_	public	XcelsiusTemplate
+154	World Energy Consumption	hDlpkfRfge2POQyxJ17m30	public	XcelsiusTemplate
+156	The wind chill of Moscow in future ten days	kl2RVwIMh2OpU0zx2VOI1F	public	XcelsiusTemplate
+158	World GDP 2006	W3oCNn3OiJmj92N0QJD31_	public	XcelsiusTemplate
+164	FilterView2 - Copy2	KGDl9wbyiCG_rMwLyqxA2X	public	XcelsiusTemplate
+165	My Large Opportunity to Focus on	iuVQSKMZg9qp3d2soLZo0a	public	XcelsiusTemplate
+166	Opportunity analytic from Polestar dataset	B79GgA1xh6W2SS4bH7R-23	public	XcelsiusTemplate
+168	My Open Opportunities	f7F2PZzKiLGnGP7TiiZV26	public	XcelsiusTemplate
+179	Store_analysis	5yf6prPhgKu7_aO29-ej12	public	XcelsiusTemplate
+193	Analytic and 2 to 2 prompts	rdLuQ333gj6gPz9FI5Y42y	public	XcelsiusTemplate
+204	charles analytic 3	pS-3Pytqix2fRQOfInCa1H	public	XcelsiusTemplate
+216	Steve Xtreme Employee data analytic 2	gwqcTGkLjeG2pNE7h2n023	public	XcelsiusTemplate
+246	Analytic map to template with no flashvars, but with 2 inputs	vfSp4EGSjs2D9FFWWk8p1m	public	XcelsiusTemplate
+251	Opportunity analytic from Polestar dataset _Calvin	zAtzvDXGjiaqW-iE5QRQ3u	public	XcelsiusTemplate
+254	App for Opportunities by Stage 	aPBabukLgGaiuRV0k5FM0Z	public	XcelsiusTemplate
+281	Veronica and Friends Comparison	ruPLrCzWgwGc2P_dhLhA3x	public	XcelsiusTemplate
+314	EmployeeData-Analytic-broken	U5UqyXLjge2xLe6nGyPy1R	public	XcelsiusTemplate
+321	EmployeeData-Analytic-working-version	PQC14vJAg7Gw67UqrnnK1d	public	XcelsiusTemplate
+322	Test app for Friends	3zgXD3UhhOytPu7wb1eZ0t	public	XcelsiusTemplate
+325	Percent Growth Sales analytic from Polestar dataset	Lbw2K9GSiOK5Tftjfk5T3F	public	XcelsiusTemplate
+326	Percent sales analytic	ltqCOOGqjuGKLG8msC4u2N	public	XcelsiusTemplate
+347	michelle_polestar_analytic	L9M4D4lMhxCze1EVI2Vd0H	public	XcelsiusTemplate
+348	michelle analytic from query	-9L85HLJj8KTZH_sJL7u01	public	XcelsiusTemplate
+382	Percent Growth Sales analytic from Polestar dataset_Calvin	EITigQpyh-e6nvp61Bqm1W	public	XcelsiusTemplate
+383	Percent sales analytic_Calvin	Qrw84lbfhFeEPyA1oB__0N	public	XcelsiusTemplate
+387	My Open Opportunities - George	aSBhEXqCi8iAZsIreGBi3l	public	XcelsiusTemplate
+388	Scott's Test Analytic	jDJYEUsOi6eJ2aurrPXL3U	public	XcelsiusTemplate
+397	George test analytic 2	jzmWdvk4jamhpOqjaRmp2B	public	XcelsiusTemplate
+399	Percent Growth Sales analytic from Polestar dataset	RpRgs-f8hmibDiDPQN1V3J	public	XcelsiusTemplate
+401	George test analytic 3	o_Iq0bFRhwWhTwQW5UAk25	public	XcelsiusTemplate
+402	George test analytic 4	2UDHrWZrhIGD-kY9asO41H	public	XcelsiusTemplate
+427	Top Percent sales analytic	l46QCNSFiKSgfoZrDtik3_	public	XcelsiusTemplate
+429	CO2 Emissions	t_GTomEdizi1Y-geycnV02	public	XcelsiusTemplate
+436	michelle_test_edit_analytic	fap2Un23hxOusGNKeTxc1M	public	XcelsiusTemplate
+443	Opportunity analytic from Polestar dataset	Ux_ddJlYj8_SPuVaekxE0J	public	XcelsiusTemplate
+447	Resort_Revenue_Analysis	sUqPWbRMg3GnXjNQ04hw02	public	XcelsiusTemplate
+450	Resort_Service_Analysis	RJ8A811jgmO768X96GAj1K	public	XcelsiusTemplate
+451	Opportunity analytic - Copy by Frank_rename_claf	rIW6CWtXh1KfwBGsR2jg2h	public	XcelsiusTemplate
+456	Resort_Service_Analysis_2	XG1jE2Kch0GZnwdqeAnj3P	public	XcelsiusTemplate
+459	Alex's Percent Growth Sales analytic from Polestar dataset	UVsja1cOhEel2AIdJfVI2y	public	XcelsiusTemplate
+482	Percent sales analytic_Calvin - Copy	b6Mp51SEg76r7017UUs43z	public	XcelsiusTemplate
+486	Michelle analytic with 2 datasets- no prompts	T9Xr0OF8gZu53ZPYDHKt19	public	XcelsiusTemplate
+495	AnalyticTest01	cxJdbT9ehDmVoK3yTIWD0f	public	XcelsiusTemplate
+498	AnalyticTest02	GXhR35jEjpGvzl8F4vZj1H	public	XcelsiusTemplate
+508	AnalyticTest03	ubF6ljSmg3mZwuY5w9UW00	public	XcelsiusTemplate
+509	AnalyticTest04	F75Ct1hVjai1D5U_arwB3x	public	XcelsiusTemplate
+511	AnalyticTest05	a_SgZLpZiyytjXagNxje0R	public	XcelsiusTemplate
+512	percent growth sales analytic from polestar dataset alex	OGvpI6ESiw_e-IUcFj2w1x	public	XcelsiusTemplate
+528	Quick Test Analytic	nPNmCueUjFCO8DZxhBRk3p	public	XcelsiusTemplate
+532	Analytic_sales_volumn_tracy_dnbInfoSpace - Copy	lOrqo-x6inGVBCwQSWAv1R	public	XcelsiusTemplate
+535	Kate_Test_20081108	oEIavQ-tjQ_YJ5ihg2xf33	public	XcelsiusTemplate
+539	AnalyticTest06	moFjwYovi9_FnN4tUZ5j2N	public	XcelsiusTemplate
+578	AnalyticTest01	TUYtod04hQ_NfJiGJLQN39	public	XcelsiusTemplate
+606	simple pie	k-tDgHulg-KW_LVuP41q1o	public	XcelsiusTemplate
+607	AnalyticTest02	bImc8urCidSd6HUQ1Fx-3r	public	XcelsiusTemplate
+646	alex's analytic 3-5 growth	rvwOaH8Gh76OXMB57_5G3k	public	XcelsiusTemplate
+656	blahrama	yF8zKvM1j1i83vPLhx4m3c	public	XcelsiusTemplate
+666	blahworx	VOXPbkMajf6mXFXzMmzI0u	public	XcelsiusTemplate
+670	Polestar Analytic from DataSet Nov11	igUnYerZjiSk6X0njQWB1E	public	XcelsiusTemplate
+674	ds2_dnb_template_tracy_analytic	cUAkgWhKjN_I320EYAnL3v	public	XcelsiusTemplate
+675	2DataSets_test_calvin	KuJ4vIE6jPGZs5Ps_glz2z	public	XcelsiusTemplate
+678	sales_volumn_code_analytics	KD2Fo6-QiU66nUvXKQ2R1p	public	XcelsiusTemplate
+681	SimpleAnalyticTest_CorrectLogon	gaFPuzeXgIC5VOJgNVju1u	public	XcelsiusTemplate
+692	tracy_template6_analytic	oIYzBRqkgA6cOr0ps1nD0H	public	XcelsiusTemplate
+698	tracy_1prompt_1112	gn2hKmVZgF6orxg46KWp3M	public	XcelsiusTemplate
+699	No.12_analytic1	1fRJcbkVgiWw_cv6hwgk1F	public	XcelsiusTemplate
+700	franklin	tuq5rMEriW_-uHXbww-d05	public	XcelsiusTemplate
+703	No.12_analytic2_ds2	G2OvZ2NLgeC48olqwG011O	public	XcelsiusTemplate
+717	YonnyTest_2DS	t9HHY9o4hBmLuyxqMEB52E	public	XcelsiusTemplate
+719	YonnyTest_2DS_Analytic_Improved2	lt4p4sHVgPCgzElqicra3e	public	XcelsiusTemplate
+721	YonnyTest_2DS_Improved_Try3	3E26W_nBhyGEIcAECgQ82U	public	XcelsiusTemplate
+722	YonnyTest_2DS_Improved_Try4	bbzKFDmKjNuifLj7g17s3M	public	XcelsiusTemplate
+725	YonnyTest_2DS_Improved_Try5	qtHS7-bJjyOs5lqX4nFR3G	public	XcelsiusTemplate
+727	YonnyTest_2DS_Improved_Try6	oz0o44yUjsaBrjldEsf-3Q	public	XcelsiusTemplate
+729	YonnyTest_2DS_Improved_Try5 	PFeAVUrwgBy0maxP3oxL1L	public	XcelsiusTemplate
+730	YonnyTest_2DS_Improved_Try7	La-HxKIFiM2eJ3tuTeJ43H	public	XcelsiusTemplate
+731	YonnyTest_2DS_Improved_Try8	jbdpmagMgT2MKQBhEaS_2U	public	XcelsiusTemplate
+735	Nov.13_analytic1_ds2	XOdl5CpNh2iyvgyNW5NN03	public	XcelsiusTemplate
+736	YonnyTest_2DS_Improved_Try9	26GJqjSVhI6_kJAJ31Vi1y	public	XcelsiusTemplate
+743	Percent Growth Sales analytic from Polestar dataset-FF3	YtSa_bcOjgm-dtSd1CBW1o	public	XcelsiusTemplate
+751	dnb_bar_chart_analysis	mZ83SCNkhFyOmWJfwZko1b	public	XcelsiusTemplate
+752	Nov.13_analytic1_ds2 - FF3	JPsCyIJcgzyi1H4zkvXw0K	public	XcelsiusTemplate
+754	dnb_infospace_calvin	S9GIsqrfg0aCOW3DAxG31G	public	XcelsiusTemplate
+755	tracy_1prompt_1112 - FF3	ttDOMvjVhOGw8RILTq6c0c	public	XcelsiusTemplate
+761	YonnyTest_2DS_Improved_Try10 	kICSlT0Kgt_LXyKieJj_1-	public	XcelsiusTemplate
+772	Resource Ajustment for 2008 and Future - Copy	l5lgAmHoipafTMRnvVy518	public	XcelsiusTemplate
+776	2 WS template- 1 dataset bound	yTf1i0Juh4au466_-nYO2I	public	XcelsiusTemplate
+780	test_ana_fhu	iKz3IUMciGWqbB_pl1B63q	public	XcelsiusTemplate
+790	J_Analytic_on_Nov.13_template_verify Copy	bDtOxsU6gaKw_YAXiLjR21	public	XcelsiusTemplate
+798	william's dataset	P1hEOR9uhS6rNZALbIU21K	public	XcelsiusTemplate
+831	log_verify_tracy_1_analytic	rzjoNVTJhjOa736d5gGY2y	public	XcelsiusTemplate
+910	Test012456780	owaIFR4kj6uQrou9aTz21m	public	XcelsiusTemplate
+921	J_QueryAnalytic Dec8th	DrgP5lCTigq8QatM5AXF2p	public	XcelsiusTemplate
+945	MingAnalytic--CollaboratedDataset-1FilterNotprompt	Z-ciRhGuiYeKZUgymzSR1W	public	XcelsiusTemplate
+950	analytic with 2 int prompts	XQixwu7GijSQxw5Wgn8x12	public	XcelsiusTemplate
+951	analytic with 2 int prompts without logon	Bq4xxmuIisKMUgpQxrOr2J	public	XcelsiusTemplate
+952	test_xml_connection_fhu	z2QQrrE0iHSfQrr1GDfj2M	public	XcelsiusTemplate
+1007	Alex 1 analytic	d7aVOB1khBiXt8HQUpvD2B	public	XcelsiusTemplate
+1011	alex 3 analytic	bYRnSl9_hUm2DtduqyQb34	public	XcelsiusTemplate
+1012	alex 4 analytic	KRtYv1qTiS2684hqTWAa2Q	public	XcelsiusTemplate
+1013	alex 5 analytic	TgaG8953jCKV_PPx-_EL2c	public	XcelsiusTemplate
