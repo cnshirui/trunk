@@ -24,7 +24,7 @@
         <li class="right"><%= link_to _('Dashboard'), :controller => '/admin' %></li>
       </ul>
     </div>
-    <% if not @_render_stack.first =~ /login|signup|logout/ %>
+    <% if not @_first_render =~ /login|signup|logout/ %>
     <div id="subtabs">
       <ul>
         <%= yield :tasks %>

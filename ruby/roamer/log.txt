@@ -1,0 +1,20 @@
+==> log/production.log <==
+# Logfile created on Sun Mar 22 07:05:15 -0700 2009
+
+Processing FavoritesController#list (for 116.227.18.58 at 2009-03-22 07:05:21) [GET]
+  Parameters: {"id"=>"50836"}
+Completed in 38ms (View: 1, DB: 7) | 200 OK [http://roamer.heroku.com/favorites/list/50836]
+
+==> log/server_7459_3c3e791_218c_42626.log <==
+/usr/local/lib/ruby/gems/1.8/gems/actionpack-2.3.2/lib/action_controller/vendor/rack-1.0/rack.rb:17: warning: already initialized constant VERSION
+>> Thin web server (v1.0.1 codename ?)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:42626, CTRL+C to stop
+"^^^^^^^^^^^^^^^^^^^^^^^^"
+"[#<Favorite id: 1, host_uid: \"50836\", guest_uid: \"225326387\", created_at: \"2009-03-22 12:46:32\", updated_at: \"2009-03-22 12:46:32\">, #<Favorite id: 2, host_uid: \"50836\", guest_uid: \"230205117\", created_at: \"2009-03-22 12:47:53\", updated_at: \"2009-03-22 12:47:53\">, #<Favorite id: 3, host_uid: \"50836\", guest_uid: \"227962122\", created_at: \"2009-03-22 12:47:56\", updated_at: \"2009-03-22 12:47:56\">]"
+"^^^^^^^^^^^^^^^^^^^^^^^^"
+"[#<User id: 1, uid: \"225326387\", name: \"jingmouren\", image_url: \"http://hdn311.xnimg.cn/photos/hdn311/20090312/20/45...\", created_at: \"2009-03-22 12:46:32\", updated_at: \"2009-03-22 12:46:32\">, #<User id: 2, uid: \"230205117\", name: \"佳佳\", image_url: \"http://hdn511.xnimg.cn/photos/hdn511/20090216/18/35...\", created_at: \"2009-03-22 12:47:53\", updated_at: \"2009-03-22 12:47:53\">, #<User id: 3, uid: \"227962122\", name: \"二毛\", image_url: \"http://hd53.xiaonei.com/photos/hd53/20080826/14/23/...\", created_at: \"2009-03-22 12:47:56\", updated_at: \"2009-03-22 12:47:56\">]"
+"^^^^^^^^^^^^^^^^^^^^^^^^"
+"nil"
+"^^^^^^^^^^^^^^^^^^^^^^^^"
+"[]"

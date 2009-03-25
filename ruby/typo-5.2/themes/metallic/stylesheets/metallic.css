@@ -1,0 +1,421 @@
+/* 
+ * Metallic template - screen styles
+ *
+ * Author: Piotr Polak (www.piotrpolak.com)
+ * Version: 0.1
+ *
+ */
+
+/*- Layout -*/
+
+body {
+	background: #9d9744 url(../../images/theme/bg-tile.png) 0 0 repeat-x;
+	color: #000;
+	font-family: Lucida Grande, Tahoma, Trebuchet MS, sans-serif;;
+	font-size: 80%;
+	line-height: 140%;
+	margin: 1em;
+	padding: 0;
+	text-align: left;
+}
+	
+#container {
+	background: #444 url(../../images/theme/bg-container.png) 0 0 repeat-x;
+	border-top: .3em solid #000;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	margin: 0 auto;
+	padding: .5em;
+	text-align: left;
+	width: 60em;
+}
+	
+#header {
+	background-color: transparent;
+       	color: #fff;	
+	float: left;
+	height: 7em;
+	margin: 0 0 0 .5em;
+	padding: 1em;
+	text-align: center;
+	width: 37.5em;
+}
+
+#search { height: 8em; margin: 0 0 0 42em; padding: .5em; }
+	
+#content {
+	background: #ddd url(../../images/theme/bg-content.png) 0 top repeat-x;
+	border: 1px solid #000;
+	margin: 0;
+	padding: .5em 0;
+}
+
+#main { 
+	background: #fff url(../../images/theme/bg-main.png) 0 0 repeat-y;
+	border-top: 1px solid #666;
+	border-right: 1px solid #a6a6a6;
+	border-bottom: 2px solid #a6a6a6;
+	border-left: 2px solid #a6a6a6;
+	float: left;
+	margin: .6em 0 0 .5em;
+	padding: 1em .5em .5em .5em;
+	width: 38.5em;
+}
+	
+#sidebar { margin: 0 0 0 41em; padding: 0 .5em .5em 0; }
+	
+#footer {
+	background-color: transparent;
+	color: #ddd;
+	height: 3em;
+	margin: 0 .5em .5em .5em;
+	padding: 0 1em;
+	width: 37.5em;
+}
+	
+#footer img { border: none; margin-top: 1em; }
+	
+/*- Links -*/
+
+a {
+	color: #860a00;
+	text-decoration: none;
+	border-bottom: 1px dotted #860a00;
+}
+	
+a:hover { background-color: transparent; border-bottom: 1px solid #860a00; color: #860a00; }
+
+/*- Utility -*/
+  
+h1, h2, h3, h4, h5, h6 { margin: 0 0 .2em 0; padding: 0; }
+form, div { padding: 0; margin: 0; }
+p { margin: 0 0 1em 0; padding: 0; }
+img { border: none; }
+  
+/*- Header -*/
+  
+#logo { padding: 3em 0 0 .5em; text-align: left; }
+
+#logo h1 { font-size: 3em; }
+
+#logo h1 a { border: none; color: #000; text-decoration: none; }
+
+#logo h1 a:hover { 
+	background-color: transparent;
+	border: none; 
+	color: #272727; 
+	text-decoration: none; 
+}
+
+#logo h2 { 
+	color: #aaa;
+       	font-size: 1em;	
+	letter-spacing: .2em;
+	margin: 1em 0 0 0;
+	padding: 0 0 0 .2em; 
+}
+
+/*- Search -*/	
+
+#search label {
+	color: #000;
+	font-weight: bold;
+	font-size: 1em;
+	letter-spacing: .2em;
+}
+
+#sform { padding-top: 0em; }
+#sidebar #searchform #s { margin-top: 2em; width: 13em; }
+#sidebar #searchsubmit { padding: .1em; }
+#search-results { padding: .3em; }
+
+/*- Main: Post -*/
+
+.post {
+	background: url(../../images/theme/post-bt.gif) no-repeat 50% bottom;
+	margin: 2em 0 2em .5em;
+	padding-bottom: 1em;
+}
+	
+.post h2 {
+	padding: 0;
+	font-family: Georgia, Times, Serif; 
+	font-size: 1.7em;
+}
+	
+.post h2 a { border: none; color: #860A00; text-decoration: none; }
+.post h2 a:hover { background-color: transparent; color: #000; }
+
+.post h3 {
+	font-family: Georgia, Times, Serif; 
+	font-size: 1.2em;
+	padding: 0;
+}
+	
+.post h3 a { color: #860a00; text-decoration: none; border: none; }
+.post h3 a:hover { background-color: transparent; color: #000; }
+
+.post ul {
+	font-size: 1em;
+ 	list-style-type: none;
+	margin: 0 0 1em 1.5em;
+ 	padding: 0;
+}
+ 		
+.post ul li {
+	background: transparent url(../../images/theme/bullet-main.gif) 0 60% no-repeat;
+ 	padding-left: 14px;
+}
+
+.post blockquote {
+	background-color: #efefef;
+	border: 1px solid #fff;
+	margin: .2em 2em .2em 2em;
+	padding: .4em;
+}
+
+.post pre {
+	background-color: #fff;
+	border: 1px solid #efefef;
+	padding: .4em;	
+}
+
+p.meta {
+	font-size: .9em;
+	text-align: right;
+	margin-right: .5em;
+}
+	
+p.auth {
+	font-size: .9em;
+	font-weight: bold;
+ 	padding: 0;
+	color: #867e27;
+}
+	
+h4.blueblk {
+ 	background: #e9e9e9;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	letter-spacing: .2em;
+	padding: .5em;
+ 	margin: 1em 0;
+}
+ 	
+/*- Main: Comments -*/
+
+.comment-list li {
+  	background: transparent;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	color: #000;
+	margin-bottom: 1em;
+  	padding: 1em 1em 1em 0;
+}
+
+#commentList {
+	margin: 0 0 0 1.5em;
+  	padding: 0;
+}
+  	
+/*- Sidebar -*/
+  
+#sidebar h3 {
+	background: #eee url(../../images/theme/bg-corner.png) right 0 no-repeat;
+	border-top: 1px solid #999;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #fff;
+	color: #000;
+	font-weight: bold;
+	font-size: 1em;
+	letter-spacing: .2em;
+	margin: 0 0 .5em 0;
+	padding: 0 0 0 1em;
+}
+
+#sidebar h3 a {
+	border-bottom: 1px dotted #d75a20;
+	color: #d75a20;
+}
+
+#sidebar h3 a:hover { 	
+	background-color: #d75a20;
+ 	color: #fff;
+}
+
+#sidebar ul {
+	font-size: 1em;
+ 	list-style-type: none;
+	margin: 0 0 3em .5em;
+ 	padding: 0;
+}
+ 		
+#sidebar ul li {
+	background: transparent url(../../images/theme/bullet.gif) 0 60% no-repeat;
+ 	padding-left: 14px;
+}
+
+#sidebar a {
+	border-bottom: 1px dotted #000;
+	color: #000;
+	text-decoration: none;
+}
+	
+#sidebar a:hover { background-color: transparent; border-bottom: 1px solid #000; color: #000; }
+
+#sidebar .powered { border: none; text-decoration: none;}
+#sidebar .powered img { border: none; margin-top: 20px; }
+
+
+/*- Sidebar: Flickr -*/
+
+#flickr {
+	height: 240px;
+	margin: 0;
+	padding: 0;
+}
+
+#flickr div img {
+ 	border: 4px solid #fff;
+}
+ 	
+#flickr div {
+	width: 108px;
+ 	border: 2px solid #dedede;
+ 	margin-bottom: 5px;
+}
+
+#flickr div.flickrsquare { 
+        width: 82px;
+        border: 1px solid #aaa;
+        float:left;
+        margin-right: 5px;
+}
+
+#flickr h3 a {
+	border-bottom: 1px dotted #000;
+	color: #000;
+	text-decoration: none;
+}
+	
+#flickr h3 a:hover { 
+	background-color: transparent; 
+	border-bottom: 1px solid #000; 
+	color: #000; 
+}
+
+#flickr div a { border: none }
+#flickr div a:hover { border: none }
+
+/*- Footer -*/
+  
+#footer ul {
+	font-size: .85em;
+  	margin: 0;
+  	padding: 1em 0 0 0;
+ 	list-style: none;
+	text-align: left; 
+}
+  	
+#footer ul li {
+  	display: inline;
+  	margin: 0;
+  	padding: 0;
+}
+
+
+#footer a {
+	color: #aaa;
+	text-decoration: none;
+	border-bottom: 1px dotted #aaa;
+}
+	
+#footer a:hover { background-color: transparent; border-bottom: 1px solid #fff; color: #fff; }
+
+  	
+/*- Forms -*/
+
+/* Live Search Forms */
+
+input[type=text], textarea {
+	background: #eee url(../../images/theme/bg-corner.png) right 0 no-repeat;
+	font-family: Verdana, Arial, Sans-Serif;
+	border: 1px #666 solid;
+	padding: 2px;
+        font-size: small;
+	color: #000;
+}
+
+input[type=text]:focus, textarea:focus {
+	border: 1px #666 solid;
+	background: none;
+        background-color: #fff;
+        font-size: small;
+	color: #000;
+}
+
+.frm-tbl td { vertical-align: top; padding: 5px; }
+td#frm-btns { text-align: right; }
+ 	
+#comment_body { height: 22.em; }
+#form-submit-button { background: #ddd; }
+
+/* Comment Forms */
+
+.comment-box { padding: .5em; }
+
+.comment-box input[type=text], textarea {
+	background: none;
+	font-family: Verdana, Arial, Sans-Serif;
+	border: 1px #999 solid;
+	background-color: #fff;
+	padding: 2px;
+        font-size: small;
+	color: #000;
+}
+
+.comment-box input[type=text]:focus, textarea:focus {
+	border: 1px #000 solid;
+	background: none;
+        background-color: #fff;
+        font-size: small;
+	color: #000;
+}
+
+/*- Misc -*/
+   
+.light-bg { background: #eee; padding: 2px; }
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+#errors { color: red; }
+
+.admintools {
+  float: right;
+  background-color: #fff;
+  font-size: smaller;
+  padding: 0 2px;
+  margin: 0 1px;
+  color: #272727;
+  border: 1px solid #ccc;
+}
+
+.admintools:hover { color: #c00; border: 1px solid #c00; }
+
+a[name] { border: none; }
+
+ /* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+ /* End hide from IE-mac */
+
+#categories li em, #archives li em { color: #867e27; font-size: smaller; }

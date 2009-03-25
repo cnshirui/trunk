@@ -22,9 +22,19 @@ class FavoritesController < ApplicationController
   end
 
   def list
-    favorites = Favorite.find(:all, :conditions => "host_uid = #{params[:id]}")
+    favorites = Favorite.find(:all, :conditions => "host_uid like '#{params[:id]}'")
+    require 'pp'
+    p "^^^^^^^^^^^^^^^^^^^^^^^^"
+    p favorites.inspect
     users = favorites.map { |item|  User.find_by_uid(item.guest_uid) }
-    users = users ? users.uniq!.compact! : []
+    p "^^^^^^^^^^^^^^^^^^^^^^^^"
+    p users.inspect
+    users = users ? users.uniq : []
+    p "^^^^^^^^^^^^^^^^^^^^^^^^"
+    p users.inspect
+    users = users ? users.compact : []
+    p "^^^^^^^^^^^^^^^^^^^^^^^^"
+    p users.inspect
     render :xml => users.to_xml
   end
 

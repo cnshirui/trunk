@@ -38,7 +38,7 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: roamer_production
+  database: roamer_development
   pool: 5
   username: root
   password:

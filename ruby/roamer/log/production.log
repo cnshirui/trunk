@@ -1,0 +1,5 @@
+# Logfile created on Sun Mar 22 21:52:11 +0800 2009
+
+Processing FavoritesController#list (for 127.0.0.1 at 2009-03-22 21:53:25) [GET]
+  Parameters: {"id"=>"50836"}
+Completed in 292ms (View: 1, DB: 10) | 200 OK [http://localhost/favorites/list/50836]
