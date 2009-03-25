@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="flexdemo" default="swf">
+
+	<property name="build.unit" value="flexdemo" />
+
+	<import file="../../shared.build.ent" />
+	
+	<target name="deps" unless="nodeps.flag">    
+		<ant dir="${visualization.uicomponents.dir}/ugv_component"
+	        target="swc" 
+			inheritall="false"/>
+	</target>
+	
+	<target name="swf" depends="deps">
+		<echo level="info">compiling ${ant.project.name}...</echo>
+		<echo level="info">rootdir=${root.dir}</echo>
+		<echo level="info">FLEX_HOME=${FLEX_HOME}</echo>
+		<mkdir dir="${flex.dist.dir}" />
+
+		<mxmlc file="flexdemo.mxml" output="${flex.dist.dir}/flexdemo.swf">
+			<compiler.include-libraries file="${flex.dist.dir}/ugv_component.swc" />
+		</mxmlc>
+	</target>
+
+	<target name="clean">
+		<delete quiet="true" file="${flex.dist.dir}/flexdemo.swf"></delete>
+	</target>
+</project>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<mx:Panel title="Reviews" xmlns:mx="http://www.adobe.com/2006/mxml" 
+		xmlns="*" creationComplete="reviewRequest.send()"> 
+		
+	<mx:HTTPService id="reviewRequest" 
+   		url="http://localhost:3000/reviews/list" useProxy="false"/> 
+   		
+	<mx:HTTPService contentType="application/xml" id="reviewCreateRequest" 
+		result="reviewRequest.send();" url="http://localhost:3000/reviews/create" 
+		useProxy="false" method="POST"> 
+		<mx:request xmlns=""> 
+          <review> 
+             <title>{fTitle.text}</title> 
+             <author>{fAuthor.text}</author> 
+             <score>{fScore.value}</score> 
+             <text>{fText.text}</text> 
+          </review> 
+		</mx:request> 
+   </mx:HTTPService> 
+		
+	<mx:HTTPService id="reviewDeleteRequest" result="reviewRequest.send();" 
+		url="http://localhost:3000/reviews/delete" useProxy="false"/>			
+   		
+	<mx:HTTPService id="reviewUpdateRequest" result="reviewRequest.send();" 
+		url="http://localhost:3000/reviews/update" useProxy="false" method="POST"/>   		
+   		               
+	<mx:Script> 
+		<![CDATA[ 
+		    import mx.controls.Alert; 
+		    import mx.events.DataGridEvent; 
+		    import mx.events.DataGridEventReason;
+		    import mx.events.CloseEvent; 
+		    
+		    private function deleteHandler(event:Event) : void 
+		    { 
+				Alert.show("Are you sure you want to delete this item?", "Delete Item", 3, this, 
+					function(event:CloseEvent):void 
+					{ 
+				        if (event.detail==Alert.YES) 
+				        	reviewDeleteRequest.send({id: dgReviews.selectedItem.id}); 
+					}); 
+		    } 
+		    
+		     private function updateHandler(event:Event) : void 
+		    { 
+		        dgReviews.editable=true 
+		        btnUpdateData.label = "End Updates" 
+		        btnUpdateData.removeEventListener('click', updateHandler) 
+		        btnUpdateData.addEventListener('click', endUpdateHandler) 
+		    } 
+		
+		    private function endUpdateHandler(event:Event) : void 
+		    { 
+		        dgReviews.editable=false 
+		        btnUpdateData.label = "Update Data" 
+		        btnUpdateData.removeEventListener('click', endUpdateHandler) 
+		        btnUpdateData.addEventListener('click', updateHandler) 
+		    } 
+		
+		     public function checkUpdate(event:DataGridEvent) : void 
+			{ 
+	        	if (event != null) 
+				{ 
+	                if (event.reason == DataGridEventReason.CANCELLED || 
+	                    event.reason == DataGridEventReason.OTHER ) 
+	                    return; 
+	
+	                var params:Object = new Object(); 
+	                params['id'] = event.currentTarget.editedItemRenderer.data['id'] 
+	                params['review[' + event.dataField +']'] 
+	                 = TextInput(event.currentTarget.itemEditorInstance).text 
+	                reviewUpdateRequest.send(params); 
+				} 
+			} 
+		]]> 
+		</mx:Script>                
+
+	<mx:DataGrid id="dgReviews" width="800" 
+               dataProvider="{reviewRequest.lastResult.reviews.review}" 
+               editable="false" itemEditEnd="checkUpdate(event);">  
+		<mx:columns> 
+			<mx:DataGridColumn headerText="Title" dataField="title" width="480"/> 
+	          <mx:DataGridColumn headerText="Author" dataField="author" width="240"/> 
+	          <mx:DataGridColumn headerText="Score" dataField="score" width="80"/> 
+	    </mx:columns> 
+    </mx:DataGrid> 
+
+	<mx:TextArea id="taReviews" width="800" htmlText="{dgReviews.selectedItem.text}"/> 
+
+	<mx:ControlBar id="cbReviewControlBar"> 
+		<mx:Button label="Create New" id="btnCreateNew" click="currentState='Create'"/> 		                    
+		<mx:Button label="Delete" click="deleteHandler(event);"/>      
+	    <mx:Button label="Update Data" click="updateHandler(event)" id="btnUpdateData"/> 
+	</mx:ControlBar> 
+
+	<mx:transitions> 
+		<mx:Transition id="createTransition" fromState="*" 
+		                 toState="Create"> 
+			<mx:Parallel target="{frmCreate}"> 
+				<mx:WipeDown duration="1000"/> 
+			</mx:Parallel> 
+  		</mx:Transition> 
+	</mx:transitions>                 
+		    
+	<mx:states> 
+	    <mx:State name="Create"> 
+	    <mx:AddChild position="lastChild"> 
+	             <mx:Form width="800" id="frmCreate"> 
+	            <mx:FormHeading label="Add a new Review"/> 
+	             <mx:FormItem label="Title" required="true"> 
+	                <mx:TextInput width="260" id="fTitle"/> 
+	            </mx:FormItem> 
+	               <mx:FormItem label="Author" required="true"> 
+	                <mx:TextInput width="140" id="fAuthor"/> 
+	            </mx:FormItem> 
+	            <mx:FormItem label="Score"> 
+	                <mx:NumericStepper id="fScore"/> 
+	            </mx:FormItem> 
+	            <mx:FormItem label="Text"> 
+	                <mx:TextArea width="600" height="200" id="fText"/> 
+	            </mx:FormItem> 
+	            <mx:FormItem direction="horizontal"> 
+	                <mx:Button label="Submit" 
+	                                  click="reviewCreateRequest.send();currentState=''"/> 
+	                <mx:Button label="Cancel" click="currentState=''"/> 
+	            </mx:FormItem> 
+	            </mx:Form> 
+	          </mx:AddChild> 
+	    </mx:State> 
+	</mx:states> 		    
+
+</mx:Panel> 

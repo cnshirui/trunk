@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init(event)" width="800" height="600">
+	<mx:Script>
+	<![CDATA[
+		import com.businessobjects.flex3d.helpers.ChartingObjectFactory;
+		import com.businessobjects.flex3d.IObject3D;
+		import com.businessobjects.flex3d.helpers.Object3DLoader;
+		import com.businessobjects.flex3d.helpers.ColladaLoader;
+		import com.businessobjects.flex3d.Texture3D;
+		import mx.core.BitmapAsset;
+		import com.businessobjects.flex3d.BitmapView3D;
+		import com.businessobjects.flex3d.FlexView3D;
+		import com.businessobjects.flex3d.Color3D;
+		import com.businessobjects.flex3d.Node3D;
+		import com.businessobjects.flex3d.geom.Rotation3D;
+		import com.businessobjects.flex3d.geom.Vector3D;
+		import com.businessobjects.flex3d.geom.Position3D;
+	
+		import com.businessobjects.flex3d.Mesh3D;
+	
+		import com.businessobjects.flex3d.Scene3D;
+		import com.businessobjects.flex3d.View3D;
+		import com.businessobjects.flex3d.helpers.BasicObjectsFactory;
+
+		// 3D stuff
+		private var main_scene:Scene3D;
+		private var p_main_scene:Node3D;
+		private var sub_scene:Scene3D;
+		private var p_sub_scene:Node3D;
+		private var view:View3D;
+		private var box:Mesh3D;
+		private var p_box:Node3D;
+		private var boxT:Mesh3D;
+		private var p_boxT:Node3D;
+		private var light:Vector3D;
+		private var color:Color3D;
+
+		private var obj3d:IObject3D;
+		private var ocol:Array;
+		private var otex:Array;
+		private var p_obj:Node3D;
+
+		private var useF3D:Boolean = true;
+		
+		private var sceneId:int = 1;
+
+		[Embed(source='default.png')]
+        private var texClass:Class;
+
+		private function createColor(r:int, g:int, b:int):Color3D
+		{
+			var col:Color3D = new Color3D(r, g, b);
+		    view.registerColor(col);
+		    return col;
+		}
+
+		private function createTexture(data:BitmapData):Texture3D
+		{
+			var tex:Texture3D = new Texture3D(data);
+		    view.registerTexture(tex);
+		    return tex;
+		}
+
+		public function init(event:Event):void
+		{
+			if (useF3D)
+				view = new FlexView3D(canvas);
+			else
+				view = new BitmapView3D(canvas.width,canvas.height);
+			main_scene = new Scene3D();
+		    main_scene.init();
+		    p_main_scene = view.init(main_scene, 640, 16);
+    		view.setGDMin(-2000);
+    		view.setDepths(-2560, 512);
+    		view.setShading(View3D.FLAT);
+    		light = view.setLightVector(null, 1, -1, 1);
+			var mask:Shape = new Shape();
+			mask.graphics.beginFill(0);
+			mask.graphics.drawRect(0,0,canvas.width,canvas.height);
+			mask.graphics.endFill();
+			canvas.mask = mask;
+			canvas.addEventListener(MouseEvent.MOUSE_MOVE, mouseMove);
+//			canvas.filters = [new DropShadowFilter(48,60,0,0.5,4,4,1,1)];
+
+			buildScene();
+
+			var cl:ColladaLoader = new ColladaLoader();
+			cl.addEventListener(Event.COMPLETE, objectLoaded);
+			cl.load("xwing.DAE");
+		}
+
+		private function objectLoaded(event:Event):void
+		{
+			var ldr:Object3DLoader = event.target as Object3DLoader;
+			obj3d = ldr.object;
+			ocol = ldr.colors;
+			otex = ldr.textures;
+			(obj3d as Mesh3D).zoom(1.0/40);
+			if (sceneId == 0)
+				buildScene();
+		}
+
+		private var colR:Array = [224, 32, 32,224, 32,224,224, 64]; 
+		private var colG:Array = [ 32, 32,224,224,224, 32,224,224]; 
+		private var colB:Array = [ 32,224, 32, 32,224,224,224,128]; 
+
+		private function createSerie(col:Color3D, z:Number):void
+		{
+    		var v:int;
+    		for (var i:int = 0; i < 16; ++i)
+   			{
+   				v = (Math.random()+1)*50;
+	    		box = BasicObjectsFactory.createQuadColoredBox(10, v, 10, col);
+	    		p_box = sub_scene.addNode(box, new Position3D(new Vector3D((i-8)*32,-v,z), new Rotation3D()));
+   			}
+		}
+
+		private function createArea(col:Color3D, z:Number):void
+		{
+    		var values:Array = new Array(16);
+    		for (var i:int = 0; i < 16; ++i)
+   				values[i] = -(Math.random()+1)*120;
+			var area:Mesh3D = ChartingObjectFactory.createArea(values, 32, 30, 1, col);
+			sub_scene.addNode(area, new Position3D(new Vector3D(0,0,z), new Rotation3D()));
+		}
+
+		private function createLine(col:Color3D, z:Number):void
+		{
+    		var values:Array = new Array(16);
+    		for (var i:int = 0; i < 16; ++i)
+   				values[i] = -(Math.random()+0.1)*120;
+			var line:Mesh3D = ChartingObjectFactory.createLine(values, 32, 30, 1, col, 10);
+			sub_scene.addNode(line, new Position3D(new Vector3D(0,0,z), new Rotation3D()));
+		}
+
+		private function createPie():void
+		{
+			var i:int;
+			var sum:Number = 0;
+			var sa:Number = 0;
+			var ea:Number;
+			var scene:Scene3D = new Scene3D();
+
+    		var serie:Array = new Array(8);
+    		for (i = 0; i < 8; ++i)
+   				serie[i] = (Math.random()+1)*120;
+
+			for (i = 0; i < serie.length; ++i)
+				sum += serie[i] as Number;
+			scene.init();
+			for (i = 0; i < serie.length; ++i)
+			{
+				ea = sa + ((Math.PI * 2 * (serie[i] as Number)) / sum);
+				var sector:Mesh3D = ChartingObjectFactory.createSector(sa, ea, 100, 32, createColor(colR[i%colR.length], colG[i%colR.length], colB[i%colR.length]));
+				scene.addMesh(sector, new Position3D(new Vector3D(), new Rotation3D()));
+				sa = ea;
+			}
+			sub_scene.addNode(scene, new Position3D(new Vector3D(), new Rotation3D()));
+		}
+
+		private function buildScene():void
+		{
+			if (sceneId == 0  && obj3d == null)
+			{
+				callLater(buildScene);
+				return;
+			}
+
+			view.unregisterColors();
+			view.unregisterTextures();
+
+		    main_scene.init();
+			sub_scene = new Scene3D();
+		    sub_scene.init();
+			p_obj = null;
+
+			var tx:Texture3D;
+			switch(sceneId)
+			{
+			case 0:
+	    		color = createColor(224,32,0);
+	    		box = BasicObjectsFactory.createQuadColoredBox(10, 10, 10, color);
+	    		var maxJ:int = 16;
+	    		var maxJ2:int = maxJ/2;
+	    		var maxI:int = 16;
+	    		var maxI2:int = maxI/2;
+	    		for (var j:int = 0; j < maxJ; ++j)
+	    		{
+	    			var iz:Number = 120*Math.sin((Math.PI/maxJ)*j+Math.PI/2);
+		    		for (var i:int = 0; i < maxI; ++i)
+	    			{
+		    			sub_scene.addNode(box, new Position3D(new Vector3D((iz+(iz<0?-32:32))*Math.cos((Math.PI/maxI2)*i),
+	    				                                                   iz,
+	    				                                                   (iz+(iz<0?-32:32))*Math.sin((Math.PI/maxI2)*i)),
+	    			    	                   new Rotation3D((Math.PI/16)*i + (Math.PI/64)*j,(Math.PI/16)*i,(Math.PI/16)*i)));
+		    		}
+		    	}
+	    		p_sub_scene = main_scene.addNode(sub_scene, new Position3D(new Vector3D(), new Rotation3D()));
+	
+				var tex:BitmapAsset = BitmapAsset(new texClass());
+				tx = createTexture(tex.bitmapData);
+	    		boxT = BasicObjectsFactory.createQuadTexturedBox(32, 32, 32, tx, 0, 0, tx.data.width, tx.data.height);
+	    		p_boxT = main_scene.addNode(boxT, new Position3D(new Vector3D(0,120,0), new Rotation3D()));
+	
+	    		color = createColor(0, 32, 224);
+	    		box = BasicObjectsFactory.createQuadColoredBox(20, 20, 20, color);
+	    		box.alpha = 0.5;
+	    		p_box = main_scene.addNode(box, new Position3D(new Vector3D(), new Rotation3D()));
+
+				if (obj3d != null)
+				{
+					for each (color in ocol)
+						view.registerColor(color);
+					for each (tx in otex)
+					    view.registerTexture(tx);
+					p_obj = main_scene.addNode(obj3d, new Position3D(new Vector3D(-200, 0, 0), new Rotation3D()));
+				}
+				break;
+			case 1:
+	    		p_sub_scene = main_scene.addNode(sub_scene, new Position3D(new Vector3D(0, 96, -128), new Rotation3D()));
+	    		for (i = 0; i < 8; ++i)
+		    		createSerie(createColor(colR[i], colG[i], colB[i]), (4-i)*48);
+				break;
+			case 2:
+	    		p_sub_scene = main_scene.addNode(sub_scene, new Position3D(new Vector3D(0, 96, -128), new Rotation3D()));
+	    		for (i = 0; i < 8; ++i)
+			    	createArea(createColor(colR[i], colG[i], colB[i]), (4-i)*48);
+			    break;
+			case 3:
+	    		p_sub_scene = main_scene.addNode(sub_scene, new Position3D(new Vector3D(0, 96, -128), new Rotation3D()));
+	    		for (i = 0; i < 8; ++i)
+			    	createLine(createColor(colR[i], colG[i], colB[i]), (4-i)*48);
+			    break;
+			case 4:
+	    		p_sub_scene = main_scene.addNode(sub_scene, new Position3D(new Vector3D(), new Rotation3D()));
+		    	createPie();
+			}
+
+			view.setLightColor(96, 96, 96);
+    		view.setLightDefaut(24);
+			view.changed = true;
+			renderScene();
+		}
+
+		private function renderScene():void
+		{
+    		faces += view.computeFrame();
+    		if (!useF3D)
+    		{
+				canvas.graphics.clear();
+				canvas.graphics.beginBitmapFill((view as BitmapView3D).view3d);
+				canvas.graphics.drawRect(0,
+										 0,
+										 (view as BitmapView3D).view3d.width,
+										 (view as BitmapView3D).view3d.height);
+    		}
+    		fps += 1;
+    		canvas.invalidateDisplayList();
+		}
+
+		private var lastX:int = int.MIN_VALUE;
+		private var lastY:int;
+		
+		public function mouseMove(event:MouseEvent):void
+		{
+			if (!event.buttonDown)
+			{
+				lastX = int.MIN_VALUE;
+				return;
+			}
+			if (lastX == int.MIN_VALUE)
+			{
+				lastX = event.stageX;
+				lastY = event.stageY;
+				return;
+			}
+			p_sub_scene.pos.rot.ry += (Math.PI*(lastX-event.stageX))/200;
+			p_sub_scene.pos.rot.rx += (Math.PI*(lastY-event.stageY))/200;
+			lastX = event.stageX;
+			lastY = event.stageY;
+			renderScene();
+		}
+
+		private var timer:Timer = null;
+		private var fpstimer:Timer = null;
+		private var fps:int;
+		private var faces:int;
+
+		public function animate(event:Event):void
+		{
+			if (timer != null)
+			{
+				timer.stop();
+				timer = null;
+				fpstimer.stop();
+				fpstimer = null;
+				return;
+			}
+			timer = new Timer(25);
+			timer.addEventListener(TimerEvent.TIMER, animFrame);
+			timer.reset();
+			timer.start();
+			fpstimer = new Timer(1000);
+			fpstimer.addEventListener(TimerEvent.TIMER, fpsCounter);
+			fpstimer.reset();
+			fps = 0;
+			faces = 0;
+			fpstimer.start();
+		}
+
+		public function fpsCounter(event:TimerEvent):void
+		{
+			fpsLabel.text = "fps=" + fps + "  -  faces(avg) = " + int(faces/fps);
+			fps = 0;
+			faces = 0;
+		}
+
+		public function animFrame(event:TimerEvent):void
+		{
+			if (sceneId == 0)
+			{
+				p_box.pos.rot.ry+=Math.PI/32;
+				p_box.pos.rot.rx+=Math.PI/32;
+				p_boxT.pos.xyz.y = Math.sin(p_boxT.pos.rot.ry + Math.PI / 2) * 120;
+				p_boxT.pos.xyz.x = Math.cos(p_boxT.pos.rot.ry + Math.PI / 2) * 120;
+				p_boxT.pos.rot.ry-=Math.PI/32;
+				p_boxT.pos.rot.rx+=Math.PI/32;
+				if (p_obj != null)
+				{
+					p_obj.pos.rot.ry+=Math.PI/32;
+					p_obj.pos.rot.rz+=Math.PI/32;
+				}
+			}
+			else
+			{
+			}
+			p_sub_scene.pos.rot.ry+=Math.PI/64;
+			p_sub_scene.pos.rot.rz+=Math.PI/64;
+			p_sub_scene.pos.rot.rx+=Math.PI/128;
+			renderScene();
+		}
+		
+		public function switchScene(event:Event):void
+		{
+			if (timer != null)
+			{
+				timer.stop();
+				timer = null;
+				fpstimer.stop();
+				fpstimer = null;
+			}
+			if (++sceneId == 5)
+				sceneId = 0;
+			buildScene();
+		}
+	]]>
+</mx:Script>
+	<mx:Canvas id="canvas" width="640" height="480">
+	</mx:Canvas>
+	<mx:Button x="497" y="490" label="Animate" id="anim" buttonDown="animate(event);"/>
+	<mx:Button x="577" y="490" label="Switch" id="switchS" buttonDown="switchScene(event);"/>
+	<mx:Label id="fpsLabel" x="16" y="490" width="306"/>
+</mx:Application>

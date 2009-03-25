@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" implements="mx.core.IDataRenderer" 
+	doubleClickEnabled="true"
+	doubleClick="onDoubleClick(event);"
+	click="onClick(event);">
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.flex.extras.controls.forcelayout.Node;
+			import com.adobe.flex.extras.controls.springgraph.Item;
+			import mx.core.UITextField;
+			import mx.controls.Label;
+			import mx.core.Application;
+				
+			[Bindable]
+			internal var _data:Object;
+			
+			internal var _graph:Object;
+			
+			[Bindable]
+			private var app:topic_map = topic_map(Application.application);
+			
+						
+			override public function get data():Object
+			{
+				return _data;
+			}
+			
+			override public function set data(d:Object):void
+			{
+				_data = d;
+			}
+			
+			public function get text():String
+			{
+				return _data.id;
+			}
+							
+			public function set graph(g:Object):void
+			{
+				_graph = g;
+			}
+			
+			public function set isLoading(b:Boolean):void
+			{
+/* 				if ( b ) {
+ 					_loading.visible = true;
+				} else {
+ 					_loading.visible = false;
+				} */
+			}
+			
+			override protected function createChildren():void
+			{
+				super.createChildren();										
+			}
+			
+			internal var RADIUS:Number = 12;
+			
+			override protected function measure():void
+			{
+				super.measure();	
+				
+        //measuredWidth = RADIUS*2;
+				//measuredHeight = RADIUS*2;			
+				invalidateDisplayList();
+			}
+			
+			override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
+	
+		    super.updateDisplayList(unscaledWidth, unscaledHeight);
+		    graphics.clear();  
+		    // Draw a simple border around the child components.
+        graphics.lineStyle(1, 0xBBBBBB, 1.0);
+		   
+		   	//var bgColor:int = 0xB2E1FF; // white
+		   	/*
+		   	
+		   	var bgColor:int = 0x00222B;
+		   	
+		   	if (_graph.selected == this)
+		   	{
+		   		bgColor = 0x7ecbfb;
+		   	}
+		    graphics.beginFill( bgColor, 1.0 );
+		    
+		    */
+		    
+		    // calculate center of the link button
+		    var x:Number;
+		    var y:Number;
+		    x = _link.x + (_link.measuredWidth/2);
+		    y = _link.y + (_link.measuredHeight/2);
+		    graphics.drawCircle(x, y, RADIUS);
+		    
+		    //graphics.endFill();
+			}	
+			
+			internal function onDoubleClick(event:MouseEvent):void
+			{								
+			}		
+			
+			internal function onClick(event:MouseEvent):void
+			{				
+				//isLoading = true;
+				app.isLoading = true
+				_graph.selected = this ;
+			}
+		]]>
+	</mx:Script>
+	<mx:LinkButton id="_link" label="{_data.id}" click="onClick(event);" fontSize="{_data.data.popularity + Math.round(app.scaleFactor*4)}" textAlign="center" color="#FF6600" fontFamily="Verdana"/>
+</mx:HBox>

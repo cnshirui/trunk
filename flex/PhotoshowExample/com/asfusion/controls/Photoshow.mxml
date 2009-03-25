@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" horizontalCenter="0" verticalCenter="0">
+
+	<mx:Script>
+	    <![CDATA[
+			import com.asfusion.controls.PhotoshowImage;
+	
+			private var pictures:Array;
+			private var currentIndex:int = 0;
+			
+			[Bindable]
+			private var currentPicture:PhotoshowImage;
+			
+			private function goNext():void {
+				if (currentIndex != pictures.length){
+				currentIndex++;
+				}
+				else {
+				currentIndex = 0;
+				}
+				//set the current picture
+				currentPicture = pictures[currentIndex];
+			}
+			
+			private function goPrevious():void {
+				if (currentIndex != 0){
+				currentIndex--;
+				}
+				else {
+				currentIndex = pictures.length;
+				}
+				currentPicture = pictures[currentIndex];
+			}
+			
+			public function set dataProvider(value:Array):void {
+				pictures = value;
+				currentIndex = 0;
+				currentPicture = pictures[currentIndex];
+			}
+			
+			public function  get dataProvider():Array
+			{
+				return pictures;
+			}
+	]]>
+	</mx:Script> 
+
+    <mx:Canvas y="0" styleName="imageHolder" horizontalCenter="0" 
+		horizontalScrollPolicy="off" verticalScrollPolicy="off"
+		width="{currentPicture.width}" height="{currentPicture.height}">
+       <mx:Image width="{currentPicture.width}" height="{currentPicture.height}"
+       		id="picture" source="assets/photoshow/images/{currentPicture.name}"/>
+    </mx:Canvas>
+
+    <mx:Button y="210" width="58" height="60" styleName="previous" click="goNext()"/>
+    <mx:Button y="210" width="58" height="60" styleName="next" click="goPrevious()"  x="721"/>
+	<mx:Text y="{currentPicture.height}" width="600" height="47" 
+		textAlign="center" horizontalCenter="0" text="{currentPicture.caption}" />   
+		 
+</mx:Canvas> 

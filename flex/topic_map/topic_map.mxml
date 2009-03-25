@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fc="http://www.adobe.com/2006/fc" 
+	layout="absolute" creationComplete="creationComplete();" xmlns:local="*" 
+	backgroundAlpha="0" backgroundColor="0xffffff" width="546" height="293">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.core.UIComponent;
+			import mx.rpc.events.ResultEvent;
+			
+			import flash.events.MouseEvent;
+			import flash.external.ExternalInterface;
+			import mx.core.Application;
+			import com.adobe.flex.extras.controls.springgraph.Item;
+			import com.adobe.flex.extras.controls.springgraph.Graph;
+			
+      [Bindable]
+			public var scaleFactor: Number = 0.5;
+			
+			[Bindable]
+			public var isLoading:Boolean = true;
+			
+			// name of the flash var
+			static internal const TOPIC:String = "topic";
+			static internal const URL:String = "url";
+			
+			internal var _selectedComponent:UIComponent = null;
+					
+			internal function creationComplete():void
+			{
+				graph.dataProvider = new Graph();
+				
+				var factory:ClassFactory = new ClassFactory( NodeRenderer );
+				factory.properties = { graph : this };
+				graph.itemRenderer = factory;
+						
+				var url:String = Application.application.parameters[URL];
+				if ( url )
+				{
+					http.url = url;
+				}
+				var initial_topic:String = Application.application.parameters[TOPIC];
+				if ( initial_topic == null)
+				{
+					//initial_topic = "Energy consumption";
+					initial_topic = "Population";
+				}
+				http.addEventListener(ResultEvent.RESULT, onResult );
+				addRelatedNodes( initial_topic );
+			}
+					
+			protected function addNode( id:String, data:Object = null):Item
+			{
+				var g:Graph = graph.dataProvider as Graph;
+				var item:Item = new Item(id);
+				item.data = data;
+				
+				g.add( item );
+				return item;
+			}
+
+			protected function addEdge(fromID:String, toID:String, weightString:String, minWeight:int, maxWeight:int):void
+			{
+				var g:Graph = graph.dataProvider as Graph;
+				
+				var nodeFrom:Item = g.find( fromID );
+				var nodeTo:Item = g.find( toID );
+				var weight: int = int(weightString.toString());
+				
+				var ralpha: Number;
+				if ( minWeight == maxWeight) {
+					ralpha = 0.8;
+				}
+				else {
+					ralpha = (weight-minWeight)/(maxWeight-minWeight)*0.6 + 0.2;					
+				}
+				
+				var data: Object = {settings: {alpha: ralpha, color: 0, thickness: 1}};
+				g.link(nodeFrom, nodeTo, data);			
+	
+			}
+					
+			protected function findNode(id:String):Item
+			{
+				return (graph.dataProvider as Graph).nodes[id];
+			}
+			
+			protected function link( a:Item, b:Item):void
+			{
+				(graph.dataProvider as Graph).link(a,b);			
+			}
+			
+			protected function refresh():void
+			{
+				graph.refresh();		
+			}
+		
+			internal var _requestQueue:Dictionary = new Dictionary();
+			
+			public function addRelatedNodes(id:String):void
+			{			
+				//addNode(id);
+							
+				http.send( { name : id } );			
+			}
+			
+			public function get selected():UIComponent
+			{
+				return _selectedComponent;
+			}
+			
+			public function set selected(component:UIComponent):void
+			{
+				if ( _selectedComponent ) {
+					
+					if (_selectedComponent == component )
+					{
+						// don't have to do anything
+						return;
+					}
+					
+					// invalidate the old selected node
+					_selectedComponent.invalidateDisplayList();
+				}
+					
+				_selectedComponent = component;
+				_selectedComponent.invalidateDisplayList();
+				
+				var node:NodeRenderer = component as NodeRenderer;
+				
+				var selectedText:String = node.text;
+	
+				_requestQueue[selectedText] = _selectedComponent;			
+				addRelatedNodes( selectedText );
+				ExternalInterface.call( "onTopicMapSelectChange", selectedText);
+			}
+			
+			public function onResult(event:ResultEvent):void
+			{
+				var oldGraph:Graph = (graph.dataProvider as Graph );
+				
+				if (event.result.Graph != null) {
+					
+					var resultNode:Object;
+					var firstNode:String;
+					var data:Object;
+					
+					resultNode = event.result.Graph.Node;
+					if ( resultNode is ArrayCollection ) {
+						for each( var node:Object in resultNode ) {
+							if ( firstNode == null )  {
+								firstNode = node.id;
+							}
+							
+							data = {popularity:node.popularity}
+							addNode(node.id, data);
+						}
+					} else {
+						firstNode = resultNode.id;
+						data = {popularity:resultNode.popularity}
+						addNode( resultNode.id, data );
+					}
+					
+					var resultEdge:Object;
+					resultEdge = event.result.Graph.Edge;
+					// add by RoyShi, Find max and min of weights				
+					var minEdge:int;
+					var maxEdge:int;
+					var edge:Object;
+					var resultEdgeArray:Array = new Array;				
+	 				if ( resultEdge is ArrayCollection ) {				
+						for each( edge in resultEdge ) {					
+							resultEdgeArray.push(int(edge.weight));
+						}
+						resultEdgeArray.sort(Array.NUMERIC);
+						minEdge = resultEdgeArray[0];
+						maxEdge = resultEdgeArray[resultEdgeArray.length-1]						
+					}
+					else {
+						minEdge = maxEdge = resultEdge.weight;	
+					} 
+					
+					if ( resultEdge is ArrayCollection ) {
+						for each( edge in resultEdge ) {					
+							addEdge( edge.fromID, edge.toID, edge.weight, minEdge, maxEdge );
+						}
+					} 
+					else {
+						addEdge( resultEdge.fromID, resultEdge.toID, resultEdge.weight, minEdge, maxEdge );
+					}
+							
+					var nodeRenderer:NodeRenderer = _requestQueue[firstNode] as NodeRenderer;
+					if ( nodeRenderer ) {
+						nodeRenderer.isLoading = false;					
+					}
+					delete _requestQueue[firstNode];
+				}
+        
+        /*
+        var a:Item = findNode(id);
+				
+				var newId:String;
+				newId = Math.random().toString();
+				var c:Item = addNode(newId, {label: newId});
+				link(a,c);
+				*/
+		    
+		    isLoading = false;
+		    
+				refresh();
+			}
+					
+		]]>
+	</mx:Script>
+	
+	<mx:Label x="16" y="32" text="repulsion factor"/>
+	<mx:HSlider id="repulsion" x="10" y="10" value="0.75" minimum="0.05" maximum="1.5" liveDragging="true" change="refresh();" width="100" height="20"/>
+	<mx:HSlider x="118" y="10" value="0.5" minimum="0.05" maximum="1.0" liveDragging="true" change="scaleFactor = event.currentTarget.value; refresh();" width="100" height="20"/>
+	<mx:SWFLoader id="loader" source="@Embed(source='loading.swf')" visible="{isLoading}" scaleContent="true" width="16" height="16" x="226" y="14"/>
+	<mx:Label x="124" y="32" text="node size"/>
+
+	<mx:HTTPService id="http" url="http://10.54.125.118:3000/search/get_related"></mx:HTTPService>
+
+</mx:Application>

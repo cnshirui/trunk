@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" horizontalCenter="0" verticalCenter="0" width="646" height="564">
+	<mx:Script>
+		<![CDATA[
+			
+			import com.asfusion.controls.PhotoshowImage;
+			
+			//all the pictures
+			private var pictures:Array;
+			//the index of the array that corresponds to currently shown picture
+			private var currentIndex:int = 0;
+			
+			//actual picture object that is currently shown
+			[Bindable]
+			private var currentPicture:PhotoshowImage;
+			
+			// show the next picture in set
+			private function goNext():void
+			{
+				if (currentIndex < pictures.length - 1){
+					currentIndex++;
+				}
+				else {
+					currentIndex = 0;
+				}
+				//set the current picture
+				currentPicture = pictures[currentIndex];
+			}
+			
+			// show the previous picture in set
+			private function goPrevious():void
+			{
+				if (currentIndex != 0){
+					currentIndex--;
+				}
+				else {
+					currentIndex = pictures.length - 1;
+				}
+				//set the current picture
+				currentPicture = pictures[currentIndex];
+			}
+			
+			//this changes the set of pictures
+			public function set dataProvider(value:Array):void
+			{
+				pictures = value;
+				currentIndex = 0;
+				currentPicture = pictures[currentIndex];
+			}
+			
+			public function  get dataProvider():Array
+			{
+				return pictures;
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Button y="210" width="58" height="60"  styleName="previous" click="goPrevious()"/>
+	<mx:Button y="210" width="58" height="60" styleName="next" click="goNext()" x="721"/>
+	<mx:LineChart x="92" y="89" id="linechart1">
+		<mx:series>
+			<mx:LineSeries displayName="Series 1" yField=""/>
+		</mx:series>
+	</mx:LineChart>
+	<mx:Legend dataProvider="{linechart1}"/>
+
+</mx:Canvas>

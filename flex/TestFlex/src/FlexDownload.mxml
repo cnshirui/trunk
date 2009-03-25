@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" verticalAlign="middle" backgroundColor="white" creationComplete="init();">
+  
+  <mx:Script>
+    <![CDATA[
+      import mx.controls.Alert;
+      import mx.collections.ArrayCollection;
+      import flash.net.FileReference;
+
+      [Bindable]
+      [Embed('assets/disk.png')]
+      private var diskIcon:Class;
+      
+      [Bindable]
+      private var arrColl:ArrayCollection;
+
+      // 要下载文件的URL
+      private const FILE_URL:String = "http://shg-d-11-rshi:8080/designer_server/XcelsiusDocServlet?action=save"; 
+//      "http://www.nshen.net/blog/doc/flex/FileReference_download_test/FileReference_download_test.zip";
+
+      private var fileRef:FileReference;
+      private var urlReq:URLRequest;
+      
+      private function init():void {
+        // 初始化一个空ArrayCollection
+        arrColl = new ArrayCollection();
+        
+        // 以FILE_URL指定的地址建立一个URLRequest
+        urlReq = new URLRequest(FILE_URL);
+        
+        // 定义一个FileReference对象，并填加一系列事件监听
+        fileRef = new FileReference();
+        fileRef.addEventListener(Event.CANCEL, doEvent);
+        fileRef.addEventListener(Event.COMPLETE, doEvent);
+        fileRef.addEventListener(Event.OPEN, doEvent);
+        fileRef.addEventListener(Event.SELECT, doEvent);
+        fileRef.addEventListener(HTTPStatusEvent.HTTP_STATUS, doEvent);
+        fileRef.addEventListener(IOErrorEvent.IO_ERROR, doEvent);
+        fileRef.addEventListener(ProgressEvent.PROGRESS, doEvent);
+        fileRef.addEventListener(SecurityErrorEvent.SECURITY_ERROR, doEvent);
+      }
+      
+      private function doEvent(evt:Event):void {
+        // 取得当前FileReference的引用
+        var fr:FileReference = evt.currentTarget as FileReference;
+        
+        // 填加事件顺序和类型到DataGrid组件
+        arrColl.addItem({data:arrColl.length+1, type:evt.type, eventString:evt.toString()});
+
+        try {
+          // 更新 Model.
+          fileRefModel.creationDate = fr.creationDate;
+          fileRefModel.creator = fr.creator;
+          fileRefModel.modificationDate = fr.modificationDate;
+          fileRefModel.name = fr.name;
+          fileRefModel.size = fr.size;
+          fileRefModel.type = fr.type;
+          // 显示文本
+          txt.visible = true;
+        } catch (err:*) {
+          // uh oh, an error of sorts.
+        }
+      }
+
+      private function downloadSourceCodeZip():void {
+        // 清空现有的 array collection.
+        arrColl = new ArrayCollection();
+        // 隐藏文本组件
+        txt.visible = false;
+        // 开始下载
+        fileRef.download(urlReq);
+      }
+      
+      private function showAlert(item:Object):void {
+        Alert.show(item.eventString, item.type);
+      }
+    ]]>
+  </mx:Script>
+  
+  <mx:Model id="fileRefModel">
+    <file>
+      <creationDate>{""}</creationDate>
+      <creator>{""}</creator>
+      <modificationDate>{""}</modificationDate>
+      <name>{""}</name>
+      <size>{""}</size>
+      <type>{""}</type>
+    </file>
+  </mx:Model>
+  
+  <mx:Button id="downloadBtn" label="Download example source code" icon="{diskIcon}" click="downloadSourceCodeZip()" toolTip="{FILE_URL}" height="40" />
+
+  <mx:DataGrid id="debug" dataProvider="{arrColl}" width="{downloadBtn.width}" rowCount="5" rowHeight="22" itemClick="showAlert(event.currentTarget.selectedItem)">
+    <mx:columns>
+      <mx:DataGridColumn dataField="data" headerText="#" width="20" />
+      <mx:DataGridColumn dataField="type" headerText="Type" showDataTips="true" dataTipField="eventString" />
+    </mx:columns>
+  </mx:DataGrid>
+  
+  <mx:Text id="txt" condenseWhite="true" visible="false">
+    <mx:text>
+    creationDate: {fileRefModel.creationDate}
+    creator: {fileRefModel.creator}
+    modificationDate: {fileRefModel.modificationDate}
+    name: {fileRefModel.name}
+    size: {fileRefModel.size}
+    type: {fileRefModel.type}
+    </mx:text>
+  </mx:Text>
+
+</mx:Application>

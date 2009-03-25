@@ -1,0 +1,28 @@
+/* CSS file */
+
+Application{
+	backgroundGradientColors:#161616, #161616;
+	color:#dedede;	
+}
+
+.imageHolder{
+	borderColor:#AAAAAA;
+	borderThickness:8;
+	borderStyle:solid;
+	borderSides: "left", "top", "right", "bottom"
+}
+.previous{
+	horizontalCenter:-380;
+	top:210;
+	upSkin:Embed("/assets/images/previous_up.gif");
+	overSkin:Embed("/assets/images/previous_over.gif");
+	downSkin:Embed("/assets/images/previous_down.gif");
+}
+
+.next{
+	top:210;
+	horizontalCenter:380;
+	upSkin:Embed("/assets/images/next_up.gif");
+	overSkin:Embed("/assets/images/next_over.gif");
+	downSkin:Embed("/assets/images/next_down.gif");
+}

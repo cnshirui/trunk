@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" width="500" height="200" borderStyle="solid" backgroundColor="#FFFFFF" creationComplete="initApp();">
+
+	<mx:Script> 
+	
+	    <![CDATA[
+	        private function initApp():void {
+	            srclist.dataProvider = ['Reading', 'Television', 'Movies', 'Books', 'Basketball']; 
+	            destlist.dataProvider =[];
+	        }
+	
+	    ]]>
+	
+	</mx:Script>
+	
+	<mx:HBox>
+	    <mx:VBox>
+	        <mx:Label text="Available Activities"/>
+	        <mx:List id="srclist" height="100" allowMultipleSelection="true" 
+	        	dragEnabled="true" dragMoveEnabled="true" dropEnabled="true"/>
+	    </mx:VBox>
+	
+	    <mx:VBox>
+	        <mx:Label text="Activities I Like"/>
+	        <mx:List id="destlist" height="100" 
+	        	dragEnabled="true" dragMoveEnabled="true" dropEnabled="true"/>
+	    </mx:VBox>
+	
+	</mx:HBox>
+</mx:Application>

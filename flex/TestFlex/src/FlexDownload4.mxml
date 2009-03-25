@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" verticalAlign="middle" backgroundColor="white" creationComplete="init();">
+  
+  <mx:Script>
+    <![CDATA[
+      import flash.net.FileReference;
+      import mx.collections.ArrayCollection;
+
+      [Bindable]
+      [Embed('assets/disk.png')]
+      private var diskIcon:Class;
+      
+      [Bindable]
+//      "http://www.nshen.net/blog/doc/flex/FileReference_download_test/FileReference_download_test.zip";
+
+      
+      private function init():void {
+
+      }
+      
+      private function doEvent(evt:Event):void {
+        var fr:FileReference = evt.currentTarget as FileReference;
+		trace(evt.type + evt.toString());
+      }
+
+      private function downloadSourceCodeZip():void {
+      	var FILE_URL:String = new String("http://shg-d-11-rshi:8080/designer_server/XcelsiusDocServlet?action=save");
+      	var urlReq:URLRequest = new URLRequest(FILE_URL);
+        var fileRef:FileReference = new FileReference();
+        fileRef.addEventListener(Event.CANCEL, doEvent);
+        fileRef.addEventListener(Event.COMPLETE, doEvent);
+        fileRef.addEventListener(Event.OPEN, doEvent);
+        fileRef.addEventListener(Event.SELECT, doEvent);
+        fileRef.addEventListener(HTTPStatusEvent.HTTP_STATUS, doEvent);
+        fileRef.addEventListener(IOErrorEvent.IO_ERROR, doEvent);
+        fileRef.addEventListener(ProgressEvent.PROGRESS, doEvent);
+        fileRef.addEventListener(SecurityErrorEvent.SECURITY_ERROR, doEvent);
+        fileRef.download(urlReq);
+      }
+      
+    ]]>
+  </mx:Script>
+  
+  <mx:Button id="downloadBtn" label="Download example source code" icon="{diskIcon}" click="downloadSourceCodeZip()" toolTip="download" height="40" />
+
+</mx:Application>

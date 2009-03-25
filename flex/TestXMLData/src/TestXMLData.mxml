@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	 			xmlns:ugv="com.businessobjects.flex.component.*"
+			    layout="absolute"
+				creationComplete="init(event)">
+
+	<mx:Script>
+	<![CDATA[
+		import mx.core.ByteArrayAsset;
+
+	    [Embed("data.xml", mimeType="application/octet-stream")]
+      	private static const Data:Class;
+
+      	public function init(event:Event):void
+      	{
+        	var ba:ByteArrayAsset = ByteArrayAsset( new Data() );
+         	var xml:XML = new XML( ba.readUTFBytes( ba.length ) );
+			controller.register(chart);
+         	controller.data = xml;
+		}
+
+	]]>
+	</mx:Script>
+
+    <ugv:Controller id="controller" remoteEventHandler="default"/>
+	<ugv:GraphViewer id="chart" width="100%" height="100%">
+        <ugv:tooltips>
+        	<ugv:Tooltip enabled="true" backgroundColor="#FFFFFF" backgroundAlpha="0.8"/>
+    	</ugv:tooltips>
+	</ugv:GraphViewer>
+</mx:Application>
+

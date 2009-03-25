@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:ns1="com.businessobjects.flex.component.*" xmlns:ns2="com.businessobjects.flex.*">
+	<mx:Canvas x="121" y="181" width="520" height="292">
+		<ns1:Tooltip x="81" y="49" width="0">
+		</ns1:Tooltip>
+		<ns1:LegendViewer x="81" y="120" width="88" height="61">
+		</ns1:LegendViewer>
+		<ns1:Controller x="129" y="35"/>
+		<ns2:KeyRenderer x="296" y="97">
+		</ns2:KeyRenderer>
+		<ns1:TableViewer x="191" y="226"/>
+		<ns1:Tooltip x="81" y="252">
+		</ns1:Tooltip>
+	</mx:Canvas>
+
+	
+</mx:Application>

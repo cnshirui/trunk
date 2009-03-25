@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:controls="com.asfusion.controls.*"
+	 horizontalCenter="0" top="30">
+	
+	<mx:HTTPService id="xmlService" result="xmlReceived(event)" method="post" resultFormat="e4x" />
+	
+	<mx:Script>
+		<![CDATA[
+
+			import mx.rpc.events.ResultEvent;
+			import com.asfusion.controls.PhotoshowImage;
+			
+			private var _xmlFile:String;
+			
+			public function set xmlfile(value:String):void {
+				_xmlFile = value;
+				//make http request.
+				getXML();
+				
+			}
+			
+			private function getXML():void{
+				xmlService.url=_xmlFile;
+				xmlService.send();
+			}
+			
+			//function that gets called when the xml file arrives and needs to be parsed. 
+			private function xmlReceived(result:ResultEvent):void{
+				xmlSource = XML(result.result);
+			}
+			
+			//public setter for xmlSource. Typically called by xmlReceived when the xml file
+			// has been loaded, but it can be used to set the xml directly
+			public function set xmlSource(xml:XML):void{
+				var index:int = 0;
+				var pictures:Array = new Array();
+				
+				for each( var image:XML in xml..image ) {
+					pictures[index] = new PhotoshowImage();
+					pictures[index].name = image.itemName;
+					pictures[index].caption = image.itemCaption;
+					pictures[index].width = image.itemWidth;
+					pictures[index].height = image.itemHeight;
+					index++;
+					
+				}
+				photoshowContainer.dataProvider = pictures;
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<controls:Photoshow  id="photoshowContainer" />
+</mx:Canvas>

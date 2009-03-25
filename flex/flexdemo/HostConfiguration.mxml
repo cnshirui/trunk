@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Configure Host server Url" layout="absolute" width="250" height="140" horizontalAlign="center" verticalAlign="bottom" x="50" y="50">
+<mx:Script>
+	<![CDATA[
+	import mx.managers.PopUpManager;
+	import mx.core.Application;
+   	import commands.CommandProcessor;
+
+		public var host:String;
+		public var caller:CommandProcessor;
+		
+		private function setHost():void
+		{
+			host = hostNameInput.text;
+			PopUpManager.removePopUp(this);
+			caller.retry(host);
+		}
+		
+	]]>
+</mx:Script>
+	<mx:Button x="82" y="62" label="Ok" click="setHost()"/>
+	<mx:ComboBox id="hostNameInput" x="10" y="10" width="210" editable="true" enter="setHost()">
+		<mx:ArrayCollection>
+			<mx:String>http://localhost:8080/ugvServices/</mx:String>
+			<mx:String>http://localhost:12172/ugvServices/</mx:String>
+		</mx:ArrayCollection>
+	</mx:ComboBox>	
+</mx:TitleWindow>
