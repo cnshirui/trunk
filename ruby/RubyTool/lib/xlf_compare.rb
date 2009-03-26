@@ -3,9 +3,9 @@ import 'java.lang.System'
 import 'java.io.FileWriter'
 JFile = java.io.File
 
-require 'jzip'
-require 'jxml'
 require 'fileutils.rb'
+require 'libs/jzip'
+require 'libs/jxml'
 
 require 'libs/dom4j-1.6.1'
 require 'libs/jaxen-1.1-beta-6'
@@ -30,13 +30,13 @@ time = Time.now.to_i.to_s
 xmls = []
 2.times do |i|
   # unzip xlf
-  xmls[i] = "data/#{time}.#{i}.xml"
+  xmls[i] = "temp/#{time}.#{i}.xml"
   JZip::ZipFile.open($*[i]) do |zipfile|
     zipfile.extract('document.xml', xmls[i])
   end
   sleep(1)
 
-  temp = "data/#{time}.tmp"
+  temp = "temp/#{time}.tmp"
   # format xml with jxml format
   doc = JXML::Document.new(File.new(xmls[i]).read)
   File.open(temp, "w+") do |file|
