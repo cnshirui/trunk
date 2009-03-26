@@ -1,0 +1,242 @@
+	
+A	10
+B	20
+C	30
+
+
+shutdown -r –m \\shg-d-01-rshi -t 30
+
+git 
+ssh-keygen -t rsa
+
+depot2_x6_setup_notes
+
+1. cd X6/COR/Xcelsius/Flash, run set_env_x6.bat, then ant to complie flex projects
+2. copy X6/COR/Build, then compile cpp projects with vs 2005
+
+320623198411095437
+Bo123456
+http://218.242.131.164/reg_step7read.asp
+aurora overtime
+aurora marriage gift
+aurora sleepy
+
+Sheet1!$B$1
+Sheet1!$A$1:$B$5
+Sheet1!$B$1:$B$2
+
+该应用可以帮助使用者在校内上寻找好友，双击一个人可以看到他更多的好友，右击“GoTo Profile Page"可以去他主页看看，顺便加他为好友哦！
+
+
+http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/campus_roamer.xml
+
+Flex Localization
+
+
+
+http://shirui.dreamhosters.com/user/1/edit
+shiruide@gmail.com 67
+
+Your wordpress
+Domain: blog.shirui.dreamhosters.com
+Administrator Page: blog.shirui.dreamhosters.com/wp-admin
+Username: admin
+Password: cf4b5f
+
+Your phpbb
+Domain: forum.shirui.dreamhosters.com
+Administrator Page: forum.shirui.dreamhosters.com and login with the information below.  Click the "administration control panel" link on the bottom of every page and then login more time and you will be good to go!
+Username: admin
+Password: 55608e
+
+Your zenphoto
+Domain: photos.shirui.dreamhosters.com
+Administrator Page: photos.shirui.dreamhosters.com/admin
+Username: admin
+Password: 048cfa
+
+Your drupal
+Domain: shirui.dreamhosters.com
+Administrator Page: shirui.dreamhosters.com and login with the information below
+
+
+create database 1stlog DEFAULT CHARACTER SET utf8;
+
+FCZC#ID 10658008927
+331#1	10658008927
+4006125880
+409378 wujuan@umpay
+
+
+Double-click an Person to see his/her friends
+Right-click to navigate his/her profile page
+zoom in/out thumbnail size
+modify distance between people
+go to Profile Page
+
+用于浏览好友网络，发现更多好友！
+
+程序说明：
+校园漫步的构思来自于大学校园，运用Flex技术让使用者在交友网上看到自己的朋友，朋友的朋友，让自己能够认识到更多的朋友。初始化时会出现当前使用者和他/她的好友，点击其中一个好友，就会出现好友的好友，右击可以浏览去主页，然后看到更详细的信息，当然了，觉得有缘的话，可以点击主页上的”加为好友“，加这个人为好友了。
+
+校园漫步的构思来自于大学校园，校内网就像是大学校园，我们可以漫步在校园里，找到自己的好友。运用Adode Flex/Flash技术让使用者在交友网上看到自己的朋友，朋友的朋友，让自己能够认识到更多的朋友。初始化时会出现当前使用者和他/她的好友，点击其中一个好友，就会出现好友的好友，右击"去主页看看"，可以浏览其个人主页。也可以到陌生的朋友主页上看到更详细的信息，当然了，觉得有缘的话，可以点击主页上的”加为好友“，加这个人为好友了。我们可以在这个工具里双击许多人的头像，然后拖拽，可以放大缩小头像的大小，也可以调整每个人之间的距离，移动所有人的位置，就像Google地图一样。欢迎使用，谢谢大家的支持！
+
+
+http://cn.5944.net/user_index.asp
+cnshirui 67
+9817.vrvr.net:9817@67
+valid until 4.12
+
+http://www.kudns.com/register_setp2.html
+
+http://www.web335.cn/free/error.asp?id=1111
+cnshirui 67
+web93131016 67
+http://web93131016.w1.web335.net.cn
+valid until 2009-06-13.
+
+http://www.9929.net/user_index.asp
+cnshirui 67
+ftp://1622.900y.net:1622@777777
+http://shirui.900y.net/
+
+http://www.mianfeizhuji.cn/
+
+https://panel.dreamhostapps.com/manage
+shiruide@gmail.com 67
+http://shirui.dreamhosters.com/user/1/edit
+cnshirui@dh
+
+shirui:@xinme
+http://shirui.web.xinme.com/
+fofu2u
+
+
+cnshirui.cn.vc
+cnshirui 67 rshi.appspot.com
+
+https://www.changeip.com
+blog.cnshirui.dns-stuff.com
+shirui.changeip.net
+cnshirui 67
+
+
+
+1. install python 2.5.2, google_appengine
+2. config app.yaml
+3. edit helloworld.py
+4. run: dev_appserver.py helloworld/
+5. upload: appcfg.py update helloworld/
+
+
+dev_appserver.py --datastore_path="." helloworld/
+dev_appserver.py --clear_datastore/-c helloworld/
+
+madapple.sap@gmail.com
+madapplesep i052130
+forge: id/madapple
+MadApple@SAP
+SEP: SAP Expert Pool
+
+-- Django
+1. python setup.py install
+2. django-admin.py startproject appproject
+3. create main.py and app.yaml
+4. python manage.py startapp myapp
+
+
+-- AppEngine with Eclipse
+1. install PyDev in Eclipse: http://pydev.sourceforge.net/updates/
+2. install python, config python interpreter in eclipse
+3. import appengine project, set python-path in project properties:
+   - google_appengine
+   - google_appengine\lib\django
+   - google_appengine\lib\webob
+   - google_appengine\lib\yaml\lib
+4. config run dialog
+   - main module - d:\dev\google_appengine\dev_appsserver.py
+   - args: ${project_loc} --port=9999
+
+
+Username: admin
+Password: e5b239
+
+Your mediawiki
+Domain: wiki.shirui.dreamhosters.com
+Administrator Page: wiki.shirui.dreamhosters.com (every page can be edited.  Use the Dreamhost Apps panel to change the logo or language)
+Username: admin
+Password: 4c752f
+
+
+http://github.com/shirui/shirui/tree/master
+.gems
+rails --version 2.2.2
+
+No such file or directory - /disk1/home/slugs/6226_9b54112_92b9/mnt/tmp/cache
+
+http://shirui.googlecode.com/svn/
+
+roamer.heroku.com
+/list/50836
+http://roamer.heroku.com/favorites/list/50836
+
+Unhandled securityError:. text=Error #2048: Security sandbox violation
+
+http://web93131016.w1.web335.net.cn/campus_roamer/campus_roamer.xml
+
+http://www.tianya.cn/index.htm?vitem=http%3A%2F%2Fsandbox.tianya.cn%3A80%2Fsandbox%2Fpreview.jsp%3FappId%3D1235824543530
+
+
+svn checkout http://shirui.googlecode.com/svn/trunk/flex/CampusRoamer CampusRoamer-read-only
+
+
+steps:
+now let me demo this application.
+1. launch
+   - tool
+   - 4000 / 52
+2. double click EM, Drap and Drop
+3. Next Page, Next Page
+4. FY, Back page
+3. double click WNN
+4. 
+
+
+
+http://1622.900y.net/
+http://huishen.changeip.net/
+上海汇深环保仪器公司
+
+
+
+-	user’s scenario
+At the beginning, the application will show you and your friends. Of cource, the canvas cannot show all of them. It shows only 10 friends by order of name.
+You can adjust the size of friends’ thumbnail to be clear.
+You can modify the distance between friends in case of the overlap.
+You can click the central thumbnail to drag and drop.
+If you drag a thumbnail, 
+If you  their friends’ simultaneously to the suitable location of the page.
+If the friend whom you want to find out is not in the 10 friends,you can click the next ,and it will show the other 10 friends.
+It show friend A whom you want to give special attention,you can Add friend A to the Favorites.
+Open the Favorites folder and you can right-click friend A to his page.
+Go back to application page and see Friend B whom you want to know, right-click to open his page 
+Come back to application page, double-click Friends B and see 10 friens of B
+It show friend C whom you want to make friends with ,and you can right-click to his page and add him as a friend.
+
+
+
+quickly find friends A to favorites add to the next can be opened directly into the Favorites page A Friend 
+Find a friend B, and B to enter the Friends of the page 
+Find a friend C, and C for the friends add friends 
+1. Open the page: http://apps.xiaonei.com/campus_roamer 
+2. Adjust the size of friends head to feel the size of clear 
+3. Adjust the distance between friends head to an appropriate distance 
+4. Left free to blow their heads and drag their friends head to head page suitable location 
+5. Shows that none of their friends want to pay special attention to the friends A, according to the next page, shows that another 10 Friends 
+6. To see friends A, think of him often concerned about the information, will be friend A Save to Favorites 
+7. Open the Favorites folder can click to enter the Friends A page 
+8. Back to program page, see Friend B, want to know her information, right-click to open the Friends page 
+9. Back to program page, double-click Friends B, see B, 10 Friends 
+10. At Friend B did not see the friends add friends for their own C, can right-click C, enter C pages, add him as a friend
+
+

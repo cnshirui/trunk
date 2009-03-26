@@ -9,70 +9,71 @@
 - xiaonei 我的团长, embed youtube
 - ssh, https, rsa, dsa, sha1 relationship
 - hangzhou, xiamen, flight 99-199
-
 - huge data: xiaonei <-> heroku
 - use osde, flashapi-sdk
 
+-- Recent
+1. boost, php, xcelsius, shanghai on rails, firefox add-ons
+2. win2003, kubuntu
+3. 
 
-git 
-ssh-keygen -t rsa
+-- Remind
+1. basketball, english, algorithm, car
 
-depot2_x6_setup_notes
+-- C++
+BBS Summary, C++0x, Boost, tr1, tr2, Template meta programming
 
-1. cd X6/COR/Xcelsius/Flash, run set_env_x6.bat, then ant to complie flex projects
-2. copy X6/COR/Build, then compile cpp projects with vs 2005
+--flex
+flex design, flex style 3rd, mac, manual, skin, 3d spring graph
 
+--rails
+rails 2.1.1, localization
+
+--programming
+captcha
+ajax search text-field
+fetion programming
+english oral lessons
+picture search, rails ticket system, 
+
+-- Others
+XML-XSLT, Linux Programming, Qt Library, 
+typedef char *String, 数据库范式，RAID，java interface, 
+CDT, SHA1(计算机密码学-卢开澄),cygwin download,
+HASH-Structure, Regular Expression History,
+P64 python,ruby,blank
+
+-- Books
+Thinking in C++/Java, CLRS, TAOCP, TCPL
+programming peals, cc2,
+AI: move number, five chess,
+design pattern, Effective C++, Code Complete
+
+-- Questions
+OSI，TCP/IP, J2ME/MIDP/CLDC
+shift key reason
+波兰 逆波兰, 怎么处理析构函数异常，设计模式整理，C实现面向对象，
+English Speaking: experience in usa, ge healthcare, talk about your mother school, experience as cpp board manager
+移动窗口	死锁和饥饿，
+JSP多线程	操作系统页面置换算法
+搜索：VPN、单元测试、单射双满
+Alssendro Q：被侵略后，投降or牺牲 国家机密or钱
+
+--home
+mobile lottry
+sister birthday, uncle jellyfish, 
+cao-quan mather, shi-jianjun son,
+
+-- Mail
+www.nju.org.cn
+TEL：025-83686123
+联系人：胡佩农
+Email：guanliyuan@nju.org.cn 
+
+健康
 320623198411095437
-Bo123456
-http://218.242.131.164/reg_step7read.asp
-aurora overtime
-aurora marriage gift
-aurora sleepy
-
-Sheet1!$B$1
-Sheet1!$A$1:$B$5
-Sheet1!$B$1:$B$2
-
-该应用可以帮助使用者在校内上寻找好友，双击一个人可以看到他更多的好友，右击“GoTo Profile Page"可以去他主页看看，顺便加他为好友哦！
-
-
-http://shirui.googlecode.com/svn/trunk/opensocial/campus_roamer/campus_roamer.xml
-
-Flex Localization
-
-
-
-http://shirui.dreamhosters.com/user/1/edit
-shiruide@gmail.com 67
-
-Your wordpress
-Domain: blog.shirui.dreamhosters.com
-Administrator Page: blog.shirui.dreamhosters.com/wp-admin
-Username: admin
-Password: cf4b5f
-
-Your phpbb
-Domain: forum.shirui.dreamhosters.com
-Administrator Page: forum.shirui.dreamhosters.com and login with the information below.  Click the "administration control panel" link on the bottom of every page and then login more time and you will be good to go!
-Username: admin
-Password: 55608e
-
-Your zenphoto
-Domain: photos.shirui.dreamhosters.com
-Administrator Page: photos.shirui.dreamhosters.com/admin
-Username: admin
-Password: 048cfa
-
-Your drupal
-Domain: shirui.dreamhosters.com
-Administrator Page: shirui.dreamhosters.com and login with the information below
-Username: admin
-Password: e5b239
-
-Your mediawiki
-Domain: wiki.shirui.dreamhosters.com
-Administrator Page: wiki.shirui.dreamhosters.com (every page can be edited.  Use the Dreamhost Apps panel to change the logo or language)
-Username: admin
-Password: 4c752f
-
-
+国家六级
+国家二级
+15900929332
+wuj_424@126.com
+上海市浦东新区牡丹路145弄32号401室
