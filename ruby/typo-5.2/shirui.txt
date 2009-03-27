@@ -1,3 +1,5 @@
+git push master\notes.txt git@heroku.com:myblog.git master
+
 git push git@heroku.com:myblog.git master
 
 git clone git@heroku.com:wujuan.git
