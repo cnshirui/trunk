@@ -1,5 +1,0 @@
-gem install scaffolding_extensions
-ruby script\generate scaffold User uid:string, name:string, image_url:string
-ruby script\generate scaffold Favorite host_uid:string, guest_uid:string
-url = "http://localhost:3000/favorites/list/50836"	
-
