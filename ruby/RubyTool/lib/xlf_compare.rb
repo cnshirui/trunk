@@ -6,9 +6,9 @@ JFile = java.io.File
 require 'fileutils.rb'
 require 'libs/jzip'
 require 'libs/jxml'
-
 require 'libs/dom4j-1.6.1'
 require 'libs/jaxen-1.1-beta-6'
+
 import 'org.dom4j.Document'
 import 'org.dom4j.DocumentHelper'
 import 'org.dom4j.Element'
@@ -16,22 +16,24 @@ import 'org.dom4j.io.XMLWriter'
 import 'org.dom4j.io.OutputFormat'
 import 'org.dom4j.io.SAXReader'
 
-
 compare_tool = "C:/Program Files/Beyond Compare 3/BCompare.exe"
 
 argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
+  files = ['gauge_x5.xlf', 'gauge_x6.xlf']
   puts "please choose the original xlf file in command line!"
 end
+
+files = $* unless files
 
 time = Time.now.to_i.to_s
 xmls = []
 2.times do |i|
   # unzip xlf
   xmls[i] = "temp/#{time}.#{i}.xml"
-  JZip::ZipFile.open($*[i]) do |zipfile|
+  JZip::ZipFile.open(files[i]) do |zipfile|
     zipfile.extract('document.xml', xmls[i])
   end
   sleep(1)
