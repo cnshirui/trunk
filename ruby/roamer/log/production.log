@@ -3,3 +3,59 @@
 Processing FavoritesController#list (for 127.0.0.1 at 2009-03-22 21:53:25) [GET]
   Parameters: {"id"=>"50836"}
 Completed in 292ms (View: 1, DB: 10) | 200 OK [http://localhost/favorites/list/50836]
+
+
+Processing FavoritesController#index (for 127.0.0.1 at 2009-03-28 03:11:18) [GET]
+Rendering template within layouts/favorites
+Rendering favorites/index
+Completed in 2751ms (View: 2742, DB: 6) | 200 OK [http://shirui/favorites]
+
+
+Processing FavoritesController#index (for 127.0.0.1 at 2009-03-28 10:16:58) [GET]
+Rendering template within layouts/favorites
+Rendering favorites/index
+Completed in 15ms (View: 11, DB: 2) | 200 OK [http://shirui/favorites]
+
+
+Processing FavoritesController#index (for 127.0.0.1 at 2009-03-28 16:39:50) [GET]
+Rendering template within layouts/favorites
+Rendering favorites/index
+Completed in 2952ms (View: 2925, DB: 25) | 200 OK [http://127.0.0.1/favorites]
+
+
+Processing FavoritesController#list (for 127.0.0.1 at 2009-03-28 16:40:13) [GET]
+  Parameters: {"id"=>"50836"}
+Completed in 543ms (View: 1, DB: 26) | 200 OK [http://127.0.0.1/favorites/list/50836]
+
+
+Processing FavoritesController#create (for 127.0.0.1 at 2009-03-28 16:40:41) [POST]
+  Parameters: {"favorite"=>{"guest_name"=>"李伟", "host_uid"=>"50836", "guest_image_url"=>"http://hdn411.xnimg.cn/photos/hdn411/20090306/18/50/tiny_fVIL_4876l204235.jpg", "guest_uid"=>"49786815"}}
+Redirected to http://127.0.0.1:3000/favorites/20
+Completed in 169ms (DB: 67) | 302 Found [http://127.0.0.1/favorites/create]
+
+
+Processing FavoritesController#list (for 127.0.0.1 at 2009-03-28 16:40:41) [GET]
+  Parameters: {"id"=>"50836"}
+Completed in 56ms (View: 1, DB: 20) | 200 OK [http://127.0.0.1/favorites/list/50836]
+
+
+Processing FavoritesController#show (for 127.0.0.1 at 2009-03-28 16:40:41) [GET]
+  Parameters: {"id"=>"20"}
+Rendering template within layouts/favorites
+Rendering favorites/show
+Completed in 9ms (View: 6, DB: 0) | 200 OK [http://127.0.0.1/favorites/20]
+
+
+Processing FavoritesController#list (for 127.0.0.1 at 2009-03-28 16:40:51) [GET]
+  Parameters: {"id"=>"50836"}
+Completed in 17ms (View: 1, DB: 4) | 200 OK [http://127.0.0.1/favorites/list/50836]
+
+
+Processing FavoritesController#list (for 127.0.0.1 at 2009-03-28 16:42:11) [GET]
+  Parameters: {"id"=>"50836"}
+Completed in 20ms (View: 2, DB: 2) | 200 OK [http://127.0.0.1/favorites/list/50836]
+
+
+Processing FavoritesController#list (for 127.0.0.1 at 2009-03-28 16:42:54) [GET]
+  Parameters: {"id"=>"50836"}
+Completed in 16ms (View: 1, DB: 2) | 200 OK [http://127.0.0.1/favorites/list/50836]
