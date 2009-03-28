@@ -9,7 +9,7 @@
   <![CDATA[
 
 <script src="http://roamer.heroku.com/os/090328/opensocial-flashsdk.js" type="text/javascript"></script>
-<script src="http://roamer.heroku.com/os/090328/campus_roamer.js?2" type="text/javascript"></script>
+<script src="http://roamer.heroku.com/os/090328/canvas.js?2" type="text/javascript"></script>
 
 <div id='flash_container'></div>
 
