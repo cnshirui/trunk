@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Movable Type 4.21-en" />
+    
+    <link rel="stylesheet" href="http://www.dbanotes.net/styles.css" type="text/css" />
+
+
+    <title>
+
+    Ratproxy -- Google 的 XSS 检测工具 - DBA notes
+
+    </title>
+
+
+
+
+    <link rel="prev" href="http://www.dbanotes.net/web/jiffy.html" title="Jiffy -- 端到端的 Web 性能评测框架" />
+    <link rel="next" href="http://www.dbanotes.net/review/python.html" title="《Python源码剖析》推荐序" />
+
+
+    
+    <script type="text/javascript" src="http://www.dbanotes.net/mt.js"></script>
+
+
+</head>
+<body class="mt-archive-listing mt-entry-archive layout-wtt" onload="individualArchivesOnLoad(commenter_name)">
+    <div id="container">
+        <div id="container-inner">
+            <div id="header">
+                <div id="header-inner">
+                    <div id="header-content">
+
+                        <div id="header-name"><a href="http://www.dbanotes.net/" accesskey="1">DBA notes</a></div>
+                        <h2 id="header-description"> <ul id="nav" >
+        <li><a href="http://www.dbanotes.net/">Weblog</a></li>
+                 <li><a href="http://wiki.dbanotes.net" title="Oracle database Wiki, by Fenng">Wiki</a></li>
+<li><a href="http://www.dbanotes.net/del.icio.us.php" title="My deo.icio.us bookmarks, Local ">LinkLog</a></li>
+                 <li><a href="http://www.openrss.net/" title="Read rss online">OpenRSS</a></li>
+<li><a href="http://search.dbanotes.net" title="Search Oracle / Apache / PHP / Unix / MySQL Documentation ">Search</a></li>
+                                  <li><a href="http://www.dbanotes.net/archives.html" "Articles archive">Articles</a></li>
+                 <li><a href="http://www.dbanotes.net/siteinfo.html" title="About Fenng">About</a></li>
+               </ul></h2>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                <div id="content-inner">
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+<div id="entry-1464" class="entry-asset asset">
+    <div class="asset-header">
+        <h1 class="asset-name"><a href="http://www.dbanotes.net/security/ratproxy_google_xss.html">Ratproxy -- Google 的 XSS 检测工具</a></h1>
+        <div class="asset-copyright"><span class="byline">
+
+        作者: <strong><a href="http://www.dbanotes.net/">Fenng</a></strong> <span class="separator">|</span> 可以转载, 转载时务必以超链接形式标明文章原始出处和作者信息及<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/">版权声明</a><br />
+
+</span>
+网址: <a class="permalink" href="http://www.dbanotes.net/security/ratproxy_google_xss.html">http://www.dbanotes.net/security/ratproxy_google_xss.html</a> </div>
+        
+    </div>
+    <div class="asset-content">
+
+        <div class="asset-body">
+            <p>跨站脚本攻击(XSS, Cross Site Scripting) 可能是目前所有网站都比较头疼的问题，Google 也不例外。这次 Google 又做了一次雷锋，把内部用来审计 XSS 的工具开源了：<a href="http://code.google.com/p/ratproxy/">ratproxy</a>。</p>
+
+<p><span class="mt-enclosure mt-enclosure-image" style="display: inline;"><img alt="Google_ratProxy.png" src="http://www.dbanotes.net/Images/Google_ratProxy.png" width="347" height="209" class="mt-image-right" style="float: center; margin: 0 0 20px 20px;" /></span></p>
+
+<p>Ratproxy 工作流程：</p>
+
+<ul><li>1) 运行脚本后，会在本地启动一个代理服务器，默认端口是 8080 ；</li><li>
+2) 浏览器设置这个地址 (http://localhost:8080)为 代理地址 ；</li><li>
+3) 浏览要测试的 Web 页面，进行实际登录，填写表单等操作(这些动作会被代理服务器捕捉并做点"手脚"发给待检测的页面)，ratproxy 会在后台记录相关的 Log ；</li><li>
+4) 用 ratproxy 提供的工具解析 Log 并输出 <acronym title="HyperText Markup Language">HTML</acronym> 进行分析；</li><li>
+5) 修正比较严重的问题后，跳回到第一步，直到评估通过为止。</li></ul>
+
+<p>在我的 Ubuntu 下测试了一下，需要说一下的是，本地系统需要安装 libssl-dev 与 openssl 。<br />
+<pre>$ sudo apt-get install libssl-dev openssl <br />$ cd ratproxy ;  make </pre></p>
+
+<p>然后就可以提交类似:</p>
+
+<pre>$ ./ratproxy -v . -w foo.log -d foo.com -lfscm </pre>
+
+<p>然后，人肉点击相关的页面进行测试了。这个工具的设计思路还是很值得借鉴的，推荐对安全感兴趣的同学读一下源代码。</p>
+
+<p>ratproxy 的作者是 <a href="http://en.wikipedia.org/wiki/Micha%C5%82_Zalewski">MIchal Zalewski</a>，一个波兰的白帽子黑客。他的<a href="http://lcamtuf.coredump.cx/">个人主页</a>上能找到更多有趣的工具。</p>
+
+<p>--EOF--</p>
+
+<p>另参见另一份<a href="http://isisblogs.poly.edu/2008/07/05/ratproxy-151-tutorial/">试用报告</a></p>
+        </div>
+
+
+
+
+
+    </div>
+    <div class="asset-header">
+        <div class="asset-copyright">这篇 【<a href="http://www.dbanotes.net/security/ratproxy_google_xss.html">Ratproxy -- Google 的 XSS 检测工具</a> 】来自 <a href="http://www.dbanotes.net/">dbanotes.net</a> | <a href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title),'delicious', 'toolbar=no,width=700,height=400'); return false;"><img src="http://www.dbanotes.net/Images/delicious.small.gif" /> del.icio.us </a> | <a href="#" onclick="window.open('http://myweb.cn.yahoo.com/popadd.html?url='+encodeURIComponent(document.location.href)+'&title='+encodeURIComponent(document.title), 'Yahoo','scrollbars=yes,width=780,height=455,left=80,top=80,status=yes,resizable=yes');">雅虎收藏<sup>+</sup></a></div>         
+    </div> 
+    <div class="asset-footer"></div>
+</div>
+<div class="asset-meta">
+    <span class="byline">
+
+        By <a href="http://www.dbanotes.net/">Fenng</a> on July  7, 2008  6:49 PM
+
+    </span>
+    <span class="separator">|</span> <a class="permalink" href="http://www.dbanotes.net/security/ratproxy_google_xss.html">Permalink</a> | <a href="http://www.dbanotes.net/security/ratproxy_google_xss.html#trackback">TrackBacks (0)</a></MTIfPingsActive> | 
+        <span class="entry-category"><a href="http://www.dbanotes.net/security/">Security</a></span>
+     | <a href="http://www.dbanotes.net/MT/mt.cgi?__mode=view&_type=entry&id=1464&blog_id=1">Edit</a>
+</div>
+<br />
+
+
+<div name="ClickComments"><script type="text/javascript" src="http://w.sharethis.com/widget/?tabs=web%2Cpost%2Cemail&amp;charset=utf-8&amp;style=default&amp;publisher=abd89f47-864f-4619-8ecd-501d8d2e9b58"></script><script language="javascript" type="text/javascript" src="http://www.postreach.com/ccengine/display_iframe?perlink=http://www.dbanotes.net/security/ratproxy_google_xss.html&url=http://www.dbanotes.net/"></script></div>
+
+<a href="http://www.tellhowpower.com/">Generator</a> | <a href="http://www.pycfitness.com/Trampoline/trampoline.htm">Trampoline</a> | <a href="http://www.tradehr.com/" title="外贸英才网-外贸人才招聘">外贸英才网</a> | <a href="http://www.chfence.com/">Vinyl fence</a><br />
+<a href="http://www.china-packaging-machines.com/">Vertical Packaging Machine</a> | <a href="http://www.china-digitalthermometer.com/Digital-Blood-Pressure-Monitor-china-35/Digital-Blood-Pressure-Monitor-manufacturers-1.html">Digital Blood Pressure Monitor</a>
+<br />
+<br />
+
+ 
+
+<!-- Google CSE Search Box Begins  -->
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000">
+  <div class="cse-branding-form">
+    <form action="http://www.dbanotes.net/googlesearch.html" id="searchbox_001892328784318285627:y-rksa2fy7i">
+      <input type="hidden" name="cx" value="001892328784318285627:y-rksa2fy7i" />
+      <input type="hidden" name="cof" value="FORID:9" />
+      <input type="text" name="q" size="64" value="Ratproxy -- Google 的 XSS 检测工具" />
+      <input type="submit" name="sa" value="相关文章搜索" />
+    </form>
+  </div>
+  <div class="cse-branding-text">
+    &#33258;&#23450;&#20041;&#25628;&#32034;
+  </div>
+</div>
+<!-- Google CSE Search Box Ends -->
+
+
+
+
+
+<div id="comments" class="comments">
+    
+    
+        
+    <h2 class="comments-header">本文相关评论|Comments(5)</h2>
+    <div class="asset-meta"></div>
+    <div class="comments-content">
+        
+        <div class="comment" id="comment-71106">
+    <div class="inner">
+        <div class="comment-header">
+            <a title="http://avenger.name" href="http://avenger.name" rel="nofollow">avenger.name</a> <a class="commenter-profile" href="http://avenger.name"><img alt="Author Profile Page" src="http://www.dbanotes.net/MT/mt-static/images/comment/openid_logo.png" width="16" height="16" /></a> 的评论:
+        </div>
+        <div class="comment-content">
+            <p>看上去不错。</p>
+        </div>
+        <div class="comment-footer">
+            <a href="#comment-71106" title="Permalink to this comment">July  8, 2008 10:55 AM</a>
+        </div>
+        <div class="asset-meta"></div>
+    </div>
+</div>
+        
+    
+        
+        <div class="comment" id="comment-71107">
+    <div class="inner">
+        <div class="comment-header">
+            <a title="http://avenger.name" href="http://avenger.name" rel="nofollow">avenger.name</a> <a class="commenter-profile" href="http://avenger.name"><img alt="Author Profile Page" src="http://www.dbanotes.net/MT/mt-static/images/comment/openid_logo.png" width="16" height="16" /></a> 的评论:
+        </div>
+        <div class="comment-content">
+            <p>我本地作了一下测试，好像发过去的东西并没有被“做手脚”啊。<br />
+是否需要自己在表单中填写一些非法的信息，这个工具才能捕获得到？</p>
+        </div>
+        <div class="comment-footer">
+            <a href="#comment-71107" title="Permalink to this comment">July  8, 2008 11:00 AM</a>
+        </div>
+        <div class="asset-meta"></div>
+    </div>
+</div>
+        
+    
+        
+        <div class="comment" id="comment-71108">
+    <div class="inner">
+        <div class="comment-header">
+            <a title="http://www.dbanotes.net/" href="http://www.dbanotes.net/">Fenng</a> <a class="commenter-profile" href="http://www.dbanotes.net/"><img alt="Author Profile Page" src="http://www.dbanotes.net/MT/mt-static/images/comment/mt_logo.png" width="16" height="16" /></a> 的评论:
+        </div>
+        <div class="comment-content">
+            <p>结果出来，你看那个报告的内容</p>
+        </div>
+        <div class="comment-footer">
+            <a href="#comment-71108" title="Permalink to this comment">July  8, 2008 11:11 AM</a>
+        </div>
+        <div class="asset-meta"></div>
+    </div>
+</div>
+        
+    
+        
+        <div class="comment" id="comment-71109">
+    <div class="inner">
+        <div class="comment-header">
+            <a title="http://www.laoxiong.cn" href="http://www.laoxiong.cn" rel="nofollow">老熊</a>  的评论:
+        </div>
+        <div class="comment-content">
+            <p>呵呵，正要下来试试看呢，你这教程都出来了，谢了~~~</p>
+        </div>
+        <div class="comment-footer">
+            <a href="#comment-71109" title="Permalink to this comment">July  8, 2008  3:22 PM</a>
+        </div>
+        <div class="asset-meta"></div>
+    </div>
+</div>
+        
+    
+        
+        <div class="comment" id="comment-71111">
+    <div class="inner">
+        <div class="comment-header">
+            Anonymous  的评论:
+        </div>
+        <div class="comment-content">
+            <p>請問大大可以教我如何運行<br />
+這個軟體嗎<br />
+我下載了<br />
+要如何執行<br />
+謝謝<br />
+mail:leon8303@hotmail.com<br />
+可以mail給我</p>
+        </div>
+        <div class="comment-footer">
+            <a href="#comment-71111" title="Permalink to this comment">July  8, 2008  6:48 PM</a>
+        </div>
+        <div class="asset-meta"></div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+    
+    <div class="comments-open" id="comments-open">
+    <h2 class="comments-open-header">添加评论</h2>
+    <div class="comments-open-content">
+    
+            <div id="comment-form-external-auth">
+                <script type="text/javascript">
+                <!--
+                
+                writeCommenterGreeting(commenter_name, 1464, 1, commenter_id, commenter_url);
+                //-->
+                </script>
+            </div>
+    
+        <form method="post" action="http://www.dbanotes.net/MT/mt-comments.cgi" name="comments_form" id="comments-form" onsubmit="if (this.bakecookie.checked) rememberMe(this)">
+            <input type="hidden" name="static" value="1" />
+            <input type="hidden" name="entry_id" value="1464" />
+            <input type="hidden" name="__lang" value="en" />
+            <div id="comments-open-data">
+                <div id="comment-form-name">
+                    <label for="comment-author">姓名</label>
+                    <input id="comment-author" name="author" size="30" value="" />
+                </div>
+                <div id="comment-form-email">
+                    <label for="comment-email">邮件</label>
+                    <input id="comment-email" name="email" size="30" value="" />
+                </div>
+                <div id="comment-form-url">
+                    <label for="comment-url">网址</label>
+                    <input id="comment-url" name="url" size="30" value="" />
+                </div>
+                <div id="comment-form-remember-me">
+                    <label for="comment-bake-cookie"><input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="if (!this.checked) forgetMe(document.comments_form)" value="1" />
+                        记住个人信息?</label>
+                </div>
+            </div>
+            <div id="comments-open-text">
+                <label for="comment-text">内容 (You may use HTML tags for style)</label>
+                <textarea id="comment-text" name="text" rows="15" cols="50"></textarea>
+            </div>
+            
+            
+            <div id="comments-open-captcha">
+            </div>
+            
+            <div id="comments-open-footer">
+                <input type="submit" accesskey="v" name="preview" id="comment-preview" value="预览看看" />
+                <input type="submit" accesskey="s" name="post" id="comment-submit" value="确定发送" />
+    
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    
+</div>
+
+
+
+</div>
+                    </div>
+
+    
+            
+                    
+                    <div id="beta">
+    <div id="beta-inner">
+
+        <div class="widget-welcome widget">
+            <h3 class="widget-header">
+    
+                关于这篇文章
+    
+    
+            </h3>
+            <div class="widget-content">
+    
+    
+                <p class="first">这篇文章由 <a href="http://www.dbanotes.net/">Fenng</a> 于 July  7, 2008  6:49 PM 发布</p>
+        
+                <p>上一篇：<a href="http://www.dbanotes.net/web/jiffy.html">Jiffy -- 端到端的 Web 性能评测框架</a></p>
+        
+        
+                <p>下一篇：<a href="http://www.dbanotes.net/review/python.html">《Python源码剖析》推荐序</a></p>
+        
+    
+
+
+    
+    
+    
+
+    
+
+<p>回到<a
+href="http://www.dbanotes.net/">首页</a>查看最近的文章或者是查看所有<a
+href="http://www.dbanotes.net/archives.html">归档文章</a></p>
+
+
+
+    
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="widget-syndicate widget"> <div
+class="widget-content"> <a href="http://www.dbanotes.net/atom.xml"><img src="http://www.dbanotes.net/feed.gif"
+height="26" width="88" style="border:0" alt="DBA notes 的订阅数量,点击则可进行订阅"
+/></a> <br />
+<a href="http://www.dbanotes.net/atom.xml" title="DBA notes" ><img src="http://www.dbanotes.net/feedsky.gif" style="border:0" alt="Feed 订阅数量，点击即可订阅最新内容" /></a><br />
+</div> </div> </div>
+</div>
+<div id="gamma"> <div id="gamma-inner">
+
+
+
+ <div class="widget-search widget"> <h3
+class="widget-header">搜索本站</h3> <div
+class="widget-content"> <form method="get"
+action="http://www.dbanotes.net/MT/mt-search.cgi"> <input
+type="hidden" name="IncludeBlogs" value="1" />
+<input id="search" name="search" size="18"
+value="" /> <input
+type="submit" value="搜索" /> </form> </div> </div>
+
+
+
+ 
+<ul class="widget-list" type="none"></ul>
+
+
+<div class="widget-search widget">
+<h3 class="widget-header">相关文章</h3>
+<div class="widget-content"> <ul class="widget-list" >
+
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/web/google_deep-web_crawl.html">Google 的 Deep-Web Crawl</a></li>
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/opensource/google_app_engine_perl.html">Google App Engine 有可能支持 Perl</a></li>
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/security/password_hint_design.html">密码提示问题的设计</a></li>
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/security/captcha.html">验证字(CAPTCHA) 的安全问题</a></li>
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/review/desktop_app_migration_to_web.html">桌面工具向 Web 应用的跃迁</a></li>
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/arch/google_mapreduce_amazing.html">Google 的计算能力仍是独步武林</a></li>
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/review/top_data_breaches_event_2007.html">年度回顾:这么多的数据泄漏事件</a></li>
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/review/dba_stealing_recodes.html">DBA 还要人品好?</a></li>
+
+
+
+</ul>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="widget-search widget">
+
+<h3 class="widget-header">相关标签</h3>
+
+<div class="widget-content">
+
+    <ul class="widget-list" > 
+
+    
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/MT/mt-search.cgi?blog_id=1&amp;tag=Security&amp;limit=20&amp;IncludeBlogs=1"
+rel="tag">Security</a></li>
+
+    
+
+<li class="widget-list-item"><a
+href="http://www.dbanotes.net/MT/mt-search.cgi?blog_id=1&amp;tag=XSS&amp;limit=20&amp;IncludeBlogs=1"
+rel="tag">XSS</a></li>
+
+    
+
+    </ul>
+</div>
+
+</ul>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+    </div>
+
+</div>
+
+
+                        
+                
+        
+
+                </div>
+           
+            <div id="footer">
+                <div id="footer-inner">
+                    <div id="footer-content">
+                        <div class="widget-powered widget">
+                            <div class="widget-content">
+                                Powered by <a href="http://www.movabletype.com/">Movable Type</a> | Hosted by <a href="http://www.dreamhost.com/r.cgi?117519">Dreamhost</a> | UI Designed by <a href="http://www.dbanotes.net/">Fenng</a> | 本站理念：用最简约的技术取得最大的收益! 
+                            </div>
+                        </div>
+
+ </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+

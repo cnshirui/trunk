@@ -1,0 +1,19 @@
+Opensocial
+==========
+
+Provides a helper method in the routing to set a number of named routes, to
+access controllers as if they were OpenSocial resources. 
+
+Adds an OpenSocial mime-type.
+
+
+Example
+=======
+
+map.opensocial_people :users do |user|
+  user.opensocial_friends :friends
+  user.opensocial_activities :activities
+end
+
+
+Copyright (c) 2007 New Bamboo, released under the MIT license

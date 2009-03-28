@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 26
+/svn/!svn/ver/12/trunk/doc
+END
+TODO
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/9/trunk/doc/TODO
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/9/trunk/doc/COPYING
+END
+Solaris.README
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/12/trunk/doc/Solaris.README
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/9/trunk/doc/README
+END

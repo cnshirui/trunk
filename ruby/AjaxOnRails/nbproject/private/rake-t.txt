@@ -1,0 +1,5 @@
+(in D:/Workplace/AjaxOnRails)
+Cannot find gem for Rails ~>1.2.3.0:
+    Install the missing gem with 'gem install -v=1.2.3 rails', or
+    change environment.rb to define RAILS_GEM_VERSION with your desired version.
+  

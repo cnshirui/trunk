@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Persist>
+  <array>
+    <property id="0">
+      <object>
+        <property id="name">
+          <string>_wsdlURLItem</string>
+        </property>
+        <property id="value">
+          <string>wsdl_url</string>
+        </property>
+      </object>
+    </property>
+    <property id="1">
+      <object>
+        <property id="name">
+          <string>_method</string>
+        </property>
+        <property id="value">
+          <array>
+            <property id="0">
+              <string>GetDataTable</string>
+            </property>
+          </array>
+        </property>
+      </object>
+    </property>
+    <property id="2">
+      <object>
+        <property id="name">
+          <string>_methodIndex</string>
+        </property>
+        <property id="value">
+          <number>0.000000</number>
+        </property>
+      </object>
+    </property>
+    <property id="3">
+      <object>
+        <property id="name">
+          <string>_mainTab</string>
+        </property>
+        <property id="value">
+          <number>0.000000</number>
+        </property>
+      </object>
+    </property>
+  </array>
+</Persist>

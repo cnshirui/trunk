@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fc="http://www.adobe.com/2006/fc"
+	layout="absolute" creationComplete="startup()" viewSourceURL="srcview/index.html">
+	
+	<!--
+	////////////////////////////////////////////////////////////////////////////////
+	//
+	//  Copyright (C) 2006 Adobe Macromedia Software LLC and its licensors.
+	//  All Rights Reserved. The following is Source Code and is subject to all
+	//  restrictions on such code as contained in the End User License Agreement
+	//  accompanying this product.
+	//
+	////////////////////////////////////////////////////////////////////////////////
+	-->
+	
+	<!-- AmazonBrowser.mxml is the main application file. -->
+	
+	<mx:Style>
+		.text {
+			color: #222222;
+			font-family: Verdana;
+		}
+	</mx:Style>
+
+	<fc:SpringGraph id="s" backgroundColor="#ffffff" 
+		lineColor="#333388" left="0" right="0" top="0" bottom="0"
+		itemRenderer="AmazonItemView" repulsionFactor="{rep.value}">
+	</fc:SpringGraph>
+	
+	<mx:Label x="10" y="10" text="Amazon Roamer" styleName="text" fontSize="15"/>
+	<mx:Text fontSize="9" textAlign="left" styleName="text"
+		htmlText="&lt;a href=&quot;http://mark-shepherd.com&quot;&gt;mark-shepherd.com&lt;/a&gt;" x="10" y="32"/>
+	<mx:HSlider x="9" y="52" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="106"/>
+	<mx:HSlider id="rep" x="121" y="52" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
+	<mx:Label x="10" y="76" text="Double-click an Amazon item to see similar items" fontSize="10" styleName="text" id="help"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.adobe.flex.extras.controls.springgraph.Graph;			
+			[Bindable]
+			public var scaleFactor: Number = 1.0;
+			
+			private var items: Graph;
+
+			private function startup(): void {
+				items = new Graph();
+				addItem("B000IJVETY", "loading...", null).createSimilars();
+			}
+			
+			public function addItem(id: String, name: String, linkTo: AmazonItem): AmazonItem {
+				var newItem: AmazonItem = new AmazonItem(id, name);
+				items.add(newItem);
+				if(linkTo != null)
+					items.link(newItem, linkTo);				
+				s.dataProvider = items;
+				return newItem;
+			}
+		
+			public function createItems(items: XMLList, linkTo: AmazonItem): void {
+				for(var i: int = 0; i < items.length(); i++) {
+					var product: XML = items[i];
+					var ns:Namespace = product.namespace("");
+					var asin: String = product.ns::ASIN;
+					var title: String = product.ns::Title;
+					addItem(asin, title, linkTo);
+				}
+			}
+			
+			private var helpRemoved: Boolean = false;
+			
+			public function gotDoubleClick(): void {
+				help.visible = false;
+			}
+		]]>
+	</mx:Script>
+</mx:Application>

@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>Google 网站安全检测工具Ratproxy在windows环境下的安装 - 这里讨论技术 -  新补天网讨论版  - Powered by Discuz!</title>
+<meta name="keywords" content="" />
+<meta name="description" content=" 新补天网讨论版 相关的新闻：Google发布内部网站安全检查工具RatProxy的源码 
+
+google近期发布了网站漏洞检查工具RatProxy的源代码。
+官方是这样描述的：“Ratproxy is curre ... - Discuz! Board" />
+<meta name="generator" content="Discuz! 6.1.0" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2008 Comsenz Inc." />
+<meta name="MSSmartTagsPreventParsing" content="True" />
+<meta http-equiv="MSThemeCompatible" content="Yes" />
+<link rel="archives" title="新补天网讨论版" href="http://bbs.butian.org/archiver/" />
+	<link rel="stylesheet" type="text/css" href="forumdata/cache/style_1_viewthread.css" />
+	<link rel="stylesheet" type="text/css" href="forumdata/cache/style_1_common.css" />
+<script type="text/javascript">
+	var discuz_uid = 0;var IMGDIR = 'images/default';var attackevasive = '0';var gid = 0;var STYLEID = '1';
+	gid = parseInt('1');var fid = parseInt('2');var tid = parseInt('172');
+</script>
+<script src="include/javascript/common.js" type="text/javascript"></script>
+</head>
+
+<body onkeydown="if(event.keyCode==27) return false;">
+
+	<div id="append_parent"></div><div id="ajaxwaitid"></div>
+	<div class="wrap">
+		<div id="header">
+			<h2><a href="index.php" title="新补天网讨论版"><img src="images/default/logo.gif" alt="新补天网讨论版" border="0" /></a></h2>
+			<div id="ad_headerbanner"><a href="http://www.butian.org" target="_blank"><img src="http://www.butian.org/templets/devimg/banner1.gif" alt="电脑中毒了，快上新补天网找人帮忙！" border="0"></a></div>
+		</div>
+		<div id="menu">
+			<span class="avataonline">
+							<a href="register.php">注册</a>
+				<a href="logging.php?action=login">登录</a>
+						</span>
+					<ul>
+						<li><a href="member.php?action=list">会员</a></li>																		<li id="stats" class="dropmenu" onmouseover="showMenu(this.id)"><a href="stats.php">统计</a></li>							<li><a href="faq.php">帮助</a></li>
+			</ul>
+		</div><style type="text/css">
+.defaultpost { height: auto !important; height:120px; min-height:120px !important; }
+.signatures { height: expression(signature(this)); max-height: 100px; }
+</style>
+
+<script src="include/javascript/viewthread.js" type="text/javascript"></script>
+<script type="text/javascript">zoomstatus = parseInt(1);</script>
+
+<div id="foruminfo">
+	<div id="nav">
+		<div class="userinfolist">
+			<p><a href="index.php">新补天网讨论版</a> &raquo; <a href="forum-2-1.html">这里讨论技术</a> &raquo; Google 网站安全检测工具Ratproxy在windows环境下的安装</p>
+		</div>
+	</div>
+	<div id="headsearch">
+			</div>
+</div>
+
+<div id="ad_text"></div>
+<div class="pages_btns">
+	<div class="threadflow"><a href="redirect.php?fid=2&amp;tid=172&amp;goto=nextoldset"> &lsaquo;&lsaquo; 上一主题</a> | <a href="redirect.php?fid=2&amp;tid=172&amp;goto=nextnewset">下一主题 &rsaquo;&rsaquo;</a></div>
+				<span class="postbtn" id="newspecial" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1"><img src="images/default/newtopic.gif" border="0" alt="发新话题" title="发新话题" /></a></span>
+		<span class="replybtn"><a href="post.php?action=reply&amp;fid=2&amp;tid=172&amp;extra=page%3D1"><img src="images/default/reply.gif" border="0" alt="" /></a></span></div>
+
+	<ul class="popupmenu_popup newspecialmenu" id="newspecial_menu" style="display: none">
+		<li><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1">发新话题</a></li>
+		<li class="poll"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1&amp;special=1">发布投票</a></li>		<li class="trade"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1&amp;special=2">发布商品</a></li>		<li class="reward"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1&amp;special=3">发布悬赏</a></li>		<li class="activity"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1&amp;special=4">发布活动</a></li>		<li class="debate"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1&amp;special=5">发布辩论</a></li>		<li class="video"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1&amp;special=6">发布视频</a></li>			</ul>
+
+<form method="post" name="modactions">
+	<input type="hidden" name="formhash" value="53f67278" />
+	<div class="mainbox viewthread">
+		<span class="headactions">
+				<a href="viewthread.php?action=printable&amp;tid=172" target="_blank" class="notabs">打印</a>
+				</span>
+		<h1>Google 网站安全检测工具Ratproxy在windows环境下的安装		</h1>
+							<table id="pid976" summary="pid976" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="postauthor">
+					 					<cite>											<a href="space-uid-1.html" target="_blank" id="userinfo976" class="dropmenu" onmouseover="showMenu(this.id)">.abu.</a></cite>
+						<p>.abu.</p>													<div class="avatar"><img src="http://uc.butian.org/data/avatar/000/00/00/01_avatar_middle.jpg" onerror="this.onerror=null;this.src='http://uc.butian.org/images/noavatar_middle.gif'"></div>												<p><em>管理员</em></p>
+						<p><img src="images/default/star_level3.gif" alt="Rank: 9" /><img src="images/default/star_level3.gif" alt="Rank: 9" /><img src="images/default/star_level1.gif" alt="Rank: 9" /></p>
+																		
+						<ul>
+													<li class="space"><a href="http://zhishi.butian.org/plugins/ucenter/space.php?uid=1" target="_blank">个人空间</a></li>
+												<li class="pm"><a href="###" onclick="pmwin('open', 'uid=1')">发短消息</a></li>
+						<li class="buddy"><a href="my.php?item=buddylist&amp;newbuddyid=1&amp;buddysubmit=yes" target="_blank" id="ajax_buddy_0" onclick="ajaxmenu(event, this.id, 3000, 0)">加为好友</a></li>
+
+																					<li class="offline">当前离线
+														</li>
+						
+						</ul>
+									</td>
+				<td class="postcontent" >
+					<div class="postinfo">
+						<strong title="复制帖子链接到剪贴板" id="postnum976" onclick="setcopy('http://bbs.butian.org/viewthread.php?tid=172&amp;page=1#pid976', '帖子链接已经复制到剪贴板')">1<sup>#</sup></strong>
+													<em onclick="$('postmessage_976').className='t_bigfont'">大</em>							<em onclick="$('postmessage_976').className='t_msgfont'">中</em>
+							<em onclick="$('postmessage_976').className='t_smallfont'">小</em>												发表于 2008-7-8 23:04&nbsp;																					<a href="viewthread.php?tid=172&amp;page=1&amp;authorid=1" rel="nofollow">只看该作者</a>
+																		</div>
+					<div id="ad_thread2_0"></div>					<div class="postmessage defaultpost">
+																		<div id="ad_thread3_0"></div><div id="ad_thread4_0"></div>
+													<h2>Google 网站安全检测工具Ratproxy在windows环境下的安装</h2>
+						
+						
+																											<div id="postmessage_976" class="t_msgfont">相关的新闻：<a href="http://butian.org/security/internet-observation/20080707/128.html" target="_blank"><font color="#0000ff">Google发布内部网站安全检查工具RatProxy的源码</font></a> <br />
+<br />
+google近期发布了网站漏洞检查工具RatProxy的源代码。<br />
+官方是这样描述的：“<i>Ratproxy</i> is currently believed to support Linux, FreeBSD, MacOS X, and Windows (Cygwin) environments”<br />
+<br />
+明显是支持Windows环境下运行的。<br />
+<br />
+下面简单给大家说明一下如何在windows环境下安装ratproxy<br />
+<br />
+首先下载安装cygwin环境。<br />
+<br />
+这是一个完全在Windows环境中模拟UNIX环境的程序。可以在cygwin的官方网站上下载一个installer，不过下载很慢。<br />
+我把安装文件全部下好打包放在补天FTP里了。大家可以自己去下。<br />
+<br />
+下好后 运行cygwin-installer 选择本地安装，建议空间够大的选择完整安装。不够大的至少手工安装以下3个模块<br />
+1、make<br />
+2、gcc-core<br />
+3、openssl-dev<br />
+<br />
+好了，安装好cygwin<br />
+<br />
+下载ratproxy-1.51.tar.gz，放到目录<br />
+tar -zxvf ratproxy-1.51.tar.gz<br />
+解压缩<br />
+<br />
+不要直接make<br />
+先找到Makefie文件，打开后找到23行<br />
+CFLAGS&nbsp;&nbsp;= -Wall -O3<font color="seagreen"> -Wno-pointer-sign</font> -D_GNU_SOURCE<br />
+删掉绿色标注的 -Wno-pointer-sign 参数<br />
+<br />
+改成<br />
+CFLAGS&nbsp;&nbsp;= -Wall -O3 -D_GNU_SOURCE<br />
+<br />
+保存，进目录 运行 make<br />
+<br />
+就可以了。<br />
+<br />
+$ ./ratproxy&nbsp;&nbsp;--help<br />
+ratproxy version 1.51-beta by &lt;lcamtuf@google.com&gt;<br />
+ratproxy: unknown option -- -<br />
+Usage: ./ratproxy [ -w logfile ] [ -v logdir ] [ -p port ] [ -d domain ] [ -P ho<br />
+st:port ] [ -xtifkgmjscael2XCr ]<br />
+&nbsp; &nbsp;-w logfile&nbsp; &nbsp; - write results to a specified file (default: stdout)<br />
+&nbsp; &nbsp;-v logdir&nbsp; &nbsp;&nbsp;&nbsp;- write HTTP traces to a specified directory (default: none)<br />
+&nbsp; &nbsp;-p port&nbsp; &nbsp;&nbsp; &nbsp; - listen on a custom TCP port (default: 8080)<br />
+&nbsp; &nbsp;-d domain&nbsp; &nbsp;&nbsp;&nbsp;- analyze requests to specified domains only (default: all)<br />
+&nbsp; &nbsp;-P host:port&nbsp;&nbsp;- use upstream proxy for all requests (format host:port)<br />
+&nbsp; &nbsp;-r&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- accept remote connections (default: 127.0.0.1 only)<br />
+&nbsp; &nbsp;-l&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- use response length, not checksum, for identity check<br />
+&nbsp; &nbsp;-2&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- perform two, not one, page identity check<br />
+&nbsp; &nbsp;-e&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- perform pedantic caching headers checks<br />
+&nbsp; &nbsp;-x&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- log all XSS candidates<br />
+&nbsp; &nbsp;-t&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- log all directory traversal candidates<br />
+&nbsp; &nbsp;-i&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- log all PNG files served inline<br />
+&nbsp; &nbsp;-f&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- log all Flash applications for analysis (add -v to decompile)<br />
+&nbsp; &nbsp;-s&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- log all POST requests for analysis<br />
+&nbsp; &nbsp;-c&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- log all cookie setting URLs for analysis<br />
+&nbsp; &nbsp;-g&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- perform XSRF token checks on all GET requests<br />
+&nbsp; &nbsp;-j&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- report on risky Javascript constructions<br />
+&nbsp; &nbsp;-m&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- log all active content referenced across domains<br />
+&nbsp; &nbsp;-X&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- disruptively validate XSRF, XSS protections<br />
+&nbsp; &nbsp;-C&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- try to auto-correct persistent side effects of -X<br />
+&nbsp; &nbsp;-k&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- flag HTTP requests as bad (for HTTPS-only applications)<br />
+&nbsp; &nbsp;-a&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- indiscriminately report all visited URLs<br />
+Example settings suitable for most tests:<br />
+&nbsp;&nbsp;1) Low verbosity&nbsp;&nbsp;: -v &lt;outdir&gt; -w &lt;outfile&gt; -d &lt;domain&gt; -lfscm<br />
+&nbsp;&nbsp;2) High verbosity : -v &lt;outdir&gt; -w &lt;outfile&gt; -d &lt;domain&gt; -lextifscgjm<br />
+&nbsp;&nbsp;3) Active testing : -v &lt;outdir&gt; -w &lt;outfile&gt; -d &lt;domain&gt; -XClfscm<br />
+Multiple -d options are allowed. Consult the documentation for more.</div>
+
+							
+							
+							
+							
+															<div id="post_rate_div_976"></div>
+																</div>
+									<div class="signatures" style="maxHeightIE: 100px;">
+						年轻是一种罪过。他们说我们不成熟。 <br />
+成熟是一个很痛的词，它不一定会得到，却一定会失去。 <br />
+恋爱的时候我们都不懂爱情，懂得爱情后却失去了可以相爱的时光。					</div>
+							</td>
+		</tr>
+		<tr>
+			<td class="postauthor">
+								<div class="popupmenu_popup userinfopanel" id="userinfo976_menu" style="display: none;">
+										<div class="imicons">
+													<a target='_blank' href='http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=mudfr0g@hotmail.com&mkt=zh-cn'><img style='border-style: none;' src='http://messenger.services.live.com/users/mudfr0g@hotmail.com/presenceimage?mkt=zh-cn' width='16' height='16' /></a>
+												<a href="http://wpa.qq.com/msgrd?V=1&amp;Uin=712763&amp;Site=新补天网讨论版&amp;Menu=yes" target="_blank"><img src="images/default/qq.gif" alt="QQ" /></a>																							</div>
+										<dl><dt>UID</dt><dd>1&nbsp;</dd><dt>帖子</dt><dd>240&nbsp;</dd><dt>精华</dt><dd><a href="digest.php?authorid=1">2</a>&nbsp;</dd><dt>积分</dt><dd>191&nbsp;</dd><dt>阅读权限</dt><dd>200&nbsp;</dd><dt>在线时间</dt><dd>102 小时&nbsp;</dd><dt>注册时间</dt><dd>2008-3-3&nbsp;</dd><dt>最后登录</dt><dd>2008-10-30&nbsp;</dd></dl>
+										<p><a href="space-uid-1.html" target="_blank">查看详细资料</a></p>
+														</div>
+							</td>
+			<td class="postcontent">
+				<div class="postactions">
+										<p>
+																																																						<strong onclick="scroll(0,0)" title="顶部">TOP</strong>
+					</p>
+					<div id="ad_thread1_0"></div>				</div>
+			</td>
+		</tr>
+		</table>
+		</div><div id="ad_interthread">		</div>
+	<div class="mainbox viewthread">
+			<table id="pid1011" summary="pid1011" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="postauthor">
+					 					<cite>											<a href="space-uid-93.html" target="_blank" id="userinfo1011" class="dropmenu" onmouseover="showMenu(this.id)">alan</a></cite>
+						<p>北极</p>													<div class="avatar"><img src="http://uc.butian.org/data/avatar/000/00/00/93_avatar_middle.jpg" onerror="this.onerror=null;this.src='http://uc.butian.org/images/noavatar_middle.gif'"></div>												<p><em>新手上路</em></p>
+						<p><img src="images/default/star_level1.gif" alt="Rank: 1" /></p>
+																		
+						<ul>
+													<li class="space"><a href="http://zhishi.butian.org/plugins/ucenter/space.php?uid=93" target="_blank">个人空间</a></li>
+												<li class="pm"><a href="###" onclick="pmwin('open', 'uid=93')">发短消息</a></li>
+						<li class="buddy"><a href="my.php?item=buddylist&amp;newbuddyid=93&amp;buddysubmit=yes" target="_blank" id="ajax_buddy_1" onclick="ajaxmenu(event, this.id, 3000, 0)">加为好友</a></li>
+
+																					<li class="offline">当前离线
+														</li>
+						
+						</ul>
+									</td>
+				<td class="postcontent" >
+					<div class="postinfo">
+						<strong title="复制帖子链接到剪贴板" id="postnum1011" onclick="setcopy('http://bbs.butian.org/viewthread.php?tid=172&amp;page=1#pid1011', '帖子链接已经复制到剪贴板')">2<sup>#</sup></strong>
+													<em onclick="$('postmessage_1011').className='t_bigfont'">大</em>							<em onclick="$('postmessage_1011').className='t_msgfont'">中</em>
+							<em onclick="$('postmessage_1011').className='t_smallfont'">小</em>												发表于 2008-7-11 01:49&nbsp;																					<a href="viewthread.php?tid=172&amp;page=1&amp;authorid=93" rel="nofollow">只看该作者</a>
+																		</div>
+					<div id="ad_thread2_1"></div>					<div class="postmessage defaultpost">
+																		<div id="ad_thread3_1"></div><div id="ad_thread4_1"></div>
+						
+						
+																											<div id="postmessage_1011" class="t_msgfont">mk，明天去公司用.</div>
+
+							
+							
+							
+							
+															<div id="post_rate_div_1011"></div>
+																</div>
+							</td>
+		</tr>
+		<tr>
+			<td class="postauthor">
+								<div class="popupmenu_popup userinfopanel" id="userinfo1011_menu" style="display: none;">
+										<div class="imicons">
+													<a target='_blank' href='http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=sgicer@163.com&mkt=zh-cn'><img style='border-style: none;' src='http://messenger.services.live.com/users/sgicer@163.com/presenceimage?mkt=zh-cn' width='16' height='16' /></a>
+																																			</div>
+										<dl><dt>UID</dt><dd>93&nbsp;</dd><dt>帖子</dt><dd>9&nbsp;</dd><dt>精华</dt><dd><a href="digest.php?authorid=93">0</a>&nbsp;</dd><dt>积分</dt><dd>5&nbsp;</dd><dt>阅读权限</dt><dd>10&nbsp;</dd><dt>在线时间</dt><dd>7 小时&nbsp;</dd><dt>注册时间</dt><dd>2008-3-24&nbsp;</dd><dt>最后登录</dt><dd>2008-10-30&nbsp;</dd></dl>
+										<p><a href="space-uid-93.html" target="_blank">查看详细资料</a></p>
+														</div>
+							</td>
+			<td class="postcontent">
+				<div class="postactions">
+										<p>
+																																																						<strong onclick="scroll(0,0)" title="顶部">TOP</strong>
+					</p>
+					<div id="ad_thread1_1"></div>				</div>
+			</td>
+		</tr>
+		</table>
+				</div>
+	<div class="mainbox viewthread">
+			<table id="pid1019" summary="pid1019" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="postauthor">
+					 					<cite>											<a href="space-uid-91.html" target="_blank" id="userinfo1019" class="dropmenu" onmouseover="showMenu(this.id)">chinacia</a></cite>
+						<p>中情局</p>													<div class="avatar"><img src="http://uc.butian.org/data/avatar/000/00/00/91_avatar_middle.jpg" onerror="this.onerror=null;this.src='http://uc.butian.org/images/noavatar_middle.gif'"></div>												<p><em>管理员</em></p>
+						<p><img src="images/default/star_level3.gif" alt="Rank: 9" /><img src="images/default/star_level3.gif" alt="Rank: 9" /><img src="images/default/star_level1.gif" alt="Rank: 9" /></p>
+																		
+						<ul>
+													<li class="space"><a href="http://zhishi.butian.org/plugins/ucenter/space.php?uid=91" target="_blank">个人空间</a></li>
+												<li class="pm"><a href="###" onclick="pmwin('open', 'uid=91')">发短消息</a></li>
+						<li class="buddy"><a href="my.php?item=buddylist&amp;newbuddyid=91&amp;buddysubmit=yes" target="_blank" id="ajax_buddy_2" onclick="ajaxmenu(event, this.id, 3000, 0)">加为好友</a></li>
+
+																					<li class="offline">当前离线
+														</li>
+						
+						</ul>
+									</td>
+				<td class="postcontent" >
+					<div class="postinfo">
+						<strong title="复制帖子链接到剪贴板" id="postnum1019" onclick="setcopy('http://bbs.butian.org/viewthread.php?tid=172&amp;page=1#pid1019', '帖子链接已经复制到剪贴板')">3<sup>#</sup></strong>
+													<em onclick="$('postmessage_1019').className='t_bigfont'">大</em>							<em onclick="$('postmessage_1019').className='t_msgfont'">中</em>
+							<em onclick="$('postmessage_1019').className='t_smallfont'">小</em>												发表于 2008-7-11 17:18&nbsp;																					<a href="viewthread.php?tid=172&amp;page=1&amp;authorid=91" rel="nofollow">只看该作者</a>
+																		</div>
+					<div id="ad_thread2_2"></div>					<div class="postmessage defaultpost">
+																		<div id="ad_thread3_2"></div><div id="ad_thread4_2"></div>
+						
+						
+																											<div id="postmessage_1019" class="t_msgfont">&quot;建议空间够大的选择完整安装。&quot;&nbsp; &nbsp;——够大是多大？</div>
+
+							
+							
+							
+							
+															<div id="post_rate_div_1019"></div>
+																</div>
+									<div class="signatures" style="maxHeightIE: 100px;">
+						“如果你不喜欢这个世界，先改变自己。如果不喜欢这个主意，闭上你的双眼和耳朵，然后一个人去生活。”					</div>
+							</td>
+		</tr>
+		<tr>
+			<td class="postauthor">
+								<div class="popupmenu_popup userinfopanel" id="userinfo1019_menu" style="display: none;">
+										<div class="imicons">
+													<a target='_blank' href='http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=cnaf@163.com&mkt=zh-cn'><img style='border-style: none;' src='http://messenger.services.live.com/users/cnaf@163.com/presenceimage?mkt=zh-cn' width='16' height='16' /></a>
+																																			</div>
+										<dl><dt>UID</dt><dd>91&nbsp;</dd><dt>帖子</dt><dd>74&nbsp;</dd><dt>精华</dt><dd><a href="digest.php?authorid=91">0</a>&nbsp;</dd><dt>积分</dt><dd>60&nbsp;</dd><dt>阅读权限</dt><dd>200&nbsp;</dd><dt>在线时间</dt><dd>27 小时&nbsp;</dd><dt>注册时间</dt><dd>2008-3-23&nbsp;</dd><dt>最后登录</dt><dd>2008-10-31&nbsp;</dd></dl>
+										<p><a href="space-uid-91.html" target="_blank">查看详细资料</a></p>
+														</div>
+							</td>
+			<td class="postcontent">
+				<div class="postactions">
+										<p>
+																																																						<strong onclick="scroll(0,0)" title="顶部">TOP</strong>
+					</p>
+					<div id="ad_thread1_2"></div>				</div>
+			</td>
+		</tr>
+		</table>
+				</div>
+	<div class="mainbox viewthread">
+			<table id="pid1031" summary="pid1031" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="postauthor">
+					 					<cite>											<a href="space-uid-1.html" target="_blank" id="userinfo1031" class="dropmenu" onmouseover="showMenu(this.id)">.abu.</a></cite>
+						<p>.abu.</p>													<div class="avatar"><img src="http://uc.butian.org/data/avatar/000/00/00/01_avatar_middle.jpg" onerror="this.onerror=null;this.src='http://uc.butian.org/images/noavatar_middle.gif'"></div>												<p><em>管理员</em></p>
+						<p><img src="images/default/star_level3.gif" alt="Rank: 9" /><img src="images/default/star_level3.gif" alt="Rank: 9" /><img src="images/default/star_level1.gif" alt="Rank: 9" /></p>
+																		
+						<ul>
+													<li class="space"><a href="http://zhishi.butian.org/plugins/ucenter/space.php?uid=1" target="_blank">个人空间</a></li>
+												<li class="pm"><a href="###" onclick="pmwin('open', 'uid=1')">发短消息</a></li>
+						<li class="buddy"><a href="my.php?item=buddylist&amp;newbuddyid=1&amp;buddysubmit=yes" target="_blank" id="ajax_buddy_3" onclick="ajaxmenu(event, this.id, 3000, 0)">加为好友</a></li>
+
+																					<li class="offline">当前离线
+														</li>
+						
+						</ul>
+									</td>
+				<td class="postcontent" >
+					<div class="postinfo">
+						<strong title="复制帖子链接到剪贴板" id="postnum1031" onclick="setcopy('http://bbs.butian.org/viewthread.php?tid=172&amp;page=1#pid1031', '帖子链接已经复制到剪贴板')">4<sup>#</sup></strong>
+													<em onclick="$('postmessage_1031').className='t_bigfont'">大</em>							<em onclick="$('postmessage_1031').className='t_msgfont'">中</em>
+							<em onclick="$('postmessage_1031').className='t_smallfont'">小</em>												发表于 2008-7-11 23:23&nbsp;																					<a href="viewthread.php?tid=172&amp;page=1&amp;authorid=1" rel="nofollow">只看该作者</a>
+																		</div>
+					<div id="ad_thread2_3"></div>					<div class="postmessage defaultpost">
+																		<div id="ad_thread3_3"></div><div id="ad_thread4_3"></div>
+						
+						
+																											<div id="postmessage_1031" class="t_msgfont">安装文件800M<br />
+我全部安装安装以后是3.26G<br />
+嘿嘿<br />
+<br />
+该有的都有</div>
+
+							
+							
+							
+							
+															<div id="post_rate_div_1031"></div>
+																</div>
+									<div class="signatures" style="maxHeightIE: 100px;">
+						年轻是一种罪过。他们说我们不成熟。 <br />
+成熟是一个很痛的词，它不一定会得到，却一定会失去。 <br />
+恋爱的时候我们都不懂爱情，懂得爱情后却失去了可以相爱的时光。					</div>
+							</td>
+		</tr>
+		<tr>
+			<td class="postauthor">
+								<div class="popupmenu_popup userinfopanel" id="userinfo1031_menu" style="display: none;">
+										<div class="imicons">
+													<a target='_blank' href='http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=mudfr0g@hotmail.com&mkt=zh-cn'><img style='border-style: none;' src='http://messenger.services.live.com/users/mudfr0g@hotmail.com/presenceimage?mkt=zh-cn' width='16' height='16' /></a>
+												<a href="http://wpa.qq.com/msgrd?V=1&amp;Uin=712763&amp;Site=新补天网讨论版&amp;Menu=yes" target="_blank"><img src="images/default/qq.gif" alt="QQ" /></a>																							</div>
+										<dl><dt>UID</dt><dd>1&nbsp;</dd><dt>帖子</dt><dd>240&nbsp;</dd><dt>精华</dt><dd><a href="digest.php?authorid=1">2</a>&nbsp;</dd><dt>积分</dt><dd>191&nbsp;</dd><dt>阅读权限</dt><dd>200&nbsp;</dd><dt>在线时间</dt><dd>102 小时&nbsp;</dd><dt>注册时间</dt><dd>2008-3-3&nbsp;</dd><dt>最后登录</dt><dd>2008-10-30&nbsp;</dd></dl>
+										<p><a href="space-uid-1.html" target="_blank">查看详细资料</a></p>
+														</div>
+							</td>
+			<td class="postcontent">
+				<div class="postactions">
+										<p>
+																																																						<strong onclick="scroll(0,0)" title="顶部">TOP</strong>
+					</p>
+					<div id="ad_thread1_3"></div>				</div>
+			</td>
+		</tr>
+		</table>
+				</div>
+	<div class="mainbox viewthread">
+			<table id="pid1052" summary="pid1052" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="postauthor">
+					 <a name="lastpost"></a>					<cite>											<a href="space-uid-179.html" target="_blank" id="userinfo1052" class="dropmenu" onmouseover="showMenu(this.id)">Dayu</a></cite>
+																			<div class="avatar"><img src="http://uc.butian.org/data/avatar/000/00/01/79_avatar_middle.jpg" onerror="this.onerror=null;this.src='http://uc.butian.org/images/noavatar_middle.gif'"></div>												<p><em>注册会员</em></p>
+						<p><img src="images/default/star_level2.gif" alt="Rank: 2" /></p>
+																		
+						<ul>
+													<li class="space"><a href="http://zhishi.butian.org/plugins/ucenter/space.php?uid=179" target="_blank">个人空间</a></li>
+												<li class="pm"><a href="###" onclick="pmwin('open', 'uid=179')">发短消息</a></li>
+						<li class="buddy"><a href="my.php?item=buddylist&amp;newbuddyid=179&amp;buddysubmit=yes" target="_blank" id="ajax_buddy_4" onclick="ajaxmenu(event, this.id, 3000, 0)">加为好友</a></li>
+
+																					<li class="offline">当前离线
+														</li>
+						
+						</ul>
+									</td>
+				<td class="postcontent" >
+					<div class="postinfo">
+						<strong title="复制帖子链接到剪贴板" id="postnum1052" onclick="setcopy('http://bbs.butian.org/viewthread.php?tid=172&amp;page=1#pid1052', '帖子链接已经复制到剪贴板')">5<sup>#</sup></strong>
+													<em onclick="$('postmessage_1052').className='t_bigfont'">大</em>							<em onclick="$('postmessage_1052').className='t_msgfont'">中</em>
+							<em onclick="$('postmessage_1052').className='t_smallfont'">小</em>												发表于 2008-7-15 10:36&nbsp;																					<a href="viewthread.php?tid=172&amp;page=1&amp;authorid=179" rel="nofollow">只看该作者</a>
+																		</div>
+					<div id="ad_thread2_4"></div>					<div class="postmessage defaultpost">
+																		<div id="ad_thread3_4"></div><div id="ad_thread4_4"></div>
+						
+						
+																											<div id="postmessage_1052" class="t_msgfont">...3.26...<br />
+算了,我还是去UBUNTU用了</div>
+
+							
+							
+							
+							
+															<div id="post_rate_div_1052"></div>
+																</div>
+							</td>
+		</tr>
+		<tr>
+			<td class="postauthor">
+								<div class="popupmenu_popup userinfopanel" id="userinfo1052_menu" style="display: none;">
+										<dl><dt>UID</dt><dd>179&nbsp;</dd><dt>帖子</dt><dd>104&nbsp;</dd><dt>精华</dt><dd><a href="digest.php?authorid=179">0</a>&nbsp;</dd><dt>积分</dt><dd>104&nbsp;</dd><dt>阅读权限</dt><dd>20&nbsp;</dd><dt>在线时间</dt><dd>16 小时&nbsp;</dd><dt>注册时间</dt><dd>2008-6-17&nbsp;</dd><dt>最后登录</dt><dd>2008-10-27&nbsp;</dd></dl>
+										<p><a href="space-uid-179.html" target="_blank">查看详细资料</a></p>
+														</div>
+							</td>
+			<td class="postcontent">
+				<div class="postactions">
+										<p>
+																																																						<strong onclick="scroll(0,0)" title="顶部">TOP</strong>
+					</p>
+					<div id="ad_thread1_4"></div>				</div>
+			</td>
+		</tr>
+		</table>
+		</div>
+</form>
+
+
+
+<div class="pages_btns">
+	<div class="threadflow"><a href="redirect.php?fid=2&amp;tid=172&amp;goto=nextoldset"> &lsaquo;&lsaquo; 上一主题</a> | <a href="redirect.php?fid=2&amp;tid=172&amp;goto=nextnewset">下一主题 &rsaquo;&rsaquo;</a></div>
+				<span class="postbtn" id="newspecialtmp" onmouseover="$('newspecial').id = 'newspecialtmp';this.id = 'newspecial';showMenu(this.id)"><a href="post.php?action=newthread&amp;fid=2&amp;extra=page%3D1"><img src="images/default/newtopic.gif" border="0" alt="发新话题" title="发新话题" /></a></span>
+		<span class="replybtn"><a href="post.php?action=reply&amp;fid=2&amp;tid=172&amp;extra=page%3D1"><img src="images/default/reply.gif" border="0" alt="" /></a></span></div>
+
+
+<script type="text/javascript">
+var maxpage = 1;
+if(maxpage > 1) {
+	document.onkeyup = function(e){
+		e = e ? e : window.event;
+		var tagname = is_ie ? e.srcElement.tagName : e.target.tagName;
+		if(tagname == 'INPUT' || tagname == 'TEXTAREA') return;
+		actualCode = e.keyCode ? e.keyCode : e.charCode;
+					}
+}
+</script>
+</div>	<ul class="popupmenu_popup headermenu_popup" id="memcp_menu" style="display: none">
+		<li><a href="memcp.php">控制面板首页</a></li>
+		<li><a href="memcp.php?action=profile">编辑个人资料</a></li>
+					<li><a href="memcp.php?action=credits">积分交易</a></li>
+				<li><a href="memcp.php?action=creditslog">积分记录</a></li>
+		<li><a href="memcp.php?action=usergroups">公众用户组</a></li>
+					</ul>
+	<ul class="popupmenu_popup headermenu_popup" id="stats_menu" style="display: none">
+		<li><a href="stats.php">基本概况</a></li>
+				<li><a href="stats.php?type=forumsrank">版块排行</a></li><li><a href="stats.php?type=threadsrank">主题排行</a></li><li><a href="stats.php?type=postsrank">发帖排行</a></li><li><a href="stats.php?type=creditsrank">积分排行</a></li>
+		<li><a href="stats.php?type=trade">交易排行</a></li>
+		<li><a href="stats.php?type=onlinetime">在线时间</a></li>		<li><a href="stats.php?type=team">管理团队</a></li>
+			</ul>
+	<div class="ad_footerbanner" id="ad_footerbanner1"></div><div class="ad_footerbanner" id="ad_footerbanner2"></div><div class="ad_footerbanner" id="ad_footerbanner3"></div>
+
+<div id="footer">
+	<div class="wrap">
+		<div id="footlinks">
+			<p>当前时区 GMT+8, 现在时间是 2008-11-1 21:04 <a href="http://www.miibeian.gov.cn/" target="_blank">苏ICP备05061412号</a></p>
+			<p>
+				<a href="member.php?action=clearcookies&amp;formhash=53f67278">清除 Cookies</a>
+				- <a href="mailto:sybiz@163.com">联系我们</a> - <a href="http://www.butian.org" target="_blank">新补天网</a>
+				 - <a href="archiver/" target="_blank">Archiver</a>				 - <a href="wap/" target="_blank">WAP</a>				- <span class="scrolltop" onclick="window.scrollTo(0,0);">TOP</span>
+									- <span id="styleswitcher" class="dropmenu" onmouseover="showMenu(this.id)">界面风格</span>
+					<script type="text/javascript">
+					function setstyle(styleid) {
+											location.href = 'viewthread.php?tid=172&page=1&styleid=' + styleid;
+										}
+					</script>
+					<div id="styleswitcher_menu" class="popupmenu_popup" style="display: none;">
+					<ul><li class="current"><a href="###" onclick="setstyle(1)">默认风格</a></li><li><a href="###" onclick="setstyle(2)">喝彩奥运</a></li><li><a href="###" onclick="setstyle(3)">深邃永恒</a></li><li><a href="###" onclick="setstyle(4)">粉妆精灵</a></li><li><a href="###" onclick="setstyle(5)">诗意田园</a></li><li><a href="###" onclick="setstyle(6)">春意盎然</a></li></ul>
+					</div>
+							</p>
+		</div>
+
+		<a href="http://www.discuz.net" target="_blank" title="Powered by Discuz!"><img src="images/default/discuz_icon.gif" border="0" alt="Discuz!" /></a>
+		<p id="copyright">
+			Powered by <strong><a href="http://www.discuz.net" target="_blank">Discuz!</a></strong> <em>6.1.0</em>			&copy; 2001-2008 <a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>
+		</p>			<p id="debuginfo">Processed in 0.325249 second(s), 6 queries, Gzip enabled.</p>
+			</div>
+</div>
+</body>
+</html>

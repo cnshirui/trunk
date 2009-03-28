@@ -1,0 +1,45 @@
+<!DOCTYPE web-app PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+  "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+	<context-param>
+		<param-name>jruby.standalone</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	
+
+	<context-param>
+		<param-name>rails.env</param-name>
+		<param-value>production</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>files.default</param-name>
+		<param-value>rails</param-value>
+		<description>The files servlet should forward to the rails servlet if no file could be found</description>
+	</context-param>
+
+	<listener>
+		<listener-class>org.jruby.webapp.RailsContextListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>rails</servlet-name>
+		<servlet-class>org.jruby.webapp.RailsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>files</servlet-name>
+		<servlet-class>org.jruby.webapp.FileServlet</servlet-class>
+	</servlet>
+
+	<!-- Allow all requests to go to the files servlet first -->
+	<servlet-mapping>
+		<servlet-name>files</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	
+
+</web-app>

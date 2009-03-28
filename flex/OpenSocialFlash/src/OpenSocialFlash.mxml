@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()">
+
+	<mx:Script>
+		<![CDATA[
+		
+		import com.google.ccc.chinasocial.api.SocialApp;
+		
+		public function init():void {
+			
+			var array:Array = ["2cc9b88a624349a296895d38aef99eb4", "c001695c2aeb436f85bb573da6002467"];
+			new SocialApp(array, true);
+		}
+		
+		
+		]]>
+	</mx:Script>
+	
+</mx:Application>

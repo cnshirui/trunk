@@ -1,0 +1,845 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<connection id="BOFE4D9930146B49EE85DC45E0EB2F2BA4" className="xcelsius.rpc.SoapConnector" displayName="WS1">
+  <properties>
+    <property>
+      <name>
+        <string>connectionName</string>
+      </name>
+      <value>
+        <string>WS1</string>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>objInput</string>
+      </name>
+      <value>
+        <object>
+          <property id="children">
+            <array/>
+          </property>
+          <property id="dims">
+            <number>0.000000</number>
+          </property>
+          <property id="image">
+            <number>3.000000</number>
+          </property>
+          <property id="lname">
+            <string>GetDataTable</string>
+          </property>
+          <property id="qname">
+            <string>urn:ActionWebService</string>
+          </property>
+          <property id="required">
+            <true/>
+          </property>
+          <property id="type">
+            <string/>
+          </property>
+          <property id="typens">
+            <string/>
+          </property>
+          <property id="value">
+            <string/>
+          </property>
+        </object>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>objOutput</string>
+      </name>
+      <value>
+        <object>
+          <property id="children">
+            <array>
+              <property id="0">
+                <object>
+                  <property id="children">
+                    <array>
+                      <property id="0">
+                        <object>
+                          <property id="children">
+                            <array>
+                              <property id="0">
+                                <object>
+                                  <property id="children">
+                                    <array/>
+                                  </property>
+                                  <property id="dims">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="image">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="lname">
+                                    <string>Name</string>
+                                  </property>
+                                  <property id="qname">
+                                    <string/>
+                                  </property>
+                                  <property id="required">
+                                    <true/>
+                                  </property>
+                                  <property id="type">
+                                    <string>string</string>
+                                  </property>
+                                  <property id="typens">
+                                    <string/>
+                                  </property>
+                                  <property id="value">
+                                    <array/>
+                                  </property>
+                                </object>
+                              </property>
+                              <property id="1">
+                                <object>
+                                  <property id="children">
+                                    <array/>
+                                  </property>
+                                  <property id="dims">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="image">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="lname">
+                                    <string>Deal_Size_K_</string>
+                                  </property>
+                                  <property id="qname">
+                                    <string/>
+                                  </property>
+                                  <property id="required">
+                                    <true/>
+                                  </property>
+                                  <property id="type">
+                                    <string>string</string>
+                                  </property>
+                                  <property id="typens">
+                                    <string/>
+                                  </property>
+                                  <property id="value">
+                                    <array/>
+                                  </property>
+                                </object>
+                              </property>
+                              <property id="2">
+                                <object>
+                                  <property id="children">
+                                    <array/>
+                                  </property>
+                                  <property id="dims">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="image">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="lname">
+                                    <string>Probability___</string>
+                                  </property>
+                                  <property id="qname">
+                                    <string/>
+                                  </property>
+                                  <property id="required">
+                                    <true/>
+                                  </property>
+                                  <property id="type">
+                                    <string>string</string>
+                                  </property>
+                                  <property id="typens">
+                                    <string/>
+                                  </property>
+                                  <property id="value">
+                                    <array/>
+                                  </property>
+                                </object>
+                              </property>
+                            </array>
+                          </property>
+                          <property id="dims">
+                            <number>3.000000</number>
+                          </property>
+                          <property id="image">
+                            <number>3.000000</number>
+                          </property>
+                          <property id="lname">
+                            <string>header</string>
+                          </property>
+                          <property id="qname">
+                            <string/>
+                          </property>
+                          <property id="required">
+                            <true/>
+                          </property>
+                          <property id="type">
+                            <string/>
+                          </property>
+                          <property id="typens">
+                            <string/>
+                          </property>
+                          <property id="value">
+                            <array>
+                              <property id="0">
+                                <array>
+                                  <property id="0">
+                                    <string>Name</string>
+                                  </property>
+                                  <property id="1">
+                                    <string>Deal Size(K)</string>
+                                  </property>
+                                  <property id="2">
+                                    <string>Probability(%)</string>
+                                  </property>
+                                </array>
+                              </property>
+                            </array>
+                          </property>
+                        </object>
+                      </property>
+                      <property id="1">
+                        <object>
+                          <property id="children">
+                            <array>
+                              <property id="0">
+                                <object>
+                                  <property id="children">
+                                    <array/>
+                                  </property>
+                                  <property id="dims">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="image">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="lname">
+                                    <string>Name</string>
+                                  </property>
+                                  <property id="qname">
+                                    <string/>
+                                  </property>
+                                  <property id="required">
+                                    <true/>
+                                  </property>
+                                  <property id="type">
+                                    <string>string</string>
+                                  </property>
+                                  <property id="typens">
+                                    <string/>
+                                  </property>
+                                  <property id="value">
+                                    <array/>
+                                  </property>
+                                </object>
+                              </property>
+                              <property id="1">
+                                <object>
+                                  <property id="children">
+                                    <array/>
+                                  </property>
+                                  <property id="dims">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="image">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="lname">
+                                    <string>Deal_Size_K_</string>
+                                  </property>
+                                  <property id="qname">
+                                    <string/>
+                                  </property>
+                                  <property id="required">
+                                    <true/>
+                                  </property>
+                                  <property id="type">
+                                    <string>double</string>
+                                  </property>
+                                  <property id="typens">
+                                    <string/>
+                                  </property>
+                                  <property id="value">
+                                    <array/>
+                                  </property>
+                                </object>
+                              </property>
+                              <property id="2">
+                                <object>
+                                  <property id="children">
+                                    <array/>
+                                  </property>
+                                  <property id="dims">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="image">
+                                    <number>1.000000</number>
+                                  </property>
+                                  <property id="lname">
+                                    <string>Probability___</string>
+                                  </property>
+                                  <property id="qname">
+                                    <string/>
+                                  </property>
+                                  <property id="required">
+                                    <true/>
+                                  </property>
+                                  <property id="type">
+                                    <string>double</string>
+                                  </property>
+                                  <property id="typens">
+                                    <string/>
+                                  </property>
+                                  <property id="value">
+                                    <array/>
+                                  </property>
+                                </object>
+                              </property>
+                            </array>
+                          </property>
+                          <property id="dims">
+                            <number>3.000000</number>
+                          </property>
+                          <property id="image">
+                            <number>4.000000</number>
+                          </property>
+                          <property id="lname">
+                            <string>row</string>
+                          </property>
+                          <property id="qname">
+                            <string/>
+                          </property>
+                          <property id="required">
+                            <false/>
+                          </property>
+                          <property id="type">
+                            <string/>
+                          </property>
+                          <property id="typens">
+                            <string/>
+                          </property>
+                          <property id="value">
+                            <array>
+                              <property id="0">
+                                <array>
+                                  <property id="0">
+                                    <string>IBM</string>
+                                  </property>
+                                  <property id="1">
+                                    <string>1200</string>
+                                  </property>
+                                  <property id="2">
+                                    <string>70</string>
+                                  </property>
+                                </array>
+                              </property>
+                              <property id="1">
+                                <array>
+                                  <property id="0">
+                                    <string>SAP</string>
+                                  </property>
+                                  <property id="1">
+                                    <string>2300</string>
+                                  </property>
+                                  <property id="2">
+                                    <string>50</string>
+                                  </property>
+                                </array>
+                              </property>
+                              <property id="2">
+                                <array>
+                                  <property id="0">
+                                    <string>Oracle</string>
+                                  </property>
+                                  <property id="1">
+                                    <string>1700</string>
+                                  </property>
+                                  <property id="2">
+                                    <string>60</string>
+                                  </property>
+                                </array>
+                              </property>
+                              <property id="3">
+                                <array>
+                                  <property id="0">
+                                    <string>Microsoft</string>
+                                  </property>
+                                  <property id="1">
+                                    <string>800</string>
+                                  </property>
+                                  <property id="2">
+                                    <string>90</string>
+                                  </property>
+                                </array>
+                              </property>
+                              <property id="4">
+                                <array>
+                                  <property id="0">
+                                    <string>Cisco</string>
+                                  </property>
+                                  <property id="1">
+                                    <string>900</string>
+                                  </property>
+                                  <property id="2">
+                                    <string>70</string>
+                                  </property>
+                                </array>
+                              </property>
+                              <property id="5">
+                                <array>
+                                  <property id="0">
+                                    <string>Apple</string>
+                                  </property>
+                                  <property id="1">
+                                    <string>600</string>
+                                  </property>
+                                  <property id="2">
+                                    <string>20</string>
+                                  </property>
+                                </array>
+                              </property>
+                            </array>
+                          </property>
+                        </object>
+                      </property>
+                    </array>
+                  </property>
+                  <property id="dims">
+                    <number>6.000000</number>
+                  </property>
+                  <property id="image">
+                    <number>3.000000</number>
+                  </property>
+                  <property id="lname">
+                    <string>table</string>
+                  </property>
+                  <property id="qname">
+                    <string/>
+                  </property>
+                  <property id="required">
+                    <true/>
+                  </property>
+                  <property id="type">
+                    <string>Table</string>
+                  </property>
+                  <property id="typens">
+                    <string>urn:ActionWebService</string>
+                  </property>
+                  <property id="value">
+                    <array/>
+                  </property>
+                </object>
+              </property>
+              <property id="1">
+                <object>
+                  <property id="children">
+                    <array/>
+                  </property>
+                  <property id="dims">
+                    <number>1.000000</number>
+                  </property>
+                  <property id="image">
+                    <number>1.000000</number>
+                  </property>
+                  <property id="lname">
+                    <string>fetchedrows</string>
+                  </property>
+                  <property id="qname">
+                    <string/>
+                  </property>
+                  <property id="required">
+                    <true/>
+                  </property>
+                  <property id="type">
+                    <string>int</string>
+                  </property>
+                  <property id="typens">
+                    <string>http://www.w3.org/2001/XMLSchema</string>
+                  </property>
+                  <property id="value">
+                    <array/>
+                  </property>
+                </object>
+              </property>
+            </array>
+          </property>
+          <property id="dims">
+            <number>7.000000</number>
+          </property>
+          <property id="image">
+            <number>3.000000</number>
+          </property>
+          <property id="lname">
+            <string>GetDataTableResponse</string>
+          </property>
+          <property id="qname">
+            <string>urn:ActionWebService</string>
+          </property>
+          <property id="required">
+            <true/>
+          </property>
+          <property id="type">
+            <string/>
+          </property>
+          <property id="typens">
+            <string/>
+          </property>
+          <property id="value">
+            <array/>
+          </property>
+        </object>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>sUrlendpoint</string>
+      </name>
+      <value>
+        <string>http://localhost:3000/datasets/api/ysOQ2mmrhO_VrHzh9oZ_2w</string>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>sTargetnamespace</string>
+      </name>
+      <value>
+        <string>urn:ActionWebService</string>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>sSOAPAction</string>
+      </name>
+      <value>
+        <string>/datasets/data/GetDataTable</string>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>bDocument</string>
+      </name>
+      <value>
+        <false/>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>bEncoded</string>
+      </name>
+      <value>
+        <false/>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>refreshOnLoad</string>
+      </name>
+      <value>
+        <true/>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>triggerType</string>
+      </name>
+      <value>
+        <string>ON_CHANGE</string>
+      </value>
+    </property>
+  </properties>
+  <bindings>
+    <property>
+      <name>
+        <string>sUrlendpoint</string>
+      </name>
+      <value>
+        <binding>
+          <endpoint type="excelbinding" id="BO2F86574044DE403180BA5798D8BA753A" displayname="dataConnectionSheetForWhohar!$B$1">
+            <workbook>[Book1]</workbook>
+            <inputtype>
+              <string/>
+            </inputtype>
+            <outputtype>
+              <string>xcelsius.binding.tableMaps.output.TableToSingleton</string>
+            </outputtype>
+            <range>dataConnectionSheetForWhohar!$B$1</range>
+            <cells>
+              <array>
+                <property id="0">
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <string>dataConnectionSheetForWhohar!R1C2</string>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </property>
+              </array>
+            </cells>
+            <chain>
+              <array/>
+            </chain>
+            <inputmapproperties>
+              <array/>
+            </inputmapproperties>
+            <outputmapproperties>
+              <array/>
+            </outputmapproperties>
+            <direction>
+              <string>output</string>
+            </direction>
+          </endpoint>
+        </binding>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>objOutput</string>
+      </name>
+      <value>
+        <binding>
+          <endpoint type="excelbinding" id="BOFBA13DDF92434380912A1A49CA2E35CF" displayname="Sheet1!$A$1:$C$1">
+            <workbook>[Book1]</workbook>
+            <inputtype>
+              <string>xcelsius.binding.tableMaps.input.Array2DToTable</string>
+            </inputtype>
+            <outputtype>
+              <string/>
+            </outputtype>
+            <range>Sheet1!$A$1:$C$1</range>
+            <cells>
+              <array>
+                <property id="0">
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <string>Sheet1!R1C1</string>
+                        </property>
+                        <property id="1">
+                          <string>Sheet1!R1C2</string>
+                        </property>
+                        <property id="2">
+                          <string>Sheet1!R1C3</string>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </property>
+              </array>
+            </cells>
+            <chain>
+              <array>
+                <property id="0">
+                  <string>children</string>
+                </property>
+                <property id="1">
+                  <number>0.000000</number>
+                </property>
+                <property id="2">
+                  <string>children</string>
+                </property>
+                <property id="3">
+                  <number>0.000000</number>
+                </property>
+                <property id="4">
+                  <string>value</string>
+                </property>
+              </array>
+            </chain>
+            <inputmapproperties>
+              <array/>
+            </inputmapproperties>
+            <outputmapproperties>
+              <array/>
+            </outputmapproperties>
+            <direction>
+              <string>input</string>
+            </direction>
+          </endpoint>
+        </binding>
+      </value>
+    </property>
+    <property>
+      <name>
+        <string>objOutput</string>
+      </name>
+      <value>
+        <binding>
+          <endpoint type="excelbinding" id="BO91F9198833A0440ABEAB5A11F3019E82" displayname="Sheet1!$A$2:$C$7">
+            <workbook>[Book1]</workbook>
+            <inputtype>
+              <string>xcelsius.binding.tableMaps.input.Array2DToTable</string>
+            </inputtype>
+            <outputtype>
+              <string/>
+            </outputtype>
+            <range>Sheet1!$A$2:$C$7</range>
+            <cells>
+              <array>
+                <property id="0">
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <string>Sheet1!R2C1</string>
+                        </property>
+                        <property id="1">
+                          <string>Sheet1!R2C2</string>
+                        </property>
+                        <property id="2">
+                          <string>Sheet1!R2C3</string>
+                        </property>
+                      </array>
+                    </property>
+                    <property id="1">
+                      <array>
+                        <property id="0">
+                          <string>Sheet1!R3C1</string>
+                        </property>
+                        <property id="1">
+                          <string>Sheet1!R3C2</string>
+                        </property>
+                        <property id="2">
+                          <string>Sheet1!R3C3</string>
+                        </property>
+                      </array>
+                    </property>
+                    <property id="2">
+                      <array>
+                        <property id="0">
+                          <string>Sheet1!R4C1</string>
+                        </property>
+                        <property id="1">
+                          <string>Sheet1!R4C2</string>
+                        </property>
+                        <property id="2">
+                          <string>Sheet1!R4C3</string>
+                        </property>
+                      </array>
+                    </property>
+                    <property id="3">
+                      <array>
+                        <property id="0">
+                          <string>Sheet1!R5C1</string>
+                        </property>
+                        <property id="1">
+                          <string>Sheet1!R5C2</string>
+                        </property>
+                        <property id="2">
+                          <string>Sheet1!R5C3</string>
+                        </property>
+                      </array>
+                    </property>
+                    <property id="4">
+                      <array>
+                        <property id="0">
+                          <string>Sheet1!R6C1</string>
+                        </property>
+                        <property id="1">
+                          <string>Sheet1!R6C2</string>
+                        </property>
+                        <property id="2">
+                          <string>Sheet1!R6C3</string>
+                        </property>
+                      </array>
+                    </property>
+                    <property id="5">
+                      <array>
+                        <property id="0">
+                          <string>Sheet1!R7C1</string>
+                        </property>
+                        <property id="1">
+                          <string>Sheet1!R7C2</string>
+                        </property>
+                        <property id="2">
+                          <string>Sheet1!R7C3</string>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </property>
+              </array>
+            </cells>
+            <chain>
+              <array>
+                <property id="0">
+                  <string>children</string>
+                </property>
+                <property id="1">
+                  <number>0.000000</number>
+                </property>
+                <property id="2">
+                  <string>children</string>
+                </property>
+                <property id="3">
+                  <number>1.000000</number>
+                </property>
+                <property id="4">
+                  <string>value</string>
+                </property>
+              </array>
+            </chain>
+            <inputmapproperties>
+              <array/>
+            </inputmapproperties>
+            <outputmapproperties>
+              <array/>
+            </outputmapproperties>
+            <direction>
+              <string>input</string>
+            </direction>
+          </endpoint>
+        </binding>
+      </value>
+    </property>
+  </bindings>
+  <Persist>
+    <array>
+      <property id="0">
+        <object>
+          <property id="name">
+            <string>_wsdlURLItem</string>
+          </property>
+          <property id="value">
+            <string>http://localhost:3000/datasets/wsdl/ysOQ2mmrhO_VrHzh9oZ_2w</string>
+          </property>
+        </object>
+      </property>
+      <property id="1">
+        <object>
+          <property id="name">
+            <string>_method</string>
+          </property>
+          <property id="value">
+            <array>
+              <property id="0">
+                <string>GetDataTable</string>
+              </property>
+            </array>
+          </property>
+        </object>
+      </property>
+      <property id="2">
+        <object>
+          <property id="name">
+            <string>_methodIndex</string>
+          </property>
+          <property id="value">
+            <number>0.000000</number>
+          </property>
+        </object>
+      </property>
+      <property id="3">
+        <object>
+          <property id="name">
+            <string>_mainTab</string>
+          </property>
+          <property id="value">
+            <number>0.000000</number>
+          </property>
+        </object>
+      </property>
+    </array>
+  </Persist>
+</connection>

@@ -1,0 +1,1 @@
+java cn.edu.nju.elegate.OthelloGameServer

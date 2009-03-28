@@ -1,0 +1,155 @@
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.100000)[0m   [0mCREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.040000)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE schema_info (version int(11))[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateArticles (1)
+  [4;36;1mSQL (0.060000)[0m   [0;1mCREATE TABLE articles (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255) DEFAULT NULL, `summary` text DEFAULT NULL, `content` text DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.020000)[0m   [0mUPDATE schema_info SET version = 1[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT * FROM schema_info[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.010000)[0m   [0;1mSHOW FIELDS FROM articles[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSHOW KEYS FROM articles[0m
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2007-09-02 23:15:06) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;36;1mSQL (0.190000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mArticle Load (0.081000)[0m   [0mSELECT * FROM articles [0m
+Rendering layoutfalseactionindexcontent_typetext/html within layouts/articles
+Rendering articles/index
+Completed in 0.99200 (1 reqs/sec) | Rendering: 0.15000 (15%) | DB: 0.27100 (27%) | 200 OK [http://localhost/articles/]
+
+
+Processing ArticlesController#new (for 127.0.0.1 at 2007-09-02 23:15:12) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"new", "controller"=>"articles"}
+  [4;36;1mArticle Columns (0.120000)[0m   [0;1mSHOW FIELDS FROM articles[0m
+Rendering  within layouts/articles
+Rendering articles/new
+Completed in 0.15000 (6 reqs/sec) | Rendering: 0.01000 (6%) | DB: 0.12000 (80%) | 200 OK [http://localhost/articles/new]
+
+
+Processing ArticlesController#create (for 127.0.0.1 at 2007-09-02 23:15:33) [POST]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"article"=>{"title"=>"article 1", "summary"=>"sm of a1", "content"=>"ct of a1"}, "commit"=>"Create", "action"=>"create", "controller"=>"articles"}
+  [4;35;1mArticle Columns (0.000000)[0m   [0mSHOW FIELDS FROM articles[0m
+  [4;36;1mSQL (0.010000)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.070000)[0m   [0mINSERT INTO articles (`title`, `summary`, `content`) VALUES('article 1', 'sm of a1', 'ct of a1')[0m
+  [4;36;1mSQL (0.040000)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3001/articles/1
+Completed in 0.15000 (6 reqs/sec) | DB: 0.12000 (80%) | 302 Found [http://localhost/articles]
+
+
+Processing ArticlesController#show (for 127.0.0.1 at 2007-09-02 23:15:33) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"articles"}
+  [4;35;1mArticle Columns (0.010000)[0m   [0mSHOW FIELDS FROM articles[0m
+  [4;36;1mArticle Load (0.030000)[0m   [0;1mSELECT * FROM articles WHERE (articles.`id` = 1) [0m
+Rendering layoutfalseactionshowcontent_typetext/html within layouts/articles
+Rendering articles/show
+Completed in 0.08000 (12 reqs/sec) | Rendering: 0.03000 (37%) | DB: 0.04000 (49%) | 200 OK [http://localhost/articles/1]
+
+
+Processing ArticlesController#edit (for 127.0.0.1 at 2007-09-02 23:17:39) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"edit", "id"=>"1", "controller"=>"articles"}
+  [4;35;1mArticle Columns (0.010000)[0m   [0mSHOW FIELDS FROM articles[0m
+  [4;36;1mArticle Load (0.000000)[0m   [0;1mSELECT * FROM articles WHERE (articles.`id` = 1) [0m
+Rendering  within layouts/articles
+Rendering articles/edit
+Completed in 0.07000 (14 reqs/sec) | Rendering: 0.05000 (71%) | DB: 0.01000 (14%) | 200 OK [http://localhost/articles/1;edit]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2007-09-02 23:18:52) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;35;1mArticle Load (0.000000)[0m   [0mSELECT * FROM articles [0m
+Rendering layoutfalseactionindexcontent_typetext/html within layouts/articles
+Rendering articles/index
+  [4;36;1mArticle Columns (0.010000)[0m   [0;1mSHOW FIELDS FROM articles[0m
+Completed in 0.04100 (24 reqs/sec) | Rendering: 0.02100 (51%) | DB: 0.01000 (24%) | 200 OK [http://localhost/articles]
+
+
+Processing ArticlesController#new (for 127.0.0.1 at 2007-09-02 23:19:55) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"new", "controller"=>"articles"}
+  [4;35;1mArticle Columns (0.010000)[0m   [0mSHOW FIELDS FROM articles[0m
+Rendering  within layouts/articles
+Rendering articles/new
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01000 (50%) | 200 OK [http://localhost/articles/new]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2007-09-02 23:19:57) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;36;1mArticle Load (0.000000)[0m   [0;1mSELECT * FROM articles [0m
+Rendering layoutfalseactionindexcontent_typetext/html within layouts/articles
+Rendering articles/index
+  [4;35;1mArticle Columns (0.000000)[0m   [0mSHOW FIELDS FROM articles[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.01000 (32%) | DB: 0.00000 (0%) | 200 OK [http://localhost/articles]
+
+
+Processing ArticlesController#new (for 127.0.0.1 at 2007-09-02 23:20:05) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"new", "controller"=>"articles"}
+  [4;36;1mArticle Columns (0.010000)[0m   [0;1mSHOW FIELDS FROM articles[0m
+Rendering  within layouts/articles
+Rendering articles/new
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01000 (50%) | 200 OK [http://localhost/articles/new]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2007-09-02 23:20:08) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;35;1mArticle Load (0.000000)[0m   [0mSELECT * FROM articles [0m
+Rendering layoutfalseactionindexcontent_typetext/html within layouts/articles
+Rendering articles/index
+  [4;36;1mArticle Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM articles[0m
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.01000 (50%) | DB: 0.00000 (0%) | 200 OK [http://localhost/articles]
+
+
+Processing ArticlesController#edit (for 127.0.0.1 at 2007-09-02 23:24:14) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"edit", "id"=>"1", "controller"=>"articles"}
+  [4;35;1mArticle Columns (0.000000)[0m   [0mSHOW FIELDS FROM articles[0m
+  [4;36;1mArticle Load (0.000000)[0m   [0;1mSELECT * FROM articles WHERE (articles.`id` = 1) [0m
+Rendering  within layouts/articles
+Rendering articles/edit
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/articles/1;edit]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2007-09-02 23:24:20) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"index", "controller"=>"articles"}
+  [4;35;1mArticle Load (0.000000)[0m   [0mSELECT * FROM articles [0m
+Rendering layoutfalseactionindexcontent_typetext/html within layouts/articles
+Rendering articles/index
+  [4;36;1mArticle Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM articles[0m
+Completed in 0.03000 (33 reqs/sec) | Rendering: 0.01000 (33%) | DB: 0.00000 (0%) | 200 OK [http://localhost/articles]
+
+
+Processing ArticlesController#edit (for 127.0.0.1 at 2007-09-02 23:25:14) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"edit", "id"=>"1", "controller"=>"articles"}
+  [4;35;1mArticle Columns (0.000000)[0m   [0mSHOW FIELDS FROM articles[0m
+  [4;36;1mArticle Load (0.000000)[0m   [0;1mSELECT * FROM articles WHERE (articles.`id` = 1) [0m
+Rendering  within layouts/articles
+Rendering articles/edit
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/articles/1;edit]
+
+
+Processing ArticlesController#show (for 127.0.0.1 at 2007-09-02 23:25:18) [GET]
+  Session ID: bc477aeb889300ba0e3493f3d482aef0
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"articles"}
+  [4;35;1mArticle Columns (0.000000)[0m   [0mSHOW FIELDS FROM articles[0m
+  [4;36;1mArticle Load (0.010000)[0m   [0;1mSELECT * FROM articles WHERE (articles.`id` = 1) [0m
+Rendering layoutfalseactionshowcontent_typetext/html within layouts/articles
+Rendering articles/show
+Completed in 0.02000 (50 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01000 (50%) | 200 OK [http://localhost/articles/1]

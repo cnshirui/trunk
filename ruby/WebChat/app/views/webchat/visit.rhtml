@@ -1,0 +1,26 @@
+
+<% @page_title = "聊天室: " + @chatroom.title %>
+<div id="header">
+    <h1><%= @chatroom.title %>: <%= @chatroom.topic %></h1>
+</div>
+
+<div id="typebox">
+    <%= form_remote_tag :url => { :controller => 'webchat', :action => 'say', :chatroom_name => @chatroom.name }, :loading => "$('entryfield').value = ''; $('entryfield').focus;", :complete => "eval(request.responseText)" %>
+    <input id="entryfield" type="text" name="message" value="输入你的聊天内容然后回车.." onclick="$('entryfield').value=''" /><input type="submit" value="Say" style="display: none;" />
+    <%= end_form_tag %>
+</div>
+
+<div id="userlist">
+    <%= render :partial => 'webchat/userlist' %>
+</div>
+
+<div id="conversation">
+    <div id="stage">
+<% for message in @chatroom.latest_messages %>
+<%= message_content(message) %>
+<% end %>
+    </div>
+</div>
+
+<%= periodically_call_remote :url => { :controller => 'webchat', :action => 'get_latest_messages', :chatroom_name => @chatroom.name }, :frequency => 4, :complete => "eval(request.responseText)" %>
+<%= periodically_call_remote :url => { :controller => 'webchat', :action => 'get_user_list', :chatroom_name => @chatroom.name }, :frequency => 12, :update => 'userlist' %>

@@ -1,0 +1,35 @@
+<%= link_to "Check Time", :action => 'get_time' %>
+
+<%= link_to_remote "Check Time on Ajax", 
+        :update => 'current_time', 
+        :url => {:action => 'get_time'} %>
+      
+<div id="current_time"></div>
+
+<%= form_remote_tag :update => "reversed2", :url => { :action => 'reverse' } %>
+    <p>Text to reverse: <%= text_field_tag 'text_to_reverse' %></p>
+    <p id="reversed2"></p>
+    <p><%= submit_tag 'Reverse!!' %>
+<%= end_form_tag %>
+
+<p>-----------------------------------------------</p>
+
+<%= form_tag :action => 'reverse' %>
+    <p>Text to reverse: <%= text_field_tag 'text_to_reverse' %></p>
+    <p id="reversed"></p>
+    <p><%= submit_to_remote 'submit', 'Submit vis Ajax',
+                :update => 'reversed',
+                :url => { :action => 'reverse' } %>
+    <p><%= submit_tag "Submit no-Ajax" %></p>
+<%= end_form_tag %>
+
+
+
+
+
+
+
+
+
+
+

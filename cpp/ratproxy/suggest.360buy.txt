@@ -1,0 +1,74 @@
+检测环境：Windowns XP SP2 +　Firefox 2.0
+
+-- Bug
+
+1.http://jd2008.360buy.com/user_fov.aspx
+全选/不选所有的收藏，不起作用（IE下是正常的）。
+
+2.http://www.360buy.com/paimai/
+拍卖的页面无效
+
+3.http://beta.360buy.com/plist/737,794,880.html
+点击价格1-500，没有反应，反应为JavaScript错误。其他分类也有相同的情况。而在IE下没有反应。
+
+-- 建议
+
+1.http://passport.360buy.com/login.aspx?ReturnUrl=http%3a%2f%2fjd2008.360buy.com%2fuser_home.aspx
+用户登陆的时候，用的是http，而不是https，这样很不安全。
+
+2.http://search.360buy.com/Search?keyword=%CE%DE%CF%DF%C2%B7%D3%C9%C6%F7&s=700&sort=u&vm=true&sv=2
+促销商品不像下面普通的商品，下面没有“购买”、“收藏”、“比较”的按钮，这样很不方便。
+
+3.http://passport.360buy.com/retrievepassword.aspx
+重置密码的时候，验证码可以看不清，需要提供一个重选一张验证码的按钮，这样比较方便。
+
+4.http://beta.360buy.com/contact/shanghai.aspx#pd
+对自提点的地图，最好用Map API（如Google Map）而不是截图，可以让用户查看附近熟悉的地方。像我看到浦东的提货点时，图上的几条路对我来说都比较陌生，我还得重新到map.baidu.com看看怎么过去。易用性对于网站来说很重要。
+
+5.http://search.360buy.com/Search?keyword=%D6%C7%C4%DC%CA%D6%BB%FA&s=655&p=0-3800&sname=GSM%CA%D6%BB%FA&vm=false&sv=7
+对于搜索结果满意度的调查，原因为其他的，应该提供填写其他原因的地方。
+
+6.http://beta.360buy.com/plist/737,964,739.html
+对于未点击分类，应显示全部的内容。而不是空白。
+
+-- 安全问题
+make cc ratproxy.c -o ratproxy -Wall -O3 -D_GNU_SOURCE http.c mime.c ssl.c -lcrypto -lssl
+./ratproxy -v . -w 360.log -d beta.360buy.com/ -p 8082 -lfscm
+./ratproxy -v . -w whohar.log -d whohar.ondemand.com/ -p 8082 -lfscm
+./ratproxy -v . -w 360.log -d beta.360buy.com/ -p 8082 -lfscm
+./ratproxy -v . -w 360.log -d beta.360buy.com/ -p 8082 -lextifscgjm -r
+./ratproxy -v /tmp/ratproxy -w ratproxy.log -d blog.miniasp.com -lextifscgjm -r
+
+无
+
+
+祝京东生意兴隆！
+
+
+============
+
+百万积分大放送第一波：测试获积分！
+
+
+
+各位尊敬的京东网友们，我们的公测地址已经发布：
+
+http://beta.360buy.com/index.aspx
+
+请参与测试的网友们注意：
+
+1、本版本已经在线，请勿提交无效订单。
+
+2、测试版本只用了一组服务器，如果人数太多，访问速度可能比较慢，请大家多一些耐心哦。
+
+3、发现一个bug，赠送10个积分；提一个被采纳的建议：赠送10-100个积分；发现一个安全漏洞：赠送100个积分。积分赠送按照先发先得规则获取,在邮件中请注明您在京东商城的用户ID。
+
+4、请把您的建议或者发现发送邮件至：wangyu@360buy.com。请勿使用投诉和建议系统留言，以免给我们的正常客户服务造成干扰！
+
+5、因邮件较多，我们无法一一回复，但是我们会分类记录，逐一研究，然后进行系统更新。考虑到过程较长，积分发送时间要到11月下旬。具体时间我们会发送新闻公布。
+
+6、诸如新闻等信息必须做一次转换才能在新版商城看到，所以在新版商城看不到最新新闻是正常的。
+
+7、因系统会不断更新，在更新过程中会有短暂无法访问现象，遇此现象，您可以等待一分钟左右再次刷新页面即可。
+
+祝大家购物愉快！

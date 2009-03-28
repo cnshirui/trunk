@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="service" targetNamespace="urn:ActionWebService" xmlns:typens="urn:ActionWebService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ActionWebService">
+      <xsd:complexType name="Table">
+        <xsd:sequence>
+          <xsd:element name="header" type="typens:Header"  />
+          <xsd:element name="row" type="typens:Row"   minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Header">
+        <xsd:sequence>
+          <xsd:element name="Name" type="xsd:string"  />
+          <xsd:element name="Deal_Size_K_" type="xsd:string"  />
+          <xsd:element name="Probability___" type="xsd:string"  />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Row">
+        <xsd:sequence>
+          <xsd:element name="Name" type="xsd:string"  />
+          <xsd:element name="Deal_Size_K_" type="xsd:double"  />
+          <xsd:element name="Probability___" type="xsd:double"  />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetDataTableResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="table" type="typens:Table"/>
+            <xsd:element name="fetchedrows" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="data-GetDataTable">
+  </message>
+  <message name="data-GetDataTableResponse">
+    <part name="table" type="typens:Table"/>
+    <part name="fetchedrows" type="xsd:int"/>
+  </message>
+  <portType name="serviceDataPort">
+    <operation name="GetDataTable">
+      <input message="typens:data-GetDataTable"/>
+      <output message="typens:data-GetDataTableResponse"/>
+    </operation>
+  </portType>
+  <binding name="serviceDataBinding" type="typens:serviceDataPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetDataTable">
+      <soap:operation soapAction="/datasets/data/GetDataTable" style="rpc"/>
+      <input>
+        <soap:body use="literal" namespace="urn:ActionWebService"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="urn:ActionWebService"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="serviceService">
+    <port name="serviceDataPort" binding="typens:serviceDataBinding">
+      <soap:address location="http://localhost:3000/datasets/api/ysOQ2mmrhO_VrHzh9oZ_2w"/>
+    </port>
+  </service>
+</definitions>

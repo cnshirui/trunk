@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="EUC-JP"?>
+<configurationDescriptor version="51">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="ratproxy" displayName="ratproxy" projectFiles="true">
+      <itemPath>D:/ratproxy/ratproxy/config.h</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/debug.h</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/http.c</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/http.h</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/mime.c</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/mime.h</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/nlist.h</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/ratproxy.c</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/ssl.c</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/ssl.h</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/string-inl.h</itemPath>
+      <itemPath>D:/ratproxy/ratproxy/types.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>D:/ratproxy/ratproxy/Makefile</itemPath>
+      <itemPath>ratproxy-Makefile.mk</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>D:/ratproxy/ratproxy</Elem>
+  </sourceRootList>
+  <projectmakefile>ratproxy-Makefile.mk</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>Cygwin|Cygwin</compilerSet>
+        <platform>3</platform>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>D:/ratproxy/ratproxy</buildCommandWorkingDir>
+          <buildCommand>make -f Makefile</buildCommand>
+          <cleanCommand>make -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <requiredProjects>
+        </requiredProjects>
+      </makefileType>
+      <item path="D:/ratproxy/ratproxy/config.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/debug.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/http.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/http.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/mime.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/mime.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/nlist.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/ratproxy.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/ssl.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/ssl.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/string-inl.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="D:/ratproxy/ratproxy/types.h">
+        <itemTool>3</itemTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

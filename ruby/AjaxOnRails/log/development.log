@@ -1,0 +1,1209 @@
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:46:27) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 17:46:29) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.00000 (1 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 17:46:30) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+
+
+NoMethodError (undefined method `size' for Sun Apr 06 17:46:30 +0800 2008:Time):
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/cgi_process.rb:228:in `set_content_length!'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/cgi_process.rb:187:in `out'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 17:47:21) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.01600 (0 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 17:55:41) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.01600 (0 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:55:46) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+ERROR: compiling _run_rhtml_47app47views47chapter347index46rhtml RAISED compile error
+./script/../config/../app/views/chapter3/index.rhtml:6: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^
+Function body: def _run_rhtml_47app47views47chapter347index46rhtml(local_assigns)
+_erbout = ''; _erbout.concat "<h1>Chapter3#index</h1>\n"
+_erbout.concat(( link_to "Check TIme", :action => 'get_time' ).to_s); _erbout.concat "\n"
+_erbout.concat "\n"
+_erbout.concat(( link_remote "Check Time", 
+        :update => 'current_time', 
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+_erbout.concat "      \n"
+_erbout.concat "<div id=\"cuttent_time\"></div>\n"
+_erbout.concat "    \n"
+_erbout.concat "<p>Find me in app/views/chapter3/index.rhtml</p>\n"
+_erbout
+end
+Backtrace: ./script/../config/../app/views/chapter3/index.rhtml:12:in `compile_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+script/server:3
+
+
+ActionView::TemplateError (compile error
+./script/../config/../app/views/chapter3/index.rhtml:6: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^) on line #6 of app/views/chapter3/index.rhtml:
+3: 
+4: <%= link_remote "Check Time", 
+5:         :update => 'current_time', 
+6:         :url = > {:action => 'get_time'} %>
+7:       
+8: <div id="cuttent_time"></div>
+9:     
+
+    #{RAILS_ROOT}/app/views/chapter3/index.rhtml:12:in `compile_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:57:28) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+ERROR: compiling _run_rhtml_47app47views47chapter347index46rhtml RAISED compile error
+./script/../config/../app/views/chapter3/index.rhtml:7: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^
+Function body: def _run_rhtml_47app47views47chapter347index46rhtml(local_assigns)
+_erbout = ''; _erbout.concat "<h1>Chapter3#index</h1>\n"
+_erbout.concat(( javascript_include_tag :defaults ).to_s); _erbout.concat "\n"
+_erbout.concat(( link_to "Check TIme", :action => 'get_time' ).to_s); _erbout.concat "\n"
+_erbout.concat "\n"
+_erbout.concat(( link_remote "Check Time", 
+        :update => 'current_time', 
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+_erbout.concat "      \n"
+_erbout.concat "<div id=\"cuttent_time\"></div>\n"
+_erbout.concat "    \n"
+_erbout.concat "<p>Find me in app/views/chapter3/index.rhtml</p>\n"
+_erbout
+end
+Backtrace: ./script/../config/../app/views/chapter3/index.rhtml:13:in `compile_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+script/server:3
+
+
+ActionView::TemplateError (compile error
+./script/../config/../app/views/chapter3/index.rhtml:7: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^) on line #7 of app/views/chapter3/index.rhtml:
+4: 
+5: <%= link_remote "Check Time", 
+6:         :update => 'current_time', 
+7:         :url = > {:action => 'get_time'} %>
+8:       
+9: <div id="cuttent_time"></div>
+10:     
+
+    #{RAILS_ROOT}/app/views/chapter3/index.rhtml:13:in `compile_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:57:29) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+ERROR: compiling _run_rhtml_47app47views47chapter347index46rhtml RAISED compile error
+./script/../config/../app/views/chapter3/index.rhtml:7: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^
+Function body: def _run_rhtml_47app47views47chapter347index46rhtml(local_assigns)
+_erbout = ''; _erbout.concat "<h1>Chapter3#index</h1>\n"
+_erbout.concat(( javascript_include_tag :defaults ).to_s); _erbout.concat "\n"
+_erbout.concat(( link_to "Check TIme", :action => 'get_time' ).to_s); _erbout.concat "\n"
+_erbout.concat "\n"
+_erbout.concat(( link_remote "Check Time", 
+        :update => 'current_time', 
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+_erbout.concat "      \n"
+_erbout.concat "<div id=\"cuttent_time\"></div>\n"
+_erbout.concat "    \n"
+_erbout.concat "<p>Find me in app/views/chapter3/index.rhtml</p>\n"
+_erbout
+end
+Backtrace: ./script/../config/../app/views/chapter3/index.rhtml:13:in `compile_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+script/server:3
+
+
+ActionView::TemplateError (compile error
+./script/../config/../app/views/chapter3/index.rhtml:7: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^) on line #7 of app/views/chapter3/index.rhtml:
+4: 
+5: <%= link_remote "Check Time", 
+6:         :update => 'current_time', 
+7:         :url = > {:action => 'get_time'} %>
+8:       
+9: <div id="cuttent_time"></div>
+10:     
+
+    #{RAILS_ROOT}/app/views/chapter3/index.rhtml:13:in `compile_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:57:54) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+ERROR: compiling _run_rhtml_47app47views47chapter347index46rhtml RAISED compile error
+./script/../config/../app/views/chapter3/index.rhtml:7: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^
+Function body: def _run_rhtml_47app47views47chapter347index46rhtml(local_assigns)
+_erbout = ''; _erbout.concat "<h1>Chapter3#index</h1>\n"
+_erbout.concat(( javascript_include_tag :defaults ).to_s); _erbout.concat "\n"
+_erbout.concat(( link_to "Check TIme", :action => 'get_time' ).to_s); _erbout.concat "\n"
+_erbout.concat "\n"
+_erbout.concat(( link_to_remote "Check Time", 
+        :update => 'current_time', 
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+_erbout.concat "      \n"
+_erbout.concat "<div id=\"cuttent_time\"></div>\n"
+_erbout.concat "    \n"
+_erbout.concat "<p>Find me in app/views/chapter3/index.rhtml</p>\n"
+_erbout
+end
+Backtrace: ./script/../config/../app/views/chapter3/index.rhtml:13:in `compile_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+script/server:3
+
+
+ActionView::TemplateError (compile error
+./script/../config/../app/views/chapter3/index.rhtml:7: syntax error, unexpected '=', expecting tASSOC
+        :url = > {:action => 'get_time'} ).to_s); _erbout.concat "\n"
+              ^) on line #7 of app/views/chapter3/index.rhtml:
+4: 
+5: <%= link_to_remote "Check Time", 
+6:         :update => 'current_time', 
+7:         :url = > {:action => 'get_time'} %>
+8:       
+9: <div id="cuttent_time"></div>
+10:     
+
+    #{RAILS_ROOT}/app/views/chapter3/index.rhtml:13:in `compile_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:319:in `compile_and_render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:806:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:711:in `render_with_no_layout'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:256:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:58:58) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.01500 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:59:17) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 17:59:39) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.01500 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 17:59:41) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.00000 (1 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 17:59:49) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.00000 (1 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:00:10) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 18:00:12) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.00000 (1 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 18:00:15) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.00000 (1 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#get_time (for 127.0.0.1 at 2008-04-06 18:00:17) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"get_time", "controller"=>"chapter3"}
+Completed in 1.00000 (1 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/get_time]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:08:18) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:14)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:08:23) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:09:41) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:10:33) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:21:27) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:42:21) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:15)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:42:29) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:15)
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.01500 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:42:40) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:15)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:42:45) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:42:51) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:42:52) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.01500 (100%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:42:54) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:51:35) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:15)
+
+
+ActionView::TemplateError (undefined local variable or method `home_url' for #<#<Class:0x49a57dc>:0x49a57b4>) on line #11 of app/views/layouts/application.rhtml:
+8: 	</head>
+9: 
+10: 	<body>
+11: 		<h1><%= link_to "Review Quiz", home_url %></h1>
+12: 
+13: 		<% form_for :new_quiz, Quiz.new, :url => quizzes_url, :html => { :id => "new_quiz" } do |f| %>
+14: 			<label for="new_quiz_name">Create a quiz:</label> <%= f.text_field :name %> <%= submit_tag "Create" %>
+
+    #{RAILS_ROOT}/app/views/layouts/application.rhtml:11:in `_run_rhtml_47app47views47layouts47application46rhtml'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:326:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:326:in `compile_and_render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:301:in `render_template'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_view/base.rb:260:in `render_file'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/layout.rb:254:in `render_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:50:in `render'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1096:in `perform_action_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    C:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    C:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    C:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    C:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering C:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:58:27) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:15)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 18:59:49) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:15)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 18:59:59) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/reverse
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 19:00:25) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:14)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 19:00:27) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 19:01:14) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:14)
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.03200 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 19:01:17) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 21:28:13) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 21:44:46) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 21:44:48) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 21:45:15) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 21:45:34) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 21:49:34) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:24)
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 21:49:41) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 21:49:49) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 21:50:06) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:24)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 21:50:08) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 21:50:25) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:24)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 21:50:27) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 21:50:29) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:04:48) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:04:49) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:04:51) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:04:52) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:04:53) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"hello", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:04:54) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:04:56) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:26:05) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 22:26:08) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:24)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:26:12) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:26:15) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 22:27:59) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:24)
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.03200 (100%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:28:02) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Reverse!!", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"shirui", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:28:07) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"jiangsu", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:28:10) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "submit"=>"Submit vis Ajax", "action"=>"reverse", "text_to_reverse"=>"jiangsu", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#reverse (for 127.0.0.1 at 2008-04-06 22:28:12) [POST]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"commit"=>"Submit no-Ajax", "action"=>"reverse", "text_to_reverse"=>"jiangsu", "controller"=>"chapter3"}
+Rendering chapter3/reverse
+Completed in 0.00010 (10000 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3/reverse]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 22:30:14) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:24)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | 200 OK [http://localhost/chapter3]
+
+
+Processing Chapter3Controller#index (for 127.0.0.1 at 2008-04-06 23:50:16) [GET]
+  Session ID: eb8f7560724c9b30f98a0263fb02b9f4
+  Parameters: {"action"=>"index", "controller"=>"chapter3"}
+Rendering  within layouts/application
+Rendering chapter3/index
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:13)
+DEPRECATION WARNING: end_form_tag is deprecated and will be removed from Rails 2.0  See http://www.rubyonrails.org/deprecation for details. (called from _run_rhtml_47app47views47chapter347index46rhtml at ./script/../config/../app/views/chapter3/index.rhtml:24)
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.01600 (100%) | 200 OK [http://localhost/chapter3]

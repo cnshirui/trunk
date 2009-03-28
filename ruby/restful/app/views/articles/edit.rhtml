@@ -1,0 +1,27 @@
+<h1>Editing article</h1>
+
+<%= error_messages_for :article %>
+
+<% form_for(:article, :url => article_path(@article), :html => { :method => :put }) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Summary</b><br />
+    <%= f.text_area :summary %>
+  </p>
+
+  <p>
+    <b>Content</b><br />
+    <%= f.text_area :content %>
+  </p>
+
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

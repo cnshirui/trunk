@@ -1,21 +1,13 @@
 3.31 SAP - Joyo coupon
 
 *** todo ***
-- make two gauge.xlf with x5 & x6, compare.
-- clean up what you lean in x45->x5
 - Saturday GoldBridge, shoes and trousers
-
-- campus_roamer remove swc
-- xiaonei 我的团长, embed youtube
+- heroku: No such file or directory - /disk1/home/slugs/6226_9b54112_92b9/mnt/tmp/cache
+- xiaonei tuanzhang, embed youtube
 - ssh, https, rsa, dsa, sha1 relationship
 - hangzhou, xiamen, flight 99-199
 - huge data: xiaonei <-> heroku
-- use osde, flashapi-sdk
-
--- Recent
-1. boost, php, xcelsius, shanghai on rails, firefox add-ons
-2. win2003, kubuntu
-3. 
+- win2003, kubuntu
 
 -- Remind
 1. basketball, english, algorithm, car
@@ -27,34 +19,25 @@ BBS Summary, C++0x, Boost, tr1, tr2, Template meta programming
 flex design, flex style 3rd, mac, manual, skin, 3d spring graph
 
 --rails
-rails 2.1.1, localization
+rack, localization
 
 --programming
-captcha
-ajax search text-field
-fetion programming
-english oral lessons
-picture search, rails ticket system, 
+captcha, ajax search text-field, fetion programming, english oral lessons
+picture search, rails ticket system,
 
 -- Others
 XML-XSLT, Linux Programming, Qt Library, 
-typedef char *String, 数据库范式，RAID，java interface, 
-CDT, SHA1(计算机密码学-卢开澄),cygwin download,
-HASH-Structure, Regular Expression History,
-P64 python,ruby,blank
+typedef char *String, HASH-Structure, Regular Expression History,
 
 -- Books
-Thinking in C++/Java, CLRS, TAOCP, TCPL
-programming peals, cc2,
-AI: move number, five chess,
+Thinking in C++/Java, CLRS, TAOCP, TCPL, programming peals, cc2, AI: move number, five chess,
 design pattern, Effective C++, Code Complete
 
 -- Questions
 OSI，TCP/IP, J2ME/MIDP/CLDC
-shift key reason
-波兰 逆波兰, 怎么处理析构函数异常，设计模式整理，C实现面向对象，
+shift key reason, 波兰 逆波兰, 怎么处理析构函数异常，设计模式整理，C实现面向对象，
 English Speaking: experience in usa, ge healthcare, talk about your mother school, experience as cpp board manager
-移动窗口	死锁和饥饿，
+移动窗口 死锁和饥饿，
 JSP多线程	操作系统页面置换算法
 搜索：VPN、单元测试、单射双满
 Alssendro Q：被侵略后，投降or牺牲 国家机密or钱
@@ -70,10 +53,3 @@ TEL：025-83686123
 联系人：胡佩农
 Email：guanliyuan@nju.org.cn 
 
-健康
-320623198411095437
-国家六级
-国家二级
-15900929332
-wuj_424@126.com
-上海市浦东新区牡丹路145弄32号401室

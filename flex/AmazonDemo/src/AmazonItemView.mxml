@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">	
+	<!--
+	////////////////////////////////////////////////////////////////////////////////
+	//
+	//  Copyright (C) 2006 Adobe Macromedia Software LLC and its licensors.
+	//  All Rights Reserved. The following is Source Code and is subject to all
+	//  restrictions on such code as contained in the End User License Agreement
+	//  accompanying this product.
+	//
+	////////////////////////////////////////////////////////////////////////////////
+	-->
+	
+	<!-- AmazonItemView.mxml is the UI component that displays one AmazonItem, which
+		is pointed to by our "data" property. -->
+
+	<mx:Image id="image" source="{data.imageUrl}" toolTip="{data.name}" 
+		scaleX="{app.scaleFactor}" scaleY="{app.scaleFactor}"/>
+		
+	<mx:Label text="{data.name}" width="{image.width > 75 ? image.width : 75}" textAlign="center" styleName="text" fontSize="10"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.Application;
+			
+			[Bindable]
+			private var app: AmazonDemo = AmazonDemo(Application.application);
+			
+			public function doubleClick(event: Event): void {
+				data.createSimilars();
+				AmazonDemo(Application.application).gotDoubleClick();
+			}
+		]]>
+	</mx:Script>
+</mx:VBox>

@@ -1,0 +1,1120 @@
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:06:39) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+
+
+Mysql::Error (#28000Access denied for user 'root'@'localhost' (using password: NO)):
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:523:in `read'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:153:in `real_connect'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:389:in `connect'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:152:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `mysql_connection'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `connection_without_query_cache='
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/query_cache.rb:54:in `connection='
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:230:in `retrieve_connection'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:78:in `connection'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1139:in `add_limit!'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1101:in `construct_finder_sql'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:997:in `find_every'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:418:in `find'
+    /app/controllers/reviews_controller.rb:3:in `list'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:07:15) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.25000 (4 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (6%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:07:40) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.031000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03100 (65%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:08:13) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.015000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.031000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.06200 (16 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.04600 (74%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:13:31) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:14:26) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#create (for 127.0.0.1 at 2007-09-05 09:14:26) [POST]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"review"=>{"score"=>"3", "text"=>"About Software Engineering", "title"=>"Code Complete 2e", "author"=>"None"}, "action"=>"create", "controller"=>"reviews"}
+
+
+ActionController::UnknownAction (No action responded to create):
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ReviewsController#create (for 127.0.0.1 at 2007-09-05 09:14:37) [POST]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"review"=>{"score"=>"3", "text"=>"About Software Engineering", "title"=>"Code Complete 2e", "author"=>"None"}, "action"=>"create", "controller"=>"reviews"}
+
+
+ActionController::UnknownAction (No action responded to create):
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:14:37) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:14:47) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.032000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03200 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#create (for 127.0.0.1 at 2007-09-05 09:15:06) [POST]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"review"=>{"score"=>"3", "text"=>"About Software", "title"=>"Code Complete 2e", "author"=>"None"}, "action"=>"create", "controller"=>"reviews"}
+
+
+ActionController::UnknownAction (No action responded to create):
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'
+    c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+
+Rendering c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (404 Page Not Found)
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:15:06) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#create (for 127.0.0.1 at 2007-09-05 09:20:02) [POST]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"review"=>{"score"=>"3", "text"=>"About Software", "title"=>"Code Complete 2e", "author"=>"None"}, "action"=>"create", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000000)[0m   [0mINSERT INTO reviews (`score`, `text`, `title`, `author`) VALUES(3, 'About Software', 'Code Complete 2e', 'None')[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/create]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:20:02) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:41:49) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:54:09) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.015000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:54:24) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (51%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#create (for 127.0.0.1 at 2007-09-05 09:55:10) [POST]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"review"=>{"score"=>"6", "text"=>"Ruby Cookie Book", "title"=>"Programming Ruby", "author"=>"None"}, "action"=>"create", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.016000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000000)[0m   [0mINSERT INTO reviews (`score`, `text`, `title`, `author`) VALUES(6, 'Ruby Cookie Book', 'Programming Ruby', 'None')[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/create]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 09:55:10) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:03:20) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.032000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03200 (68%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:08:57) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#delete (for 127.0.0.1 at 2007-09-05 10:09:03) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"delete", "id"=>"4", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mReview Load (0.047000)[0m   [0;1mSELECT * FROM reviews WHERE (reviews.`id` = 4) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mReview Destroy (0.015000)[0m   [0;1m DELETE FROM reviews
+ WHERE `id` = 4
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.06200 (79%) | 200 OK [http://localhost/reviews/delete?id=4]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:09:04) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.032000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03200 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:12:30) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.015000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (31%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 10:12:38) [POST]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"review"=>{"title"=>"Code Complete 2e"}, "action"=>"update", "id"=>"3", "controller"=>"reviews"}
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews WHERE (reviews.`id` = 3) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mReview Update (0.016000)[0m   [0mUPDATE reviews SET `title` = 'Code Complete 2e', `text` = 'About Software', `score` = 3, `author` = 'None' WHERE `id` = 3[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03100 (100%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:12:38) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:12:54) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:12:57) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (51%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:12:58) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.032000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03200 (68%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:13:14) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:14:07) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:15:32) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:18:37) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:23:03) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.031000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.03100 (65%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:23:37) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:24:03) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.047000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.06300 (15 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.04700 (74%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:24:24) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:24:42) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:27:32) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:27:45) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:31:31) [GET]
+  Session ID: 9399bff0c76455731666b5e820d94c24
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:34:53) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.26600 (3 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (5%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:34:55) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:35:04) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (51%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:36:11) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:37:55) [GET]
+  Session ID: d0d66aa2401bb3b1e9b14fc764badd93
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:39:30) [GET]
+  Session ID: 21ed4f2f2e39663930836e8ef75911bd
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.094000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.11000 (9 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.09400 (85%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 10:40:43) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"update", "controller"=>"reviews"}
+
+
+ActiveRecord::RecordNotFound (Couldn't find Review without an ID):
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1012:in `find_from_ids'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:419:in `find'
+    /app/controllers/reviews_controller.rb:22:in `update'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    c:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:4:in `load'
+    -e:4
+
+
+Rendering c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:41:35) [GET]
+  Session ID: 139399ab92173173639017f7e0a0bd4c
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.015000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.01600 (51%) | DB: 0.01500 (48%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:42:57) [GET]
+  Session ID: 359b08d3d52ef327c5e2f1aa7f056c74
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:44:42) [GET]
+  Session ID: 82cd423456367386d23e21b3da20dae8
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:45:23) [GET]
+  Session ID: 82cd423456367386d23e21b3da20dae8
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:47:16) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.016000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:49:25) [GET]
+  Session ID: 30773291441df2724b7c41015f479623
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:51:14) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 10:51:49) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:07:44) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#create (for 127.0.0.1 at 2007-09-05 11:08:28) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"score"=>"4", "text"=>"Another Perfect Book", "title"=>"Programming Perls", "author"=>"None"}, "action"=>"create", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000000)[0m   [0mINSERT INTO reviews (`score`, `text`, `title`, `author`) VALUES(4, 'Another Perfect Book', 'Programming Perls', 'None')[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/create]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:08:28) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:09:47) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:12:45) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.015000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (48%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:18:23) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:20:08) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:20:20) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"author"=>"zvcxv"}, "action"=>"update", "id"=>"3", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.015000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews WHERE (reviews.`id` = 3) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mReview Update (0.000000)[0m   [0;1mUPDATE reviews SET `title` = 'Code Complete 2e', `text` = 'About Software', `score` = 3, `author` = 'zvcxv' WHERE `id` = 3[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (100%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:20:21) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.016000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:20:43) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"author"=>"zxcvzzv"}, "action"=>"update", "id"=>"5", "controller"=>"reviews"}
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mReview Update (0.000000)[0m   [0mUPDATE reviews SET `title` = 'Programming Perls', `text` = 'Another Perfect Book', `score` = 4, `author` = 'zxcvzzv' WHERE `id` = 5[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:20:43) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:01) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:19) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"author"=>"sghsfdghgf"}, "action"=>"update", "id"=>"5", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mReview Update (0.000000)[0m   [0;1mUPDATE reviews SET `title` = 'Programming Perls', `text` = 'Another Perfect Book', `score` = 4, `author` = 'sghsfdghgf' WHERE `id` = 5[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:19) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.016000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:31) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"author"=>"sghsfdghgf"}, "action"=>"update", "id"=>"5", "controller"=>"reviews"}
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mReview Update (0.000000)[0m   [0mUPDATE reviews SET `title` = 'Programming Perls', `text` = 'Another Perfect Book', `score` = 4, `author` = 'sghsfdghgf' WHERE `id` = 5[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:31) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.015000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:33) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"author"=>"sghsfdghgf"}, "action"=>"update", "id"=>"5", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mReview Update (0.000000)[0m   [0;1mUPDATE reviews SET `title` = 'Programming Perls', `text` = 'Another Perfect Book', `score` = 4, `author` = 'sghsfdghgf' WHERE `id` = 5[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:33) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:37) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"score"=>"4"}, "action"=>"update", "id"=>"5", "controller"=>"reviews"}
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mReview Update (0.000000)[0m   [0mUPDATE reviews SET `title` = 'Programming Perls', `text` = 'Another Perfect Book', `score` = 4, `author` = 'sghsfdghgf' WHERE `id` = 5[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:38) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.016000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:39) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"author"=>"zvcxv"}, "action"=>"update", "id"=>"3", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.015000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews WHERE (reviews.`id` = 3) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mReview Update (0.000000)[0m   [0;1mUPDATE reviews SET `title` = 'Code Complete 2e', `text` = 'About Software', `score` = 3, `author` = 'zvcxv' WHERE `id` = 3[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.01500 (66 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (100%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:39) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.016000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.01600 (62 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (100%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:40) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"title"=>"Programming Perls"}, "action"=>"update", "id"=>"5", "controller"=>"reviews"}
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mReview Update (0.000000)[0m   [0mUPDATE reviews SET `title` = 'Programming Perls', `text` = 'Another Perfect Book', `score` = 4, `author` = 'sghsfdghgf' WHERE `id` = 5[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:40) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:49) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"score"=>"4"}, "action"=>"update", "id"=>"5", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mReview Update (0.016000)[0m   [0;1mUPDATE reviews SET `title` = 'Programming Perls', `text` = 'Another Perfect Book', `score` = 4, `author` = 'sghsfdghgf' WHERE `id` = 5[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (51%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:50) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.03200 (31 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#update (for 127.0.0.1 at 2007-09-05 11:21:51) [POST]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"review"=>{"author"=>"zvcxv"}, "action"=>"update", "id"=>"3", "controller"=>"reviews"}
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews WHERE (reviews.`id` = 3) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mBEGIN[0m
+  [4;35;1mReview Update (0.000000)[0m   [0mUPDATE reviews SET `title` = 'Code Complete 2e', `text` = 'About Software', `score` = 3, `author` = 'zvcxv' WHERE `id` = 3[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCOMMIT[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/update]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2007-09-05 11:21:51) [GET]
+  Session ID: 2d025778cbda12b93c8aa8c05a60ffa7
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.016000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (51%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-02-29 18:29:39) [GET]
+  Session ID: 5b14b16e74861dd4484fa6dc1d5b6191
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+
+
+Mysql::Error (#28000Access denied for user 'root'@'shg-d-01-rshi.product.businessobjects.com' (using password: YES)):
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:523:in `read'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/vendor/mysql.rb:153:in `real_connect'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:389:in `connect'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:152:in `initialize'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `new'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/mysql_adapter.rb:82:in `mysql_connection'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:262:in `connection_without_query_cache='
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/query_cache.rb:54:in `connection='
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:230:in `retrieve_connection'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/connection_adapters/abstract/connection_specification.rb:78:in `connection'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1139:in `add_limit!'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:1101:in `construct_finder_sql'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:997:in `find_every'
+    c:/ruby/lib/ruby/gems/1.8/gems/activerecord-1.15.3/lib/active_record/base.rb:418:in `find'
+    /app/controllers/reviews_controller.rb:4:in `list'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:1095:in `perform_action_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:632:in `call_filter'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:113:in `handle_dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:79:in `service'
+    c:/ruby/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    c:/ruby/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    c:/ruby/lib/ruby/1.8/webrick/server.rb:82:in `start'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/webrick_server.rb:63:in `dispatch'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/webrick.rb:59
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'
+    c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'
+    c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    ./script/server:3
+    -e:2:in `load'
+    -e:2
+
+
+Rendering c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/templates/rescues/layout.rhtml (500 Internal Error)
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-02-29 18:31:13) [GET]
+  Session ID: 5b14b16e74861dd4484fa6dc1d5b6191
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.21800 (4 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-03-03 14:12:59) [GET]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.45300 (2 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-03-03 14:13:26) [GET]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;35;1mReview Load (0.000000)[0m   [0mSELECT * FROM reviews [0m
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#delete (for 127.0.0.1 at 2008-03-03 14:13:35) [GET]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"action"=>"delete", "id"=>"5", "controller"=>"reviews"}
+  [4;35;1mReview Columns (0.016000)[0m   [0mSHOW FIELDS FROM reviews[0m
+  [4;36;1mReview Load (0.031000)[0m   [0;1mSELECT * FROM reviews WHERE (reviews.`id` = 5) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mReview Destroy (0.000000)[0m   [0;1m DELETE FROM reviews
+ WHERE `id` = 5
+[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.07800 (12 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.04700 (60%) | 200 OK [http://localhost/reviews/delete?id=5]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-03-03 14:13:36) [GET]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.016000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (51%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#create (for 127.0.0.1 at 2008-03-03 14:13:47) [POST]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"review"=>{"score"=>"0", "text"=>nil, "title"=>"test add", "author"=>"shirui"}, "action"=>"create", "controller"=>"reviews"}
+  [4;36;1mReview Columns (0.000000)[0m   [0;1mSHOW FIELDS FROM reviews[0m
+  [4;35;1mSQL (0.000000)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.015000)[0m   [0;1mINSERT INTO reviews (`score`, `text`, `title`, `author`) VALUES(0, NULL, 'test add', 'shirui')[0m
+  [4;35;1mSQL (0.000000)[0m   [0mCOMMIT[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (31%) | 200 OK [http://localhost/reviews/create]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-03-03 14:13:47) [GET]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.016000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01600 (51%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-03-03 14:33:25) [GET]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.015000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.04700 (21 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.01500 (31%) | 200 OK [http://localhost/reviews/list]
+
+
+Processing ReviewsController#list (for 127.0.0.1 at 2008-03-03 17:29:41) [GET]
+  Session ID: 7044745dfd2c5101a182a0dc98e8ff3e
+  Parameters: {"action"=>"list", "controller"=>"reviews"}
+  [4;36;1mReview Load (0.000000)[0m   [0;1mSELECT * FROM reviews [0m
+  [4;35;1mReview Columns (0.000000)[0m   [0mSHOW FIELDS FROM reviews[0m
+Completed in 0.03100 (32 reqs/sec) | Rendering: 0.00000 (0%) | DB: 0.00000 (0%) | 200 OK [http://localhost/reviews/list]

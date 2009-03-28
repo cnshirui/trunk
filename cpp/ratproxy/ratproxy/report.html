@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/plain; charset=iso-8859-1">
+<title>ratproxy - security testing proxy</title>
+<style>
+a:link, a:visited { text-decoration: none; color: green }
+a:hover { text-decoration: underline; color: red }
+body { background-color: white; background-image: url('ratproxy-back.png'); background-repeat: no-repeat; }
+</style>
+</head>
+
+<body>
+
+<div style="width: 60%">
+<span style="float: left; height: 190px; width: 350px"></span>
+
+<font face="arial,helvetica" size=+0>
+<b>Ratproxy audit report</b>
+<p>
+<font size=-1>
+Generated on: <b>2008/11/02 00:37</b><br>
+Input file: <b>360.log</b>
+</font>
+<p>
+<font color="crimson" size=-1>NOTE: Not all of the issues reported necessarily
+correspond to actual security flaws. Findings should be validated
+by manual testing and analysis where appropriate. When in doubt,
+<a href="mailto:lcamtuf@google.com">contact the author</a>.</font>
+<br clear=all>
+
+<hr size=1 color=black>
+<p>
+<font size=-1>
+<div style="border: 1px solid teal; background-color: white">
+<b>Report risk and risk modifier designations:</b>
+<table border=0>
+<tr>
+<td width=25%>
+<font face="Bitstream Vera Sans Mono,Andale Mono,lucida console" size=-2>
+<span style="border: solid black 1px; background-color: blue; color: white; padding: 0.1em 0.4em 0.1em 0.4em"><b>LOW</b></span>
+to
+<span style="border: solid black 1px; background-color: crimson; color: white; padding: 0.1em 0.4em 0.1em 0.4em"><b>HIGH</b></span>
+</td>
+<td><font size=-1>Issue urgency classification (composite of impact and identification accuracy)</font></td>
+</tr>
+<tr>
+<td width=25%>
+<font face="Bitstream Vera Sans Mono,Andale Mono,lucida console" size=-2>
+<span style="border: solid black 1px; background-color: gray; color: white; padding: 0.1em 0.4em 0.1em 0.4em"><b>INFO</b></span>
+</td>
+<td><font size=-1>Non-discriminatory entry for further analysis</font></td>
+</tr>
+<tr>
+<td width=25%>
+<font face="Bitstream Vera Sans Mono,Andale Mono,lucida console" size=-2>
+<span style="border: solid gray 1px; background-color: #fffece; color: #800000; padding: 0.1em 0.4em 0.1em 0.4em">ECHO</span>
+/
+<span style="border: solid gray 1px; background-color: #fffece; color: #A0A080; padding: 0.1em 0.4em 0.1em 0.4em">echo</span>
+</font>
+</td>
+<td><font size=-1>Query parameters echoed back / not echoed in HTTP response, respectively</font></td>
+</tr>
+<tr>
+<td width=25%>
+<font face="Bitstream Vera Sans Mono,Andale Mono,lucida console" size=-2>
+<span style="border: solid gray 1px; background-color: #fffece; color: #800000; padding: 0.1em 0.4em 0.1em 0.4em">PRED</span>
+/
+<span style="border: solid gray 1px; background-color: #fffece; color: #A0A080; padding: 0.1em 0.4em 0.1em 0.4em">pred</span>
+</font>
+</td>
+<td><font size=-1>Request URL or query data likely is / is not predictable to third parties, respectively</font></td>
+</tr>
+<tr>
+<td>
+<font face="Bitstream Vera Sans Mono,Andale Mono,lucida console" size=-2>
+<span style="border: solid gray 1px; background-color: #fffece; color: #800000; padding: 0.1em 0.4em 0.1em 0.4em">AUTH</span>
+/
+<span style="border: solid gray 1px; background-color: #fffece; color: #A0A080; padding: 0.1em 0.4em 0.1em 0.4em">auth</span>
+</font>
+</td>
+<td><font size=-1>Request requires / does not require cookie authentication, respectively</font></td>
+</tr>
+</table>
+</div>
+</font>
+<p>
+<hr size=1 color=black>
+
+<script>
+function toggle(id) { 
+  var i = document.getElementById(id);
+  if (i.style.display == 'none') i.style.display = 'inline'; else i.style.display = 'none';
+  i = document.getElementById('hid_' + id);
+  if (i.style.display == 'none') i.style.display = 'inline'; else i.style.display = 'none';
+}
+</script>
+
+<font face="arial,helvetica" size=-1>
+<ul>
+<b>No activity to report on found in log file.

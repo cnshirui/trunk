@@ -1,0 +1,48 @@
+# Logfile created on ??? ?? 18 22:02:15 +0800 2008
+
+Processing ApplicationController#index (for 127.0.0.1 at 2008-07-18 23:20:25) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/rails/info/properties" with {:method=>:get}):
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/routing.rb:1441:in `recognize_path'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/routing.rb:1424:in `recognize'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:170:in `handle_request'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:115:in `dispatch'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:126:in `dispatch_cgi'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:9:in `dispatch'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:159:in `process_client'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:158:in `each'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:158:in `process_client'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:285:in `run'
+    :1:in `initialize'
+
+Rendering D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2008-07-18 23:34:49) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/rails/info/properties" with {:method=>:get}):
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/routing.rb:1441:in `recognize_path'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/routing.rb:1424:in `recognize'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:170:in `handle_request'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:115:in `dispatch'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:126:in `dispatch_cgi'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/dispatcher.rb:9:in `dispatch'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:159:in `process_client'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:158:in `each'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:158:in `process_client'
+    D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/mongrel-1.1.4-java/lib/mongrel.rb:285:in `run'
+    :1:in `initialize'
+
+Rendering D:/v4/jruby-1.1/lib/ruby/gems/1.8/gems/actionpack-2.0.2/lib/action_controller/templates/rescues/layout.erb (not_found)

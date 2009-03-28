@@ -1,0 +1,875 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+多奇數位正在招募 .NET 工程師，歡迎有 .NET / ASP.NET 有開發經驗兩年以上的人可以跟我們連絡，相關招募資訊請至 http://www.miniasp.com/lookfor.php 查看。
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw">
+<head profile="http://gmpg.org/xfn/11"><meta name="verify-v1" content="v9R+pkz7J3APdDqZgrpWlhURhTklIb1zMMUCTNWwM1k=" /><link rel="stylesheet" href="../../../themes/TheWillWillWeb/default.css" type="text/css" /><link rel="stylesheet" href="../../../themes/TheWillWillWeb/WLWSyntaxHighlighter.css" type="text/css" /><link rel="shortcut icon" href="http://www.miniasp.com/images/favicon4.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/jquery-1.2.3.min.js"></script>
+
+	<script language="JavaScript" src="/addto.js" type="text/javascript"></script>
+<meta name="keywords" content="google,linux,ratproxy,security" /><meta name="description" content="記載著 Will 在網路世界的學習心得與技術分享" /><link rel="last" title="介紹好用工具：FastCGI Extension for IIS6.0" href="/post/2008/11/Useful-tool-FastCGI-Extension-for-Internet-Information-Services-60.aspx" /><link rel="first" title="我的第一個正式的部落格終於成立" href="/post/2007/10/My-first-offical-blog-launch.aspx" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><link rel="edituri" type="application/rsd+xml" title="RSD" href="http://blog.miniasp.com/rsd.axd" /><link rel="alternate" type="application/rss+xml" title="The Will Will Web" href="http://feeds.feedburner.com/TheWillWillWeb" /><link rel="contents" title="Archive" href="/archive.aspx" /><link rel="start" title="The Will Will Web" href="/" /><script type="text/javascript">KEYhasRated='您已經對該文章評分';KEYwebRoot='/';</script><link rel="search" href="http://blog.miniasp.com/opensearch.axd" type="application/opensearchdescription+xml" title="The Will Will Web" /><script type="text/javascript" src="/js.axd?path=%2fblog.js"></script><title>
+	Google 推出 Open Source 的安全工具：RatProxy
+</title></head>
+<body>
+    <form name="aspnetForm" method="post" action="/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTI2MTM1MTE0NQ9kFgJmD2QWAgIDD2QWAgIFD2QWAgIJDw8WBB4MY2FwdGNoYXZhbHVlBSRjYjAzOWRiOS1kMDdlLTQ5MjctYjhjMS0xMzA1NWQ0YTQ4ZjMeDGNhcHRjaGFmaWVsZAUkNmMzYmMwZTMtZDNmMy00MzI0LThhMzEtMTE3ZjQyYWEzN2UzZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgIFGmN0bDAwJEluZm9Cb3gyJGN0bDA4JGN0bDAxBRpjdGwwMCRJbmZvQm94MiRjdGwwOCRjdGwwM+JNVpEBKdN8sWG2zNUsU9Qe8Z/F" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=j246orv_38DeKtGbza6y6A2&amp;t=633493784015842500" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+function SetCaptcha(){var form = $('aspnetForm');var el = document.createElement('input');el.type = 'hidden';el.name = '6c3bc0e3-d3f3-4324-8a31-117f42aa37e3';el.value = 'cb039db9-d07e-4927-b8c1-13055d4a48f3';form.appendChild(el);}//]]>
+</script>
+
+<script src="/WebResource.axd?d=WPlOuL4rgyNDaPA-Suv_j8oz_UZDxvllDUDv5wL3hHQ1&amp;t=633493784015842500" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+SetCaptcha();if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+        <div id="menu">
+            <ul>
+                <li><a href="../../../" id="ctl00_A1" rel="home">
+                    首頁
+                </a></li>
+                <li><a href="../../../archive.aspx" id="ctl00_A2">
+                    所有文章
+                </a></li>
+                <li><a href="../../../contact.aspx" id="ctl00_A3">
+                    與我聯繫
+                </a></li>
+                <li><a href="http://feeds.feedburner.com/TheWillWillWeb" class="feed">
+                    <img src="/pics/rssButton.gif" alt="Feed" />
+                    訂閱
+                </a></li>
+            </ul>
+        </div>
+        <div id="header">
+            <h1>
+                <a href="../../../" id="ctl00_A4">
+                    The Will Will Web
+                </a>
+            </h1>
+            <h2>
+                記載著 Will 在網路世界的學習心得與技術分享
+            </h2>
+        </div>
+        <div id="wrapper">
+            <div id="content">
+             <!-- begin #posts -->
+                <div id="posts">
+                    
+                    
+  
+  
+  
+  
+
+<div class="post xfolkentry">
+    <h2 class="title">
+        <a href="/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx" class="taggedlink">
+            Google 推出 Open Source 的安全工具：RatProxy
+        </a>
+    </h2>
+    <div class="story">
+        <p>最近 Google 推出一套免費的 Web 安全評估工具，叫做 <a href="http://code.google.com/p/ratproxy/" target="_blank">ratproxy</a>，這套工具可以檢測、分析您的網站是否有安全性漏洞或網頁是否有被入侵，目前可支援 Linux, FreeBSD, MacOS X, 與 Windows (Cygwin) 等執行環境（反正就是 Unix-like 的環境啦）。</p> <p>RatProxy 可偵測到的漏洞包括 <a href="http://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">Cross-site Scripting</a> (XSS, <a href="http://zh.wikipedia.org/wiki/%E8%B7%A8%E7%B6%B2%E7%AB%99%E6%8C%87%E4%BB%A4%E7%A2%BC" target="_blank">跨網站指令碼</a>)、指令碼惡意置入(script inclusion issues), 惡意網頁內容(content serving problems), insufficient <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank">XSRF</a> 以及 XSS 防護(XSS defenses) 等。</p> <p>若要在 Ubuntu 的環境下執行的話，必須要先安裝以下套件才能將 ratproxy 編譯成功：</p> <div class="csharpcode-wrapper"><pre class="csharpcode">apt-get install make gcc build-essential libssl-dev ca-certificates</pre></div>
+<p>下載、解壓縮、編譯：</p>
+<div class="csharpcode-wrapper"><pre class="csharpcode">wget http://ratproxy.googlecode.com/files/ratproxy-1.51.tar.gz<br />tar zxf ratproxy-1.51.tar.gz<br />cd ratproxy<br />make</pre></div>
+<p>編譯成功以後，就可以使用了，功能挺多的：</p>
+<div class="csharpcode-wrapper"><pre class="csharpcode"><span class="rem"># ./ratproxy -h</span><br />ratproxy version 1.51-beta by &lt;lcamtuf@google.com&gt;<br />./ratproxy: invalid option -- h<br />Usage: ./ratproxy [ -w logfile ] [ -v logdir ] [ -p port ] [ -d domain ] [ -P host:port ] [ -xtifkgmjscael2XCr ]<br />   -w logfile    - write results to a specified file (<span class="kwrd">default</span>: stdout)<br />   -v logdir     - write HTTP traces to a specified directory (<span class="kwrd">default</span>: none)<br />   -p port       - listen on a custom TCP port (<span class="kwrd">default</span>: 8080)<br />   -d domain     - analyze requests to specified domains only (<span class="kwrd">default</span>: all)<br />   -P host:port  - use upstream proxy <span class="kwrd">for</span> all requests (format host:port)<br />   -r            - accept remote connections (<span class="kwrd">default</span>: 127.0.0.1 only)<br />   -l            - use response length, not checksum, <span class="kwrd">for</span> identity check<br />   -2            - perform two, not one, page identity check<br />   -e            - perform pedantic caching headers checks<br />   -x            - log all XSS candidates<br />   -t            - log all directory traversal candidates<br />   -i            - log all PNG files served inline<br />   -f            - log all Flash applications <span class="kwrd">for</span> analysis (add -v to decompile)<br />   -s            - log all POST requests <span class="kwrd">for</span> analysis<br />   -c            - log all cookie setting URLs <span class="kwrd">for</span> analysis<br />   -g            - perform XSRF token checks on all GET requests<br />   -j            - report on risky Javascript constructions<br />   -m            - log all active content referenced across domains<br />   -X            - disruptively validate XSRF, XSS protections<br />   -C            - try to auto-correct persistent side effects of -X<br />   -k            - flag HTTP requests as bad (<span class="kwrd">for</span> HTTPS-only applications)<br />   -a            - indiscriminately report all visited URLs</pre></div>
+<p>由於 ratproxy 是屬「半自動」且「被動式」的偵測方法，使用 Proxy 的方式運作，<strong>並非</strong>主動連接到特定網站抓取所有網頁回來分析，所以啟動完該程式之後，會以 Proxy Server 的形式執行，你必須修改你瀏覽器的 Proxy 設定，將 Proxy 伺服器指定到 <a href="http://code.google.com/p/ratproxy/" target="_blank">ratproxy</a> 的 IP 與 Port（預設 <a href="http://code.google.com/p/ratproxy/" target="_blank">ratproxy</a> 啟動的 Port 埠號是 8080），才能讓 ratproxy 取得偵測的資訊，如下圖示：</p>
+<p><img style="border-width: 0px" src="/image.axd?picture=WindowsLiveWriter/GoogleOpenSourceRatProxy_1232E/image_3.png" border="0" alt="修改你瀏覽器的 Proxy 設定，將 Proxy 伺服器指定到 ratproxy 的 IP 與 Port（預設 ratproxy 啟動的 Port 埠號是 8080）" width="388" height="319" /> </p>
+<p>若要啟動 <a href="http://code.google.com/p/ratproxy/" target="_blank">ratproxy</a> 伺服器，一段簡單的啟用指令如下：</p>
+<div class="csharpcode-wrapper"><pre class="csharpcode">./ratproxy -v /tmp/ratproxy -w ratproxy.log -d blog.miniasp.com -lextifscgjm -r</pre></div>
+<p>這代表你要將 <a href="http://code.google.com/p/ratproxy/" target="_blank">ratproxy</a> 服務啟動，預設監聽 Port 8080，並將偵測到的 Log 儲存在 /tmp/ratproxy/ratproxy.log 中，並且只分析連線到 blog.miniasp.com 網址的資料，並且將所有取得的網頁儲存成使用 -r 代表這個服務可以讓遠端主機使用（預設只會監聽 127.0.0.1 而已），如果你沒加上 -r 就無法用其他台機器連線。至於 lextifscgjm 這一串所代表的意義就請看 Help 說明吧。</p>
+<p>最後，就是將取得的 ratproxy.log 產生報表網頁，並且查看你用 Browser 所逛過的網頁是否有潛在的安全風險或漏洞。你可以使用 ratproxy-report.sh 產生該網頁：</p>
+<div class="csharpcode-wrapper"><pre class="csharpcode">./ratproxy-report.sh ratproxy.log <span class="kwrd">&gt;</span> report.html</pre></div>
+<p>產生的結果可以參考下圖：</p>
+<p><a href="http://ratproxy.googlecode.com/files/ratproxy-screen.png" target="_blank"><img src="http://ratproxy.googlecode.com/files/ratproxy-screen.png" border="0" alt="ratproxy 分析結果報表預覽圖示" width="550" height="423" /></a> </p>
+<p><strong>相關連結</strong> 
+</p><ul>
+<li><a href="http://code.google.com/p/ratproxy/" target="_blank">ratproxy</a> - passive web application security assessment tool 
+</li><li><a href="http://code.google.com/p/ratproxy/wiki/RatproxyDoc" target="_blank">RatProxy 說明文件</a></li></ul>
+
+		<div style="margin: 0 auto 20px auto; text-align: center;">
+		
+			<script type="text/javascript"><!--
+			google_ad_client = "pub-1096755573138843";
+			//468x60, 已建立 2007/11/7
+			google_ad_slot = "6931897533";
+			google_ad_width = 468;
+			google_ad_height = 60;
+			//--></script>
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+
+		</div>
+
+	</div>
+	
+    <div class="meta">
+		<div style="text-align: right; float: right;verticle-align:top;">
+			<script type="text/javascript">
+//funp_genButton('http://' + location.hostname + '/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx', 7);
+var url="?url="+encodeURIComponent('http://' + location.hostname + '/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx');
+document.write('<iframe src="http://funp.com/tools/buttoniframe.php'+url+'&s=7" height="70" width="60" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>');
+			</script>
+			&nbsp;&nbsp;
+
+			<script type="text/javascript">
+			HEMiDEMi_Bookmark_Button_URL  = 'http://' + location.hostname + '/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx';
+			HEMiDEMi_Bookmark_Button_Title = 'Google 推出 Open Source 的安全工具：RatProxy';
+			HEMiDEMi_Bookmark_Button_Style = 'button';
+			//HEMiDEMi_Bookmark_Button_Width = 106;
+			HEMiDEMi_Bookmark_Button_Height = 74;
+			</script>
+			<script src="/themes/TheWillWillWeb/hemidemi_bookmark_button.js" type="text/javascript"></script> 
+
+		</div>
+
+
+        <p class="date">
+            此文章由 <a href="/author/will.aspx">
+                will
+            </a>
+			
+			發表於
+            2008/7/5 上午 12:08:00
+        </p>
+        <p class="file">
+            <a rel="bookmark" href="http://blog.miniasp.com/post.aspx?id=7aea0654-8835-4d18-8c54-9fa56aa22a98">永久連結</a> | <a rel="nofollow" href="/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx#comment">
+                評論
+                (5)</a> | <a rel="nofollow" href="/syndication.axd?post=7aea0654-8835-4d18-8c54-9fa56aa22a98">
+                    此文章的RSS<img id="ctl00_cphBody_ctl00_Image1" src="../../../pics/rssbutton.gif" alt="RSS comment feed" style="border-width:0px;margin-left: 3px" /></a> |
+            
+        </p>
+        <p class="date">分類:
+            <a href="/category/Linux.aspx">Linux</a> | <a href="/category/Web.aspx">Web</a> | <a href="/category/Security.aspx">Security</a>
+        </p>
+        <p class="date" style="display:none;">
+            Trackback:
+            http://blog.miniasp.com/trackback.axd?id=7aea0654-8835-4d18-8c54-9fa56aa22a98
+        </p>
+        <p class="date">
+            標籤:
+            <a href="/?tag=/google" rel="tag">google</a>, <a href="/?tag=/linux" rel="tag">linux</a>, <a href="/?tag=/ratproxy" rel="tag">ratproxy</a>, <a href="/?tag=/security" rel="tag">security</a>
+        </p>
+		<p class="date">
+			收藏: 
+<script language="JavaScript" type="text/javascript">
+var addtoMethod=1;
+
+DrawLinks(100, 0, "smallText", "addto", 'http://' + location.hostname + '/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx', encodeURI(document.title)) 
+</script>
+		</p>
+		
+		
+    </div>
+</div>
+
+  
+  
+    <!-- 
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://blog.miniasp.com/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx" dc:identifier="http://blog.miniasp.com/post/2008/07/Google-opens-up-ratproxy-code-to-secure-your-web-environment.aspx" dc:title="Google 推出 Open Source 的安全工具：RatProxy" trackback:ping="http://blog.miniasp.com/trackback.axd?id=7aea0654-8835-4d18-8c54-9fa56aa22a98" />
+    </rdf:RDF>
+    -->
+  
+  
+  <h1>相關文章</h1><div id="relatedPosts"><a href="/post/2008/05/Web-Encyclopedia-Google-Doctype.aspx">Web開發人員的百科全書：Google Doctype</a><a href="/post/2008/10/Microsoft-Web-Platform-Installer-and-Web-Application-Installer.aspx">推薦好網站與工具：Microsoft Web Platform</a><a href="/post/2008/04/How-to-install-PHP4-on-Ubuntu-804-LTS.aspx">Ubuntu 8.04 LTS 如何安裝 PHP4</a><a href="/post/2008/05/Recommand-Google-Safe-Browsing.aspx">使用 Google 提供的網站內容安全檢查服務</a></div>
+  
+<h1 id="comment">評論</h1>
+
+<div id="commentlist">
+  
+
+<div id="id_0ea6474f-b70f-4a73-8c1f-dd45309d3803" class="comment">
+  <p class="date">七月 8. 2008 18:18</p>
+  <p class="gravatar"><img src="http://www.gravatar.com/avatar.php?gravatar_id=b0492872b957fca32850a34efe115c4c&amp;size=80&amp;default=http%3a%2f%2fblog.miniasp.com%2fmonster.axd%3fseed%3db0492872b9%26size%3d80" alt="啊健" /></p>
+  <p class="content">
+	請問大大<br />我要在Windows上使用Google 推出 Open Source 的安全工具：RatProxy 工具<br />要如何使用<br />請問大大有中文教學嗎<br />或寄mail給我<br />感激<br />
+	
+	<br/>
+  </p>
+  <p class="author">
+    啊健
+    <img src="/pics/flags/tw.png" class="flag" alt="tw" />
+    
+  </p>
+</div>
+
+<div id="id_26e98b2f-9864-44f8-806b-e769f31fa34c" class="comment self">
+  <p class="date">七月 8. 2008 19:33</p>
+  <p class="gravatar"><img src="http://www.gravatar.com/avatar.php?gravatar_id=790a213f761f1fdd1f200af0cca28c2c&amp;size=80&amp;default=http%3a%2f%2fblog.miniasp.com%2fmonster.axd%3fseed%3d790a213f76%26size%3d80" alt="will" /></p>
+  <p class="content">
+	你可以先安裝 cygwin ，然後再安裝相關的編譯套件，例如：gcc<br /><br />cygwin<br /><a href="http://www.cygwin.com/" rel="nofollow">http://www.cygwin.com/</a><br /><br />我如果改天有空安裝的話就會寫一篇起來。
+	
+	<br/>
+  </p>
+  <p class="author">
+    <a href="http://blog.miniasp.com/">will</a>
+    <img src="/pics/flags/tw.png" class="flag" alt="tw" />
+    
+  </p>
+</div>
+
+<div id="id_04d570ee-561b-45da-8397-83b59847c2e3" class="comment self">
+  <p class="date">七月 8. 2008 20:41</p>
+  <p class="gravatar"><img src="http://www.gravatar.com/avatar.php?gravatar_id=790a213f761f1fdd1f200af0cca28c2c&amp;size=80&amp;default=http%3a%2f%2fblog.miniasp.com%2fmonster.axd%3fseed%3d790a213f76%26size%3d80" alt="will" /></p>
+  <p class="content">
+	我剛剛在 cygwin 下將 ratproxy 安裝起來了，步驟如下：<br /><br />1. 安裝 cygwin 時記得要安裝以下套件才能正確編譯成功：<br />　　make gcc binutils openssl-devel<br />2. 進入 cygwin 介面，並下載 ratproxy<br />　　wget <a href="http://ratproxy.googlecode.com/files/ratproxy-1.51.tar.gz" rel="nofollow">ratproxy.googlecode.com/files/ratproxy-1.51.tar.gz</a><br />3. 解壓縮 ratproxy<br />　　tar zxvf ratproxy-1.51.tar.gz<br />4. 進入 ratproxy 目錄<br />　　cd ratproxy<br />5. 修改 Makefile<br />　　將以下這行的 -Wno-pointer-sign 刪除<br />　　CFLAGS   = -Wall -O3 -Wno-pointer-sign -D_GNU_SOURCE<br />　　修改成如下的樣子<br />　　CFLAGS   = -Wall -O3 -D_GNU_SOURCE<br />　　因為有些人的 cygwin 會因為這個參數無法編譯<br />6. 編譯 ratproxy<br />　　輸入 make 即可完成編譯，編譯完成後你會得到一個 ratproxy.exe 執行檔。<br />
+	
+	<br/>
+  </p>
+  <p class="author">
+    <a href="http://blog.miniasp.com/">will</a>
+    <img src="/pics/flags/tw.png" class="flag" alt="tw" />
+    
+  </p>
+</div>
+
+<div id="id_96379096-5b88-4c9e-a387-bbe61757805c" class="comment">
+  <p class="date">七月 9. 2008 14:25</p>
+  <p class="gravatar"><img src="http://www.gravatar.com/avatar.php?gravatar_id=b0492872b957fca32850a34efe115c4c&amp;size=80&amp;default=http%3a%2f%2fblog.miniasp.com%2fmonster.axd%3fseed%3db0492872b9%26size%3d80" alt="啊健" /></p>
+  <p class="content">
+	大大<br />1. 安裝 cygwin 時記得要安裝以下套件才能正確編譯成功： <br />　　make gcc binutils openssl-devel <br />2. 進入 cygwin 介面，並下載 ratproxy <br />　　wget ratproxy.googlecode.com/files/ratproxy-1.51.tar.gz <br />3. 解壓縮 ratproxy <br />　　tar zxvf ratproxy-1.51.tar.gz <br />4. 進入 ratproxy 目錄 <br />　　cd ratproxy <br />以上我執行都OK<br /><br />但是到了<br />5. 修改 Makefile <br />　　將以下這行的 -Wno-pointer-sign 刪除 <br />　　CFLAGS = -Wall -O3 -Wno-pointer-sign -D_GNU_SOURCE <br />　　修改成如下的樣子 <br />　　CFLAGS = -Wall -O3 -D_GNU_SOURCE <br />　　因為有些人的 cygwin 會因為這個參數無法編譯 <br />這一點我好像怪怪<br />可以在說明嗎<br />
+	
+	<br/>
+  </p>
+  <p class="author">
+    啊健
+    <img src="/pics/flags/tw.png" class="flag" alt="tw" />
+    
+  </p>
+</div>
+
+<div id="id_e4972958-cca5-4e75-93a6-ce2cc8afdbd4" class="comment self">
+  <p class="date">七月 9. 2008 15:39</p>
+  <p class="gravatar"><img src="http://www.gravatar.com/avatar.php?gravatar_id=790a213f761f1fdd1f200af0cca28c2c&amp;size=80&amp;default=http%3a%2f%2fblog.miniasp.com%2fmonster.axd%3fseed%3d790a213f76%26size%3d80" alt="will" /></p>
+  <p class="content">
+	哪裡怪阿？總要給我畫面或錯誤訊息吧。
+	
+	<br/>
+  </p>
+  <p class="author">
+    <a href="http://blog.miniasp.com/">will</a>
+    <img src="/pics/flags/tw.png" class="flag" alt="tw" />
+    
+  </p>
+</div>
+    </div>
+
+
+
+<img src="/pics/ajax-loader.gif" alt="Saving the comment" style="display:none" id="ajaxLoader" />  
+<span id="status"></span>
+
+<div class="commentForm">
+  <h1 id="addcomment">新增評論</h1>
+
+  <label for="ctl00_cphBody_CommentView1_txtName">名字*</label>
+  <input name="ctl00$cphBody$CommentView1$txtName" type="text" id="ctl00_cphBody_CommentView1_txtName" tabindex="1" /><span id="ctl00_cphBody_CommentView1_ctl00" style="color:Red;display:none;"> Please choose another name</span><span id="ctl00_cphBody_CommentView1_ctl01" style="color:Red;display:none;">Required</span><br />
+
+  <label for="ctl00_cphBody_CommentView1_txtEmail">E-mail*</label>
+  <input name="ctl00$cphBody$CommentView1$txtEmail" type="text" id="ctl00_cphBody_CommentView1_txtEmail" tabindex="2" />
+  <span id="gravatarmsg">
+  
+  (將顯示您的<a href="http://www.gravatar.com" target="_blank">Gravatar</a>圖示)
+  
+  </span>
+  <span id="ctl00_cphBody_CommentView1_ctl02" style="color:Red;display:none;">Required</span><span id="ctl00_cphBody_CommentView1_ctl03" style="color:Red;visibility:hidden;">Please enter a valid email</span><br />
+
+  <label for="ctl00_cphBody_CommentView1_txtWebsite">網站</label>
+  <input name="ctl00$cphBody$CommentView1$txtWebsite" type="text" id="ctl00_cphBody_CommentView1_txtWebsite" tabindex="3" /><span id="ctl00_cphBody_CommentView1_ctl04" style="color:Red;display:none;">Please enter a valid URL</span><br />
+  
+  
+  <label for="ctl00_cphBody_CommentView1_ddlCountry">國家</label>
+  <select name="ctl00$cphBody$CommentView1$ddlCountry" id="ctl00_cphBody_CommentView1_ddlCountry" tabindex="4" onchange="SetFlag(this.value)">
+	<option value="">[Not specified]</option>
+	<option value="al">Albania</option>
+	<option value="dz">Algeria</option>
+	<option value="ar">Argentina</option>
+	<option value="am">Armenia</option>
+	<option value="au">Australia</option>
+	<option value="at">Austria</option>
+	<option value="az">Azerbaijan</option>
+	<option value="bh">Bahrain</option>
+	<option value="by">Belarus</option>
+	<option value="be">Belgium</option>
+	<option value="bz">Belize</option>
+	<option value="bo">Bolivia</option>
+	<option value="ba">Bosnia and Herzegovina</option>
+	<option value="br">Brazil</option>
+	<option value="bn">Brunei Darussalam</option>
+	<option value="bg">Bulgaria</option>
+	<option value="ca">Canada</option>
+	<option value="029">Caribbean</option>
+	<option value="cl">Chile</option>
+	<option value="co">Colombia</option>
+	<option value="cr">Costa Rica</option>
+	<option value="hr">Croatia</option>
+	<option value="cz">Czech Republic</option>
+	<option value="dk">Denmark</option>
+	<option value="do">Dominican Republic</option>
+	<option value="ec">Ecuador</option>
+	<option value="eg">Egypt</option>
+	<option value="sv">El Salvador</option>
+	<option value="ee">Estonia</option>
+	<option value="fo">Faroe Islands</option>
+	<option value="fi">Finland</option>
+	<option value="fr">France</option>
+	<option value="ge">Georgia</option>
+	<option value="de">Germany</option>
+	<option value="gr">Greece</option>
+	<option value="gt">Guatemala</option>
+	<option value="hn">Honduras</option>
+	<option value="hk">Hong Kong S.A.R.</option>
+	<option value="hu">Hungary</option>
+	<option value="is">Iceland</option>
+	<option value="in">India</option>
+	<option value="id">Indonesia</option>
+	<option value="ir">Iran</option>
+	<option value="iq">Iraq</option>
+	<option value="ie">Ireland</option>
+	<option value="pk">Islamic Republic of Pakistan</option>
+	<option value="il">Israel</option>
+	<option value="it">Italy</option>
+	<option value="jm">Jamaica</option>
+	<option value="jp">Japan</option>
+	<option value="jo">Jordan</option>
+	<option value="kz">Kazakhstan</option>
+	<option value="ke">Kenya</option>
+	<option value="kr">Korea</option>
+	<option value="kw">Kuwait</option>
+	<option value="kg">Kyrgyzstan</option>
+	<option value="lv">Latvia</option>
+	<option value="lb">Lebanon</option>
+	<option value="ly">Libya</option>
+	<option value="li">Liechtenstein</option>
+	<option value="lt">Lithuania</option>
+	<option value="lu">Luxembourg</option>
+	<option value="mo">Macao S.A.R.</option>
+	<option value="mk">Macedonia (FYROM)</option>
+	<option value="my">Malaysia</option>
+	<option value="mv">Maldives</option>
+	<option value="mt">Malta</option>
+	<option value="mx">Mexico</option>
+	<option value="mn">Mongolia</option>
+	<option value="ma">Morocco</option>
+	<option value="nl">Netherlands</option>
+	<option value="nz">New Zealand</option>
+	<option value="ni">Nicaragua</option>
+	<option value="no">Norway</option>
+	<option value="om">Oman</option>
+	<option value="pa">Panama</option>
+	<option value="py">Paraguay</option>
+	<option value="cn">People's Republic of China</option>
+	<option value="pe">Peru</option>
+	<option value="ph">Philippines</option>
+	<option value="pl">Poland</option>
+	<option value="pt">Portugal</option>
+	<option value="mc">Principality of Monaco</option>
+	<option value="pr">Puerto Rico</option>
+	<option value="qa">Qatar</option>
+	<option value="ph">Republic of the Philippines</option>
+	<option value="ro">Romania</option>
+	<option value="ru">Russia</option>
+	<option value="sa">Saudi Arabia</option>
+	<option value="cs">Serbia</option>
+	<option value="sg">Singapore</option>
+	<option value="sk">Slovakia</option>
+	<option value="si">Slovenia</option>
+	<option value="za">South Africa</option>
+	<option value="es">Spain</option>
+	<option value="se">Sweden</option>
+	<option value="ch">Switzerland</option>
+	<option value="sy">Syria</option>
+	<option value="tw">Taiwan</option>
+	<option value="th">Thailand</option>
+	<option value="tt">Trinidad and Tobago</option>
+	<option value="tn">Tunisia</option>
+	<option value="tr">Turkey</option>
+	<option value="ae">U.A.E.</option>
+	<option value="ua">Ukraine</option>
+	<option value="gb">United Kingdom</option>
+	<option selected="selected" value="us">United States</option>
+	<option value="uy">Uruguay</option>
+	<option value="uz">Uzbekistan</option>
+	<option value="ve">Venezuela</option>
+	<option value="vn">Vietnam</option>
+	<option value="ye">Yemen</option>
+	<option value="zw">Zimbabwe</option>
+
+</select>&nbsp;
+  <img id="ctl00_cphBody_CommentView1_imgFlag" src="/pics/flags/us.png" alt="Country flag" style="height:11px;width:16px;border-width:0px;" /><br /><br />
+  
+
+  <label for="ctl00_cphBody_CommentView1_txtContent">評論*</label> <span class="bbcode" title="BBCode tags">[b][/b] - [i][/i] - [u][/u]- [quote][/quote]</span>
+  <span id="ctl00_cphBody_CommentView1_ctl05" style="color:Red;display:none;">Required</span><br />
+  <textarea name="ctl00$cphBody$CommentView1$txtContent" rows="10" cols="50" id="ctl00_cphBody_CommentView1_txtContent" tabindex="5" onkeyup="ShowCommentPreview('livepreview', this)"></textarea><br />
+    
+  <input type="checkbox" id="cbNotify" style="width: auto" tabindex="6" />
+  <label for="cbNotify" style="width:auto;float:none;display:inline">有評論時通知我</label><br /><br />
+ 
+  <input type="button" id="btnSave" value="保存評論" onclick="if(Page_ClientValidate()){AddComment()}" tabindex="7" />  
+  <input type="button" name="ctl00$cphBody$CommentView1$btnSave" value="新增評論" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$cphBody$CommentView1$btnSave&quot;, &quot;&quot;, true, &quot;AddComment&quot;, &quot;&quot;, false, true))" id="ctl00_cphBody_CommentView1_btnSave" tabindex="7" style="display:none" />  
+  <h2>線上預覽</h2> 
+  <div id="livepreview">
+    
+
+<div id="id_00000000-0000-0000-0000-000000000000" class="comment">
+  <p class="date">十一月 1. 2008 20:59</p>
+  <p class="gravatar"><img src="/themes/TheWillWillWeb/noavatar.jpg" alt="" /></p>
+  <p class="content">
+	
+	
+	<br/>
+  </p>
+  <p class="author">
+    
+    
+    
+  </p>
+</div>
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+<!--//
+if (!isAjaxSupported)
+{
+  $('ctl00_cphBody_CommentView1_btnSave').style.display = "inline";
+  $('btnSave').style.display = "none";
+}
+
+function AddComment()
+{
+  $("btnSave").disabled = true;
+  $("ajaxLoader").style.display = "inline";
+  $("status").className = "";
+  $("status").innerHTML = "Saving the comment...";
+  
+  var author = $("ctl00_cphBody_CommentView1_txtName").value;
+  var email = $("ctl00_cphBody_CommentView1_txtEmail").value;
+  var website = $("ctl00_cphBody_CommentView1_txtWebsite").value;
+  var country = "";
+  if ($("ctl00_cphBody_CommentView1_ddlCountry"))
+    country = $("ctl00_cphBody_CommentView1_ddlCountry").value;
+  var content = $("ctl00_cphBody_CommentView1_txtContent").value;
+  var notify = $("cbNotify").checked;
+  var argument = author + "-|-" + email + "-|-" + website + "-|-" + country + "-|-" + content + "-|-" + notify;
+  WebForm_DoCallback('ctl00$cphBody$CommentView1',argument,AppendComment,'comment',null,false)
+  
+  if (typeof OnComment != "undefined")
+    OnComment(author, email, website, country, content);
+}
+
+function AppendComment(args, context)
+{
+  if (context == "comment")
+  {
+    if ($("commentlist").innerHTML == "")
+      $("commentlist").innerHTML = "<h1 id='comment'>評論</h1>"
+    $("commentlist").innerHTML += args;
+    $("ctl00_cphBody_CommentView1_txtContent").value = "";
+    $("ajaxLoader").style.display = "none";
+    $("status").className = "success";
+    $("status").innerHTML = "您的評論已保存,感謝您的回應。";
+  }
+  
+  $("btnSave").disabled = false;
+}
+
+var flagImage = $("ctl00_cphBody_CommentView1_imgFlag");
+
+function CheckAuthorName(sender, args)
+{
+  args.IsValid = true;
+  
+  
+  var author = "will";
+  var visitor = $("ctl00_cphBody_CommentView1_txtName").value;  
+  args.IsValid = !Equal(author, visitor);
+  
+}
+//-->
+</script>
+
+
+
+
+
+                </div>
+                <!-- end #posts -->
+                <div id="links">
+                    
+
+<div class="links" style="display: block;">
+    <br />
+	<h2>招募 .NET 工程師</h2>
+	
+    <div style="text-align: left; border-style: dotted; border-width: 1px; padding: 10px; background-color: #FFFFEE;">
+		工作地點在<a href="http://maps.google.com/maps?f=q&hl=zh-TW&geocode=&q=%E5%8F%B0%E5%8C%97%E5%B8%82&ie=UTF8&ll=25.045646,121.525354&spn=0.003489,0.004807&z=18" target="_blank" title="工作地點 Google Maps 地圖">台北市</a>，意者請來信 <a href="mailto:&#104;&#114;&#064;&#109;&#105;&#110;&#105;&#097;&#115;&#112;&#046;&#099;&#111;&#109;">&#104;&#114;&#064;&#109;&#105;&#110;&#105;&#097;&#115;&#112;&#046;&#099;&#111;&#109;</a> 並請附上個人應徵履歷。
+		
+    </div>
+</div>
+
+<div class="links">
+    <br />
+    <h2>文章搜尋</h2>
+    <div>
+        <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="請輸入關鍵字" id="searchfield" accesskey="s" onkeypress="if(event.keyCode==13) return Search('/')" onfocus="SearchClear('請輸入關鍵字')" onblur="SearchClear('請輸入關鍵字')" /><input type="button" value="搜尋" id="searchbutton" onclick="Search('/');" onkeypress="Search('/');" /><br /><input type="checkbox" id="searchcomments"  /><label for="searchcomments">搜尋結果中包含評論文章</label></div>
+
+    </div>
+</div>
+
+<div class="links">
+    <br />
+    <h2>
+        日曆</h2>
+    <div style="text-align: center">
+        <div id="calendarContainer"><table class="calendar" summary="" style=";border-collapse:collapse;"><tr><td><a href="javascript:CalNav('2008-10-01')">&lt;&lt;</a>&nbsp;&nbsp;</td><td style="text-align:center;width:100px">十一月 2008</td><td align="right">&nbsp;&nbsp;&gt;&gt;</td></tr></table><table class="calendar" cellspacing="0" cellpadding="2" summary="Post calendar" title="月曆" border="0" style="border-width:0px;width:100%;border-collapse:collapse;">
+	<tr><th align="center" abbr="星期一" scope="col">一</th><th align="center" abbr="星期二" scope="col">二</th><th align="center" abbr="星期三" scope="col">三</th><th align="center" abbr="星期四" scope="col">四</th><th align="center" abbr="星期五" scope="col">五</th><th align="center" abbr="星期六" scope="col">六</th><th align="center" abbr="星期日" scope="col">日</th></tr><tr><td class="other" align="center" style="width:14%;"><a href="/2008/10/27/default.aspx" class="exist">27</a></td><td class="other" align="center" style="width:14%;"><a href="/2008/10/28/default.aspx" class="exist">28</a></td><td class="other" align="center" style="width:14%;"><a href="/2008/10/29/default.aspx" class="exist">29</a></td><td class="other" align="center" style="width:14%;"><a href="/2008/10/30/default.aspx" class="exist">30</a></td><td class="other" align="center" style="width:14%;"><a href="/2008/10/31/default.aspx" class="exist">31</a></td><td class="weekend" align="center" style="width:14%;"><a href="/2008/11/01/default.aspx" class="exist">1</a></td><td class="weekend" align="center" style="width:14%;">2</td></tr><tr><td align="center" style="width:14%;">3</td><td align="center" style="width:14%;">4</td><td align="center" style="width:14%;">5</td><td align="center" style="width:14%;">6</td><td align="center" style="width:14%;">7</td><td class="weekend" align="center" style="width:14%;">8</td><td class="weekend" align="center" style="width:14%;">9</td></tr><tr><td align="center" style="width:14%;">10</td><td align="center" style="width:14%;">11</td><td align="center" style="width:14%;">12</td><td align="center" style="width:14%;">13</td><td align="center" style="width:14%;">14</td><td class="weekend" align="center" style="width:14%;">15</td><td class="weekend" align="center" style="width:14%;">16</td></tr><tr><td align="center" style="width:14%;">17</td><td align="center" style="width:14%;">18</td><td align="center" style="width:14%;">19</td><td align="center" style="width:14%;">20</td><td align="center" style="width:14%;">21</td><td class="weekend" align="center" style="width:14%;">22</td><td class="weekend" align="center" style="width:14%;">23</td></tr><tr><td align="center" style="width:14%;">24</td><td align="center" style="width:14%;">25</td><td align="center" style="width:14%;">26</td><td align="center" style="width:14%;">27</td><td align="center" style="width:14%;">28</td><td class="weekend" align="center" style="width:14%;">29</td><td class="weekend" align="center" style="width:14%;">30</td></tr><tr><td class="other" align="center" style="width:14%;">1</td><td class="other" align="center" style="width:14%;">2</td><td class="other" align="center" style="width:14%;">3</td><td class="other" align="center" style="width:14%;">4</td><td class="other" align="center" style="width:14%;">5</td><td class="other" align="center" style="width:14%;">6</td><td class="other" align="center" style="width:14%;">7</td></tr>
+</table></div><script type="text/javascript">var months = new Object();function CalNav(date){if (months[date] == null || months[date] == 'undefined'){WebForm_DoCallback('ctl00$InfoBox2$ctl00',date,UpdateCalendar,date,null,false)}else {UpdateCalendar(months[date], date)}}</script>
+        <br />
+        <a href="http://blog.miniasp.com/calendar/default.aspx" style="display:none" />將文章標題顯示於日曆</a>
+    </div>
+</div>
+
+<div class="links">
+    <br />
+    <h2>文章類別</h2>
+    <ul id="categorylist"><li><a href="/syndication.axd?category=f3d7de62-4bd8-46fe-b4c9-8532a2f76d8c" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for .Net" class="rssButton" /></a><a href="/category/Net.aspx" title="Category: .Net">.Net (89)</a></li><li><a href="/syndication.axd?category=c718c8d0-0352-4ab9-9499-ac911a366ff6" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Accessibility" class="rssButton" /></a><a href="/category/Accessibility.aspx" title="Category: Accessibility">Accessibility (3)</a></li><li><a href="/syndication.axd?category=ae30ace7-5118-4c17-8340-d188b73e4fc4" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for ASP.NET" class="rssButton" /></a><a href="/category/ASPNET.aspx" title="Category: ASP.NET">ASP.NET (117)</a></li><li><a href="/syndication.axd?category=4d613757-3fc1-434b-b6d5-a3d3fd0f9585" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for C#" class="rssButton" /></a><a href="/category/C.aspx" title="Category: C#">C# (70)</a></li><li><a href="/syndication.axd?category=ad8f3003-7e0d-4b88-a188-e500f6bc9d12" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for CSS" class="rssButton" /></a><a href="/category/CSS.aspx" title="Category: CSS">CSS (15)</a></li><li><a href="/syndication.axd?category=d0287f66-2155-45b8-9de8-4a5c8b60efc4" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for IIS" class="rssButton" /></a><a href="/category/IIS.aspx" title="Category: IIS">IIS (22)</a></li><li><a href="/syndication.axd?category=ead904d5-2043-4e2e-b2be-dd97ef768528" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for JavaScript" class="rssButton" /></a><a href="/category/JavaScript.aspx" title="Category: JavaScript">JavaScript (47)</a></li><li><a href="/syndication.axd?category=2db10db7-2e52-4caf-95ca-e79731506a20" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for LINQ" class="rssButton" /></a><a href="/category/LINQ.aspx" title="Category: LINQ">LINQ (26)</a></li><li><a href="/syndication.axd?category=55c64fbd-318c-4873-8980-c898907e3d7d" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Linux" class="rssButton" /></a><a href="/category/Linux.aspx" title="Category: Linux">Linux (30)</a></li><li><a href="/syndication.axd?category=b26258b7-4ef0-4288-9efa-32e581d1c879" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for MySQL" class="rssButton" /></a><a href="/category/MySQL.aspx" title="Category: MySQL">MySQL (5)</a></li><li><a href="/syndication.axd?category=f6e7febe-3767-4d0a-a607-5d36443ba39c" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Office" class="rssButton" /></a><a href="/category/Office.aspx" title="Category: Office">Office (10)</a></li><li><a href="/syndication.axd?category=91969e8f-b718-4b01-a35b-87963c7f18fd" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Oracle" class="rssButton" /></a><a href="/category/Oracle.aspx" title="Category: Oracle">Oracle (4)</a></li><li><a href="/syndication.axd?category=c085fd88-0e36-46a2-8bbf-be6d59734eb1" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for PHP" class="rssButton" /></a><a href="/category/PHP.aspx" title="Category: PHP">PHP (10)</a></li><li><a href="/syndication.axd?category=e5a83333-46ab-435e-8c8e-37e1ece49065" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Security" class="rssButton" /></a><a href="/category/Security.aspx" title="Category: Security">Security (12)</a></li><li><a href="/syndication.axd?category=dccdf6eb-0410-4c64-9780-c87192be2d59" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for SQL Server" class="rssButton" /></a><a href="/category/SQL-Server.aspx" title="Category: SQL Server">SQL Server (47)</a></li><li><a href="/syndication.axd?category=aa66f769-54c3-44b8-bafb-40b41ad04a94" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Subversion" class="rssButton" /></a><a href="/category/Subversion.aspx" title="Category: Subversion">Subversion (18)</a></li><li><a href="/syndication.axd?category=536f5bb4-14c8-448f-b2ce-2e3f9efc424c" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Tips" class="rssButton" /></a><a href="/category/Tips.aspx" title="Category: Tips">Tips (34)</a></li><li><a href="/syndication.axd?category=008263fb-7f51-49a7-a811-ca9afe708aed" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Usability" class="rssButton" /></a><a href="/category/Usability.aspx" title="Category: Usability">Usability (1)</a></li><li><a href="/syndication.axd?category=02f55dfe-94a2-4166-90bf-8919a4ca22a6" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for VBA" class="rssButton" /></a><a href="/category/VBA.aspx" title="Category: VBA">VBA (3)</a></li><li><a href="/syndication.axd?category=4af19cd3-ca5a-4359-9247-aea5e562a3b4" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Visual Basic" class="rssButton" /></a><a href="/category/Visual-Basic.aspx" title="Category: Visual Basic">Visual Basic (2)</a></li><li><a href="/syndication.axd?category=4491ed70-7149-4354-9ce0-524d62119afb" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Visual Studio" class="rssButton" /></a><a href="/category/Visual-Studio.aspx" title="Category: Visual Studio">Visual Studio (17)</a></li><li><a href="/syndication.axd?category=8bf0a70d-f5b2-4ca0-bd97-7c69a7f70be9" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for Web" class="rssButton" /></a><a href="/category/Web.aspx" title="Category: Web">Web (67)</a></li><li><a href="/syndication.axd?category=4e6f942f-4e46-45cb-8c83-bda3df00fa70" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for 介紹好用工具" class="rssButton" /></a><a href="/category/e4bb8be7b4b9e5a5bde794a8e5b7a5e585b7.aspx" title="Category: 介紹好用工具">介紹好用工具 (54)</a></li><li><a href="/syndication.axd?category=0c54739f-7229-41bb-9d9d-df5f1b3d8889" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for 心得分享" class="rssButton" /></a><a href="/category/e5bf83e5be97e58886e4baab.aspx" title="Category: 心得分享">心得分享 (17)</a></li><li><a href="/syndication.axd?category=49e7ef84-2a70-4a73-97e4-685fe649259e" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for 多奇快訊" class="rssButton" /></a><a href="/category/e5a49ae5a587e5bfabe8a88a.aspx" title="Category: 多奇快訊">多奇快訊 (1)</a></li><li><a href="/syndication.axd?category=bc2e30f0-018b-4f9d-8637-d29d67ba75d7" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for 系統管理" class="rssButton" /></a><a href="/category/e7b3bbe7b5b1e7aea1e79086.aspx" title="Category: 系統管理">系統管理 (67)</a></li><li><a href="/syndication.axd?category=98254371-ebe5-4d87-8da3-01ca0200e152" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for 專案管理" class="rssButton" /></a><a href="/category/e5b088e6a188e7aea1e79086.aspx" title="Category: 專案管理">專案管理 (6)</a></li><li><a href="/syndication.axd?category=3d2d1114-f07d-4ef7-8ff4-cc011a510180" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for 團隊合作" class="rssButton" /></a><a href="/category/e59c98e99a8ae59088e4bd9c.aspx" title="Category: 團隊合作">團隊合作 (6)</a></li></ul>
+
+    <br />
+    <a href="../../../archive.aspx">所有文章</a>
+</div>
+
+<div class="links">
+    <br />
+    <h2>所有文章</h2>
+    <ul id="monthList"><li class="year" onclick="ToggleMonth('year2008')">2008<ul id="year2008" class="open"><li><a href="/2008/11/default.aspx">十一月 (1)</a></li><li><a href="/2008/10/default.aspx">十月 (31)</a></li><li><a href="/2008/09/default.aspx">九月 (30)</a></li><li><a href="/2008/08/default.aspx">八月 (31)</a></li><li><a href="/2008/07/default.aspx">七月 (31)</a></li><li><a href="/2008/06/default.aspx">六月 (30)</a></li><li><a href="/2008/05/default.aspx">五月 (31)</a></li><li><a href="/2008/04/default.aspx">四月 (31)</a></li><li><a href="/2008/03/default.aspx">三月 (31)</a></li><li><a href="/2008/02/default.aspx">二月 (29)</a></li><li><a href="/2008/01/default.aspx">一月 (32)</a></li></ul></li><li class="year" onclick="ToggleMonth('year2007')">2007<ul id="year2007"><li><a href="/2007/12/default.aspx">十二月 (31)</a></li><li><a href="/2007/11/default.aspx">十一月 (37)</a></li><li><a href="/2007/10/default.aspx">十月 (13)</a></li></ul></li></ul>
+
+</div>
+
+<div class="links">
+    <br />
+    <h2>標籤(Tags)</h2>
+    <ul id="tagcloud"><li><a href="/?tag=/.net" class="small" title="Tag: .net">.net </a></li><li><a href="/?tag=/ad" class="smallest" title="Tag: ad">ad </a></li><li><a href="/?tag=/ajax" class="smallest" title="Tag: ajax">ajax </a></li><li><a href="/?tag=/apache" class="smallest" title="Tag: apache">apache </a></li><li><a href="/?tag=/asp" class="smallest" title="Tag: asp">asp </a></li><li><a href="/?tag=/asp.net" class="biggest" title="Tag: asp.net">asp.net </a></li><li><a href="/?tag=/asp.net+2.0" class="smallest" title="Tag: asp.net 2.0">asp.net 2.0 </a></li><li><a href="/?tag=/asp.net+3.5" class="smallest" title="Tag: asp.net 3.5">asp.net 3.5 </a></li><li><a href="/?tag=/awstats" class="smallest" title="Tag: awstats">awstats </a></li><li><a href="/?tag=/backup" class="smallest" title="Tag: backup">backup </a></li><li><a href="/?tag=/big5" class="smallest" title="Tag: big5">big5 </a></li><li><a href="/?tag=/c%23" class="small" title="Tag: c#">c# </a></li><li><a href="/?tag=/c%23+3.0" class="smallest" title="Tag: c# 3.0">c# 3.0 </a></li><li><a href="/?tag=/cache" class="smallest" title="Tag: cache">cache </a></li><li><a href="/?tag=/codeplex" class="smallest" title="Tag: codeplex">codeplex </a></li><li><a href="/?tag=/cookie" class="smallest" title="Tag: cookie">cookie </a></li><li><a href="/?tag=/css" class="smallest" title="Tag: css">css </a></li><li><a href="/?tag=/dropdownlist" class="smallest" title="Tag: dropdownlist">dropdownlist </a></li><li><a href="/?tag=/encoding" class="smallest" title="Tag: encoding">encoding </a></li><li><a href="/?tag=/excel" class="smallest" title="Tag: excel">excel </a></li><li><a href="/?tag=/exchange" class="smallest" title="Tag: exchange">exchange </a></li><li><a href="/?tag=/fiddler" class="smallest" title="Tag: fiddler">fiddler </a></li><li><a href="/?tag=/flash" class="smallest" title="Tag: flash">flash </a></li><li><a href="/?tag=/ftp" class="smallest" title="Tag: ftp">ftp </a></li><li><a href="/?tag=/google" class="smallest" title="Tag: google">google </a></li><li><a href="/?tag=/google+chrome" class="smallest" title="Tag: google chrome">google chrome </a></li><li><a href="/?tag=/html" class="smallest" title="Tag: html">html </a></li><li><a href="/?tag=/http" class="smallest" title="Tag: http">http </a></li><li><a href="/?tag=/httphandler" class="smallest" title="Tag: httphandler">httphandler </a></li><li><a href="/?tag=/hyper-v" class="smallest" title="Tag: hyper-v">hyper-v </a></li><li><a href="/?tag=/ie" class="smallest" title="Tag: ie">ie </a></li><li><a href="/?tag=/iis" class="small" title="Tag: iis">iis </a></li><li><a href="/?tag=/javascript" class="small" title="Tag: javascript">javascript </a></li><li><a href="/?tag=/jquery" class="smallest" title="Tag: jquery">jquery </a></li><li><a href="/?tag=/json" class="smallest" title="Tag: json">json </a></li><li><a href="/?tag=/linq" class="small" title="Tag: linq">linq </a></li><li><a href="/?tag=/linq+to+sql" class="smallest" title="Tag: linq to sql">linq to sql </a></li><li><a href="/?tag=/linqdatasource" class="smallest" title="Tag: linqdatasource">linqdatasource </a></li><li><a href="/?tag=/linux" class="small" title="Tag: linux">linux </a></li><li><a href="/?tag=/listview" class="smallest" title="Tag: listview">listview </a></li><li><a href="/?tag=/mail" class="smallest" title="Tag: mail">mail </a></li><li><a href="/?tag=/masterpage" class="smallest" title="Tag: masterpage">masterpage </a></li><li><a href="/?tag=/microsoft" class="smallest" title="Tag: microsoft">microsoft </a></li><li><a href="/?tag=/mis" class="smallest" title="Tag: mis">mis </a></li><li><a href="/?tag=/mysql" class="smallest" title="Tag: mysql">mysql </a></li><li><a href="/?tag=/office" class="smallest" title="Tag: office">office </a></li><li><a href="/?tag=/oracle" class="smallest" title="Tag: oracle">oracle </a></li><li><a href="/?tag=/php" class="smallest" title="Tag: php">php </a></li><li><a href="/?tag=/regular+expression" class="smallest" title="Tag: regular expression">regular expression </a></li><li><a href="/?tag=/reporting+service" class="smallest" title="Tag: reporting service">reporting service </a></li><li><a href="/?tag=/reportviewer" class="smallest" title="Tag: reportviewer">reportviewer </a></li><li><a href="/?tag=/restore" class="smallest" title="Tag: restore">restore </a></li><li><a href="/?tag=/security" class="smallest" title="Tag: security">security </a></li><li><a href="/?tag=/sql" class="smallest" title="Tag: sql">sql </a></li><li><a href="/?tag=/sql+server" class="smallest" title="Tag: sql server">sql server </a></li><li><a href="/?tag=/sql+server+2005" class="smallest" title="Tag: sql server 2005">sql server 2005 </a></li><li><a href="/?tag=/sql+server+2008" class="smallest" title="Tag: sql server 2008">sql server 2008 </a></li><li><a href="/?tag=/sqlexpress" class="smallest" title="Tag: sqlexpress">sqlexpress </a></li><li><a href="/?tag=/subversion" class="smallest" title="Tag: subversion">subversion </a></li><li><a href="/?tag=/sysinternals" class="smallest" title="Tag: sysinternals">sysinternals </a></li><li><a href="/?tag=/tortoisesvn" class="smallest" title="Tag: tortoisesvn">tortoisesvn </a></li><li><a href="/?tag=/t-sql" class="smallest" title="Tag: t-sql">t-sql </a></li><li><a href="/?tag=/ubuntu" class="smallest" title="Tag: ubuntu">ubuntu </a></li><li><a href="/?tag=/url" class="smallest" title="Tag: url">url </a></li><li><a href="/?tag=/utf-8" class="smallest" title="Tag: utf-8">utf-8 </a></li><li><a href="/?tag=/viewstate" class="smallest" title="Tag: viewstate">viewstate </a></li><li><a href="/?tag=/vista" class="smallest" title="Tag: vista">vista </a></li><li><a href="/?tag=/visual+studio" class="smallest" title="Tag: visual studio">visual studio </a></li><li><a href="/?tag=/visual+studio+2005" class="smallest" title="Tag: visual studio 2005">visual studio 2005 </a></li><li><a href="/?tag=/visual+studio+2008" class="smallest" title="Tag: visual studio 2008">visual studio 2008 </a></li><li><a href="/?tag=/web" class="smallest" title="Tag: web">web </a></li><li><a href="/?tag=/web.config" class="smallest" title="Tag: web.config">web.config </a></li><li><a href="/?tag=/webfarm" class="smallest" title="Tag: webfarm">webfarm </a></li><li><a href="/?tag=/windows" class="smallest" title="Tag: windows">windows </a></li><li><a href="/?tag=/word" class="smallest" title="Tag: word">word </a></li></ul>
+
+</div>
+
+<!--
+<div class="links">
+    <br />
+    <h2>
+        新增頁面
+    </h2>
+    <ul id="pagelist" class="pagelist"></ul>
+
+</div>
+-->
+
+<div class="links" style="display:none">
+    <br />
+    <h2>
+        作者群</h2>
+    <ul id="authorlist"><li><a href="/syndication.axd?author=will" rel="nofollow"><img src="/pics/rssButton.gif" alt="RSS feed for will" class="rssButton" /></a><a href="/author/will.aspx" title="Author: will">will (389)</a></li></ul>
+
+</div>
+
+<div class="links">
+    <br />
+    <h2>部落格貼紙</h2>
+    <ul>
+		
+		<li style="padding-top: 10px;">
+			<a href="http://feeds.feedburner.com/TheWillWillWeb"><img src="http://feeds.feedburner.com/~fc/TheWillWillWeb?bg=&amp;fg=&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+		</li>
+
+		<li style="margin-top: 7px;">
+			<script type="text/javascript">
+			HEMiDEMi_Scriptlet_Action='hemicard';
+			HEMiDEMi_Scriptlet_Username='doggy8088';
+			HEMiDEMi_Scriptlet_WebsiteId=2648;
+			HEMiDEMi_Scriptlet_Size='s';
+			HEMiDEMi_Scriptlet_Color='u';
+			</script>
+			<script src="/themes/TheWillWillWeb/hemidemi_wrapper.js" type="text/javascript"></script> 
+		</li>
+		
+		<li style="margin-top: 7px;">
+			<a href="http://look.urs.tw/display.php?hl=47435" target="_blank"><img src="http://images.look.urs.tw/images/look_rank.php?BlogID=47435" width="88" height="31" alt="Blog Look Score and Rank" border="0"></a>
+		</li>
+		
+		<li style="margin-top: 7px;">
+			<script src="http://funp.com/tools/button.php?t=b&s=1&id=3109&user=tintin&via=blogs" type="text/javascript"></script>
+		</li>
+		
+		<li style="margin-top: 7px;">
+			<script type="text/javascript" src="http://tw.js.webmaster.yahoo.com/31540/ystat.js"></script><noscript><a href="http://tw.webmaster.yahoo.com"><img src=http://tw.img.webmaster.yahoo.com/31540/ystats.gif></a></noscript>
+		</li>
+		
+    </ul>
+</div>
+
+<div class="links">
+    <br />
+    <h2>部落格訂閱</h2>
+
+	<ul>
+<!--
+		<li>
+			<br>
+		</li>
+-->
+		<li style="padding-top: 10px;">
+			<a target="_blank" href="http://fusion.google.com/add?feedurl=http://feeds.feedburner.com/TheWillWillWeb"><img src="http://buttons.googlesyndication.com/fusion/add.gif" width="104" height="17" style="border:0" alt="訂閱到 Google Reader or Homepage"/></a>
+		</li>
+		
+        <li>
+			<script type="text/javascript" src="http://funp.com/tools/button.php?t=b&s=7&id=3109&user=doggy8088&via=blogs"></script>
+		</li>
+		
+		<li>
+			<a target="_blank" href="http://www.bloglines.com/sub/http://feeds.feedburner.com/TheWillWillWeb" title="The Will Will Web 訂閱到 Bloglines" type="application/rss+xml"><img src="http://www.bloglines.com/images/sub_modern11.gif" alt="訂閱到 Bloglines" style="border:0"/></a>
+		</li>
+		
+		<li>
+			<a target="_blank" href="http://add.my.yahoo.com/rss?url=http://feeds.feedburner.com/TheWillWillWeb" title="The Will Will Web 訂閱到 Yahoo"><img src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif" alt="訂閱到 Yahoo" style="border:0"/></a>
+		</li>
+
+		<li>
+			<a target="_blank" href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http://feeds.feedburner.com/TheWillWillWeb" title="The Will Will Web 訂閱到 newsgator"><img src="http://www.newsgator.com/images/ngsub1.gif" alt="訂閱到 NewsGator Online" style="border:0"/></a>
+		</li>
+		
+		<li>
+			<a target="_blank" href="http://www.netvibes.com/subscribe.php?url=http://feeds.feedburner.com/TheWillWillWeb"><img src="http://www.netvibes.com/img/add2netvibes.gif" width="91" height="17" alt="訂閱到 netvibes" style="border:0" /></a>
+		</li>
+		
+		<li>
+			<a target="_blank" href="http://www.xianguo.com/subscribe.php?url=http://feeds.feedburner.com/TheWillWillWeb"><img src="/themes/TheWillWillWeb/rss_xianguo.jpg" width="103" height="16" alt="訂閱到鮮果" style="border:0" /></a>
+		</li>
+		
+		<li>
+			<a target="_blank" href="http://www.zhuaxia.com/add_channel.php?url=http://feeds.feedburner.com/TheWillWillWeb"><img src="/themes/TheWillWillWeb/rss_zhuaxia.gif" width="103" height="16" alt="訂閱到抓蝦" style="border:0" /></a>
+		</li>
+
+		<li>
+			<a target="_blank" href="http://gogo.yesky.com/addrss.do?url=http://feeds.feedburner.com/TheWillWillWeb"><img src="/themes/TheWillWillWeb/rss_yesky.gif" width="80" height="15" alt="訂閱到 GOGO" style="border:0" /></a>
+		</li>
+		
+		
+	</ul>
+</div>
+
+<div class="links">
+    <br />
+    <h2>最新回應</h2>
+    <div>
+        <ul id="recentComments" class="recentComments"><li><a href="/post/2008/11/Useful-tool-FastCGI-Extension-for-Internet-Information-Services-60.aspx" class="postTitle">介紹好用工具：FastCGI Extension for IIS6.0</a> (1)<br /><a href="http://avai.ods.org/">A`Vai Poitsonu</a> 已寫: 感覺上, IIS 好像己經可以完全取代 Apache 了, 而且介面操作上又這麼的友善 ... :) <a href="/post/2008/11/Useful-tool-FastCGI-Extension-for-Internet-Information-Services-60.aspx#id_c4bf5433-e0a8-475e-b12b-78bc1017644a" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/10/How-to-schedule-shutdown-on-a-PC-or-Server-in-Windows.aspx" class="postTitle">Windows 各種排程關機的方法</a> (2)<br /><a href="http://blog.miniasp.com/">will</a> 已寫: 哇，真是有夠華麗的版本～ <a href="/post/2008/10/How-to-schedule-shutdown-on-a-PC-or-Server-in-Windows.aspx#id_e0c2eb58-1b8d-4d3a-b9e9-f9e70e212a54" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/10/How-to-schedule-shutdown-on-a-PC-or-Server-in-Windows.aspx" class="postTitle">Windows 各種排程關機的方法</a> (2)<br />R-way 已寫: 我喜歡用這個: AMP WinOFF http://www.ampsoft.net/ <a href="/post/2008/10/How-to-schedule-shutdown-on-a-PC-or-Server-in-Windows.aspx#id_621bbf87-7c2a-48cb-86c9-9f1cb9df239c" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/08/Writing-Marquee-and-Banner-Rotate-with-jQuery-Cycle-Plugin.aspx" class="postTitle">撰寫跑馬燈/廣告輪撥的好工具：jQuery Cycle Plugin</a> (8)<br />季小風 已寫: 我試ㄉ沒錯~是放在script 標籤裡,但圖片不會動就是不會動~
+直接顯示2張圖 <a href="/post/2008/08/Writing-Marquee-and-Banner-Rotate-with-jQuery-Cycle-Plugin.aspx#id_3e3c827c-f618-4485-9484-dba2047b2651" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/08/Writing-Marquee-and-Banner-Rotate-with-jQuery-Cycle-Plugin.aspx" class="postTitle">撰寫跑馬燈/廣告輪撥的好工具：jQuery Cycle Plugin</a> (8)<br /><a href="http://blog.miniasp.com/">will</a> 已寫: 季小風,
+要放在 script 標籤裡喔。如果你「完全不會」寫或也不會改 JavaScript 的?<a href="/post/2008/08/Writing-Marquee-and-Banner-Rotate-with-jQuery-Cycle-Plugin.aspx#id_55a6c174-11a3-4cea-92ed-f54ac4df7ba2" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/08/Writing-Marquee-and-Banner-Rotate-with-jQuery-Cycle-Plugin.aspx" class="postTitle">撰寫跑馬燈/廣告輪撥的好工具：jQuery Cycle Plugin</a> (8)<br />季小風 已寫: 請問~$('#pics').cycle('fade');這一段要放在那邊?
+謝謝! <a href="/post/2008/08/Writing-Marquee-and-Banner-Rotate-with-jQuery-Cycle-Plugin.aspx#id_565694fe-d143-4257-af83-fd5d7934d115" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/10/Happy-Birthday-The-Will-Will-Web.aspx" class="postTitle">The Will Will Web 生日快樂！</a> (11)<br />不惑 已寫: 感謝您願意分享您的經驗，潛水客浮上來向您道賀一下，也請您務必堅持下去。 <a href="/post/2008/10/Happy-Birthday-The-Will-Will-Web.aspx#id_08550724-490d-4e21-9369-0eb8573cfa48" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/10/Happy-Birthday-The-Will-Will-Web.aspx" class="postTitle">The Will Will Web 生日快樂！</a> (11)<br />Cadmus 已寫: 無意間發現你的網站,每天看您的文章,已經變成一種習慣~自己也是個軟體人,也很佩服你的精神,希望你的堅?<a href="/post/2008/10/Happy-Birthday-The-Will-Will-Web.aspx#id_d69d4595-b35e-4e86-86b0-70d4045aba66" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/10/Happy-Birthday-The-Will-Will-Web.aspx" class="postTitle">The Will Will Web 生日快樂！</a> (11)<br /><a href="http://laodaogala.blog.163.com/">唠叨旮旯</a> 已寫: 坚持就是胜利!很佩服您的精神,每天都用心做一件事情.同时也非常感谢您的文章,从您的博客我收益非浅啊.?<a href="/post/2008/10/Happy-Birthday-The-Will-Will-Web.aspx#id_2286e692-4032-4174-b279-4940eadcff3b" class="moreLink">[...延伸閱讀...]</a></li><li><a href="/post/2008/05/Useful-Tools-WinMerge.aspx" class="postTitle">介紹好用工具：WinMerge</a> (1)<br /><a href="http://www.100zhuan.cn/">转换器</a> 已寫: 您的网站让我收获很多,谢谢作者. <a href="/post/2008/05/Useful-Tools-WinMerge.aspx#id_e28f675b-5688-4974-8691-afe85b5220b2" class="moreLink">[...延伸閱讀...]</a></li></ul>
+
+    </div>
+</div>
+
+<div class="links">
+    <br />
+    <h2>
+        部落格連結
+    </h2>
+    <div id="blogroll">
+<ul class="oxox"><li><a href="http://weblogs.asp.net/scottgu/rss.aspx"><img src="/pics/rssButton.gif" alt="RSS feed for ScottGu's Blog" /></a><a href="http://weblogs.asp.net/scottgu/">ScottGu's Blog</a><ul><li><a href="http://weblogs.asp.net/scottgu/archive/2008/10/22/october-22nd-links-asp-net-visual-studio-wpf-and-silverlight.aspx" title="October 22nd Links: ASP.NET, Visual Studio, WPF and Silverlight">October 22nd Links: ASP...</a></li><li><a href="http://weblogs.asp.net/scottgu/archive/2008/10/16/asp-net-mvc-beta-released.aspx" title="ASP.NET MVC Beta Released">ASP.NET MVC Beta Releas...</a></li></ul></li><li><a href="http://blog.joycode.com/scottgu/Rss.aspx"><img src="/pics/rssButton.gif" alt="RSS feed for ScottGu 博客中文版" /></a><a href="http://blog.joycode.com/scottgu/">ScottGu 博客中文版</a><ul><li><a href="http://blog.joycode.com/scottgu/archive/2008/10/24/115311.aspx" title="10月22日链接篇： ASP.NET, Visual Studio, WPF 和 Silverlight">10月22日链接篇： ASP.NET, Vis...</a></li><li><a href="http://blog.joycode.com/scottgu/archive/2008/10/20/115305.aspx" title="ASP.NET MVC Beta 发布了">ASP.NET MVC Beta 发布了</a></li></ul></li><li><a href="http://blog.csdn.net/code6421/rss.aspx"><img src="/pics/rssButton.gif" alt="RSS feed for 黄忠成" /></a><a href="http://blog.csdn.net/code6421/">黄忠成</a><ul><li><a href="http://blog.csdn.net/Code6421/archive/2008/10/10/3047132.aspx" title="Silverlight Beta 2 與 RC">Silverlight Beta 2 與 RC</a></li><li><a href="http://blog.csdn.net/Code6421/archive/2008/10/01/3007153.aspx" title="LINQ To SQL 與 N-Tier">LINQ To SQL 與 N-Tier</a></li></ul></li><li><a href="http://weblogs.asp.net/MainFeed.aspx"><img src="/pics/rssButton.gif" alt="RSS feed for ASP.NET Weblogs" /></a><a href="http://weblogs.asp.net/">ASP.NET Weblogs</a><ul><li><a href="http://weblogs.asp.net/aaronlerch/archive/2008/11/01/run-asp-net-mvc-on-windows-azure.aspx" title="Run ASP.NET MVC on Windows Azure">Run ASP.NET MVC on Wind...</a></li><li><a href="http://weblogs.asp.net/alnurismail/archive/2008/10/31/yama-hama-it-s-fright-night-1.aspx" title="“Yama-Hama! It's fright night!”  #1">“Yama-Hama! It's fright...</a></li></ul></li><li><a href="http://www.codeproject.com/webservices/articlerss.aspx?cat=1"><img src="/pics/rssButton.gif" alt="RSS feed for The Code Project" /></a><a href="http://www.codeproject.com/">The Code Project</a><ul><li><a href="http://www.codeproject.com/KB/aspnet/PolicyApplicationBlock.aspx" title="Plug &amp;amp; play architecture using policy application blocks">Plug & play architectur...</a></li><li><a href="http://www.codeproject.com/KB/linq/Expressions.aspx" title="A journey into Expressions">A journey into Expressi...</a></li></ul></li><li><a href="http://blog.darkthread.net/blogs/darkthreadtw/rss.aspx"><img src="/pics/rssButton.gif" alt="RSS feed for 黑暗執行緒" /></a><a href="http://blog.darkthread.net/" rel="friend ">黑暗執行緒</a><ul><li><a href="http://blog.darkthread.net/blogs/darkthreadtw/archive/2008/10/31/sql-2005-sp2-setup-failure.aspx" title="【茶包射手專欄】SQL 2005 SP2安裝失敗">【茶包射手專欄】SQL 2005 SP2安裝失...</a></li><li><a href="http://blog.darkthread.net/blogs/darkthreadtw/archive/2008/10/30/rsclientprint-issue-again.aspx" title="KB-三探Windows Update後SSRS不能列印問題">KB-三探Windows Update後SSR...</a></li></ul></li></ul>
+</div>
+
+    <a href="opml.axd" style="display: block; text-align: right" title="Download OPML file">
+        下載 OPML 檔
+        <img id="ctl00_InfoBox2_Image1" src="../../../pics/opml.png" alt="OPML" style="border-width:0px;" /></a>
+</div>
+
+<div class="links">
+    <br />
+    <h2>微軟最有價值專家</h2>
+    <div style="text-align: center">
+		<a href="/post.aspx?id=92fd882f-78b7-4791-94f7-df5742d41220" 
+			title="Will 保哥於 2008 年 4 月獲得微軟技術社群暨最有價值專家 第七屆第三回合微軟「最有價值專家」(Most Valuable Professional, MVP)，主要得獎領域是在 ASP/ASP.NET 技術與線上社群部分。"
+		><img 
+			src="/themes/TheWillWillWeb/images/MVP_FullColor_ForBlog.jpg" 
+			alt="Will 保哥於 2008 年 4 月獲得微軟技術社群暨最有價值專家 第七屆第三回合微軟「最有價值專家」(Most Valuable Professional, MVP)，主要得獎領域是在 ASP/ASP.NET 技術與線上社群部分。"
+			border="0" /></a>
+    </div>
+</div>
+
+<div class="links">
+    <br />
+    <h2>
+        免責聲明</h2>
+    <ul>
+        本網站對於任何使用或引用本網站網頁資料引致之損失或損害，概不負責。
+		本網站亦有權隨時刪除、暫停或編輯本網站所登載之各項資料，以維護本網站之權益。
+		除法律有強制規定外，在任何情況下，本網站對於(1)使用或無法使用本網站之各項服務；(2)經由本網站取得訊息或進行交易；(3)第三人在本網站上之陳述或作為；以及(4)其他與本網站服務有關之事項所致生之任何直接、間接、附帶、特別、懲罰性或衍生性損害，一概不負賠償責任 。
+		<br />
+        <br />
+        &copy; Copyright
+        2008
+        <br />
+        <br />
+        <a href="javascript:__doPostBack('ctl00$InfoBox2$ctl08$ctl02','')">登入</a>
+    </ul>
+</div>
+
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <p id="legal">
+               Copyright &copy; 2007-2008 Will Huang. 
+			   
+			</p>
+            <p id="brand">
+                <a href="http://www.miniasp.com/">多奇數位創意有限公司</a>
+            </p>
+        </div>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_cphBody_CommentView1_ctl00"), document.getElementById("ctl00_cphBody_CommentView1_ctl01"), document.getElementById("ctl00_cphBody_CommentView1_ctl02"), document.getElementById("ctl00_cphBody_CommentView1_ctl03"), document.getElementById("ctl00_cphBody_CommentView1_ctl04"), document.getElementById("ctl00_cphBody_CommentView1_ctl05"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_cphBody_CommentView1_ctl00 = document.all ? document.all["ctl00_cphBody_CommentView1_ctl00"] : document.getElementById("ctl00_cphBody_CommentView1_ctl00");
+ctl00_cphBody_CommentView1_ctl00.controltovalidate = "ctl00_cphBody_CommentView1_txtName";
+ctl00_cphBody_CommentView1_ctl00.errormessage = " Please choose another name";
+ctl00_cphBody_CommentView1_ctl00.display = "Dynamic";
+ctl00_cphBody_CommentView1_ctl00.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_ctl00.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_ctl00.clientvalidationfunction = "CheckAuthorName";
+var ctl00_cphBody_CommentView1_ctl01 = document.all ? document.all["ctl00_cphBody_CommentView1_ctl01"] : document.getElementById("ctl00_cphBody_CommentView1_ctl01");
+ctl00_cphBody_CommentView1_ctl01.controltovalidate = "ctl00_cphBody_CommentView1_txtName";
+ctl00_cphBody_CommentView1_ctl01.errormessage = "Required";
+ctl00_cphBody_CommentView1_ctl01.display = "Dynamic";
+ctl00_cphBody_CommentView1_ctl01.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_ctl01.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_ctl01.initialvalue = "";
+var ctl00_cphBody_CommentView1_ctl02 = document.all ? document.all["ctl00_cphBody_CommentView1_ctl02"] : document.getElementById("ctl00_cphBody_CommentView1_ctl02");
+ctl00_cphBody_CommentView1_ctl02.controltovalidate = "ctl00_cphBody_CommentView1_txtEmail";
+ctl00_cphBody_CommentView1_ctl02.errormessage = "Required";
+ctl00_cphBody_CommentView1_ctl02.display = "Dynamic";
+ctl00_cphBody_CommentView1_ctl02.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_ctl02.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_ctl02.initialvalue = "";
+var ctl00_cphBody_CommentView1_ctl03 = document.all ? document.all["ctl00_cphBody_CommentView1_ctl03"] : document.getElementById("ctl00_cphBody_CommentView1_ctl03");
+ctl00_cphBody_CommentView1_ctl03.controltovalidate = "ctl00_cphBody_CommentView1_txtEmail";
+ctl00_cphBody_CommentView1_ctl03.errormessage = "Please enter a valid email";
+ctl00_cphBody_CommentView1_ctl03.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_ctl03.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_ctl03.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var ctl00_cphBody_CommentView1_ctl04 = document.all ? document.all["ctl00_cphBody_CommentView1_ctl04"] : document.getElementById("ctl00_cphBody_CommentView1_ctl04");
+ctl00_cphBody_CommentView1_ctl04.controltovalidate = "ctl00_cphBody_CommentView1_txtWebsite";
+ctl00_cphBody_CommentView1_ctl04.errormessage = "Please enter a valid URL";
+ctl00_cphBody_CommentView1_ctl04.display = "Dynamic";
+ctl00_cphBody_CommentView1_ctl04.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_ctl04.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_ctl04.validationexpression = "(http://|https://|)([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=;~]*)?";
+var ctl00_cphBody_CommentView1_ctl05 = document.all ? document.all["ctl00_cphBody_CommentView1_ctl05"] : document.getElementById("ctl00_cphBody_CommentView1_ctl05");
+ctl00_cphBody_CommentView1_ctl05.controltovalidate = "ctl00_cphBody_CommentView1_txtContent";
+ctl00_cphBody_CommentView1_ctl05.errormessage = "Required";
+ctl00_cphBody_CommentView1_ctl05.display = "Dynamic";
+ctl00_cphBody_CommentView1_ctl05.validationGroup = "AddComment";
+ctl00_cphBody_CommentView1_ctl05.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_cphBody_CommentView1_ctl05.initialvalue = "";
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWowECjOPimQ8Cyqvt2wMC1eX3owwCruLkxgwC/ubfrwUCwYnlwAkCwond3wkCwYm9wAkCwYnpwAkCwYmJwAkCwYmFwAkCwYnd3wkCwImVwAkCwInZ3wkCwInJwAkCwInd3wkCwInxwAkCwIn5wAkCwIm9wAkCwIntwAkCwInRwAkCw4n5wAkCk6vrigECw4nlwAkCw4nxwAkCw4m9wAkCtom9wAkCw4nd3wkCwonhwAkCwonxwAkCxYnBwAkCxYnRwAkCs4mNwAkCxYnJwAkCxInxwAkCxImZwAkCxIm9wAkCx4nJwAkCwonJwAkCx4m9wAkCx4mFwAkCtontwAkCtonhwAkCtomJwAkCuYmBwAkCuYntwAkCuYnFwAkCuYm9wAkCuYm5wAkCuYnJwAkCronhwAkCuYnlwAkCuYmFwAkCuInpwAkCuIm1wAkCuInxwAkCu4nd3wkCu4nJwAkCu4m9wAkCu4mRwAkCu4nRwAkCuomNwAkCuon9wAkCuonZ3wkCuomZwAkCuomFwAkCuomJwAkCvYnxwAkCvYnhwAkCvYnZ3wkCvYmNwAkCvYmFwAkCvYnV3wkCvYntwAkCvYn5wAkCvInlwAkCvInd3wkCvImZwAkCvInxwAkCv4npwAkCron5wAkCronZ3wkCw4ntwAkCronJwAkCromVwAkCronlwAkCromFwAkCvYnBwAkCrom9wAkCsYn5wAkCromVwAkCsInxwAkCsImJwAkCs4n5wAkCw4mBwAkCs4nRwAkCs4nhwAkCs4mZwAkCqIn5wAkCxYmBwAkCs4nJwAkCw4mVwAkCs4nZ3wkCsomRwAkCsomVwAkCsomFwAkCsontwAkCsom9wAkCwYnJwAkCtYn5wAkCx4n9wAkCtYmBwAkCtYnZ3wkCtYnd3wkCtInJwAkCtIntwAkCqYnJwAkCqImRwAkCubT85wMC8o/Y3gMCjq+f0g4Cjq+DiQYCjq/37A0Cjq/bwwQCjq/PpgwCjq+zmgsCjq/nogYCjq/LmQ0Cq8bY7gICq8bMxQkCq8awuQECq8aknAgCq8aI8wcCq8b81g4Cq8bgjQYCq8bU4A0Cq8b4iQgCq8bs7AcCwPz69QQCwPzuqAwCwPzSjwsCwPzG4gICwPyqxgkCwPyevQECwPyCkAgCwPz29wcCwPyanAICwPyO8wkC/ZOc2A4C/ZOAvwYC/ZP0kg0C/ZPYyQQC/ZPMrAwC/ZOwgAsC/ZOk5wIC/ZOI2gkC/ZO84wQC/ZOgxgMCmoq+rwECmoqigggCmoqW+QcCmor63A4CiPzd7gpI5PuQF9cbw44WyCT3HcDs9biViA==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+WebForm_InitCallback();
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+
+<script src="http://feeds.feedburner.com/~s/TheWillWillWeb" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+jQuery(function()
+{
+  jQuery('input:text').bind('focus', init_input_text);
+});                                            
+
+function init_input_text() 
+{
+    if(jQuery(this).val().indexOf('請輸入') >= 0)
+    {
+        jQuery(this).val('');
+        jQuery(this).css('color', 'black');
+    }
+}
+</script>
+
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2475423-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+-->

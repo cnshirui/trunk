@@ -1,0 +1,27 @@
+  [4;36;1mSQL (0.020000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.140000)[0m   [0mCREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.050000)[0m   [0;1mINSERT INTO schema_info (version) VALUES(0)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: #42S01Table 'schema_info' already exists: CREATE TABLE schema_info (version int(11))[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to CreateRecipes (1)
+  [4;35;1mSQL (0.081000)[0m   [0mCREATE TABLE recipes (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255) DEFAULT NULL, `summary` text DEFAULT NULL, `ingredients` text DEFAULT NULL, `instructions` text DEFAULT NULL, `cooking_time` varchar(255) DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.020000)[0m   [0;1mUPDATE schema_info SET version = 1[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT version FROM schema_info[0m
+Migrating to CreateComments (2)
+  [4;36;1mSQL (0.070000)[0m   [0;1mCREATE TABLE comments (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `recipe_id` int(11) DEFAULT NULL, `body` text DEFAULT NULL, `created_at` datetime DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.020000)[0m   [0mUPDATE schema_info SET version = 2[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSELECT version FROM schema_info[0m
+Migrating to AddSessions (3)
+  [4;35;1mSQL (0.070000)[0m   [0mCREATE TABLE sessions (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) DEFAULT NULL, `data` text DEFAULT NULL, `updated_at` datetime DEFAULT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.200000)[0m   [0;1mCREATE INDEX `index_sessions_on_session_id` ON sessions (`session_id`)[0m
+  [4;35;1mSQL (0.150000)[0m   [0mCREATE INDEX `index_sessions_on_updated_at` ON sessions (`updated_at`)[0m
+  [4;36;1mSQL (0.040000)[0m   [0;1mUPDATE schema_info SET version = 3[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSELECT * FROM schema_info[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.010000)[0m   [0mSHOW FIELDS FROM comments[0m
+  [4;36;1mSQL (0.010000)[0m   [0;1mSHOW KEYS FROM comments[0m
+  [4;35;1mSQL (0.010000)[0m   [0mSHOW FIELDS FROM recipes[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSHOW KEYS FROM recipes[0m
+  [4;35;1mSQL (0.020000)[0m   [0mSHOW FIELDS FROM sessions[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSHOW KEYS FROM sessions[0m

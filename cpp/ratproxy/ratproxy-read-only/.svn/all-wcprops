@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 22
+/svn/!svn/ver/12/trunk
+END
+nlist.h
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/9/trunk/nlist.h
+END
+messages.list
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/12/trunk/messages.list
+END
+ssl.c
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/9/trunk/ssl.c
+END
+ssl.h
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/9/trunk/ssl.h
+END
+flare
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/9/trunk/flare
+END
+types.h
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/9/trunk/types.h
+END
+config.h
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/12/trunk/config.h
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/9/trunk/README
+END
+http.c
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/9/trunk/http.c
+END
+http.h
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/9/trunk/http.h
+END
+keyfile.pem
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/9/trunk/keyfile.pem
+END
+mime.c
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/9/trunk/mime.c
+END
+ratproxy.c
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/12/trunk/ratproxy.c
+END
+ratproxy-back.png
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/9/trunk/ratproxy-back.png
+END
+ratproxy-report.sh
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/9/trunk/ratproxy-report.sh
+END
+debug.h
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/9/trunk/debug.h
+END
+string-inl.h
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/9/trunk/string-inl.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/9/trunk/Makefile
+END
+mime.h
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/9/trunk/mime.h
+END

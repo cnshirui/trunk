@@ -1,0 +1,10 @@
+
+
+<div id="nickname" style="text-align: center">
+<%= start_form_tag %>
+输入你的昵称：<input type="text" name="nickname" maxlength="30" value="User<%= rand(1000).to_s %>" /><br /> 
+选择你要加入的聊天室:<select name="chatroom_id"><%= options_from_collection_for_select(@chatrooms,"id","title")%></select><br />
+你也可以新建你要加入的聊天室，输入新建聊天室名称：<input type="text" name="chatroom_title"><br />
+<input type="submit" value="进入聊天室" /><input type="hidden" name="style" value="<%= params[:style] %>" />
+<%= end_form_tag %>
+</div>

@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Test - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD9A.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/Test.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Documents\CPP Project\Test\template.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD9A.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD9B.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/Test.pdb" /debug /machine:I386 /out:"Debug/Test.exe" /pdbtype:sept 
+".\Debug\test.obj"
+".\Debug\tmp.obj"
+".\Debug\template.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD9B.tmp"
+<h3>Output Window</h3>
+Compiling...
+template.cpp
+E:\Documents\CPP Project\Test\template.cpp(1) : error C2871: 'std' : does not exist or is not a namespace
+E:\Documents\CPP Project\Test\template.cpp(5) : error C2653: 'std' : is not a class or namespace name
+E:\Documents\CPP Project\Test\template.cpp(5) : error C2065: 'list' : undeclared identifier
+E:\Documents\CPP Project\Test\template.cpp(5) : error C2062: type 'int' unexpected
+E:\Documents\CPP Project\Test\template.cpp(6) : error C2653: 'std' : is not a class or namespace name
+E:\Documents\CPP Project\Test\template.cpp(6) : error C2065: 'sort' : undeclared identifier
+E:\Documents\CPP Project\Test\template.cpp(6) : error C2065: 'li' : undeclared identifier
+E:\Documents\CPP Project\Test\template.cpp(6) : error C2228: left of '.begin' must have class/struct/union type
+E:\Documents\CPP Project\Test\template.cpp(6) : error C2228: left of '.end' must have class/struct/union type
+E:\Documents\CPP Project\Test\template.cpp(8) : warning C4508: 'main' : function should return a value; 'void' return type assumed
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+Test.exe - 9 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OnlineComponent>
+  <symbolName>WhoharConnection</symbolName>
+  <xml>
+    <connection id="BOAD0EA24B07DB47A884503A6C876C5EB5" className="xcelsius.rpc.SoapConnector" displayName="Data">
+      <properties>
+        <property>
+          <name>
+            <string>objInput</string>
+          </name>
+          <value>
+            <object>
+              <property id="children">
+                <array>
+                  <property id="0">
+                    <object>
+                      <property id="children">
+                        <array/>
+                      </property>
+                      <property id="dims">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="image">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="lname">
+                        <string>login</string>
+                      </property>
+                      <property id="qname">
+                        <string/>
+                      </property>
+                      <property id="required">
+                        <true/>
+                      </property>
+                      <property id="type">
+                        <string>string</string>
+                      </property>
+                      <property id="typens">
+                        <string>http://www.w3.org/2001/XMLSchema</string>
+                      </property>
+                      <property id="value">
+                        <string/>
+                      </property>
+                    </object>
+                  </property>
+                  <property id="1">
+                    <object>
+                      <property id="children">
+                        <array/>
+                      </property>
+                      <property id="dims">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="image">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="lname">
+                        <string>password</string>
+                      </property>
+                      <property id="qname">
+                        <string/>
+                      </property>
+                      <property id="required">
+                        <true/>
+                      </property>
+                      <property id="type">
+                        <string>string</string>
+                      </property>
+                      <property id="typens">
+                        <string>http://www.w3.org/2001/XMLSchema</string>
+                      </property>
+                      <property id="value">
+                        <string/>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </property>
+              <property id="dims">
+                <number>2.000000</number>
+              </property>
+              <property id="image">
+                <number>3.000000</number>
+              </property>
+              <property id="lname">
+                <string>GetDataTable</string>
+              </property>
+              <property id="qname">
+                <string>urn:ActionWebService</string>
+              </property>
+              <property id="required">
+                <true/>
+              </property>
+              <property id="type">
+                <string/>
+              </property>
+              <property id="typens">
+                <string/>
+              </property>
+              <property id="value">
+                <string/>
+              </property>
+            </object>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>objOutput</string>
+          </name>
+          <value>
+            <object>
+              <property id="children">
+                <array/>
+              </property>
+              <property id="dims">
+                <number>0.000000</number>
+              </property>
+              <property id="image">
+                <number>3.000000</number>
+              </property>
+              <property id="lname">
+                <string>GetDataTableResponse</string>
+              </property>
+              <property id="qname">
+                <string>urn:ActionWebService</string>
+              </property>
+              <property id="required">
+                <true/>
+              </property>
+              <property id="type">
+                <string/>
+              </property>
+              <property id="typens">
+                <string/>
+              </property>
+              <property id="value">
+                <array/>
+              </property>
+            </object>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>sUrlendpoint</string>
+          </name>
+          <value>
+            <string>http://van-w-03-rsalke:3000/datasets/api/27RTfCRvgWWzagL2rG_B14</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>sTargetnamespace</string>
+          </name>
+          <value>
+            <string>urn:ActionWebService</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>sSOAPAction</string>
+          </name>
+          <value>
+            <string>/datasets/data/GetDataTable</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>bDocument</string>
+          </name>
+          <value>
+            <false/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>bEncoded</string>
+          </name>
+          <value>
+            <false/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>refreshOnLoad</string>
+          </name>
+          <value>
+            <true/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>connectionName</string>
+          </name>
+          <value>
+            <string>Data</string>
+          </value>
+        </property>
+      </properties>
+      <bindings>
+        <property>
+          <name>
+            <string>sUrlendpoint</string>
+          </name>
+          <value>
+            <binding>
+              <endpoint type="excelbinding" id="BO2ADB4D1224324170A2F14CC297AD041E" displayname="Sheet2!$B$1">
+                <workbook>[Book8]</workbook>
+                <inputtype>
+                  <string/>
+                </inputtype>
+                <outputtype>
+                  <string>xcelsius.binding.tableMaps.output.TableToSingleton</string>
+                </outputtype>
+                <range>Sheet2!$B$1</range>
+                <cells>
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <array>
+                            <property id="0">
+                              <string>Sheet2!R1C2</string>
+                            </property>
+                          </array>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </cells>
+                <chain>
+                  <array/>
+                </chain>
+                <inputmapproperties>
+                  <array/>
+                </inputmapproperties>
+                <outputmapproperties>
+                  <array/>
+                </outputmapproperties>
+                <direction>
+                  <string>output</string>
+                </direction>
+              </endpoint>
+            </binding>
+          </value>
+        </property>
+      </bindings>
+      <Persist>
+        <array>
+          <property id="0">
+            <object>
+              <property id="name">
+                <string>_wsdlURLItem</string>
+              </property>
+              <property id="value">
+                <string>http://van-w-03-rsalke:3000/datasets/wsdl/27RTfCRvgWWzagL2rG_B14</string>
+              </property>
+            </object>
+          </property>
+          <property id="1">
+            <object>
+              <property id="name">
+                <string>_mainTab</string>
+              </property>
+              <property id="value">
+                <number>0.000000</number>
+              </property>
+            </object>
+          </property>
+          <property id="2">
+            <object>
+              <property id="name">
+                <string>_method</string>
+              </property>
+              <property id="value">
+                <array>
+                  <property id="0">
+                    <string>GetDataTable</string>
+                  </property>
+                </array>
+              </property>
+            </object>
+          </property>
+          <property id="3">
+            <object>
+              <property id="name">
+                <string>_methodIndex</string>
+              </property>
+              <property id="value">
+                <number>0.000000</number>
+              </property>
+            </object>
+          </property>
+        </array>
+      </Persist>
+    </connection>
+  </xml>
+  <config>
+    <flashvars>
+      <flashvar>
+        <name>get_data_url</name>
+        <range>dataConnectionForWhohar!$A$2:$B$2</range>
+      </flashvar>
+      <flashvar>
+        <name>Data1</name>
+      </flashvar>
+      <flashvar>
+        <name>Data2</name>
+      </flashvar>
+    </flashvars>
+    <webservices>
+      <webservice>
+        <name>whohar_Data1</name>
+        <WSDL_URL>input_your_wsdl_url</WSDL_URL>
+        <soapAction>/datasets/data/GetDataTable</soapAction>
+        <method>GetDataTable</method>
+        <webservice_url>dataConnectionForWhohar!$A$2</webservice_url>
+        <input name="GetDataTable">
+
+		</input>
+        <output name="GetDataTableResponse">
+
+		</output>
+      </webservice>
+      <webservice>
+        <name>whohar_Data2</name>
+        <WSDL_URL>input_your_wsdl_url</WSDL_URL>
+        <soapAction>/datasets/data/GetDataTable</soapAction>
+        <method>GetDataTable</method>
+        <webservice_url>dataConnectionForWhohar!$B$2</webservice_url>
+        <input name="GetDataTable">
+
+		</input>
+        <output name="GetDataTableResponse">
+
+		</output>
+      </webservice>
+    </webservices>
+  </config>
+</OnlineComponent>

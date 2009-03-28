@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<property>
+  <name>
+    <string>objOutput</string>
+  </name>
+  <value>
+    <binding>
+      <endpoint type="excelbinding" id="BO2191A3C1B9F14BB7B3CD6AE073827AFF" displayname="Sheet1!$A$1">
+        <workbook>[Book1]</workbook>
+        <inputtype>
+          <string>xcelsius.binding.tableMaps.input.Array2DToTable</string>
+        </inputtype>
+        <outputtype>
+          <string/>
+        </outputtype>
+        <range>Sheet1!$A$1</range>
+        <cells>
+          <array>
+            <property id="0">
+              <array>
+                <property id="0">
+                  <array>
+                    <property id="0">
+                      <string>Sheet1!R1C1</string>
+                    </property>
+                  </array>
+                </property>
+              </array>
+            </property>
+          </array>
+        </cells>
+        <chain>
+          <array>
+            <property id="0">
+              <string>children</string>
+            </property>
+            <property id="1">
+              <number>0.000000</number>
+            </property>
+            <property id="2">
+              <string>children</string>
+            </property>
+            <property id="3">
+              <number>0.000000</number>
+            </property>
+            <property id="4">
+              <string>value</string>
+            </property>
+          </array>
+        </chain>
+        <inputmapproperties>
+          <array/>
+        </inputmapproperties>
+        <outputmapproperties>
+          <array/>
+        </outputmapproperties>
+        <direction>
+          <string>input</string>
+        </direction>
+      </endpoint>
+    </binding>
+  </value>
+</property>

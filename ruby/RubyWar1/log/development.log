@@ -1,0 +1,61 @@
+# Logfile created on ??? ?? 18 21:22:58 +0800 2008  [4;36;1mSQL (0.015144)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.085294)[0m   [0mCREATE TABLE `schema_info` (version integer(10))[0m
+  [4;36;1mSQL (0.036732)[0m   [0;1mINSERT INTO `schema_info` (version) VALUES(0)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mActiveRecord::ActiveRecordError: Table 'schema_info' already exists: CREATE TABLE `schema_info` (version integer(10))[0m
+  [4;36;1mSQL (0.002794)[0m   [0;1mSELECT * FROM schema_info[0m
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:16:54) [GET]
+  Session ID: b0d09162be10da6404bd8396ec7db9fb
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+  [4;36;1mSQL (0.006566)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.003077)[0m   [0mSELECT version FROM schema_info[0m
+Completed in 0.10881 (9 reqs/sec) | Rendering: 0.00672 (6%) | DB: 0.00964 (8%) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:18:41) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+  [4;36;1mSQL (0.002353)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.004010)[0m   [0mSELECT version FROM schema_info[0m
+Completed in 0.10381 (9 reqs/sec) | Rendering: 0.00693 (6%) | DB: 0.00636 (6%) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:18:48) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+  [4;36;1mSQL (0.001016)[0m   [0;1mSELECT version FROM schema_info[0m
+Completed in 0.06305 (15 reqs/sec) | Rendering: 0.00134 (2%) | DB: 0.00102 (1%) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:18:53) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+  [4;35;1mSQL (0.000123)[0m   [0mSELECT version FROM schema_info[0m
+Completed in 0.17429 (5 reqs/sec) | Rendering: 0.00227 (1%) | DB: 0.00012 (0%) | 200 OK [http://localhost/rails/info/properties]
+  [4;36;1mSQL (0.000863)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.000000)[0m   [0mActiveRecord::ActiveRecordError: Table 'schema_info' already exists: CREATE TABLE `schema_info` (version integer(10))[0m
+  [4;36;1mSQL (0.001616)[0m   [0;1mSELECT * FROM schema_info[0m
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:35:17) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:35:32) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:35:34) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+
+
+Processing InfoController#properties (for 127.0.0.1 at 2008-07-18 23:36:57) [GET]
+  Session ID: BAh7BiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%0ASGFzaHsABjoKQHVzZWR7AA%3D%3D--944c200afd01afffa96f1909d194d2652d3e1317
+  Parameters: {"controller"=>"rails/info", "action"=>"properties"}
+  [4;36;1mSQL (0.000534)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.002435)[0m   [0mSELECT version FROM schema_info[0m
+Completed in 0.09970 (10 reqs/sec) | Rendering: 0.00599 (6%) | DB: 0.00297 (2%) | 200 OK [http://localhost/rails/info/properties]

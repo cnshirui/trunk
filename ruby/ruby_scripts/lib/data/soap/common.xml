@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<onlinecomponent>
+  <symbolName>common</symbolName>
+  <xml>
+    <connection id="BO78EEBBE325AC4E48A01E7043F523044F" className="xcelsius.rpc.FlashVars" displayName="[Flashvar]">
+      <properties>
+        <property>
+          <name>
+            <string>variableFormat</string>
+          </name>
+          <value>
+            <string>XML</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>connectionName</string>
+          </name>
+          <value>
+            <string>[Flashvar]</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>ranges_ary</string>
+          </name>
+          <value>
+            <array>
+              <property id="0">
+                <object>
+                  <property id="name">
+                    <string>flashvar_name</string>
+                  </property>
+                  <property id="range">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>DefaultUser</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </object>
+              </property>
+            </array>
+          </value>
+        </property>
+      </properties>
+      <metaData>
+        <tag>666</tag>
+        <data>flashvar_name={rangeValuesXML:BO3ADCD6D125A64C96A08F89DA67902365}</data>
+      </metaData>
+      <bindings>
+        <property>
+          <name>
+            <string>ranges_ary</string>
+          </name>
+          <value>
+            <binding>
+              <endpoint type="excelbinding" id="BO3ADCD6D125A64C96A08F89DA67902365" displayname="LogonControl!$B$2">
+                <workbook>[Book3]</workbook>
+                <inputtype>
+                  <string>xcelsius.binding.tableMaps.input.Array2DToTable</string>
+                </inputtype>
+                <outputtype>
+                  <string/>
+                </outputtype>
+                <range>LogonControl!$B$2</range>
+                <cells>
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <array>
+                            <property id="0">
+                              <string>LogonControl!R2C2</string>
+                            </property>
+                          </array>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </cells>
+                <chain>
+                  <array>
+                    <property id="0">
+                      <object>
+                        <property id="className">
+                          <string>xcelsius.binding.chain::ArrayChainAccessor</string>
+                        </property>
+                        <property id="properties">
+                          <array>
+                            <property id="0">
+                              <object>
+                                <property id="name">
+                                  <string>index</string>
+                                </property>
+                                <property id="value">
+                                  <number>0.000000</number>
+                                </property>
+                              </object>
+                            </property>
+                          </array>
+                        </property>
+                      </object>
+                    </property>
+                    <property id="1">
+                      <object>
+                        <property id="className">
+                          <string>xcelsius.binding.chain::ObjectChainAccessor</string>
+                        </property>
+                        <property id="properties">
+                          <array>
+                            <property id="0">
+                              <object>
+                                <property id="name">
+                                  <string>propertyName</string>
+                                </property>
+                                <property id="value">
+                                  <string>range</string>
+                                </property>
+                              </object>
+                            </property>
+                          </array>
+                        </property>
+                      </object>
+                    </property>
+                  </array>
+                </chain>
+                <inputmapproperties>
+                  <array/>
+                </inputmapproperties>
+                <outputmapproperties>
+                  <array/>
+                </outputmapproperties>
+                <direction>
+                  <string>input</string>
+                </direction>
+              </endpoint>
+            </binding>
+          </value>
+        </property>
+      </bindings>
+      <Persist>
+        <array/>
+      </Persist>
+    </connection>
+    <connection id="BO8F668D74605E46269287C2A195F3345B" className="xcelsius.rpc.SoapConnector" displayName="OnDemandWSConnection">
+      <properties>
+        <property>
+          <name>
+            <string>sUrlendpoint</string>
+          </name>
+          <value>
+            <string>input_WSDL_URL_here</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>sTargetnamespace</string>
+          </name>
+          <value>
+            <string>urn:ActionWebService</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>sSOAPAction</string>
+          </name>
+          <value>
+            <string>/datasets/data/GetDataTable</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>bDocument</string>
+          </name>
+          <value>
+            <true/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>bEncoded</string>
+          </name>
+          <value>
+            <false/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>objInput</string>
+          </name>
+          <value>
+            <object>
+              <property id="children">
+                <array>
+                  <property id="0">
+                    <object>
+                      <property id="children">
+                        <array/>
+                      </property>
+                      <property id="dims">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="image">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="lname">
+                        <string>login</string>
+                      </property>
+                      <property id="qname">
+                        <string>urn:ActionWebService</string>
+                      </property>
+                      <property id="required">
+                        <true/>
+                      </property>
+                      <property id="type">
+                        <string>string</string>
+                      </property>
+                      <property id="typens">
+                        <string/>
+                      </property>
+                      <property id="value">
+                        <string>dave.maclean@businessobjects.com</string>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </property>
+              <property id="dims">
+                <number>2.000000</number>
+              </property>
+              <property id="image">
+                <number>3.000000</number>
+              </property>
+              <property id="lname">
+                <string>GetDataTable</string>
+              </property>
+              <property id="qname">
+                <string>urn:ActionWebService</string>
+              </property>
+              <property id="required">
+                <true/>
+              </property>
+              <property id="type">
+                <string/>
+              </property>
+              <property id="typens">
+                <string/>
+              </property>
+              <property id="value">
+                <string/>
+              </property>
+            </object>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>objOutput</string>
+          </name>
+          <value>
+            <object>
+              <property id="children">
+                <array>
+                  <property id="1">
+                    <object>
+                      <property id="children">
+                        <array/>
+                      </property>
+                      <property id="dims">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="image">
+                        <number>1.000000</number>
+                      </property>
+                      <property id="lname">
+                        <string>fetchedrows</string>
+                      </property>
+                      <property id="qname">
+                        <string>urn:ActionWebService</string>
+                      </property>
+                      <property id="required">
+                        <true/>
+                      </property>
+                      <property id="type">
+                        <string>int</string>
+                      </property>
+                      <property id="typens">
+                        <string/>
+                      </property>
+                      <property id="value">
+                        <array>
+                          <property id="0">
+                            <array>
+                              <property id="0">
+                                <string/>
+                              </property>
+                            </array>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </property>
+              <property id="dims">
+                <number>27.000000</number>
+              </property>
+              <property id="image">
+                <number>3.000000</number>
+              </property>
+              <property id="lname">
+                <string>GetDataTableResponse</string>
+              </property>
+              <property id="qname">
+                <string>urn:ActionWebService</string>
+              </property>
+              <property id="required">
+                <true/>
+              </property>
+              <property id="type">
+                <string/>
+              </property>
+              <property id="typens">
+                <string/>
+              </property>
+              <property id="value">
+                <array/>
+              </property>
+            </object>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>refreshOnInterval</string>
+          </name>
+          <value>
+            <false/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>refreshOnLoad</string>
+          </name>
+          <value>
+            <true/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>refreshInterval</string>
+          </name>
+          <value>
+            <number>5.0</number>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>intervalDuration</string>
+          </name>
+          <value>
+            <string>seconds</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>enableLoadCursor</string>
+          </name>
+          <value>
+            <false/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>disableMouseCursor</string>
+          </name>
+          <value>
+            <false/>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>loadMessage</string>
+          </name>
+          <value>
+            <string>loading</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>idleMessage</string>
+          </name>
+          <value>
+            <string>idle</string>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>refreshIntervalInMS</string>
+          </name>
+          <value>
+            <number>5000.000000</number>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>connectionName</string>
+          </name>
+          <value>
+            <string>OnDemandWSConnection</string>
+          </value>
+        </property>
+      </properties>
+      <bindings>
+        <property>
+          <name>
+            <string>objInput</string>
+          </name>
+          <value>
+            <binding>
+              <endpoint type="excelbinding" id="BOBDD42DF65D884EC2867827506490D19E" displayname="LogonControl!$B$2">
+                <workbook>[Book1]</workbook>
+                <inputtype>
+                  <string/>
+                </inputtype>
+                <outputtype>
+                  <string>xcelsius.binding.tableMaps.output.TableToSingleton</string>
+                </outputtype>
+                <range>LogonControl!$B$2</range>
+                <cells>
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <array>
+                            <property id="0">
+                              <string>LogonControl!R2C2</string>
+                            </property>
+                          </array>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </cells>
+                <chain>
+                  <array>
+                    <property id="0">
+                      <string>children</string>
+                    </property>
+                    <property id="1">
+                      <number>0.000000</number>
+                    </property>
+                    <property id="2">
+                      <string>value</string>
+                    </property>
+                  </array>
+                </chain>
+                <inputmapproperties>
+                  <array/>
+                </inputmapproperties>
+                <outputmapproperties>
+                  <array/>
+                </outputmapproperties>
+                <direction>
+                  <string>output</string>
+                </direction>
+              </endpoint>
+            </binding>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>objOutput</string>
+          </name>
+          <value>
+            <binding>
+              <endpoint type="excelbinding" id="BO1E9935EAD8F64AF59E9B2A0BFED5C7F3" displayname="LogonControl!$H$2">
+                <workbook>[Book1]</workbook>
+                <inputtype>
+                  <string>xcelsius.binding.tableMaps.input.Array2DToTable</string>
+                </inputtype>
+                <outputtype>
+                  <string/>
+                </outputtype>
+                <range>LogonControl!$H$2</range>
+                <cells>
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <array>
+                            <property id="0">
+                              <string>LogonControl!R2C8</string>
+                            </property>
+                          </array>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </cells>
+                <chain>
+                  <array>
+                    <property id="0">
+                      <string>children</string>
+                    </property>
+                    <property id="1">
+                      <number>1.000000</number>
+                    </property>
+                    <property id="2">
+                      <string>value</string>
+                    </property>
+                  </array>
+                </chain>
+                <inputmapproperties>
+                  <array/>
+                </inputmapproperties>
+                <outputmapproperties>
+                  <array/>
+                </outputmapproperties>
+                <direction>
+                  <string>input</string>
+                </direction>
+              </endpoint>
+            </binding>
+          </value>
+        </property>
+        <property>
+          <name>
+            <string>sUrlendpoint</string>
+          </name>
+          <value>
+            <binding>
+              <endpoint type="excelbinding" id="BO145499356B564B7FBCB286E4AD326B13" displayname="LogonControl!$G$2">
+                <workbook>[Book1]</workbook>
+                <inputtype>
+                  <string/>
+                </inputtype>
+                <outputtype>
+                  <string>xcelsius.binding.tableMaps.output.TableToSingleton</string>
+                </outputtype>
+                <range>LogonControl!$G$2</range>
+                <cells>
+                  <array>
+                    <property id="0">
+                      <array>
+                        <property id="0">
+                          <array>
+                            <property id="0">
+                              <string>LogonControl!R2C7</string>
+                            </property>
+                          </array>
+                        </property>
+                      </array>
+                    </property>
+                  </array>
+                </cells>
+                <chain>
+                  <array/>
+                </chain>
+                <inputmapproperties>
+                  <array/>
+                </inputmapproperties>
+                <outputmapproperties>
+                  <array/>
+                </outputmapproperties>
+                <direction>
+                  <string>output</string>
+                </direction>
+              </endpoint>
+            </binding>
+          </value>
+        </property>
+      </bindings>
+      <Persist>
+        <array>
+          <property id="0">
+            <object>
+              <property id="name">
+                <string>_wsdlURLItem</string>
+              </property>
+              <property id="value">
+                <string/>
+              </property>
+            </object>
+          </property>
+          <property id="1">
+            <object>
+              <property id="name">
+                <string>_methodIndex</string>
+              </property>
+              <property id="value">
+                <number>0.000000</number>
+              </property>
+            </object>
+          </property>
+          <property id="2">
+            <object>
+              <property id="name">
+                <string>_method</string>
+              </property>
+              <property id="value">
+                <array>
+                  <property id="0">
+                    <string>GetDataTable</string>
+                  </property>
+                </array>
+              </property>
+            </object>
+          </property>
+          <property id="3">
+            <object>
+              <property id="name">
+                <string>_mainTab</string>
+              </property>
+              <property id="value">
+                <number>0.000000</number>
+              </property>
+            </object>
+          </property>
+        </array>
+      </Persist>
+    </connection>
+  </xml>
+</onlinecomponent>

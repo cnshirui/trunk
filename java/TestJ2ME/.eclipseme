@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipsemeMetadata jad="TestJ2ME.jad" version="1.5.5">
+   <device group="Motorola J2ME SDK v5.4.2 for Linux OS Products" name="A780"/>
+   <signing signProject="false"/>
+</eclipsemeMetadata>
