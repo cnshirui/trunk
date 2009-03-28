@@ -21,5 +21,10 @@
 			<type>2</type>
 			<location>D:/perforce/git/roamer/public/os</location>
 		</link>
+		<link>
+			<name>bin-release1</name>
+			<type>2</type>
+			<location>D:/perforce/git/roamer/public/os</location>
+		</link>
 	</linkedResources>
 </projectDescription>

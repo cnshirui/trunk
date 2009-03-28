@@ -1,3 +1,8 @@
+
+// http://web93131016.w1.web335.net.cn/campus_roamer/
+// http://shirui.900y.net/campus_roamer/campus_roamer.xml
+// http://mydepot.heroku.com/os/campus_roamer.xml
+
 TableToHasFormulaSingle
 TableToSingleton
 

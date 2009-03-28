@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Module><ModulePrefs author_email="shiruide@gmail.com" title="OpenSocialSample"><Require feature="opensocial-0.8"/></ModulePrefs><Content view="canvas" type="html">
+
+&lt;!-- Fetching People and Friends --&gt;
+&lt;div&gt;
+  &lt;button onclick='fetchPeople();'&gt;Fetch people and friends&lt;/button&gt;
+  &lt;div&gt;
+    &lt;span id='viewer'&gt;&lt;/span&gt;
+    &lt;ul id='friends'&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type='text/javascript'&gt;
+function fetchPeople() {
+  var req = opensocial.newDataRequest();
+  req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER), 'viewer');
+  var params = {};
+  params[opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
+  params[opensocial.IdSpec.Field.GROUP_ID] = 'FRIENDS';
+  var idSpec = opensocial.newIdSpec(params);
+  req.add(req.newFetchPeopleRequest(idSpec), 'friends');
+  req.send(function(data) {
+    var viewer = data.get('viewer').getData();
+    document.getElementById('viewer').innerHTML = viewer.getId();
+    var friends = data.get('friends').getData();
+    document.getElementById('friends').innerHTML = '';
+    friends.each(function(friend) {
+      document.getElementById('friends').innerHTML += '&lt;li&gt;' + friend.getId() + '&lt;/li&gt;';
+    });
+    gadgets.window.adjustHeight();
+  });
+}
+&lt;/script&gt;
+
+&lt;!-- Posting activity --&gt;
+&lt;div&gt;
+  &lt;input type='text' id='title' /&gt;
+  &lt;button onclick='postActivity();'&gt;Post activity&lt;/button&gt;
+  &lt;div id='result_activity'&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type='text/javascript'&gt;
+function postActivity() {
+  var params = {};
+  params[opensocial.Activity.Field.TITLE] = document.getElementById('title').value;
+  var activity = opensocial.newActivity(params);
+  opensocial.requestCreateActivity(
+      activity, opensocial.CreateActivityPriority.HIGH, function(response) {
+        if (response.hadError()) {
+          document.getElementById('result_activity').innerHTML = response.getErrorCode();
+        } else {
+          document.getElementById('result_activity').innerHTML = 'Succeeded!';
+        }
+        gadgets.window.adjustHeight();
+      });
+}
+&lt;/script&gt;
+
+&lt;!-- Sharing data with friends --&gt;
+&lt;div&gt;
+  &lt;input type='text' id='content' /&gt;
+  &lt;button onclick='shareData();'&gt;Share data&lt;/button&gt;
+  &lt;button onclick='fetchFriendData();'&gt;Fetch friend's data&lt;/button&gt;
+  &lt;div id='result_appdata'&gt;&lt;/div&gt;
+  &lt;ul id='contents'&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;script type='text/javascript'&gt;
+function shareData() {
+  var content = document.getElementById('content').value;
+  var req = opensocial.newDataRequest();
+  req.add(req.newUpdatePersonAppDataRequest(opensocial.IdSpec.PersonId.VIEWER, 'content', content));
+  req.send(function(response) {
+    if (response.hadError()) {
+      document.getElementById('result_appdata').innerHTML = response.getErrorCode();
+    } else {
+      document.getElementById('result_appdata').innerHTML = 'Succeeded!';
+    }
+    gadgets.window.adjustHeight();
+  });
+}
+function fetchFriendData() {
+  var req = opensocial.newDataRequest();
+  var params = {};
+  params[opensocial.IdSpec.Field.USER_ID] = opensocial.IdSpec.PersonId.VIEWER;
+  params[opensocial.IdSpec.Field.GROUP_ID] = 'FRIENDS';
+  var idSpec = opensocial.newIdSpec(params);
+  req.add(req.newFetchPersonAppDataRequest(idSpec, ['content']), 'stored');
+  req.send(function(data) {
+    var stored = data.get('stored').getData();
+    for(var id in stored) {
+      var obj = stored[id];
+      document.getElementById('contents').innerHTML
+          += '&lt;li&gt;' + id + ': ' + obj['content'] + '&lt;/li&gt;';
+    }
+    gadgets.window.adjustHeight();
+  });
+}
+&lt;/script&gt;
+
+  </Content></Module>

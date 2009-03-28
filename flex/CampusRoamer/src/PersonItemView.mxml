@@ -29,7 +29,7 @@
 	
 	<mx:HTTPService contentType="application/xml"
 			id="favoriteCreateRequest"
-			url="http://roamer.heroku.com/favorites/create"
+			url="{CampusRoamer.SERVER_URL}/favorites/create"
 			useProxy="false" method="POST">
 		<mx:request xmlns="">
 			<favorite>
