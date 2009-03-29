@@ -1,0 +1,66 @@
+diff --git a/flex/CampusRoamer/src/CampusRoamer.mxml b/flex/CampusRoamer/src/CampusRoamer.mxml
+index f63f0a0..2ad4441 100644
+--- a/flex/CampusRoamer/src/CampusRoamer.mxml
++++ b/flex/CampusRoamer/src/CampusRoamer.mxml
+@@ -25,13 +25,13 @@
+ 	
+ 	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
+ 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
+-		text="http://apps.xiaonei.com/campus_roamer?8" click="gotoApplicationPage()"/>
++		text="http://apps.xiaonei.com/campus_roamer?9" click="gotoApplicationPage()"/>
+ 		
+ 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
+ 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
+ 
+-	<mx:XML id="personsXML" source="../test/personsByNameAll.xml" />
+-
++<!--	<mx:XML id="personsXML" source="../test/personsByNameAll.xml" />
++-->
+ 	<mx:Script>
+ 		<![CDATA[
+ 			import mx.collections.ArrayCollection;
+@@ -43,7 +43,7 @@
+ 			import mx.managers.CursorManagerPriority;
+ 			import com.adobe.flex.extras.controls.springgraph.Graph;
+ 
+-			private var _test:Boolean = true;
++			private var _test:Boolean = false;
+ 			private var _autoClose:Boolean = false;
+ 
+ 			[Bindable]
+@@ -105,7 +105,7 @@
+ 				// for test
+ 				if (_test)
+ 				{
+-					receivedFromJavaScript(personsXML.person[0]);
++//					receivedFromJavaScript(personsXML.person[0]);
+ 				}
+ 			}
+ 
+@@ -192,7 +192,7 @@
+ 				setTimeout(removeInitProgressWindow, 3000);
+ 
+ 				var person:XML = XML(value);
+-				if (!viewerID)
++				if(!viewerID)
+ 				{
+ 					viewerID = person.id[0];
+ 					getFavorites();
+@@ -228,7 +228,7 @@
+ 			{
+ 				if (_test)
+ 				{
+-					receivedFromJavaScript(personsXML.person.(id == uid));
++//					receivedFromJavaScript(personsXML.person.(id == uid));
+ 				}
+ 			}
+ 
+@@ -297,7 +297,7 @@
+ 				{
+ 					if (_test)
+ 					{
+-						receivedFromJavaScript(personsXML.person.(id == ComboBox(event.target).selectedItem.data));
++//						receivedFromJavaScript(personsXML.person.(id == ComboBox(event.target).selectedItem.data));
+ 					}
+ 					else
+ 					{
