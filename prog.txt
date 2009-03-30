@@ -1,4 +1,26 @@
+ADAPT01200328
+ADAPT01200332
+\\shg-s-fs02\LiveOffice\Xcelsius\Temp\roy_shi
 
+ADAPT01200328 
+1. Create a model using pie chart in X4.5, set the data value binding and drill down. Save the model.
+2. Open attached model in X5.
+3. Click the pie chart.
+    Notice the binding of General > Data > Values is lost and drill down tab is disabled.
+ADAPT01200332 
+1. Create a model using charts (say Line Chart) in X4.5. Enable General > series and add bind series values and category labels. Save the model.
+2. Open attached xlf mode in X5.
+3. Click the line chart.
+    Notice General > Data > By Range is selected but there is no binding. (It should select General > Data > By Series.)
+
+
+-		m_Params	0x05af9690 {m_Items={...} m_FormattedItems={...} subtype=0 ...}	xc45::fParamSet *
++		m_Items	{m_First=0x05af9b98 m_Last=0x05b1ee18 m_NumItems=130 }	xc45::List
++		m_FormattedItems	{m_First=0x00000000 m_Last=0x00000000 m_NumItems=0 }	xc45::List
+
+if( _tcscmp(_T("dataValues"), p->GetName()) == 0 )//for charts...
+void 		xcXLFMigrate::MigrateParamBinding(xc45::fParameter *param, IUnknownPtr node, IUnknownPtr parent, xcValueData *xv)
+IUnknownPtr xcXLFMigrate::MigrateParamBinding(xc45::fParameter *p, IUnknownPtr node, xcValueData *xv)
 
 ADAPT owners:
 Specify the owner who will be  doing the fix request or forward-fit integrations.  For forward-fit integrations, we will need to assign an owner in SDC and ask Jesse for me if we are not sure 
@@ -12,3 +34,9 @@ Developers, this is your chance to speak up and tell us what you think about thi
 
 Concerns:
 Risk, scope, complexity, design issues, or architectural issues
+
+57845 5379
+20205 1716
+您所查询的是由中国怡敏信公司销售的TDK品牌数据存储产品的正牌编码，谢谢查询！
+
+font, source list, ruby, vim, 

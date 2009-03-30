@@ -22,17 +22,20 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  files = ['gauge_x5.xlf', 'gauge_x6.xlf']
+  dir = "D:/migrate"
+  files = ['line_50.xlf', 'line_50_modify.xlf']
+  files.map! { |file| "#{dir}/#{file}" }
+  puts files
   puts "please choose the original xlf file in command line!"
 end
 
 files = $* unless files
 
 time = Time.now.to_i.to_s
-xmls = []
+xmls = files.map { |file| "temp#{file.sub(dir, "").sub(".xlf", ".xml")}" }
+xmls.each { |xml| File.delete(xml) if File.exist?(xml)}
 2.times do |i|
   # unzip xlf
-  xmls[i] = "temp/#{time}.#{i}.xml"
   JZip::ZipFile.open(files[i]) do |zipfile|
     zipfile.extract('document.xml', xmls[i])
   end
@@ -61,6 +64,8 @@ xmls = []
   writer = XMLWriter.new(FileWriter.new(xmls[i]), format)
   writer.write(doc)
   writer.flush
+
+#  FileUtils.rm_f(temp) if File.exist?(temp)
 end
 
 # execute compare
