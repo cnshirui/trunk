@@ -1,0 +1,14 @@
+
+
+ADAPT owners:
+Specify the owner who will be  doing the fix request or forward-fit integrations.  For forward-fit integrations, we will need to assign an owner in SDC and ask Jesse for me if we are not sure 
+
+Dev  Effort Estimation:
+The owner of the ADAPT, no matter this is a bug fix or a forward fit, the owner (as specified in column D) will need to fill in the unbuffered estimation here by the number of hours.
+
+
+Dev Concerns:
+Developers, this is your chance to speak up and tell us what you think about this bug fix.  If you have any concerns, please let us know.
+
+Concerns:
+Risk, scope, complexity, design issues, or architectural issues
