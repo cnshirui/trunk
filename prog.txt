@@ -35,6 +35,28 @@ Developers, this is your chance to speak up and tell us what you think about thi
 Concerns:
 Risk, scope, complexity, design issues, or architectural issues
 
+git remote add roamer git@heroku.com:roamer.git
+git@heroku.com:appname.git
+
+git push mydepot master:\refs\heads\master
+Unable to create '.git/refs/remotes/mydepot/\refs\heads\master.lock': No such file or directory
+
+ rails myapp
+ cd myapp
+ (...make edits...)
+ git init
+ git add .
+ git commit -m "my new app"
+ heroku create mydepot
+ git remote add heroku git@heroku.com:mydepot.git
+ git push heroku master
+ 
+ git remote add mydepot git@heroku.com:mydepot.git
+ git push mydepot master
+ 
+ fatal: 'origin': unable to chdir or not a git archive, fatal: The remote end hung up unexpectedly
+
+
 57845 5379
 20205 1716
 您所查询的是由中国怡敏信公司销售的TDK品牌数据存储产品的正牌编码，谢谢查询！
