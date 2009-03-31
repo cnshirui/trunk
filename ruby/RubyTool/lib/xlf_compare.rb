@@ -23,7 +23,7 @@ if(argc == 2)
   puts $*.inspect
 else
   dir = "D:/migrate"
-  files = ['line_50.xlf', 'line_50_modify.xlf']
+  files = ['pie_45_50_drill.xlf', 'pie_50_drill.xlf']
   files.map! { |file| "#{dir}/#{file}" }
   puts files
   puts "please choose the original xlf file in command line!"

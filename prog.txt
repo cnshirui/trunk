@@ -1,3 +1,11 @@
+"Project The following environment variables were not found:"
+$(MY_SOFT)
+d:\Perforce\depot\Xcelsius\CB2_EID_SP2\CVS\xl\xlauto.h(6): fatal error C1083: Cannot open type library file: 
+'Microsoft Office\Office\MSO9.DLL': No such file or directory
+d:\Perforce\depot\Xcelsius\Cb2_eid_sp2\Cvs\widgetbase\togglebtn.cpp(3): fatal error C1083: Cannot open include file: 
+'mfc/stdafx.h': No such file or directory
+
+
 ADAPT01200328
 ADAPT01200332
 \\shg-s-fs02\LiveOffice\Xcelsius\Temp\roy_shi
@@ -13,7 +21,7 @@ ADAPT01200332
 3. Click the line chart.
     Notice General > Data > By Range is selected but there is no binding. (It should select General > Data > By Series.)
 
-
+xcelsius.rc(1549):    IDS_ERROR_LOADXLF       "Crystal Xcelsius is unable to load this file.  This file may be corrupt or have features that cannot be supported by this version of Crystal Xcelsius."
 -		m_Params	0x05af9690 {m_Items={...} m_FormattedItems={...} subtype=0 ...}	xc45::fParamSet *
 +		m_Items	{m_First=0x05af9b98 m_Last=0x05b1ee18 m_NumItems=130 }	xc45::List
 +		m_FormattedItems	{m_First=0x00000000 m_Last=0x00000000 m_NumItems=0 }	xc45::List
