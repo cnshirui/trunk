@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fc="http://www.adobe.com/2006/fc"
-	layout="absolute" creationComplete="onCreationComplete()" xmlns:ns1="bridge.*">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:fc="com.adobe.flex.extras.controls.springgraph.*"
+	creationComplete="onCreationComplete()" 
+	layout="absolute">
 	
 	<mx:Style>
 		.text {
@@ -41,6 +43,8 @@
 			import mx.managers.CursorManager;
 			import mx.managers.PopUpManager;
 			import mx.managers.CursorManagerPriority;
+			
+			// http://www.adobe.com/2006/fc/SpringGraph.swc
 			import com.adobe.flex.extras.controls.springgraph.Graph;
 
 			private var _test:Boolean = false;

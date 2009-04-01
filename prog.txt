@@ -1,3 +1,5 @@
+IMApp error PRJ0019: A tool returned an error code from "Copying assemblies to target directory..."
+
 "Project The following environment variables were not found:"
 $(MY_SOFT)
 d:\Perforce\depot\Xcelsius\CB2_EID_SP2\CVS\xl\xlauto.h(6): fatal error C1083: Cannot open type library file: 
