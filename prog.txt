@@ -1,3 +1,37 @@
+	if(_tcscmp(range, _T("'Sheet1'!$B$2:$B$5")) == 0)
+	{
+		range = _T("Sheet1!$B$2:$B$5");
+	}
+
+	try {
+		pRange = pXl->Evaluate(range);
+	}
+	catch(COleDispatchException *) {
+
+	}
+	catch(...) {
+		TRACE("Evaluate failed!");
+	}
+-property
+CComPtr<IUnknown> punk = ActionBindUtil::getWorkbookFromView();
++		pXl	{0x001f5e0c}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x0019e104}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x037f3134}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x00220a04}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x037f3134}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
+
+-persist
++		pXl	{0x037b36dc}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x037b3f5c}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
+
+	
+-		range	0x05a1c860 "Sheet1!$A$2:$A$5"	const wchar_t *
++		range	"'Sheet1'!$B$2:$B$5"	std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
++		range	"'Sheet1'!$B$2:$B$5"	const wchar_t *
+
+
+Select a Range IDD_XLSELDLG
+
 IMApp error PRJ0019: A tool returned an error code from "Copying assemblies to target directory..."
 
 "Project The following environment variables were not found:"

@@ -3,9 +3,14 @@
     <type>org.netbeans.modules.ruby.rubyproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/ruby-project/1">
-            <name>TestExcel</name>
-            <source-roots/>
-            <test-roots/>
+            <name>ExcelOLE</name>
+            <source-roots>
+                <root id="src.dir"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.src.dir"/>
+                <root id="spec.src.dir"/>
+            </test-roots>
         </data>
     </configuration>
 </project>
