@@ -1,3 +1,6 @@
+<<<<<<< HEAD:prog.txt
+private var _indicatorLabels:Array = ['Indicator 1'];
+=======
     mingwm10.dll
     QtCore4.dll
     QtCored4.dll
@@ -39,25 +42,75 @@ CComPtr<IUnknown> punk = ActionBindUtil::getWorkbookFromView();
 -persist
 +		pXl	{0x037b36dc}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
 +		pXl	{0x037b3f5c}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
+>>>>>>> 6306dda13a14bc5a33b939b97a1dfcaeb3873126:notes/prog.txt
 
+        public function set labels(newValue:*):void
+        {
+			if(!newValue || newValue.length==0)
+				newValue = [0];
+				
+			_indicatorLabels = newValue as Array;    	
+        }
+        
+        public function get labels():*
+        {
+        	return _indicatorLabels;
+        }    
+
+p4 submit -i
+Submit validation failed -- fix problems then use 'p4 submit -c 1980850'.
+'change_submit' validation failed: 
+
+Result of description parsing:
+
+found it
+found it
+found it
+found it
+
+[Summary]              Intergrate ChangeList 1980838, 1980742; fixbug - data range binding lost when migrating from X4.5 to X5
+[Reviewed by]          Donald Wang
+[Task]                ADAPT01223081,ADAPT01223082
+[Action]                      fixbug
+
+Warnings:
+
+Summary too long (> 100 chars)
+
+Errors:
+
+Optional section [Action] does not match input validation pattern: "add" or "fix"
+
+Change description rejected due to errors above.
+
+Please note: your files have now been locked by p4
+Please see here for detailed help: http://vanpgblogs.product.businessobjects.com/wiki/index.php/P4_Trigger
+Please send support requests to: PgSupport@businessobjects.com
+
+Add a method "MigrateChartRangeBinding" to migrate persist data (only for data range binding)
+
+Summary: fixbug enhancement - data range binding lost when migrating from X4.5 to X5
+Reviewed by: Donald Zhang
+Task: ADAPT01200328,ADAPT01200332
+
++		range	"'Sheet1'!$A$1:$D$5"	ATL::CStringT<wchar_t,StrTraitMFC_DLL<wchar_t,ATL::ChTraitsCRT<wchar_t> > >
+
++		ids	[10](3,-1,-1,5,-1,-1,7,-1,-1,0)	std::vector<int,std::allocator<int> > &
+
+
+integrate Trunk => COR X6/COR
+integrate Trunk/PI/X6:   450 ¨C Multi Indicator Gauge - Property Sheet 
+Abstract DataModel from TextData as TextDataBase, Remain UI methods in TextData. Also do this for BindingNumberFormat.
+450 ¨C Multi Indicator Gauge - Property Sheet
+//depot2/Trunk/PI/X6/Xcelsius/Flash/projects/propertySheets/GaugePropertySheet/...
+//depot2/X6/COR/Xcelsius/Flash/projects/propertySheets/GaugePropertySheet/...
+
+	<References>
+		<AssemblyReference
+			RelativePath="$(SolutionDir)BusinessObjects.Desktop.dll"/>
+	</References>
 	
--		range	0x05a1c860 "Sheet1!$A$2:$A$5"	const wchar_t *
-+		range	"'Sheet1'!$B$2:$B$5"	std::basic_string<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >
-+		range	"'Sheet1'!$B$2:$B$5"	const wchar_t *
-
-
-Select a Range IDD_XLSELDLG
-
-IMApp error PRJ0019: A tool returned an error code from "Copying assemblies to target directory..."
-
-"Project The following environment variables were not found:"
-$(MY_SOFT)
-d:\Perforce\depot\Xcelsius\CB2_EID_SP2\CVS\xl\xlauto.h(6): fatal error C1083: Cannot open type library file: 
-'Microsoft Office\Office\MSO9.DLL': No such file or directory
-d:\Perforce\depot\Xcelsius\Cb2_eid_sp2\Cvs\widgetbase\togglebtn.cpp(3): fatal error C1083: Cannot open include file: 
-'mfc/stdafx.h': No such file or directory
-
-
+	
 ADAPT01200328
 ADAPT01200332
 \\shg-s-fs02\LiveOffice\Xcelsius\Temp\roy_shi
@@ -72,15 +125,6 @@ ADAPT01200332
 2. Open attached xlf mode in X5.
 3. Click the line chart.
     Notice General > Data > By Range is selected but there is no binding. (It should select General > Data > By Series.)
-
-xcelsius.rc(1549):    IDS_ERROR_LOADXLF       "Crystal Xcelsius is unable to load this file.  This file may be corrupt or have features that cannot be supported by this version of Crystal Xcelsius."
--		m_Params	0x05af9690 {m_Items={...} m_FormattedItems={...} subtype=0 ...}	xc45::fParamSet *
-+		m_Items	{m_First=0x05af9b98 m_Last=0x05b1ee18 m_NumItems=130 }	xc45::List
-+		m_FormattedItems	{m_First=0x00000000 m_Last=0x00000000 m_NumItems=0 }	xc45::List
-
-if( _tcscmp(_T("dataValues"), p->GetName()) == 0 )//for charts...
-void 		xcXLFMigrate::MigrateParamBinding(xc45::fParameter *param, IUnknownPtr node, IUnknownPtr parent, xcValueData *xv)
-IUnknownPtr xcXLFMigrate::MigrateParamBinding(xc45::fParameter *p, IUnknownPtr node, xcValueData *xv)
 
 ADAPT owners:
 Specify the owner who will be  doing the fix request or forward-fit integrations.  For forward-fit integrations, we will need to assign an owner in SDC and ask Jesse for me if we are not sure 
