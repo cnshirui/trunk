@@ -1,4 +1,48 @@
+<<<<<<< HEAD:prog.txt
 private var _indicatorLabels:Array = ['Indicator 1'];
+=======
+    mingwm10.dll
+    QtCore4.dll
+    QtCored4.dll
+    QtGui4.dll
+    QtGuid4.dll
+	
+	qt windows, this application has requested the runtime to terminate it in an unusual way.
+Msvcirt.dll		Msvcrt.dll  ieshims.dll
+
+我收到了，当时买错了，想换成这本：  [212026]  (二手)密码学概论 	7115121842  。我已经在这个订单里买了，可以直接在你们送货的时候退给你们？谢谢！
+
+
+这本书我买错了， [212017]  (二手)密码学基础  	7115103550   
+本来想买：  [212026]  (二手)密码学概论 	7115121842  。
+可以换一下么？你们送书的时候我把这本书退给你们可以么？谢谢!
+
+	if(_tcscmp(range, _T("'Sheet1'!$B$2:$B$5")) == 0)
+	{
+		range = _T("Sheet1!$B$2:$B$5");
+	}
+
+	try {
+		pRange = pXl->Evaluate(range);
+	}
+	catch(COleDispatchException *) {
+
+	}
+	catch(...) {
+		TRACE("Evaluate failed!");
+	}
+-property
+CComPtr<IUnknown> punk = ActionBindUtil::getWorkbookFromView();
++		pXl	{0x001f5e0c}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x0019e104}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x037f3134}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x00220a04}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x037f3134}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
+
+-persist
++		pXl	{0x037b36dc}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
++		pXl	{0x037b3f5c}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
+>>>>>>> 6306dda13a14bc5a33b939b97a1dfcaeb3873126:notes/prog.txt
 
         public function set labels(newValue:*):void
         {
