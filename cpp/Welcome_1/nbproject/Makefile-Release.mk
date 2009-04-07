@@ -1,5 +1,5 @@
 #
-# Gererated Makefile - do not edit!
+# Generated Makefile - do not edit!
 #
 # Edit the Makefile in the project folder instead (../Makefile). Each target
 # has a -pre and a -post target defined where you can add customized code.
@@ -15,13 +15,16 @@ RANLIB=ranlib
 CC=gcc.exe
 CCC=g++.exe
 CXX=g++.exe
-FC=
+FC=g77.exe
+
+# Macros
+PLATFORM=Cygwin-Windows
 
 # Include project Makefile
 include Makefile
 
 # Object Directory
-OBJECTDIR=build/Release/Cygwin-Windows
+OBJECTDIR=build/Release/${PLATFORM}
 
 # Object Files
 OBJECTFILES= \
@@ -41,7 +44,8 @@ FFLAGS=
 LDLIBSOPTIONS=
 
 # Build Targets
-.build-conf: ${BUILD_SUBPROJECTS} dist/Release/welcome.exe
+.build-conf: ${BUILD_SUBPROJECTS}
+	${MAKE}  -f nbproject/Makefile-Release.mk dist/Release/welcome.exe
 
 dist/Release/welcome.exe: ${OBJECTFILES}
 	${MKDIR} -p dist/Release
@@ -49,7 +53,8 @@ dist/Release/welcome.exe: ${OBJECTFILES}
 
 ${OBJECTDIR}/welcome.o: welcome.cc 
 	${MKDIR} -p ${OBJECTDIR}
-	$(COMPILE.cc) -O2 -o ${OBJECTDIR}/welcome.o welcome.cc
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/welcome.o welcome.cc
 
 # Subprojects
 .build-subprojects:
@@ -61,3 +66,8 @@ ${OBJECTDIR}/welcome.o: welcome.cc
 
 # Subprojects
 .clean-subprojects:
+
+# Enable dependency checking
+.dep.inc: .depcheck-impl
+
+include .dep.inc
