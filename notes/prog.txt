@@ -1,3 +1,11 @@
+//(properties|bindings)/property
+//properties/property
+//properties/property | //styles/property
+//(properties)/property | //styles/property
+
+p4 where d:\/*
+path 'd:\/*' is not under client's root 'd:\
+
 Indicator (@3cf68ac1)
 Indicator (@3cf68b41)
 Indicator (@3cf68c81)
