@@ -1,0 +1,19 @@
+UltraEdit in Ruby on Rails Ruby on Rails | Screencasts | Download | 
+Documentation | Weblog | Community | Source 
+Ruby on Rails
+UltraEdit
+Home Page | All Pages | Recently Revised | Feed 
+Homepage: http://www.ultraedit.com/
+a ruby wordfile for ultraedit: ftp://www.ultraedit.com/wf/ruby.txt
+Download the ruby wordfile and include its contents into your UltraEdit 
+wordfile.txt
+By default, this file is at C:\Program Files\UltraEdit-32\wordlist.txt. Open it 
+easily by clicking Advanced ¡ú Configuration ¡ú Editor Display ¡ú Syntax 
+Highlighting ¡ú Open
+Append the contents of ruby.txt from above to the newly opened wordlist.txt. 
+Save and close wordlist.txt. Now, Ruby should be an option under View ¡ú View 
+As(Highlighting File Type)
+Man, Ultra-Edit is great. :)
+Updated on February 10, 2007 18:39 by Justin Forder (217.169.11.194) 
+Edit | Back in time (14 older versions) 
+i2 on Rails

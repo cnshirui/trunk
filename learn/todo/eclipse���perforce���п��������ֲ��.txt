@@ -1,0 +1,731 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head id="Head"><title>eclipse结合perforce进行开发及部分插件 - 闵毓 - BlogJava</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta id="metaKeywords" name="keywords" content="eclipse结合perforce进行开发及部分插件"><link id="MainCss" type="text/css" rel="stylesheet" href="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/style.css"><link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://www.blogjava.net/shmily432685/rss.aspx"><style>
+td { font-size: 12px }
+.commentTextBox 
+{ 
+    font-family : Verdana; 
+    font-size: 13px;
+ }
+</style><style>.userData { BEHAVIOR: url(#default#userdata) }
+	</style></head><body>
+    <form name="Form1" method="post" action="68971.html" onsubmit="javascript:return WebForm_OnSubmit();" id="Form1">
+<div>
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="" type="hidden">
+</div>
+
+<script type="text/javascript">
+<!--
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+// -->
+</script>
+
+
+<script src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/WebResource.js" type="text/javascript"></script>
+
+<script language="JavaScript">
+									function ctlent(evt,id)
+											{
+												if(evt.ctrlKey && evt.keyCode == 13)
+												{	
+													try
+													{
+														TempSave(id);
+													}
+													catch(ex)
+													{
+													}
+													finally
+													{
+													    __doPostBack('AjaxHolder$PostComment$btnSubmit','')
+													}
+												}
+		
+												}</script>
+												<script language="JavaScript">function SetReplyAuhor(author){document.getElementById('AjaxHolder_PostComment_tbComment').value+="@"+author+"\n";document.getElementById('AjaxHolder_PostComment_tbComment').focus();return false}</script>
+<script src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/ScriptResource_002.js" type="text/javascript"></script>
+<script src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/ScriptResource.js" type="text/javascript"></script>
+<script src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/ScriptResource_003.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+// -->
+</script>
+
+        <embed src="" autostart="true" loop="true" controls="smallconsole" volume="25">
+<!--done-->
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+	<td background="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/banner1.gif" width="184"></td>
+	<td background="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/banner.gif">
+<!--done-->
+<div class="header">
+	<div class="headerText">
+		<a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.blogjava.net/shmily432685/">闵毓</a><br>
+		<span style="font-size: 12px; color: rgb(67, 113, 166); padding-left: 20px;"></span>
+	</div>
+</div>
+</td>
+	<td background="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/banner2.gif" width="295"></td>
+</tr>
+</tbody></table>
+<div id="mylinks">
+<!--done-->
+<a id="MyLinks1_HomeLink" class="menu" href="http://www.blogjava.net/">BlogJava</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_MyHomeLink" class="mainmenu" href="http://www.blogjava.net/shmily432685/">首页</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_NewPostLink" class="mainmenu" href="http://www.blogjava.net/shmily432685/admin/EditPosts.aspx?opt=1">新随笔</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_NewArticleLink" class="mainmenu" href="http://www.blogjava.net/EnterMyBlog.aspx?NewArticle=1">新文章</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_ContactLink" accesskey="9" class="mainmenu" href="http://www.blogjava.net/shmily432685/contact.aspx?id=1">联系</a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_Syndication" class="mainmenu" href="http://www.blogjava.net/shmily432685/rss">聚合</a><a id="MyLinks1_XMLLink" href="http://www.blogjava.net/shmily432685/rss"><img src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml.gif" style="border-width: 0px;"></a>&nbsp;&nbsp;&nbsp;<a id="MyLinks1_Admin" class="menu" href="http://www.blogjava.net/shmily432685/admin/EditPosts.aspx">管理</a>
+</div>
+<div id="mytopmenu">
+	
+		<div id="mystats">
+			
+<!--done-->
+<div class="blogStats">
+posts - 43,comments - 85,trackbacks - 0
+
+</div></div>
+	
+</div>
+<div id="leftcontent" style="display: inline;">
+	
+		<div id="leftcontentcontainer">
+			<table id="Calendar1_entryCal" class="Cal" title="Calendar" style="border: 0px none ; border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7" style="background-color: transparent;"><table class="CalTitle" style="width: 100%; border-collapse: collapse;" border="0" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev" style="width: 15%;"><a href="javascript:__doPostBack('Calendar1$entryCal','V2404')" style="color: Black;" title="Go to the previous month">&lt;</a></td><td style="width: 70%;" align="center">2006年9月</td><td class="CalNextPrev" style="width: 15%;" align="right"><a href="javascript:__doPostBack('Calendar1$entryCal','V2465')" style="color: Black;" title="Go to the next month">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" style="width: 14%;" align="center">27</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">28</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">29</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">30</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">31</td><td style="width: 14%;" align="center">1</td><td class="CalWeekendDay" style="width: 14%;" align="center">2</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">3</td><td style="width: 14%;" align="center">4</td><td style="width: 14%;" align="center"><a href="http://www.blogjava.net/shmily432685/archive/2006/09/05.html"><u>5</u></a></td><td style="width: 14%;" align="center">6</td><td style="width: 14%;" align="center">7</td><td style="width: 14%;" align="center">8</td><td class="CalWeekendDay" style="width: 14%;" align="center">9</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">10</td><td style="width: 14%;" align="center"><a href="http://www.blogjava.net/shmily432685/archive/2006/09/11.html"><u>11</u></a></td><td style="width: 14%;" align="center">12</td><td style="width: 14%;" align="center">13</td><td style="width: 14%;" align="center">14</td><td style="width: 14%;" align="center">15</td><td class="CalWeekendDay" style="width: 14%;" align="center">16</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">17</td><td style="width: 14%;" align="center">18</td><td style="width: 14%;" align="center">19</td><td style="width: 14%;" align="center">20</td><td style="width: 14%;" align="center">21</td><td style="width: 14%;" align="center">22</td><td class="CalWeekendDay" style="width: 14%;" align="center">23</td></tr><tr><td class="CalWeekendDay" style="width: 14%;" align="center">24</td><td style="width: 14%;" align="center">25</td><td style="width: 14%;" align="center">26</td><td style="width: 14%;" align="center"><a href="http://www.blogjava.net/shmily432685/archive/2006/09/27.html"><u>27</u></a></td><td style="width: 14%;" align="center">28</td><td style="width: 14%;" align="center">29</td><td class="CalWeekendDay" style="width: 14%;" align="center">30</td></tr><tr><td class="CalOtherMonthDay" style="width: 14%;" align="center">1</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">2</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">3</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">4</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">5</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">6</td><td class="CalOtherMonthDay" style="width: 14%;" align="center">7</td></tr>
+</tbody></table>
+<br>
+			
+<!--done-->
+<div class="newsItem">
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;遇机者，得。机遇会惠顾时刻准备的人。绝不让机遇从自己身边走过。
+<div class="News">
+	<script src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/embed.js"></script><script type="text/javascript" language="JavaScript">obj = new Object;obj.clockfile = "TheDog001-Beagle.swf";obj.TimeZone = "GMT0800";obj.width = 180;obj.height = 160;obj.wmode = "transparent";showClock(obj);</script><embed src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/TheDog001-Beagle.bin" wmode="transparent" type="application/x-shockwave-flash" height="160" width="180">
+</div><br>
+</div>
+
+			
+<h3>常用链接</h3>
+<ul>
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl01_lnkLinkItem" href="http://www.blogjava.net/shmily432685/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl02_lnkLinkItem" href="http://www.blogjava.net/shmily432685/MyComments.html">我的评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl00_repeaterLinks_ctl03_lnkLinkItem" href="http://www.blogjava.net/shmily432685/OtherPosts.html">我参与的随笔</a></li>
+	</ul>
+<h3>留言簿<span style="font-size: 11px; font-weight: normal;">(4)</span></h3>
+<ul>
+	<li>
+		<a id="SingleColumn1__2d67b55_lnkMessages" href="http://www.blogjava.net/shmily432685/Contact.aspx?id=1">给我留言</a>
+	</li><li>
+		<a id="SingleColumn1__2d67b55_lnkPublicMsgView" href="http://www.blogjava.net/shmily432685/default.aspx?opt=msg">查看公开留言</a>
+	</li><li>
+		<a id="SingleColumn1__2d67b55_lnkPrivateMsgView" href="http://www.blogjava.net/shmily432685/admin/MyMessages.aspx">查看私人留言</a>
+	</li>
+</ul>
+
+<!--done-->
+
+		<h1 class="catListTitle">随笔分类<span style="font-size: 11px; font-weight: normal;">(55)</span></h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/shmily432685/category/4003.html">Hibernate in action(5)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to Hibernate in action(5)" class="listitem" href="http://www.blogjava.net/shmily432685/category/4003.html/rss"><img title="Subscribe to Hibernate in action(5)" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml_002.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/shmily432685/category/4000.html">Java开发(8)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to Java开发(8)" class="listitem" href="http://www.blogjava.net/shmily432685/category/4000.html/rss"><img title="Subscribe to Java开发(8)" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml_002.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/shmily432685/category/4001.html">Spring in action(10)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to Spring in action(10)" class="listitem" href="http://www.blogjava.net/shmily432685/category/4001.html/rss"><img title="Subscribe to Spring in action(10)" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml_002.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/shmily432685/category/4002.html">Struts in action(6)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to Struts in action(6)" class="listitem" href="http://www.blogjava.net/shmily432685/category/4002.html/rss"><img title="Subscribe to Struts in action(6)" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml_002.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/shmily432685/category/4004.html">Swing in action(1)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to Swing in action(1)" class="listitem" href="http://www.blogjava.net/shmily432685/category/4004.html/rss"><img title="Subscribe to Swing in action(1)" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml_002.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/shmily432685/category/4278.html">其他(21)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to 其他(21)" class="listitem" href="http://www.blogjava.net/shmily432685/category/4278.html/rss"><img title="Subscribe to 其他(21)" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml_002.gif" style="border-width: 0px;"></a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/shmily432685/category/4005.html">数据库心得与体会(4)</a><a id="SingleColumn1_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to 数据库心得与体会(4)" class="listitem" href="http://www.blogjava.net/shmily432685/category/4005.html/rss"><img title="Subscribe to 数据库心得与体会(4)" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml_002.gif" style="border-width: 0px;"></a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">随笔档案<span style="font-size: 11px; font-weight: normal;">(43)</span></h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl01_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2007/04.html">2007年4月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2007/03.html">2007年3月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2007/01.html">2007年1月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl04_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/12.html">2006年12月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl05_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/11.html">2006年11月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl06_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/09.html">2006年9月 (5)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl07_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/08.html">2006年8月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl08_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/07.html">2006年7月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl09_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/05.html">2006年5月 (1)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl10_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/04.html">2006年4月 (3)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl11_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2006/02.html">2006年2月 (2)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl12_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2005/12.html">2005年12月 (4)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl13_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2005/11.html">2005年11月 (13)</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl01_LinkList_ctl14_Link" class="listitem" href="http://www.blogjava.net/shmily432685/archive/2005/10.html">2005年10月 (5)</a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">同事及朋友的博客</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl01_Link" class="listitem" href="http://blog.csdn.net/numen_wlm">万里马的博客</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl02_Link" class="listitem" href="http://www.blogjava.net/javajohn">冯小宁</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl03_Link" class="listitem" href="http://www.blogjava.net/rocky/">张伟</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl02_LinkList_ctl04_Link" class="listitem" href="http://blog.csdn.net/xtpdcsse/">张宏宾</a></li>
+			
+				</ul>
+			
+	
+		<h1 class="catListTitle">网站链接</h1>
+		
+				<ul class="catList">
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl01_Link" class="listitem" href="http://www.chinahrd.net/">中国人力资源开发网</a></li>
+			
+				<li class="catListItem"> <a id="SingleColumn1_Categories_CatList_ctl03_LinkList_ctl02_Link" class="listitem" href="http://www.china-qg.com/">企业管理网</a></li>
+			
+				</ul>
+			
+	
+
+
+<script language="JavaScript">
+function SearchGoogle(key,evt,site)
+		{
+			if(evt.keyCode==13 || evt.keyCode==0 || evt.type =='click')
+			{
+				key.focus();
+				var keystr = encodeURIComponent(key.value);
+				url = "http://www.google.com/search?q=";
+				url = url+keystr;
+				url += "&ie=UTF-8&oe=GB2312&hl=zh-CN&domains="+site+"&sitesearch="+site;
+				window.location=url;
+				return false;
+			}
+		}
+</script>
+<h3>搜索</h3>
+<ul>
+	<li>
+		</li><li><input style="width: 130px;" name="q" id="q" onkeydown="return SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/shmily432685')" type="text">&nbsp;<input onclick="SearchGoogle(document.getElementById('q'),event,'www.blogjava.net/shmily432685')" value="搜索" name="sa" type="button">
+	</li>
+</ul>
+
+<h3>积分与排名</h3>
+<ul>
+	<li>
+		积分 -
+		45646
+	</li><li>
+		排名 -
+		87
+	</li>
+</ul>
+
+<h3>最新评论
+	<a id="SingleColumn1__1b2d2d1_RSSHyperlink1" href="http://www.blogjava.net/shmily432685/CommentsRSS.aspx"><img src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/xml.gif" style="border-width: 0px;"></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="">
+				<a id="SingleColumn1__1b2d2d1_CommentList_ctl01_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2007/08/10/18233.html#135845">1.&nbsp;re: Myeclipse平台struts+hibernate+spring项目开发示例[未登录]</a>
+			</li>
+			<li style="">
+				说句难听的，你这叫啥啊？Struts演示啊？Spring和Hibernate最基础的东西你都没表现清楚。有愧于标题。
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--我心依旧</li>
+		
+			<li style="">
+				<a id="SingleColumn1__1b2d2d1_CommentList_ctl02_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2007/07/29/18233.html#133106">2.&nbsp;re: Myeclipse平台struts+hibernate+spring项目开发示例</a>
+			</li>
+			<li style="">
+				&lt;script&gt;
+<br>while(true){
+<br>document.write("hello");
+<br>}
+<br>&lt;/script&gt;
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--mzqrss</li>
+		
+			</ul>
+		
+</div>
+
+<h3>阅读排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="">
+		
+			<li>
+				<a id="SingleColumn1__3ff4bca_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2005/11/05/18229.aspx">1.&nbsp;Myeclipse开发struts+hibernate+spring新手入门---环境配置(11757)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ff4bca_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2005/11/05/18233.aspx">2.&nbsp;Myeclipse平台struts+hibernate+spring项目开发示例(8267)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ff4bca_TopList_ctl03_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/12/29/90651.aspx">3.&nbsp;解决java.lang.UnsupportedClassVersionError问题！！(2336)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ff4bca_TopList_ctl04_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/02/17/31310.aspx">4.&nbsp;浅谈hibernate性能优化的几点建议(2266)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__3ff4bca_TopList_ctl05_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/09/27/72261.aspx">5.&nbsp;Ruby on Rails 学习：解决中文乱码问题(1818)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+<h3>评论排行榜</h3>
+<div class="RecentComment">
+	
+			<ul style="">
+		
+			<li>
+				<a id="SingleColumn1__2ae5790_TopList_ctl01_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2005/11/05/18229.aspx">1.&nbsp;Myeclipse开发struts+hibernate+spring新手入门---环境配置(25)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1__2ae5790_TopList_ctl02_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2005/11/05/18233.aspx">2.&nbsp;Myeclipse平台struts+hibernate+spring项目开发示例(23)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</div>
+	
+</div>
+<div id="centercontent">
+	
+					
+<!--done-->
+<div class="post">
+	<div class="postTitle">
+		<a id="viewpost1_TitleUrl" class="postTitle2" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html">eclipse结合perforce进行开发及部分插件</a>
+	</div>
+	<p>
+				<font color="#000000" size="2">1、适应了新的工作，进入了开发工作，但是公司对文件管理采用的是perforce，项目开发也没有通过cvs进行版本控制，项目组开发通常是来回拷贝代码进行开发。<br>暂时不去讨论那种开发方式的好坏，为了适应新的工作，只得在eclipse中安装perforce插件进行开发工作。<br>具体安装步骤：<br>1、打开eclipse后，打开菜单help进入SoftWare Updates---find and installs后，在弹出的对话框中选择：Search for new features to install后点下一步。<br>2、再选择New Remote site ，通过网上进行安装插件。点击之后，在弹出的页面提示框中的URL中输入： <a href="http://www.perforce.com/downloads/http/p4-wsad/install/"><strong><font color="#014982">http://www.perforce.com/downloads/http/p4-wsad/install/</font></strong></a>然后输入你想要起的名字。<br>3、确定后,eclipse会提示安装，一路默认后，安装完成，eclipse会自动重新启动。<br>4、启动成功后，在eclipse视图中会有perforce的视图。<br>这样，perfoce插件在eclipse上就安装成功了。<br>2、在开发过程中，经常会打开很多文件进行编写，但eclipse一般会把打开的文件隐藏起来，只能通过点击查看，很是不方便。不过，editorlist插件正好解决了这个问题，可以把打开的文件展开在视图中列表显示并可以进行排序。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 安装步骤：同上安装perforce一样，只不过URL中输入的地址变为：<a href="http://editorlist.sourceforge.net/site">http://editorlist.sourceforge.net/site</a>即可。然后自动下载安装。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+完成，eclipse重新启动后，还不会editorlist列表，需要打开windows---show
+views---other,在弹出的对话框中选择Basic---选择EditorList即可显示。</font>
+				<br>3、插件的安装不再重复：velocity插件的URL地址：<a href="http://propsorter.sourceforge.net/veloeclipse"><font face="宋体,sans-serif" size="2">http://propsorter.sourceforge.net/veloeclipse</font></a></p>
+	<div class="postDesc">posted on 2006-09-11 15:30 <a href="http://www.blogjava.net/shmily432685/">闵毓</a> 阅读(436) <a href="#Post">评论(4)</a> &nbsp;<a href="http://www.blogjava.net/shmily432685/admin/EditPosts.aspx?postid=68971">编辑</a>&nbsp;<a href="http://www.blogjava.net/shmily432685/AddToFavorite.aspx?id=68971">收藏</a> <a href="http://www.blogjava.net/shmily432685/services/trackbacks/68971.aspx">引用</a>  所属分类: <a href="http://www.blogjava.net/shmily432685/category/4278.html">其他</a> </div>
+</div>
+<img src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/68971.jpeg" height="1" width="1">
+
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html"
+dc:identifier="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html"
+dc:title="eclipse结合perforce进行开发及部分插件"
+trackback:ping="http://www.blogjava.net/shmily432685/services/trackbacks/68971.aspx" />
+</rdf:RDF>
+-->
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('AjaxHolder$scriptmanager1', document.getElementById('Form1'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tAjaxHolder$UpdatePanel1'], [], [], 90);
+//]]>
+</script>
+
+<div id="AjaxHolder_UpdatePanel1">
+	    
+    <a name="pagedcomment"></a>
+<!--done-->
+<br>
+<b>FeedBack:</b>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a title="permalink: re: eclipse结合perforce进行开发及部分插件" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#102902">#</a>&nbsp;<a name="102902"></a>re: eclipse结合perforce进行开发及部分插件</div>
+			<div class="feedbackListSubtitle">
+				2007-03-09 18:21 | <a id="AjaxHolder_Comments_CommentList_ctl00_NameLink" target="_blank">myqmanager</a><br>
+				<div align="left">我在使用perforce时遇到这样的问题：文件在客户端删除后，提交。depot中的文件也没了，这是我如何才能找回我删除的文件哪？&nbsp;&nbsp;<a onclick='return SetReplyAuhor("myqmanager")' href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=myqmanager" target="_blank">更多评论</a><br><a id="AjaxHolder_Comments_CommentList_ctl00_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl00$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl00_EditLink"></a></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a title="permalink: re: eclipse结合perforce进行开发及部分插件" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#109699">#</a>&nbsp;<a name="109699"></a>re: eclipse结合perforce进行开发及部分插件</div>
+			<div class="feedbackListSubtitle">
+				2007-04-10 18:01 | <a id="AjaxHolder_Comments_CommentList_ctl01_NameLink" target="_blank">myqmanager</a><br>
+				<div align="left">我他妈知道了，这个斑竹咋回事，也不回复，除非你备份了db.*文件和depot中的文件否则delete是不可恢复的，靠！&nbsp;&nbsp;<a onclick='return SetReplyAuhor("myqmanager")' href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=myqmanager" target="_blank">更多评论</a><br><a id="AjaxHolder_Comments_CommentList_ctl01_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl01$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl01_EditLink"></a></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a title="permalink: re: eclipse结合perforce进行开发及部分插件" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#109885">#</a>&nbsp;<a name="109885"></a>re: eclipse结合perforce进行开发及部分插件</div>
+			<div class="feedbackListSubtitle">
+				2007-04-11 14:01 | <a id="AjaxHolder_Comments_CommentList_ctl02_NameLink" target="_blank">刘江锋</a><br>
+				<div align="left">素质啊,素质太差劲,想找回来,用P2Win显示已经删除的文件,操作:Show deleted Depot Files就会看到你已经删除的文件.
+<br>另外拜托,说话文明点.&nbsp;&nbsp;<a onclick='return SetReplyAuhor("刘江锋")' href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e5%88%98%e6%b1%9f%e9%94%8b" target="_blank">更多评论</a><br><a id="AjaxHolder_Comments_CommentList_ctl02_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl02$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl02_EditLink"></a></div>
+			</div>
+			
+			
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListTitle"><a title="permalink: re: eclipse结合perforce进行开发及部分插件" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#110943">#</a>&nbsp;<a name="110943"></a>re: eclipse结合perforce进行开发及部分插件<a name="Post"></a></div>
+			<div class="feedbackListSubtitle">
+				2007-04-16 14:33 | <a id="AjaxHolder_Comments_CommentList_ctl03_NameLink" target="_blank">花生米</a><br>
+				<div align="left">不错,我刚好需要
+<br>支持一下!&nbsp;&nbsp;<a onclick='return SetReplyAuhor("花生米")' href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#post">回复</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.blogjava.net/comment?author=%e8%8a%b1%e7%94%9f%e7%b1%b3" target="_blank">更多评论</a><br><a id="AjaxHolder_Comments_CommentList_ctl03_DeleteLink" href="javascript:__doPostBack('AjaxHolder$Comments$CommentList$ctl03$DeleteLink','')"></a>&nbsp;&nbsp;<a id="AjaxHolder_Comments_CommentList_ctl03_EditLink"></a></div>
+			</div>
+			
+			
+		</div>
+	
+
+
+
+
+
+<!--Beging Temp Save-->
+
+<div class="userData" id="CommentsPersistDiv"></div>
+<script type="text/javascript">
+function pageLoad()
+{
+    Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(handleInitializeRequest);
+    //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(handleEndRequest);
+}
+
+function handleInitializeRequest(sender, args)
+{
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    var eid = args.get_postBackElement().id;
+    if (eid.indexOf("DeleteLink")>0) 
+    {
+       args.get_postBackElement().innerHTML = "<font color='red'>正在删除...</font>";         
+    }    
+    else if (eid.indexOf("btnSubmit")>0) 
+    {
+       document.getElementById("AjaxHolder_PostComment_ltSubmitMsg").innerHTML="正在提交...";
+       document.getElementById("AjaxHolder_PostComment_btnSubmit").disabled = true;       
+    }   
+    else if(eid.indexOf("refreshList")>0)
+    {
+        document.getElementById("AjaxHolder_PostComment_refreshList").innerHTML="<font color='red'>正在刷新...</font>";
+    }
+   
+}	
+
+function TempSave(ElementID)
+{
+	try
+	{
+	CommentsPersistDiv.setAttribute("CommentContent",document.getElementById(ElementID).value);
+	CommentsPersistDiv.save("CommentXMLStore");
+	}
+	catch(ex)
+	{
+	}
+	
+}
+function Restore(ElementID)
+{
+	CommentsPersistDiv.load("CommentXMLStore");
+	document.getElementById(ElementID).value=CommentsPersistDiv.getAttribute("CommentContent");
+}	
+			
+			
+</script>
+<!--Ene TempSave-->
+<div id="divRefreshComments" style="text-align: right; margin-right: 10px; margin-bottom: 5px; font-size: 12px;"><a id="AjaxHolder_PostComment_refreshList" href="javascript:__doPostBack('AjaxHolder$PostComment$refreshList','')">刷新评论列表</a></div>
+<div class="commentform">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4210569241504288";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_link = "6699CC";
+//--></script>
+<script type="text/javascript" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/show_ads.js">
+</script><iframe name="google_ads_frame" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/ads.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="60" scrolling="no" width="468"></iframe>
+<br><br>
+<span id="AjaxHolder_PostComment_ltSubmitMsg" style="color: Red;"></span>
+<br>
+<a name="Feedback"></a>
+	<table border="0" cellpadding="1" cellspacing="1">
+		<tbody><tr>
+			<td width="75"></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td width="55">标题</td>
+			<td><input name="AjaxHolder$PostComment$tbTitle" value="re: eclipse结合perforce进行开发及部分插件" id="AjaxHolder_PostComment_tbTitle" class="commenttb" style="width: 320px;" type="text"></td>
+			<td><span id="AjaxHolder_PostComment_RequiredFieldValidator1" style="color: Red; visibility: hidden;">请输入标题</span></td>
+		</tr>
+		<tr>
+			<td>姓名</td>
+			<td><input name="AjaxHolder$PostComment$tbName" id="AjaxHolder_PostComment_tbName" class="commenttb" style="width: 320px;" type="text"></td>
+			<td><span id="AjaxHolder_PostComment_RequiredFieldValidator2" style="color: Red; visibility: hidden;">请输入你的姓名</span></td>
+		</tr>
+		<tr>
+			<td>主页</td>
+			<td><input name="AjaxHolder$PostComment$tbUrl" id="AjaxHolder_PostComment_tbUrl" class="commenttb" style="width: 320px;" type="text"></td>
+			<td><font face="宋体"></font></td>
+		</tr>
+		<tr>
+			<td colspan="3" align="left">
+				<table id="AjaxHolder_PostComment_tbCaptchaImage" class="CommentForm" border="0" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td colspan="3">
+							<span id="AjaxHolder_PostComment_Requiredfieldvalidator4" style="color: Red; display: none;">请输入验证码</span>
+							<span id="AjaxHolder_PostComment_lblImage" style="color: Red; font-weight: bold;"></span>
+						</td>
+		</tr>
+		<tr>
+			<td width="78">验证码</td>
+			<td><input name="AjaxHolder$PostComment$CodeNumberTextBox" id="AjaxHolder_PostComment_CodeNumberTextBox" type="text">*</td>
+			<td align="left">
+							<img src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/JpegImage.jpeg" id="AjaxHolder_PostComment_Img1">
+						</td>
+		</tr>
+	</tbody></table>
+	
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">内容(提交失败后,可以通过“恢复上次提交”恢复刚刚提交的内容)
+				<span id="AjaxHolder_PostComment_RequiredFieldValidator3" style="color: Red; visibility: hidden;">请输入评论内容</span><br>
+				<textarea name="AjaxHolder$PostComment$tbComment" rows="10" cols="50" id="AjaxHolder_PostComment_tbComment" class="commentTextBox" onkeydown="ctlent(event,'AjaxHolder_PostComment_tbComment')" style="width: 480px; height: 220px;"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+		<span id="AjaxHolder_PostComment_Message" style="color: Red;"></span>
+		</td>
+		</tr><tr>
+			<td colspan="3"><input id="AjaxHolder_PostComment_chkRemember" name="AjaxHolder$PostComment$chkRemember" checked="checked" tabindex="-1" type="checkbox"><label for="AjaxHolder_PostComment_chkRemember">Remember Me?</label></td>
+		</tr>
+		<tr>
+			<td height="23"><input name="AjaxHolder$PostComment$btnSubmit" value="提交" onclick="TempSave('AjaxHolder_PostComment_tbComment');WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;AjaxHolder$PostComment$btnSubmit&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="AjaxHolder_PostComment_btnSubmit" type="submit">
+				</td>
+			<td colspan="2" height="23">&nbsp;
+				<a id="AjaxHolder_PostComment_lnkLogin" href="http://www.blogjava.net/login.aspx?ReturnURL=http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html&amp;SourceURL=/shmily432685/archive/2006/09/11/68971.html">登录</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_linkLoginComment" onclick="if(document.getElementById('AjaxHolder_PostComment_tbComment').value != '') return confirm('未提交的评论内容将会丢失, 你真的要进入高级评论吗?');" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html?login=1#Post">使用高级评论</a>&nbsp;&nbsp;<a href="http://www.blogjava.net/RequireRegister.aspx">新用户注册</a>&nbsp;&nbsp;<a href="#Top">返回页首</a>&nbsp;&nbsp;<a id="AjaxHolder_PostComment_lbRestore" onclick="Restore('AjaxHolder_PostComment_tbComment'); return false;" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html#Post">恢复上次提交</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</td>
+		</tr>
+		<tr>
+			<td colspan="3">[使用Ctrl+Enter键可以直接提交]</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="5">
+<div id="divRelativePosts">
+相关文章:
+	
+			<ul style="margin-top: 0px;">
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl01_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2007/04/23/112931.html">经典网摘</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl02_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2007/03/09/102760.html">常用js控制功能收集(待续)</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl03_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2007/01/15/93939.html">在Windows平台使用Apache2.2和Mongrel运行Ruby on Rails</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl04_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/11/24/83327.html">我个人认为做好Project Manager，需要具备的能力</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl05_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/09/27/72261.html">Ruby on Rails 学习：解决中文乱码问题</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl06_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68981.html">Eclipse 常用快捷键收集(中文)</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside; display: none;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl07_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/09/11/68971.html">eclipse结合perforce进行开发及部分插件</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl08_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/09/05/67847.html">一段在b/s架构中显示右键功能的代码</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl09_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/09/05/67845.html">通过程序进行控制图片显示幻灯片效果</a>
+			</li>
+		
+			<li style="list-style-type: none; list-style-image: none; list-style-position: outside;">
+				<a id="AjaxHolder_PostComment_ctl06_RelativePostsList_ctl10_Hyperlink1" href="http://www.blogjava.net/shmily432685/archive/2006/08/02/61316.html">深思:企业坚决不用的十三种人</a>
+			</li>
+		
+			</ul>
+		
+</div>
+</td>
+		</tr>
+		<tr>
+			<td colspan="3" height="1"></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				</td>
+		</tr>
+	</tbody></table>	
+</div>
+<div id="AjaxHolder_PostComment_ValidationSummary1" style="color: Red; display: none;">
+
+	</div>
+
+</div>
+
+				
+</div>
+
+<!--done-->
+<div class="footer">
+	
+	Copyright ©2007 闵毓 Powered By<a href="http://www.blogjava.net/">博客园</a> 模板提供：<a href="http://blog.hjenglish.com/">沪江博客</a>
+</div><script src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-476124-3";
+urchinTracker();
+</script>
+    
+<script type="text/javascript">
+<!--
+var Page_ValidationSummaries =  new Array(document.getElementById("AjaxHolder_PostComment_ValidationSummary1"));
+var Page_Validators =  new Array(document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator1"), document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator2"), document.getElementById("AjaxHolder_PostComment_Requiredfieldvalidator4"), document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator3"));
+// -->
+</script>
+
+<script type="text/javascript">
+<!--
+var AjaxHolder_PostComment_RequiredFieldValidator1 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator1"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator1");
+AjaxHolder_PostComment_RequiredFieldValidator1.controltovalidate = "AjaxHolder_PostComment_tbTitle";
+AjaxHolder_PostComment_RequiredFieldValidator1.errormessage = "请输入标题";
+AjaxHolder_PostComment_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator1.initialvalue = "";
+var AjaxHolder_PostComment_RequiredFieldValidator2 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator2"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator2");
+AjaxHolder_PostComment_RequiredFieldValidator2.controltovalidate = "AjaxHolder_PostComment_tbName";
+AjaxHolder_PostComment_RequiredFieldValidator2.errormessage = "请输入你的姓名";
+AjaxHolder_PostComment_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator2.initialvalue = "";
+var AjaxHolder_PostComment_Requiredfieldvalidator4 = document.all ? document.all["AjaxHolder_PostComment_Requiredfieldvalidator4"] : document.getElementById("AjaxHolder_PostComment_Requiredfieldvalidator4");
+AjaxHolder_PostComment_Requiredfieldvalidator4.controltovalidate = "AjaxHolder_PostComment_CodeNumberTextBox";
+AjaxHolder_PostComment_Requiredfieldvalidator4.errormessage = "请输入验证码";
+AjaxHolder_PostComment_Requiredfieldvalidator4.display = "Dynamic";
+AjaxHolder_PostComment_Requiredfieldvalidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_Requiredfieldvalidator4.initialvalue = "";
+var AjaxHolder_PostComment_RequiredFieldValidator3 = document.all ? document.all["AjaxHolder_PostComment_RequiredFieldValidator3"] : document.getElementById("AjaxHolder_PostComment_RequiredFieldValidator3");
+AjaxHolder_PostComment_RequiredFieldValidator3.controltovalidate = "AjaxHolder_PostComment_tbComment";
+AjaxHolder_PostComment_RequiredFieldValidator3.errormessage = "请输入评论内容";
+AjaxHolder_PostComment_RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+AjaxHolder_PostComment_RequiredFieldValidator3.initialvalue = "";
+var AjaxHolder_PostComment_ValidationSummary1 = document.all ? document.all["AjaxHolder_PostComment_ValidationSummary1"] : document.getElementById("AjaxHolder_PostComment_ValidationSummary1");
+AjaxHolder_PostComment_ValidationSummary1.showmessagebox = "True";
+AjaxHolder_PostComment_ValidationSummary1.showsummary = "False";
+// -->
+</script>
+
+
+<script type="text/javascript">
+<!--
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+// -->
+</script>
+        
+<script type="text/javascript">
+<!--
+
+document.getElementById('AjaxHolder_PostComment_ValidationSummary1').dispose = function() {
+    Array.remove(Page_ValidationSummaries, document.getElementById('AjaxHolder_PostComment_ValidationSummary1'));
+}
+Sys.Application.initialize();
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator1'));
+}
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator2'));
+}
+
+document.getElementById('AjaxHolder_PostComment_Requiredfieldvalidator4').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_Requiredfieldvalidator4'));
+}
+
+document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('AjaxHolder_PostComment_RequiredFieldValidator3'));
+}
+// -->
+</script>
+</form>
+    <script type="text/javascript" src="eclipse%E7%BB%93%E5%90%88perforce%E8%BF%9B%E8%A1%8C%E5%BC%80%E5%8F%91%E5%8F%8A%E9%83%A8%E5%88%86%E6%8F%92%E4%BB%B6_files/ShowHidden.js"></script>      
+</body></html>

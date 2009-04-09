@@ -1,0 +1,421 @@
+Ruby on Rails 和 J2EE：两者能否共存？    中国 [选择]    使用条款
+             
+
+
+             dW 全部内容-----------------  AIX and UNIX  Information 
+                    management  Lotus  Rational  Tivoli  WebSphere  
+                    Workplace-----------------  Grid computing  Java 技术  Linux  
+                    Open source  Security  SOA & Web services  Web development  
+                    XML-----------------IBM 全部内容    
+
+
+                      首页    产品    服务与解决方案    支持与下载    个性化服务    
+
+
+             
+            developerWorks
+            中国
+            本文内容包括:
+            什么是 Ruby on Rails？
+            持久性框架
+            结束语
+            参考资料 
+            关于作者
+            对本文的评价
+
+
+            相关链接:
+            Web development 技术文档库
+            Java technology 技术文档库
+            Open source 技术文档库
+
+
+
+                  developerWorks 中国  >  Web development | Java technology | Open 
+                  source  >
+
+                  Ruby on Rails 和 J2EE：两者能否共存？
+                  两个 Web 应用程序框架的比较
+
+                        文档选项
+                              未显示需要 JavaScript 的文档选项
+
+
+
+
+            级别: 初级
+            Aaron Rustad (arustad@gmail.com), 技术架构师, Anassina, Inc.
+
+            2005 年 8 月 11 日
+              Ruby on Rails 是一个相对较新的 Web 应用程序框架，构建在 Ruby 
+              语言之上。它被宣传为现有企业框架的一个替代，而它的目标，简而言之，就是让生活，至少是 Web 
+              开发方面的生活，变得更轻松。在本文中，Aaron Rustad 将对 Rails 和传统的 J2EE 
+              框架在架构上的一些关键特性进行比较。
+            Ruby on Rails 是一个 Web 应用程序框架，它的目标是为应用程序开发提供一条易行道。实际上，框架的支持者们声称 Ruby 
+            on Rails 开发人员的生产率最多是使用传统 J2EE 框架的 10 倍。（请阅读“Rolling with Ruby on 
+            Rails”一文，以获得关于这一声明的更多内容；请参阅 参考资料）。虽然这句话造成了 Rails 和 J2EE 
+            社区相当大的争议，但争论中却很少谈及如何比较 Rails 和 J2EE 架构。本文将使用企业应用程序中常见的开源工具，对 Rails 
+            框架和典型的 J2EE 实现进行比较。
+            什么是 Ruby on Rails？
+            要想找到用一句话描述 Rails 的简单说明，只需查看项目的 主页 即可：
+              Rails 是一个用 Ruby 编写的全栈的（full-stack）、开源的 Web 
+              框架，可以使用它来轻松编写实际的应用程序，所需的代码也要比大多数框架花在处理 XML 上的代码少。 
+            虽然我不能保证框架确实会提供它所承诺的轻松快乐，但是上面这句话确实很好地总结了 Rails 的品质。全栈包括：Web 服务器、处理 
+            HTTP 请求和响应的框架，以及方便地把数据持久存储到关系数据库的框架。Rails 通过消除复杂的 XML 配置文件，使用 Ruby 
+            语言的动态性质，帮助把静态类型语言中常见的许多重复代码减少到最少，努力使开发工作变得更容易。
+            Rails 和典型的 J2EE Web 堆栈
+            图 1 比较了 Rails 堆栈和典型的 J2EE Web 堆栈（包括 Tomcat servlet 容器、Struts Web 
+            应用程序框架和 Hibernate 持久性框架）。
+
+
+            图 1. Rails 和 J2EE 堆栈的比较 
+             
+
+            可以看到，Rails 堆栈和构成普通的基于 J2EE 的 Web 
+            应用程序的组件之间的基本区别很小。两者都有用来执行应用程序代码的容器；都有帮助分离应用程序的模型、视图和控件的 MVC 
+            框架；以及持久存储数据的机制。
+                        MVC 框架
+
+                        模型-视图-控制器（MVC）是应用时间相当长、应用面相当广的一个设计模式。它源自 
+                        Smalltalk；如今，几乎所有的 GUI 框架，包括 Web 和胖客户端，都以该框架为基础。MVC 
+                        有三个部分：模型，负责业务逻辑，包括应用程序状态和将在这个状态上执行的动作；视图，用来渲染和向用户呈现模型（在 
+                        Web 应用程序中，视图一般渲染为 HTML）；控制器，定义应用程序的行为。有关 MVC 模式的详细解释，请参阅 
+                        参考资料。
+
+            前端控制器
+            Struts 的 ActionServlet 和 Rails 的 DispatchServlet 
+            都是前端控制器模式的例子；所以，它们提供了相同的功能。它们接受 HTTP 请求，解析 URL，把请求的处理转发给适当的动作。在 
+            Struts 中，动作是扩展自 Action 的类；对于 Rails，动作是扩展自 ActionController 
+            的类。两个前端控制器之间的主要区别是它们如何决定处理具体请求的动作。
+            使用 Struts，开发人员需要把特定请求的映射外部化到 XML 配置文件中的 Action 类。当首次装入 ActionServlet 
+            时，它将解析这个文件，并准备接受请求。根据约定，以 .do 结束的请求被重定向到 ActionServlet，由 
+            ActionServlet 分派到适当的 Action。图 2 的 XML 是一个典型的映射。它告诉 ActionServlet 把叫作 
+            deleteOrder.do 的请求转发到 controllers.order.DeleteOrderAction 作进一步处理。
+            Rails 采用了不同的方式。它没有依赖配置文件把请求映射到某一个动作，而是根据请求的 URL 发现适当的动作。从图 2 
+            可以看到，URL http://localhost/order/delete/4 告诉 Rails 调用 OrderController 
+            实例上的 delete 方法，并将 4 作为可用的实例变量。Rails 足够聪明，知道 /order 将映射到文件 
+            order_controller.rb 中定义的一个控制器类。如果在控制器中定义了 find 方法，那么只要用 find 替代 URL 
+            中的 delete，就可以调用这个方法。
+
+
+            图 2. Rails 和 Struts 中的 URL 映射 
+             
+
+            动作和模型
+            在 Rails 和 Struts 
+            中，动作用来充当前端控制器和模型之间的桥梁。开发人员提供动作的现实，从而提供特定于应用程序的请求处理。前端控制器负责接受请求，并把请求传递到特定动作。图 
+            3 演示了 Rails 和 Struts 基本的动作层次结构。
+
+
+            图 3. Rails 和 Struts 的动作层次结构
+             
+                        动作是模型还是控制器？
+
+                        Action 和 ActionController 从技术上讲是 MVC 
+                        模式的控制器的一部分，因为它们对客户发起的事件进行响应。但是，在小型应用程序中，开发人员通常在这些类中对域或业务逻辑进行编码，所以在这些情况下，也可以把它们看作是模型的一部分。最佳实践建议：应当把域逻辑从控制器中抽象出来，放置在它自己的特定于域的类中。
+
+            Struts 要求开发人员扩展 Action 并覆盖 execute()，以处理请求。通常，每个 Action 
+            类都提供了非常具体的工作单元。图 3 演示了三个特定动作：SaveOrderAction、DeleteOrderAction 和 
+            ListOrdersAction。前端控制器将调用 execute() 方法，传递给它许多有用的对象，其中包括 HTTP 
+            请求和响应对象。ActionForm 是一个类，它可以方便地向视图来回传输并验证与表单有关的输入，ActionMapping 
+            包含映射的配置信息，就像 图 2 的 XML 所描述的那样。
+            execute() 方法返回 ActionForward 对象，Struts 
+            用这个对象来确定对请求继续进行处理的组件。一般来说，这个组件是一个 JSP 页面，但是 ActionForward 
+            也能指向其他动作。开发人员必须清楚，Struts 创建的是 Action 的单一实例，并允许多个线程调用它的 
+            execute()。这使请求处理变得更快，因为框架处理每个请求时不用频繁地创建新的 Action 
+            实例。但是因为可以在多个线程之间共享单一对象，所以必须遵守适当的线程注意事项，因为其他线程可能会破坏在这个动作中保持状态的实例变量。
+            在 Rails 中，必须扩展 ActionController::Base，让模型参与到请求处理中。Rails 没有将 
+            ActionController 
+            的实例池化；相反，它为每个请求创建新的实例。虽然这对性能可能有负面影响，但是它可以让开发变得更容易。开发人员不需要关注 Struts 
+            中存在的线程问题，因此，会话、请求、标题和参数都可以作为 ActionController 
+            的实例成员来进行访问。ActionController 还是一个将特定域逻辑的所有处理组合在一起的合理场所。Struts 的 
+            Action 类是细粒度的，它提供了非常具体的工作单元，而 Rails ActionController 
+            则是粗粒度的，它将具体的工作单元模拟为一些方法。
+            清单 1 和 清单 2 分别演示了典型的 Struts 动作和典型的 Rails 动作
+            表 1 提供了对两种方法的逻辑流程的比较，并演示了清单 1 和清单 2 的特定行中发生的事情。研究 DeleteOrderAction 
+            的 execute() 方法和 OrderController 的 delete 方法，可以看出它们基本上是相同的。
+
+
+            表 1. execute() 和 delete 方法比较
+                  步骤StrutsRails
+                  框架调用动作行 03： execute()行 07： delete
+                  从请求中检索到的 ID 行 06-07：从请求对象中取出行 08：从所有参数的实例哈希中取出
+                  从数据库删除订单记录行 09、14-24：调用 delete() 方法，用 Hibernate 删除记录行 09：用 
+                  ActiveRecord 删除记录
+                  重定向到列出剩余订单行 11：用 ActionMapping 对象查找将要转发处理的下一个组件。图 2 中的 XML 
+                  映射显示，success 将映射到 /listOrders，这是另一个 Action，负责查找剩余订单，并以 JSP 
+                  的形式呈现它们行 10：用将调用的下一动作的哈希来调用 redirect_to 方法；在这种情况下，它只是调用同一控制器的 
+                  list 方法
+
+
+
+
+
+                        回页首
+
+
+
+
+            持久性框架
+            持久性框架 用来在应用程序层和数据库之间来回移动数据。Hibernate 和 Rails 
+            的持久性框架可以归类为对象/关系映射（ORM）工具，这意味着它们接受数据的对象视图，并将该视图映射到关系数据库内的表中。使用两种框架的目的都是为了减少与关系数据库有关的开发时间。但是，图 
+            4 演示了两者在设计和配置上的一些根本区别。 
+
+
+            图 4. Active Record 和 Hibernate 持久性框架的比较 
+             
+
+            Hibernate
+            Hibernate 基于 Data Mapper 模式，在这种模式中，特定的映射器类 Session 
+            负责在数据库中持久存储和检索数据。Hibernate 可以持久存储任何 Java 对象，只要这个对象符合 JavaBean 规范。XML 
+            映射文件描述了如何将类映射到数据库中具体的表，并描述了类与其他类的关系。
+            清单 3 显示了 Hibernate 映射文件的一个实例。class 标签把 Order 对象映射到 ORDERS 
+            表，还有许多子标签用于描述其属性、ID 订单名称，以及同 models.Item 的一对多关系。清单 4 显示了 Order 类本身。
+
+
+            清单 3. Order.hbm.xml
+
+...
+01 <hibernate-mapping>
+02    <class name="models.Order" table="ORDERS"
+03        dynamic-update="true" dynamic-insert="false"
+04        discriminator-value="null">
+05
+06 	<id name="id" column="id" type="java.lang.Long" 
+07             unsaved-value="null">
+08             <generator class="identity"/>
+09         </id>
+10 
+11         <set name="items" lazy="false" inverse="false"
+12            cascade="none" sort="unsorted">
+13             <key column="id"/>
+14             <one-to-many class="models.Item"/>
+15         </set>
+16 
+17         <property name="name" type="java.lang.String"
+18             update="true" insert="true"
+19             access="property" column="name"/>
+20     </class>
+21 </hibernate-mapping>
+
+
+
+
+            清单 4. Order.java
+
+01 public class Order {
+02    private Set items;
+03     private String name;
+04     private Long id;
+05 
+06     public Long getId() { return id;}
+07 
+08     public void setId(Long id) { this.id = id;}
+09 	
+10     public Set getItems() { return items;}
+11 	
+12     public void setItems(Set items) { this.items = items; }
+13 	
+14     public String getName() { return name; }
+15 
+16     public void setName(String name) { this.name = name; }
+17 }
+
+
+
+            Active Record
+                        反射和元编程
+
+                        Wikipedia 中（请参阅 参考资料）简要地把 反射 
+                        定义为“程序在运行的时候检查和修改其高级结构的能力”。在那里，还将 元编程 
+                        定义为“编写那些能够编写和操作其他其他程序（或它们自己），将其他程序作为自己的数据的程序，或者编写那些完成其他程序在运行时所做的部分工作的程序。”
+                        以下代码将实现反射：
+01 obj = "some_string"
+02 if obj.respond_to?('length'):
+03   puts "obj length = #{obj.length}" 
+03 end
+>> obj length = 5
+
+
+
+                        这个代码将实现元编程：
+01 class SomeClass
+02 end
+03 newMethod = %q{def msg() puts "A message!" end}
+04 SomeClass.class_eval(newMethod)
+05 aClass = SomeClass.new
+06 aClass.msg
+>> A message!
+
+
+
+
+            Rails 的 ORM 框架叫作 Active Record，它基于同名的设计模式。Martin Fowler 将 Active 
+            Record 描述为“包装数据库表或视图中数据行的对象，封装数据库访问，在数据上添加域逻辑”。在 Rails 中，每个域对象都将扩展提供 
+            CRUD 操作的 ActiveRecord::Base。
+            与 Hibernate 一样，Active Record 不需要映射文件；实际上，使用 Active Record 的开发人员不需要对 
+            getter 或 setter、甚至类的属性进行编码。通过一些漂亮的词汇分析，Active Record 能够判断出，Order 
+            类将映射到数据库中的 ORDERS 表。使用 Ruby 反射和元编程的组合，表的列可以变成对象的属性。访问器和调整器也添加了进来。
+            清单 5 显示了 Order 类的完成后的代码。在 Order 类体中有一行代码定义了它与 Item 对象的关系。has_many 
+            是一个静态方法调用，符号 :items 是它的参数。ActiveRecord 用 :items 发现 Item 域对象，然后将这个 
+            Item 对象映射回数据库中的 ITEMS 表。
+
+
+            清单 5. order.rb
+
+01 class Order < ActiveRecord::Base
+02	has_many :items
+03 end
+
+
+
+            像 清单 5 那样编码的 Order 类在运行时提供了一些类和实例方法。表 2 提供了可在 Order 上使用的操作和属性的部分列表： 
+
+
+            表 2. 在 Order 上可用的属性和操作
+                  类方法实例方法属性
+                    find(*args) 
+                    find_by_sql(sql) 
+                    exists?(id) 
+                    create(attributes) 
+                    update(id, attributes) 
+                    update_all(updates, conditions 
+                    delete(id) 
+                    delete_all(conditions) 
+                    ... 
+                    add_items 
+                    build_to_items 
+                    create_in_items 
+                    find_all_in_items 
+                    find_in_items 
+                    has_items? 
+                    items 
+                    items= 
+                    items_count 
+                    remove_items 
+                    id 
+                    name 
+
+
+
+
+
+
+                        回页首
+
+
+
+
+            结束语
+            虽然 Ruby on Rails 是一个非常新、令人兴奋的框架，并且在 Web 
+            社区中已经引起了人们相当的兴趣，但是它的核心架构仍然遵循在 J2EE 中发现的基本模式。开发把两个框架分开的 Web 
+            应用程序是一种合理的方法。Rails 更喜欢清楚的代码而不是配置文件，而 Ruby 语言的动态性质在运行时生成了大部分管道 代码。大多数 
+            Rails 框架都是作为独立项目创建的，而且应用程序开发能够从一组同类组件受益。相比之下，典型的 J2EE 
+            堆栈倾向于构建在通常独立开发的最好的组件之上，常常用 XML 进行配置并将组件组合在一起。
+            那么，是否应该考虑对下一个 Web 应用程序使用 Rails 
+            呢？嗯，为什么不呢？它是编写得很好的组件堆栈，它们彼此之间工作得很好，并且基于行业接受的企业模式。Ruby 
+            语言支持快速开发，并通过生产大多数应用程序管道来添加到框架。熟悉 Java 世界中的 MVC 和 ORM 框架的人们在用 Rails 
+            表达自己的思想时没有任何困难。
+            与 J2EE 一起分发会不会有利于 Rails？绝对不要。J2EE 
+            是一个已经设置好的标准，有许多固定的实现，而且，最重要的是，它是一个经过验证的技术。我建议您下载一份 Rails 
+            的副本，并开始自己钻研它。许多可用的教程都是介绍性的，这些教程可以让您立即开始使用 Rails。再次声明，我并不能保证您会通过使用 
+            Rails 得到快乐，但是我敢打赌您会感到满意。
+
+
+
+            参考资料 
+              您可以参阅本文在 developerWorks 全球站点上的 英文原文。
+
+
+              相关内容： 
+                使用 Ruby on Rails 快速开发 Web 应用程序 
+                Struts，MVC 的一种开放源码实现 
+                无需容器的对象关系映射 
+
+
+              请参阅 Ruby on Rails Web site。
+
+
+              从 ruby-lang.org 得到关于 Ruby 的您需要了解的最新信息。
+
+
+              发现更多关于 Struts 和 Jakarta project 的信息。
+
+
+              学习更多关于 Hibernate 的知识。
+
+
+              从 Curt Hibbs 撰写的“Rolling with Ruby on Rails”（ONLamp.com，2005 年 1 
+              月）得到一份关于创建 Rails 应用程序的好的介绍。
+
+
+              在 Sun 的 Blueprints 目录中寻找 Model-View-Controller 和 Front Controller 
+              模式的简要解释说明。
+
+
+              在 Martin Fowler's Web site 上了解对 Active Record 和 Data Mapper 
+              模式精简后的解释。
+
+
+              掌握 Fast-track your Web apps with Ruby on Rails，这样就可以用这个基于 Ruby 
+              的框架和它的模型-视图-控制器设计模式来迅速构建和定制应用程序（developerWorks，2005 年 6 月）。
+
+
+              从 Programming in the Ruby language（developerWorks, 2001 年 7 月）开始研究 
+              Ruby 和它的变量、引用、数组、对象和方法。
+
+
+              在 Struts，MVC 的一种开放源码实现 中研究 Struts 如何帮助控制 Web 
+              项目中的变化，并提高您的专长（developerWorks，2001 年 2 月）。
+
+
+              在 Object-relation mapping without the container 中，学习结合使用 Hibernate 
+              和 Spring，为企业应用程序构建事务性的持久存储层（developerWorks，2004 年 4 月）。
+
+
+              请参 Wikipedia 的关于 reflection 和 metaprogramming 定义。
+
+
+              请参阅 developerWorks Web Architecture 专区，获得介绍各种基于 Web 的解决方案的文章。
+
+
+              通过参与 developerWorks blogs 加入 developerWorks 社区。
+
+
+
+
+            关于作者
+
+                  Aaron Rustad 从 1998 年起就一直从事 Java 技术的工作，并且一直是适用于一些垂直市场的 J2EE 
+                  应用程序的架构师和开发人员，这些垂直市场包括石油天然气、农业和教育。您可以通过 arustad@gmail.com 与 
+                  Aaron 联系。
+
+
+
+
+            对本文的评价
+
+                        太差！ (1)
+                        需提高 (2)
+                        一般；尚可 (3)
+                        好文章 (4)
+                        真棒！(5)
+
+                  建议？
+ 
+
+
+
+
+
+                        回页首
+
+
+
+
+      IBM 公司保留在 developerWorks 网站上发表的内容的著作权。未经IBM公司或原始作者的书面明确许可，请勿转载。如果您希望转载，请通过 
+      提交转载请求表单 联系我们的编辑团队。
+
+                关于 IBM    隐私条约    联系 IBM
+
+ 

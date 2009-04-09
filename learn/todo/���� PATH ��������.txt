@@ -1,0 +1,14 @@
+                        设置 PATH 环境变量
+
+                        在 Ubuntu 系统中有两种设置环境变量 PATH 的方法。第一种适用于为单一用户设置 
+                        PATH，第二种是为全局设置 PATH。 
+                        第一种方法： 
+                        在用户主目录下有一个 .bashrc 文件，可以在此文件中加入 PATH 的设置如下： 
+                        export PATH=”$PATH:/your path1/:/your path2/…..” 
+                        注意：每一个 path 之间要用 “:“ 分隔。 
+                        注销重启 X 就可以了。 
+                        第二种方法： 
+                        在 /etc/profile中增加。
+                        PATH="$PATH:/home/zhengb66/bin"
+                        export PATH
+

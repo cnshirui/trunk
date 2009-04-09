@@ -1,0 +1,57 @@
+rake updatepo进行增量更新时的问题(页 1) - Rails中文化 - Ruby On Rails 中文社区论坛 - powered by Discuz! ArchiverRuby 
+On Rails 中文社区论坛 &raquo; Rails中文化 &raquo; rake updatepo进行增量更新时的问题
+
+
+2007-3-16 10:39 sunac400
+rake updatepo进行增量更新时的问题
+
+我在使用rake updatepo进行增量更新时,产生错误,内容如下:
+po/etrack_trunk.pot
+d:/ruby/bin/rake.bat: No such file or directory - msgmerge po/etrack_trunk.pot t
+mp.pot
+rake aborted!
+You have a nil object when you didn't expect it!
+The error occured while evaluating nil.sub!
+D:/InstantRails/rails_apps/etrack_trunk/rakefile:23
+(See full trace by running task with --trace)
+我查了utils.rb文件发现错误出在msgmerge函数中的
+    if FileTest.exist? defpo
+      cont = `#{cmd} #{defpo} #{refpo}`
+    else
+......
+   end
+这里 cont被赋值为nill了。
+下面又用if cont.empty?进行了判断，所以错了，为什么gettext会出现这样侧错误？ 
+cont = `#{cmd} #{defpo} #{refpo}`又是什么作用？
+是因为我环境的关系吗？ 大家做增量更新的时候有错误产生吗？ 十万火急
+2007-3-16 15:44 wp-joe
+几乎一样的问题
+我也还没解决
+2007-3-16 17:50 sunac400
+原来是在rakefile里
+task :updatepo do
+  MY_APP_TEXT_DOMAIN = "etrack_trunk" 
+  MY_APP_VERSION     = "etrack_trunk 1.1.2"
+  ENV["MSGMERGE_PATH"] = 'rmsgmerge.cmd'   #错在这里
+  GetText.update_pofiles(MY_APP_TEXT_DOMAIN, 
+                         Dir.glob("{app,lib}/**/*.{rb,rhtml}"), 
+                         MY_APP_VERSION)
+end
+希望大家不要像我一样痛苦。
+2007-3-16 21:59 wp-joe
+多谢啊  
+我的也通过了
+不过暂时还是没搞清楚这句的作用
+2007-3-19 15:00 sunac400
+因为msgmerge函数用到了ENV["MSGMERGE_PATH"]这个路径,
+cmd = ENV["MSGMERGE_PATH"] || "msgmerge"
+之后
+cont = `#{cmd} #{defpo} #{refpo}`似乎是又回调了msgmerge函数,如果 
+ENV["MSGMERGE_PATH"]未定义,cont = `#{cmd} #{defpo} 
+#{refpo}`就是一个不完整的语句,导致cont未成为一个io对象.
+
+照我的理解应该是这样的,十分确定的答案我也没有找到.
+页: [1] 
+查看完整版本: rake updatepo进行增量更新时的问题
+
+Powered by Discuz! Archiver 5.5.0  &copy; 2001-2006 Comsenz Inc.
