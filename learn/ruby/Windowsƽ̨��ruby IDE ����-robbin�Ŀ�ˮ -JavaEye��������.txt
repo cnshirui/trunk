@@ -1,0 +1,183 @@
+            Windows平台的ruby IDE 点评 
+            关键字: ruby   IDE     
+                  在MacOS平台几乎没有什么争议性，大家都用TextMate。但是Windows平台可供选择和使用的IDE很多，却各有各的长处和短处。基于我用过的所有ruby 
+                  IDE点评一下。windows平台的RoR 
+                  IDE主要分为两类：一类是重量级的全功能IDE，例如Eclipse，Netbeans，IDEA和jedit，运行起来很耗资源，功能比较齐全；另一类是轻量级的IDE，例如Komodo，RoRed，vim，emacs，E，下面一一点评之：
+                  一、重量级的IDE
+                  1、radrails － 当前最值得推荐的IDE
+                  radrails是基于Eclipse的插件，当前版本0.7.2。radrails继承了Eclipse平台的各种功能，尤其是CVS/SVN集成特别好，和其他ruby 
+                  IDE相对比来说，radrails最主要的优点在于bug很少，功能非常齐全。
+                  1) 相对于其他大多数RoR 
+                  IDE各种各样的bug，radrails在0.7.2版本的表现非常的稳定。在我连续几个月使用下来，基本没有什么大的bug。
+                  2) 
+                  功能齐全，其他IDE或多或少功能都有缺失，但radrails功能非常齐全：内置的server管理，generator，rake 
+                  task，rdoc检索，plugin安装，规则表达式校验，tail 
+                  log，，console调试窗口，debug，代码格式化，代码和模板高亮，ruby代码和rhtml模板的template自动提示，单元测试支持，代码和测试之间的跳转，代码和模板之间的跳转等等等无所不包。
+                  3) 中文支持非常好，UTF-8编码支持也非常好。中文字体显示也很漂亮，这一点对我们来说很重要。
+                  但是radrails也不是没有缺点，radrails的致命缺点是其RDT功能太弱智。
+                  1) 
+                  代码的感知能力很差，连我敲一个def回车都不会自动补齐end。而且也不能够搜索ruby库文件进行语法树分析，所以没有智能提示功能。
+                  2) 
+                  没有像Eclipse的JDT那样的Ctrl+O来快速导航到某个方法的功能，这一点对我开发很重要，否则我就总是需要通过serch 
+                  "def 
+方法名"才能快速找到要修改的方法，非常不方便，这是我非常垢病RDT的一个地方，也没有F3快速导航到类定义文件的功能。
+                  RDT下一个版本0.9.0号称在两周以后就会发布(RDT快两年没有推出新版本了，实在是太迟钝了)，貌似对于脚本语言的AST解析能力大大增强，如果真的是这样，还是很值得期待的，预计RDT0.9.0发布几周之后，radrails就会发布0.8版本。另外值得一提的是radrails得到了SAP的一些赞助和支持。
+                  2、Netbeans － 最值得期待的IDE
+                  Netbeans6.0M7提供了Generic Language Support 
+                  Framework，一个很强大的脚本语言框架，在这个框架基础上提供的ruby和ruby on 
+                  rails支持表现非凡。可以对ruby语言和库进行良好的语法分析，从而提供智能化的代码提示功能，让ruby程序员也可以享受到敲一个“.”就能够跳出来详细提示的功能，真正有了写Java程序的安全感。有些优点确实很棒：
+                  1) 
+                  代码感知能力超强，不但系统库的API，你自己项目的所有类API都可以根据上下文提示，有了写Java程序那种安全感了，也不用跳转来去找类定义文件了。
+                  2) 
+                  快捷的打开rails库文件和ruby所有库文件，类似在Eclipse里面打开依赖库的源代码和JDK的源代码的功能，对于学习和熟悉ruby库和rails非常非常有用。
+                  3) Ctrl+G可以快速定位类定位文件，类似Eclipse的F3的功能。
+                  目前netbeans这些功能领先所有的其他IDE，非常令人期待。但是netbeans也有些明显的缺点，有些东西用起来行为非常古怪，可能是因为netbeans6.0还是beta版本，bug太多的缘故，而且也不够稳定：
+                  1) 
+                  没有类似Eclipse的Ctrl+Shift+R那样的文件快速定位功能，要自己在项目树里面一层层找，这个实在令人难以忍受。一个大项目动不动几百个文件，不能快速定位，找起来太影响效率。其实netbeans提供了一个Ctrl+Alt+O的快捷定位，但是不起作用，搜索框总是空的，因此怀疑netbeans有这个功能，目前是bug导致出不来。
+                  2) 没有在文件中快速定位某个方法的功能，这一点和radrails一样令人失望。
+                  3) 在编辑器里面好多顺手的代码编辑的快捷功能都没有，令人很苦恼，这一点显然不如radrails那么方便。
+                  4) 对中文的支持不好
+                  5) 对yml文件没有高亮功能
+                  6) 依赖JDK6.0，在JDK5.0上面跑很不流畅。
+                  总得来说，netbeans还是最值得期待的IDE，等到07年底，netbeans6.0正式发布，ruby插件支持更加成熟以后，我想我会转移到netbeans上面来。另外非常重要的一点：Sun公司从JDK6以后，致力于JVM平台化发展道路，大力拓展脚本语言在JVM平台的支持力度，而且Sun给予了JRuby官方支持，所以netbeans平台的脚本框架和RoR支持是有足够的商业推动力的，前景应该是最好的！
+                  3、IDEA - 观望中
+                  貌似前段时间有人撰文推荐IDEA作为首选ruby 
+                  IDE，我觉得他的理由很奇怪，其实IDEA目前不是好的选择：其ruby代码感知能力和智能提示能力明显不如netbeans，其功能齐全程度又明显不如radrails，而且最致命的是IDEA竟然不能对rhtml模板高亮和提示，那就宣布了IDEA的基本不可用，另外yml文件也不能高亮。其插件作者说下一版本会提供rhtml高亮和提示，所以我们对IDEA目前还持观望态度。
+                  但IDEA也有一些明显优点，例如IDEA就有对ruby类和ruby资源进行快速定位的快捷键Ctrl+Alt+N和Alt+N，这明显优于radrails和netbeans，另外也有在当前文件快速定位方法的快捷键，终于克服了我对radrails的最大怨气。
+                  4、jedit - 貌似没什么理由去用它了
+                  作为一个重量级IDE，却定位在轻量级功能上，要安装一大堆插件才能勉强把功能跑起来，没什么理由去用它。
+                  二、轻量级IDE
+                  1、E － 最值得期待的轻量级IDE
+                  E现在确实有很多bug，很多功能缺失，例如：我非常在意的对文件进行快速定位的快捷键和在当前文件中快速定位方法的快捷键，目前E竟然不支持，但是TextMate可是有的；快速删除当前行在TextMate当中是Command+L，但是E貌似没有，诸如此类的功能缺失。所以E和TextMate还是有很大差距的。
+                  但是E确实在主要方面完全克隆了TextMate，所以这些小功能上面的缺失应该只是时间问题。所以相信给E半年左右的时间，E会成为Windows平台当之无愧的TextMate。
+                  2、Komodo - 乏善可陈
+                  Komodo是个定位很传统的脚本IDE，对于ruby没有什么特别好的支持，有最基本的语法高亮和简单的代码提示而已，以及一个简陋的项目树，运行速度还很缓慢，而且还是收费的，实在不值得去用。
+                  3、RoRed - mini ruby IDE
+                  如果你真要去用Komodo，那我建议你改用RoRed，一个专门针对ruby on 
+                  rails开发的简单编辑器，带有ruby语法高亮，项目树，功能简单，可能对某些偏爱UltraEdit/Editplus的人来说用RoRed已经够用了，速度也挺快的。
+                  4、vim/emacs - 不适合Windows平台的ruby IDE
+                  vim以及emacs这些源于Unix平台的IDE，我认为不适合在Windows上面用。因为vim/emacs当初被设计成为一个无鼠标支持的编辑环境，全部依靠键盘命令驱动。当你在Windows下面使用的时候，这种习惯会被打破，从而觉得非常影响效率。
+                  例如在vim里面执行一个generator，Unix上面会在vim窗口中开buffer显示，执行完毕敲一下回车就退出这个buffer了，很方便很快捷。但在Windows平台，竟然会弹出一个DOS窗口，而且把键盘焦点给转移到这个DOS窗口上去了。这就迫使你不得不动用鼠标去选择这个DOS窗口，然后关闭它，再把焦点定位回到vim上面来。这就丧失了vim最大的优势了，反而搞的很麻烦。
+                  当然你可以用Alt+Tab键来切换窗口，不必动用鼠标。但遗憾的是Windows操作系统的窗口切换能力很差，一旦你的windows开的窗口多了，在窗口之间快捷切换是一件很麻烦的事情，还不如鼠标来得快捷。这一点Windows比MacOS有很大的差距。MacOS上面进行多窗口切换那才叫一个爽字呢！
+                  最后我认为轻量级IDE在windows平台的市场不会很大，即使E的功能能够完善到TextMate的程度，也不会有radrails那么普及。主要还是和操作系统的支持有关系：
+                  在MacOS上面，你开一个Textmate窗口，一个浏览器窗口，一个tail 
+                  log窗口，一个命令窗口启动关闭服务器，一个命令窗口进行console调试，一个命令窗口执行单元测试，还有一个命令窗口连接MySQL数据库看数据。在这些窗口之间仅仅使用快捷键进行来回切换是很方便很快捷的事情。
+                  但是Windows的窗口切换功能太弱了，一下开了七个窗口，你编程的时候来回切换的工作效率是很低的。所以在Windows上面要提高工作效率就会倾向于radrails这样的IDE，把所有功能都集成进来了，只要一个radrails窗口，一个浏览器窗口足矣了。这样工作效率才高。
+                  最后值得一提的是，所有这些IDE的rhtml编辑功能还是不如textmate，一旦在html标签里面嵌入代码段，就不能高亮了。而textmate是不会这样的。
+
+                  最后更新：2007-07-15 08:05
+                  18:24  |   永久链接  |   浏览 (14558)  |   评论 (36)  |    收藏  |   
+                  Ruby  |   进入论坛  |   
+
+                  永久链接
+                  http://robbin.javaeye.com/blog/57474 
+
+                  评论    共 36 条 发表评论 
+
+            netfishx     2007-04-12 17:17 
+                  rdt0.9已经再次跳票了，对它不抱希望了
+
+            whb     2007-05-10 23:16 
+                  这篇文章被matrix引用了，http://www.matrix.org.cn/resource/news/simon_lin_f378220e-fdc6-11db-a6cd-b9a60c34107a.html
+                  但是没有详细写出原文的出处，只是简单标明文章出自：javaeye。不太尊重robbin的版权。
+
+            robbin     2007-05-11 10:42 
+                  whb 写道
+                  这篇文章被matrix引用了，http://www.matrix.org.cn/resource/news/simon_lin_f378220e-fdc6-11db-a6cd-b9a60c34107a.html
+                  但是没有详细写出原文的出处，只是简单标明文章出自：javaeye。不太尊重robbin的版权。
+                  多谢提醒，JavaEye的文章是不允许非授权转载的，我已经给chris写了邮件，要求他们立刻删除。
+
+            lzqjj     2007-07-12 17:16 
+                  在MacOS平台几乎没有什么争议性，大家都用TextMate。但是Windows平台可供选择和使用的IDE很多，却各有各的长处和短处。基于我用过的所有ruby 
+                  IDE点评一下。windows平台的RoR 
+                  IDE主要分为两类：一类是重量级的全功能IDE，例如Eclipse，Netbeans，IDEA和jedit，运行起来很耗资源，功能比较齐全；另一类是轻量级的IDE，例如Komodo，RoRed，vim，emacs，E，下面一一点评之： 
+                  一、重量级的IDE 1、radrails － 当前最值得推荐的IDE 
+                  radrails是基于Eclipse的插件，当前版本0.7.2。radrails继承了Eclipse平台的各种功能，尤其是CVS/SVN集成特别好，和其他ruby 
+                  IDE相对比来说，radrails最主要的优点在于bug很少，功能非常齐全。 1) 相对于其他大多数RoR 
+                  IDE各种各样的bug，radrails在0.7.2版本的表现非常的稳定。在我连续几个月使用下来，基本没有什么大的bug。 
+                  2) 
+                  功能齐全，其他IDE或多或少功能都有缺失，但radrails功能非常齐全：内置的server管理，generator，rake 
+                  task，rdoc检索，plugin安装，规则表达式校验，tail 
+                  log，，console调试窗口，debug，代码格式化，代码和模板高亮，ruby代码和rhtml模板的template自动提示，单元测试支持，代码和测试之间的跳转，代码和模板之间的跳转等等等无所不包。 
+                  3) 中文支持非常好，UTF-8编码支持也非常好。中文字体显示也很漂亮，这一点对我们来说很重要。 
+                  但是radrails也不是没有缺点，radrails的致命缺点是其RDT功能太弱智。 1) 
+                  代码的感知能力很差，连我敲一个def回车都不会自动补齐end。而且也不能够搜索ruby库文件进行语法树分析，所以没有智能提示功能。 
+                  2) 
+                  没有像Eclipse的JDT那样的Ctrl+O来快速导航到某个方法的功能，这一点对我开发很重要，否则我就总是需要通过serch 
+                  "def 
+                  方法名"才能快速找到要修改的方法，非常不方便，这是我非常垢病RDT的一个地方，也没有F3快速导航到类定义文件的功能。 
+                  RDT下一个版本0.9.0号称在两周以后就会发布(RDT快两年没有推出新版本了，实在是太迟钝了)，貌似对于脚本语言的AST解析能力大大增强，如果真的是这样，还是很值得期待的，预计RDT0.9.0发布几周之后，radrails就会发布0.8版本。另外值得一提的是radrails得到了SAP的一些赞助和支持。 
+                  2、Netbeans － 最值得期待的IDE Netbeans6.0M7提供了Generic Language 
+                  Support Framework，一个很强大的脚本语言框架，在这个框架基础上提供的ruby和ruby on 
+                  rails支持表现非凡。可以对ruby语言和库进行良好的语法分析，从而提供智能化的代码提示功能，让ruby程序员也可以享受到敲一个“.”就能够跳出来详细提示的功能，真正有了写Java程序的安全感。有些优点确实很棒： 
+                  1) 
+                  代码感知能力超强，不但系统库的API，你自己项目的所有类API都可以根据上下文提示，有了写Java程序那种安全感了，也不用跳转来去找类定义文件了。 
+                  2) 
+                  快捷的打开rails库文件和ruby所有库文件，类似在Eclipse里面打开依赖库的源代码和JDK的源代码的功能，对于学习和熟悉ruby库和rails非常非常有用。 
+                  3) Ctrl+G可以快速定位类定位文件，类似Eclipse的F3的功能。 
+                  目前netbeans这些功能领先所有的其他IDE，非常令人期待。但是netbeans也有些明显的缺点，有些东西用起来行为非常古怪，可能是因为netbeans6.0还是beta版本，bug太多的缘故，而且也不够稳定： 
+                  1) 
+                  没有类似Eclipse的Ctrl+Shift+R那样的文件快速定位功能，要自己在项目树里面一层层找，这个实在令人难以忍受。一个大项目动不动几百个文件，不能快速定位，找起来太影响效率。其实netbeans提供了一个Ctrl+Alt+O的快捷定位，但是不起作用，搜索框总是空的，因此怀疑netbeans有这个功能，目前是bug导致出不来。 
+                  2) 没有在文件中快速定位某个方法的功能，这一点和radrails一样令人失望。 3) 
+                  在编辑器里面好多顺手的代码编辑的快捷功能都没有，令人很苦恼，这一点显然不如radrails那么方便。 4) 对中文的支持不好 
+                  5) 对yml文件没有高亮功能 6) 依赖JDK6.0，在JDK5.0上面跑很不流畅。 
+                  总得来说，netbeans还是最值得期待的IDE，等到07年底，netbeans6.0正式发布，ruby插件支持更加成熟以后，我想我会转移到netbeans上面来。另外非常重要的一点：Sun公司从JDK6以后，致力于JVM平台化发展道路，大力拓展脚本语言在JVM平台的支持力度，而且Sun给予了JRuby官方支持，所以netbeans平台的脚本框架和RoR支持是有足够的商业推动力的，前景应该是最好的！ 
+                  3、IDEA - 观望中 貌似前段时间有人撰文推荐IDEA作为首选ruby 
+                  IDE，我觉得他的理由很奇怪，其实IDEA目前不是好的选择：其ruby代码感知能力和智能提示能力明显不如netbeans，其功能齐全程度又明显不如radrails，而且最致命的是IDEA竟然不能对rhtml模板高亮和提示，那就宣布了IDEA的基本不可用，另外yml文件也不能高亮。其插件作者说下一版本会提供rhtml高亮和提示，所以我们对IDEA目前还持观望态度。 
+                  但IDEA也有一些明显优点，例如IDEA就有对ruby类和ruby资源进行快速定位的快捷键Ctrl+Alt+N和Alt+N，这明显优于radrails和netbeans，另外也有在当前文件快速定位方法的快捷键，终于克服了我对radrails的最大怨气。 
+                  4、jedit - 貌似没什么理由去用它了 
+                  作为一个重量级IDE，却定位在轻量级功能上，要安装一大堆插件才能勉强把功能跑起来，没什么理由去用它。 二、轻量级IDE 
+                  1、E － 最值得期待的轻量级IDE 
+                  E现在确实有很多bug，很多功能缺失，例如：我非常在意的对文件进行快速定位的快捷键和在当前文件中快速定位方法的快捷键，目前E竟然不支持，但是TextMate可是有的；快速删除当前行在TextMate当中是Command+L，但是E貌似没有，诸如此类的功能缺失。所以E和TextMate还是有很大差距的。 
+                  但是E确实在主要方面完全克隆了TextMate，所以这些小功能上面的缺失应该只是时间问题。所以相信给E半年左右的时间，E会成为Windows平台当之无愧的TextMate。 
+                  2、Komodo - 乏善可陈 
+                  Komodo是个定位很传统的脚本IDE，对于ruby没有什么特别好的支持，有最基本的语法高亮和简单的代码提示而已，以及一个简陋的项目树，运行速度还很缓慢，而且还是收费的，实在不值得去用。 
+                  3、RoRed - mini ruby IDE 如果你真要去用Komodo，那我建议你改用RoRed，一个专门针对ruby 
+                  on 
+                  rails开发的简单编辑器，带有ruby语法高亮，项目树，功能简单，可能对某些偏爱UltraEdit/Editplus的人来说用RoRed已经够用了，速度也挺快的。 
+                  4、vim/emacs - 不适合Windows平台的ruby IDE 
+                  vim以及emacs这些源于Unix平台的IDE，我认为不适合在Windows上面用。因为vim/emacs当初被设计成为一个无鼠标支持的编辑环境，全部依靠键盘命令驱动。当你在Windows下面使用的时候，这种习惯会被打破，从而觉得非常影响效率。 
+                  例如在vim里面执行一个generator，Unix上面会在vim窗口中开buffer显示，执行完毕敲一下回车就退出这个buffer了，很方便很快捷。但在Windows平台，竟然会弹出一个DOS窗口，而且把键盘焦点给转移到这个DOS窗口上去了。这就迫使你不得不动用鼠标去选择这个DOS窗口，然后关闭它，再把焦点定位回到vim上面来。这就丧失了vim最大的优势了，反而搞的很麻烦。 
+                  当然你可以用Alt+Tab键来切换窗口，不必动用鼠标。但遗憾的是Windows操作系统的窗口切换能力很差，一旦你的windows开的窗口多了，在窗口之间快捷切换是一件很麻烦的事情，还不如鼠标来得快捷。这一点Windows比MacOS有很大的差距。MacOS上面进行多窗口切换那才叫一个爽字呢！ 
+                  最后我认为轻量级IDE在windows平台的市场不会很大，即使E的功能能够完善到TextMate的程度，也不会有radrails那么普及。主要还是和操作系统的支持有关系： 
+                  在MacOS上面，你开一个Textmate窗口，一个浏览器窗口，一个tail 
+                  log窗口，一个命令窗口启动关闭服务器，一个命令窗口进行console调试，一个命令窗口执行单元测试，还有一个命令窗口连接MySQL数据库看数据。在这些窗口之间仅仅使用快捷键进行来回切换是很方便很快捷的事情。 
+                  但是Windows的窗口切换功能太弱了，一下开了七个窗口，你编程的时候来回切换的工作效率是很低的。所以在Windows上面要提高工作效率就会倾向于radrails这样的IDE，把所有功能都集成进来了，只要一个radrails窗口，一个浏览器窗口足矣了。这样工作效率才高。 
+                  最后值得一提的是，所有这些IDE的rhtml编辑功能还是不如textmate，一旦在html标签里面嵌入代码段，就不能高亮了。而textmate是不会这样的。
+
+            Autobot     2007-07-13 11:44 
+                  我在Ubuntu下使用Eclipse+Radrails(0.8).def回车补齐end已经有了,代码导航功能确实没有,这一点确实让我这样从Java转到Rails的感觉非常非常不爽.再就是我的Radrails经常出现一个bug,就是generator,rake 
+                  task经常出问题(task列不出来,只能手工输入,不晓得是radrails的问题,还是我的eclipseGTK的问题),必须通过windows->new 
+                  windows来解决.
+                  我现在使用gedit(...ashamed...)+一个Terminal(script/server)+一个Terminal(generator,rake)+一个Terminal(script/console)+一个Terminal(mysql>).感觉还是比较爽的.
+
+            cookoo     2007-07-15 08:03 
+                  娃哈哈： 
+                   
+                  (from http://unix.rulez.org/~calver/)
+
+            分页 :   上一页 [1]  [2]  [3]  4   
+               发表评论 
+                        正文 
+
+                              表情符号
+
+
+
+
+
+
+                                 
+                               字体颜色:  标准 深红 红色 橙色 棕色 黄色 绿色 橄榄 青色 蓝色 深蓝 靛蓝 紫色 
+                                白色 黑色  字体大小: 最小 小 标准 大 最大 结束标签
+
+                         
+                        提醒： 该博客已发表在公共论坛，博客所有留言会成为论坛回贴，留言请注意遵守论坛发贴规则
+                         
+
+                  发表评论 
+
+
+
+声明：JavaEye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。 
+&copy; 2003-2007 JavaEye.com.   All rights reserved. [ 沪ICP备05023328号 ] 

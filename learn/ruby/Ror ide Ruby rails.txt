@@ -1,0 +1,296 @@
+20070616 Ror ide Ruby rails
+            首页 Soft PlugIn RAN乱 Dev开发 Info资料 English WAP 留言 登陆 注册
+            Posted by Yippee | 评论(0) | 引用(0) | 阅读793次 
+            20070616 Ror ide Ruby rails 
+                  3上一篇 20070617 winxp 补丁包 下载 download wutools下一篇 20070615 .net 
+                  orm 框架4
+
+                  20070616 Ror ide Ruby rails
+                  http://www.shengfang.org
+                  对RoR有点兴趣，看看IDE资料
+                  流派列表：
+                  Eclipse 派：RadRails
+                  NetBeans 派：Netbeans 6.0
+                  Visual Stdio 派：Ruby in Steel
+                  UltraEdit/ Editplus 派：你可以使用 RoRed ，修改設定的  UltraEdit，或是EditPlus 
+                  Plugin
+                  TextMate 派：E
+                  ViM 派：rails.vim，這裡有教學
+                  Emacs 派：emacs-rails
+                  IDEA 派：IDEA Ruby Plugin
+
+                  “Ruby on Rails is a breakthrough in lowering the barriers of 
+                  entry to programming.
+                  Powerful web applications that formerly might have taken weeks 
+                  or months
+                  to develop can be produced in a matter of days.”
+                  -Tim O'Reilly, Founder of O'Reilly Media 
+                  Rails 是個完整的程式架構用來開發有資料庫的網頁程式。 其程式設計型態為 模型-視圖-控制器 
+                  (Model-View-Control)。不管是 視圖裡的 Ajax，還是 控制器裡的 
+                  需求/回覆，還是模擬資料庫的模型，Rails 都是用 Ruby 來開發。你只需要一個資料庫 和一個網頁伺服器就可以上線。
+                  不错的Ruby用免费IDE
+                  RadRails即可以用做Eclips的插件。也可以单独使用。单独使用时，你会觉得是在Eclips界面下工作。可以输入中文，比FreeRIDE可好多了。
+                  最新版本是0.53 有三种平台版本可供选择。
+                  这是它的网址：
+                  http://www.radrails.org/
+
+                  12月26日
+                  我用的Ruby工具和IDE
+                  1.EditPlus
+                  这个东东最简单也最实用，C#,Java,Ruby我有时候都是用她来编写程序的，不耗费大量的内存（虽说我的电脑有1G内存），写一些简单程序的时候用它不错。
+                   
+                  2.RDT
+                  这个是Ruby在Eclipse上的插件，配合Eclipse强大的功能，用起来十分的不错，不过我更喜欢她的字体，Eclipse上英文让人看起来那么的舒服，不过Eclipse暂用的内存可不少。插件的更新地址：
+                  http://rubyeclipse.sf.net/updatesite
+                   
+                  3.FreeRIDE
+                  这是个用纯Ruby写的编辑器，用起来不错，不过上面显示的缺省字体够难看的。暂用资源也比较少。看来Ruby作桌面应用程序也不错哦。下载地址：
+                  http://freeride.rubyforge.org/wiki/wiki.pl
+                   
+                   
+                  4.RadRails
+                  作Rails必备的东东，也是Eclipse的插件（也有基于Eclipse的RCP的桌面版本），目前作Rails的工具好像就这一个，她的更新速度极快，没几天就更新了一个小版本，不过我自己还没有好好用过，下载地址：
+                  http://www.radrails.org/
+                   
+                  5.Arachno Ruby 
+                  这个ide没有使用过，也支持Rails，还在beta中
+                  http://www.ruby-ide.com/forum/forumdisplay.php?f=6
+                  [IDE]Ruby IDE for NetBeans 可以用了
+
+                  NetBeans 6.0的M7终于出来了，第一时间下载，然后取回Ruby插件。经过半天的使用，可以确定，这是NetBeans 
+                  Ruby插件的第一个可用版本。已经可以工作的功能包括： 
+                  １、自动补齐+文档提示（Ctrl + Space或Ctrl + \）； 
+                  ２、方法间跳转－按Ctrl同时点击方法名会自动跳转到定义该方法的源文件处（在所有GEM中跳转）； 
+                  ３、格式化。
+                  还不能工作或者很好工作的功能有： 
+                  １、Debug 
+                  ２、Rails工程中的lib目录竟然没有包括到自动分析目录中 
+                  ３、运行工程有问题。
+                  安装方法： 
+                  １、http://www.netbeans.info/downloads/dev.php选择Q-Build，下载安装NetBeans 
+
+                  ２、安装完毕后，进菜单Tools -> Update Center 
+                  ３、点Next，等所有可升级模块出来后，找到Ruby文件夹，点选到需要更新的模块中（一共会有九个文件被选择） 
+                  ４、按指令完成更新，重启NetBeans。
+                  设置方法： 
+                  １、进菜单Tools -> Options，点左边miscellaneous，点右边Ruby Installation 
+                  ２、将所有Ruby工具指向你的ruby安装目录中的相应工具，注意除ruby选ruby.exe外，其余的rake, 
+                  rails, rdoc 均选择没有任何后缀的文件，不要选*.bat, *.cmd文件。
+                  建项目文件： 
+                  １、File -> New Project 
+                  ２、Ruby -> Ruby on Rails Application，这时将自动生成rails缺省目录树 
+                  ３、将已有的rails项目目录树全部覆盖拷贝到NetBeans建的这个项目目录中。
+                  第一次建Ruby项目时，NetBeans会扫Ruby安装目录，生成参考视图，这可能需要一些时间。
+                  备注： 
+                  １、如果你用的是Windows中文版，不喜欢NetBeans界面中的英文字体，可以在NetBeans安装目录的etc/netbeans.conf文件中改为： 
+
+                  netbeans_default_options="-J-Xms32m -J-Xmx128m 
+                  -J-XX:PermSize=32m -J-XX:MaxPermSize=160m 
+                  -J-Dnetbeans.logger.console=true -J-ea 
+                  -J-Dapple.laf.useScreenMenuBar=true -J-Duser.language=en 
+                  -J-Duser.country=US --fontsize 11" 
+                  ２、默认的编辑字体是monospace，你可以到Tools -> Options 中选Font && 
+                  Color，将其改掉，改default font项即可。一般用Lucida Sans TypeWriter效果最好。
+                  NetBeans的Ruby项目屏幕截图可见： 
+                  http://blogs.sun.com/tor/entry/netbeans_and_ruby_is_true
+                  注意： 
+                  如果你使用c-ruby而不是JRuby，不要用NetBeans里的"Run main 
+                  project"按钮，那样可能会临时改变你的ruby环境设置。 
+                  说起来也挺有意思的，现在三大主流Java IDE：Eclipse，IDEA，Netbeans都支持ruby on 
+                  rails了，意味着什么？
+                  Arachno Ruby IDE 
+                  0.7最大的变化，是更好的代码自动完成、自动缩进、语法检查、帮助文档等，升级到了最新的FOX 1.4.17 
+                  。还有大量的bug修正，及小功能的改进。作为一款专为Ruby and 
+                  Rails优化的IDE，有理由做得更好。目前我觉得比komodo要好。
+                  可惜还没升级到FOX1.6,也就是说，还是不支持Unicode，也就说中文的老毛病还在，可以正常显示中文，但是不能编辑，不能录入。还要再等。
+                  Windows平台的ruby IDE 点评 
+                  在MacOS平台几乎没有什么争议性，大家都用TextMate。但是Windows平台可供选择和使用的IDE很多，却各有各的长处和短处。基于我用过的所有ruby 
+                  IDE点评一下。windows平台的RoR 
+                  IDE主要分为两类：一类是重量级的全功能IDE，例如Eclipse，Netbeans，IDEA和jedit，运行起来很耗资源，功能比较齐全；另一类是轻量级的IDE，例如Komodo，RoRed，vim，emacs，E，下面一一点评之：
+                  一、重量级的IDE
+                  1、radrails － 当前最值得推荐的IDE
+                  radrails是基于Eclipse的插件，当前版本0.7.2。radrails继承了Eclipse平台的各种功能，尤其是CVS/SVN集成特别好，和其他ruby 
+                  IDE相对比来说，radrails最主要的优点在于bug很少，功能非常齐全。
+                  1) 相对于其他大多数RoR 
+                  IDE各种各样的bug，radrails在0.7.2版本的表现非常的稳定。在我连续几个月使用下来，基本没有什么大的bug。
+                  2) 
+                  功能齐全，其他IDE或多或少功能都有缺失，但radrails功能非常齐全：内置的server管理，generator，rake 
+                  task，rdoc检索，plugin安装，规则表达式校验，tail 
+                  log，，console调试窗口，debug，代码格式化，代码和模板高亮，ruby代码和rhtml模板的template自动提示，单元测试支持，代码和测试之间的跳转，代码和模板之间的跳转等等等无所不包。
+                  3) 中文支持非常好，UTF-8编码支持也非常好。中文字体显示也很漂亮，这一点对我们来说很重要。
+                  但是radrails也不是没有缺点，radrails的致命缺点是其RDT功能太弱智。
+                  1) 
+                  代码的感知能力很差，连我敲一个def回车都不会自动补齐end。而且也不能够搜索ruby库文件进行语法树分析，所以没有智能提示功能。
+                  2) 
+                  没有像Eclipse的JDT那样的Ctrl+O来快速导航到某个方法的功能，这一点对我开发很重要，否则我就总是需要通过serch 
+                  "def 
+方法名"才能快速找到要修改的方法，非常不方便，这是我非常垢病RDT的一个地方，也没有F3快速导航到类定义文件的功能。
+                  RDT下一个版本0.9.0号称在两周以后就会发布(RDT快两年没有推出新版本了，实在是太迟钝了)，貌似对于脚本语言的AST解析能力大大增强，如果真的是这样，还是很值得期待的，预计RDT0.9.0发布几周之后，radrails就会发布0.8版本。另外值得一提的是radrails得到了SAP的一些赞助和支持。
+                  2、Netbeans － 最值得期待的IDE
+                  Netbeans6.0M7提供了Generic Language Support 
+                  Framework，一个很强大的脚本语言框架，在这个框架基础上提供的ruby和ruby on 
+                  rails支持表现非凡。可以对ruby语言和库进行良好的语法分析，从而提供智能化的代码提示功能，让ruby程序员也可以享受到敲一个“.”就能够跳出来详细提示的功能，真正有了写Java程序的安全感。有些优点确实很棒：
+                  1) 
+                  代码感知能力超强，不但系统库的API，你自己项目的所有类API都可以根据上下文提示，有了写Java程序那种安全感了，也不用跳转来去找类定义文件了。
+                  2) 
+                  快捷的打开rails库文件和ruby所有库文件，类似在Eclipse里面打开依赖库的源代码和JDK的源代码的功能，对于学习和熟悉ruby库和rails非常非常有用。
+                  3) Ctrl+G可以快速定位类定位文件，类似Eclipse的F3的功能。
+                  目前netbeans这些功能领先所有的其他IDE，非常令人期待。但是netbeans也有些明显的缺点，有些东西用起来行为非常古怪，可能是因为netbeans6.0还是beta版本，bug太多的缘故，而且也不够稳定：
+                  1) 
+                  没有类似Eclipse的Ctrl+Shift+R那样的文件快速定位功能，要自己在项目树里面一层层找，这个实在令人难以忍受。一个大项目动不动几百个文件，不能快速定位，找起来太影响效率。其实netbeans提供了一个Ctrl+Alt+O的快捷定位，但是不起作用，搜索框总是空的，因此怀疑netbeans有这个功能，目前是bug导致出不来。
+                  2) 没有在文件中快速定位某个方法的功能，这一点和radrails一样令人失望。
+                  3) 在编辑器里面好多顺手的代码编辑的快捷功能都没有，令人很苦恼，这一点显然不如radrails那么方便。
+                  4) 对中文的支持不好
+                  5) 对yml文件没有高亮功能
+                  6) 依赖JDK6.0，在JDK5.0上面跑很不流畅。
+                  总得来说，netbeans还是最值得期待的IDE，等到07年底，netbeans6.0正式发布，ruby插件支持更加成熟以后，我想我会转移到netbeans上面来。另外非常重要的一点：Sun公司从JDK6以后，致力于JVM平台化发展道路，大力拓展脚本语言在JVM平台的支持力度，而且Sun给予了JRuby官方支持，所以netbeans平台的脚本框架和RoR支持是有足够的商业推动力的，前景应该是最好的！
+                  3、IDEA - 观望中
+                  貌似前段时间有人撰文推荐IDEA作为首选ruby 
+                  IDE，我觉得他的理由很奇怪，其实IDEA目前不是好的选择：其ruby代码感知能力和智能提示能力明显不如netbeans，其功能齐全程度又明显不如radrails，而且最致命的是IDEA竟然不能对rhtml模板高亮和提示，那就宣布了IDEA的基本不可用，另外yml文件也不能高亮。其插件作者说下一版本会提供rhtml高亮和提示，所以我们对IDEA目前还持观望态度。
+                  但IDEA也有一些明显优点，例如IDEA就有对ruby类和ruby资源进行快速定位的快捷键Ctrl+Alt+N和Alt+N，这明显优于radrails和netbeans，另外也有在当前文件快速定位方法的快捷键，终于克服了我对radrails的最大怨气。
+                  4、jedit - 貌似没什么理由去用它了
+                  作为一个重量级IDE，却定位在轻量级功能上，要安装一大堆插件才能勉强把功能跑起来，没什么理由去用它。
+                  二、轻量级IDE
+                  1、E － 最值得期待的轻量级IDE
+                  E现在确实有很多bug，很多功能缺失，例如：我非常在意的对文件进行快速定位的快捷键和在当前文件中快速定位方法的快捷键，目前E竟然不支持，但是TextMate可是有的；快速删除当前行在TextMate当中是Command+L，但是E貌似没有，诸如此类的功能缺失。所以E和TextMate还是有很大差距的。
+                  但是E确实在主要方面完全克隆了TextMate，所以这些小功能上面的缺失应该只是时间问题。所以相信给E半年左右的时间，E会成为Windows平台当之无愧的TextMate。
+                  2、Komodo - 乏善可陈
+                  Komodo是个定位很传统的脚本IDE，对于ruby没有什么特别好的支持，有最基本的语法高亮和简单的代码提示而已，以及一个简陋的项目树，运行速度还很缓慢，而且还是收费的，实在不值得去用。
+                  3、RoRed - mini ruby IDE
+                  如果你真要去用Komodo，那我建议你改用RoRed，一个专门针对ruby on 
+                  rails开发的简单编辑器，带有ruby语法高亮，项目树，功能简单，可能对某些偏爱UltraEdit/Editplus的人来说用RoRed已经够用了，速度也挺快的。
+                  4、vim/emacs - 不适合Windows平台的ruby IDE
+                  vim以及emacs这些源于Unix平台的IDE，我认为不适合在Windows上面用。因为vim/emacs当初被设计成为一个无鼠标支持的编辑环境，全部依靠键盘命令驱动。当你在Windows下面使用的时候，这种习惯会被打破，从而觉得非常影响效率。
+                  例如在vim里面执行一个generator，Unix上面会在vim窗口中开buffer显示，执行完毕敲一下回车就退出这个buffer了，很方便很快捷。但在Windows平台，竟然会弹出一个DOS窗口，而且把键盘焦点给转移到这个DOS窗口上去了。这就迫使你不得不动用鼠标去选择这个DOS窗口，然后关闭它，再把焦点定位回到vim上面来。这就丧失了vim最大的优势了，反而搞的很麻烦。
+                  当然你可以用Alt+Tab键来切换窗口，不必动用鼠标。但遗憾的是Windows操作系统的窗口切换能力很差，一旦你的windows开的窗口多了，在窗口之间快捷切换是一件很麻烦的事情，还不如鼠标来得快捷。这一点Windows比MacOS有很大的差距。MacOS上面进行多窗口切换那才叫一个爽字呢！
+                  最后我认为轻量级IDE在windows平台的市场不会很大，即使E的功能能够完善到TextMate的程度，也不会有radrails那么普及。主要还是和操作系统的支持有关系：
+                  在MacOS上面，你开一个Textmate窗口，一个浏览器窗口，一个tail 
+                  log窗口，一个命令窗口启动关闭服务器，一个命令窗口进行console调试，一个命令窗口执行单元测试，还有一个命令窗口连接MySQL数据库看数据。在这些窗口之间仅仅使用快捷键进行来回切换是很方便很快捷的事情。
+                  但是Windows的窗口切换功能太弱了，一下开了七个窗口，你编程的时候来回切换的工作效率是很低的。所以在Windows上面要提高工作效率就会倾向于radrails这样的IDE，把所有功能都集成进来了，只要一个radrails窗口，一个浏览器窗口足矣了。这样工作效率才高。
+                  最后值得一提的是，所有这些IDE的rhtml编辑功能还是不如textmate，一旦在html标签里面嵌入代码段，就不能高亮了。而textmate是不会这样的。
+                   
+                  12月30号, ActiveState的发布了最新版本的IDE: Komodo 3.5.1
+                  这个IDE主要是对动态语言开发提供支持, 从这个版本开始,ruby终于得到正式的支持   (3.5版本只有正式的mac 
+                  os版本,下面是它的截图,3.5.1是增加了对windows的支持)
+                  这个真是一个对于ruby开发者的好消息, 一直以来,ruby都缺乏一个好用的开发工具, 自带的FreeRIDE 
+                  在windows上非常不稳定,速度不快,很容易退出.ruby还有一个专门支持vim的模块,但是使用它让我感觉到我学习的不是ruby,而是vi. 
+                  其他第三方的ruby开发工具中,作得好的算jedit的ruby plugin和eclispe的RDT 
+                  ,但是这个工具对于ruby都只能提供很原始的编辑功能, 商业版本的Arachno Ruby 
+                  IDE用起来花钱不说,功能也不怎么样. 据说mac上面的textmate不错,但是遗憾的是我用的是windows
+                  我选择用eclipse RDT来写,因为eclipse内置支持CVS 
+                  (还算不错,起码比wincvs好用,靠这个我放弃了vim) ,对于ruby的开发工具,我不敢奢望能够作到IDEA那样好用, 
+                  也许动态语言是不可能做到那样. 但是代码格式化,即时检错(格式上的低级错误), 
+                  调试环境,版本控制等基本功能实现起来应该不算太难吧
+
+
+                  字体：大 中 小
+
+                  永久地址 
+                  http://www.shengfang.org/blog/p/20070616RorideRubyrails.php
+                  引用地址 http://www.shengfang.org/blog/tb.php?tb_id=1195290333
+
+
+            2007年11月17日17:05星期六  [Info资料] 
+             
+            提示： 
+            此文还没有评论。
+
+
+            称呼：    登陆   注册
+                不注册，但记住我的信息 
+            邮件：
+             (非必须) 
+            评论： [UBB代码帮助]
+              选择字体颜色蓝 橙 深红 红 绿 粉 紫       
+             
+
+
+            验证码：  请输入你看见的数字   
+            关闭UBB      提交时自动将内容复制到剪贴板
+             
+
+            公告
+
+            漫揾英雄泪，相离处士家。
+            谢慈悲剃度在莲台下。
+            没缘法转眼分离乍。
+            赤条条来去无牵挂。
+            哪里讨烟蓑雨笠卷单行，
+            一任俺芒鞋破钵随缘化。
+
+
+
+            统计信息
+            [Yippee]||[统计]||日志：1512
+            在线： 13||用户： 2462 [列表] 
+            今日：2214||到访：1945211
+            Rss：649574||评论：1328
+
+
+
+            最新日志
+            · 20070719 orcas Crab ...
+            · 20070719 详细日志 安全设置重置
+            · 20070719 sqlcmd Crab...
+            · 20070719 win2003 sp2...
+            · 20070719 PayPal Crab...
+
+
+
+            最新评论
+            · 首先感谢楼主,我的邮件暴...
+            · 我也需要一個注冊碼，再麻...
+            · Great! Thank...
+            · test all
+            · 麻烦您把V1.7.6的注...
+
+
+
+
+            友情链接
+
+            申请链接 全部链接 
+
+
+            日历
+                  3月42007 - 073年4
+                        日一二三四五六
+                        1234567
+                        891011121314
+                        15161718192021
+                        22232425262728
+                        293031    
+
+
+
+
+            最新引用
+            · s.....
+            · 04030 _begin...
+            · 0310&Acirc;  IRJIT...
+            · 0310&Acirc;  IRJIT...
+            · &ccedil;&#148;&sup3;è&macr;·&aelig;&#136;&#144;&aring;&#138;&#159;...
+
+
+
+
+            搜索
+             高级
+
+
+            归档
+            · 七月， 2007
+            · 六月， 2007
+            · 五月， 2007
+            · 四月， 2007
+            · 三月， 2007
+
+
+            杂项
+
+
+
+
+
+闽ICP备05002499号 | | |Admin 
+5 reads, 2 writes, processed in 0.0561950s, Gzip enabled

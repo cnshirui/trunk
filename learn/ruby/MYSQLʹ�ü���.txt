@@ -1,0 +1,192 @@
+MYSQL使用简述_51CTO.COM_领先的中文IT技术网站频 道 直 达 - 新闻 - 读书 - 培训 - 教程 - 前沿 - 组网 - 系统应用 - 安全 
+- 编程 - 存储 - 操作系统 - 数据库 - 服务器 - 专题 - 产品 - 案例库 - 技术圈 - 博客 - BBS
+首页>>数据库>>MySQL>>找资料：  文章 专题 圈子 博客 论坛 百度 google   专区直达 新闻 培训 软件 教程 前沿 组网 系统应用 
+  安全 编程 存储 操作系统 数据库 服务器 专题 产品 案例 数据中心 读书频道 MYSQL使用简述
+作者: 出处:51CTO.com整理　 ( 16 ) 砖  ( 21 ) 好  评论 ( 1 ) 条 　进入论坛 
+更新时间：2005-11-29 11:25
+关 键 词：SQL  MySQL
+阅读提示：本文中从连接MYSQL、修改密码、增加用户等方面来学习一些MYSQL的常用命令。 
+一、连接MYSQL。 
+
+格式： mysql -h主机地址 -u用户名 －p用户密码 
+
+
+1、例1：连接到本机上的MYSQL。 
+
+首先在打开DOS窗口，然后进入目录 mysqlbin，再键入命令mysql -uroot 
+-p，回车后提示你输密码，如果刚安装好MYSQL，超级用户root是没有密码的，故直接回车即可进入到MYSQL中了，MYSQL的提示符是：mysql> 
+2、例2：连接到远程主机上的MYSQL。假设远程主机的IP为：110.110.110.110，用户名为root,密码为abcd123。则键入以下命令： 
+
+mysql -h110.110.110.110 -uroot -pabcd123 
+
+（注:u与root可以不用加空格，其它也一样） 
+3、退出MYSQL命令： exit （回车） 
+
+
+二、修改密码
+
+
+格式：mysqladmin -u用户名 -p旧密码 password 新密码 
+
+1、例1：给root加个密码ab12。首先在DOS下进入目录mysqlbin，然后键入以下命令 
+
+mysqladmin -uroot -password ab12 
+
+注：因为开始时root没有密码，所以-p旧密码一项就可以省略了。 
+
+2、例2：再将root的密码改为djg345。 
+
+mysqladmin -uroot -pab12 password djg345 
+
+
+三、增加新用户
+（注意：和上面不同，下面的因为是MYSQL环境中的命令，所以后面都带一个分号作为命令结束符） 
+
+格式：grant select on 数据库.* to 用户名@登录主机 identified by "密码" 
+
+例1、增加一个用户test1密码为abc，让他可以在任何主机上登录，并对所有数据库有查询、插入、修改、删除的权限。首先用以root用户连入MYSQL，然后键入以下命令： 
+
+
+grant select,insert,update,delete on *.* to test1@"%" Identified by "abc"; 
+
+但例1增加的用户是十分危险的，你想如某个人知道test1的密码，那么他就可以在internet上的任何一台电脑上登录你的mysql数据库并对你的数据可以为所欲为了，解决办法见例2。 
+
+
+
+例2、增加一个用户test2密码为abc,让他只可以在localhost上登录，并可以对数据库mydb进行查询、插入、修改、删除的操作（localhost指本地主机，即MYSQL数据库所在的那台主机），这样用户即使用知道test2的密码，他也无法从internet上直接访问数据库，只能通过MYSQL主机上的web页来访问了。 
+
+
+grant select,insert,update,delete on mydb.* to test2@localhost identified by 
+"abc"; 
+
+如果你不想test2有密码，可以再打一个命令将密码消掉。 
+
+grant select,insert,update,delete on mydb.* to test2@localhost identified by "";
+ 
+注意：你必须首先登录到MYSQL中，以下操作都是在MYSQL的提示符下进行的，而且每个命令以分号结束。 
+
+四、操作技巧
+
+
+1、如果你打命令时，回车后发现忘记加分号，你无须重打一遍命令，只要打个分号回车就可以了。也就是说你可以把一个完整的命令分成几行来打，完后用分号作结束标志就OK。 
+
+
+2、你可以使用光标上下键调出以前的命令。但以前我用过的一个MYSQL旧版本不支持。我现在用的是mysql-3.23.27-beta-win。 
+
+五、显示命令
+
+
+1、显示数据库列表。 
+
+show databases; 
+
+刚开始时才两个数据库：mysql和test。mysql库很重要它里面有MYSQL的系统信息，我们改密码和新增用户，实际上就是用这个库进行操作。 
+
+
+2、显示库中的数据表： 
+
+use mysql； ／／打开库，学过FOXBASE的一定不会陌生吧 
+
+show tables; 
+
+
+3、显示数据表的结构： 
+
+describe 表名; 
+
+
+4、建库： 
+
+create database 库名; 
+
+
+5、建表： 
+
+use 库名； 
+
+create table 表名 (字段设定列表)； 
+
+
+6、删库和删表: 
+
+drop database 库名; 
+
+drop table 表名； 
+
+
+7、将表中记录清空： 
+
+delete from 表名; 
+
+
+8、显示表中的记录： 
+
+select * from 表名; 
+
+六、一个建库和建表以及插入数据的实例 
+
+
+drop database if exists school; //如果存在SCHOOL则删除 
+
+create database school; //建立库SCHOOL 
+
+use school; //打开库SCHOOL 
+
+create table teacher //建立表TEACHER 
+
+( 
+
+id int(3) auto_increment not null primary key, 
+
+name char(10) not null, 
+
+address varchar(50) default '深圳', 
+
+year date 
+
+); //建表结束 
+
+//以下为插入字段 
+
+insert into teacher values('','glchengang','深圳一中','1976-10-10'); 
+
+insert into teacher values('','jack','深圳一中','1975-12-23'); 
+
+注：在建表中（1）将ID设为长度为3的数字字段:int(3)并让它每个记录自动加一:auto_increment并不能为空:not 
+null而且让他成为主字段primary key
+（2）将NAME设为长度为10的字符字段
+（3）将ADDRESS设为长度50的字符字段，而且缺省值为深圳。varchar和char有什么区别呢，只有等以后的文章再说了。
+（4）将YEAR设为日期字段。 
+
+
+如果你在mysql提示符键入上面的命令也可以，但不方便调试。你可以将以上命令原样写入一个文本文件中假设为school.sql，然后复制到c:\下，并在DOS状态进入目录\mysql\bin，然后键入以下命令： 
+
+
+mysql -uroot -p密码 < c:\school.sql 
+
+如果成功，空出一行无任何显示；如有错误，会有提示。（以上命令已经调试，你只要将//的注释去掉即可使用）。 
+
+七、将文本数据转到数据库中
+
+
+1、文本数据应符合的格式：字段数据之间用tab键隔开，null值用\n来代替. 
+
+例： 
+
+3 rose 深圳二中 1976-10-10 
+
+4 mike 深圳一中 1975-12-23 
+
+2、数据传入命令 load data local infile "文件名" into table 表名; 
+
+注意：你最好将文件复制到\mysql\bin目录下，并且要先用use命令打表所在的库 。 
+
+八、备份数据库
+（命令在DOS的\mysql\bin目录下执行） 
+
+mysqldump --opt school>school.bbb 
+
+注释:将数据库school备份到school.bbb文件，school.bbb是一个文本文件，文件名任取，打开看看你会有新发现。 
+
+
+

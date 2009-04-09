@@ -1,0 +1,343 @@
+{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fmodern\fprq6\fcharset134 \'cb\'ce\'cc\'e5;}}
+{\*\generator Msftedit 5.41.15.1507;}\viewkind4\uc1\pard\lang2052\f0\fs20\par
+1st thanks for a great gem :) Really simplified things a lot.\par
+\par
+I\rquote m currently using 0.6.3 after the problem with calling length on nil fbparams but started getting some strange behavior during authentication. (This started happening hours after the revert so not related)\par
+\par
+Looking through the logs (Relevant section included below with incriminating bits removed) I can see my application redirecting to the facebook login page, it comes back to my callback url with \b an auth_token\b0 , then from what I can see the before_login_filter redirects back to the login url again after which it comes back with \b a different auth_token \b0 which is then \b send to auth.getSession\b0  which throws back a rude ERROR 100: Invalid parameter. I assumes that is because of the \b two different auth tokens \b0 and Facebook probably \b expects the former\b0 .\par
+\par
+I\rquote m a bit stumped, walked back over subversion commits to my app but nothing that I can see would lead to this double redirect. I\rquote m very new to Rails/Ruby as well so excuse me if the problem is obvious :)\par
+\par
+Any pointers appreciated.\par
+\par
+Processing F8Controller#index (for 196.211.11.83 at 2007-07-24 10:45:07) [GET] Session ID: c33397fed041554ccd073394df7d9175 Parameters: \{\ldblquote action\rdblquote =>\rdblquote index\rdblquote , \ldblquote controller\rdblquote =>\rdblquote f8\rdblquote\}\par
+Redirected to http://www.facebook.com/login.php?v=1.0&api_key\'a1\'ad\par
+Filter chain halted as [#<actioncontroller::filters::classmethods::symbolfilter:0x30c2f80>] returned false.\par
+Completed in 0.00010 (10000 reqs/sec) | 302 Found [http://mysite/f8/]\par
+\par
+Processing F8Controller#index (for 196.211.11.83 at 2007-07-24 10:45:12) [GET] Session ID: c33397fed041554ccd073394df7d9175 Parameters: \{\ldblquote action\rdblquote =>\rdblquote index\rdblquote , \ldblquote auth_token\rdblquote =>\rdblquote fd326abfeada80743ca1cf4bd3f9434a\rdblquote , \ldblquote controller\rdblquote =>\rdblquote f8\rdblquote\}\par
+Redirected to http://www.facebook.com/login.php?v=1.0&api_key\'a1\'ad\par
+Filter chain halted as [#<actioncontroller::filters::classmethods::symbolfilter:0x30c2f80>] returned false.\par
+Completed in 0.73500 (1 reqs/sec) | 302 Found [http://mysite/f8/?auth_token=fd326abfeada80743c\'a1\'ad]\par
+\par
+Processing F8Controller#index (for 196.211.11.83 at 2007-07-24 10:45:18) [GET] Session ID: c33397fed041554ccd073394df7d9175 Parameters: \{\ldblquote action\rdblquote =>\rdblquote index\rdblquote , \ldblquote auth_token\rdblquote =>\rdblquote 919a7f30ac434afd3ef462591600d3ba\rdblquote , \ldblquote controller\rdblquote =>\rdblquote f8\rdblquote\}\par
+Rendering f8/index\par
+Completed in 0.90700 (1 reqs/sec) | Rendering: 0.07800 (8%) | 200 OK [http://mysite/f8/?auth_token=919a7f30ac434afd3e\'a1\'ad]\par
+\par
+Processing F8Controller#index (for 196.211.11.83 at 2007-07-24 10:45:24) [GET] Session ID: c33397fed041554ccd073394df7d9175 Parameters: \{\ldblquote action\rdblquote =>\rdblquote index\rdblquote , \ldblquote auth_token\rdblquote =>\rdblquote 919a7f30ac434afd3ef462591600d3ba\rdblquote , \ldblquote controller\rdblquote =>\rdblquote f8\rdblquote\}\par
+\par
+RFacebook::FacebookSession::RemoteException (ERROR 100: Invalid parameter (\ldblquote auth.getSession\rdblquote , \{:api_key=>\rdblquote myapikey\rdblquote , :v=>\rdblquote 1.0\rdblquote , :sig=>\rdblquote 623b1ea42e35ce1b1f3380d881e88974\rdblquote , :method=>\rdblquote facebook.auth.getSession\rdblquote , :auth_token=>\rdblquote 919a7f30ac434afd3ef462591600d3ba\rdblquote\})): D:/Ruby/lib/ruby/gems/1.8/gems/rfacebook-0.6.3/lib/facebook_session.rb:196:in `call_method\rquote  D:/Ruby/lib/ruby/gems/1.8/gems/rfacebook-0.6.3/lib/facebook_web_session.rb:146:in `activate_with_token\rquote  D:/Ruby/lib/ruby/gems/1.8/gems/rfacebook-0.6.3/lib/facebook_rails_controller_extensions.rb:104:in `handle_facebook_login\rquote  D:/Ruby/lib/ruby/gems/1.8/gems/rfacebook-0.6.3/lib/facebook_rails_controller_extensions.rb:118:in `require_facebook_login\rquote  D:/Ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `send\rquote  D:/Ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `call\rquote\par
+\par
+--------------------------------------------------------------------------------\par
+\par
+RFacebook::FacebookSession::RemoteStandardError in InvitesController#index \par
+ERROR 100: Invalid parameter ("auth.getSession", \{:v=>"1.0", :sig=>"ce23b03e6ef0c13446efda66cdcf65ac", :auth_token=>"43fb4ee7b1087cdf4b5672a524bcf35e", :method=>"facebook.auth.getSession", :api_key=>"4cc93d780d68718432a4f9446c0ceff9"\})\par
+RAILS_ROOT: ./script/../config/..\par
+\par
+Application Trace | Framework Trace | Full Trace \par
+\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_session.rb:235:in `call_method'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_web_session.rb:141:in `activate_with_token'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_rails_controller_extensions.rb:134:in `handle_facebook_login'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_rails_controller_extensions.rb:151:in `require_facebook_login'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `send'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `call'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:435:in `call'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'\par
+c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+script/server:3\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_session.rb:235:in `call_method'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_web_session.rb:141:in `activate_with_token'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_rails_controller_extensions.rb:134:in `handle_facebook_login'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rfacebook-0.7.1/lib/facebook_rails_controller_extensions.rb:151:in `require_facebook_login'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `send'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:456:in `call'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:435:in `call'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:637:in `call_filter'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:619:in `perform_action_without_benchmark'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'\par
+c:/ruby/lib/ruby/1.8/benchmark.rb:293:in `measure'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/benchmarking.rb:66:in `perform_action_without_rescue'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/rescue.rb:83:in `perform_action'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `send'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:430:in `process_without_filters'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/filters.rb:624:in `process_without_session_management_support'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/session_management.rb:114:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/actionpack-1.13.3/lib/action_controller/base.rb:330:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/dispatcher.rb:41:in `dispatch'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:78:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `synchronize'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/rails.rb:76:in `process'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:618:in `process_client'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `each'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:617:in `process_client'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `initialize'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `new'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:736:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `initialize'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `new'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel.rb:720:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:271:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `each'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/configurator.rb:270:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:127:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/lib/mongrel/command.rb:211:in `run'\par
+c:/ruby/lib/ruby/gems/1.8/gems/mongrel-1.0.1-mswin32/bin/mongrel_rails:243\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:488:in `load'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/servers/mongrel.rb:60\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/rails-1.2.3/lib/commands/server.rb:39\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'\par
+c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:342:in `new_constants_in'\par
+c:/ruby/lib/ruby/gems/1.8/gems/activesupport-1.4.2/lib/active_support/dependencies.rb:495:in `require'\par
+script/server:3\par
+Request\par
+Parameters: \{"sent"=>"1", "auth_token"=>"43fb4ee7b1087cdf4b5672a524bcf35e"\}\par
+\par
+Show session dump\par
+\par
+--- \par
+:rfacebook_fbsession: !ruby/object:RFacebook::FacebookWebSession \par
+  api_key: 4cc93d780d68718432a4f9446c0ceff9\par
+  api_secret: 72d04acffd4edb080594e8cf9a009916\par
+  api_server_base_url: api.facebook.com\par
+  api_server_path: /restserver.php\par
+  callcache: \{\}\par
+\par
+  last_call_was_successful: false\par
+  last_error: "ERROR 100: Invalid parameter (\\"auth.getSession\\", \{:v=>\\"1.0\\", :sig=>\\"ce23b03e6ef0c13446efda66cdcf65ac\\", :auth_token=>\\"43fb4ee7b1087cdf4b5672a524bcf35e\\", :method=>\\"facebook.auth.getSession\\", :api_key=>\\"4cc93d780d68718432a4f9446c0ceff9\\"\})"\par
+  last_error_code: "100"\par
+  session_expired: false\par
+  suppress_exceptions: false\par
+flash: !map:ActionController::Flash::FlashHash \{\}\par
+\par
+\par
+Response\par
+Headers: \{"cookie"=>[], "Cache-Control"=>"no-cache"\}\par
+\par
+--------------------------------------------------------------------------------\par
+\par
+Bookmark & Share \u169? Add This \par
+  Del.icio.us   Digg \par
+  Reddit   Google \par
+  Furl   StumbleUpon \par
+  Live   Technorati \par
+  Ask   Yahoo MyWeb \par
+  Facebook   More... \par
+ \par
+ browse \par
+forums \par
+recent posts \par
+  - this forum \par
+  - all forums \par
+people in \par
+  - this forum \par
+  - all forums \par
+search \par
+this forum \par
+all forums \par
+signup login \par
+Ruby on Rails Facebook\par
+conversations videos links This is a conversation in Facebook & Ruby Help \par
+invalid auth_token parameter should be caught? \par
+  \par
+ \par
+\par
+Aug 10, 2007 6:09pm \par
+ jamesjyu \par
+2 posts\par
+  in handle_facebook_login, if there is a auth_token parameter detected, it attempts to active with the token. This is all fine when the auth_token is first submitted (right after the login page calls the callback url). But, what if the user reloads the page, thus giving the same auth_token (assuming no infinite sessions)?\par
+\par
+handle_facebook_login will then happily try to reauthenticate using the same auth_token, which will raise an error 100: invalid parameter. This isn\rquote t very nice to the user. Instead, we should probably be catching the error, and then basically invalidating the login, so that we can get another auth_token the right way.\par
+\par
+I propose we change the code to:\par
+\par
+def handle_facebook_login\par
+\par
+if (params["auth_token"] and !in_facebook_canvas?)session[:rfacebook_fbsession] = FacebookWebSession.new(facebook_api_key, facebook_api_secret)\par
+  begin\par
+    session[:rfacebook_fbsession].activate_with_token(params["auth_token"])\par
+  rescue RFacebook::FacebookSession::RemoteStandardError\par
+    return\par
+  endif session[:rfacebook_fbsession].is_valid?\par
+  RAILS_DEFAULT_LOGGER.debug "* rfacebook: Login was successful, calling finish_facebook_login" \par
+  finish_facebook_login\par
+endelse\par
+  RAILS_DEFAULT_LOGGER.debug "* rfacebook: Didn't activate session from handle_facebook_login" \par
+endendBy the way, is there a code markup functionality in beast? Posting code here is very annoying without proper formatting\'a1\'ad\par
+\par
+Also, there is a bug in beast where if you hit edit, you are not editing the up-to-date text in the post.. also annoying.\par
+ \par
+   \par
+Aug 11, 2007 3:03pm \par
+ livelearncode \par
+34 posts\par
+  James \endash  could you submit this as a patch to the Rubyforge project? It\rquote ll be easier to consider, as well as track that you \ldblquote officially\rdblquote  suggested it. Just go to:\par
+\par
+http://rubyforge.org/tracker/?atid=13798&group_\'a1\'ad\par
+\par
+Thanks!\par
+ \par
+   \par
+Aug 11, 2007 8:57pm \par
+ livelearncode \par
+34 posts\par
+  Gem version 0.8.6 should fix this now. Let me know if you still run into problems.\par
+ \par
+   \par
+Aug 14, 2007 5:13am \par
+ Blake \par
+8 posts\par
+  I\rquote m having a similar problem using rfacebook 0.8.6. After calling notification.send the user is redirected to an email confirmation page. When they submit, the return to my app is via an auth_token. I\rquote m having trouble figuring this one out because I don\rquote t quite understand the auth model. Any clues?\par
+\par
+Processing FacebookController#index (for 71.232.173.189 at 2007-08-14 01:09:39) [GET]\par
+  Session ID: 0c61ae5bae25e49ca8efa74cada1337b\par
+  Parameters: \{"format"=>"fbml", "sent"=>"1", "action"=>"index", "auth_token"=>"4d246a3403d703dc60a7a9d07fe0536b", "controller"=>"facebook"\}\par
+** RFACEBOOK INFO: creating a new Facebook session from auth_token\par
+** RFACEBOOK(GEM) - RFacebook::FacebookSession#call_method - auth.getSession(\{:auth_token=>"4d246a3403d703dc60a7a9d07fe0536b"\}) - making remote call\par
+** RFACEBOOK(GEM) - RFacebook::FacebookSession#call_method - auth.getSession(\{:sig=>"b2dcd692a0ec40781aeede09bf6fd7c4", :auth_token=>"4d246a3403d703dc60a7a9d07fe0536b", :method=>"facebook.auth.getSession", :api_key=>"d15f71dd402815738959cf2b18336a85", :v=>"1.0"\}) - remote call failed\par
+\par
+RFacebook::FacebookSession::RemoteStandardError (ERROR 100: Invalid parameter ("auth.getSession", \{:sig=>"b2dcd692a0ec40781aeede09bf6fd7c4", :auth_token=>"4d246a3403d703dc60a7a9d07fe0536b", :method=>"facebook.auth.getSession", :api_key=>"d15f71dd402815738959cf2b18336a85", :v=>"1.0"\})):\par
+    /vendor/gems/rfacebook-0.8.6/lib/facebook_session.rb:249:in `call_method'\par
+    /vendor/gems/rfacebook-0.8.6/lib/facebook_web_session.rb:141:in `activate_with_token'\par
+    /vendor/gems/rfacebook-0.8.6/lib/rfacebook_on_rails/controller_extensions.rb:156:in `handle_facebook_login'\par
+    /vendor/gems/rfacebook-0.8.6/lib/rfacebook_on_rails/controller_extensions.rb:188:in `require_facebook_login'\par
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:469:in `send'\par
+ \par
+   \par
+Aug 14, 2007 1:32pm \par
+ livelearncode \par
+34 posts\par
+  When the user clicks send, does it go directly back to your public URL (www.yourpage.com/index), or inside the Canvas (apps.facebook.com/yourappname/index)? A detailed step-by-step would help as well.\par
+ \par
+   \par
+Aug 14, 2007 2:05pm \par
+ Blake \par
+8 posts\par
+  I\rquote m away from the app right now but I\rquote m about 99% sure it redirected to my callback URL which is a canvas page. The params \ldblquote auth_token\rdblquote  and \ldblquote sent\rdblquote  are passed along with the GET request (\ldblquote controller\rdblquote , \ldblquote action\rdblquote , and \ldblquote format\rdblquote  params in my output are coming from my routing).\par
+\par
+This is the best I can do for a reproducer right now \'a1\'ad\par
+\par
+1) Submit a form containing a list of facebook_uid\rquote s for friends to send a message to.\par
+2) In the controller, render notification and email to string. Grad the uids from the form params.\par
+3) Use Facebook API to send the message\par
+\par
+\par
+xml = fbsession.notifications_send( :to_ids => @uids.join(','), :email => email, :notification => notification)\par
+\par
+4) Get your response URL. This is the Facebook redirect.\par
+\par
+@response_url = CGI.unescapeHTML(xml.hpricot.at("//notifications_send_response").inner_html)\par
+\par
+5) If @response_url smells like a URL, render a FBML redirect.\par
+6) At this point, you\rquote re shuffled out of your app into a Facebook message send confirmation. The user has 2 choices: \ldblquote send it\rdblquote  and \ldblquote ignore it\rdblquote .\par
+7) Click either option and then Facebook redirects back to your callback URL with only the \ldblquote auth_token\rdblquote  and \ldblquote sent\rdblquote  params set using GET.\par
+\par
+My expected behavior was that I\rquote d get a POST back somewhere with all the normal fb_* goodies in the params but that doesn\rquote t seem to be the case.\par
+\par
+My callback_url canvas page has a require_facebook_login before_filter set on it.\par
+ \par
+   \par
+2 days ago \par
+ livelearncode \par
+34 posts\par
+  I\rquote ll need to know in Step 7 whether this redirected to your actual callback URL (outside Facebook) or to the canvas URL (inside Facebook).\par
+\par
+Also a few notes on your RFacebook usage:\par
+\par
+your \ldblquote to_ids\rdblquote  does not actually have to be a comma-separated string. RFacebook automatically converts arrays to comma-separated strings for you :) \par
+you don\rquote t have to use the hpricot document to parse the response\'a1\'adyou can use \ldblquote xml.response\rdblquote  in 0.8.6 and up. In fact, the next release of RFacebook should automatically unescape the HTML entities if you use that syntax instead of the Hpricot document directly. \par
+ \par
+   \par
+2 days ago \par
+ Blake \par
+8 posts\par
+  When the exception occurs in Rails, I get a Rails exception handler page and the URL left in my browser is my \ldblquote outside Facebook\rdblquote  callback URL.\par
+\par
+Does that answer your question?\par
+\par
+Thanks!\par
+ \par
+\par
+Reply to conversation\par
+\par
+  Formatting Help\par
+*bold*       _italics_      \par
+bq. (quotes) \par
+"IBM":http://www.ibm.com \par
+* or # (lists) \par
+ \par
+or cancel  \par
+\par
+\u171? facebook session trickery rescue clause not working? \u187? Reply to conversation\par
+Voices\par
+ livelearncode \par
+ Blake \par
+ jamesjyu \par
+\par
+--------------------------------------------------------------------------------\par
+\par
+ Ruby on Rails Facebook Feed\par
+ Feed for this conversation \par
+\par
+A Jypsie forum. Powered by Beast.\par
+Psst... we're experimenting. Having a problem? E-mail us: feedback@jypsie.com \par
+\par
+\par
+}
+ 

@@ -1,4 +1,40 @@
-<<<<<<< HEAD:prog.txt
+//(properties|bindings)/property
+//properties/property
+//properties/property | //styles/property
+//(properties)/property | //styles/property
+
+p4 where d:\/*
+path 'd:\/*' is not under client's root 'd:\
+
+Indicator (@3cf68ac1)
+Indicator (@3cf68b41)
+Indicator (@3cf68c81)
+
+- <invoke name="requestUserSelectionComplete" returntype="xml">
+- <arguments>
+  <string>BO5BA73FE3622C4BA380DA98ACFD383850</string> 
+  </arguments>
+  </invoke>
+  
+>	Xcelsius.exe!CShockwaveFlash::CallFunction(const wchar_t * request=0x029f7008)  Line 513 + 0x1f bytes	C++
+
+
+TypeError: Error #1088: The markup in the document following the root element must be well-formed.
+	at flash.external::ExternalInterface$/call()
+	at xcelsius.propertySheets.impl::PropertySheetExternalProxy/bind()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\classes\xcelsius\propertySheets\impl\PropertySheetExternalProxy.as:107]
+	at IndicatorHelper/changeNameBinding()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\projects\propertySheets\GaugePropertySheet\IndicatorHelper.as:101]
+	at GaugeChunk/onChangeNameBinding()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\projects\propertySheets\GaugePropertySheet\GaugeChunk.mxml:85]
+	at GaugeChunk/___nameBinding_change()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\projects\propertySheets\GaugePropertySheet\GaugeChunk.mxml:247]
+	at flash.events::EventDispatcher/dispatchEventFunction()
+	at flash.events::EventDispatcher/dispatchEvent()
+	at mx.core::UIComponent/dispatchEvent()[E:\dev\flex_201_borneo\sdk\frameworks\mx\core\UIComponent.as:8389]
+	at xcelsius.propertySheets.controls::PropertyBindingButton/bindingCallBack()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\classes\xcelsius\propertySheets\controls\PropertyBindingButton.as:631]
+	at xcelsius.propertySheets.controls::PropertyBindingButton/checkUserSelection()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\classes\xcelsius\propertySheets\controls\PropertyBindingButton.as:561]
+	at Function/http://adobe.com/AS3/2006/builtin::apply()
+	at flash.external::ExternalInterface$/_callIn()
+	at <anonymous>()
+
+	<<<<<<< HEAD:prog.txt
 private var _indicatorLabels:Array = ['Indicator 1'];
 =======
     mingwm10.dll
@@ -9,13 +45,6 @@ private var _indicatorLabels:Array = ['Indicator 1'];
 	
 	qt windows, this application has requested the runtime to terminate it in an unusual way.
 Msvcirt.dll		Msvcrt.dll  ieshims.dll
-
-我收到了，当时买错了，想换成这本：  [212026]  (二手)密码学概论 	7115121842  。我已经在这个订单里买了，可以直接在你们送货的时候退给你们？谢谢！
-
-
-这本书我买错了， [212017]  (二手)密码学基础  	7115103550   
-本来想买：  [212026]  (二手)密码学概论 	7115121842  。
-可以换一下么？你们送书的时候我把这本书退给你们可以么？谢谢!
 
 	if(_tcscmp(range, _T("'Sheet1'!$B$2:$B$5")) == 0)
 	{
@@ -166,3 +195,12 @@ Unable to create '.git/refs/remotes/mydepot/\refs\heads\master.lock': No such fi
 您所查询的是由中国怡敏信公司销售的TDK品牌数据存储产品的正牌编码，谢谢查询！
 
 font, source list, ruby, vim, 
+
+
+我收到了，当时买错了，想换成这本：  [212026]  (二手)密码学概论 	7115121842  。我已经在这个订单里买了，可以直接在你们送货的时候退给你们？谢谢！
+
+
+这本书我买错了， [212017]  (二手)密码学基础  	7115103550   
+本来想买：  [212026]  (二手)密码学概论 	7115121842  。
+可以换一下么？你们送书的时候我把这本书退给你们可以么？谢谢!
+http://id.91cool.net/sign/?name=frank%20g%20&say=Happy%20%20%20%20April%20%20%20%20Fool

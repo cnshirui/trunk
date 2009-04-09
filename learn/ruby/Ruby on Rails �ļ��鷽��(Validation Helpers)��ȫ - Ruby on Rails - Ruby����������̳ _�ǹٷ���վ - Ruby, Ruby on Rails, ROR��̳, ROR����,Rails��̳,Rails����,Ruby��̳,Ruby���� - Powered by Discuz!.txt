@@ -1,0 +1,250 @@
+Ruby on Rails 的检验方法(Validation Helpers)大全 - Ruby on Rails - Ruby中文社区论坛 _非官方网站 - Ruby, Ruby on Rails, ROR论坛, ROR社区,Rails论坛,Rails社区,Ruby论坛,Ruby社区 - Powered by Discuz!
+      在 @ruby-lang.org.cn 中获取一个免费的电子邮件帐户
+注册 检查电子邮件 
+cnshirui: 退出 | 短消息 | 会员 | 搜索 | 奖励 | 我的 | 控制面板 | 道具 | 帮助 
+
+Ruby中文社区论坛 &raquo; Ruby on Rails &raquo; Ruby on Rails 的检验方法(Validation Helpers)大全
+      [招蓦应用程序中文化版块版主及小组成员] [希望大家加入社区开源项目]
+
+      &#8249;&#8249; 上一主题 | 下一主题 &#8250;&#8250;
+
+      打印 | 推荐 | 订阅 | 收藏 标题: Ruby on Rails 的检验方法(Validation Helpers)大全
+
+ skyover 
+
+      网站管理员
+
+
+
+
+        
+      UID 1
+      精华 0
+      积分 470
+      帖子 811
+      R币 64 
+      贡献 52 
+      阅读权限 200
+      注册 2007-6-6
+      状态 在线 #1使用道具 发表于 2007-6-11 11:29 资料 个人空间 短消息 加为好友 
+
+            Ruby on Rails 的检验方法(Validation Helpers)大全
+
+
+            可以自定义validate(), 这个方法在每次保存数据时都会被调用.
+            如:
+            def validate
+            if name.blank? && email.blank?
+              errors.add_to_base("You mustspecify a name or an email address")
+            end
+            end
+            同时也可以自定义 validate_on_create(),validate_on_update()方法.
+            valid?()方法可以随时调用,用来测试数据是否能通过校验
+            返回的错误信息可用 error_messages_for(model)方法显示.
+            如:<%= error_messages_for 'article' %>
+
+            校验大全:
+            validates_acceptance_of
+            指定checkbox应该选中. (如:(*)我同意条款)
+            用法:validates_acceptance_of attr... [ options...]
+            参数:message text  默认:“mustbe accepted.”
+               :on :save,:create, or :update
+            实例:
+            class Order < ActiveRecord::Base
+              validates_acceptance_of:terms,
+                          :message=> "Please accept the terms to proceed"
+            end
+            validates_associated
+            查验指定的object.
+            用法:validates_associated name... [ options...]
+            参数:message text 默认: is “is invalid.”
+               :on :save,:create, or :update
+            实例:
+            class Order < ActiveRecord::Base
+              has_many :line_items
+              belongs_to :user
+              validates_associated:line_items,
+                        :message=> "are messed up"
+              validates_associated:user
+            end
+            validates_confirmation_of
+            数据重校
+            用法:validates_confirmation_of attr... [options... ]
+            参数:message text 默认 “doesn’t matchconfirmation.”
+               :on :save,:create, or :update
+            实例:
+            对密码表:
+            <%= password_field "user", "password"%><br />
+            <%= password_field "user","password_confirmation" %><br />
+            #第二表名为xxxx_confirmation
+            class User < ActiveRecord::Base
+              validates_confirmation_of:password
+            end
+            validates_each
+            使用block检验一个或一个以上参数.
+            用法:validates_each attr... [ options... ] {|model, attr, value| ... }
+            参数:allow_nilboolean 设为true时跳过nil对象.
+               :on :save,:create, or :update
+            实例:
+            class User < ActiveRecord::Base
+              validates_each :name, :email do|model, attr, value|
+               ifvalue =~ /groucho|harpo|chico/i
+                model.errors.add(attr,"Youcan't be serious, #{value}")
+               end
+              end
+            end
+            validates_exclusion_of
+            确定被检对象不包括指定数据
+            用法:validates_exclusion_of attr..., :in =>enum [ options... ]
+            #enum指一切可用include?()判断的范围.
+            参数:allow_nil 设为true将直接跳过nil对象.
+               :in (or:within) enumerable
+               :message text默认为: “is not included in the list.”
+               :on :save,:create, or :update
+            实例:
+            class User < ActiveRecord::Base
+              validates_exclusion_of:genre,
+                        :in=> %w{ polka twostep foxtrot },
+                        :message=>"no wild music allowed"
+              validates_exclusion_of:age,
+                         :in=> 13..19,
+                         :message=>"cannot be a teenager"
+            end
+            validates_inclusion_of
+            确认对象包括在指定范围
+            用法:validates_inclusion_of attr..., :in =>enum [ options... ]
+            参数:allow_nil 设为true直接跳过nil对象
+               :in (or:within) enumerable An enumerable object.
+               :message text默认:“is not included in the list.”
+               :on :save,:create, or :update
+            实例:
+            class User < ActiveRecord::Base
+              validates_inclusion_of:gender,
+                        :in=> %w{ male female },
+                        :message=>"should be 'male' or 'female'"
+              validates_inclusion_of:age,
+                        :in=> 0..130,
+                        :message=>"should be between 0 and 130"
+            end
+            validates_format_of
+            用正则检验对象
+            用法:validates_format_of attr..., :with =>regexp [ options... ]
+            参数:message text 默认为: “is invalid.”
+               :on :save,:create, or :update
+               :with正则表达式
+            实例:
+            class User < ActiveRecord::Base
+              validates_format_of :length,:with => /^\d+(in|cm)/
+            end
+            validates_length_of
+            检查对象长度
+            用法:validates_length_of attr..., [ options...]
+            参数:in (or :within) range
+               :isinteger
+               :minimuminteger
+               :maximuminteger
+               :message text默认文字会根据参数变动,可使用%d取代确定的最大,最小或指定数据.
+               :on :save,:create, or :update
+               :too_longtext 当使用了 :maximum后的 :message
+               :too_shorttext ( :minimum )
+               :wrong_length( :is)
+            实例:
+            class User < ActiveRecord::Base
+              validates_length_of :name,:maximum => 50
+              validates_length_of :password,:in => 6..20
+              validates_length_of :address,:minimum => 10,
+                            :message=>"seems too short"
+            end
+            validates_numericality_of
+            检验对象是否为数值
+            用法:validates_numericality_of attr... [options... ]
+            参数:message text 默认 “is not a number.”
+               :on :save,:create, or :update
+               :only_integer
+            实例:
+            class User < ActiveRecord::Base
+              validates_numericality_of:height_in_meters
+              validates_numericality_of :age,:only_integer => true
+            end
+            validates_presence_of
+            检验对象是否为空
+            用法:validates_presence_of attr... [ options...]
+            参数:message text 默认:“can’t be empty.”
+               :on :save,:create, or :update
+            实例:
+            class User < ActiveRecord::Base
+              validates_presence_of :name,:address
+            end
+            validates_uniqueness_of
+            检验对象是否不重复
+            用法:validates_uniqueness_of attr... [ options...]
+            参数:message text 默认: “has already beentaken.”
+               :on :save,:create, or :update
+               :scope attr指定范围
+            实例:
+            class User < ActiveRecord::Base
+              validates_uniqueness_of:name
+            end
+            class User < ActiveRecord::Base
+              validates_uniqueness_of :name,:scope =>"group_id"
+            end
+            #指定在同一group_id的条件下不重复.
+
+            常用正则:
+
+            E-Mail地址格式:
+            validates_format_of    :email,
+                                   :with      => 
+            /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
+                                   :message   => 'email must be valid'
+
+            网址格式:
+            validates_uri_existence_of :url, :with =>
+                   /(^$)|(^(http|https)://[a-z0-9] 
+            ([-.]{1}[a-z0-9])*.[a-z]{2,5}(([0-9]{1,5})?/.*)?$)/ix
+
+
+
+            报告 评分  
+            [广告] R币下完了？来看［赚取R币的三种方式吧］
+
+
+
+
+
+      控制面板首页
+      编辑个人资料
+      积分交易
+      公众用户组
+      好友列表
+      个人空间管理
+
+      基本概况
+      论坛排行
+      主题排行
+      发帖排行
+      积分排行
+      交易排行
+      在线时间
+      管理团队
+      管理统计
+
+      我的话题
+      我的收藏
+      我的订阅
+      我的权限
+      我的交易
+      我的悬赏
+      我的活动
+      我的推广
+      个人空间
+
+
+当前时区 GMT+8, 现在时间是 2007-7-23 23:11
+
+        Powered by Discuz! 5.5.0 &copy; 2001-2007 Comsenz Inc. 
+      Processed in 0.058523 second(s), 6 queries , Gzip enabled TOP
+      清除 Cookies - 联系我们 - Ruby中文网站 - Archiver - WAP 
+
+我要统计  2007-07-23 23:11 Crawled by Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 
+5.1; Maxthon; .NET CLR 2.0.50727) @124.78.102.216 
