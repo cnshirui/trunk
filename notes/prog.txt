@@ -1,3 +1,16 @@
+					
+					
+Version mismatch with vmx86 driver: expecting 138.0, got 167.0.
+You have an incorrect version of driver "vmx86.sys". Try reinstalling VMware Workstation.
+Failed to initialize monitor device.
+
+Cannot find a valid peer process to connect to.
+
+
+After uninstall, delete the vmx86.sys file from your system; it's in system32/drivers. Then reboot. Then reinstall.
+
+(The uninstaller gets most driver unloads right, Windows has been getting better about it.) 
+
 Indicator (@3cf68ac1)
 Indicator (@3cf68b41)
 Indicator (@3cf68c81)
