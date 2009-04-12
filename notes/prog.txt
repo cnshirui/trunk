@@ -1,4 +1,76 @@
-Version mismatch with vmx86 driver: expecting 138.0, got 167.0.
+1. django-admin.py startproject mysite
+ mysite/
+    __init__.py
+    manage.py
+    settings.py
+    urls.py
+2. python manage.py runserver [0.0.0.0][:8080]
+
+------------
+vmware 6.5.2.7026
+vmware: GAEAN-1A0DF-F046V-4PRQ7
+
+Problem signature:
+  Problem Event Name:	BlueScreen
+  OS Version:	6.0.6001.2.1.0.256.6
+  Locale ID:	1033
+
+Additional information about the problem:
+  BCCode:	18
+  BCP1:	80FC352E
+  BCP2:	ABB01868
+  BCP3:	00000002
+  BCP4:	ABB01807
+  OS Version:	6_0_6001
+  Service Pack:	1_0
+  Product:	256_1
+
+Files that help describe the problem:
+  C:\Windows\Minidump\Mini041109-01.dmp
+  C:\Users\shirui\AppData\Local\Temp\WER-39156-0.sysdata.xml
+  C:\Users\shirui\AppData\Local\Temp\WER1F14.tmp.version.txt
+
+Read our privacy statement:
+  http://go.microsoft.com/fwlink/?linkid=50163&clcid=0x0409
+ 
+ --------------------
+ 
+
+
+fixboot
+fixmbr 
+
+
+
+1. add line to conf/httpd.conf
+   - LoadModule php5_module d:/dev/php-5.2.6-Win32/php5apache2_2.dll
+2. AddType application/x-httpd-php .php .html
+3. PHPIniDir "d:/dev/php-5.2.6-Win32/"
+4. zend_extension_ts="D:/dev/php-5.2.6-Win32/php_xdebug-2.0.4-5.3.0-vc9.dll"
+
+
+1. Download XDebug 2.0 from http://www.xdebug.org/.
+2. Setting parameters in PHP.ini file:
+(pls copy the *.dll to $PHP_HOME/ext)
+xdebug.remote_enable=on
+xdebug.remote_handler=dbgp
+xdebug.remote_host=localhost
+xdebug.remote_port=9000
+zend_extension_ts="D:/dev/php-5.2.6-Win32/php_xdebug-2.0.4-5.3.0-vc9.dll"
+
+xdebug.remote_enable=1
+3. Test whether if it is sccucesed after in the Notepad, create a file and type the following text in test.php:
+<?php
+     echo "PHP has been installed successfully!";
+?>
+4. Try to browse the URL: http://localhost/XXXX/test.php. If your see as follow in browser:
+     PHP has been installed successfully! 
+	 
+	 http://127.0.0.1/AirAlliance/flightinfo.php?XDEBUG_SESSION_START=netbeans-xdebug
+	 http://127.0.0.1/AirAlliance/index.php
+	 
+	 
+	 Version mismatch with vmx86 driver: expecting 138.0, got 167.0.
 You have an incorrect version of driver "vmx86.sys". Try reinstalling VMware Workstation.
 Failed to initialize monitor device.
 
