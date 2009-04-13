@@ -23,7 +23,7 @@ if(argc == 2)
   puts $*.inspect
 else
   dir = "D:/migrate/migrate_60"
-  files = ['gauge_sytle_50_60.xlf', 'gauge_sytle_60.xlf']
+  files = ['gauge_60_series_one.xlf', 'gauge_50_series_one_60.xlf']
   files.map! { |file| "#{dir}/#{file}" }
   puts files
   puts "please choose the original xlf file in command line!"
@@ -32,7 +32,7 @@ end
 files = $* unless files
 
 time = Time.now.to_i.to_s
-xmls = files.map { |file| "#{dir}#{file.sub(dir, "").sub(".xlf", ".xml")}" }
+xmls = files.map { |file| "#{dir}/xml_compare/#{file.sub(dir, "").sub(".xlf", ".xml")}" }
 xmls.each { |xml| File.delete(xml) if File.exist?(xml)}
 2.times do |i|
   # unzip xlf
