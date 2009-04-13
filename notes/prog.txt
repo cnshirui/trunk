@@ -1,3 +1,100 @@
+	// migrate DataStore to Persist node
+	MigrateStorePersist(persistParentNode);
+	
+	void xcXLFMigrate::MigrateStorePersist(IUnknownPtr node)
+{
+	//persisted data not kept in the 4.5 parameters.  
+	xc45::datStore *store = m_pCurrentComponent->GetStore();
+	MSXML2::IXMLDOMNodePtr persistParent = node;
+
+	if(!persistParent->selectSingleNode("./array"))
+	{
+
+	}
+
+	if( store )
+	{
+		//MSXML2::IXMLDOMNodePtr arrayNode = pDom->createElement(_T("array"));
+	}
+}
+
+				MSXML2::IXMLDOMDocument2Ptr pDom = m_pDocDOM;
+				MSXML2::IXMLDOMNodePtr arrayNode = pDom->createElement(_T("array"));
+				persistNode->appendChild(arrayNode);
+				arrayNode->appendChild( (MSXML2::IXMLDOMNodePtr) CreatePersistNode(_T("0"), _T("_paramsXML"), m_ReportParamsXML.c_str()) );
+				
+IUnknownPtr xcXLFMigrate::CreateConnectionArrayNode(const TCHAR *id, const TCHAR *type, const TCHAR *value)
+{
+	MSXML2::IXMLDOMDocument2Ptr pDom = m_pDocDOM;
+	MSXML2::IXMLDOMElementPtr node = pDom->createElement("property");
+	node->setAttribute("id", id);
+
+	MSXML2::IXMLDOMNodePtr stringNode = pDom->createElement(type);
+	if(value)
+		stringNode->text = value;
+
+	node->appendChild(stringNode);
+
+	return node;
+
+}
+
+	MSXML2::IXMLDOMDocument2Ptr pDom = m_pDocDOM;
+	MSXML2::IXMLDOMElementPtr node = pDom->createElement("property");
+	node->setAttribute("id", id);
+
+	MSXML2::IXMLDOMNodePtr objNode = pDom->createElement("object");
+
+	node->appendChild(objNode);
+
+	return node;
+	
+IUnknownPtr xcXLFMigrate::CreateConnectionProperty(const TCHAR *name, const TCHAR *value, const TCHAR *type)
+{
+	MSXML2::IXMLDOMDocument2Ptr pDom = m_pDocDOM;
+	MSXML2::IXMLDOMNodePtr propNode =	pDom->createElement(_T("property"));
+	MSXML2::IXMLDOMNodePtr nameNode =	pDom->createElement(_T("name"));
+	MSXML2::IXMLDOMNodePtr nameStringNode = pDom->createElement(_T("string"));
+	MSXML2::IXMLDOMNodePtr valueNode = pDom->createElement(_T("value"));
+
+	MSXML2::IXMLDOMNodePtr valueStringNode;
+
+	if(type != NULL) //hack
+		valueStringNode = pDom->createElement(type);
+
+	nameStringNode->text = name;
+	if(value !=NULL) //hack
+		valueStringNode->text = value;
+
+	nameNode->appendChild(nameStringNode);
+
+	if(type !=NULL) //hack
+		valueNode->appendChild(valueStringNode);
+
+	propNode->appendChild(nameNode);
+	propNode->appendChild(valueNode);
+
+	return propNode;
+}
+
+IUnknownPtr xcXLFMigrate::CreateConnectionArrayNode(const TCHAR *id, const TCHAR *type, const TCHAR *value)
+{
+	MSXML2::IXMLDOMDocument2Ptr pDom = m_pDocDOM;
+	MSXML2::IXMLDOMElementPtr node = pDom->createElement("property");
+	node->setAttribute("id", id);
+
+	MSXML2::IXMLDOMNodePtr stringNode = pDom->createElement(type);
+	if(value)
+		stringNode->text = value;
+
+	node->appendChild(stringNode);
+
+	return node;
+
+}
+	
+				
+				
 1. django-admin.py startproject mysite
  mysite/
     __init__.py

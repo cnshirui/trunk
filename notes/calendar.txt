@@ -1,4 +1,7 @@
-
+Monday, April 13, 2009
+1. build merged c++ dev environment
+2. swap component xuewei
+3. tammy's chart back capability
 
 Thursday, February 26, 2009
 --this week
