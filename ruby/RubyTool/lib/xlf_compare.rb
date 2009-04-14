@@ -22,8 +22,9 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = "D:/migrate/migrate_60"
-  files = ['gauge_60_series_one.xlf', 'gauge_50_series_one_60.xlf']
+  dir = "d:/migrate/tammy"
+  files = ['pie_45_range_row_60.xlf', 'pie_45_range_col_60.xlf']
+
   files.map! { |file| "#{dir}/#{file}" }
   puts files
   puts "please choose the original xlf file in command line!"
