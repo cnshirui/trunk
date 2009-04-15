@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<manifest xmlns="http://schemas.microsoft.com/wlw/manifest/weblog">
+<options>
+    <clientType>Metaweblog</clientType>
+    <supportsCategories>Yes</supportsCategories>
+    <supportsNewCategories>Yes</supportsNewCategories>
+    <supportsCategoriesInline>Yes</supportsCategoriesInline>
+    <supportsNewCategoriesInline>Yes</supportsNewCategoriesInline>
+    <supportsFileUpload>Yes</supportsFileUpload>
+    <supportsEmbeds>Yes</supportsEmbeds>
+    <supportsScripts>No</supportsScripts>
+</options>
+<weblog>
+    <serviceName>Cong Lin's GAE Engine</serviceName>
+    <imageUrl>/favicon.ico</imageUrl>
+    <watermarkImageUrl>/static/images/logo.gif</watermarkImageUrl>
+    <homepageLinkText>View your site</homepageLinkText>
+    <adminLinkText>Manage your site</adminLinkText>  
+    <adminUrl><![CDATA[
+        {blog-homepage-url}/admin/
+    ]]></adminUrl>
+    <postEditingUrl><![CDATA[
+        {blog-homepage-url}/post/edit/{post-id}
+    ]]></postEditingUrl>
+</weblog>
+</manifest>

@@ -1,0 +1,65 @@
+application: wuj-526
+version: 6
+runtime: python
+api_version: 1
+skip_files: |
+ ^(.*/)?(
+ (app\.yml)|
+ (index\.yaml)|
+ (index\.yml)|
+ (#.*#)|
+ (.*~)|
+ (.*\.py[co])|
+ (.*/RCS/.*)|
+ (\..*)|
+ (.*/\.svn/.*)|
+ (.*/Thumbs\.db)|
+ )$
+
+default_expiration: "3650d"
+
+handlers:
+- url: /static
+  static_dir: static
+  
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /favicon.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon.ico
+  mime_type: image/x-icon
+ 
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt   
+
+- url: /canvas.html
+  static_files: static/html/canvas.html
+  upload: static/html/canvas.html  
+
+- url: /wlwmanifest.xml
+  static_files: static/html/wlwmanifest.xml
+  upload: static/html/wlwmanifest.xml
+
+- url: /rpc_relay.html
+  static_files: static/html/rpc_relay.html
+  upload: static/html/rpc_relay.html  
+
+- url: /console/.*
+  script: $PYTHON_LIB/google/appengine/ext/admin
+  login: admin
+
+- url: /test.*
+  script: gaeunit.py
+
+- url: /media
+  static_dir: _generated_media
+
+- url: /.*
+  script: common/appenginepatch/main.py
+
+
+
+

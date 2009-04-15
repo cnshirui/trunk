@@ -1,0 +1,50 @@
+{% block extra_head %}
+<!-- Skin CSS file -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/assets/skins/sam/skin.css">
+<!-- Utility Dependencies -->
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
+<!-- Needed for Menus, Buttons and Overlays used in the Toolbar -->
+<script src="http://yui.yahooapis.com/2.6.0/build/container/container_core-min.js"></script>
+<!-- Source file for Rich Text Editor-->
+<script src="http://yui.yahooapis.com/2.6.0/build/editor/simpleeditor-min.js"></script>
+{%endblock%}
+
+<div class="commentlabel" style="text-align:left;">
+	<h4 id="add_comment"> Add a comment </h4>
+	<form method=post action="" onsubmit="return parseBlogContent()" id="commentform">
+		<h2 class="comments-post">About You</h2>
+			{{ form.as_p }}
+		<br>
+		<input name=submit_addreply type=submit value=submit> <br> <br>
+	</form>
+</div>
+
+{% block body_script %}
+<script>
+	(function() {
+	    //Setup some private variables
+	    var Dom = YAHOO.util.Dom,
+	        Event = YAHOO.util.Event;
+	
+	        //The SimpleEditor config
+	        var myConfig = {
+	            height: '200px',
+	            width: '480px',
+	            dompath: true,
+	            focusAtStart: false
+	        };
+	
+	    //Now let's load the SimpleEditor..
+	    var myEditor = new YAHOO.widget.SimpleEditor('id_content', myConfig);
+	    myEditor._defaultToolbar.buttonType = 'advanced';   
+	    myEditor.render();
+	})();
+
+	function parseBlogContent(){
+		var editor = YAHOO.widget.EditorInfo.getEditorById("id_content");
+		editor.saveHTML();        
+		return true;
+	}
+</script>
+{%endblock%}

@@ -1,0 +1,10 @@
+{%if link_list%}
+	<li>
+	  	<h2 id="Links">Links</h2>
+		<ul>
+			{%for link in link_list%}
+				<li>{{link|safe}}<li>
+			{%endfor%}
+		</ul>
+	</li>
+{%endif%}

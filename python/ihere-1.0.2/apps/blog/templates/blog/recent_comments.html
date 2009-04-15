@@ -1,0 +1,11 @@
+{%if recent_comments%}
+	<li><h2>Latest Comments</h2>
+	<p>
+	{% for c in recent_comments %}
+		<a href="{{c.post.get_permalink}}#comment-{{c.key}}" class="url{{forloop.counter|add:"5"}}" title="{{c.date|date:"Y-m-d H:i"}}">{{forloop.counter}}. {{c.user}} Comment on: {{c.post.title|truncatewords:"10"}} {{c.date|timesince}} ago</a>	
+		<br>
+	{% endfor %}
+	
+	</p>
+	</li>
+{%endif%}

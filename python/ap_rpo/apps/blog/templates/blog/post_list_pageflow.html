@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% load blog_tags %}
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="/static/stylesheets/jqpageflow.css" />
+	<!-- include our jquery scripts -->
+    <script src="/static/js/jquery.jqpageflow.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    	
+	    	$("body").flexiPagination({
+	    		url: "/",
+	   			currentPage: 0,
+	   			totalResults: 300,
+	   			perPage: 5,
+	   			container: "#mycontainer",
+	   			pagerVar : "p",
+	   			loaderImgPath: "/static/images/loader.gif",
+	   			debug : 1
+	    	});
+    	});
+    </script>
+{% endblock %}
+
+{% block content %}
+{% include "paginator.html" %}
+{% for post in post_list %}				
+	{%show_blog_post post%}
+{%endfor%}
+		<div id="mycontainer">
+		</div>
+{% endblock %}
+
+{% block body_script %}
+
+{% endblock %}

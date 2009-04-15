@@ -1,0 +1,10 @@
+{%if categories%}
+	<li>
+	  	<h2 id="Categories">Categories</h2>
+		<ul>
+				{%for cat in categories%}
+		        	<li><a href="{{cat.get_absolute_url}}">{{cat.name}}</a> ({{cat.entrycount}}) <a href="/feeds/categories/{{cat.name}}" target="_blank"><span style="color: orange;">RSS</span></a></li>
+				{%endfor%}
+			</ul>
+	</li>
+{%endif%}

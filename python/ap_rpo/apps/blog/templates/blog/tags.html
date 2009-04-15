@@ -1,0 +1,41 @@
+{%if tags%}
+<style type="text/css">
+		#tag-cloud{
+			clear:both;
+			list-style:none;
+			
+		}
+		#tag-cloud li{		
+			float:left;
+			margin:0 0.2em;
+			font-size: 0.5em;
+		}
+		#tag-cloud li a{
+			text-decoration:none;
+			border-bottom:1px solid #ccc;	
+			font-size: 0.5em;
+		}
+			
+		
+
+		#tag-cloud li.t1 a {font-size:80%; }
+		#tag-cloud li.t2 a {font-size:100%; }
+		#tag-cloud li.t3 a {font-size:120%; }
+		#tag-cloud li.t4 a {font-size:140%; }
+		#tag-cloud li.t5 a {font-size:160%; }
+
+</style>
+
+	<li>
+		<h2 id="Tags">Tags</h2>
+		<div style="">
+		<ul id="tag-cloud">
+			{%for tag in tags%}
+		        	<li class="t{{tag.entrycount|restrict_to_max:"5"}}"><a href="{{tag.get_absolute_url}}" title="{{tag.name}}({{tag.entrycount}})">{{tag.name}}</a></li> 
+			{%endfor%}
+		</ul>
+		</div>
+		<div style="clear: both;"></div>
+	</li>
+	<br/>
+{%endif%}
