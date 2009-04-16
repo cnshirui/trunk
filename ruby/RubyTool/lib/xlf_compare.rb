@@ -22,8 +22,8 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = "d:/migrate/tammy"
-  files = ['pie_45_range_row_60.xlf', 'pie_45_range_col_60.xlf']
+  dir = "d:/migrate/migrate_60"
+  files = ['gauge_title_value_prop_style_bind_50.xlf', 'gauge_title_value_prop_style_bind_50_60.xlf']
 
   files.map! { |file| "#{dir}/#{file}" }
   puts files
