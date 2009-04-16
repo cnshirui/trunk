@@ -11,7 +11,7 @@ TMPDIR=build/Release/${PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
 OUTPUT_PATH=dist/Release/welcome
 OUTPUT_BASENAME=welcome
-PACKAGE_TOP_DIR=welcome1/
+PACKAGE_TOP_DIR=welcomesamplenetbeans/
 
 # Functions
 function checkReturnCode
@@ -56,15 +56,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/welcome1/bin
+makeDirectory ${TMPDIR}/welcomesamplenetbeans/bin
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f dist/Release/${PLATFORM}/package/welcome1.tar
+rm -f dist/Release/${PLATFORM}/package/welcomesamplenetbeans.tar
 cd ${TMPDIR}
-tar -vcf ../../../../dist/Release/${PLATFORM}/package/welcome1.tar *
+tar -vcf ../../../../dist/Release/${PLATFORM}/package/welcomesamplenetbeans.tar *
 checkReturnCode
 
 # Cleanup

@@ -15,10 +15,10 @@ RANLIB=ranlib
 CC=gcc.exe
 CCC=g++.exe
 CXX=g++.exe
-FC=
+FC=g77.exe
 
 # Macros
-PLATFORM=MinGW-Windows
+PLATFORM=Cygwin-Windows
 
 # Include project Makefile
 include Makefile

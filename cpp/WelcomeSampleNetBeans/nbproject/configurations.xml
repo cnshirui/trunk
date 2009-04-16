@@ -26,7 +26,7 @@
     <conf name="Debug" type="1">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <compilerSet>MinGW|MinGW</compilerSet>
+        <compilerSet>Cygwin|Cygwin</compilerSet>
         <platform>3</platform>
       </toolsSet>
       <compileType>

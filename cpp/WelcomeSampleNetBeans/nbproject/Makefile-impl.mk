@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Welcome_1
+PROJECTNAME=WelcomeSampleNetBeans
 
 # Active Configuration
 DEFAULTCONF=Debug
