@@ -68,5 +68,5 @@
    - google_appengine\lib\webob
    - google_appengine\lib\yaml\lib
 - config run dialog
-   - main module - d:\dev\google_appengine\dev_appsserver.py
+   - main module - d:\dev\google_appengine\dev_appserver.py
    - args: ${project_loc} --port=9999

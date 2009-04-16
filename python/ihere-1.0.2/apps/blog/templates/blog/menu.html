@@ -1,0 +1,38 @@
+{%if menus%}	
+{% load cache %}
+{% cache 36000 menu %}
+<div class="slidenav-container">
+<div class="slidenav">
+<ul>
+<li><a href="/" style="color: white; text-decoration: none;"
+		title="首页">[ Blog ]</a>
+	<ul>
+		<li><a href="#Categories">Categories</a></li>
+		<li><a href="#Tags">Tags</a></li>
+		<li><a href="#Links">Links</a></li>
+		<li><a href="#GSearch">Search</a></li>
+		<li><a href="#Rss">Rss</a></li>		
+	</ul>
+	</li>
+{%for menu in menus%}
+	<li><a href="{{menu.link}}" style="color: white; text-decoration: none;"
+		title="{{menu.name}}">[ {{menu.name}} ]</a>
+	{%if not menu.parentMenu%}
+	<ul>
+	{%for submenu in menu.menu_set%}
+		<li><a href="{{submenu.link}}">{{submenu.name}}</a></li>
+	{%endfor%}			
+	</ul>
+	{%endif%}
+	</li>
+{%endfor%}	
+</ul>
+</div>
+
+<div class="slidenav-box inactive-box" style="margin-left: 0px; width: 130px; display: block;">
+<div class="subnav"></div>
+</div>
+</div>
+<div style="clear: both;"></div>
+{% endcache %}
+{%endif%}

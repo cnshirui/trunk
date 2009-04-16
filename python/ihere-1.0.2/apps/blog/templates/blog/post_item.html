@@ -1,0 +1,46 @@
+{% load cache %}
+{% cache 36000 post post.key %}
+<div class="post" id="post-{{post.key}}">
+				<h2>
+					<a title="类别" href="{%url category post.category|escape,1%}" style="text-decoration: none;">
+						<span style="color: green;">[{{ post.category }}]</span>
+					</a>
+					<a class="url{{forloop.counter}}" href='{{post.get_permalink}}' >
+						 {{ post.title }} 
+					</a>
+				</h2>
+				<p class="info">
+						<a href="mailto:{{ post.author.email }}" style="text-decoration: none;">{{ post.author.nickname }}</a>
+							&nbsp;<a title='{{ post.date|date:"Y-m-d H:i" }}' href="">写于{{ post.date|timesince }} ago</a>
+						&nbsp;|&nbsp;<a target="_blank" href="/feeds/post/{{post.key}}" style="text-decoration: none;">
+						<span style="color: orange;">RSS</span>
+						</a>
+						{%ifequal post.entryType 'post'%}
+						&nbsp;|&nbsp;
+							<a href="{{post.get_permalink}}#comments" style="text-decoration: none;">
+								comments:({{post.commentcount}})
+							</a>
+						{%endifequal%}
+						&nbsp;|&nbsp;
+						<a href="{%url hotlist 1%}">Hit<span style="color: red;">({{post.get_cached_visitcount}})</span></a>
+					<br/>
+					Tags: 
+					{%for tag in post.get_tags%}
+							<a href="{{tag.get_absolute_url}}" class="tag navLink">
+								{{tag}}&nbsp;
+							</a>
+					{%endfor%}
+				</p>	
+				{% autoescape off %}
+				<DIV class='post' style="overflow: hidden;background-color: #F4F4F4;" ><p>{{post.content}}</p></DIV>
+				{% endautoescape %}
+				<p class="info">
+				{%ifequal post.entryType 'post'%}
+					<a href="{{post.get_permalink}}#comments" style="text-decoration: none;">
+								There are {{post.commentcount}} people left their comments:-) Want to join?
+					</a>
+				{%endifequal%}
+				</p>
+			</div>
+	
+{% endcache %}

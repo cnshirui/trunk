@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<link type="text/css" href="/static/stylesheets/bottom.css" rel="stylesheet" />
+		
+		<script type="text/javascript" src="/static/js/jquery-1.3.1.min.js"></script>
+		<script type="text/javascript" src="/static/js/pikachoose.js"></script>
+		<script language="javascript">
+			<!--
+			$(document).ready(
+				function (){
+					$("#pikame").PikaChoose({user_thumbs:true});
+				});
+			-->
+		</script>
+
+		
+</head>
+<body>
+{% if user.is_authenticated %}
+      <form id="upload_form" action="{%url upload.views.albumentry%}" enctype="multipart/form-data" method="post">
+		{{form}}&nbsp;<input type="submit" value="Upload" />
+           
+      {% autoescape off %}
+		<a href="{% google_logout_url "/album/PikaChoose/"%}" style="color:red;" onclick="{if(confirm('确定要登出吗?')){return true;}return false;}">[ Logout ]</a>
+	  	&nbsp;|&nbsp;<a href="/admin/upload/" target="_blank">[ manage ]</a>
+	  {% endautoescape  %}	  
+	  </form>
+{% else %}
+      <p><b>Login required to upload. <a href="{% google_login_url "/album/PikaChoose/"%}" style="color:red;">[ Login ]</a></b></p>
+{% endif %}
+	<ul id="pikame">
+	{% for file in filelist %}
+		<li><img ref="{%url upload.views.show_albumentry file.key%}" src="{%url upload.views.show_icon file.key%}"/><span>{{file.name}}</span></li>
+	{% endfor %}
+	</ul>
+	<p style="text-align: center;">
+
+</p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rsd xmlns="http://archipelago.phrasewise.com/rsd" version="1.0">
+	<service xmlns="">
+		<engineName>Cong Lin's GAE Engine</engineName>
+		<engineLink>http://ihere.appspot.com/</engineLink>
+		<homePageLink>http://ihere.appspot.com/</homePageLink>
+		<apis>
+			<api name="MetaWeblog" blogID="1" preferred="true" apiLink="http://ihere.appspot.com/xmlrpc/"/>
+			<api name="Blogger" blogID="1" preferred="false" apiLink="http://ihere.appspot.com/xmlrpc/"/>		
+		</apis>
+	</service>
+</rsd>

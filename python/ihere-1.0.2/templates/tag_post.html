@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div style="display: block;height: 1200px;text-align: left;">
+About iHere! About me!
+<p>
+I've made it for fun.
+</p>
+<div style="left: 10;top: 10;position: relative;">
+	<blockquote style="margin: 10px;float: left;">
+	Posts by tag :{{tag}} <span style="color:red;">(New!)</span>
+			<ul>
+				{%for post in posts%}
+		        	<li><a href='{{post.get_permalink}}' >
+							{{ post.title }} 
+					</a></li>
+				{%endfor%}
+			</ul>
+	</blockquote>	
+	
+</div>
+</div>
+{% endblock %}
