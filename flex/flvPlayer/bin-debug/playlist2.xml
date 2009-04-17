@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FlvPlayer>
+
+<item>
+			<file>phone.flv</file>
+			<title>test video 3</title>
+			<thumbnail>phone.jpg</thumbnail>		
+			<description>Test Description 2</description>		
+		</item>
+<item>
+			<file>high.flv</file>
+			<title>test video 4</title>
+			<thumbnail>eye.jpg</thumbnail>		
+			<description>Test Description 1</description>		
+		</item>
+<item>
+			<file>phone.flv</file>
+			<title>test video 2</title>
+			<thumbnail>phone.jpg</thumbnail>		
+			<description>Test Description 2</description>		
+		</item>
+<item>
+			<file>high.flv</file>
+			<title>test video 1</title>
+			<thumbnail>eye.jpg</thumbnail>		
+			<description>Test Description 1</description>		
+		</item>
+<item>
+			<file>phone.flv</file>
+			<title>test video 2</title>
+			<thumbnail>phone.jpg</thumbnail>		
+			<description>Test Description 2</description>		
+		</item>
+<item>
+			<file>high.flv</file>
+			<title>test video 1</title>
+			<thumbnail>eye.jpg</thumbnail>		
+			<description>Test Description 1</description>		
+		</item>
+<item>
+			<file>phone.flv</file>
+			<title>test video 2</title>
+			<thumbnail>phone.jpg</thumbnail>		
+			<description>Test Description 2</description>		
+		</item>
+<item>
+			<file>high.flv</file>
+			<title>test video 1</title>
+			<thumbnail>eye.jpg</thumbnail>		
+			<description>Test Description 1</description>		
+		</item>
+<item>
+			<file>phone.flv</file>
+			<title>test video 2</title>
+			<thumbnail>phone.jpg</thumbnail>		
+			<description>Test Description 2</description>		
+		</item>
+
+</FlvPlayer>

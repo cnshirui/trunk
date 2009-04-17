@@ -2,8 +2,7 @@
 
 #ls -1 | while read f; do java YourClass $f > "$f.new"; done
 ls */bin*/* | 
-while read f; 
-	do
+while read f; 	do
 		echo $f;
 		if [ -d $f ]
 		then
@@ -11,5 +10,5 @@ while read f;
 		else
 			rm $f;
 			echo $f OK !;
-		fi
+		fi	
 done

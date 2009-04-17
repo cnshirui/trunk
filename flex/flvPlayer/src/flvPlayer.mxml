@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:custom="custom.*" layout="absolute" backgroundColor="#3e3e3e" creationComplete=" videoData.send(); videoData2.send(); init_lc();" viewSourceURL="srcview/index.html">
+	<mx:Script>
+		<![CDATA[
+			import flash.net.LocalConnection;
+			 import mx.controls.Alert;
+public var myPath:String = "high.flv";
+[Bindable]
+var i=0;
+
+private var toFlash_lc:LocalConnection;
+private var fromFlash_lc:LocalConnection;
+private function setIndex():void{
+	
+}
+
+public function setNewPaths():void{
+	if(btn.length-1>i){
+	i++
+	}
+	else{i=0}
+	toFlash_lc.send('lc_from_flex', 'setPath', btn[i].path);
+}
+
+public function seekToNext():void{
+	
+	i++
+	toFlash_lc.send('lc_from_flex', 'setPath', btn[i].path);
+}
+
+public function seekToPrev():void{
+	
+	i--
+	toFlash_lc.send('lc_from_flex', 'setPath', btn[i].path);
+}
+
+public function changePaths():void{
+	 
+}
+
+
+function init_lc():void{
+	fromFlash_lc = new LocalConnection();
+	toFlash_lc = new LocalConnection();
+fromFlash_lc.allowDomain('*');
+fromFlash_lc.client = this;
+fromFlash_lc.connect( 'lc_from_flash' );
+
+
+}
+		]]>
+	</mx:Script>
+ <mx:Style source="style.css"/>
+ 
+   <mx:Fade 
+    id="fadeIn"
+    alphaFrom="0"
+    alphaTo="1"
+    duration="250"
+  />
+    <mx:Fade 
+    id="fadeOut"
+    alphaFrom="1"
+    alphaTo="0"
+    duration="250"
+  />
+ 	
+
+
+	<mx:HTTPService id="videoData"
+
+		url="playlist.xml"	
+
+		resultFormat="e4x"/>
+		<mx:HTTPService id="videoData2"
+
+		url="playlist2.xml"	
+
+		resultFormat="e4x"/>
+		
+		<mx:Panel width="600" height="400" backgroundColor="0x000000" shadowDistance="4" headerHeight="0" roundedBottomCorners = "true" borderThicknessLeft="5" borderThicknessTop="5" borderThicknessBottom="5" borderThicknessRight="5" dropShadowEnabled = "true" horizontalCenter="0" verticalCenter="0">
+	
+	<mx:SWFLoader source="vidPage2.swf" horizontalCenter="0" verticalCenter="0" width="100%" height="100%"/>
+	</mx:Panel>
+	<!-- <mx:Label text="{viewstack1.selectedChild.label}" color="0xcccccc" fontFamily="Arial" fontStyle="bold" fontSize="14" horizontalCenter="400" top="130"/> -->
+	<mx:ViewStack id="viewstack1" selectedIndex="0" verticalCenter="0" horizontalCenter="420" height="450"  width ="160">
+	
+		
+	
+	<mx:Canvas label="Category 1" height="440"  backgroundAlpha="0" width ="160" showEffect="{fadeIn}" hideEffect="{fadeOut}">
+	<mx:VBox height="440"  width ="160" horizontalScrollPolicy="off" >
+		<mx:Repeater id="videoRepeater" dataProvider="{videoData.lastResult.item}">
+		 <mx:Canvas width="120" height="105" backgroundAlpha="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" borderStyle="none" backgroundSize="100%">
+		 <mx:Panel width="90" height="60" horizontalCenter="0" top="0">
+
+						<custom:Thumbnail id="btn" source="{videoRepeater.currentItem.thumbnail}" path="{videoRepeater.currentItem.file}" mouseDown="i=event.target.repeaterIndices" mouseUp="toFlash_lc.send('lc_from_flex', 'setPath',String(event.currentTarget.path))" buttonMode="true" useHandCursor="true" horizontalCenter="0" verticalCenter="0" width="100%" height="100%"/>
+		<!--	<custom:VideoButton id="btn" path="{videoRepeater.currentItem.file}" label="select" mouseDown="i=event.target.repeaterIndices" mouseUp="toFlash_lc.send('lc_from_flex', 'setPath',String(event.currentTarget.path))" top="10" right="25" color="#ffffff" fontFamily="Arial" fontSize="14" fontWeight="normal" fillAlphas=".2,0,0,0" themeColor="#464545" /> -->
+		 
+		 </mx:Panel>
+						<mx:Label horizontalCenter="0" bottom="20"  text="{videoRepeater.currentItem.title}"/> 
+						<mx:Label width="120" horizontalCenter="10" bottom="4" text="{videoRepeater.currentItem.description}"/> 
+						
+						</mx:Canvas> 
+				
+					</mx:Repeater>
+	</mx:VBox>
+	</mx:Canvas>
+	<mx:Canvas label="Category 2" height="440"  width ="160" backgroundAlpha="0" showEffect="{fadeIn}" hideEffect="{fadeOut}">
+		
+	
+	<mx:VBox height="440"  width ="160" horizontalScrollPolicy="off">
+		<mx:Repeater id="videoRepeater2" dataProvider="{videoData2.lastResult.item}">
+		 <mx:Canvas width="120" height="105" backgroundAlpha="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" borderStyle="none" backgroundSize="100%">
+		 <mx:Panel width="90" height="60" horizontalCenter="0" top="0">
+
+						<custom:Thumbnail id="btn2" source="{videoRepeater2.currentItem.thumbnail}" path="{videoRepeater2.currentItem.file}" mouseDown="i=event.target.repeaterIndices" mouseUp="toFlash_lc.send('lc_from_flex', 'setPath',String(event.currentTarget.path))" buttonMode="true" useHandCursor="true" horizontalCenter="0" verticalCenter="0" width="100%" height="100%"/>
+		<!--	<custom:VideoButton id="btn" path="{videoRepeater.currentItem.file}" label="select" mouseDown="i=event.target.repeaterIndices" mouseUp="toFlash_lc.send('lc_from_flex', 'setPath',String(event.currentTarget.path))" top="10" right="25" color="#ffffff" fontFamily="Arial" fontSize="14" fontWeight="normal" fillAlphas=".2,0,0,0" themeColor="#464545" /> -->
+		 
+		 </mx:Panel>
+						<mx:Label  horizontalCenter="0" bottom="20"  text="{videoRepeater2.currentItem.title}"/> 
+						<mx:Label  width="120" horizontalCenter="10" bottom="4"  text="{videoRepeater2.currentItem.description}"/> 
+						
+						</mx:Canvas> 
+				
+					</mx:Repeater>
+	</mx:VBox>
+</mx:Canvas>
+
+<mx:Canvas label="Category 3" height="440"  width ="160" backgroundAlpha="0" showEffect="{fadeIn}" hideEffect="{fadeOut}">
+		
+	
+	<mx:VBox height="440"  width ="160" horizontalScrollPolicy="off">
+		<mx:Repeater id="videoRepeater3" dataProvider="{videoData.lastResult.item}">
+		 <mx:Canvas width="120" height="105" backgroundAlpha="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" borderStyle="none" backgroundSize="100%">
+		 <mx:Panel width="90" height="60" horizontalCenter="0" top="0">
+
+						<custom:Thumbnail id="btn3" source="{videoRepeater3.currentItem.thumbnail}" path="{videoRepeater3.currentItem.file}" mouseDown="i=event.target.repeaterIndices" mouseUp="toFlash_lc.send('lc_from_flex', 'setPath',String(event.currentTarget.path))" buttonMode="true" useHandCursor="true" horizontalCenter="0" verticalCenter="0" width="100%" height="100%"/>
+		<!--	<custom:VideoButton id="btn" path="{videoRepeater.currentItem.file}" label="select" mouseDown="i=event.target.repeaterIndices" mouseUp="toFlash_lc.send('lc_from_flex', 'setPath',String(event.currentTarget.path))" top="10" right="25" color="#ffffff" fontFamily="Arial" fontSize="14" fontWeight="normal" fillAlphas=".2,0,0,0" themeColor="#464545" /> -->
+		 
+		 </mx:Panel>
+						<mx:Label  horizontalCenter="0" bottom="20"  text="{videoRepeater3.currentItem.title}"/> 
+						<mx:Label  width="120" horizontalCenter="10" bottom="4"  text="{videoRepeater3.currentItem.description}"/> 
+						
+						</mx:Canvas> 
+				
+					</mx:Repeater>
+	</mx:VBox>
+</mx:Canvas>
+	
+</mx:ViewStack>
+	<mx:ButtonBar horizontalCenter="-450" verticalCenter="0" width="160" direction="vertical" dataProvider="viewstack1">
+		</mx:ButtonBar>
+</mx:Application>
