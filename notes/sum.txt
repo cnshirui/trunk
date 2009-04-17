@@ -1,6 +1,7 @@
 1. heroku
 - git init/add ./commit/push
 - shh-keygen -t ras/das
+- heroku keys:add
 - .gems: rails --version 2.2.2
 - git push git@heroku.com:myblog.git master
 - git clone git@heroku.com:myblog.git, pull, commit, push
