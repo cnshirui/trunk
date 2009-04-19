@@ -1,8 +1,7 @@
-3.31 SAP - Joyo coupon
+3.31 SAP - Joyo coupon http://www.bestsapchina.com/index.asp
 
 *** todo ***
-- ubuntu chinese, eclipse php,
-- Saturday GoldBridge, shoes and trousers
+- eclipse php,
 - heroku: No such file or directory - /disk1/home/slugs/6226_9b54112_92b9/mnt/tmp/cache
 - xiaonei tuanzhang, embed youtube
 - ssh, https, rsa, dsa, sha1 relationship
