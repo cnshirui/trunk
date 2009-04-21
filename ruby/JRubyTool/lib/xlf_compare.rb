@@ -65,8 +65,12 @@ xmls.each { |xml| File.delete(xml) if File.exist?(xml)}
   writer = XMLWriter.new(FileWriter.new(xmls[i]), format)
   writer.write(doc)
   writer.flush
+end
 
-#  FileUtils.rm_f(temp) if File.exist?(temp)
+# remove temp files
+Dir["temp/*"].each do |file|
+  FileUtils.rm_f(file) if(file!="readme.txt")
+  puts "#{file}...removed!"
 end
 
 # execute compare
