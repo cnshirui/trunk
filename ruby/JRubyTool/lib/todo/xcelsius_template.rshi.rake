@@ -4,8 +4,9 @@ require 'rexml/document'
 
 # puts a width-equal line, filling spaces with "..."
 def print_line line
+  line_width = 140
   len = line.length
-  add = len > 160?"":"."*(160-len)
+  add = len>line_width ? "" : "."*(line_width-len)
   print "#{line}#{add}"
 end
 
