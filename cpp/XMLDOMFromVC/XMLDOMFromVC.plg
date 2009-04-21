@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: XMLDOMFromVC - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/XMLDOMFromVC.res" /d "_DEBUG" "D:\Perforce\git\trunk\cpp\XMLDOMFromVC\XMLDOMFromVC.rc"" 
+Creating temporary file "C:\DOCUME~1\rshi\LOCALS~1\Temp\RSP10A.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/XMLDOMFromVC.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Perforce\git\trunk\cpp\XMLDOMFromVC\XMLDOMFromVC.cpp"
+"D:\Perforce\git\trunk\cpp\XMLDOMFromVC\XMLDOMFromVCDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rshi\LOCALS~1\Temp\RSP10A.tmp" 
+Creating temporary file "C:\DOCUME~1\rshi\LOCALS~1\Temp\RSP10B.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/XMLDOMFromVC.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Perforce\git\trunk\cpp\XMLDOMFromVC\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\rshi\LOCALS~1\Temp\RSP10B.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/XMLDOMFromVC.pdb" /debug /machine:I386 /out:"Debug/XMLDOMFromVC.exe" /pdbtype:sept  .\Debug\StdAfx.obj .\Debug\XMLDOMFromVC.obj .\Debug\XMLDOMFromVCDlg.obj .\Debug\XMLDOMFromVC.res "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+XMLDOMFromVC.cpp
+XMLDOMFromVCDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+XMLDOMFromVC.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
