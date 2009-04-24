@@ -23,7 +23,7 @@ if(argc == 2)
   puts $*.inspect
 else
   dir = "d:/migrate/migrate_60"
-  files = ['gauge_title_value_prop_style_bind_50_60_test.xlf', 'gauge_title_value_prop_style_bind_50_60.xlf']
+  files = ['gauge_title_value_prop_style_bind_50_60_test_11.xlf', 'gauge_title_value_prop_style_bind_50_60.xlf']
 
   files.map! { |file| "#{dir}/#{file}" }
   puts files
