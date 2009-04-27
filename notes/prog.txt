@@ -1,4 +1,13 @@
+在查看修改历史时，对于中文文件名，git log和gitk都会出现类似的乱码：
+sepg\344\274\232\350\256\256\346\200\273\347\273\223.doc
 
+请教一下，应该怎么配置才能正确显示呢？
+
+通过看git的源码，找到了解决方案：
+
+git config core.quotepath false
+
+core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常
 				
 1. django-admin.py startproject mysite
  mysite/
