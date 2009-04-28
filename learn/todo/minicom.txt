@@ -1,1 +1,0 @@
-把tools/minirc.dfl拷到LINUX的/etc目录

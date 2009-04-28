@@ -1,3 +1,22 @@
+Bitdefender free edition (www.bitdefender.com)
+
+ClamAV Antivirus, Free  (www.clamwin.com)
+
+you can also tryout AVG Antivirus (www.grisoft.com) but i donot think their free version would run on Windows server 2003
+
+Sophos Antivirus offers a free trial version (www.sophos.com), runs on Win2k3
+
+My hat's off to F-Prot for dropping the server tax.  I hope others will follow suit.
+
+ 
+
+http://www.f-prot.com/products/corporate_users/win/
+
+ 
+
+http://www.f-prot.com/products/home_use/win/
+
+-------------
 在查看修改历史时，对于中文文件名，git log和gitk都会出现类似的乱码：
 sepg\344\274\232\350\256\256\346\200\273\347\273\223.doc
 
