@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
+  before_filter :authenticate   #, :except => [:index, :show]
 
   # GET /posts
   # GET /posts.xml
@@ -91,7 +91,7 @@ class PostsController < ApplicationController
 
   def authenticate
     authenticate_or_request_with_http_basic do |name,password|
-      name == "admin" && password == "secret777777"
+      name == "wujuan" && password == "05261234"
     end
   end
 end
