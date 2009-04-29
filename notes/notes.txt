@@ -1,4 +1,7 @@
 3.31 SAP - Joyo coupon http://www.bestsapchina.com/index.asp
+- download stl
+- call DVD
+- call Nanjing
 
 *** todo ***
 - eclipse php,

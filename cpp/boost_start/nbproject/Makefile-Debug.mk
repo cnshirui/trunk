@@ -1,5 +1,5 @@
 #
-# Gererated Makefile - do not edit!
+# Generated Makefile - do not edit!
 #
 # Edit the Makefile in the project folder instead (../Makefile). Each target
 # has a -pre and a -post target defined where you can add customized code.
@@ -17,16 +17,18 @@ CCC=g++.exe
 CXX=g++.exe
 FC=
 
+# Macros
+PLATFORM=MinGW-Windows
+
 # Include project Makefile
 include Makefile
 
 # Object Directory
-OBJECTDIR=build/Debug/Cygwin-Windows
+OBJECTDIR=build/Debug/${PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/example.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/example.o
 
 # C Compiler Flags
 CFLAGS=
@@ -42,19 +44,21 @@ FFLAGS=
 LDLIBSOPTIONS=../../boost_1_36_0/libs/regex/build/gcc/libboost_regex-gcc-1_35.a ../../boost_1_36_0/libs/regex/build/gcc/libboost_regex-gcc-d-1_35.a
 
 # Build Targets
-.build-conf: ${BUILD_SUBPROJECTS} dist/Debug/Cygwin-Windows/boost_start.exe
+.build-conf: ${BUILD_SUBPROJECTS}
+	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/boost_start.exe
 
-dist/Debug/Cygwin-Windows/boost_start.exe: ${OBJECTFILES}
-	${MKDIR} -p dist/Debug/Cygwin-Windows
-	${LINK.cc} -o dist/Debug/Cygwin-Windows/boost_start ${OBJECTFILES} ${LDLIBSOPTIONS} 
+dist/Debug/${PLATFORM}/boost_start.exe: ../../boost_1_36_0/libs/regex/build/gcc/libboost_regex-gcc-1_35.a
+
+dist/Debug/${PLATFORM}/boost_start.exe: ../../boost_1_36_0/libs/regex/build/gcc/libboost_regex-gcc-d-1_35.a
+
+dist/Debug/${PLATFORM}/boost_start.exe: ${OBJECTFILES}
+	${MKDIR} -p dist/Debug/${PLATFORM}
+	${LINK.cc} -o dist/Debug/${PLATFORM}/boost_start ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/example.o: example.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	$(COMPILE.cc) -g -I../../boost_1_36_0 -o ${OBJECTDIR}/example.o example.cpp
-
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	$(COMPILE.cc) -g -I../../boost_1_36_0 -o ${OBJECTDIR}/main.o main.cpp
+	${RM} $@.d
+	$(COMPILE.cc) -g -Dd\:\dev\boost_1_38_0\ -MMD -MP -MF $@.d -o ${OBJECTDIR}/example.o example.cpp
 
 # Subprojects
 .build-subprojects:
@@ -62,7 +66,12 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf:
 	${RM} -r build/Debug
-	${RM} dist/Debug/Cygwin-Windows/boost_start.exe
+	${RM} dist/Debug/${PLATFORM}/boost_start.exe
 
 # Subprojects
 .clean-subprojects:
+
+# Enable dependency checking
+.dep.inc: .depcheck-impl
+
+include .dep.inc

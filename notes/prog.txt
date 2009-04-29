@@ -1,4 +1,77 @@
+0x78329220 ATL::CSimpleStringT<wchar_t,1>::IsEmpty(void)
+"Xcelsius
 
+Xcelsius
+Xcelsius Files (*.xlf)
+.xlf
+Xcelsius.5.Document
+Xcelsius.5.Document"
+
+--
+IDR_MAINFRAME字符串资源中各子串的含义
+IDR_MAINFRAME字符串资源中包含7个子串，分别以\n结束，即如下格式：
+<windowTitle>\n<docName>\n<fileNewName>\n<filterName>\n<filterExt>\n<regFileTypeId>\n<regFileTypeName>\n
+(1)CDocTemplate::windowTitle，主窗口标题栏上的字符串，MDI程序不需要指定，将以IDR_MAINFRAME字符串为默认值。
+(2)CDocTemplate::docName，缺省文档的名称。如果没有指定，缺省文档的名称是无标题。
+(3)CDocTemplate::fileNewName，文档类型的名称。如果应用程序支持多种类型的文档，此字符串将显示在"File/New"对话框中。如果没有指定，就不能够在"File/New"对话框处理这种文件。
+(4)CDocTemplate::filterName，文档类型的描述和一个适用于此类型的通配符过滤器。这个字符串将出现在“File/Open”对话框中的文件类型列表框中。要和CDocTemplate::filterExt一起使用。
+(5)CDocTemplate::filterExt，文档的扩展名。如果没有指定，就不能够在“File/Open”对话框中处理这种文档。要和CDocTemplate::filterName一起使用。
+(6)CDocTemplate::regFileTypeId，如果你以::RegisterShellFileTypes向系统的注册表注册文件类型，此值会出现在HEY_CLASSES_ROOT之下成为其子项，并仅供Windows内部使用。如果没有指定，这种文件类型就无法注册。
+(7)CDocTemplate::regFileTypeName，这也是存储在注册表中的文件类型名称。它会显示于程序中用以访问注册表的对话框内。
+--
+/////////////////////////////////////////////////////////////////////////////
+// CDocTemplate attributes
+
+BOOL CDocTemplate::GetDocString(CString& rString, enum DocStringIndex i) const
+{
+	return AfxExtractSubString(rString, m_strDocStrings, (int)i);
+}
+
+"Xcelsius
+
+Xcelsius
+Xcelsius Files (*.xlf)
+.xlf
+Xcelsius.Document
+Xcelsius.Document"
+
+0x01890fdc {nLength=0x0052 achString=0x01890fde "Xcelsius
+
+Xcelsius
+Xcelsius Files (*.xlf)
+.xlf
+Xcelsius.Document
+Xcelsius.DocumentCould not load the movie.Failed to create Flash Control.?Crystal Xcelsius is unable to load this file.  This }
+
+Bitdefender free edition (www.bitdefender.com)
+
+ClamAV Antivirus, Free  (www.clamwin.com)
+
+you can also tryout AVG Antivirus (www.grisoft.com) but i donot think their free version would run on Windows server 2003
+
+Sophos Antivirus offers a free trial version (www.sophos.com), runs on Win2k3
+
+My hat's off to F-Prot for dropping the server tax.  I hope others will follow suit.
+
+ 
+
+http://www.f-prot.com/products/corporate_users/win/
+
+ 
+
+http://www.f-prot.com/products/home_use/win/
+
+-------------
+在查看修改历史时，对于中文文件名，git log和gitk都会出现类似的乱码：
+sepg\344\274\232\350\256\256\346\200\273\347\273\223.doc
+
+请教一下，应该怎么配置才能正确显示呢？
+
+通过看git的源码，找到了解决方案：
+
+git config core.quotepath false
+
+core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常
 				
 1. django-admin.py startproject mysite
  mysite/

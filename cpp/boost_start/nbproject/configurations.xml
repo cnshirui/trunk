@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="45">
+<configurationDescriptor version="51">
   <logicalFolder name="root" displayName="root" projectFiles="true">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -13,7 +13,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>example.cpp</itemPath>
-      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -21,19 +20,19 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
-  <sourceEncoding>UTF-8</sourceEncoding>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>Cygwin|Cygwin</compilerSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>MinGW|MinGW</compilerSet>
         <platform>3</platform>
       </toolsSet>
       <compileType>
         <ccCompilerTool>
-          <includeDirectories>
-            <directoryPath>../../boost_1_36_0</directoryPath>
-          </includeDirectories>
+          <preprocessorList>
+            <Elem>d:\dev\boost_1_38_0\</Elem>
+          </preprocessorList>
         </ccCompilerTool>
         <linkerTool>
           <linkerLibItems>
@@ -45,12 +44,10 @@
       <item path="example.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="main.cpp">
-        <itemTool>1</itemTool>
-      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
+        <developmentServer>localhost</developmentServer>
         <compilerSet>Cygwin|Cygwin</compilerSet>
         <platform>3</platform>
       </toolsSet>
@@ -70,9 +67,6 @@
         </linkerTool>
       </compileType>
       <item path="example.cpp">
-        <itemTool>1</itemTool>
-      </item>
-      <item path="main.cpp">
         <itemTool>1</itemTool>
       </item>
     </conf>
