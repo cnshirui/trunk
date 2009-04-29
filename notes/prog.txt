@@ -6,6 +6,92 @@ Xcelsius Files (*.xlf)
 .xlf
 Xcelsius.5.Document
 Xcelsius.5.Document"
+42
+
+cs/xcelsius.rc......................................................................................2
+
+cs/xcelsius.rc.xliff................................................................................4
+
+da/xcelsius.rc......................................................................................2
+
+da/xcelsius.rc.xliff................................................................................4
+
+de/xcelsius.rc......................................................................................2
+
+de/xcelsius.rc.xliff................................................................................4
+
+dev/xcelsius.rc.....................................................................................2
+
+dev/xcelsius.rc.xliff...............................................................................4
+
+en/xcelsius.rc......................................................................................2
+
+en/xcelsius.rc.xliff................................................................................4
+
+es/xcelsius.rc......................................................................................1
+
+es/xcelsius.rc.xliff................................................................................3
+
+fi/xcelsius.rc......................................................................................2
+
+fi/xcelsius.rc.xliff................................................................................4
+
+fr/xcelsius.rc......................................................................................2
+
+fr/xcelsius.rc.xliff................................................................................4
+
+is/xcelsius.rc......................................................................................1
+
+is/xcelsius.rc.xliff................................................................................3
+
+it/xcelsius.rc......................................................................................2
+
+it/xcelsius.rc.xliff................................................................................4
+
+ja/xcelsius.rc......................................................................................2
+
+ja/xcelsius.rc.xliff................................................................................4
+
+ko/xcelsius.rc......................................................................................2
+
+ko/xcelsius.rc.xliff................................................................................4
+
+nb/xcelsius.rc......................................................................................2
+
+nb/xcelsius.rc.xliff................................................................................4
+
+nl/xcelsius.rc......................................................................................2
+
+nl/xcelsius.rc.xliff................................................................................4
+
+pl/xcelsius.rc......................................................................................2
+
+pl/xcelsius.rc.xliff................................................................................4
+
+pt/xcelsius.rc......................................................................................2
+
+pt/xcelsius.rc.xliff................................................................................4
+
+ru/xcelsius.rc......................................................................................2
+
+ru/xcelsius.rc.xliff................................................................................4
+
+sv/xcelsius.rc......................................................................................0
+
+sv/xcelsius.rc.xliff................................................................................2
+
+th/xcelsius.rc......................................................................................2
+
+th/xcelsius.rc.xliff................................................................................4
+
+zh_CN/xcelsius.rc...................................................................................2
+
+zh_CN/xcelsius.rc.xliff.............................................................................4
+
+zh_TW/xcelsius.rc...................................................................................2
+
+zh_TW/xcelsius.rc.xliff.............................................................................4
+
 
 --
 IDR_MAINFRAME字符串资源中各子串的含义
@@ -35,43 +121,9 @@ Xcelsius Files (*.xlf)
 Xcelsius.Document
 Xcelsius.Document"
 
-0x01890fdc {nLength=0x0052 achString=0x01890fde "Xcelsius
-
-Xcelsius
-Xcelsius Files (*.xlf)
-.xlf
-Xcelsius.Document
-Xcelsius.DocumentCould not load the movie.Failed to create Flash Control.?Crystal Xcelsius is unable to load this file.  This }
-
-Bitdefender free edition (www.bitdefender.com)
-
-ClamAV Antivirus, Free  (www.clamwin.com)
-
-you can also tryout AVG Antivirus (www.grisoft.com) but i donot think their free version would run on Windows server 2003
-
-Sophos Antivirus offers a free trial version (www.sophos.com), runs on Win2k3
-
-My hat's off to F-Prot for dropping the server tax.  I hope others will follow suit.
-
- 
-
-http://www.f-prot.com/products/corporate_users/win/
-
- 
-
-http://www.f-prot.com/products/home_use/win/
-
 -------------
-在查看修改历史时，对于中文文件名，git log和gitk都会出现类似的乱码：
-sepg\344\274\232\350\256\256\346\200\273\347\273\223.doc
-
-请教一下，应该怎么配置才能正确显示呢？
-
-通过看git的源码，找到了解决方案：
-
 git config core.quotepath false
 
-core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常
 				
 1. django-admin.py startproject mysite
  mysite/
@@ -107,49 +159,6 @@ Existing Git Repo?
   git remote add origin git@github.com:shirui/shirui.git
   git push origin master
       
-Importing a SVN Repo?
-  Click here
-      
-When you're done:
-  Continue
-
-
-  --------
-vmware 6.5.2.7026
-vmware: GAEAN-1A0DF-F046V-4PRQ7
-
-Problem signature:
-  Problem Event Name:	BlueScreen
-  OS Version:	6.0.6001.2.1.0.256.6
-  Locale ID:	1033
-
-Additional information about the problem:
-  BCCode:	18
-  BCP1:	80FC352E
-  BCP2:	ABB01868
-  BCP3:	00000002
-  BCP4:	ABB01807
-  OS Version:	6_0_6001
-  Service Pack:	1_0
-  Product:	256_1
-
-Files that help describe the problem:
-  C:\Windows\Minidump\Mini041109-01.dmp
-  C:\Users\shirui\AppData\Local\Temp\WER-39156-0.sysdata.xml
-  C:\Users\shirui\AppData\Local\Temp\WER1F14.tmp.version.txt
-
-Read our privacy statement:
-  http://go.microsoft.com/fwlink/?linkid=50163&clcid=0x0409
- 
- --------------------
- 
-
-
-fixboot
-fixmbr 
-
-
-
 1. add line to conf/httpd.conf
    - LoadModule php5_module d:/dev/php-5.2.6-Win32/php5apache2_2.dll
 2. AddType application/x-httpd-php .php .html
@@ -174,190 +183,15 @@ xdebug.remote_enable=1
 4. Try to browse the URL: http://localhost/XXXX/test.php. If your see as follow in browser:
      PHP has been installed successfully! 
 	 
-	 http://127.0.0.1/AirAlliance/flightinfo.php?XDEBUG_SESSION_START=netbeans-xdebug
-	 http://127.0.0.1/AirAlliance/index.php
-	 
-	 
-	 Version mismatch with vmx86 driver: expecting 138.0, got 167.0.
-You have an incorrect version of driver "vmx86.sys". Try reinstalling VMware Workstation.
-Failed to initialize monitor device.
-
-Cannot find a valid peer process to connect to.
-
-
-After uninstall, delete the vmx86.sys file from your system; it's in system32/drivers. Then reboot. Then reinstall.
-
-(The uninstaller gets most driver unloads right, Windows has been getting better about it.) 
-
-//(properties|bindings)/property
-//properties/property
-//properties/property | //styles/property
-//(properties)/property | //styles/property
-
 p4 where d:\/*
 path 'd:\/*' is not under client's root 'd:\
 
-Indicator (@3cf68ac1)
-Indicator (@3cf68b41)
-Indicator (@3cf68c81)
-
-- <invoke name="requestUserSelectionComplete" returntype="xml">
-- <arguments>
-  <string>BO5BA73FE3622C4BA380DA98ACFD383850</string> 
-  </arguments>
-  </invoke>
-  
->	Xcelsius.exe!CShockwaveFlash::CallFunction(const wchar_t * request=0x029f7008)  Line 513 + 0x1f bytes	C++
-
-
-TypeError: Error #1088: The markup in the document following the root element must be well-formed.
-	at flash.external::ExternalInterface$/call()
-	at xcelsius.propertySheets.impl::PropertySheetExternalProxy/bind()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\classes\xcelsius\propertySheets\impl\PropertySheetExternalProxy.as:107]
-	at IndicatorHelper/changeNameBinding()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\projects\propertySheets\GaugePropertySheet\IndicatorHelper.as:101]
-	at GaugeChunk/onChangeNameBinding()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\projects\propertySheets\GaugePropertySheet\GaugeChunk.mxml:85]
-	at GaugeChunk/___nameBinding_change()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\projects\propertySheets\GaugePropertySheet\GaugeChunk.mxml:247]
-	at flash.events::EventDispatcher/dispatchEventFunction()
-	at flash.events::EventDispatcher/dispatchEvent()
-	at mx.core::UIComponent/dispatchEvent()[E:\dev\flex_201_borneo\sdk\frameworks\mx\core\UIComponent.as:8389]
-	at xcelsius.propertySheets.controls::PropertyBindingButton/bindingCallBack()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\classes\xcelsius\propertySheets\controls\PropertyBindingButton.as:631]
-	at xcelsius.propertySheets.controls::PropertyBindingButton/checkUserSelection()[D:\Perforce\depot2\X6\COR\Xcelsius\Flash\classes\xcelsius\propertySheets\controls\PropertyBindingButton.as:561]
-	at Function/http://adobe.com/AS3/2006/builtin::apply()
-	at flash.external::ExternalInterface$/_callIn()
-	at <anonymous>()
-
-
-private var _indicatorLabels:Array = ['Indicator 1'];
-
+Qt
     mingwm10.dll
     QtCore4.dll
     QtCored4.dll
     QtGui4.dll
     QtGuid4.dll
-	
-	qt windows, this application has requested the runtime to terminate it in an unusual way.
-Msvcirt.dll		Msvcrt.dll  ieshims.dll
-
-	if(_tcscmp(range, _T("'Sheet1'!$B$2:$B$5")) == 0)
-	{
-		range = _T("Sheet1!$B$2:$B$5");
-	}
-
-	try {
-		pRange = pXl->Evaluate(range);
-	}
-	catch(COleDispatchException *) {
-
-	}
-	catch(...) {
-		TRACE("Evaluate failed!");
-	}
--property
-CComPtr<IUnknown> punk = ActionBindUtil::getWorkbookFromView();
-+		pXl	{0x001f5e0c}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
-+		pXl	{0x0019e104}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
-+		pXl	{0x037f3134}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
-+		pXl	{0x00220a04}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
-+		pXl	{0x037f3134}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
-
--persist
-+		pXl	{0x037b36dc}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
-+		pXl	{0x037b3f5c}	_com_ptr_t<_com_IIID<Excel::_Application,&_GUID_000208d5_0000_0000_c000_000000000046> >
-
-
-        public function set labels(newValue:*):void
-        {
-			if(!newValue || newValue.length==0)
-				newValue = [0];
-				
-			_indicatorLabels = newValue as Array;    	
-        }
-        
-        public function get labels():*
-        {
-        	return _indicatorLabels;
-        }    
-
-p4 submit -i
-Submit validation failed -- fix problems then use 'p4 submit -c 1980850'.
-'change_submit' validation failed: 
-
-Result of description parsing:
-
-found it
-found it
-found it
-found it
-
-[Summary]              Intergrate ChangeList 1980838, 1980742; fixbug - data range binding lost when migrating from X4.5 to X5
-[Reviewed by]          Donald Wang
-[Task]                ADAPT01223081,ADAPT01223082
-[Action]                      fixbug
-
-Warnings:
-
-Summary too long (> 100 chars)
-
-Errors:
-
-Optional section [Action] does not match input validation pattern: "add" or "fix"
-
-Change description rejected due to errors above.
-
-Please note: your files have now been locked by p4
-Please see here for detailed help: http://vanpgblogs.product.businessobjects.com/wiki/index.php/P4_Trigger
-Please send support requests to: PgSupport@businessobjects.com
-
-Add a method "MigrateChartRangeBinding" to migrate persist data (only for data range binding)
-
-Summary: fixbug enhancement - data range binding lost when migrating from X4.5 to X5
-Reviewed by: Donald Zhang
-Task: ADAPT01200328,ADAPT01200332
-
-+		range	"'Sheet1'!$A$1:$D$5"	ATL::CStringT<wchar_t,StrTraitMFC_DLL<wchar_t,ATL::ChTraitsCRT<wchar_t> > >
-
-+		ids	[10](3,-1,-1,5,-1,-1,7,-1,-1,0)	std::vector<int,std::allocator<int> > &
-
-
-integrate Trunk => COR X6/COR
-integrate Trunk/PI/X6:   450 – Multi Indicator Gauge - Property Sheet 
-Abstract DataModel from TextData as TextDataBase, Remain UI methods in TextData. Also do this for BindingNumberFormat.
-450 – Multi Indicator Gauge - Property Sheet
-//depot2/Trunk/PI/X6/Xcelsius/Flash/projects/propertySheets/GaugePropertySheet/...
-//depot2/X6/COR/Xcelsius/Flash/projects/propertySheets/GaugePropertySheet/...
-
-	<References>
-		<AssemblyReference
-			RelativePath="$(SolutionDir)BusinessObjects.Desktop.dll"/>
-	</References>
-	
-	
-ADAPT01200328
-ADAPT01200332
-\\shg-s-fs02\LiveOffice\Xcelsius\Temp\roy_shi
-
-ADAPT01200328 
-1. Create a model using pie chart in X4.5, set the data value binding and drill down. Save the model.
-2. Open attached model in X5.
-3. Click the pie chart.
-    Notice the binding of General > Data > Values is lost and drill down tab is disabled.
-ADAPT01200332 
-1. Create a model using charts (say Line Chart) in X4.5. Enable General > series and add bind series values and category labels. Save the model.
-2. Open attached xlf mode in X5.
-3. Click the line chart.
-    Notice General > Data > By Range is selected but there is no binding. (It should select General > Data > By Series.)
-
-ADAPT owners:
-Specify the owner who will be  doing the fix request or forward-fit integrations.  For forward-fit integrations, we will need to assign an owner in SDC and ask Jesse for me if we are not sure 
-
-Dev  Effort Estimation:
-The owner of the ADAPT, no matter this is a bug fix or a forward fit, the owner (as specified in column D) will need to fill in the unbuffered estimation here by the number of hours.
-
-
-Dev Concerns:
-Developers, this is your chance to speak up and tell us what you think about this bug fix.  If you have any concerns, please let us know.
-
-Concerns:
-Risk, scope, complexity, design issues, or architectural issues
 
 git remote add roamer git@heroku.com:roamer.git
 git@heroku.com:appname.git
