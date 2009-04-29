@@ -1,10 +1,12 @@
+require 'utils/time'
+
 class PostsController < ApplicationController
   before_filter :authenticate   #, :except => [:index, :show]
 
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.find(:all)
+    @posts = Post.find(:all, :order => "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
