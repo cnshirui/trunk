@@ -1,3 +1,32 @@
+@tags = Tag.paginate(:page => params[:page], :order => :display_name, :per_page => 10)
+
+  <td class="paginate" colspan="7">
+    <%= will_paginate @articles -%>
+  </td>
+
+  @user_pages,  @users  =  paginate(:users,  :order_by  =>  'name')
+    @posts = Post.find(:all, :order => "created_at DESC")
+
+    function getRichEditValue() {
+      myEditor.saveHTML();
+      this.submit();
+    }
+
+	<button type="button" id="post_submit" onclick="getRichEditValue();">Update2</button><br>
+ <button type="button" id="post_submit">Update2</button><br>
+ 
+ <%= f.submit "Update" %>
+ <button type="button" id="post_submit" type="submit">Update</button><br>
+
+http://localhost:3000/posts/1/posts/#%3CPost:0x669f298%3E
+
+Introducing the YUI Compressor
+        // add by rshi
+        this._events = this._events || {};
+		
+		<textarea rows="20" name="post[body]" id="post_body" cols="40">aaa</textarea>
+
+
 Bitdefender free edition (www.bitdefender.com)
 
 ClamAV Antivirus, Free  (www.clamwin.com)
