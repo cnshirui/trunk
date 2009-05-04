@@ -1,3 +1,0 @@
-Rails框架开发工具讲座：如何安装图形处理库Ruby语言接口RMagickPosted by cnruby on 2006年6月9日 edit
-Rails框架开发工具讲座：如何安装图形处理库Ruby语言接口RMagick 
-RMagick工具网站： http://rmagick.rubyforge.org/RMagick工具下载网站： http://rubyforge.org/frs/?group_id=12&release_id=3031RMagick工具的Windows版本软件： http://rubyforge.org/frs/download.php/6276/RMagick-1.9.2-IM-6.2.4-6-win32.zip解压RMagick工具： cd D:\Downloads\rails\RMagickunzip RMagick-1.9.2-IM-6.2.4-6-win32.zipcd D:\Downloads\RMagick\RMagick-1.9.1-IM-6.2.3-win32gem install RMagick-win32-1.9.2-mswin32.gem -l安装RMagick工具： ruby postinstall.rb

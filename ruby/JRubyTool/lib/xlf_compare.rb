@@ -22,8 +22,8 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = "d:/migrate/migrate_60"
-  files = ['gauge_title_value_prop_style_bind_50_60_test.xlf', 'gauge_title_value_prop_style_bind_50_60.xlf']
+  dir = "d:/migrate/50"
+  files = ['dail_45_60.xlf', 'dail_45_60_sound.xlf']
 
   files.map! { |file| "#{dir}/#{file}" }
   puts files
@@ -32,6 +32,7 @@ end
 
 files = $* unless files
 
+FileUtils.mkdir(dir + '/xml_compare') unless File.exist?(dir + '/xml_compare')
 time = Time.now.to_i.to_s
 xmls = files.map { |file| "#{dir}/xml_compare/#{file.sub(dir, "").sub(".xlf", ".xml")}" }
 xmls.each { |xml| File.delete(xml) if File.exist?(xml)}
