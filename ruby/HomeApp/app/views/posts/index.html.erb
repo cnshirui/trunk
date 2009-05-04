@@ -1,9 +1,8 @@
 <h1>Listing posts</h1>
 
+<%= link_to 'New post', new_post_path %>
+
 <%= render :partial => @posts %>
 
 <p/>
- <%= will_paginate @posts -%>
-<p/>
-
-<%= link_to 'New post', new_post_path %>
+<%= will_paginate @posts %>

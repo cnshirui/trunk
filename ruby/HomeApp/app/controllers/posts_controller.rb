@@ -1,7 +1,7 @@
-#require 'pagination'
-
 class PostsController < ApplicationController
-  before_filter :authenticate   #, :except => [:index, :show]
+  before_filter :authorize
+
+  layout "application"
 
   # GET /posts
   # GET /posts.xml
@@ -89,11 +89,4 @@ class PostsController < ApplicationController
     end
   end
 
-  private
-
-  def authenticate
-    authenticate_or_request_with_http_basic do |name,password|
-      name == "wujuan" && password == "05261234"
-    end
-  end
 end

@@ -1,3 +1,26 @@
+  private
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |name,password|
+      name == "wujuan" && password == "05261234"
+    end
+  end
+
+  def  authorize
+    unless  session[:user_id]
+      flash[:notice]  =  "Please  log  in"
+      redirect_to(:controller  =>  "login",  :action  =>  "login")
+    end
+  end
+  
+  def  authorize
+unless  session[:user_id]
+flash[:notice]  =  "Please  log  in"
+redirect_to(:controller  =>  "login",  :action  =>  "login")
+end
+end
+
+
 @tags = Tag.paginate(:page => params[:page], :order => :display_name, :per_page => 10)
 
   <td class="paginate" colspan="7">
