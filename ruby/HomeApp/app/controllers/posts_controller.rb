@@ -8,11 +8,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-<<<<<<< HEAD:ruby/HomeApp/app/controllers/posts_controller.rb
     @posts = Post.paginate(:page => params[:page], :order => "created_at DESC", :per_page => 5)
-=======
-    @posts = Post.find(:all, :order => "created_at DESC")
->>>>>>> d2fad30c23da4ca117391d7184dd523668e1a0fe:ruby/HomeApp/app/controllers/posts_controller.rb
 
     respond_to do |format|
       format.html # index.html.erb

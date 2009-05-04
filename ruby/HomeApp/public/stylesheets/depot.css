@@ -60,7 +60,8 @@
 }
 
 #main {
-  margin-left: 15em;
+  width: 25em;
+  margin-left: 0em;
   padding-top: 4ex;
   padding-left: 2em;
   background: white;

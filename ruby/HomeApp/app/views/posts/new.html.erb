@@ -1,5 +1,35 @@
+<script type="text/javascript">
+
+(function() {
+    var Dom = YAHOO.util.Dom,
+        Event = YAHOO.util.Event;
+
+    var myConfig = {
+        height: '300px',
+        width: '600px',
+        animate: true,
+        dompath: true
+    };
+
+    YAHOO.log('Create the Editor..', 'info', 'example');
+    var myEditor = new YAHOO.widget.Editor('post_body', myConfig);
+    myEditor.render();
+
+    YAHOO.log('Create Button Control (#toggleEditor)', 'info', 'example');
+    Event.on('post_submit', 'click', function(ev) {
+        YAHOO.log('Button clicked, initiate transaction', 'info', 'example');
+        Event.stopEvent(ev);
+        myEditor.saveHTML();
+        Dom.get('new_post').submit();
+    });
+
+})();
+
+</script>
+
 <h1>New post</h1>
 
+<body class="yui-skin-sam">
 <% form_for(@post) do |f| %>
   <%= f.error_messages %>
 
@@ -17,3 +47,4 @@
 <% end %>
 
 <%= link_to 'Back', posts_path %>
+</body>

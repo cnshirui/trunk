@@ -1,12 +1,7 @@
 <% div_for post do %>
   <h2><%= link_to_unless_current h(post.title), post %></h2>
-<<<<<<< HEAD:ruby/HomeApp/app/views/posts/_post.html.erb
-    <%= post.updated_at - 8 %><br/>
-    <%= post.body %>
-=======
     create @ <%= post.created_at.convert_zone(8) %>,
     comments (<%=  link_to(post.comments.length, post) %>)
-    <%= simple_format h(post.body) %>
->>>>>>> d2fad30c23da4ca117391d7184dd523668e1a0fe:ruby/HomeApp/app/views/posts/_post.html.erb
+    <%= simple_format post.body %>
 <% end %>
 

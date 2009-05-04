@@ -13,7 +13,7 @@ class Time
   end
 
   def convert_zone(offset)
-    local = DateTime.now
+    local = self.to_datetime
     local.new_offset(Rational(offset, 24))
   end
 
