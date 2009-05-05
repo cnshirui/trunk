@@ -1,9 +1,8 @@
 require 'utils/time'
 
 class PostsController < ApplicationController
+  
   before_filter :authorize
-
-  layout "application"
 
   # GET /posts
   # GET /posts.xml

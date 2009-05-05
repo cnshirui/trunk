@@ -1,0 +1,310 @@
+
+        最近使用 
+
+    * 日志 <http://blog.xiaonei.com/>
+    * 相册 <http://photo.xiaonei.com/>
+    * 群组 <http://group.xiaonei.com/tribenav.do>
+    * 分享 <http://share.xiaonei.com/share/ShareList.do>
+    * 投票
+      <http://abc.xiaonei.com/knowabc/investigation/KnowVotingList.do?showType=all>
+    * 开发者 <http://app.xiaonei.com/developers/home.do>
+    * 宠物抱抱 <http://apps.xiaonei.com/ichongwu/>
+    * 开源应用示例 <http://apps.xiaonei.com/os_friendsale>
+    * 程序达人 <http://apps.xiaonei.com/openjudge>
+    * 校园漫步 <http://apps.xiaonei.com/campus_roamer>
+    * OpenSocial Test <http://apps.xiaonei.com/opensocial_test>
+    * 好友头像识别 <http://apps.xiaonei.com/findfriend>
+
+    * 礼物 <http://gift.xiaonei.com/>
+    * rshi
+    * 好读书-读好书 <http://apps.xiaonei.com/bookshare/>
+    * 真心话大冒险 <http://apps.xiaonei.com/thetruth/userTruth/add>
+    * 天书奇谈 <http://t.xiaonei.com/ts.do>
+    * 送您一束玫瑰 <http://apps.xiaonei.com/sendyourose>
+    * 好友贪吃蛇 <http://apps.xiaonei.com/greedysnake>
+    * MOTO音乐雷达神八宇航员招募 <http://songid.xiaonei.com/>
+    * 年年有余 <http://apps.xiaonei.com/all_have_fish>
+    * 古惑仔 <http://mob.xiaonei.com>
+    * 历史上的今天 <http://apps.xiaonei.com/todayonhistory/>
+    * 更多 » <#nogo>
+
+    * 礼物 <http://gift.xiaonei.com/>
+    * rshi
+    * 好读书-读好书 <http://apps.xiaonei.com/bookshare/>
+    * 真心话大冒险 <http://apps.xiaonei.com/thetruth/userTruth/add>
+    * 天书奇谈 <http://t.xiaonei.com/ts.do>
+    * 送您一束玫瑰 <http://apps.xiaonei.com/sendyourose>
+    * 好友贪吃蛇 <http://apps.xiaonei.com/greedysnake>
+    * MOTO音乐雷达神八宇航员招募 <http://songid.xiaonei.com/>
+    * 年年有余 <http://apps.xiaonei.com/all_have_fish>
+    * 古惑仔 <http://mob.xiaonei.com>
+    * 历史上的今天 <http://apps.xiaonei.com/todayonhistory/>
+    * 活动 <http://event.xiaonei.com/MyEvent.do>
+
+    * 班级 <http://class.xiaonei.com>
+    * 课程 <http://course.xiaonei.com/Course.do>
+    * 猫游记 <http://maoyou.xiaonei.com/index.do?from=leftapp>
+    * 论坛 <http://club.xiaonei.com/>
+
+    * 管理我的应用 (27) <http://app.xiaonei.com/apps/editapps.do?origin=105>
+    * 浏览更多应用
+      <http://app.xiaonei.com/apps/apps.do?ref=top_menu&selected=3&type=1&origin=106>
+
+    * 隐私设置 <http://www.xiaonei.com/privacyhome.do>
+    * 帐户设置 <http://www.xiaonei.com/personallink.do>
+    * 应用设置 <http://app.xiaonei.com/apps/editapps.do?origin=118>
+
+    * 搜索同学 <http://browse.xiaonei.com/ns.do?action=classmates>
+    * 搜索同事 <http://browse.xiaonei.com/ns.do?action=coworkers>
+    * 高级搜索 <http://browse.xiaonei.com/advanced.do>
+
+
+  校内 <http://home.xiaonei.com/Home.do?id=50836>
+
+首页 <http://home.xiaonei.com/Home.do?id=50836>
+个人主页 <http://xiaonei.com/profile.do?id=50836>
+修改 <http://www.xiaonei.com/BasicInfo.do>
+好友 <http://friend.xiaonei.com/myfriendlistx.do>
+应用 <http://app.xiaonei.com/apps/apps.do?selected=3&type=1&origin=119>
+游戏 <http://game.xiaonei.com/>
+站内信 <http://msg.xiaonei.com>
+充值 <http://pay.xiaonei.com>
+会员 <http://i.xiaonei.com/>
+设置 <#nogo>
+退出 <http://www.xiaonei.com/Logout.do>
+搜索 <http://browse.xiaonei.com/os.do>
+  <http://browse.xiaonei.com/os.do>
+
+<http://xiaonei.com/profile.do?id=31828122>
+
+
+    马小丽的日志
+
+发站内信
+<http://msg.xiaonei.com/SendMessage.do?id=31828122&from=%E9%A9%AC%E5%B0%8F%E4%B8%BD%E7%9A%84%E6%97%A5%E5%BF%97&oriUrl=http%3A%2F%2Fblog.xiaonei.com%2FGetEntry.do%3Fid%3D384381996%26owner%3D31828122%26ref%3Dnewsfeed>
+
+
+    * 马小丽的日志 <http://blog.xiaonei.com/GetBlog.do?id=31828122>
+    * 与马小丽相关的日志
+      <http://blog.xiaonei.com/SomeoneRelativeBlog.do?id=31828122>
+
+上一篇
+<http://blog.xiaonei.com/GetNextBlog.do?id=384381996&owner=31828122&time=1241363171000&op=next>
+/ 下一篇
+<http://blog.xiaonei.com/GetPreBlog.do?id=384381996&owner=31828122&time=1241363171000&op=pre>
+共*22*篇日志
+
+
+      分享 <javascript:void(0);>
+      心理学家认为，判断男女两个人是否适合“牵手”，应考虑以下10个因素。
+      第一、彼此都是对方的好朋友，不带任何条件，喜欢与对方在一起。 第
+      二、彼此很容易沟通、互相可以很敞开地坦白任何事情，而不必担心被对方
+      怀疑或轻视。 ...
+      *❤❤❤怎样的人才适合一辈子（请大家认真看...）❤❤❤【转载】* 2009-05-03
+      23:06 | (分类:默认分类
+      <http://blog.xiaonei.com/GetBlog.do?id=31828122&categoryId=0>)
+
+心理学家认为，判断男女两个人是否适合“牵手”，应考虑以下10个因素。    
+
+ 第一、彼此都是对方的好朋友，不带任何条件，喜欢与对方在一起。    
+ 第二、彼此很容易沟通、互相可以很敞开地坦白任何事情，而不必担心被对方怀
+疑或轻视。   
+ 第三、两人在心灵上有共同的理念和价值观，并且对这些观念有清楚的认识与追
+求。   
+ 第四、双方都认为婚姻是一辈子的事，而且双方(特别强调“双方”)都坚定地愿意
+委身在这个长期的婚姻关系中。   
+ 第五、当发生冲突或争执的时候可以一起来解决，而不是等以后来发作。
+ 第六、相处可以彼此逗趣，常有欢笑，在生活中许多方面都会以幽默相待。   
+ 第七、彼此非常了解，并且接纳对方，当知道对方了解了自己的优点和缺点后，
+仍然确信被他所接纳。   
+ 第八、从最了解你、也是你最信任的对方处得到支持的肯定。   
+ 第九、有时会有浪漫的感情，但绝大多数的时候，你们的相处是非常满足而且是
+自由自在的。   
+ 第十、有一个非常理性和成熟的交往，并且双方都能感受到，在许多不同的层面
+上你们是很相配的。 
+
+           
+爱情最常见的形式就是两性之间的捕捉与追逐。人际间的好感可以相互传达出强大
+的力量，以至于能够弥补客观条件的不足。是相似性而非互补性把人们结合到了一
+起。相似性主要包括三个方面的匹配度：价值观与人格、兴趣和经验、人际风格。
+其中，人际风格是最重要的关系预测指标。与和自己人际沟通风格有所差异的人交
+往会有挫折感，且较少有进一步发展的可能。
+
+   
+爱情是追到手的吗？
+不是。真正的感情根本不需要追的。两个人的默契，在慢慢将两颗心的距离缩短，
+在无意识中渐渐靠近彼此。从好朋友到情人，真正的感情是用不了多久的。从你喜
+欢上他的那一刻起，也许他也在那一刻喜欢上了你。同节奏的爱情往往能奏出最和
+谐最动听的乐章。   
+
+ 
+真正的爱情需要什么？需要两个人在一起是轻松快乐的，没有压力。   
+
+爱一个人就是毫无保留地付出吗？
+不是。每一个人都是一个独立的人，我们首先是属于自己的，我们有思想，我们有
+个性，而不是把我们的全部都给对方。我们可以有保留，比如你不愿意说的隐私，
+有秘密的人才是成熟的，不是吗？有时候不说出来反而更好。
+
+外貌和个性哪个更重要？
+男人年轻的时候往往喜欢漂亮的女子，25岁以后，会选择和自己性格合适的女子，
+能和自己一起过日子的人。 （看样子我老了...........）
+
+喜欢一个人，太急切了，反而不好。一是因为越想得到的越得不到；二是得到了也
+很难珍惜，来得快去得也快。细水长流一些，爱情会更长久。
+
+相爱容易相处难。相处中最重要的是宽容和妥协，在信任和了解的基础上。没有宽
+容和妥协，任何两个人都无法相处。
+
+纯纯的爱也许只有一次，但是真爱未必只有一次。时间会抚平一切伤痕。
+
+我们其实是可以爱上很多人的。我们不是喜欢某个人，而是喜欢某种类型的人。先
+来的人和我们相遇了，于是我们幸福地走到了一起；对于后到的人，只能抱以歉
+意，同时，祝福他早日找到属于他自己的幸福。
+
+没有谁是我们一生非拥有不可的，爱一个人，很多时候实际上是习惯了这个人
+
+现实和浪漫哪个更重要？
+现实。没有现实为基础，浪漫就是空中楼阁。大学校园的爱情往往随着毕业而告
+终，大多是因为不现实，不在一个城市。只有相互欣赏相互佩服各有所长的人，才
+会碰撞出最美丽的火花，也才会结出最甜美的爱情果实。
+
+分手后我们还可以做朋友吗？
+最好不要。剪不断，理还乱。过去了就过去了，我们不是生活在过去，而是现在。
+爱情不等于生活，只是生活的一部分。
+不要因为自己长相不如对方而放弃追求的打算，长相只是一时的印象，真正决定能
+否结合主要取决于双方的性格。我见过的帅哥配丑女，丑女配帅哥的太多了。
+
+恋爱的时间能长尽量长。这最少有两点好处：一，充分、尽可能长的享受恋爱的愉
+悦，二，两人相处时间越长，越能检验彼此是否真心，越能看出两人性格是否合得
+来。
+
+想知道一个人爱不爱你，就看他和你在一起有没有活力，开不开心，有就是爱，没
+有就是不爱   
+爱情不是感动，你不是他心目中的理想伴侣，即使一时接受你，将来碰上他心仪的
+那一位，一样会离开你。有些人情绪容易大起大落，这样的人是很难维持一段长久
+的关系的。   
+
+浪漫是什么？
+是送花？雨中漫步？楼前伫立不去？如果两人彼此倾心相爱，什么事都不做，静静
+相对都会感觉是浪漫的。否则，即使两人坐到月亮上拍拖，也是感觉不到浪漫的。   
+　　
+是否门当户对不要紧，最重要应该是兴当趣对，不然没有共同语言，即使在一起，
+仍然会感觉到孤独。
+
+持久的爱情源于彼此发自内心的真爱，建立在平等的基础之上。任何只顾疯狂爱人
+而不顾自己有否被爱，或是只顾享受被爱而不知真心爱人的人都不会有好的结局。
+
+爱情既是风险投资，难免有去无回，失恋是再正常不过的事情。爱过，就够了。既
+然不能在一起，总有不能在一起的理由。不能因为别人负了你，就不负责任地游
+戏、报复或是堕落，自己演的戏，总要自己收场的。何况，他不爱你，你做什么他
+都不会在乎。
+
+如果爱上，就不要轻易放过机会。莽撞，可能使你后悔一阵子；怯懦，却可能使你
+一辈子后悔。没有经历过爱情的人生是不完整的，没有经历过痛苦的爱情是不深刻
+的。爱情使人生丰富，痛苦使爱情升华。  
+
+你可能习惯与现在的恋人，明明不太喜欢，但在一起久了，习惯使人不太愿做新的
+选择。人生会面临无数次选择。当给你机会选择时，你一定要谨慎；一旦你做出了
+选择，就永远不要后悔；拿得起，放得下，该断则断，该忘记的，就把它忘记；该
+珍惜的，就要把它珍惜
+　　　　
+我们总说：“我要找一个很爱很爱的人，才会谈恋爱。”但是当对方问你，怎样才算
+是很爱很爱的时候，你却无法回答他，因为你自己也不知道。
+没错，我们总是以为，我们会找到一个自己很爱很爱的人。可是后来，当我们猛然
+回首，我们才会发觉自己曾经多么天真。假如从来没有开始，你怎么知道自己会不
+会很爱很爱那个人呢？其实，很爱很爱的感觉，是要在一起经历了许多事情之后才
+会发现的。或许每个人都希望能够找到自己心目中百分之百的伴侣，但是你有没有
+想过，在你身边会不会早已经有人默默对你付出很久了，只是你没有发觉而已呢？
+所以，还是仔细看看身边的人吧，他或许已经等你很久了。当你爱一个人的时候，
+爱到八分绝对刚刚好。所有的期待和希望都只有七八分，剩下两三分用来爱自己。
+如果你还继续爱得更多，很可能会给对方沉重的压力，让彼此喘不过气来，完全丧
+失了爱情的乐趣。
+所以请记住，喝酒不要超过六分醉，吃饭不要超过七分饱，爱一个人不要超过八
+分。如果你也正在为爱迷惘，或许下面这段话可以给你一些启示：爱一个人，要了
+解也要开解；要道歉也要道谢；要认错也要改错；要体贴也要体谅；是接受而不是
+忍受；是宽容而不是纵容；是支持而不是支配；是慰问而不是质问；是倾诉而不是
+控诉；是难忘而不是遗忘；是彼此交流而不是凡事交代；是为对方默默祈求而不是
+向对方诸多要求。可以浪漫，但不要浪费，不要随便牵手，更不要随便放手。  
+
+浪漫的人这样描述与爱人的相逢：千万人当中，在时间的无涯的荒野里，没有早一
+步，也没有晚一步，刚巧赶上了。两个人好着的时候，你不妨就这样想吧。如果不
+好了，你要明白是否和某人在一起，不过是一个再简单不过的概率问题。数千个擦
+肩而过中，你给谁机会谁就和你有缘分，纵没有甲，也会有乙。别傻等那种想像中
+的木石前盟般的缘分了，生活中哪有那么多传奇。别醒着做梦了，难道你忘了艺术
+虽然来源生活，却还高于生活吗？
+
+ 
+
+发表评论 <#mycomment> | 举报日志
+<http://admin.xiaonei.com/admin/newreportblog.do?contentId=384381996&userId=31828122&origURL=http://blog.xiaonei.com/GetEntry.do?id=384381996%26owner=31828122>
+阅读(130)| 评论(1)| 分享(17)
+
+   1.
+      李钦 <http://xiaonei.com/profile.do?portal=diarycomment&id=237627446>
+      李钦 <http://xiaonei.com/profile.do?portal=diarycomment&id=237627446>
+      <#nogo>
+          * 发站内信 <http://msg.xiaonei.com
+            /SendMessage.do?id=237627446> 举报
+            <http://admin.xiaonei.com/admin/newuserreport.do?type=23&contentId=949283053&userId=237627446&owner=31828122&origURL=http://blog.xiaonei.com/GetEntry.do?id=384381996%26owner=31828122#id949283053>
+
+      回复 2009-05-04 09:08
+      说的太好了，转走了~
+
+    * 插入链接
+    * 插入表情
+
+将评论同步发送到新鲜事
+
+悄悄话
+
+
+        更多马小丽的日志
+
+    * ❤❤❤怎样的人才适合一辈 ...
+      <http://blog.xiaonei.com/GetEntry.do?id=384381996&owner=31828122>
+    * 习惯了
+      <http://blog.xiaonei.com/GetEntry.do?id=375471859&owner=31828122>
+    * 那些曾感动我的——弗洛斯 ...
+      <http://blog.xiaonei.com/GetEntry.do?id=313351025&owner=31828122>
+    * 假如生活欺骗了我
+      <http://blog.xiaonei.com/GetEntry.do?id=311056083&owner=31828122>
+
+更多 <http://blog.xiaonei.com/GetBlog.do?id=31828122>
+
+
+      热点活动
+
+校内日志 <http://xiaonei.com/getsysupdateinfo.do>|关于
+<http://xiaonei.com/info/About.do>|开放平台
+<http://app.xiaonei.com/developers/portal.do>|招聘
+<http://xiaonei.com/info/jobs.jsp>|客服
+<http://support.xiaonei.com/GetGuestbookList.do>|帮助
+<http://xiaonei.com/info/Help.do>|隐私声明
+<http://xiaonei.com/info/PrivacyClaim.do>|友情链接
+<http://xiaonei.com/info/Link.do> 千橡公司 © 2009
+校内通主页
+<http://im.xiaonei.com/?ref=wp?c=e10>*校内通*
+<http://im.xiaonei.com/?ref=wp&c=e20> - 新鲜事实时收，好友动态尽掌握
+<http://im.xiaonei.com/?ref=wp?c=e30> - 立即下载
+<http://im.xiaonei.com/xnsetup.exe?ref=wp&d=ewp10>
+<#nogo>
+聊天设置
+收到新消息时播放提示音
+保持在线好友列表始终可见
+保留聊天和提醒记录 清除 <#nogo>
+
+您处于在线状态 设为"离线" <#nogo>
+设置
+<#nogo>
+提醒
+ 无新提醒。
+提醒
+0
+在线好友 (*21*)
+<#nogo>
+在线好友
+
+0 <#nogo>
+0
+0 <#nogo>
+0

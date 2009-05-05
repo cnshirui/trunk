@@ -59,7 +59,7 @@ a:hover { color: #fff; background-color:#000; }
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 2px solid;
-  font: 20px/20px "Times New Roman", serif;
+  font: small-caps 15px/15px "Times New Roman", serif;
   color: #282;
   text-align: right;
 }
