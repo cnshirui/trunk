@@ -1,6 +1,7 @@
 <% div_for post do %>
   <h2><%= link_to_unless_current h(post.title), post %></h2>
-    create @ <%= post.created_at.convert_zone(8) %>,
+    create by <%= link_to(User.find(post.user_id).name, :action => 'person', :id => post.user_id) %>
+    @ <%= post.created_at.convert_zone(8) %>,
     comments (<%=  link_to(post.comments.length, post) %>)
     <%= simple_format post.body %>
 <% end %>

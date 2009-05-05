@@ -32,7 +32,7 @@
     <% if user -%>
       <%= link_to 'New post', new_post_path %>
       <span/>
-      <%= link_to user.name, :controller => 'users', :action => 'index' %>
+      <%= link_to 'People', :controller => 'users', :action => 'list' %>
       <span/>
       <%= link_to "Logout", :controller => 'users', :action => 'logout' %>
     <% end -%>

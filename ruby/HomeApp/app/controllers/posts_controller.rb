@@ -90,4 +90,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def person
+    if(params[:id] != "0")
+      @user = User.find(params[:id])
+    else
+      @user = User.find(session[:user_id])
+    end
+    
+    @posts = Post.paginate(:page => params[:page], :conditions => { :user_id => @user.id }, :order => "created_at DESC", :per_page => 5)
+  end
+
 end
