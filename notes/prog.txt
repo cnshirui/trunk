@@ -1,3 +1,31 @@
+[1, 5, 6, 7, 8, 9, 14].each  { |i| comment = Comment.find(i); comment.user_id = 2; comment.save; }
+Comment.find(:all).each { |comment| puts comment.inspect }
+#<Comment id: 1, post_id: 2, body: "Come on, baby! I could image what your childhood wa...", created_at: "2009-04-27 14:50:39", u
+#<Comment id: 2, post_id: 2, body: "You are a bad boy! \r\nI can't believe your words any...", created_at: "2009-04-28 03:00:35",
+#<Comment id: 3, post_id: 1, body: "Have you applied a leave for National Day?\r\nWhy?\r\nY...", created_at: "2009-04-28 03:04:53
+#<Comment id: 4, post_id: 6, body: "Taday is Wednesday.\r\nCathy told us that driver gave...", created_at: "2009-04-29 01:27:28",
+#<Comment id: 5, post_id: 6, body: "Hah, honey! You're so lovely. You know, All of it w...", created_at: "2009-04-29 05:29:39", u
+#<Comment id: 6, post_id: 3, body: "I support you, beautiful! I'll do my best to help y...", created_at: "2009-04-29 05:32:44", u
+#<Comment id: 7, post_id: 5, body: "o(∩_�?o...哈哈\n\nAll of them are laudable! I'l...", created_at: "2009-04-29 05:35:36",
+#<Comment id: 8, post_id: 2, body: "Oh, honey, I don't think so. Anyway, I WILL alter y...", created_at: "2009-04-29 05:37:11", u
+#<Comment id: 9, post_id: 4, body: "Don't worry. There's always A way to solve a proble...", created_at: "2009-04-29 05:43:59", u
+#<Comment id: 10, post_id: 10, body: "My maternal grandma loves me most,so she like the p...", created_at: "2009-05-05 07:08:04",
+#<Comment id: 11, post_id: 8, body: "Good good work ,day day up!", created_at: "2009-05-05 07:10:52", updated_at: "2009-05-05 14:
+#<Comment id: 12, post_id: 7, body: "You can choose and upload some especial photos ,ins...", created_at: "2009-05-05 07:16:18",
+#<Comment id: 13, post_id: 11, body: "Come on, beauty! I'll support you forever!", created_at: "2009-05-05 14:22:45", updated_at:
+#<Comment id: 14, post_id: 11, body: "Come on, beauty! I'll support you forever! :)", created_at: "2009-05-05 14:46:35", updated_
+
+[1, 7, 8, 10].each  { |i| post = Post.find(i); post.user_id = 2; post.save; }
+#<Post id: 2, title: "Labor Day", body: "I dec
+#<Post id: 1, title: "BEC Blog Create!", body:
+#<Post id: 4, title: "My little brother", body
+#<Post id: 5, title: "Health", body: "I have c
+#<Post id: 3, title: "daily work time", body:
+#<Post id: 6, title: "Cathy's bag", body: "Tod
+#<Post id: 7, title: "Photo in Century Park Ma
+#<Post id: 8, title: "My first presentation in
+#<Post id: 10, title: "2009 Labor's Day Review
+#<Post id: 11, title: "my teammate", body: "In
 heroku 
 1. create users
 2. add users to post & comment
