@@ -30,9 +30,11 @@
   <div id="banner">
     <% user = User.find_by_id(session[:user_id]) -%>
     <% if user -%>
+      <%= link_to user.name, :controller => 'posts', :action => 'person', :id => 0 %>
+      <span/>
       <%= link_to 'New post', new_post_path %>
       <span/>
-      <%= link_to user.name, :controller => 'users', :action => 'index' %>
+      <%= link_to 'People', :controller => 'users', :action => 'list' %>
       <span/>
       <%= link_to "Logout", :controller => 'users', :action => 'logout' %>
     <% end -%>

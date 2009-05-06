@@ -18,4 +18,18 @@ class DataController < ApplicationController
 
     render :xml => data
   end
+
+  def set_default_user_id
+    Post.find(:all).each do |post|
+      post.user_id = 1
+      post.save
+    end
+
+    Comment.find(:all).each do |comment|
+      comment.user_id = 1
+      comment.save
+    end
+
+    render :text => "Set Default Successfully!"
+  end
 end

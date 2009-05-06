@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authorize, :except => :login
 
   def index
-    redirect_to :controller => 'posts'
+    redirect_to :action => 'list'
   end
 
   def login
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       user = User.authenticate(params[:name], params[:password])
       if user
         session[:user_id] = user.id
-        redirect_to(:action => "index")
+        redirect_to(:controller => 'posts', :action => "person", :id => user.id)
       else
         flash[:notice] = "Invalid user/password combination"
       end
@@ -49,5 +49,4 @@ class UsersController < ApplicationController
     flash[:notice] = "Logged out"
     redirect_to(:action => "login")
   end
-
 end

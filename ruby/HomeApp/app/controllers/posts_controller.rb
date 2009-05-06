@@ -48,6 +48,7 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
+    @post.user_id = session[:user_id]
 
     respond_to do |format|
       if @post.save
@@ -88,6 +89,16 @@ class PostsController < ApplicationController
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def person
+    if(params[:id] != "0")
+      @user = User.find(params[:id])
+    else
+      @user = User.find(session[:user_id])
+    end
+    
+    @posts = Post.paginate(:page => params[:page], :conditions => { :user_id => @user.id }, :order => "created_at DESC", :per_page => 5)
   end
 
 end
