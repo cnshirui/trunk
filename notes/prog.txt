@@ -1,3 +1,7 @@
+TextDataBase.getNumericFormat()
+_numFormatData.getNumericFormatItem()	BindingNumberFormatBase
+_numFormatValue
+
 heroku 
 1. create users
 2. add users to post & comment
