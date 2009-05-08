@@ -99,6 +99,11 @@ class PostsController < ApplicationController
     end
     
     @posts = Post.paginate(:page => params[:page], :conditions => { :user_id => @user.id }, :order => "created_at DESC", :per_page => 5)
+    @comments = []
+    Post.find(:all, :conditions => { :user_id => @user.id }).each { |post| @comments.concat post.comments }
+    @comments.sort! { |a, b| a.updated_at <=> b.updated_at }
+    @comments.reverse!
+#    @comments.sort_by { |comment| comment.updated_at }
   end
 
 end

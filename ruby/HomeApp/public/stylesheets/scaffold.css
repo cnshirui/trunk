@@ -76,3 +76,11 @@ a:hover { color: #fff; background-color:#000; }
   background-color: #f0f0f0;
   font: bold smaller sans-serif;
 }
+
+#recent_comments {
+  float: right;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 35em;
+}

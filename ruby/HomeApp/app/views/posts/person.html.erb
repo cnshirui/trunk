@@ -1,6 +1,12 @@
 <h1><%= h(@user.name) %>'s Dialy Life</h1>
 
-<%= render :partial => @posts %>
+<div id="recent_comments">
+   <h4>Recent comments:</h4>
+   <%= render :partial => @comments %>
+</div>
 
-<p/>
-<%= will_paginate @posts %>
+<div id="all_posts">
+  <%= render :partial => @posts %><p/>
+  <%= will_paginate @posts %>
+</div>
+

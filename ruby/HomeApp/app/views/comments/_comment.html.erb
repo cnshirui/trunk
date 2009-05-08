@@ -1,7 +1,8 @@
 <% div_for comment do %>
   <p>
     <strong><%= link_to(User.find(comment.user_id).name, :controller => 'posts', :action => 'person', :id => comment.user_id) %>
-    posted <%= time_ago_in_words(comment.created_at) %> ago</strong><br />
+    comments on your post(<%= link_to comment.post.id, comment.post %>)
+    at <%= time_ago_in_words(comment.created_at) %> ago</strong><br />
     <%= h(comment.body) %>
   </p>
 <% end %>
