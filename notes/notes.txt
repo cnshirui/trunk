@@ -1,6 +1,7 @@
 - download stl
 - call DVD: check ICBC 奥莱克 DVD-3032 DVD影碟机	￥136.00
 - call Nanjing
+- 我的地址是义务学院路144号2楼204室 罗巧俊 15958489257
 
 *** todo ***
 - eclipse php,
