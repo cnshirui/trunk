@@ -1,3 +1,5 @@
+<ul id='friends'></ul>
+
 				
 heroku 
 1. create users
