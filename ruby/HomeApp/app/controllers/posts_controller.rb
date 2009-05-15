@@ -9,6 +9,10 @@ class PostsController < ApplicationController
   def index
     @posts = Post.paginate(:page => params[:page], :order => "created_at DESC", :per_page => 5)
 
+    @comments = Comment.find(:all)
+    @comments.sort! { |a, b| a.updated_at <=> b.updated_at }
+    @comments.reverse!
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }

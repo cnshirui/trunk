@@ -3,7 +3,7 @@
     <strong><%= link_to(User.find(comment.user_id).name, :controller => 'posts', :action => 'person', :id => comment.user_id) %>
     replied your post(<%= link_to comment.post.id, comment.post %>)
     @ <%= comment.created_at.convert_zone(8) %> ago</strong><br />
-    <%= h(comment.body) %>
+    <%= simple_format(comment.body) %>
   </p>
 <% end %>
 
