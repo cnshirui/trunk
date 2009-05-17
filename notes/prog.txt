@@ -5,6 +5,7 @@ Effect.BlindDown('new_comment');
 $('new_comment').scrollTo();
 
 
+
 				
 heroku 
 1. create users
