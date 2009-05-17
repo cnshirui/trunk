@@ -1,4 +1,9 @@
-<ul id='friends'></ul>
+Form.Element.focus('new_comment');
+$('new_comment').focus();
+$('new_comment').scrollTo(); 
+Effect.BlindDown('new_comment');
+$('new_comment').scrollTo();
+
 
 				
 heroku 

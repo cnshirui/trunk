@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090505132510) do
+ActiveRecord::Schema.define(:version => 20090517025426) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "title"
+    t.integer  "value",      :limit => 10, :precision => 10, :scale => 0
+    t.string   "category"
+    t.string   "whose"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"

@@ -53,15 +53,24 @@
   </p>
 
   <h2>Comments</h2>
+
+  <%= button_to_function "Add Comment", "Effect.BlindDown('new_comment');$('add_comment').hide();", :id => "add_comment" %>
+  
+  <div id="new_comment" style="display:none;">
+
+    <%= button_to_function "Discard", "$('new_comment').hide();$('add_comment').show();", :id => "discard_comment" %><br/>
+    
+    <% remote_form_for [@post, Comment.new] do |f| %>
+      <p>
+         <%= f.text_area :body %>
+      </p>
+      <p>
+        <%= f.submit "Submit" %>
+      </p>
+    <% end %>
+  </div>
+  
   <div id="comments">
     <%= render :partial => @post.comments %>
   </div>
-
-  <% remote_form_for [@post, Comment.new] do |f| %>
-    <p>
-       <%= f.label :body, "Please add comment below: " %><br />
-       <%= f.text_area :body %>
-    </p>
-    <p><%= f.submit "Add Comment" %></p>
-  <% end %>
 </body>

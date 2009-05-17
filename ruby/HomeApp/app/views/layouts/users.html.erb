@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-  <title>User Management</title>
+  <title>Family Members</title>
   <%= stylesheet_link_tag "scaffold", "depot", :media => "all" %>
 </head>
 <body id="admin">
@@ -10,6 +10,9 @@
     Welcome to Juan's BEC Life!
   </div>
   <div id="side">
+    <p>
+      <%= link_to 'Index', :controller => 'posts' %>
+    </p>
     <p>
       <%= link_to "My Bolg",   :controller => 'posts', :action => 'person', :id => 0 %>
     </p>

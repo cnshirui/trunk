@@ -11,4 +11,9 @@ class CommentsController < ApplicationController
       format.js
     end
   end
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
 end
