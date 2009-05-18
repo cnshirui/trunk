@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+    <ModulePrefs title="getfriendsinfo" description="A simple tool,to list all of your friends." author="Hui Deng" author_email="denghui.1984@googlemail.com" author_location="Deutschland" screenshot="http://farm4.static.flickr.com/3575/3468195032_ef1c2edcb6.jpg" thumbnail="http://farm4.static.flickr.com/3523/3468195034_2c55b76afa_m.jpg" scrolling="true" height="500">
+        <Require feature="opensocial-0.7"/>
+        <Require feature="views"/>
+    </ModulePrefs>
+    <Content type="html">
+
+    <![CDATA[
+    
+    <script type="text/javascript">
+
+        var viewerFriends;       // Type：opensocial.Collection
+
+        function onLoadmore_f(vf_id) {
+            var vf = viewerFriends.getById(vf_id);
+            
+            var html = "";
+            var isOwner = vf.isOwner();
+            html += "isOwner: "+isOwner;
+            html += "<br>";
+
+            var isViewer = vf.isViewer();
+            html += "isViewer: "+isViewer;
+            html += "<br>";
+
+            var displayName = vf.getDisplayName();
+            html += "Username: "+displayName;
+            html += "<br>";
+
+            var nickName = vf.getDisplayName();
+            html += "Nickname: "+nickName;
+            html += "<br>";
+
+            var id = vf.getField(opensocial.Person.Field.ID);
+            html += "Opensocial-ID: "+id;
+            html += "<br>";
+
+            document.write(html);
+            document.close();
+        }
+
+        /* Display the basic informaiton */
+        function showBasic() {
+            var html = new Array();
+
+            viewerFriends.each(
+                    function(friend) {
+                        html.push('<li>'+'<ul>'+'<a href="" onclick="onLoadmore_f('+friend.getId()+')" >' +'<img src='+friend.getField(opensocial.Person.Field.THUMBNAIL_URL)+'>'+friend.getDisplayName()+'</a>'+'</ul>'+'</li>');
+                    }
+                );
+
+            document.getElementById('friends').innerHTML = html.join('');
+        }
+
+        /* Send Opensocial API request. */
+        function reloadAll() {
+            var req = new opensocial.DataRequest();//Create a Object"req" of class "opensocial.DataRequest".
+            req.add(req.newFetchPeopleRequest('VIEWER_FRIENDS'), 'vf');
+            req.send(onReloadAll);
+        }
+
+        /* Respond to requests */
+        function onReloadAll(dataResponse) {
+            viewerFriends = dataResponse.get('vf').getData() || {};
+
+            /* Show the data */
+            showBasic();
+        }
+
+        /*Execute the request function when the application is finished loading.*/
+        function init() {
+            reloadAll();
+        }
+
+        gadgets.util.registerOnLoadHandler(init);
+
+
+    </script>
+
+    <!-- Display all the Information -->
+    <div id='main'>
+        <b>My friends：</b>
+        <ul id='friends'></ul>
+    </div>
+
+    ]]>
+    
+    </Content>
+</Module>

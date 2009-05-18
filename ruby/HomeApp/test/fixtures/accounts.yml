@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  value: 9.99
+  category: MyString
+  type: MyString
+  whose: MyString
+  date: 2009-05-17
+
+two:
+  title: MyString
+  value: 9.99
+  category: MyString
+  type: MyString
+  whose: MyString
+  date: 2009-05-17

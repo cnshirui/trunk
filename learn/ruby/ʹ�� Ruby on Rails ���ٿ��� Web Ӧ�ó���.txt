@@ -1,0 +1,521 @@
+使用 Ruby on Rails 快速开发 Web 应用程序    中国 [选择]    使用条款
+             
+
+
+             dW 全部内容-----------------  AIX and UNIX  Information 
+                    management  Lotus  Rational  Tivoli  WebSphere  
+                    Workplace-----------------  Grid computing  Java 技术  Linux  
+                    Open source  Security  SOA & Web services  Web development  
+                    XML-----------------IBM 全部内容    
+
+
+                      首页    产品    服务与解决方案    支持与下载    个性化服务    
+
+
+             
+            developerWorks
+            中国
+            本文内容包括：
+            Rails 介绍
+            生成代码
+            构建一个简单的应用程序
+            创建可定制的内容
+            修改模型
+            结束语
+            参考资料 
+            关于作者
+            对本文的评价
+
+
+            相关链接：
+            Linux 技术文档库
+            Open source 技术文档库
+            Web development 技术文档库
+
+
+
+                  developerWorks 中国  >  Linux | Open source | Web development  >
+
+                  使用 Ruby on Rails 快速开发 Web 应用程序
+                  基于 Ruby 的框架用于快速开发，使用的是模型-视图-控制器模式
+
+                        文档选项
+                              未显示需要 JavaScript 的文档选项
+
+
+
+
+            级别： 初级
+            David Mertz, Ph.D. (mertz@gnosis.cx), 开发人员, Gnosis Software
+
+            2005 年 7 月 04 日
+              虽然还是测试版本，但 Ruby on Rails 已经成为进行 Web 应用程序开发的一个新途径。Rails 
+              的成功之处在于能够自动化大部分常见类型的 Web 
+              应用程序的创建，而且在您希望添加定制或者有特殊要求时，并不会受到限制。不仅如此，同那些只能完成 Web 
+              应用程序单方面需求的自由软件（Free Software）库相比，Rails 包含了非常完整的一套工具。
+            Ruby on Rails 正在令整个 Web 开发领域受到震憾。让我们首先了解底层的技术： 
+              Ruby 是一门免费的、简单的、直观的、可扩展的、可移植的、解释的脚本语言，用于快速而简单的面向对象编程。类似于 
+              Perl，它支持处理文本文件和执行系统管理任务的很多特性。 
+              Rails 是用 Ruby 编写的一款完整的、开放源代码的 Web 框架，目的是使用更简单而且更少的代码编写实际使用的应用程序。 
+            作为一个完整的框架，这意味着 Rails 中的所有的层都是为协同工作而构造的，所以您不必自己再重复，可以完全只使用一门单一的语言。在 
+            Rails 中，所有内容（从模板到控制流再到业务逻辑）都是用 Ruby 编写的。Rails 
+            支持基于配置文件和注释的反射（reflection）和运行时扩展。
+            本文详细介绍了 Rails 的组成部分，并介绍了它的工作原理。
+            Rails 介绍
+            关于 Rails，首先需要理解的是它的模型/视图/控制器（model/view/controller，MVC）架构。虽然这种技术不是 
+            Rails 所特有的 —— 甚至不是 Web 应用程序所特有的（相对于其他程序），但是 Rails 具有非常清晰而专一的 MVC 
+            思维方式。如果您并不使用 MVC 方法，那么 Rails 的用处将大为降低（与遵循其模式的情况相比）。 
+            模型
+            Rails 应用程序的模型部分主要是它所使用的底层数据库。实际上，在很多情形中 Rails 
+            应用程序正是以一种受管理的方式对关系型数据库管理系统（RDBMS）中的数据执行操作的一个途径。 
+            ActiveRecord 类是 Rails 的一个核心组成部分，它将关系型表映射为 Ruby 
+            对象，使其成为控制器可以操作并能在视图中显示的数据。Rails 应用程序特别倾向于使用广为应用的 MySQL 数据库，不过也有与很多其他 
+            RDBMS 的绑定，比如 IBM? DB2?。 
+            如果您愿意，您可以添加 Ruby 代码来在应用程序模型中执行额外的验证，加强数据关联，或者触发其他操作。应用程序的 
+            app/models/ 目录中的 Ruby 文件能够调用 ActiveRecord 
+            的多种验证方法。不过，您也可以将模型代码留作一个存根，而只是依赖保存数据的 RDBMS 
+            的约束。例如，我在这个示例中所开发的应用程序只包含这个骨架模型代码（至少在开始时是）： 
+
+            清单 1. 骨架模型 app/models/contact.rb
+                
+class Contact < ActiveRecord::Base
+end
+
+
+
+            控制器
+            控制器以其抽象形式执行应用程序的逻辑。也就是说，应用程序的 app/controllers/ 目录中的 Ruby 
+            脚本能把模型数据导入为变量，保存回去，或对其进行修改和处理。不过，控制器不关心用户如何适当地显示或者输入数据。在通常的 MVC 
+            模型中，这可以让用户能够以多种方式与同一控制器进行交互：本地 GUI， Web 
+            界面，以及视力较弱的人使用的语音界面都可以与相同的控制器进行交互。 
+            不过，Rails 不像那样非常通用；相反，它仅局限于在 Web 页中提供和收集数据。虽然如此，但是您可以修改那些 Web 页的布局 —— 
+            颜色、字体、表格、样式表单，等等 —— 与控制器代码无关。 
+            视图
+            Rails 视图是我们编写 Ruby 代码的地方。Rails 包含有一门用于 .rhtml 的非常好的模板语言，它将纯粹的 HTML 
+            与嵌入的 Ruby 代码组合起来。 Rails 应用程序界面的最表层外观通常是由 CSS 样式表单控制的。.rhtml 格式是一种增强的 
+            HTML。实际上，一个简单的 HTML 文件本身也是一个合法的 RHTML 模板，不过，不应该忽略 RHTML 为您提供的脚本控制。 
+            RHTML 是真正的模板格式 —— 不仅是在 HTML 中嵌入代码的方式 —— 这是一种更为有效的方法。如果您熟悉 PHP，那么可以考虑 
+            PHP 本身与 Smarty 模板之间的对照。也就是说，嵌入的脚本只是将代码与未被解释的 HTML 
+            混合在一起；当需要向客户机输出某些内容时，代码部分仍要负责执行 print 语句。 
+            与之不同的是，模板引擎向 HTML 添加了一组定制的标签，让您能够将条件、循环以及其他逻辑作为增强的 HTML 标记的一部分来表示。 
+
+
+
+
+
+                        回页首
+
+
+
+
+            生成代码
+            Rails 所提供的工具主要是一组代码生成器。相对于那些强迫我使用严格的工作空间和 IDE 的开发环境，我更喜欢这种方法。 Rails 
+            不会妨碍您，但是却会为您省去大部分手工编程的工作 —— 
+            或者，通过提供“可自由获得的”初步（first-pass）支架（scaffolding），至少帮助您轻松将需要手工编码的工作分为多个部分。 
+
+            支架 概念是 Rails 中的核心概念。非常简单的应用程序可能完全不用编码，让 Rails 在运行时动态地生成客户机 HTML 
+            页面。第一遍生成代码时创建的只是粗略的支架；接下来您可以生成更详细的能够定制的控制器、视图和模型。不过在开始时不需要生成太多。 
+            Rails 
+            对其文件的组织是固定的而且非常普通的，不过这种组织相对严格。如果您试图强行使用其他文件和代码组织方式，那么您可能得付出努力去修改 
+            Rails 环境。再者说，我找不到不使用 Rails 所提供的组织方式的理由；在大部分情况下，它“fits your 
+            brain”（Ruby 的支持者喜欢这样讲）。例如，如果您从头开始设计一个框架（至少如果您以“Ruby 
+            方式”思考），那么这些目录名称及其组织可能与您的选择非常接近。 
+
+
+
+
+
+                        回页首
+
+
+
+
+            构建一个简单的应用程序
+            在 Ruby on Rails Web 站点上有一些教程，可以完整地引导您创建一个简单的 Rails 应用程序（见 
+            参考资料）。这里的示例程序与之类似，因为正确开始构建 Rails 应用程序的方式是确定的。由于此介绍的长度相对较短，所以我 极力 
+            推荐那些较长的教程中的一篇，以使得您能够打好更为全面的基础。 
+            示例应用程序是一个基本的通讯录。它演示了创建应用程序的一般步骤： 
+              生成模型（在此步骤中创建 MySQL 数据库和表）。 
+              生成应用程序（包括生成基本代码和目录）。 
+              启动 Rails（并配置数据库的访问）。 
+              创建一些内容（包括生成支架模型和控制器，并告知控制器去使用那个支架）。 
+            我们将详细研究每一个步骤。 
+            生成 AddressBook 模型
+            对于任何应用程序，您需要做的第一件事情是为它创建一个存放数据的数据库。技术上这个步骤不必最先进行，不过需要在早期完成；应该在编写任何应用程序代码（甚至是自动生成的代码）之前创建数据库，这应该是显然的。所以，让我们在 
+            MySQL 数据库中创建一个数据库，并在此数据库中创建第一张表。（阅读其他文档以了解如何安装运行 MySQL 或其他 RDBMS。）
+            我们假定 MySQL 已经安装并且可用。 
+
+            清单 2. 创建 MySQL 数据库和表
+[~/Sites]$ cat AddressBook.sql
+CREATE DATABASE IF NOT EXISTS AddressBook;
+USE AddressBook;
+CREATE TABLE IF NOT EXISTS contacts (
+  id smallint(5) unsigned NOT NULL auto_increment,
+  name varchar(30) NOT NULL default '',
+  created_on timestamp(14) NOT NULL,
+  updated_on timestamp(14) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY name_key (name)
+) TYPE=MyISAM COMMENT='List of Contacts';
+[~/Sites]$ cat AddressBook.sql | mysql
+
+
+
+            在这第一张表中有些地方需要注意。最重要的是每一张表都必须拥有一个 id 列，列名称就是 id。Rails 使用主键列 id 
+            来完成各种记录保持和引用任务。域 created_on 和 updated_on 是不需要的，不过，如果您使用了它们，那么 Rails 
+            会自动地“在后台”维护它们；在大部分情况下使用这些时间戳没有什么不好。所以，您还要添加的“真正” 数据就只是通讯录内容的名称。 
+            另一个稍微古怪的方面是，Rails 
+            为不同的内容使用单数和复数的名称。根据上下文，各种条目会被重命名为单数或复数形式。表的名称应该使用复数格式。我没有使用不规则复数单词的经验；datum 
+            和 data 等单词可能会令 Rails 出现问题。 
+            生成 AddressBook 应用程序
+            既然已经拥有了一个能够交互的数据库，就可以创建 AddressBook 应用程序了。第一个步骤是简单地运行 rails 
+            来生成基本目录和支架代码： 
+
+            清单 3. 生成基本代码和目录
+[~/Sites]$ rails AddressBook
+create
+create  app/apis
+create  app/controllers
+create  app/helpers
+create  app/models
+create  app/views/layouts
+create  config/environments
+create  components
+[...]
+create  public/images
+create  public/javascripts
+create  public/stylesheets
+create  script
+[...]
+create  README
+create  script/generate
+create  script/server
+[...]
+
+
+
+            我删减了运行 rails 
+            的输出；所忽略了那些行只是提醒您已经创建的各种文件和目录。在您的系统上试运行它，浏览生成的所有文件。我已经在代码中显示了一些最重要的文件和目录。 
+
+            运行 Rails
+            创建了 AddressBook/ 目录和所需要的子目录后，您需要执行一次惟一的初始配置。首先，通过修改 YAML 
+            配置文件来设置数据库，如下： 
+
+            清单 4. 配置数据库访问
+[~/Sites]$ cd AddressBook
+[~/Sites/AddressBook]$ head -6 config/database.yml # after editing
+development:
+  adapter: mysql
+  database: AddressBook
+  host: localhost
+  username: some_user
+  password: password_if_needed
+
+
+
+            最后，您需要提供数据。Rails 附带了它自己的单一功能的 Web 服务器，即 WEBrick，非常适用于我们的试验。您可能也会遵循 
+            Ruby on Rails Web 站点上的说明来配置 Apache 或者其他服务器，以通过 FCGI（或者普通的 CGI，但是普通的 
+            CGI 将会较慢）向 Rails 应用程序提供服务。 
+
+            清单 5. 启动 WEBrick 服务器
+[~/Sites/AddressBook]$ ruby script/server -d
+=> Rails application started on http://0.0.0.0:3000
+[2005-03-21 17:57:38] INFO  WEBrick 1.3.1
+[2005-03-21 17:57:38] INFO  ruby 1.8.2 (2004-12-25) [powerpc-darwin7.8.0]
+
+
+
+            创建一些内容
+            要在 WEBrick 端口上看到一个欢迎页面，先前的步骤就足够了。例如，在我的本地系统中，现在可以访问 
+            http://gnosis-powerbook.local:3000/。不过，为了操作定制数据库，需要生成稍微多一些代码。可以使用脚本 
+            generate 来完成此任务，这个脚本创建在 AddressBook/ 应用程序目录中： 
+
+            清单 6. 支架模型和控制器代码的生成
+[~/Sites/AddressBook]$ ruby script/generate model contact
+      exists  app/models/
+      exists  test/unit/
+      exists  test/fixtures/
+      create  app/models/contact.rb
+      create  test/unit/contact_test.rb
+      create  test/fixtures/contacts.yml
+[~/Sites/AddressBook]$ ruby script/generate controller contact
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/contact
+      exists  test/functional/
+      create  app/controllers/contact_controller.rb
+      create  test/functional/contact_controller_test.rb
+      create  app/helpers/contact_helper.rb
+
+
+
+            注意，在相应的表名中，这里应该使用单数的 contact，而不是复数的 contacts。 
+            现在需要编辑一个或多个生成的文件（只需稍加编辑）来让控制器去使用支架： 
+
+            清单 7. 告知控制器去使用支架
+[~/Sites/AddressBook]$ cat app/controllers/contact_controller.rb
+class ContactController < ApplicationController
+  model :contact
+  scaffold :contact
+end
+
+
+
+            现在可以通过类似于 http://rails.server/contact/ 的 URL （在我的测试用例中是 
+            http://gnosis-powerbook.local:3000/contact/）来查看和修改数据库的内容。输入一些数据后，它看起来如图 
+            1 和图 2 所示： 
+
+            图 1. 列出联系人
+             
+
+
+            图 2. 编辑联系人
+             
+
+
+
+
+
+                        回页首
+
+
+
+
+            创建可定制的内容
+            前面的代码创建了一个查看和修改数据库的功能完全的界面，不过，所有格式化、显示以及业务逻辑（比如本来就有的）都由 Rails 
+            动态完成，没有任何重大修改。为了创建一些更为定制的内容，需要生成更多一些代码。现在我们所需要的是让 Rails 
+            显式地写出它在运行时隐式地生成的所有支架，以使得我们能够修改它。 
+
+            图 8. 显式控制器和视图代码生成
+[~/Sites/AddressBook]$ ruby script/generate scaffold Contact
+  dependency  model
+      [...]
+      create  app/views/contacts
+      exists  test/functional/
+      create  app/controllers/contacts_controller.rb
+      create  test/functional/contacts_controller_test.rb
+      create  app/helpers/contacts_helper.rb
+      create  app/views/layouts/contacts.rhtml
+      create  public/stylesheets/scaffold.css
+      create  app/views/contacts/list.rhtml
+      create  app/views/contacts/show.rhtml
+      create  app/views/contacts/new.rhtml
+      create  app/views/contacts/edit.rhtml
+
+
+
+            现在有了更多一些要做的，所以尝试去修改一些内容。（注意此代码已经重新使用了复数格式 
+            contacts，我不清楚其原因；现在我们需要接受它。）尝试在 CSS 中修改一些颜色和字体： 
+
+            清单 9. 配置层叠样式表单
+[~/Sites/AddressBook]$ head -8 public/stylesheets/scaffold.css
+body { background-color: #ffe; color: #338; }
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+}
+td { border: 1px solid; }
+a { color: #eef; background-color: #446; }
+a:hover { color: #fff; background-color:#000; }
+
+
+
+            您已经拥有了这段代码，那么 contacts_controller.rb 做什么？就其操作而言，它比前面的代码中所出现的 
+            contact_controller.rb 更为显式且可配置。控制器类似如下： 
+
+            清单 10. 控制器 app/controllers/contacts_controller.rb
+class ContactsController < ApplicationController
+  def list
+    @contacts = Contact.find_all
+  end
+  def show
+    @contact = Contact.find(@params['id'])
+  end
+  def create
+    @contact = Contact.new(@params['contact'])
+    if @contact.save
+      flash['notice'] = 'Contact was successfully created.'
+      redirect_to :action => 'list'
+    else
+      render_action 'new'
+    end
+  end
+
+
+
+            如前所述，控制器的主要任务是将数据导入到变量之中。对象 Contact 是模型所提供的 ActiveRecord 对象-关系映射。变量 
+            @contacts 或者 @contact 是它们的适当方法中所给出的数据。通过 URL 可以访问那些方法本身，比如 
+            http://rails.server/contacts/show/2 （这一个方法显示出 id 为“2”的联系人）。 
+            此示例中的控制器最终连接到了视图，即 RHTML 文件，它们使用的是控制器导入到变量中的数据值。例如，这里是 list 视图的一部分： 
+
+            清单 11. 列出视图 app/views/contacts/list.rhtml
+[...]
+<% for contact in @contacts %>
+  <tr>
+  <% for column in Contact.content_columns %>
+    <td><%=h contact.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => contact.id %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => contact.id %></td>
+    <td><%= link_to 'Destroy', :action => 'destroy', :id => contact.id %></td>
+  </tr>
+<% end %>
+[...]
+
+
+
+            方法 ContactsController.list 导入变量 @contacts，RHTML 中的流控制标签从数组中取出单个的记录。 
+
+
+
+
+
+                        回页首
+
+
+
+
+            修改模型
+            初始的模型只包含联系人的名字。不幸的是，本文中我已经没有余地扩展这个模型以使其包含实际的联系人数据，比如电话号码、地址、电子邮件等等。通常，那些数据应该存放在一张子表中，子表的外部关键字关联到表 
+            contacts。Rails 模型会使用类似这样的定制代码来指明关联： 
+
+            清单 12. 定制代码 app\models\phone.rb
+class Phone < ActiveRecord::Base
+  belongs_to :contact
+end
+
+
+
+            在结束之前，让我们来对数据模型稍加修改，以查看它如何影响应用程序。首先，添加一列： 
+
+            清单 13. 向模型添加 first_met 数据
+$ cat add-contact-date.sql
+USE AddressBook;
+ALTER TABLE contacts ADD first_met date;
+$ cat add-contact-date.sql | mysql
+
+
+
+            既然已经修改了底层的模型，http://rails.server/contact/ —— 支架的后台版本 —— 
+            就会直接调整过来，不需要您做什么。控制器和视图是完全自动基于模型的。不过，在 http://rails.server/contacts/ 
+            上应用程序版本使用了我们手工编写的文件，并不是那样自动化的。 
+            list 视图将 Contact.content_columns 作为模板循环的一部分，能够自动查找 所有 
+            的列，不管它们是什么。不过，edit 等其他视图已经被生成了，需要添加新的数据域。例如： 
+
+            清单 14. 编辑视图 app/views/contacts/edit.rhtml
+<h1>Editing contact</h1>
+<%= error_messages_for 'contact' %>
+<%= start_form_tag :action => 'update' %>
+<%= hidden_field 'contact', 'id' %>
+<p><label for="contact_name">Name</label><br/>
+  <%= text_field 'contact', 'name'  %></p>
+<p><label for="first_met">Known Since</label><br/>
+  <%= date_select "contact", "first_met", :use_month_numbers => false %></p>
+<input type="submit" value="Update" />
+<%= end_form_tag %>
+<%= link_to 'Show', :action => 'show', :id => @contact.id %> |
+<%= link_to 'Back', :action => 'list' %>
+
+
+
+            那么您手工修改的应用程序看起来如何了呢？与默认的区别不太大，不过在图 3 和 4 中可以看到修改已经生效了： 
+
+            图 3. 列出联系人，修改后
+             
+
+
+            图 4. 编辑联系人，修改后
+             
+
+
+
+
+
+                        回页首
+
+
+
+
+            结束语
+            Rails 为您提供了开发灵活的 Web 应用程序的一种极其快速的途径；本篇介绍只是肤浅地涉及了如何使用 
+            Rails。完整的框架包含很多实用的类和方法，能够完成基于 Web 的应用程序使用最多的操作。 
+            Rails 的最大价值在于它孕育了一个成体系的“Rails 
+            思维方式”，因为您所需要的所有支持代码令它变得完整。相对于只是给出要使用的原始材料的其他工具包和框架而言，这是一个巨大的优势。Rails 
+            开发为您提供了将半成形（half-formed）的想法实现为功能完全的 Web 应用程序的一条坦途。 
+
+
+
+            参考资料 
+              您可以参阅本文在 developerWorks 全球站点上的 英文原文。
+
+
+              “Deploy an application with Cerise Web server” 
+              （developerWorks，2005 年 2 月）展示了如何使用 Cerise Web 服务器和 Ruby 创建一个 留言本 
+              Web 应用程序。 
+
+
+              在 Ruby on Rails 的主页开始使用介绍教程、指南以及下载资源和文档。 
+
+
+              要获得 Ruby on Rails 所支持的数据库列表（包括 IBM DB2），请访问 Database Drivers page。 
+
+
+
+              这个 十分钟的视频 实时地展示了某人开发基于 Ruby 的 Web 应用程序。 
+
+
+              Wikipedia 有一个关于 MVC architectural paradigm 的极好条目。 
+
+
+              在 developerWorks Linux 专区 可以找到更多为 Linux 开发人员准备的参考资料。
+
+
+              通过参与 developerWorks blogs 加入到 developerWorks 社区。
+
+
+              在 Developer Bookstore Linux 专栏中定购 打折出售的 Linux 书籍。 
+
+
+              定购免费的 SEK for Linux，在这套 DVD 中（两张），包含了来自 DB2?、Lotus?、Rational?、 
+              Tivoli? 和 WebSphere? 的最新的用于 Linux 的 IBM 试用软件。
+
+
+              使用可以直接从 developerWorks 下载的 IBM 试用软件 来改革您的下一个 Linux 开发项目。
+
+
+
+
+            关于作者
+
+                  对 David Mertz 来说，整个世界就是一个舞台；他的职业是致力于提供相关的舞台说明。要深入了解他的生活，请访问他的 
+                  个人主页。从 2000 年起他就一直在撰写 developerWorks 专栏 Charming Python 和 XML 
+                  Matters。阅读他的 Text Processing in Python 一书。您可以通过 
+                  mertz@gnosis.cx 与 David 联系。
+
+
+
+
+            对本文的评价
+
+                        太差！ (1)
+                        需提高 (2)
+                        一般；尚可 (3)
+                        好文章 (4)
+                        真棒！(5)
+
+                  建议？
+ 
+
+
+
+
+
+                        回页首
+
+
+
+
+      IBM 公司保留在 developerWorks 网站上发表的内容的著作权。未经IBM公司或原始作者的书面明确许可，请勿转载。如果您希望转载，请通过 
+      提交转载请求表单 联系我们的编辑团队。
+                关于 IBM    隐私条约    联系 IBM
+

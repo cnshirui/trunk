@@ -1,0 +1,11 @@
+<h1>All Posts for Our Family</h1>
+
+<div id="recent_comments">
+   <h4>Recent comments:</h4>
+   <%= render :partial => @comments %>
+</div>
+
+<div id="all_posts">
+  <%= render :partial => @posts %><p/>
+  <%= will_paginate @posts %>
+</div>

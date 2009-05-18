@@ -1,0 +1,9 @@
+<h1>Home Members</h1>
+<ul>
+  <% for user in @all_users %>
+    <li>
+        <%= h(user.name) %>
+        <%= link_to 'Blog', {:controller => 'posts', :action => 'person', :id => user } %>
+    </li>
+  <% end %>
+</ul>

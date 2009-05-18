@@ -1,0 +1,56 @@
+- call Nanjing
+- 我的地址是义务学院路144号2楼204室 罗巧俊 15958489257
+
+*** todo ***
+- eclipse php,
+- heroku: No such file or directory - /disk1/home/slugs/6226_9b54112_92b9/mnt/tmp/cache
+- xiaonei tuanzhang, embed youtube
+- ssh, https, rsa, dsa, sha1 relationship
+- hangzhou, xiamen, flight 99-199
+- huge data: xiaonei <-> heroku
+- win2003, kubuntu
+
+-- Remind
+1. basketball, english, algorithm, car
+
+-- C++
+BBS Summary, C++0x, Boost, tr1, tr2, Template meta programming
+
+--flex
+flex design, flex style 3rd, mac, manual, skin, 3d spring graph
+
+--rails
+rack, localization
+
+--programming
+captcha, ajax search text-field, fetion programming, english oral lessons
+picture search, rails ticket system,
+
+-- Others
+XML-XSLT, Linux Programming, Qt Library, 
+typedef char *String, HASH-Structure, Regular Expression History,
+
+-- Books
+Thinking in C++/Java, CLRS, TAOCP, TCPL, programming peals, cc2, AI: move number, five chess,
+design pattern, Effective C++, Code Complete
+
+-- Questions
+OSI，TCP/IP, J2ME/MIDP/CLDC
+shift key reason, 波兰 逆波兰, 怎么处理析构函数异常，设计模式整理，C实现面向对象，
+English Speaking: experience in usa, ge healthcare, talk about your mother school, experience as cpp board manager
+移动窗口 死锁和饥饿，
+JSP多线程	操作系统页面置换算法
+搜索：VPN、单元测试、单射双满
+Alssendro Q：被侵略后，投降or牺牲 国家机密or钱
+
+--home
+mobile lottry
+sister birthday, uncle jellyfish, 
+cao-quan mather, shi-jianjun son,
+
+-- Mail
+www.nju.org.cn
+TEL：025-83686123
+联系人：胡佩农
+Email：guanliyuan@nju.org.cn 
+

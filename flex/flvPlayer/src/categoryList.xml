@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CategoryList>
+
+<Category>
+<title>Category 1</title>
+<playlist>playlist</playlist>
+</Category>
+
+<Category>
+<title>Category 2</title>
+<playlist>playlist</playlist>
+</Category>
+
+<Category>
+<title>Category 3</title>
+<playlist>playlist</playlist>
+</Category>
+
+<Category>
+<title>Category 4</title>
+<playlist>playlist</playlist>
+</Category>
+
+<Category>
+<title>Category 5</title>
+<playlist>playlist</playlist>
+</Category>
+
+
+</CategoryList>

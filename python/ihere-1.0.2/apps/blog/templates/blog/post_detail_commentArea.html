@@ -1,0 +1,53 @@
+{% if post.commentcount %}
+<div class="commentlabel">
+    <h4 id="comments" align="left">Comments</h4>
+</div>
+{% endif %}
+<ol class="commentlist">
+{% for comment in comments %}
+
+<li class='{% cycle alt,alt1 %}' id="comment-{{comment.key}}">
+	<p> 
+	<div class="comment_title">
+	{% if comment.authorWebsite %}
+	    	<a href="{{comment.authorWebsite}}" target="_blank">
+	{% endif%}
+			<b>
+			    {%if not comment.author %}{{comment.user}}{%else%}{{comment.author.nickname}}{% endif %}
+			</b> 
+	{% if comment.authorWebsite %}
+	    	</a>
+	{% endif%}
+	<br>
+	</div>   
+	    <a href="#comment" title='{{comment.date|date:"Y-m-d H:i"}}'>{{comment.date|timesince}} ago</a>
+	    {% if comment.userIp %}
+	     | IP:{{comment.userIp|slice:":7"}}...<!-- nicky hide ip -->
+	    {% endif %} 
+	    <div style="float: right;">
+	    {% if user.is_superuser %}          
+	         <a href='{%url blog.views.delete_comment comment.key%}' onclick="{if(confirm('确定要删除评论吗?')){return true;}return false;}"><div class="trash"> </div></a>
+	    {%else%}
+	    	{%if comment.author%}
+	    	{%ifequal user.email comment.author.email%}
+	    		<a href='{%url blog.views.delete_comment comment.key%}' onclick="{if(confirm('确定要删除评论吗?')){return true;}return false;}"><div class="trash"> </div></a>
+	    	{%endifequal%}
+	    	{%endif%}
+	    {% endif %}
+	    </div>
+	</p>
+	{% autoescape off %}
+	<DIV class='comment_content'>
+	    <p>{{comment.content}}</p>
+	</DIV>
+	{% endautoescape %}
+	<DIV class=post-footer>
+	        <span class='comment-timestamp'>            
+	            {% if comment.lastModifiedDate %}
+	            	Edited at {{comment.lastModifiedDate}} by {{comment.lastModifiedBy}}.
+	            {% endif %}
+	        </span>
+	</DIV>
+</li>
+{% endfor %}
+</ol>

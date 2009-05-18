@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CXCanvas guid="986268243-63101-4573-158-33-1120868602214" width="562" height="451">
+  <ExportSettings useCurrent="-1" path=""/>
+  <font fontName="Verdana">
+    <embed>0</embed>
+  </font>
+  <colorTheme>Admiral</colorTheme>
+  <Notes/>
+  <colorScheme>BOC37CC8824CD140E6AD6E59BA729A851B</colorScheme>
+  <component id="2D17B84D-2885-AF70-4E1C-59FED79A639E" className="xcelsius.charts.cartesian.LineChart" styleName="" displayName="Line Chart 1">
+    <colorScheme>BOC37CC8824CD140E6AD6E59BA729A851B</colorScheme>
+    <properties>
+      <property>
+        <name>
+          <string>title</string>
+        </name>
+        <value>
+          <string>Line Chart 123</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>subtitle</string>
+        </name>
+        <value>
+          <string>Sample Sub Title</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextOn</string>
+        </name>
+        <value>
+          <string>Grow</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextOnTip</string>
+        </name>
+        <value>
+          <string>Enable Scale Growth</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextOff</string>
+        </name>
+        <value>
+          <string>Off</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextOffTip</string>
+        </name>
+        <value>
+          <string>Disable Scaling</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextAuto</string>
+        </name>
+        <value>
+          <string>Auto</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextAutoTip</string>
+        </name>
+        <value>
+          <string>Enable Full Automatic Scaling</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextFocusTip</string>
+        </name>
+        <value>
+          <string>Focus Chart Data</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>scaleTextResetTip</string>
+        </name>
+        <value>
+          <string>Reset Chart Scale</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>width</string>
+        </name>
+        <value>
+          <number>370</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>height</string>
+        </name>
+        <value>
+          <number>235</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>minWidth</string>
+        </name>
+        <value>
+          <number>25</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>minHeight</string>
+        </name>
+        <value>
+          <number>25</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>defaultSeriesName</string>
+        </name>
+        <value>
+          <string>Series {0}</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>x</string>
+        </name>
+        <value>
+          <number>14</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>y</string>
+        </name>
+        <value>
+          <number>9</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>seriesNames</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <string>Series1</string>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>data</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <array/>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>categoryLabelsNumberFormats</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <string/>
+            </property>
+            <property id="1">
+              <string/>
+            </property>
+            <property id="2">
+              <string/>
+            </property>
+            <property id="3">
+              <string/>
+            </property>
+            <property id="4">
+              <string/>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>markSymbolTypes</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <number>1.000000</number>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>axisBySeries</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <number>0.000000</number>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectedMarksBySeries</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <number>0.000000</number>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>dataNumberFormats</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <array>
+                <property id="0">
+                  <string/>
+                </property>
+                <property id="1">
+                  <string/>
+                </property>
+                <property id="2">
+                  <string/>
+                </property>
+                <property id="3">
+                  <string/>
+                </property>
+                <property id="4">
+                  <string/>
+                </property>
+              </array>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>yLabelNumberFormat</string>
+        </name>
+        <value>
+          <string/>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>yLabelNumberFormat2</string>
+        </name>
+        <value>
+          <string/>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>seriesNamesNumberFormats</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <string/>
+            </property>
+          </array>
+        </value>
+      </property>
+    </properties>
+    <bindings>
+      <property>
+        <name>
+          <string>data</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BOE5989E2A4AFF47689BCCA9A44A10C05F" displayname="Sheet1!$B$1:$B$5">
+              <workbook>[Object]</workbook>
+              <inputtype>
+                <string/>
+              </inputtype>
+              <outputtype>
+                <string>xcelsius.binding.tableMaps.output.TableToArray</string>
+              </outputtype>
+              <range>Sheet1!$B$1:$B$5</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C2</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array>
+                  <property id="0">
+                    <object>
+                      <property id="className">
+                        <string>xcelsius.binding.chain::ArrayChainAccessor</string>
+                      </property>
+                      <property id="properties">
+                        <array>
+                          <property id="0">
+                            <object>
+                              <property id="name">
+                                <string>index</string>
+                              </property>
+                              <property id="value">
+                                <number>0.000000</number>
+                              </property>
+                            </object>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>output</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>categoryLabels</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BO5E12661EC5BA4BD3AC31F01FA674FC31" displayname="Sheet1!$A$1:$A$5">
+              <workbook>[Object]</workbook>
+              <inputtype>
+                <string/>
+              </inputtype>
+              <outputtype>
+                <string>xcelsius.binding.tableMaps.output.TableToArray</string>
+              </outputtype>
+              <range>Sheet1!$A$1:$A$5</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C1</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C1</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C1</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C1</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C1</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array/>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>output</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+    </bindings>
+    <Persist>
+      <array>
+        <property id="0">
+          <object>
+            <property id="name">
+              <string>_currentSeriesMaxNum</string>
+            </property>
+            <property id="value">
+              <number>2.000000</number>
+            </property>
+          </object>
+        </property>
+        <property id="1">
+          <object>
+            <property id="name">
+              <string>_byRangeBindingId</string>
+            </property>
+            <property id="value">
+              <string>BO917B60C7BF754EA99D841F92D048840D</string>
+            </property>
+          </object>
+        </property>
+        <property id="2">
+          <object>
+            <property id="name">
+              <string>_isSeriesExisted</string>
+            </property>
+            <property id="value">
+              <true/>
+            </property>
+          </object>
+        </property>
+        <property id="3">
+          <object>
+            <property id="name">
+              <string>_alertTargetDP</string>
+            </property>
+            <property id="value">
+              <array>
+                <property id="0">
+                  <number>100.000000</number>
+                </property>
+                <property id="1">
+                  <number>100.000000</number>
+                </property>
+                <property id="2">
+                  <number>100.000000</number>
+                </property>
+                <property id="3">
+                  <number>100.000000</number>
+                </property>
+                <property id="4">
+                  <number>100.000000</number>
+                </property>
+              </array>
+            </property>
+          </object>
+        </property>
+        <property id="4">
+          <object>
+            <property id="name">
+              <string>_isDataInRows</string>
+            </property>
+            <property id="value">
+              <number>2.000000</number>
+            </property>
+          </object>
+        </property>
+      </array>
+    </Persist>
+  </component>
+  <ColorSchemes>
+    <Scheme name="BOC37CC8824CD140E6AD6E59BA729A851B">
+      <Root ID="BOC37CC8824CD140E6AD6E59BA729A851B" name="Tech - Red">
+        <Colors>
+          <color1>0xFFFFFF</color1>
+          <color2>0x412525</color2>
+          <color3>0x000000</color3>
+          <color4>0x390E0D</color4>
+          <color5>0xCE2F2F</color5>
+          <color6>0x8C1815</color6>
+          <color7>0xEF7D7A</color7>
+          <color8>0xCD1D18</color8>
+          <color9>0x940D0A</color9>
+          <color10>0xB05353</color10>
+        </Colors>
+        <StyleDeclarations/>
+      </Root>
+    </Scheme>
+  </ColorSchemes>
+  <canvas>
+    <styles>
+      <property>
+        <name>
+          <string>backgroundImage</string>
+        </name>
+        <value>
+          <null/>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>backgroundGradientColors</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <number>0.000000</number>
+            </property>
+            <property id="1">
+              <number>0.000000</number>
+            </property>
+          </array>
+        </value>
+      </property>
+    </styles>
+  </canvas>
+</CXCanvas>

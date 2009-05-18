@@ -1,0 +1,79 @@
+{% load googletags %}
+{% load cache %}
+{% load blog_tags %}
+
+<div id="sidebar2">
+<ul>	
+	<li><h2>Meta</h2>
+			{% if user.is_authenticated %}
+				
+				<ul>
+					<li><img src="/static/images/default_avatar.jpg"></li>
+					<li><a href="/user/profile/{{user.username}}">{{user.username}}</a>已登入</li>
+					<li><a href="{% google_logout_url %}" style="color:red;" onclick="{if(confirm('确定要登出吗?')){return true;}return false;}">登出</a></li>
+		        		</ul>
+		        {% else %}
+		        <ul>
+		        	<li><a href="{% google_login_url %}" style="text-shadow: red;">登录</a></li>
+		        </ul>
+		        {%endif%}
+	</li>
+{%if user.is_superuser%}
+<li><h2><span style="color:red;">Action</span></h2>
+				<p >
+						<a href="{%url blog.views.add_post%}"><span style="color:red;">新增文章</span></a><br>
+					{%if post%}
+						<a href="{%url blog.views.edit_post post.key%}"><span style="color:red;">编辑当前文章</span></a><br>
+						<a href="{%url blog.views.delete_post post.key%}" onclick="{if(confirm('确定要删除当前文章吗?')){return true;}return false;}"><span style="color:red;">删除当前文章</span></a>
+					{%endif%} 
+				</p>
+	
+</li>
+{%endif%}
+{%if user.is_superuser%}
+	<li>
+	  <h2 style="color: red;">Admin</h2>
+		<ul>
+			<li><a href="/export/" >Export</a></li>
+			<li><a href="/import/" >Import</a></li>
+			<li><a href="/console/" target="_blank">Console</a></li>
+			<li><a href="/admin/" target="_blank">Admin</a></li>
+			<li><a href="/test" target="_blank">Run Test</a></li>
+		</ul>
+	</li>
+{%endif%}	
+{% cache 3600 sidebar %}
+	<li><h2 id="GSearch">Search</h2>
+		<p style="">	
+			<form action="" id="searchbox_015582886016506127922:qmnj8zccxka" onsubmit="return false;">
+			  <div>
+			    <input id="q" type="text" size="15" name="q" value=""/>
+				<input id="button_search" name="sa" type="image" align="top" value="Search" src="/static/images/icon_search.gif"/>	
+			  </div>
+			</form>
+			
+			<div id="results_015582886016506127922:qmnj8zccxka" style="display:none">
+			  <div class="cse-closeResults"> 
+			    <a>&times; 关闭</a>
+			  </div>
+			  <div class="cse-resultsContainer"></div>
+			</div>
+		</p>
+	</li>
+	{% show_hotlist %}
+	{% show_recent_comments %}
+	<li><h2 id="Rss">RSS</h2>
+	<ul>
+				<a target="_blank" href="/feeds/latest/">
+				<img border="0" vspace="2" style="margin-bottom: 3px;" alt="feedsky" src="http://img.feedsky.com/images/icon_sub_c1s16.gif"/>
+				</a>
+				<br/>				
+		</ul>
+	</li>
+		
+	{%show_categories%}	
+	{%show_tags%}
+	{%show_links%}
+{% endcache %}
+</ul>
+</div>

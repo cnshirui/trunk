@@ -1,0 +1,82 @@
+﻿{% extends "main.html" %}
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+{% block title %}
+	iHere - Add or Edit a Post
+{% endblock%}
+
+{% block extra_head %}
+<!-- Skin CSS file -->
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/assets/skins/sam/skin.css">
+<!-- Utility Dependencies -->
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
+<!-- Needed for Menus, Buttons and Overlays used in the Toolbar -->
+<script src="http://yui.yahooapis.com/2.6.0/build/container/container_core-min.js"></script>
+<script src="http://yui.yahooapis.com/2.6.0/build/menu/menu-min.js"></script>
+<script src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+<!-- Source file for Rich Text Editor-->
+<script src="http://yui.yahooapis.com/2.6.0/build/editor/editor-min.js"></script>
+{% endblock%}
+
+{% block content %}
+<div class="yui-g" style="text-align: left;">
+<h3>添加新文章</h3>
+{%if draft%}
+<a href="#draft"><span style="color: red;">You have some unpublished posts!</span></a>
+{%endif%}
+<form name="mainForm" method="post" action="" onsubmit="return parseBlogContent()">
+		{{form.as_p}}
+	<input type="submit" value="保存"/>
+</form>
+
+{%if draft%}
+<br>
+<blockquote>
+<div id='draft'>
+	<p style="font-size: 8pt;">
+	Draft:<br/>
+	{%for post in draft%}
+	<a href='{%url blog.views.edit_post post.key%}' >
+		{{ post.title }} 
+	</a><br/>
+	{%endfor%}
+	</p>
+</div>
+</blockquote>
+{%endif%}
+</div>
+{% endblock %}
+
+{% block body_script %}
+<script type="text/javascript">
+<!--
+(function() {
+    //Setup some private variables
+    var Dom = YAHOO.util.Dom,
+        Event = YAHOO.util.Event;
+
+        //The Editor config
+        var myConfig = {
+            height: '300px',
+            width: '100%',
+            animate: true,
+            dompath: true,
+            focusAtStart: false,
+            autoHeight: true
+        };
+
+    //Now let's load the Editor..
+    var myEditor = new YAHOO.widget.Editor('id_content', myConfig);
+    myEditor.render();
+})();
+
+function parseBlogContent(){
+//form validator:
+//todo                     
+                var editor = YAHOO.widget.EditorInfo.getEditorById("id_content");
+                editor.saveHTML();        
+                return true;
+}
+//-->
+</script>
+{% endblock %}

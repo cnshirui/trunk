@@ -1,0 +1,92 @@
+/* CSS file */
+@font-face {
+    src:url("HelveticaNeue-Condensed.ttf");
+    fontWeight: normal;
+    fontFamily: myFont;
+}
+Application {
+   backgroundImage: Embed(source="darkaurora.jpg");
+   
+}
+
+
+	
+Label {
+   fontFamily: myFont;
+   fontSize: 14;
+   color: #cccccc;
+}
+
+Panel {
+   borderColor: #999999;
+   borderAlpha: 0.82;
+   borderThicknessLeft: 5;
+   borderThicknessTop: 5;
+   borderThicknessBottom: 5;
+   borderThicknessRight: 5;
+   roundedBottomCorners: true;
+   cornerRadius: 4;
+   headerHeight: 0;
+   backgroundAlpha: 1;
+   backgroundColor: #000000;
+   shadowDistance: 5;
+   shadowDirection: right;
+   dropShadowColor: #141414;
+}
+ButtonBar {
+   buttonStyleName: "mybuttonBarButtonStyle";
+   firstButtonStyleName: "mybuttonBarFirstButtonStyle";
+   lastButtonStyleName: "mybuttonBarLastButtonStyle";
+}
+
+.mybuttonBarButtonStyle {
+   highlightAlphas: 0.2, 0.4;
+   fillAlphas: .4, .4, 1, 1;
+   fillColors: #000000, #000000, #000000, #000000;
+   color: #cccccc;
+   textRollOverColor: #ffffff;
+   themeColor: #333333;
+   borderColor: #333333;
+   fontSize: 12;
+   cornerRadius: 4;
+   
+}
+
+.mybuttonBarFirstButtonStyle {
+	highlightAlphas: 0.2, 0.4;
+   fillAlphas: .4, .4, 1, 1;
+   fillColors: #000000, #000000, #000000, #000000;
+   color: #cccccc;
+   textRollOverColor: #ffffff;
+   themeColor: #333333;
+   borderColor: #333333;
+   fontSize: 12;
+   cornerRadius: 4;
+}
+
+.mybuttonBarLastButtonStyle {
+	highlightAlphas: 0.2, 0.4;
+   fillAlphas: .4, .4, 1, 1;
+   fillColors: #000000, #000000, #000000, #000000;
+   color: #cccccc;
+   textRollOverColor: #ffffff;
+   themeColor: #333333;
+   borderColor: #333333;
+   fontSize: 12;
+   cornerRadius: 4;
+}
+
+
+VScrollBar {
+   cornerRadius: 0;
+   highlightAlphas: 0.38, 0.38;
+   fillAlphas: 0.93, 0.76, 0.75, 0.65;
+   fillColors: #666666, #333333, #999999, #333333;
+   trackColors: #333333, #666666;
+   themeColor: #333333;
+   borderColor: #666666;
+}
+
+
+
+

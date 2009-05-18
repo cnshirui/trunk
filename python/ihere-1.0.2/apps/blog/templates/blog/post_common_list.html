@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% load markup %}
+{% block content %}
+{% include "paginator.html" %}
+{% for post in post_list %}				
+			<div class="post" id="post-{{post.key}}">
+				<h2>
+				{{forloop.counter}}. 
+					<a title="类别" href="{%url category post.category|escape,1%}" style="text-decoration: none;">
+						<span style="color: green;">[{{ post.category }}]</span>
+					</a>
+					<a href='{{post.get_permalink}}' >
+						 {{ post.title }} 
+					</a>
+				</h2>
+				<p class="info">
+						<a href="mailto:{{ post.author.email }}" style="text-decoration: none;">{{ post.author.nickname }}</a>
+							&nbsp;|&nbsp;写于{{ post.date|date:"Y-m-d H:i" }}
+						&nbsp;|&nbsp;<a target="_blank" href="/feeds/post/{{post.key}}" style="text-decoration: none;">
+						<span style="color: orange;">RSS</span>
+						</a>
+						{%ifequal post.entryType 'post'%}
+						&nbsp;|&nbsp;
+							<a href="{{post.get_permalink}}#comments" style="text-decoration: none;">
+								comments:({{post.commentcount}})
+							</a>
+						{%endifequal%}
+						&nbsp;|&nbsp;
+						<a href="{%url hotlist 1%}">Hit<span style="color: red;">({{post.get_cached_visitcount}})</span></a>
+					<br/>
+					Tags: 
+					{%for tag in post.get_tags%}
+							<a href="{{tag.get_absolute_url}}" class="tag navLink">
+								{{tag}}&nbsp;
+							</a>
+					{%endfor%}
+
+				</p>	
+			</div>
+			{%endfor%}
+{% endblock %}

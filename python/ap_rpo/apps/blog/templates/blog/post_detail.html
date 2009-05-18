@@ -1,0 +1,44 @@
+{% extends "main.html" %} 
+{% load blog_tags %}
+{% block title %}
+	iHere - {{post.title}}
+{% endblock%}
+{% block content %}
+<div >
+<div id="blogview">
+<div class="post_nav">
+<div style="float:right;height:10px">
+{%for next in post.next%}
+	<a href="{{next.get_permalink}}" style="text-decoration: none;" title="{{next.title}}({{ next.date|date:"Y-m-d H:i" }})">{{next.title|slice:":10"}}...»</a>
+{%endfor%}
+</div>
+<div style="float:left">
+{%for prev in post.prev%}
+	<a href="{{prev.get_permalink}}" style="text-decoration: none;" title="{{prev.title}}({{ prev.date|date:"Y-m-d H:i" }})">«{{prev.title|slice:":10"}}...</a>
+{%endfor%}
+</div>
+</div>
+<div style="clear:both"></div>
+<br/>
+{%show_blog_post post%}
+<br>
+{%ifequal post.entryType 'post'%}
+{% include "blog/post_detail_commentArea.html" %}
+<br> <br>
+{% if user.is_authenticated %}
+	{% include "blog/post_detail_commentForm.html" %}
+{% else %}
+<p id="add_comment">
+		You can <a href="{% google_login_url request.get_full_path %}">Login</a> to add a comment:-)
+</p>
+{% endif %}
+{%endifequal%}
+</div>
+</div>
+{% endblock %}
+{% block body_script %}
+<!--  
+    <script type="text/javascript" src="/static/js/jquery.growl.js"></script>
+    <script src="/static/js/load-growl.js" type="text/javascript"></script>
+-->
+{% endblock %}

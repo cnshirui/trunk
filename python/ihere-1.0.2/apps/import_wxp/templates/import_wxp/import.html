@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div style="display: block;height: 1200px;text-align: left;">
+About iHere! About me!
+<p>
+I've made it for fun.
+</p>
+<div >
+	<blockquote>
+	Import WPX <span style="color:red;">(New!)</span>
+	<form id="form" action="" enctype="multipart/form-data" method="post">
+		<input type="file" name="file" id="id_file" value="WPX File" />
+        <div><input type="submit" value="import" /></div>
+    </form>
+	</blockquote>
+	<br>
+	<blockquote>
+	本地脚本导入<br>
+	cd 到apps\import_wxp\<br>
+     执行import.py (import.py -h查看用法)<br>
+     下面是个例子:<br>
+    import.py -f c:/wordpress.xml -m evertobe@gmail.com -a inforsphere -s 6.latest.inforsphere.appspot.com
+	
+	
+	</blockquote>
+</div>
+</div>
+{% endblock %}

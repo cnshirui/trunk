@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<autos>
+  <manufacturer name="Chevrolet">
+    <make name="Corvette">
+      <model>2000 Convertible</model>
+      <price currency="usd">60,000</price>
+      <horsePower>420</horsePower>
+      <fuelCapacity units="gallons">18.5</fuelCapacity>
+    </make>
+  </manufacturer>
+  <manufacturer name="Mazda">
+    <make name="RX-7">
+      <model>test model</model>
+      <price currency="usd">30,000</price>
+      <horsePower>350</horsePower>
+      <fuelCapacity units="gallons">15.5</fuelCapacity>
+    </make>
+  </manufacturer>
+</autos>

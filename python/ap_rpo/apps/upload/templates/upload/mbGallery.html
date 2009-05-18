@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>mbGallery</title>
+
+	<link rel="stylesheet" href="/static/stylesheets/mbGallery.css"/>
+	<script type="text/javascript" src="/static/js/jquery-1.3.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/mbGallery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#g1").mbGallery( {
+				galleryMaxWidth:0,
+				galleryWidth:300,
+				galleryHeight:300,
+				galleryColor:"#333",
+				galleryFrameBorder: 12,
+				galleryFrameColor:"#fff",
+
+				thumbStripPos: "right",
+				thumbStripWidth:250,
+				thumbSelectColor: "#fff",
+				thumbOverColor : "#cccccc",
+				thumbStripColor: "#333333",
+				thumbsBorder: 4,
+				thumbHeight:50,
+				headerOpacity: .8,
+
+				labelColor: "#333333",
+				labelColorDisactive:"#333333",
+				labelTextColor: "#ffffff",
+				labelTextSize:"11px",
+				labelHeight:20,
+
+				startFrom:0,
+				fadeTime: 500,
+				autoSlide:true,
+				autoSize : true,
+				slideTimer: 6000,
+				iconFolder: "/static/images/elements/white",
+				startTimer:0
+			}
+				)}
+			);
+	</script>
+</head>
+<body >
+
+<div style="background:#FF6600 url(/static/images/header_bgnd.jpg); padding:10px"><font color="#ffffff" size="+3" face="Courier New, Courier, mono"> mbGallery</font>
+{% if user.is_authenticated %}
+      <form id="upload_form" action="{%url upload.views.albumentry%}" enctype="multipart/form-data" method="post">
+		{{form}} <input type="submit" value="Upload" />
+      {% autoescape off %}
+		<a href="{% google_logout_url "/album/mbGallery/"%}" style="color:red;" onclick="{if(confirm('确定要登出吗?')){return true;}return false;}">[ Logout ]</a>
+	  &nbsp;|&nbsp;<a href="/admin/upload/" target="_blank">[ manage ]</a>
+	  {% endautoescape  %}
+	  </form>
+{% else %}
+      <p><b>Login required to upload. <a href="{% google_login_url "/album/mbGallery/"%}" style="color:red;">[ Login ]</a></b></p>
+{% endif %}
+</div>
+
+<div align="center" height="500" class="gallery">
+
+	<div  id="g1" class="galleryCont">
+	{% for file in filelist %}
+		<img class="imgThumb" src="{%url show_icon file.key%}">
+		<img class="imgFull" src="{%url show_albumentry file.key%}">
+		<div class="imgDesc">{{file.name}}</div>
+	{% endfor %}
+	</div>
+</div>
+</body>
+</html>

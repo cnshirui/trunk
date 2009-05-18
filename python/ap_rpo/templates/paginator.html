@@ -1,0 +1,9 @@
+
+	{%if has_previous%}
+	<span><a href="{{previous}}">Previous Page</a></span>
+		{%if has_next%}|{%endif%}
+	{%endif%}	
+	{%if has_next%}
+	<span><a href="{{next}}">Next Page</a></span>
+	{%endif%}
+	共有{{pages}}页, 当前是第{{page}}页, 文章总数:{{hits}}.

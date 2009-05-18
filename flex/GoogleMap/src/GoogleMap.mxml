@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+	<maps:Map xmlns:maps="com.google.maps.*" 
+	    id="map" 
+	    mapevent_mapready="onMapReady(event)" 
+	    width="100%" height="100%"   
+	    key="ABQIAAAAVCLBh9Z1z_4rB9Fl0cTvxBRi_j0U6kJrkFvY4-OX2XYmEAa76BScU8kl9EHcO62BdRaRmUDUEzA_7g"
+	/>
+	
+	<mx:Script>
+		<![CDATA[
+			import com.google.maps.InfoWindowOptions;
+			import com.google.maps.controls.OverviewMapControlOptions;
+			import com.google.maps.controls.OverviewMapControl;
+			import com.google.maps.controls.MapTypeControlOptions;
+			import com.google.maps.controls.MapTypeControl;
+			import com.google.maps.controls.ZoomControlOptions;
+			import com.google.maps.controls.ZoomControl;
+			import com.google.maps.controls.PositionControlOptions;
+			import com.google.maps.controls.PositionControl;
+			import com.google.maps.MapType;
+			import com.google.maps.LatLng;
+			import com.google.maps.MapEvent;
+			
+			private function onMapReady(event:MapEvent):void {       
+			    //设置地图显示的坐标,以及地图显示的类型. 
+			    //MapType有4种类型分别是 
+			    //HYBRID_MAP_TYPE 混合模式，
+			    //NORMAL_MAP_TYPE 标准模式，
+			    //PHYSICAL_MAP_TYPE自然地图模式，
+			    //SATELLITE_MAP_TYPE卫星模式 
+			    this.map.setCenter(
+			        new LatLng(31.209572,121.59668)/*经纬度*/, 
+			        14,  MapType.NORMAL_MAP_TYPE);   
+			        
+				//显示一个方向的按钮,用来移动地图 
+				map.addControl( new PositionControl( new PositionControlOptions()));   
+				//显示一个地图的缩略图 
+				map.addControl( new OverviewMapControl( new OverviewMapControlOptions() ) );   
+				//显示一个刻度条用来放大和缩小地图 
+				map.addControl( new ZoomControl( new  ZoomControlOptions() ) );   
+				//在地图上显示地图的4种类型，可以随意切换 
+				map.addControl( new MapTypeControl( new MapTypeControlOptions() ) );
+								
+				map.enableScrollWheelZoom(); 
+				map.enableContinuousZoom(); 
+				
+				var address:LatLng 
+				    = new LatLng(map.getCenter().lat(),map.getCenter().lng());
+				map.openInfoWindow(
+				    address, 
+				    new InfoWindowOptions({title: "Hello", content: "SAP Libs China!"})
+				);
+			}
+			
+		]]>
+	</mx:Script>
+
+	
+</mx:Application>

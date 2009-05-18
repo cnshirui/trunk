@@ -1,0 +1,18 @@
+The gdata_feedfetcher sample illustrates reading AtomPub feeds exposed by
+Google Data APIs. When reading from a feed which requires authorization
+from the user, this sample uses AuthSub to allow the user to grant access to 
+their data. 
+
+In order to run, this sample requires the source code for the 
+gdata-python-client to be uploaded along with the code provided
+in this sample. You can download the gdata-python-client library here:
+
+http://code.google.com/p/gdata-python-client/downloads/list
+
+Copy the gdata and atom directories which are found in source into the
+root directory of your app. 
+
+For an explanation on how the sample works, please see the aricle on this
+sample, which is available here:
+
+http://code.google.com/appengine/articles/gdata.html

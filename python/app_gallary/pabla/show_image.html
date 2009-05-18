@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Viewing {{pic.title}}{% endblock %}
+{% block content %}
+<div class='pictitle'>
+  {{pic.title}}
+</div>
+<div class='picsubmitter'>
+  {{pic.submitter}}
+</div>
+<div class='picview'>
+  <img src='/image/{{image_key}}'>
+</div>
+<div class='piccaption'>
+  {{pic.caption}}
+</div>
+<div class='pictags'>
+  Tags:
+  {% for tag in pic.tags %}
+  <a href='/search?q={{tag}}'>{{tag}}</a>{% if not forloop.last %},{% endif %}
+  {% endfor %}
+</div>
+<a href='/album/{{pic.album.key}}'>Back to album</a>
+{% endblock %}

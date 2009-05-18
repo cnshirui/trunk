@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Geochat</title>
+    <link rel="stylesheet" href="/static/css/geochat.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA5aiSIr40CaCgAL1qdBx_URT7PEZbmam_2zAsIoWwfh3Jj6aT1RRYLlAgQv4nC1zqXhjttDcaEzPmFA"
+      type="text/javascript"></script>
+    <script src="/static/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/geochat.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      GEOCHAT_VARS = {
+        'auth_url': '{{ auth_url }}',
+        'user_email': '{{ user_email }}',
+        'user_nickname': '{{ user_nickname }}',
+        'default_location': '{{ default_location }}',
+        'initial_latitude': '{{ initial_latitude }}',
+        'initial_longitude': '{{ initial_longitude }}',
+        'update_interval': 5000,
+        'error_interval': 30000
+      };
+      GEOCHAT_IMAGES = {
+        'marker': '/static/images/marker.png',
+        'marker-user': '/static/images/marker-lime.png'
+      };
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="head">
+        <h1><a href="/">Geochat</a></h1>
+        <div id="topnav">
+          {% if user_email %}
+          <strong>{{ user_email }}</strong> | 
+          {% endif %}
+          <a href="/help" target="_blank">Help</a> |
+          {% if user_email %}
+          <a href="/settings">Settings</a> |
+          {% endif %}
+          <a href="{{ auth_url }}">{{ auth_text }}</a>
+        </div>
+      </div>
+      <div id="body">
+        <div id="map"></div>
+        {% if user_email %}
+        <div id="chat">
+          <form id="chatform" action="#" onsubmit="say(this.chat); return false;">
+            <input type="text" name="chat" size="60" maxlength="255" />
+            <input type="submit" value="Chat" />
+          </form>
+          <form id="moveform" action="#" onsubmit="move(this.address.value); return false;">
+            <input type="text" name="address" id="address" size="20" />
+            <input type="submit" value="Move" />
+          </form>
+        </div>
+        {% endif %}
+        <div id="log">
+          <h2>Chat Log</h2>
+          <div id="log-entries"></div>
+        </div>
+        <div id="status">
+          
+        </div>
+      </div>
+      <div id="foot">
+        &copy;2008 Google
+      </div>
+    </div>
+  </body>
+</html>

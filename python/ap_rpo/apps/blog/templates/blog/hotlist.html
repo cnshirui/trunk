@@ -1,0 +1,12 @@
+{%if hotlist%}
+	<li><h2>Most Popular Posts</h2>
+	<p>
+	{% for hotpost in hotlist %}
+		<a href="{{hotpost.get_permalink}}" class="url{{forloop.counter|add:"5"}}" title="{{hotpost.title}}">{{forloop.counter}}. {{hotpost.title|truncatewords:"10"}} ({{hotpost.get_cached_visitcount}})</a>	
+		<br>
+	{% endfor %}
+	
+	</p>
+	<p style="text-align: right;"><a href="{%url hotlist 1%}">more...</a></p>
+	</li>
+{%endif%}

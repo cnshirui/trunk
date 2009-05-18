@@ -1,0 +1,76 @@
+  <!-- Skin CSS file -->
+  <link rel="stylesheet" type="text/css" href="/yui/assets/skins/sam/skin.css">
+
+  <!-- Utility Dependencies -->
+  <script type="text/javascript" src="/yui/yahoo-dom-event/yahoo-dom-event.js"></script>
+  <script type="text/javascript" src="/yui/element/element-min.js"></script>
+  <script type="text/javascript" src="/yui/event/event-min.js"></script>
+  <script type="text/javascript" src="/yui/connection/connection-min.js"></script>
+
+  <!-- Needed for Menus, Buttons and Overlays used in the Toolbar -->
+  <script src="/yui/container/container_core-min.js"></script>
+  <script src="/yui/menu/menu-min.js"></script>
+  <script src="/yui/button/button-min.js"></script>
+
+  <!-- Source file for Rich Text Editor-->
+  <script src="/yui/editor/editor-min.js"></script>
+
+  <script type="text/javascript">
+
+(function() {
+    var Dom = YAHOO.util.Dom,
+        Event = YAHOO.util.Event;
+
+    var myConfig = {
+        height: '300px',
+        width: '600px',
+        animate: true,
+        dompath: true
+    };
+
+    YAHOO.log('Create the Editor..', 'info', 'example');
+    var myEditor = new YAHOO.widget.Editor('comment_body', myConfig);
+    myEditor.render();
+
+    YAHOO.log('Create Button Control (#toggleEditor)', 'info', 'example');
+    Event.on('comment_submit', 'click', function(ev) {
+        YAHOO.log('Button clicked, initiate transaction', 'info', 'example');
+        Event.stopEvent(ev);
+        myEditor.saveHTML();
+        Dom.get('new_comment').submit();
+    });
+
+})();
+
+</script>
+
+<body class="yui-skin-sam">
+  <%= render :partial => @post %>
+  <p>
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %> |
+    <%= link_to 'See All My Posts', :action => 'person', :id => 0 %>
+  </p>
+
+  <h2>Comments</h2>
+
+  <%= button_to_function "Add Comment", "Effect.BlindDown('new_comment');$('add_comment').hide();", :id => "add_comment" %>
+  
+  <div id="new_comment" style="display:none;">
+
+    <%= button_to_function "Discard", "$('new_comment').hide();$('add_comment').show();", :id => "discard_comment" %><br/>
+    
+    <% remote_form_for [@post, Comment.new] do |f| %>
+      <p>
+         <%= f.text_area :body %>
+      </p>
+      <p>
+        <%= f.submit "Submit" %>
+      </p>
+    <% end %>
+  </div>
+  
+  <div id="comments">
+    <%= render :partial => @post.comments %>
+  </div>
+</body>

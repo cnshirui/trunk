@@ -1,0 +1,78 @@
+body {
+  font-style: Georgia;
+  font-size: 14px;
+}
+
+#main {
+}
+
+#moviescontent {
+  border: solid black 0px;
+}
+
+#summary {
+  padding: 10px;
+  background: black;
+  color: white;
+}
+
+
+#topmenu {
+  font-style: Georgia;
+  font-size: 14px;
+  text-align: right;
+}
+
+#reviewsection {
+  width: 500px;
+}
+
+td.movieTd {
+  width: 250px;  
+  vertical-align: top;
+  text-align: center;
+  border: solid black 1px;
+}
+
+#logosection {
+  border: solid white 0px;
+  padding: 10px;
+  width: 600px;
+  background: black;
+  color: white;
+}
+
+#logolink {
+  text-decoration: none;
+  color: white;
+  font-style: georgia;
+  font-size: 50px;
+}
+
+#logosubtitle {
+  font-style: goergia;
+  font-size: 15px;
+  color: red;
+}
+
+.movieDiv {
+}
+
+#pagination {
+  font-weight: bold;
+  color: black;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+#pagination input {
+  font-style: arial;
+  font-size: 13px;
+  border: solid black 1px;
+}
+
+#pagination a {
+  font-weight: bold;
+  color: red;
+  text-decoration: none;
+}
