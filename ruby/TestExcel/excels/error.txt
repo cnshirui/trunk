@@ -1,4 +1,0 @@
-friends p
-sports p
-top10 
-us_map

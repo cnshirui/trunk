@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fc="http://www.adobe.com/2006/fc"
-	layout="absolute" creationComplete="onCreationComplete()" xmlns:ns1="bridge.*">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:fc="com.adobe.flex.extras.controls.springgraph.*"
+	creationComplete="onCreationComplete()" 
+	layout="absolute">
 	
 	<mx:Style>
 		.text {
@@ -30,8 +32,8 @@
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
 
-<!--	<mx:XML id="personsXML" source="../test/personsByNameAll.xml" />
--->
+	<mx:XML id="personsXML" source="../test/personsByNameAll.xml" />
+
 	<mx:Script>
 		<![CDATA[
 			import mx.collections.ArrayCollection;
@@ -41,9 +43,11 @@
 			import mx.managers.CursorManager;
 			import mx.managers.PopUpManager;
 			import mx.managers.CursorManagerPriority;
+			
+			// http://www.adobe.com/2006/fc/SpringGraph.swc
 			import com.adobe.flex.extras.controls.springgraph.Graph;
 
-			private var _test:Boolean = false;
+			private var _test:Boolean = true;
 			private var _autoClose:Boolean = false;
 
 			[Bindable]
@@ -105,7 +109,7 @@
 				// for test
 				if (_test)
 				{
-//					receivedFromJavaScript(personsXML.person[0]);
+					receivedFromJavaScript(personsXML.person[0]);
 				}
 			}
 
@@ -228,7 +232,7 @@
 			{
 				if (_test)
 				{
-//					receivedFromJavaScript(personsXML.person.(id == uid));
+					receivedFromJavaScript(personsXML.person.(id == uid));
 				}
 			}
 

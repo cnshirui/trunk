@@ -1,3 +1,4 @@
+<<<<<<< HEAD:notes/prog.txt
 支付成功
 
 订单号：309051920090519829095141968589 
@@ -23,6 +24,8 @@
 2、加5元配专业屏幕保护膜一张，三层加厚                 （市价10～20元）
 3、加30元配高容量组装电池一个；                        （市价40～50元）
 
+=======
+>>>>>>> 233a3803a9a1dabcb20b66ddaa940d83a16b4e07:notes/prog.txt
 Form.Element.focus('new_comment');
 $('new_comment').focus();
 $('new_comment').scrollTo(); 

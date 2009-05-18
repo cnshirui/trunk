@@ -14,3 +14,5 @@ int main()
         cout << *my_iter++ << 'n';
     return (EXIT_SUCCESS);
 }
+
+
