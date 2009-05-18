@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Geochat - Help</title>
+    <link rel="stylesheet" href="/static/css/geochat.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAdYJXcHTgLXwJHx42FdpfShSwjK68yu4pZOlt3-QdB2LKOgoCmRQwPvLMdRWrVPiZp3jUKVKiL9eqbQ"
+      type="text/javascript"></script>
+    <script src="/static/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      GEOCHAT_VARS = {
+        'auth_url': '{{ auth_url }}',
+        'user_email': '{{ user_email }}'
+      };
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="head">
+        <h1><a href="/">Geochat</a></h1>
+        <div id="topnav">
+          {% if user_email %}
+          <strong>{{ user_email }}</strong> | 
+          {% endif %}
+          <a href="/help" target="_blank">Help</a> |
+          {% if user_email %}
+          <a href="/settings">Settings</a> |
+          {% endif %}
+          <a href="{{ auth_url }}">{{ auth_text }}</a>
+        </div>
+      </div>
+      <div id="body">
+        <div id="help">
+          <h2>Help</h2>
+          <h3>How do I sign up?</h3>
+          <p>Geochat uses Google Accounts for authentication. You can create a new Google Account <a href="https://www.google.com/accounts/NewAccount">here</a>.</p>
+          <h3>How do I move?</h3>
+          <p>Three ways: Drag and drop your marker, double-click a point on the map, or enter an address in the "move" box next to teh chat box.</p>
+          <h3>What sort of privacy does Geochat provide?</h3>
+          <p>While we try to limit how much a given user can see at any given time, anyone with their map focused near your marker can see what you're typing without you knowing. Don't share personal or confidential information.</p>
+          <h3>How do I find other people to chat with?</h3>
+          <p>Either invite friends to come chat at specific locations, or track down other users. Areas with high populations will probably have more users.</p>
+          <p>In the future we hope to add some contact management features that will hopefully make people you know easier to track down.</p>
+          <h3>Why can't I zoom in/out?</h3>
+          <p>Different zoom levels would create different audiences, so at present everyone is locked to the same zoom. The choice of multiple zoom levels is something we hope to add in the future, though.</p>
+          <h3>People near me aren't seeing my messages. Why?</h3>
+          <p>They may not have their map focused at the same location as their marker, or your marker may simply not be visible within their map view. Of course, it may also be a bug on our part.</p>
+          <h3>What browsers are compatible with Geochat?</h3>
+          <p>Firefox and Safari (along with other Webkit browsers) should work fine. IE compatibility is still being smoothed out.</p>
+        </div>
+      </div>
+      <div id="foot">
+        &copy;2008 Google
+      </div>
+    </div>
+  </body>
+</html>

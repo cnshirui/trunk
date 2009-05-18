@@ -1,0 +1,23 @@
+application: gdata-feedfetcher
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /step1.*
+  script: step1.py
+
+- url: /step2.*
+  script: step2.py
+
+- url: /step3.*
+  script: step3.py
+
+- url: /step4.*
+  script: step4.py
+
+- url: /.*
+  script: feedfetcher.py

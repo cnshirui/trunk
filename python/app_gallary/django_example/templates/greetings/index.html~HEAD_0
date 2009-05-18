@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+{% block body %}
+<div id="wuz-greetings-index" class="g-section g-tpl-280-alt">
+  <div class="g-unit g-first">
+    <div class="wuz-sidebox">
+      <a href="{% url controllers.websites.create %}">Add Your Website!</a>
+      <ul>
+        <li>Receive friendly notes</li>
+        <li>Track notes via RSS</li>
+        <li>Add content to your site!</li>
+      </ul>
+    </div>
+    
+    <div class="wuz-sidebox">
+      <a href="{% url controllers.websites.index %}">Website Index</a>
+    </div>
+  </div>
+  
+  <div id="wuz-greetings" class="g-unit">
+    <ul>
+    {% if greetings %}
+      {% for greeting in greetings %}
+        <li>
+          <cite>{{ greeting.author }}</cite>
+          signed <a href="{% url controllers.websites.view greeting.website.key.id %}">{{ greeting.website.name }}'s Guestbook</a>
+          <div>
+            {{ greeting.created|date:"F jS f a" }} 
+          </div>
+          <p>
+            {{ greeting.content|escape }}
+          </p>
+        </li>
+      {% endfor %}
+    {% else %}
+      <li>No greetings yet</li>
+    {% endif %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

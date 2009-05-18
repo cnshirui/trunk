@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p> Demonstration for the Google App Engine <a
+href="http://code.google.com/appengine/docs/images/overview.html">Images
+API</a>.
+</p>
+
+Please select an image to apply image tranformations to:
+<ul>
+{% for image in imagelist %}
+  <li><a href="/sample?image={{ image|escape }}">{{ image }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

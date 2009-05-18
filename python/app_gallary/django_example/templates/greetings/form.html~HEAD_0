@@ -1,0 +1,28 @@
+{% extends base_template %}
+{% block body %}
+<form 
+  action="{% url controllers.greetings.create website.key.id %}"
+  method="post" id="wuz-greetings-form">
+
+  <h2>Sign the Guestbook for {{ website.name|escape }}</h2>
+  {% ifnotequal output "ahah" %}
+  <div>
+    <a href="{{website.url}}">{{website.url}}</a>
+  </div>
+  {% if website.description %}
+  <p>
+    {{website.description}}
+  </p>
+  {% endif %}
+  {% endifnotequal %}
+  
+  {{form}}
+  
+  <div class="wuz-submit">
+    <input type="submit" value="Save" />
+    <a href="{% url controllers.websites.view website.key.id %}">Cancel</a>
+  </div>
+
+</form>
+{% endblock %}
+

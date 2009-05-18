@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>
+      WuzHere: 
+      {% if website %}
+        Guestbook for {{ website.name|escape }} - {{ website.url }}
+      {% else %}
+        Guestbooks thats rulez
+      {% endif %}
+    </title>
+    <style type="text/css">
+    {% ifequal BUILD 'development' %}
+      @import "/css/goog.css";
+      @import "/css/inlay.css";
+      @import "/css/wuz.css";
+    {% else %}
+      @import "/css/wuz_compiled.{{ CURRENT_VERSION_ID }}.css";
+    {% endifequal %}
+    </style>
+  </head>
+  <body class="wuz">
+    <div class="g-section g-doc-800">
+      <div id="wuz-header" class="g-section g-tpl-33-67 g-split">
+        <div class="g-unit g-first">
+          <h1 id="wuz-logo"><a class="wuz-ir" href="/" ><span>WuzHere</span</a></h1>
+        </div>
+        <div class="g-unit">
+          {%if user %}
+          <strong>{{user.nickname}} &lt;{{user.email}}&gt;</strong>
+          {%if is_admin%} | <a href="/_ah/admin">Admin</a>{%endif%}
+          {%if sign_out%} | <a href="{{sign_out}}">Sign out</a>{%endif%}
+          {% else %}
+          {%if sign_in%}<a href="{{sign_in}}">Sign in</a>{%endif%}
+          {%endif%}
+        </div>
+      </div>
+      
+      <div id="wuz-content">
+        {%block body%}{%endblock%}
+      </div>
+    
+      <div id="wuz-footer">
+        &copy; WuzHere Industries, 2008 | <a href="/">Home</a> | <a href="/pages/about">About</a> | <a href="{% url controllers.websites.index %}">Websites</a>
+      </div>
+    </div>
+    
+    {% ifequal BUILD 'development' %}
+    <script type="text/javascript" src="/js/jquery-latest.js"></script>
+    <script type="text/javascript" src="/js/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="/js/wuz.js"></script>
+    {% else %}
+    <script type="text/javascript" src="/js/wuz_compiled.{{ CURRENT_VERSION_ID }}.js"></script>
+    {% endifequal %}
+    <script type="text/javascript">
+    </script>
+  </body>
+</html>

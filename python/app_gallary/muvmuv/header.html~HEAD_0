@@ -1,0 +1,12 @@
+<div id=topmenu>
+{% if user %}
+    <b>{{user.email}}</b>&nbsp;<a id="logout" href="{{ logout }}">logout</a>
+{% else %}
+    <a id="login" href="{{ login }}">login</a>
+{% endif %}
+</div>
+<div id="logosection">
+  <a id="logolink" href="/">MuvMuv</a>
+  <br>
+  <span id="logosubtitle">a simple muvie review site</span>
+</div>

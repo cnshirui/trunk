@@ -1,0 +1,83 @@
+<!-- Dependency -->
+<script src="http://yui.yahooapis.com/2.5.2/build/yahoo/yahoo-min.js"></script>
+<!-- Used for Custom Events and event listener bindings -->
+<script src="http://yui.yahooapis.com/2.5.2/build/event/event-min.js"></script>
+<!-- Connection Manager -->
+<script src="http://yui.yahooapis.com/2.5.2/build/connection/connection-min.js"></script>
+<!-- JSON Utility -->
+<script src="http://yui.yahooapis.com/2.5.2/build/json/json-min.js"></script>
+
+<script type="text/javascript">
+    String.prototype.trim = function () {
+        return this.replace(/^[\s\,]*/, "").replace(/[\s\,]*$/, ""); //for remove the space and comma at the begining/end of the tag.
+    };
+    function submitGreeting(refresh,obj){
+        if(obj){
+        obj.style.disabled = true;
+        }
+        var id = document.getElementById("id");
+         id.value = id.value.trim();
+        {%if not user%}
+        if(id.value==""){
+            alert("Please input your name.");
+            id.focus();
+            return false;
+        }
+        {%endif%}
+       var msg = document.getElementById("msg");
+        msg.value = msg.value.trim();
+        if(msg.value==""){
+            alert("Please input your greeting.");
+            msg.focus();
+            return false;
+        }
+        var sUrl = "/rpc?action=AddGreeting&refresh=\"" + refresh +
+                   "\"&time=" + new Date().getTime();
+        var addGreetingSuccess = function(o) {
+            if (o.responseText !== undefined) {
+                //refresh the msg content.
+                var greetings = YAHOO.lang.JSON.parse(o.responseText);
+                var html = "";
+                for(var i=0;i<greetings.length;i++){
+                   var greeting = greetings[i];
+                     html+="<p>"+greeting.author+"@"+greeting.date+" say: "+ greeting.content;
+                }
+                document.getElementById("greetings").innerHTML = html;
+            }
+             if(obj){
+                 obj.style.disabled = false;
+             }
+        }
+        var handleFailure = function(o) {
+            if (o.responseText !== undefined) {
+                alert("Client RPC Request Error, please retry.");
+            }
+             if(obj){
+                 obj.style.disabled = false;
+             }
+        }
+        var callback =
+        {
+            success:addGreetingSuccess,
+            failure:handleFailure,
+            argument:{id:id.value,mdg:msg.value}
+        };
+        var formObject = document.getElementById('greetingForm');   
+        YAHOO.util.Connect.setForm(formObject);
+        YAHOO.util.Connect.asyncRequest('POST', sUrl, callback);
+
+    }
+    YAHOO.util.Event.onDOMReady(submitGreeting(true));
+</script>
+<DIV id=greeting>
+    <H3>Greetings</H3>
+    <div>
+        <form id="greetingForm">
+        <div style="padding-bottom:2px"> <input id="id" name="id" size="15" value="{%if user%}{{user.email}}{%endif%}" {%if user%}readonly{%endif%}> <label for="id">name</label> </div>
+        <div> <input id="msg" name="msg" size="15"> <label for="msg">greeting</label> <img src="/img/comment_add.png" alt="Add your greeting" onclick="submitGreeting(false,this)">
+            <img src="/img/comment_add.png" alt="refresh" onclick="submitGreeting(true,this)"> </div>
+        <div id="greetings"> 
+        </div>
+        </form>
+    </div>
+</DIV>
