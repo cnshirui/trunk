@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Secret Velentine</title>
+<style type="text/css">
+  label {
+    text-align: left;
+    float: left;
+    margin-right: 1em;
+    width: 10em;
+  }
+  #body {
+    text-align: center;
+  }
+  #wrapper {
+    margin:0 auto;
+    width:700px;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+ <div id="body">
+  <div id="wrapper">
+  <h1>Secret Valentine Sender</h1>
+  
+  <div style="width: 35em">
+  Use this page to send a secret Valentine greeting to someone you
+  love.Fill in the details of the message below and it shall be
+  sent.<br>
+  <span style="color:red">(Warning: the content will not appear as you filled it in, the joke's on you!)</span>
+  <br><br>
+  {% if error_message %}
+  <div style="color: red">{{ error_message }}</div>
+  {% endif %}
+  </table>
+  <form action="send">
+    <fieldset style="border: 0">
+      <label for="email">To:</label>
+      <input id="email" type="text" name="email">
+      <br>
+
+      <label for="secret_name">Your secret name:</label>
+      <input id="secret_name" type="text" name="secret_name">
+      <br>
+
+      <label for="hint">&nbsp;</label>
+      <div id="hint">(Don't use your real name!)</div>
+
+    </fieldset>
+
+    <fieldset>
+    <legend>Message</legend>  
+    {% include "message_body.html" %}
+    </fieldset>
+    <fieldset>
+    <legend>Formatting</legend>
+      <input type="radio" name="format" value="html">HTML only</input><br>
+      <input type="radio" name="format" value="text">Text only</input><br>
+      <input type="radio" name="format" value="both">Both HTML and text</input>
+    </fieldset>
+    <input type="submit" value="Send">
+  </form>
+  </div>
+ </div>
+</div>
+</body>
+</html>

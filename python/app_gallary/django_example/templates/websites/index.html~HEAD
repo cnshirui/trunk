@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+{% block body %}
+<div id="wuz-websites-index" class="g-section g-tpl-280-alt">
+  <div class="g-unit g-first">
+    <div class="wuz-sidebox">
+      <a href="{% url controllers.websites.create %}">Add Your Site!</a>
+      <ul>
+        <li>Receive friendly notes</li>
+        <li>Track notes via RSS</li>
+        <li>Add content to your site!</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div id="wuz-websites" class="g-unit">
+    <ul>
+    {% for website in websites %}
+      <li>
+        <h2>
+          <a href="{% url controllers.websites.view website.key.id %}">{{website.name|escape}}</a>
+        </h2>
+        by {{ website.owner }}</cite>
+        <div>
+          <a href="{{website.url}}">{{website.url}}</a>
+        </div>
+        {% if website.description %}
+        <p>
+          {{website.description}}
+        </p>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

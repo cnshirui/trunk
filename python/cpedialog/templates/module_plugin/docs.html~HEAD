@@ -1,0 +1,9 @@
+<DIV id=docs>
+    <H3>My Google Docs</H3>
+    <div>
+      <img src="/img/icon_4_doc.gif"> Documents
+      <img src="/img/icon_4_spread.gif"> Spreedsheets
+      <img src="/img/icon_4_pres.gif"> Presentations
+      <img src="/img/icon_4_pdf.gif"> PDFs
+    </div>
+</DIV>

@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block contents %}
+
+<form action="." method="post">
+{{searchform.as_p}}
+<input type="submit" name="search_expert" value="Search Expert" />
+</form>
+
+{% endblock %}

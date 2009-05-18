@@ -1,0 +1,188 @@
+/* geochat.css */
+
+* {
+  margin: 0em;
+  padding: 0em;
+}
+
+/*
+ * TAGS
+ */
+
+body {
+  font: 80% Arial, sans-serif;
+}
+
+h1 {
+  color: #266ec6;
+  font-size: 1.6em;
+  margin: 0.2em 0.2em;
+}
+
+h1 a {
+  color: #266ec6;
+  text-decoration: none;
+}
+
+a {
+  color: #0000cc;
+}
+
+input {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 2px 4px;
+}
+
+img {
+  border: none;
+}
+
+/*
+ * CLASSES
+ */
+ 
+.nametag {
+  font-size: 90%;
+  margin-left: -100px;
+  margin-top: 8px;
+  padding: 3px 0px;
+  position: absolute;
+  text-align: center;
+  width: 200px;
+}
+
+.nametag * {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 2px 4px;  
+}
+ 
+.bubble {
+  display: none;
+  font-size: 90%;
+  padding: 5px;
+  position: absolute;
+  width: 220px;
+}
+
+.bubble-top {
+  background-image: url('/static/images/bubble-bg-top.png');
+  height: 5px;
+}
+
+.bubble-middle {
+  background-image: url('/static/images/bubble-bg-middle.png');
+  padding: 1px 8px;
+}
+
+.bubble-bottom {
+  background-image: url('/static/images/bubble-bg-bottom.png');
+  height: 16px;
+}
+ 
+.log-entry {
+  clear: both;
+  padding: 0.5em;
+}
+
+.log-entry img {
+  float: left;
+  padding: 0em 0.5em 0.5em 0em;
+}
+
+.log-entry strong {
+  display: block;
+}
+
+.tip {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  margin: 5px;
+  padding: 5px;
+}
+
+/*
+ * IDS
+ */
+ 
+#topnav {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+#body {
+  position: relative;
+}
+
+#map {
+  border: 1px solid #999;
+  height: 640px;
+  margin-left: 1%;
+  margin-right: 25%;
+  z-index: 2;
+}
+
+#chat {
+  background-color: #b5edbc;
+  margin: 1%;
+  padding: 0.5em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+#chat form {
+  display: inline;
+}
+
+#log {
+  background-color: #e1ecff;
+  display: relative;
+  height: 640px;
+  overflow: auto;
+  position: absolute;
+  top: 0em;
+  right: 1%;
+  width: 23%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+#log h2 {
+  background-color: #a4c5ff;
+  font-size: 1em;
+  margin: 0.4em;
+  padding: 0.3em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+#foot {
+  margin: 1em;
+  text-align: center;
+}
+
+#settings, #help {
+  margin: 1em;
+  width: 48em;
+}
+
+#settings h2, #help h2 {
+  color: #666666;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+#settings h3, #help h3 {
+  font-size: 1.0em;
+  margin: 1em 0em 0.5em 0em; 
+}
+
+#settings p, #help p {
+  font-size: 1.0em;
+  margin: 0.5em;
+}
+
+
+

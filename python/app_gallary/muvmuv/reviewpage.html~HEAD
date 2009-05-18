@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>MuvMuv - Muvie Review</title>
+
+<link rel="stylesheet" type="text/css" href="static/style.css" />
+
+<script src="static/common.js" type="text/javascript"></script>
+<script src="http://code.google.com/js/jquery.js" type="text/javascript">
+</script>
+<script src="static/json2.js" type="text/javascript"></script>
+
+</head>
+<script>  
+
+  var muvmuv = muvmuv || {};
+
+  muvmuv.URL_ARGS = muvmuv.getUrlArgs();
+  muvmuv.USER = '{{user}}' || 'None';
+  
+  var WRITE_REVIEW_LABEL = 'Write Review';
+  var SUBMIT_REVIEW_LABEL = 'Submit';
+
+  $(document).ready(function() {
+    
+    muvmuv.initReviewBox();
+    
+    muvmuv.fetchMovieData();
+  });
+
+  muvmuv.initReviewBox = function() {
+    $('#reviewbox').hide();
+
+    $('#cancel').click(function() {
+      $('#reviewbox').hide();
+      $('#writereview').show();
+    });
+
+    $('#submitreview').click(function() {
+      muvmuv.submitReview();
+    });
+
+    $('#writereview').click(function() {
+      if (muvmuv.USER == 'None') {
+        top.location.href = $('#login').attr('href');
+      } else {
+        $('#writereview').hide();
+        $('#reviewbox').show();
+
+        document.body.scrollTop = document.body.scrollHeight;
+        $('#reviewcomment').get(0).focus();
+      }
+    });
+  };
+
+  muvmuv.setReviews = function(reviews) {
+   
+    var html = []
+
+    for (var i = 0; i <reviews.length; i++) {
+      var review = reviews[i];
+
+      var author = review.author;
+      var comment = review.comment;
+      
+      var date = new Date(Date.parse(review.date));
+
+      html.push('<b>Name: </b>');
+      html.push(author);
+      html.push('<br/>');
+      html.push('<b>Date: </b>');
+      html.push(date);
+      html.push('<br/>');
+      html.push('<b>Review: </b>');
+      html.push('<br/>');
+      html.push(comment);
+      html.push('<br/>');
+      html.push('<br/>');
+    }
+
+    $('#comments').html(html.join(''));
+    $('#writereview').show();
+  };
+
+  muvmuv.fetchMovieData = function() {
+
+    var title = muvmuv.getTitle();
+
+    var callback = function(data) {
+      var json = JSON.parse(data);
+      var movie = json.movie;
+      var rating_average = movie.rating_average;
+      var rating_count = movie.rating_count;
+      var pic = movie.pic;
+      var summary = movie.summary;
+      var release_date = new Date(Date.parse(movie.release_date));
+
+      if (!$('#title').html()) {
+        $('#title').html(movie.title);
+        $('#releasedate').html(
+          ['<b>Released date: </b>', release_date.toString()].join(''));
+        $('#pic').attr({src: pic});
+        $('#summary').html(['<b>Sypnosis: </b>', summary].join(''));
+
+        muvmuv.findVideo(decodeURI(title), summary);
+      }
+      muvmuv.setReviews(json.reviews);
+    };
+
+    $.ajax({type: 'get', url: 'reviews', data: 'title=' + title,
+        success: callback});
+  };
+
+  muvmuv.MovieReview = function() {
+    this.title = null;
+    this.author = null;
+    this.reviewComment = null;
+  };
+
+  muvmuv.MovieReview.prototype.toJson = function() {
+    return JSON.stringify(this);
+  };
+  
+  muvmuv.submitReview = function() {
+
+    var review = new muvmuv.MovieReview();
+    review.title = decodeURI(muvmuv.getTitle());
+    review.reviewComment = $('#reviewcomment').val();
+    
+    if (!$.trim(review.reviewComment)) {
+      alert('Review cannot be empty');
+      return;
+    }
+
+    var jsonString = review.toJson();
+
+    var onSuccess = function() {
+      $('#reviewbox').hide();
+      $('#reviewcomment').val('');
+      muvmuv.fetchMovieData();
+    }
+
+    $.ajax({type: 'post', url: 'submitreview', 
+        data: 'json=' + jsonString, success: onSuccess});
+  };
+  
+  muvmuv.findVideo = function(title, summary) {
+
+    var keywords = [];
+
+    var re = /\([a-zA-Z0-9'\- ]+(, [a-zA-Z0-9'\- ]+)*\)/g
+
+    var matches = summary.match(re);
+
+    if (!matches) {
+      matches = [];
+    }
+
+    for (var i = 0; i < matches.length; i++) {
+      var match = matches[i];
+
+      var hasComma = match.indexOf(',') >= 0 | false;
+
+      if (hasComma) {
+        var matches_ = match.split(',');
+
+        for (var j = 0; j < matches_.length; j++) {
+          var match_ = matches_[j];
+
+          match_ = match_.replace(/[()]/g, '');
+
+          keywords.push(match_);
+        }
+      } else {
+        match = match.replace(/[()]/g, '');
+
+        keywords.push(match);
+      }
+    }
+
+    matches = title.split(' ');
+
+    for (var i = 0; i < matches.length; i++) {
+      var match = matches[i];
+
+      match = match.replace(/[^a-zA-Z]/g, '');
+      
+      keywords.push(match);
+    }
+
+    if (Array.map) {
+      keywords = keywords.map(function(element) {
+        element = element.replace(/ /g, '+');
+        return element.toLowerCase();
+      });
+    } else {
+      for (var i = 0; i< keywords.length; i++) {
+        keywords[i] = keywords[i].replace(/ /g, '+');        
+      }
+    }
+
+    var callbackName = 'muvmuv.processYouTubeFeed';
+
+    var youtubeFeed =
+      ['http://gdata.youtube.com/feeds/api/videos?callback=',
+      callbackName, '&alt=json-in-script&vq=',
+      keywords.join('+')].join('');
+
+    var script = document.createElement('script');
+    script.src = youtubeFeed;
+
+    document.body.appendChild(script);
+  }
+
+  muvmuv.processYouTubeFeed = function(feed) {
+   
+    var data = eval(feed);
+
+    if (data.feed.openSearch$totalResults.$t > 0) {
+
+      var url = data.feed.entry[0].link[0].href;
+      var id = url.replace('http://www.youtube.com/watch?v=', '');
+      var videoUrl = 'http://www.youtube.com/v/' + id;
+
+      var html = [];
+
+      html.push('<object width="250" height="200">');
+      html.push('<param name="movie" value="');
+      html.push(videoUrl);
+      html.push('"></param>');
+      html.push('<param name="wmode" value="transparent"></param>');
+      html.push('<embed src="');
+      html.push(videoUrl);
+      html.push('" type="application/x-shockwave-flash"');
+      html.push(' wmode="transparent" width="250" height="200">');
+      html.push('</embed></object>');
+
+      $('#video').html(html.join(''));
+    }
+  }
+
+</script>
+<body>
+
+<div align="center" id="main">
+{% include "header.html" %}
+
+  <div id="reviewsection">
+
+    <h1 id="title"></h1>
+    <p align="center" id="releasedate"></p>
+    <table>
+    <tr>
+    <td align="center" style="width: 250px; height: 200px; background: black;">
+    <img id="pic" src="">
+    </td>
+    <td>
+    <div id="video"/>
+    </td>
+    </tr>
+    </table>
+    <br> 
+
+    <p id="summary" align="left">
+    </p>
+
+    <p id="comments" align="left">
+    </p>   
+
+    <br>
+    <input id=writereview type="button" value="Write Review">
+    <div id=reviewbox>
+      <textarea style="height: 150px; width: 500px;"
+      id=reviewcomment></textarea>
+      <br>
+      <input id=submitreview type="button" value="Submit"/>
+      <input id=cancel type="button" value="Cancel"/>
+    </div>
+  </div>
+</div>
+</body>
+</html>

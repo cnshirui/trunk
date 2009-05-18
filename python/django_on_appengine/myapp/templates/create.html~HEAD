@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block contents %}
+<form action="." method="post">
+{{pollform.as_p}}
+
+{% for form in choiceforms %}
+{{form.as_p}}
+{% endfor %}
+
+<input type="submit" name="createpoll" value="createpoll" />
+</form>
+
+{% endblock %}

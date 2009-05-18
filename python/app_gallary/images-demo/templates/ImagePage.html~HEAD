@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Current State</h3>
+Valid transforms: {{ transform_args|escape }}<br>
+Valid transforms with invalid arguments:
+  {{ transformer.invalid_params|join:"&"|escape }}<br>
+Unknown arguments: 
+  {{ transformer.unknown_params|join:"&"|escape }}<br>
+
+<script defer>
+function addTransform(arg) {
+  document.location = document.location + '&' + arg;
+}
+
+function show(id) {
+  document.getElementById(id + '_info').style.display = "inherit";
+}
+function hide(id) {
+  document.getElementById(id + '_info').style.display = "none";
+}
+</script>
+<style>
+  .info {
+    position: absolute;
+    background-color:#FFA;
+    border-style:double;
+    padding: 5 5 5 5;
+    display: none;
+  }
+</style>
+
+<h3>Add transform: </h3>
+<button onclick="addTransform('im_feeling_lucky')"
+  onmouseover="show('im_feeling_lucky')"
+  onmouseout="hide('im_feeling_lucky')">im_feeling_lucky</button>
+<pre class="info" id="im_feeling_lucky_info">
+{{ documentation.im_feeling_lucky|escape|linebreaksbr }}
+</pre>
+<button onclick="addTransform('horizontal_flip')"
+  onmouseover="show('horizontal_flip')"
+  onmouseout="hide('horizontal_flip')">horizontal_flip</button>
+<pre class="info" id="horizontal_flip_info">
+{{ documentation.horizontal_flip|escape|linebreaksbr }}
+</pre>
+<button onclick="addTransform('vertical_flip')"
+  onmouseover="show('vertical_flip')"
+  onmouseout="hide('vertical_flip')">vertical_flip</button>
+<pre class="info" id="vertical_flip_info">
+{{ documentation.vertical_flip|escape|linebreaksbr }}
+</pre>
+<button onclick="addTransform('format=png')">use PNG not JPEG</button>
+<br />
+<button onclick="addTransform('rotate=' +
+    document.getElementById('rotateAmount').value)"
+  onmouseover="show('rotate')"
+  onmouseout="hide('rotate')">rotate</button>
+<pre class="info" id="rotate_info">
+{{ documentation.rotate|escape|linebreaksbr }}
+</pre>
+<input id="rotateAmount" value="-90" size="3"/> degrees
+<br />
+<button onclick="addTransform('crop=' +
+    document.getElementById('cropAmount').value)"
+  onmouseover="show('crop')"
+  onmouseout="hide('crop')">crop</button>
+<pre class="info" id="crop_info">
+{{ documentation.crop|escape|linebreaksbr }}
+</pre>
+<input id="cropAmount" value="0.3,0.3,0.7,0.7" /> left_x, top_y,
+    right_x, bottom_y
+<br />
+<button onclick="addTransform('resize=' +
+    document.getElementById('resizeAmount').value)"
+  onmouseover="show('resize')"
+  onmouseout="hide('resize')">resize</button>
+<pre class="info" id="resize_info">
+{{ documentation.resize|escape|linebreaksbr }}
+</pre>
+<input id="resizeAmount" value="100,100" /> x,y
+<br />
+<button onclick='document.location="?image={{ image|escape }}"'>clear all</button>
+<a href="/sample?image={{ image|escape }}">multi-sample</a>
+
+<hr>
+
+<img src="/imagedata?image={{ image|escape }}{{ transform_args|escape }}" />
+
+{% endblock %}
