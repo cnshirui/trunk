@@ -1,0 +1,27 @@
+div.header {
+  font-size: 18pt;
+}
+
+div.headerbar {
+  float: right;
+}
+
+div.albumpreview,
+div.content {
+  clear: both;
+}
+
+div.albumpreview img {
+  float: left;
+}
+
+div.albumtitle,
+div.pictitle {
+  font-size: 16pt;
+}
+
+div.albumcreator,
+div.picsubmitter {
+  color: green;
+}
+

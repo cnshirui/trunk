@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+Full source code available as part of <a 
+  href="http://code.google.com/p/google-app-engine-samples/downloads/list"
+  >google-app-engine-samples</a>.
+
+<br />
+
+Files displayed here:
+{% for file in filecontents %}
+<a href="#{{ file.name|escape }}">{{ file.name }}</a>
+{% endfor %}
+
+{% for file in filecontents %}
+<hr />
+<h3>{{ file.name }}</h3>
+<a name="{{ file.name|escape }}" />
+<pre>
+{{ file.contents|linebreaksbr }}
+</pre>
+{% endfor %}
+{% endblock %}

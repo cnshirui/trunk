@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Browsing Albums{% endblock %}
+{% block content %}
+{% for album in albums %}
+<div class='albumpreview'>
+  <div class='albumtitle'><a href='/album/{{album.key}}'>{{album.name}}</a></div>
+  <div class='albumcreator'>{{album.creator.nickname}}</div>
+</div>
+{% endfor %}
+<a href='/search'>Search by tag</a><br>
+<a href='/new'>Create a new album</a>
+{% endblock %}

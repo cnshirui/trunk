@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>
+{% block title %}
+SAP Expert Pool
+{% endblock %}
+</title>
+<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+<div>
+	<div id='title' class="title">
+		<h2>SAP Expert Pool -- SEP</h2>
+		<hr>
+    </div>
+	<div id='login' class="login">
+		<font size="2">{{ user_name }}</font> <a href="{{ url }}">{{ url_linktext }}</a>
+	</div>
+</div>
+
+</head>
+<body>
+<br>
+<div class="contents">
+
+{% block contents %}
+
+{% endblock %}
+</div>
+
+<div class="sidebar">
+{% block sidebar %}
+<h3>Action</h3>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/create/"> Create a new Expert</a></li>
+<li><a href="/search/"> Search existing Experts</a></li>
+</ul>
+
+<h3>Recent Experts</h3>
+<ul>
+{% for expert in recents %}
+<li>
+<a href="{{expert.get_absolute_url}}">{{expert.name}}</a>
+
+</li>
+{% endfor %}
+</ul>
+
+<br/><br/>
+<img src="/image/base.jpg" width=130 height=130>
+
+{% endblock %}
+</div>
+
+</body>
+</html>

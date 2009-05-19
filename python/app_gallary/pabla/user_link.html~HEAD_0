@@ -1,0 +1,5 @@
+{% if authenticated %}
+You are logged in as {{username}}. <a href='{{url}}'>Log Out</a>.
+{% else %}
+You are logged out. <a href='{{url}}'>Log In</a>
+{% endif %}

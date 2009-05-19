@@ -1,0 +1,12 @@
+<DIV id=favourite_ebook>
+    <H3>Favourite e-Books</H3>
+    <dl>
+        <dt>Agile &amp; Open Source:</dt>
+        <dd>
+            <UL>
+                <LI><A href="">Java Development With ANT </A><IMG src="/img/pdf.gif" border=0>
+                </LI>
+            </UL>
+        </dd>
+    </dl>
+</DIV>

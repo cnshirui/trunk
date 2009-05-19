@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Searching by tag{% endblock %}
+{% block content %}
+<form action='/search' method='get'>
+    Enter a tag to search for: <input type='text' name='q'>
+  <input type='submit' value='Search'>
+</form>
+{% for pic in pics %}
+<div class='picpreview'>
+  <img src='/thumbnail/{{pic.key}}'>
+  <div class='piclink'><a
+  href='/show_image/{{pic.key}}'>{{pic.title}}</a></div>
+  <div class='picsubmitter'>{{pic.submitter}}</div>
+</div>
+{% endfor %}
+<a href='/'>Browse albums</a>
+{% endblock %}

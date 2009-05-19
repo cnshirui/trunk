@@ -1,0 +1,5 @@
+Secret Valentine uses the appengine.mail api to send
+messages to users based on a simple form input. To use
+secret valentine change the SECRET_VALENTINE_SENDER varible
+in the code to be the email address of an admin of your 
+application.

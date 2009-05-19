@@ -16,7 +16,7 @@ class DataController < ApplicationController
     end
     data += "</data>"
 
-    render :xml => data
+    send_data data, :filename => "data_#{Time.now.to_i}.xml"
   end
 
   def set_default_user_id

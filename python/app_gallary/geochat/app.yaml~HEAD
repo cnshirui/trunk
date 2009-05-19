@@ -1,0 +1,24 @@
+application: geochat
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /static/html
+  static_dir: static/html
+  mime_type: text/html
+- url: /static/css
+  static_dir: static/css
+  mime_type: text/css
+- url: /static/js
+  static_dir: static/js
+  mime_type: text/javascript
+- url: /static/images
+  static_dir: static/images
+  mime_type: image/png
+- url: /event/.*
+  script: events.py
+- url: /.*
+  script: geochat.py
+
+

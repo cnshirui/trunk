@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>MuvMuv - Muvie Review</title>
+<link rel="stylesheet" type="text/css" href="static/style.css" />
+<script src="static/common.js" type="text/javascript"></script>
+<script src="http://code.google.com/js/jquery.js" type="text/javascript">
+</script>
+<script src="static/json2.js" type="text/javascript"></script>
+</head>
+
+<script>
+
+  var muvmuv = muvmuv || {};
+
+  muvmuv.ITEM_PER_PAGE = 16;
+  muvmuv.ITEM_PER_ROW = 4;
+
+  muvmuv.URL_ARGS = muvmuv.getUrlArgs();
+  muvmuv.USER = '{{user}}' || 'None';
+
+  jQuery(document).ready(function() {
+    muvmuv.main();
+  });
+
+  muvmuv.main = function() {
+    muvmuv.initSortChooser();
+    muvmuv.getMovies();
+  }
+
+  muvmuv.getPageUrlHtml = function(sortby, pageIndex) {
+    var urlHtml = [];
+    
+    var linkUrl = ['javascript:top.location.href=\'?sortby=', sortby,
+    '&page=', pageIndex, '\''].join('');
+    
+    urlHtml.push('<a href="');
+    urlHtml.push(linkUrl);
+    urlHtml.push('">');
+    urlHtml.push(pageIndex);
+    urlHtml.push('</a>');
+
+    return urlHtml.join('');
+  }
+
+  muvmuv.initPagination = function(movieTotal) {
+
+    var totalPage = Math.ceil(movieTotal / muvmuv.ITEM_PER_PAGE);
+
+    var currentPage = muvmuv.getCurrentPage();
+    var sortby = muvmuv.getSortBy();
+
+    var html = [];
+
+    var pagination = $('#pagination');
+
+    if (currentPage > 1) {
+      var prevButton = $('<input type="button" value="<<"/>');
+      
+      pagination.append(prevButton);
+      pagination.append('&nbsp;&nbsp;&nbsp;');
+
+      prevButton.click(function() {
+        
+        var prevIndex = currentPage - 1;
+        var prevUrl = ['?sortby=', sortby, '&page=', prevIndex].join('');
+        top.location.href = prevUrl;
+
+      });
+    }
+
+    for (var i = 0; i < totalPage; i++) {
+      
+      var pageIndex = i + 1;
+
+      if (pageIndex != currentPage) { 
+        html.push(muvmuv.getPageUrlHtml(sortby, pageIndex));
+        html.push('&nbsp;');
+      } else {
+        html.push(pageIndex);
+        html.push('&nbsp;');
+      }
+    }
+
+    $('#pagination').append(html.join(''));
+
+    if (currentPage < totalPage) {
+      var nextButton = $('<input type="button" value=">>"/>');
+
+      pagination.append('&nbsp;&nbsp;');
+      pagination.append(nextButton);
+
+      nextButton.click(function() {
+        var nextIndex = currentPage + 1;
+        var nextUrl = ['?sortby=', sortby, '&page=', nextIndex].join('');
+        top.location.href = nextUrl;
+      });
+    }
+
+  }
+
+  muvmuv.getMovies = function() {
+    
+    var sortby = muvmuv.getSortBy();
+    var currentPage = muvmuv.getCurrentPage();
+
+    var data = ['sortby=', sortby, '&page=', currentPage].join('');
+
+    var callback = function(data) {
+      
+      var json = JSON.parse(data);      
+      var movies = json.movies;
+      var movieTotal = json.total;
+
+      muvmuv.initPagination(movieTotal);
+
+      var html = [];
+
+      var item_per_row = muvmuv.ITEM_PER_ROW;
+      var row_count = Math.ceil(movies.length / item_per_row);
+      var movie_index = 0;
+      html.push('<table border=0 cellspacing=5 cellpadding=5>');
+
+      for (var i = 0; i < row_count; i++) {
+        
+        html.push('<tr>');
+
+        for (var j = 0; j < item_per_row; j++) {
+          
+          html.push('<td class="movieTd">');
+          
+          var movieHtml = ''
+          
+          if (movie_index < movies.length) {
+            var movie = movies[movie_index];
+            movieHtml = muvmuv.createMovieDiv(movie);
+          }
+          html.push(movieHtml);
+
+          html.push('</td>');
+
+          movie_index++;
+        }
+
+        html.push('</tr>');
+
+      }
+
+      html.push('</table>');
+
+      $('#moviescontent').append(html.join(''));
+      
+      $('.movieDiv').click(function() {
+        var movieTitle = $(this).attr('id');
+        muvmuv.gotoReview(movieTitle);
+      });
+
+      $('.movieTd').mouseover(function() {
+        var movie = $(this);
+        movie.css({color: 'white'});
+        movie.css({background: 'black'});
+      });
+
+      $('.movieTd').mouseout(function() {
+        var movie = $(this);
+        movie.css({color: 'black'});
+        movie.css({background: 'white'});
+      });
+    }
+
+    $.ajax({
+      method: 'get',
+      url: 'movies',
+      data: encodeURI(data),
+      success: callback
+      });
+  }
+
+  muvmuv.createMovieDiv = function(movie) {
+
+    var title = movie.title;
+    var release_date = new Date(Date.parse(movie.release_date));
+    var release_date_label = [release_date.getMonth() + 1, 
+        release_date.getDate(), 
+        release_date.getFullYear()].join('/');
+    
+    release_date_label = ['<b>Release: </b>', release_date_label].join('');
+
+    var pic = movie.pic;
+
+    var image = ['<img src="', pic, '">'].join('');
+  
+    var movieHtml = [];
+    movieHtml.push('<div class="movieDiv" id="');
+    movieHtml.push(encodeURI(title));
+    movieHtml.push('">');
+    movieHtml.push('<b>');
+    movieHtml.push(muvmuv.textTruncate(title,30));
+    movieHtml.push('</b>');
+    movieHtml.push('<br>');
+    movieHtml.push(image);
+    movieHtml.push('<br><br>');
+    movieHtml.push('<div>');
+    movieHtml.push(release_date_label);
+    movieHtml.push('</div>');
+    movieHtml.push('<br>');
+    movieHtml.push('</div>');
+
+    return movieHtml.join('');
+  }
+
+  muvmuv.initSortChooser = function() {
+    
+    var sortby = muvmuv.getSortBy();
+    var sortChooser = $('#sortchooser');
+    var sortOptions = sortChooser.get(0).options;
+    for (var i=0; i<sortOptions.length;i++) {
+      var value = sortOptions[i].value;
+      if (value == sortby) {
+        sortChooser.selectedIndex = i;
+        sortOptions[i].selected = true;
+        break;
+      }
+    }
+    
+    sortChooser.change(function() {
+      var index = $(this).get(0).selectedIndex;
+      var sortby = $(this).get(0).options[index].value;
+      var currentPage = 1;
+      top.location.href = ["/?sortby=", sortby, 
+          '&page=', currentPage].join('');
+    });
+  }
+
+  muvmuv.gotoReview = function(title) {
+    top.location.href = ['http://', top.location.host, '/review?title=',
+    title].join('');
+  }
+
+</script>
+
+<body>
+<div align=center id="main">
+
+{% include "header.html" %}
+  <br/>
+  <select id="sortchooser">
+    <option value="release_date" selected>release date</option>
+    <option value="title">title</option>
+  </select> &nbsp;
+  <span id="pagination"></span>
+  <br/>
+  <br/>
+  <div id="moviescontent"></div>
+</div>
+</body>
+</html>

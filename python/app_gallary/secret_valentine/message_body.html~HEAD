@@ -1,0 +1,15 @@
+<div style="width:480; position: relative; left: 1em">
+<div><p><h3>{{ salutation }} {{ receiver_name }},</h3></p></div>
+
+<p>You will not know who I am from this message, but I have
+<i>{{ feeling_type }}</i> feelings for you.  When I think of you, it
+makes me {{ thinking_activity }}.  Know that you are on my mind and
+that I am never far from you.  I shall forever be your {{ will_be }}.</p>
+
+<div><i>
+<p>Yours {{ good_bye }},</p>
+<p>{{ secret_name }}</p>
+</i></div>
+</div>
+
+
