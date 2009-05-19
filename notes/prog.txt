@@ -1,3 +1,9 @@
+gem install ferret -v=0.11.5 --platform mswin32
+gem install acts_as_ferret
+require 'acts_as_ferret' in model
+
+A201999102
+
 支付成功
 
 订单号：309051920090519829095141968589 

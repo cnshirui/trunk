@@ -107,7 +107,17 @@ class PostsController < ApplicationController
     Post.find(:all, :conditions => { :user_id => @user.id }).each { |post| @comments.concat post.comments }
     @comments.sort! { |a, b| a.updated_at <=> b.updated_at }
     @comments.reverse!
-#    @comments.sort_by { |comment| comment.updated_at }
+  end
+
+  def search
+    content = params[:posts_search][:keys]
+    content ||= "bec"
+    @results_count, results = Post.find_id_by_contents(content)
+    @posts = results.map { |result| Post.find(result[:id] )}
+
+    @comments = Comment.find(:all)
+    @comments.sort! { |a, b| a.updated_at <=> b.updated_at }
+    @comments.reverse!
   end
 
 end

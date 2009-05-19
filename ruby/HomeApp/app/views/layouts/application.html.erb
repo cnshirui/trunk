@@ -11,6 +11,11 @@
 </head>
 <body id="main">
   <div id="banner">
+    <% form_for :posts_search, :url => { :controller => 'posts', :action => "search" } do |f| %>
+      <%= f.text_field 'keys' %>
+      <%= submit_tag 'Search Posts' %>
+    <% end %>
+
     <% user = User.find_by_id(session[:user_id]) -%>
     <% if user -%>
       <%= link_to 'Index', :controller => 'posts' %>
