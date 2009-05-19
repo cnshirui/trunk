@@ -1,8 +1,47 @@
+
 gem install ferret -v=0.11.5 --platform mswin32
 gem install acts_as_ferret
 require 'acts_as_ferret' in model
 
 A201999102
+
+cnshirui( 2009-04-07 12:49:59 )  	给出  评价
+问几个问题：
+1. 号码是移动的，还是其他哪个运行商的？
+2. 号码是上海的，还是其他省份的？
+3. 话费是分期返还，还是一下子都可以用掉？
+4. 号码是什么套餐，有每月最低消费么？
+service回复:( 2009-04-07 13:45:26 )
+您好！是上海号码，联通的，320元话费（包含50元预置话费，以及270元获赠话费，每月返还15元，话费连续18月返还），不用签订任何协议。该卡默认每月月租18元，拨打本地电话0.12元/分钟（本地拨打国内IP17911长途0.20元/分钟，含本地通话费）接听所有来电免费。感谢您对绿螳螂数码网的关注，祝您购物愉快！
+
+haofei wang’s Experience
+
+    *
+      Associate Research Staff
+      SAP Research China
+
+      (Research industry)
+
+      Currently holds this position
+    *
+      software engineer
+      Diigo
+
+      (Privately Held; 1-10 employees; Internet industry)
+
+      November 2006 — December 2007 (1 year 2 months)
+
+haofei wang’s Education
+
+    *
+      Huazhong University of Science and Technology
+
+      bachelor, Computer Science, 2003 — 2007
+
+
+	  
+	  Form.Element.focus('new_comment');
+
 
 支付成功
 
@@ -31,12 +70,14 @@ A201999102
 
 
 Form.Element.focus('new_comment');
+
 $('new_comment').focus();
 $('new_comment').scrollTo(); 
 Effect.BlindDown('new_comment');
 $('new_comment').scrollTo();
 
-
+8700g
+黑莓 8100
 
 				
 heroku 
