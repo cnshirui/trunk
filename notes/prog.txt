@@ -1,10 +1,38 @@
-Form.Element.focus('new_comment');
+
+haofei wang¡¯s Experience
+
+    *
+      Associate Research Staff
+      SAP Research China
+
+      (Research industry)
+
+      Currently holds this position
+    *
+      software engineer
+      Diigo
+
+      (Privately Held; 1-10 employees; Internet industry)
+
+      November 2006 ¡ª December 2007 (1 year 2 months)
+
+haofei wang¡¯s Education
+
+    *
+      Huazhong University of Science and Technology
+
+      bachelor, Computer Science, 2003 ¡ª 2007
+
+
+	  
+	  Form.Element.focus('new_comment');
 $('new_comment').focus();
 $('new_comment').scrollTo(); 
 Effect.BlindDown('new_comment');
 $('new_comment').scrollTo();
 
-
+8700g
+ºÚÝ® 8100
 
 				
 heroku 
