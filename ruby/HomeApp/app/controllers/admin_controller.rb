@@ -36,9 +36,19 @@ class AdminController < ApplicationController
   end
 
   def import
-    puts params.inspect
-    file = params[:file]['file']
-    puts file.inspect
-    render :text => file.inspect
+    begin
+      xml = REXML::Document.new(params[:file].read)
+
+      models = []
+      Dir["#{RAILS_ROOT}/app/models/*.rb"].each do |file|
+        models << File.basename(file,".rb").camelize.constantize
+      end
+
+
+      
+      render :text => xml.to_s
+    rescue Exception => e
+      puts e.to_s, e.backtrace.join("\n")
+    end
   end
 end
