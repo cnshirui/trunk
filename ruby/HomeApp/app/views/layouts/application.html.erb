@@ -11,12 +11,6 @@
 </head>
 <body id="main">
   <div id="banner">
-    <% form_for :posts_search, :url => { :controller => 'posts', :action => "search" } do |f| %>
-      <%= f.text_field 'keys' %>
-      <%= submit_tag 'Search Posts' %>
-    <% end %>
-    <br/>
-    
     <%= link_to 'Home', :controller => 'posts' %>
     <span/>
     <%= link_to 'New post', new_post_path %>
@@ -30,6 +24,10 @@
     <% if user -%>
       <%= link_to user.name, :controller => 'posts', :action => 'person', :id => user.id %>
       <span/>
+      <% if user.is_admin -%>
+        <%= link_to "Admin", :controller => 'admin' %>
+        <span/>
+      <% end -%>
       <%= link_to "Logout", :controller => 'users', :action => 'logout' %>
     <% else -%>
       <%= link_to "Login", :controller => 'users', :action => 'login' %>

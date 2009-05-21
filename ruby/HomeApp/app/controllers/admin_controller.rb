@@ -1,8 +1,9 @@
 require 'rexml/document'
+require 'utils/time'
 
 class AdminController < ApplicationController
 
-  before_filter :authorize
+  before_filter :admin
 
   def export
     models = []
@@ -16,21 +17,26 @@ class AdminController < ApplicationController
     end
     data += "</data>"
 
-    send_data data, :filename => "data_#{Time.now.to_i}.xml"
+    send_data data, :filename => "data_#{Time.now.convert_zone(8).to_s.gsub(" ", "_")}.xml"
   end
 
   def set_default
     Post.find(:all).each do |post|
       # post.user_id = 1
-      post.privacy = Post::PRIVACIES[0]
-      post.category = Post::CATEGORIES[0]
-      post.save
+      # post.privacy = Post::PRIVACIES[0]
+      # post.category = Post::CATEGORIES[0]
+      # post.save
     end
 
 #    Comment.find(:all).each do |comment|
 #      comment.user_id = 1
 #      comment.save
 #    end
+
+    User.find(:all).each do |user|
+      user.is_admin = false
+      user.save
+    end
 
     render :text => "Set Default Successfully!"
   end
@@ -39,16 +45,26 @@ class AdminController < ApplicationController
     begin
       xml = REXML::Document.new(params[:file].read)
 
-      models = []
+      # clear data
       Dir["#{RAILS_ROOT}/app/models/*.rb"].each do |file|
-        models << File.basename(file,".rb").camelize.constantize
+        model = File.basename(file,".rb").camelize.constantize
+        model.find(:all).each do |obj|
+          obj.destroy
+        end
       end
 
-
+      # import data
+      xml.elements.each('data/*/*') do |e|
+        model = e.to_s.match(/<.+>/).to_s[1..-2].camelize.constantize
+        obj = model.new
+        obj.from_xml(e.to_s)
+        obj.save
+      end
       
-      render :text => xml.to_s
+      render :text => "Import Success!"
     rescue Exception => e
       puts e.to_s, e.backtrace.join("\n")
+      render :text => "Import Error!"
     end
   end
 end

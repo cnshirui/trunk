@@ -1,14 +1,21 @@
 <h1>Welcome to Shi Rui's Daily Life!</h1>
 
-<div id="friend_blogs">
-  <H3>Favourite Sites</H3>
-  <dl>
-    <dt>Programming:</dt>
+<div id="side_bar">
+  <div id="search_form">
+    <% form_for :posts_search, :url => { :controller => 'posts', :action => "search" } do |f| %>
+      <%= f.text_field 'keys' %>
+      <%= submit_tag 'Search Posts' %>
+    <% end %>
+  </div>
+  <div id="friend_blogs">
+    <H3>Favourite Sites</H3>
+    <dl>
+      <dt>Programming:</dt>
       <UL>
         <LI><A href="http://www.sourceforge.net/">Souceforge.net</A>
         </LI>
       </UL>
-    <dt>Blog &amp; Wiki</dt>
+      <dt>Blog &amp; Wiki</dt>
       <UL>
         <br/>
         <li><a title="frank05" href="http://blog.frank05.net/">frank05</a>
@@ -24,7 +31,8 @@
         <li><a title="WilliamGates" href="http://blog.williamgates.biz/">WG</a>
         </li>
       </UL>
-  </dl>
+    </dl>
+  </div>
 </div>
 
 <div id="all_posts">
