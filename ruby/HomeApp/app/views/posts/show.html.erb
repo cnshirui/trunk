@@ -49,7 +49,7 @@
   <p>
     <%= link_to 'Edit', edit_post_path(@post) %> |
     <%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you sure?" %> |
-    <%= link_to 'See All My Posts', :action => 'person', :id => 0 %>
+    <%= link_to 'See All My Posts', :action => 'person', :id => session[:user_id] %>
   </p>
 
   <h2>Comments</h2>

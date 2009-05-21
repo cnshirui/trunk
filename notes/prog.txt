@@ -1,9 +1,71 @@
+pudong register corp.
+rudong education system 
+
+    if(@post.privacy != 'public')
+      redirect_to :action => 'index'
+      return
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. 说是原版的，可手机上有Vodafone的标记，跟照片也不一样
+2. 说套装都是原装的，充电器不是原装的
+3. 说是全新，电池磨损很多，后盖有灰尘
+
+如果是几次，接触点那边肯定没有一个磨损的圆圈了
+我明天要出趟差，后天寄给你：）
+
+能不能退货啊？
+
+上海虬江路525号B2125	小宝收	电话15021778225
+淘宝用户名：cnshirui
+退货原因如下：
+1. 机器要求是原版的，不带运营商标记，而现在收到的是Vodafone的；
+2. 机器要求是全新的，现在后盖有许多灰尘，后盖的螺丝也好像被凝过；
+3. 附件要求是原装的，而收到的充电器是杂牌的，数据线也一样要求是原装的；
+4. 附件要求是全新的，现在的电池磨损很多，电极接触面都有一个小圆圈了；
+5. 还有就是可以帮我装软件么？浏览器，彩信，电子书，QQ，MSN，炒股的，谢谢！
+
+Friday, May 21, 7天15小时0分钟44秒 => Friday, May 28
 
 gem install ferret -v=0.11.5 --platform mswin32
 gem install acts_as_ferret
 require 'acts_as_ferret' in model
 
 A201999102
+027001023941
+交易通讯 20090516
+CapitalAccount is the same as CreditCard
 
 cnshirui( 2009-04-07 12:49:59 )  	给出  评价
 问几个问题：

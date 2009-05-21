@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Welcome to Juan's BEC Life!</title>
+  <title>Our Blog on Rails!</title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= auto_discovery_link_tag :atom, formatted_posts_path(:atom) %>
   <%= javascript_include_tag :all %>
@@ -15,20 +15,24 @@
       <%= f.text_field 'keys' %>
       <%= submit_tag 'Search Posts' %>
     <% end %>
+    <br/>
+    
+    <%= link_to 'Home', :controller => 'posts' %>
+    <span/>
+    <%= link_to 'New post', new_post_path %>
+    <span/>
+    <%= link_to 'People', :controller => 'users', :action => 'list' %>
+    <span/>
+    <%= link_to 'Account', :controller => 'accounts' %>
+    <span/>
 
     <% user = User.find_by_id(session[:user_id]) -%>
     <% if user -%>
-      <%= link_to 'Index', :controller => 'posts' %>
+      <%= link_to user.name, :controller => 'posts', :action => 'person', :id => user.id %>
       <span/>
-      <%= link_to user.name, :controller => 'posts', :action => 'person', :id => 0 %>
-      <span/>
-      <%= link_to 'New post', new_post_path %>
-      <span/>
-      <%= link_to 'People', :controller => 'users', :action => 'list' %>
-      <span/>
-      <%= link_to 'Account', :controller => 'accounts' %>
-      <span/>
-      <%= link_to "Logout", :controller => 'users', :action => 'logout' %>  
+      <%= link_to "Logout", :controller => 'users', :action => 'logout' %>
+    <% else -%>
+      <%= link_to "Login", :controller => 'users', :action => 'login' %>
     <% end -%>
   </div>
 

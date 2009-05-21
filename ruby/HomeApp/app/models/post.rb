@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
 
   acts_as_ferret :fields => [:body, :title]
 
+  PRIVACIES = ['private', 'friend', 'public']
+
+  CATEGORIES = ['BEC', 'Ruby', 'Linux', 'Maths', 'Programming', 'Career', 'Others']
+
 end
