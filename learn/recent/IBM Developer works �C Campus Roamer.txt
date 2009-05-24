@@ -1,0 +1,11 @@
+IBM Developer works – Campus Roamer
+
+对Web Development, Ruby on Rails, Flex, Google OpenSocial感兴趣的开发人员
+
+用Flex，Ruby on Rails搭建OpenSocial社交应用
+
+如今最热门的网站是哪些？Fackbook, Twitter等Social Application.最主流的RIA是哪个? Flex! 最Agile的web开发平台是哪个? Ruby on Rails!
+本文通过一个实例介绍如何利用后两者技术和Google的OpenSocial构建社交应用。
+
+时睿，2007年 毕业于南京大学计算机科学与技术系，之后在SAP Business Objects工作，主要从事Ruby on Rails, Flex, C++开发商务智能软件。联系方式：shiruide@gmail.com.
+

@@ -1,0 +1,403 @@
+<data><accounts type='array'>
+  <account>
+    <category>&#26085;&#24120;&#21507;&#21917;</category>
+    <created-at type='datetime'>2009-05-17T04:45:52Z</created-at>
+    <date type='date'>2009-05-16</date>
+    <id type='integer'>1</id>
+    <title>&#19990;&#32426;&#21326;&#32852;</title>
+    <updated-at type='datetime'>2009-05-17T04:45:52Z</updated-at>
+    <value type='decimal'>50.21</value>
+    <whose>shirui</whose>
+  </account>
+  <account>
+    <category>&#26085;&#24120;&#21507;&#21917;</category>
+    <created-at type='datetime'>2009-05-17T06:48:32Z</created-at>
+    <date type='date'>2009-05-17</date>
+    <id type='integer'>2</id>
+    <title>vegetable</title>
+    <updated-at type='datetime'>2009-05-17T06:48:32Z</updated-at>
+    <value type='decimal'>36.0</value>
+    <whose>shirui</whose>
+  </account>
+</accounts><comments type='array'>
+  <comment>
+    <body>What can I do for you, honey?
+
+Do you have lots of stuff to do, but don't where to start?
+
+You need to make a decision to choose your future life. The above link is &quot;wisdom of choice&quot;, whose author is Kaifu Lee.</body>
+    <created-at type='datetime'>2009-05-07T09:41:28Z</created-at>
+    <id type='integer'>20</id>
+    <post-id type='integer'>13</post-id>
+    <updated-at type='datetime'>2009-05-08T00:55:59Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>You are a bad boy! 
+I can't believe your words any more! </body>
+    <created-at type='datetime'>2009-04-28T03:00:35Z</created-at>
+    <id type='integer'>2</id>
+    <post-id type='integer'>2</post-id>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>Have you applied a leave for National Day?
+Why?
+You should apply a leave for Labor Day!</body>
+    <created-at type='datetime'>2009-04-28T03:04:53Z</created-at>
+    <id type='integer'>3</id>
+    <post-id type='integer'>1</post-id>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>Taday is Wednesday.
+Cathy told us that driver gave her the bag and 3500RMB's compensation.
+The compensation includes the cosmetic &#12289;the two days' taxi fare and so on.
+All of us admire the result.
+And we hope the thing happened on us.</body>
+    <created-at type='datetime'>2009-04-29T01:27:28Z</created-at>
+    <id type='integer'>4</id>
+    <post-id type='integer'>6</post-id>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>Don't worry. There's always A way to solve a problem.
+
+Has your grandma known the matter? Can we let him work in Xiangxiang's factory?</body>
+    <created-at type='datetime'>2009-04-29T05:37:11Z</created-at>
+    <id type='integer'>9</id>
+    <post-id type='integer'>4</post-id>
+    <updated-at type='datetime'>2009-05-12T23:57:09Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>&#26126;&#22825;&#36824;&#26377;&#28779;&#31661;&#65292;&#20811;&#21046;&#20303;&#65281;</body>
+    <created-at type='datetime'>2009-05-14T15:42:26Z</created-at>
+    <id type='integer'>21</id>
+    <post-id type='integer'>15</post-id>
+    <updated-at type='datetime'>2009-05-14T15:42:26Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>&lt;span style=&quot;font-family: Trebuchet MS;&quot;&gt;It's&lt;/span&gt;&lt;span style=&quot;color: #ff0000; font-family: Trebuchet MS;&quot;&gt; Monday, May 18, 2009&lt;/span&gt;&lt;span style=&quot;font-family: Trebuchet MS;&quot;&gt; today. The manager conclude the final goals as below,&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-family: Verdana;&quot;&gt;1. Team goals: 40%&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-family: Verdana;&quot;&gt;2. Project, owner of C++: 30%&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-family: Verdana;&quot;&gt;3. Technical learning: 10%&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-family: Verdana;&quot;&gt;4. Innovation: learn knowledge about Dashboard and Data Mining, contribute at least one idea to the product.&lt;/span&gt;</body>
+    <created-at type='datetime'>2009-05-18T02:49:27Z</created-at>
+    <id type='integer'>22</id>
+    <post-id type='integer'>16</post-id>
+    <updated-at type='datetime'>2009-05-18T02:49:27Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>My maternal grandma loves me most,so she like the person I choose,whether he is good or not.
+In a word,you did well this time.</body>
+    <created-at type='datetime'>2009-05-05T07:08:04Z</created-at>
+    <id type='integer'>10</id>
+    <post-id type='integer'>10</post-id>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>Good good work ,day day up!</body>
+    <created-at type='datetime'>2009-05-05T07:10:52Z</created-at>
+    <id type='integer'>11</id>
+    <post-id type='integer'>8</post-id>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>You can choose and upload some especial photos ,instead of uploading so many generic photos.
+
+</body>
+    <created-at type='datetime'>2009-05-05T07:16:18Z</created-at>
+    <id type='integer'>12</id>
+    <post-id type='integer'>7</post-id>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>Come on, beauty! I'll support you forever!</body>
+    <created-at type='datetime'>2009-05-05T14:22:45Z</created-at>
+    <id type='integer'>13</id>
+    <post-id type='integer'>11</post-id>
+    <updated-at type='datetime'>2009-05-05T14:22:45Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>Come on, baby! I could image what your childhood was:) Dare to be what you want, so that you will find a true ego.</body>
+    <created-at type='datetime'>2009-04-27T14:50:39Z</created-at>
+    <id type='integer'>1</id>
+    <post-id type='integer'>2</post-id>
+    <updated-at type='datetime'>2009-05-06T00:05:18Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>Hah, honey! You're so lovely. You know, All of it was just a compensation. Despite of it, it toke her two days' time. I think she is tired these days.
+
+Another reminder, her cellphone was also forgot in the taxi. Are there any photos in her cellphone? Besides it, is anything sensitive or private?</body>
+    <created-at type='datetime'>2009-04-29T05:29:39Z</created-at>
+    <id type='integer'>5</id>
+    <post-id type='integer'>6</post-id>
+    <updated-at type='datetime'>2009-05-06T00:05:18Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>I support you, beautiful! I'll do my best to help you learn English. I also think it's a good idea to spend your spare time.
+
+Hope we'll pas BEC middle in the autumn:)</body>
+    <created-at type='datetime'>2009-04-29T05:32:44Z</created-at>
+    <id type='integer'>6</id>
+    <post-id type='integer'>3</post-id>
+    <updated-at type='datetime'>2009-05-06T00:05:18Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>o(&#8745;_&#8745;)o...&#21704;&#21704;
+
+All of them are laudable! I'll cook gruel for you tonight.
+</body>
+    <created-at type='datetime'>2009-04-29T05:35:36Z</created-at>
+    <id type='integer'>7</id>
+    <post-id type='integer'>5</post-id>
+    <updated-at type='datetime'>2009-05-06T00:05:18Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>Oh, honey, I don't think so. Anyway, I WILL alter your opinion until the end of year.</body>
+    <created-at type='datetime'>2009-04-29T05:37:11Z</created-at>
+    <id type='integer'>8</id>
+    <post-id type='integer'>2</post-id>
+    <updated-at type='datetime'>2009-05-06T00:05:18Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>Come on, beauty! I'll support you forever! :)</body>
+    <created-at type='datetime'>2009-05-05T14:46:35Z</created-at>
+    <id type='integer'>14</id>
+    <post-id type='integer'>11</post-id>
+    <updated-at type='datetime'>2009-05-06T00:05:18Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>Why you will alter my opinion until the end of year?Why until the end of year?</body>
+    <created-at type='datetime'>2009-05-06T01:34:18Z</created-at>
+    <id type='integer'>16</id>
+    <post-id type='integer'>2</post-id>
+    <updated-at type='datetime'>2009-05-06T01:34:18Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>No,you should not!</body>
+    <created-at type='datetime'>2009-05-06T01:35:30Z</created-at>
+    <id type='integer'>17</id>
+    <post-id type='integer'>7</post-id>
+    <updated-at type='datetime'>2009-05-06T01:35:30Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>I am angry not because you drive me to read BEC student book.</body>
+    <created-at type='datetime'>2009-05-07T00:47:17Z</created-at>
+    <id type='integer'>18</id>
+    <post-id type='integer'>12</post-id>
+    <updated-at type='datetime'>2009-05-07T00:47:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </comment>
+  <comment>
+    <body>Good idea, beauty. So can I upload photos with people (us) :) ?</body>
+    <created-at type='datetime'>2009-05-06T00:07:13Z</created-at>
+    <id type='integer'>15</id>
+    <post-id type='integer'>7</post-id>
+    <updated-at type='datetime'>2009-05-08T00:55:59Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+  <comment>
+    <body>http://docs.google.com/Presentation?id=dd2rz6m_30fnkgv7p3
+
+&lt;iframe src='http://docs.google.com/EmbedSlideshow?docid=dd2rz6m_30fnkgv7p3' frameborder='0' width='410' height='342'&gt;&lt;/iframe&gt;</body>
+    <created-at type='datetime'>2009-05-07T09:04:48Z</created-at>
+    <id type='integer'>19</id>
+    <post-id type='integer'>13</post-id>
+    <updated-at type='datetime'>2009-05-08T00:55:59Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </comment>
+</comments><posts type='array'>
+  <post>
+    <body>I decided to bring my bf to my home in this Labor Day.
+But I feel unknown fear,why? I ask myself many times. 
+Life is myself not for any other person.
+But I am afraid others' discussions,I want others' applauses.which promote me to make progress.So I am a peacock.I hate myself.</body>
+    <created-at type='datetime'>2009-04-27T14:47:56Z</created-at>
+    <id type='integer'>2</id>
+    <title>Labor Day</title>
+    <updated-at type='datetime'>2009-05-05T15:42:01Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </post>
+  <post>
+    <body>My little brother continues to like gambling,and lose much money this year.
+I feel heart-struck.
+I growed up together with him.
+Our relation is so good that we had a good childhood.
+And my grandmother give me much love in my childhood,so I hope her have a happy senectitude.
+My little brother's gambling give my grandmother deep hurt.
+What can I do for them. 
+I feel tangly.
+Why the person I love can't live happily? </body>
+    <created-at type='datetime'>2009-04-28T03:37:11Z</created-at>
+    <id type='integer'>4</id>
+    <title>My little brother</title>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </post>
+  <post>
+    <body>I have constipation two weeks.
+I should ameliorate my dietetical habits and work and rest time.
+I should abstain from peppery food&#12289;ice cream&#12289;cool drink.
+I should abstain from computer game&#12289;long-playing TV.
+I should eat more spoon meat and read 
+more book.</body>
+    <created-at type='datetime'>2009-04-28T03:59:04Z</created-at>
+    <id type='integer'>5</id>
+    <title>Health</title>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </post>
+  <post>
+    <body>I feel bored every day! 
+I have little work every day!
+I have no achievement every day!
+I want to study English!
+I should study English!
+I must study English!
+Because it is a way to improve my job and life.
+Because it can give me some achievement.
+Because it can consume work time.</body>
+    <created-at type='datetime'>2009-04-28T03:14:03Z</created-at>
+    <id type='integer'>3</id>
+    <title>daily work time</title>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </post>
+  <post>
+    <body>Today is Tuesday.
+Cathy lost her bag in Volkswagen taxi on Sunday.
+Cathy called the Volkswagen service centre immediately.
+And in these three days,went Volkswagen subsidiary company and head office two times.
+Furthermore,she called &quot;110&quot; to call for help.
+The driver hid the bag initially,but he surrenderd Cathy's bag three days later after his leaders' indoctrination.
+The accident makes me remember her gas poisoning last time.
+She utilized free legal advice to gain all of her economical loss.
+So in this society, The weak are the prey of the strong. 
+We should utilize any way to protect our droit.
+
+
+
+
+</body>
+    <created-at type='datetime'>2009-04-28T05:53:39Z</created-at>
+    <id type='integer'>6</id>
+    <title>Cathy's bag</title>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </post>
+  <post>
+    <body>summay
+
+1. &#20080;&#20102;&#20010;&#35013;&#35746;&#26426;
+2. &#35746;&#20102;BEC&#30495;&#39064;2/3&#36753;&#65292;BEC&#20013;&#32423;&#65288;&#23398;&#29983;&#29992;&#20070;&#65289;
+3. &#22269;&#24198;&#33410;&#35831;&#20551;</body>
+    <created-at type='datetime'>2009-04-27T14:12:16Z</created-at>
+    <id type='integer'>1</id>
+    <title>BEC Blog Create!</title>
+    <updated-at type='datetime'>2009-05-05T15:20:51Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </post>
+  <post>
+    <body>http://picasaweb.google.com/shiruide/090315CenturyPark#</body>
+    <created-at type='datetime'>2009-04-29T06:03:31Z</created-at>
+    <id type='integer'>7</id>
+    <title>Photo in Century Park Mar 15, 2009</title>
+    <updated-at type='datetime'>2009-05-05T15:20:51Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </post>
+  <post>
+    <body>It's my first presentation in SAP BusinessObjects on Tuesday.
+
+After it, TL gave me some suggestion,
+
+1. It's pretty good to express yourself with graph in slides. Here I recommend MS Visio to design software architecture.
+
+2. TL considered my slides some incontinuous for the whole workflow. I'd better prepare a good scenario to mix up your presentation.
+
+3. Some points were difficult to understand, so we can give a few examples to express your points.
+
+At last, please remember!
+Practice makes perfect!</body>
+    <created-at type='datetime'>2009-04-29T09:58:15Z</created-at>
+    <id type='integer'>8</id>
+    <title>My first presentation in SAP BusinessObjects</title>
+    <updated-at type='datetime'>2009-05-05T15:20:51Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </post>
+  <post>
+    <body>In my team,there are seven persons. &lt;br&gt;The oldest man is the Division Manager, a taiwan single born in 60s, &lt;br&gt;The senior manager is a Japanese woman,born in 1972 probably.&lt;br&gt;The preparative manager is a Shanghai woman,born in 1981.&lt;br&gt;The others is born in 1976&#12289;1978&#12289;1983&#12289;1985&#65292;and the leader don't Cathy&#12289;Holly and me.&lt;br&gt;All of us&amp;nbsp;don't have much work, we talk with our friends every day. And I feel boring all day.&lt;br&gt;I don't like my work and all of the teammates except for Cathy.&lt;br&gt;I should study but I waste most the free time in the company,I feel ashamed and bad.</body>
+    <created-at type='datetime'>2009-05-05T08:16:54Z</created-at>
+    <id type='integer'>11</id>
+    <title>my teammate</title>
+    <updated-at type='datetime'>2009-05-05T14:19:17Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </post>
+  <post>
+    <body>There was gas leak yesterday, so I get off duty at 4:30. It's informed air condition returns normal at 6:00 pm that we should go to work today.&lt;br&gt;&lt;br&gt;In the afternoon, BEC Vantage 2, Vantage 3 and BEC student book came. All of them cost 62.9 RMB.&lt;br&gt;&lt;br&gt;I rode the bike after I was off duty. I bought a chicken at Century Lianhua Super Market.&lt;br&gt;&lt;br&gt;At last, I'll tell the most import of today. My wife is angry tonight because I drive her to read BEC student book. I apologize that I said I am our cooker at home :(</body>
+    <created-at type='datetime'>2009-05-06T13:13:38Z</created-at>
+    <id type='integer'>12</id>
+    <title>BEC Student Book Comes!</title>
+    <updated-at type='datetime'>2009-05-06T13:13:38Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </post>
+  <post>
+    <body>First of all, appreciate my girl friend, Juan Wu, for taking me to her home. My future father in law, mother, especially maternal grandma expressed pretty good feeling to me:) I think I'm the luckiest guy in the world. Anyway, Thanks to my wife in future, CCTV, MTV...&lt;br&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;&lt;br&gt;Thursday, April 30, 2009&lt;/span&gt;, Sunny&lt;br&gt;We got up at 5:30, and set off at 6:40. The bus depart from Shanghai at 7:50. We arrive at my girl friend's home at noon. My father in law drove us, three, from Xindian Town to home. I'm a shy boy, so we have only three conversation at the way.&lt;br&gt;&lt;blockquote style=&quot;font-family: yui-tmp;&quot;&gt;&lt;span style=&quot;background-color: #a2a2a2; font-family: yui-tmp;&quot;&gt;- When did you depart from Shanghai?&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;background-color: #a2a2a2; font-family: yui-tmp;&quot;&gt;- Ten to Seven. It took a long time to take more people in the way.&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;background-color: #a2a2a2; font-family: yui-tmp;&quot;&gt;- Oh, It takes 3 hours from Shanghai to Xindian.&lt;/span&gt;&lt;br&gt;&lt;/blockquote&gt;Oh my god. I just have the only weapon, SMILE:)&lt;br&gt;&lt;br&gt;At the lunch, my girl friend's grandma and a friend of my father in law came to our home. Fortunately, this uncle is good at speaking so that we are not stage wait at the table. I felt grandma is satisfied with me, because she always smile to me.&lt;br&gt;&lt;br&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;Friday, May 01, 2009&lt;/span&gt;, Sunny&lt;br&gt;It's Juan's birthday in the lunar calendar today. Her maternal grandma, cousin and his wife, uncle and aunt came here. We celebrate my wife's birthday. After lunch, my father in law sent me to my home by motor, and I took the bus from Chahe to Bencha.&lt;br&gt;&lt;br&gt;I had supper at aunt's home. My younger brother and his girl friend were also at home. My mother and I took motor home after supper.&lt;br&gt;&lt;br&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;Saturday, May 02, 2009&lt;/span&gt;, Rainy&lt;br&gt;It's almost rainy today, so I stayed at home. At 5:00 p.m. I bought a box of apple and milk to look visit Mr. Dong, a respective teacher at my primary middle school. He suggested me study for a master degree so that I can enter a national enterprise. He has a relative in state-owned asset commission, and he would like masters to work in his company. I think I should study for SJTU master degree or abroad.&lt;br&gt;&lt;br&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;Sunday, May 03, 2009&lt;/span&gt;, Sunny&lt;br&gt;I was efficient this morning. Actually my wife said so :) Here's my shopping list:&lt;br&gt;briefs and socks:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 100&lt;br&gt;spider shoes:&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; 220&lt;br&gt;mingying trousers: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 80&lt;br&gt;business suit: &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; 180&lt;br&gt;&lt;br&gt;It's emergent in this morning. After shopping, my mother went to Yangkou for bullaria, but all were sold out :( I know my wife likes to eat bullaria, so I will buy it for her next time.&lt;br&gt;&lt;br&gt;After lunch, I planed to take nantong's bus in the west road. But until 12:30, I didn't wait the bus. My mother had to drive me to Yangkou to take bus. Unfortunately, there's no bus to Nantong, so I had to take bus to Juegang, and I got off at Matang. My father in law brought me by moter. Thanks to my father in law, my wife and my mather in low :)&lt;br&gt;&lt;br&gt;In the afternoon, Juan's uncle and Jingjing come for dinner. Afer dinner, we four played cards happily.&lt;br&gt;&lt;br&gt;&lt;span style=&quot;color: #ff0000;&quot;&gt;Monday, May 04, 2009&lt;/span&gt;, Sunny&lt;br&gt;We got up at 5:30, then my father drive us to Matang. At 6:50 we set off from Rudong to Shanghai.&lt;br&gt;</body>
+    <created-at type='datetime'>2009-05-04T13:24:39Z</created-at>
+    <id type='integer'>10</id>
+    <title>2009 Labor's Day Review</title>
+    <updated-at type='datetime'>2009-05-06T14:25:37Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </post>
+  <post>
+    <body>This easygoing life make me boring.&lt;br&gt;This easygoing life make me irascible.&lt;br&gt;This easygoing life make me faineant.&lt;br&gt;What can I do ?</body>
+    <created-at type='datetime'>2009-05-07T07:36:36Z</created-at>
+    <id type='integer'>13</id>
+    <title>easygoing life</title>
+    <updated-at type='datetime'>2009-05-07T10:00:04Z</updated-at>
+    <user-id type='integer'>1</user-id>
+  </post>
+  <post>
+    <body>&#32456;&#20110;&#26126;&#30333;&#28779;&#31661;&#26159;&#25206;&#19981;&#36215;&#30340;&#38463;&#26007;&#65292;&#21807;&#26377;&#38752;&#33258;&#24049;&#65292;&#25165;&#33021;&#20080;&#24471;&#36215;&#25151;&#65281;</body>
+    <created-at type='datetime'>2009-05-13T04:03:24Z</created-at>
+    <id type='integer'>15</id>
+    <title>&#25106;&#29699;&#26126;&#24535;</title>
+    <updated-at type='datetime'>2009-05-13T04:03:24Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </post>
+  <post>
+    <body>I list three goals below,&lt;br&gt;&lt;strong&gt;Project Delivery&lt;/strong&gt;&lt;br&gt;1.Understand product life cycle, sign off feature/DTask on time&lt;br&gt;2.Assure product quality: make code robust, cover more test case&lt;br&gt;3.Improve product performance: pay attention to code efficiency&lt;br&gt;4. Innovation: think to enhance product, make it consumable&amp;nbsp; &lt;br&gt;&lt;strong&gt;Teamwork, Act as a member in IW/Xcelsius&lt;/strong&gt;&lt;br&gt;1.Learn IW domain knowledge, Dashboard, Business Data Mining&lt;br&gt;2. Help with each other, build to the best FLEX team&lt;br&gt;3.Passion to work for the honor of IW Mission&lt;br&gt;&lt;strong&gt;Growing to a Senior Developer&lt;/strong&gt;&lt;br&gt;1.Technical skill&lt;br&gt;- MFC: learn the architecture, ensure designer reliable&lt;br&gt;- FLEX: study FLEX design pattern, improve product performance&lt;br&gt;2. English:&amp;nbsp; more practice in speaking and listening, try to pass BEC Vantage&lt;br&gt;3. Cooperation, Communication, Habit, Think mode, Productivity&lt;br&gt;&amp;nbsp;&lt;br&gt;But the manager emphasized setting goals should be S(Specific), M(Measurable), A, R, T.&lt;br&gt;So I change them to,&lt;br&gt;&lt;strong&gt;Project Delivery&lt;/strong&gt;&lt;br&gt;1.Implement/design features, fix bugs to improve product quality&lt;br&gt;2.Study project related technology for productivity, read at least 4 books in Flex and Cpp&lt;br&gt;&lt;strong&gt;Soft Skills&lt;/strong&gt;&lt;br&gt;1.Innovation: learn knowledge about Dashboard and Business Data Mining, contribute at least an idea to our product&lt;br&gt;2.English: 2hs/week practice in speaking or listening, pass BEC Vantage in 2009&lt;br&gt;&lt;br&gt;</body>
+    <created-at type='datetime'>2009-05-18T02:11:06Z</created-at>
+    <id type='integer'>16</id>
+    <title>PDP 2009 ROY SHI</title>
+    <updated-at type='datetime'>2009-05-18T02:44:45Z</updated-at>
+    <user-id type='integer'>2</user-id>
+  </post>
+</posts><users type='array'>
+  <user>
+    <hashed-password>b3668e397f920799f77c1050a7af73f951e57f91</hashed-password>
+    <id type='integer'>1</id>
+    <name>wujuan</name>
+    <salt>238846337722200.951526004461636</salt>
+  </user>
+  <user>
+    <hashed-password>77f9dfb5fc36fe24a797106415316f2f064bb2ee</hashed-password>
+    <id type='integer'>2</id>
+    <name>shirui</name>
+    <salt>236421570533000.145901943030999</salt>
+  </user>
+</users></data>
