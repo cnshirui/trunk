@@ -7,6 +7,6 @@ class Post < ActiveRecord::Base
 
   PRIVACIES = ['private', 'friend', 'public']
 
-  CATEGORIES = ['BEC', 'Ruby', 'Linux', 'Maths', 'Programming', 'Career', 'Others']
+  CATEGORIES = ['English', 'Job', 'Life', 'Future', 'Ruby', 'Linux', 'Maths', 'Programming', 'Others']
 
 end

@@ -20,27 +20,6 @@ class AdminController < ApplicationController
     send_data data, :filename => "data_#{Time.now.convert_zone(8).to_s.gsub(" ", "_")}.xml"
   end
 
-  def set_default
-    Post.find(:all).each do |post|
-      # post.user_id = 1
-      # post.privacy = Post::PRIVACIES[0]
-      # post.category = Post::CATEGORIES[0]
-      # post.save
-    end
-
-#    Comment.find(:all).each do |comment|
-#      comment.user_id = 1
-#      comment.save
-#    end
-
-    User.find(:all).each do |user|
-      user.is_admin = false
-      user.save
-    end
-
-    render :text => "Set Default Successfully!"
-  end
-
   def import
     begin
       xml = REXML::Document.new(params[:file].read)
