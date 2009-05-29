@@ -1,0 +1,12 @@
+git clone git@heroku.com:wujuan.git
+git pull
+git commit -a -m "change admin layout"
+git push
+
+@_render_stack.first => @_first_render
+
+D:\perforce\gc_trunk\ror\typo-5.2>heroku info --app wujuan
+=== wujuan
+Web URL:        http://wujuan.heroku.com/
+Git Repo:       git@heroku.com:wujuan.git
+Collaborators:  shiruide@gmail.com

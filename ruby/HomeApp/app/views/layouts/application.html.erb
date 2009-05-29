@@ -7,7 +7,9 @@
   <title>Our Blog on Rails!</title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= auto_discovery_link_tag :atom, formatted_posts_path(:atom) %>
-  <%= javascript_include_tag :all %>
+  <%= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', :cache => 'all' %>
+  <%= javascript_include_tag 'application' %>
+
 </head>
 <body id="main">
   <div id="banner">

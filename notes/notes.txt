@@ -1,14 +1,13 @@
-- call Nanjing
-- 我的地址是义务学院路144号2楼204室 罗巧俊 15958489257
-
 *** todo ***
-- eclipse php,
-- heroku: No such file or directory - /disk1/home/slugs/6226_9b54112_92b9/mnt/tmp/cache
+- download 9290 JDE, ROM
 - xiaonei tuanzhang, embed youtube
 - ssh, https, rsa, dsa, sha1 relationship
 - hangzhou, xiamen, flight 99-199
 - huge data: xiaonei <-> heroku
-- win2003, kubuntu
+万国驾校, 莱思莉634, Lining 8809.1
+南京户口, jessica bec, frank HZ tour
+Read: 一致,休假, 共和元年.2.24.02
+
 
 -- Remind
 1. basketball, english, algorithm, car

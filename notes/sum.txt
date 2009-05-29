@@ -1,12 +1,30 @@
 1. heroku
-- git init/add ./commit/push
+- Git
+  Download and install Git
+  git config --global user.name "shirui"
+  git config --global user.email shiruide@gmail.com
+  Add your public key ssh-keygen -t rsa
+  git clone git@github.com:shirui/trunk.git
+  show chinese char: git config core.quotepath false
 - shh-keygen -t ras/das
 - heroku keys:add
 - .gems: rails --version 2.2.2
-- git push git@heroku.com:myblog.git master
-- git clone git@heroku.com:myblog.git, pull, commit, push
 - heroku create mydepot, info/logs --app mydepot
-- git push git@heroku.com:myblog.git master
+- git clone git@heroku.com:myblog.git
+- create new
+ rails myapp
+ cd myapp
+ git init
+ git add .
+ git commit -m "my new app"
+ heroku create mydepot
+ git remote add heroku git@heroku.com:mydepot.git
+ git push heroku master
+- existing resposity 
+ git remote add heroku git@heroku.com:mydepot.git
+ git pull heroku master
+ git push heroku (master)
+ 
 
 2. wensite
 - http://shirui.googlecode.com/svn/trunk/
@@ -43,6 +61,10 @@
 - scaffold: gem install scaffolding_extensions, generate scaffold User uid:string, name:string, image_url:string
 - 2.2.2=>2.3.2: application.rb=>application_controller.rb, @_render_stack.first => @_first_render
 - create database 1stlog DEFAULT CHARACTER SET utf8;
+- search with ferret
+	gem install ferret -v=0.11.5 --platform mswin32
+	gem install acts_as_ferret
+	require 'acts_as_ferret' in model
 
 5. shanghai
 - resident query: http://218.242.131.164/reg_step7read.asp, 320623198411095437, Bo123456
@@ -71,3 +93,42 @@
 - config run dialog
    - main module - d:\dev\google_appengine\dev_appserver.py
    - args: ${project_loc} --port=9999
+   
+9. Qt, running library
+    mingwm10.dll
+    QtCore4.dll
+    QtCored4.dll
+    QtGui4.dll
+    QtGuid4.dll
+	
+10. IP query as PNG
+	http://id.91cool.net/sign/?name=frank%20g%20&say=Happy%20%20%20%20April%20%20%20%20Fool
+
+11. PHP
+	1. add line to conf/httpd.conf
+	   - LoadModule php5_module d:/dev/php-5.2.6-Win32/php5apache2_2.dll
+	2. AddType application/x-httpd-php .php .html
+	3. PHPIniDir "d:/dev/php-5.2.6-Win32/"
+	4. zend_extension_ts="D:/dev/php-5.2.6-Win32/php_xdebug-2.0.4-5.3.0-vc9.dll"
+	- debug
+	1. Download XDebug 2.0 from http://www.xdebug.org/.
+	2. Setting parameters in PHP.ini file:
+	(pls copy the *.dll to $PHP_HOME/ext)
+	xdebug.remote_enable=on
+	xdebug.remote_handler=dbgp
+	xdebug.remote_host=localhost
+	xdebug.remote_port=9000
+	zend_extension_ts="D:/dev/php-5.2.6-Win32/php_xdebug-2.0.4-5.3.0-vc9.dll"
+	xdebug.remote_enable=1
+	3. Test whether if it is sccucesed after in the Notepad, create a file and type the following text in test.php:
+	<?php echo "PHP has been installed successfully!"; ?>
+	4. Try to browse the URL: http://localhost/XXXX/test.php. If your see as follow in browser: PHP has been installed successfully! 
+	
+12. Django learn
+	1. django-admin.py startproject mysite
+	 mysite/
+		__init__.py
+		manage.py
+		settings.py
+		urls.py
+	2. python manage.py runserver [0.0.0.0][:8080]	
