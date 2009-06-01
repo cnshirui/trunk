@@ -1,0 +1,6387 @@
+/*
+//----------------------------
+// NOVA SKIN
+//----------------------------
+*/
+
+/*
+//-----------------------------
+//-----------------------------
+// GLOBAL
+//-----------------------------
+//-----------------------------
+*/
+
+
+Application {
+	backgroundGradientColors: #FFFFFF,#F2F2F2;
+}
+
+global {
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	focusThickness: 0; /* -> Xcelsius doesn't handle focus */
+		
+	tickColor: #000000;
+	
+	rollOverColor: #96A8C3;
+	selectionColor: #344B6D; 
+	
+	color: #000000;
+	textRollOverColor: #000000;
+	textSelectedColor: #FFFFFF;
+}
+
+
+/*
+//------------------------------
+//  SCROLL BAR
+//------------------------------
+*/
+
+.hScrollBar {
+	downArrowStyleName: 'vScrollBarDownButton';
+	upArrowStyleName: 'vScrollBarUpButton';
+	thumbStyleName: 'vScrollBarThumb';
+	trackSkin: ClassReference("xcelsius.controls.Button");
+	trackStyleName: 'vScrollBarTrack';
+}
+
+.vScrollBar {
+	downArrowStyleName: 'vScrollBarDownButton';
+	upArrowStyleName: 'vScrollBarUpButton';
+	thumbStyleName: 'vScrollBarThumb';
+	trackSkin: ClassReference("xcelsius.controls.Button");
+	trackStyleName: 'vScrollBarTrack';
+}
+
+
+.vScrollBarDownButton{
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "vScrollBarDownButtonUp";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "vScrollBarDownButtonUp";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "vScrollBarDownButtonDown";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "vScrollBarDownButtonDisabled";
+	
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "vScrollBarDownGlyphUp";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "vScrollBarDownGlyphUp";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "vScrollBarDownGlyphDown";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "vScrollBarDownGlyphDisabled";	
+}
+
+.vScrollBarDownButtonUp
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonUpBackingEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonUpBackingMask01_middle");
+}
+
+.vScrollBarDownButtonDown
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDownBackingEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDownBackingMask01_middle");
+}
+
+.vScrollBarDownButtonDisabled
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDisabledBackingEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDisabledBackingMask01_middle");
+}
+
+.vScrollBarDownGlyphUp
+{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonUpGlyphEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonUpGlyphMask01_middle");
+}
+
+.vScrollBarDownGlyphDown
+{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDownGlyphEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDownGlyphMask01_middle");
+}
+
+.vScrollBarDownGlyphDisabled
+{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDisabledGlyphEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarDownButtonDisabledGlyphMask01_middle");
+}
+
+
+.vScrollBarUpButton{
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "vScrollBarUpButtonUp";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "vScrollBarUpButtonUp";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "vScrollBarUpButtonDown";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "vScrollBarUpButtonDisabled";
+	
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "vScrollBarUpGlyphUp";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "vScrollBarUpGlyphUp";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "vScrollBarUpGlyphDown";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "vScrollBarUpGlyphDisabled";	
+}
+
+.vScrollBarUpButtonUp
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonUpBackingEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonUpBackingMask01_middle");
+}
+
+.vScrollBarUpButtonDown
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDownBackingEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDownBackingMask01_middle");
+}
+
+.vScrollBarUpButtonDisabled
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDisabledBackingEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDisabledBackingMask01_middle");
+}
+
+.vScrollBarUpGlyphUp
+{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonUpGlyphEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonUpGlyphMask01_middle");
+}
+
+.vScrollBarUpGlyphDown
+{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDownGlyphEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDownGlyphMask01_middle");
+}
+
+.vScrollBarUpGlyphDisabled
+{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDisabledGlyphEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarUpButtonDisabledGlyphMask01_middle");
+}
+
+
+.vScrollBarTrack{
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "vScrollBarUpTrack";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "vScrollBarUpTrack";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "vScrollBarUpTrack";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "vScrollBarDisabledTrack";
+}
+
+.vScrollBarUpTrack
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarTrackUpEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarTrackUpMask01_middle");
+}
+
+.vScrollBarDisabledTrack
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarTrackDisabledEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarTrackDisabledMask01_middle");
+}
+
+.vScrollBarThumb{
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "vScrollBarThumbUp";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "vScrollBarThumbUp";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "vScrollBarThumbUp";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "vScrollBarThumbUp";
+}
+
+.vScrollBarThumbUp
+{
+	stretchType: "simple";
+	
+	marginLeft: 1;
+	marginRight: 1;
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarThumbEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="scrollBarThumbMask01_middle");
+}
+
+
+/*
+//-----------------------------
+//-----------------------------
+// ART & BACKGROUNDS
+//-----------------------------
+//-----------------------------
+*/
+
+
+/*
+//Background 01
+*/
+BackgroundComponent{
+	stretchType:"stretch9";
+	
+	useCustomColor: true;
+	customColor: #96A8C3;
+
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_bottomRight");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_middle");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_left");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_bottomRight");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_middle");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_left");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_topRight");
+}
+
+/*
+//Background 01 Forced Style
+*/
+.background01Skin{
+	stretchType:"stretch9";
+	
+	useCustomColor: true;
+	customColor: #96A8C3;
+
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_bottomRight");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_middle");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_left");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect01_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_bottomRight");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_middle");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_left");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask01_topRight");
+}
+
+/*
+//Background 02
+*/
+.background02Skin{	
+	stretchType: "stretch9";
+
+	alpha: 1;
+	customColor: #FFFFFF;	
+	useCustomColor: true;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_topRight");	
+}
+
+
+/*
+//Background 03
+*/
+.background03Skin{	
+	stretchType: "stretch9";
+
+	customColor: #96A8C3;	
+	useCustomColor: true;
+	alpha: 1;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect03_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask03_topRight");	
+}
+
+/*
+//Background 04
+*/
+.background04Skin{	
+	stretchType: "stretch9";
+
+	customColor: #96A8C3;	
+	useCustomColor: true;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect04_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask04_topRight");	
+}
+
+/*
+//Background 05
+*/
+.background05Skin{	
+	stretchType: "stretch9";
+
+	customColor: #FFFFFF;	
+	useCustomColor: true;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect05_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask05_topRight");	
+}
+
+/*
+//Background 07
+*/
+.background07Skin{	
+	stretchType: "stretch9";
+
+	customColor: #344B6D;	
+	useCustomColor: true;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect07_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask07_topRight");	
+}
+
+/*
+//Background 08
+*/
+.background08Skin{	
+	stretchType: "stretch9";
+
+	customColor: #344B6D;	
+	useCustomColor: true;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect08_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask08_topRight");	
+}
+
+/*
+//------------------------------
+//  IMAGE COMPONENT
+//------------------------------
+*/
+ImageComponent {
+	progressBarStyleName: HProgressBar;	
+}
+
+/*
+//------------------------------
+//  SLIDE SHOW COMPONENT
+//------------------------------
+*/
+
+SlideShowComponent {
+	borderSkin: ClassReference("mx.skins.halo.HaloBorder");
+    borderStyle: "solid";
+    borderColor: #A5A5A5;
+	cornerRadius: 2;
+	
+	horizontalAlign: "center";
+	verticalAlign: "middle";
+	
+	progressBarStyleName: HProgressBar;	
+}
+
+
+
+/*
+//-----------------------------
+//-----------------------------
+// SINGLE VALUES
+//-----------------------------
+//-----------------------------
+*/
+
+
+/*
+//------------------------------
+//  EMBEDDED VALUE
+//------------------------------
+*/
+EmbeddedValue {
+      backgroundSkin: ClassReference("xcelsius.layout.StretchManager");
+      backgroundStyleName: "background02Skin";
+      horizontalAlign: center;
+      cursorSkin: 'cursor';      
+      fontWeight: normal;
+  	  fontSize: 12;
+  	  useCustomColor: true;
+} 
+
+/*Forced Style*/
+.embeddedValue {
+      backgroundSkin: ClassReference("xcelsius.layout.StretchManager");
+      backgroundStyleName: "background02Skin";
+      horizontalAlign: center;
+      cursorSkin: 'cursor';      
+      fontWeight: normal;
+  	  fontSize: 12;
+  	  useCustomColor: true;
+} 
+
+
+/*
+//------------------------------
+//  LIMIT VALUE
+//------------------------------
+*/
+LimitValue {
+    backgroundSkin: ClassReference("xcelsius.layout.StretchManager");
+    backgroundStyleName: "background02Skin";
+    horizontalAlign: center;
+    cursorSkin: 'cursor';
+    useCustomColor: true;
+      
+    fontFamily:"Verdana";
+	fontSize:"12";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+} 
+
+/*Forced Style*/
+.limitValue {
+    backgroundSkin: ClassReference("xcelsius.layout.StretchManager");
+    backgroundStyleName: "background02Skin";
+    horizontalAlign: center;
+    cursorSkin: 'cursor';
+    useCustomColor: true;
+      
+    fontFamily:"Verdana";
+	fontSize:"12";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+} 
+
+
+/*
+//-------------------------
+// DIAL 1
+//-------------------------
+*/
+
+Dial {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial1";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial1";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial1";   
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_subTickMask');
+  
+  rotateSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+	
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  	
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+.valueLabel {
+  fontFamily:"Verdana";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  fontSize: 12;
+}
+
+.gaugeValueLabel {
+  fontFamily:"Verdana";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  fontSize: 12;
+  
+  position: "bottomCenter";
+  offsetX: 0;
+  offsetY: 0; 
+  offset:  0;
+}
+
+.titleLabel {
+  fontFamily:"Verdana";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  fontSize: 14;
+}
+
+.pointerStyleDial1 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_pointerMask');
+}
+
+.gripStyleDial1 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_gripMask');
+}
+
+.knobStyleDial1 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial01_faceMask');
+}
+
+
+/*
+//-------------------------
+// DIAL 2
+//-------------------------
+*/
+.dial2 {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial2";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial2";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial2"; 
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_subTickMask');
+
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.pointerStyleDial2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_pointerMask');
+}
+
+.gripStyleDial2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_gripMask');
+}
+
+.knobStyleDial2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial02_faceMask');
+}
+
+/*
+//-------------------------
+// DIAL 3
+//-------------------------
+*/
+.dial3 {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial3";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial3";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial3"; 
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_subTickMask');
+
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.pointerStyleDial3 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_pointerMask');
+}
+
+.gripStyleDial3 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_gripMask');
+}
+
+.knobStyleDial3 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial03_faceMask');
+}
+
+/*
+//-------------------------
+// DIAL 4
+//-------------------------
+*/
+.dial4 {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial4";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial4";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial4"; 
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_subTickMask');
+
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.pointerStyleDial4 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_pointerMask');
+}
+
+.gripStyleDial4 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_gripMask');
+}
+
+.knobStyleDial4 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial04_faceMask');
+}
+
+/*
+//-------------------------
+// DIAL 5
+//-------------------------
+*/
+.dial5 {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial5";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial5";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial5"; 
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_subTickMask');
+
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.pointerStyleDial5 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_pointerMask');
+}
+
+.gripStyleDial5 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_gripMask');
+}
+
+.knobStyleDial5 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial05_faceMask');
+}
+
+/*
+//-------------------------
+// DIAL 6
+//-------------------------
+*/
+.dial6 {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial6";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial6";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial6"; 
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_subTickMask');
+
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.pointerStyleDial6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_pointerMask');
+}
+
+.gripStyleDial6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_gripMask');
+}
+
+.knobStyleDial6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial06_faceMask');
+}
+
+/*
+//-------------------------
+// DIAL 7
+//-------------------------
+*/
+.dial7 {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial7";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial7";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial7"; 
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_subTickMask');
+
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.pointerStyleDial7 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_pointerMask');
+}
+
+.gripStyleDial7 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_gripMask');
+}
+
+.knobStyleDial7 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial07_faceMask');
+}
+
+/*
+//-------------------------
+// DIAL 8
+//-------------------------
+*/
+.dial8 {
+  
+  knobOverlaySkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_upEffectEffect');
+
+  bottomEffectSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_bottomEffect');
+
+  gripSkin: ClassReference('xcelsius.layout.StretchManager');
+  gripStyleName: "gripStyleDial8";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleDial8";
+  
+  knobSkin: ClassReference('xcelsius.layout.StretchManager');
+  knobStyleName: "knobStyleDial8"; 
+  
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_tickMask');
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_alertDisplayMask');
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_subTickMask');
+
+  titlePosition: "topCenter";
+  valuePosition: "bottomCenter";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.pointerStyleDial8 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_pointerMask');
+}
+
+.gripStyleDial8 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+	
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_gripEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_gripMask');
+}
+
+.knobStyleDial8 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_faceEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='dial08_faceMask');
+}
+
+
+/*
+//---------------------------
+// GAUGE 1
+//---------------------------
+*/
+
+Gauge {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyle";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyle";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleG";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyle";
+  
+  insideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  insideMarkerStyleName: "insideMarkerStyle";
+ 
+  outsideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  outsideMarkerStyleName: "outsideMarkerStyle";
+  
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_subTickMask');
+
+  titlePosition: "topCenter";
+    
+  
+  pointerXOffset:0;
+  pointerYOffset:0;
+  
+  valueStyleName: "gaugeValueLabel";
+  valueColors: #000000;
+  valueFontFamilies: "Verdana";
+  valueFontWeights: "normal";
+  valueTextDecorations: "none";
+  valueFontStyles: "normal";
+  valueFontSizes: 12;
+  valuePositions: "bottomCenter";
+  valueXOffsets: 0;
+  valueYOffsets: 0;
+  valueOffsets: 0;
+  /*
+  Don't set indicator colors.
+  indicatorColors: #FFFFFF;
+  */
+  titleStyleName: "titleLabel";
+  limitsStyleName: "limitValue";
+}
+
+.rimStyle {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_rimGlassMask');
+}
+
+.backingStyle {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_backingMask');
+}
+
+.pointerStyleG {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_pointerMask');
+}
+
+.middleStyle {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_middleMask');
+}
+
+.insideMarkerStyle {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FF0000;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_insideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_insideMarkerMask');
+}
+
+.outsideMarkerStyle {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #00FF00;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_outsideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge01_outsideMarkerMask');
+}
+
+/*
+//---------------------------
+// GAUGE 2
+//---------------------------
+*/
+
+.gauge2 {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyle2";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyle2";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleG2";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyle2";
+  
+  insideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  insideMarkerStyleName: "insideMarkerStyle2";
+ 
+  outsideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  outsideMarkerStyleName: "outsideMarkerStyle2";
+
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_subTickMask');
+
+  titlePosition: "topCenter";
+    
+  pointerXOffset:0;
+  pointerYOffset:0;
+  
+  valueStyleName: "gaugeValueLabel";
+  valueColors: #000000;
+  valueFontFamilies: "Verdana";
+  valueFontWeights: "normal";
+  valueTextDecorations: "none";
+  valueFontStyles: "normal";
+  valueFontSizes: 12;
+  valuePositions: "bottomCenter";
+  valueXOffsets: 0;
+  valueYOffsets: -30;
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.rimStyle2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_rimGlassMask');
+}
+
+.backingStyle2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_backingMask');
+}
+
+.pointerStyleG2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_pointerMask');
+}
+
+.middleStyle2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_middleMask');
+}
+
+.insideMarkerStyle2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FF0000;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_insideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_insideMarkerMask');
+}
+
+.outsideMarkerStyle2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #00FF00;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_outsideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge02_outsideMarkerMask');
+}
+
+/*
+//---------------------------
+// GAUGE 3
+//---------------------------
+*/
+
+.gauge3 {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyle3";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyle3";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleG3";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyle3";
+  
+  insideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  insideMarkerStyleName: "insideMarkerStyle2";
+ 
+  outsideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  outsideMarkerStyleName: "outsideMarkerStyle2";
+  
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_subTickMask');
+
+  titlePosition: "topCenter";
+    
+  valueXOffset: 0;
+  valueYOffset: -30;
+  
+  pointerXOffset:0;
+  pointerYOffset:0;
+  
+  valueStyleName: "gaugeValueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.rimStyle3 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_rimGlassMask');
+}
+
+.backingStyle3 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_backingMask');
+}
+
+.pointerStyleG3 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_pointerMask');
+}
+
+.middleStyle3 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge03_middleMask');
+}
+
+/*
+//---------------------------
+// GAUGE 4
+//---------------------------
+*/
+
+.gauge4 {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyle4";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyle4";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleG4";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyle4";
+  
+  insideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  insideMarkerStyleName: "insideMarkerStyle2";
+ 
+  outsideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  outsideMarkerStyleName: "outsideMarkerStyle2";
+  
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_subTickMask');
+
+  titlePosition: "topCenter";
+    
+  valueXOffset: 0;
+  valueYOffset: -30;
+  
+  pointerXOffset:0;
+  pointerYOffset:0;
+  
+  valueStyleName: "gaugeValueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.rimStyle4 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_rimGlassMask');
+}
+
+.backingStyle4 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_backingMask');
+}
+
+.pointerStyleG4 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_pointerMask');
+}
+
+.middleStyle4 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge04_middleMask');
+}
+
+/*
+//---------------------------
+// GAUGE 5
+//---------------------------
+*/
+
+.gauge5 {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyle5";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyle5";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleG5";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyle5";
+  
+  insideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  insideMarkerStyleName: "insideMarkerStyle2";
+ 
+  outsideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  outsideMarkerStyleName: "outsideMarkerStyle2";
+  
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_subTickMask');
+
+  titlePosition: "topCenter";
+    
+  valueXOffset: 0;
+  valueYOffset: -30;
+  
+  pointerXOffset:0;
+  pointerYOffset:0;
+  
+  valueStyleName: "gaugeValueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.rimStyle5 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_rimGlassMask');
+}
+
+.backingStyle5 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_backingMask');
+}
+
+.pointerStyleG5 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_pointerMask');
+}
+
+.middleStyle5 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge05_middleMask');
+}
+
+/*
+//---------------------------
+// GAUGE 6
+//---------------------------
+*/
+
+.gauge6 {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyle6";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyle6";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleG6";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyle6";
+  
+  insideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  insideMarkerStyleName: "insideMarkerStyle6";
+
+  outsideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  outsideMarkerStyleName: "outsideMarkerStyle6";
+  
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_subTickMask');
+
+  titlePosition: "topCenter";
+    
+  valueXOffset: 0;
+  valueYOffset: -35;
+  
+  pointerXOffset:0;
+  pointerYOffset:0;
+  
+  valueStyleName: "gaugeValueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.rimStyle6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_rimGlassMask');
+}
+
+.backingStyle6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_backingMask');
+}
+
+.pointerStyleG6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_pointerMask');
+}
+
+.middleStyle6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_middleMask');
+}
+
+.insideMarkerStyle6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FF0000;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_insideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_insideMarkerMask');
+}
+
+.outsideMarkerStyle6 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #00FF00;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_outsideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gauge06_outsideMarkerMask');
+}
+
+/*
+//------------------------------------
+// PARTIAL GAUGE 01
+//------------------------------------
+*/
+
+.gaugeHalf01 {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyleHalf";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyleHalf";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleGHalf";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyleHalf";  
+  
+  insideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  insideMarkerStyleName: "insideMarkerStyleHalf";
+ 
+  outsideMarkerSkin: ClassReference('xcelsius.layout.StretchManager');
+  outsideMarkerStyleName: "outsideMarkerStyleHalf";
+  
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_subTickMask');
+
+  valueXOffset: 48;
+  valueYOffset: -1;
+  
+  minAngle:0;
+  maxAngle:180;
+  
+  pointerXOffset: 0;
+  pointerYOffset:0; 
+  
+  valuePosition: "left";  
+  titlePosition: "topCenter";
+  
+  valueStyleName: "gaugeValueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+
+.rimStyleHalf {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_rimGlassMask');
+}
+
+.backingStyleHalf {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_backingMask');
+}
+
+.pointerStyleGHalf {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_pointerMask');
+}
+
+.middleStyleHalf {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_middleMask');
+}
+
+.insideMarkerStyleHalf {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FF0000;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_insideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_insideMarkerMask');
+}
+
+.outsideMarkerStyleHalf {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #00FF00;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_outsideMarkerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf01_outsideMarkerMask');
+}
+
+/*
+//------------------------------------
+// PARTIAL GAUGE 02
+//------------------------------------
+*/
+
+.gaugeHalf02 {
+  rimSkin: ClassReference('xcelsius.layout.StretchManager');
+  rimStyleName: "rimStyleHalf2";
+  
+  backingSkin: ClassReference('xcelsius.layout.StretchManager');
+  backingStyleName: "backingStyleHalf2";
+  
+  pointerSkin: ClassReference('xcelsius.layout.StretchManager');
+  pointerStyleName: "pointerStyleGHalf2";
+  
+  middleSkin: ClassReference('xcelsius.layout.StretchManager');
+  middleStyleName: "middleStyleHalf2";
+  
+  
+  alertMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_alertDisplayMask');
+  tickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_tickMask');  
+  subTickMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_subTickMask');
+
+  valueXOffset: -48;
+  valueYOffset: -1;
+  
+  minAngle:180;
+  maxAngle:359;
+  
+  pointerXOffset: 0;
+  pointerYOffset:0; 
+  
+  titlePosition: "topCenter";  
+  valuePosition: right;
+  
+  valueStyleName: "gaugeValueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+
+.rimStyleHalf2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #344B6D;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_rimGlassEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_rimGlassMask');
+}
+
+.backingStyleHalf2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_backingEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_backingMask');
+}
+
+.pointerStyleGHalf2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FFFFFF;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_pointerEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_pointerMask');
+}
+
+.middleStyleHalf2 {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_middleEffect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='gaugeHalf02_middleMask');
+}
+
+
+/*
+//------------------------------
+//  H PROGRESS BAR 
+//------------------------------
+*/
+
+HProgressBar {	
+  progBarSkin: ClassReference('xcelsius.layout.StretchManager');
+  progBarStyleName: "HProgressBarBar";
+    
+  gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+  gutterStyleName: "background02Skin";
+  
+  progBarPaddingTop: 2;
+  progBarPaddingRight: 2;
+  progBarPaddingBottom: 2;
+  progBarPaddingLeft: 2;
+  
+  alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='progressBar01_alertDisplayMask');
+  tickSize: 90;
+  subTickSize: 50;
+  
+  titlePosition: "topLeft";
+  valuePosition: "right";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+.HProgressBarBar {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="progressBarBarEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="progressBarBarMask01_middle");
+		
+}
+
+
+/*
+//------------------------------
+//  V Progress Bar 
+//------------------------------
+*/
+
+VProgressBar {	
+  progBarSkin: ClassReference('xcelsius.layout.StretchManager');
+  progBarStyleName: "HProgressBarBar";
+    
+  gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+  gutterStyleName: "background02Skin";
+  
+  progBarPaddingTop: 2;
+  progBarPaddingRight: 2;
+  progBarPaddingBottom: 2;
+  progBarPaddingLeft: 2;
+  
+  alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='progressBar01_alertDisplayMask');
+  tickSize: 90;
+  subTickSize: 50;
+  
+  titlePosition: "topLeft";
+  valuePosition: "right";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+
+/*
+//------------------------------
+//  H Slider 1
+//------------------------------
+*/
+
+HSlider {
+	
+  thumbSkin: ClassReference('xcelsius.layout.StretchManager');
+  thumbStyleName: "hSliderThumb";
+  
+  gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+  gutterStyleName: "hSliderGutter";
+  
+  alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='slider01_alertDisplayMask');
+  tickSize: 9;  
+  subTickSize: 5;
+  
+  titlePosition: "topCenter";
+  valuePosition: "right";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+/* FORCED STYLE */
+.hSlider {
+	
+  thumbSkin: ClassReference('xcelsius.layout.StretchManager');
+  thumbStyleName: "hSliderThumb";
+  
+  gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+  gutterStyleName: "hSliderGutter";
+  
+  alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='slider01_alertDisplayMask');
+  tickSize: 9;  
+  subTickSize: 5;
+  
+  titlePosition: "topCenter";
+  valuePosition: "right";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+.hSliderThumb {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide01_mask");	
+}
+
+.hSliderGutter {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderGutterEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderGutterMask01_middle");
+}
+
+/*
+//------------------------------
+//  H Slider 2
+//------------------------------
+*/
+
+.hSlider2 {	
+  thumbSkin: ClassReference('xcelsius.layout.StretchManager');
+  thumbStyleName: "hSliderThumb2";
+  
+  gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+  gutterStyleName: "hSliderGutter";
+  
+  alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='slider01_alertDisplayMask');
+  tickSize: 9;  
+  subTickSize: 5;
+  
+  titlePosition: "topCenter";
+  valuePosition: "right";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue";
+}
+
+.hSliderThumb2 {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide02_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide02_mask");	
+}
+
+
+/*
+//------------------------------
+//  V Slider 1
+//------------------------------
+*/
+
+VSlider {
+	
+  thumbSkin: ClassReference('xcelsius.layout.StretchManager');
+  thumbStyleName: "vSliderThumb";
+  
+  gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+  gutterStyleName: "hSliderGutter";
+  
+  alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='slider01_alertDisplayMask');
+  tickSize: 9;  
+  subTickSize: 5;
+  
+  titlePosition: "topCenter";
+  valuePosition: "right";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+.vSliderThumb {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderVSlide01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide01_mask");	
+}
+
+/*
+//------------------------------
+//  V Slider 2
+//------------------------------
+*/
+.vSlider2 {
+	
+  thumbSkin: ClassReference('xcelsius.layout.StretchManager');
+  thumbStyleName: "vSliderThumb2";
+  
+  gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+  gutterStyleName: "hSliderGutter";
+  
+  alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='slider01_alertDisplayMask');
+  tickSize: 9;  
+  subTickSize: 5;
+  
+  titlePosition: "topCenter";
+  valuePosition: "right";
+  
+  valueStyleName: "valueLabel";
+  titleStyleName: "titleLabel";  
+  limitsStyleName: "limitValue"; 
+}
+
+.vSliderThumb2 {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderVSlide02_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide02_mask");	
+}
+
+/*
+//------------------------------
+//  Dual Slider 1
+//------------------------------
+*/
+
+DualSlider {
+	thumbSkin: ClassReference('xcelsius.layout.StretchManager');
+	lowThumbStyleName : "lowSliderThumb";	
+	highThumbStyleName  : "highSliderThumb";
+		
+	gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+	gutterStyleName: "hSliderGutter";	
+
+	alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='slider01_alertDisplayMask');
+	tickSize: 9;	
+	subTickSize: 5;
+	
+	titlePosition: "bottomCenter";
+	
+	valueStyleName: "valueLabel";
+    titleStyleName: "titleLabel";  
+    limitsStyleName: "limitValue";   
+}
+
+.lowSliderThumb {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide01_mask");	
+}
+
+.highSliderThumb {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide01_mask");	
+}
+
+
+/*
+//------------------------------
+//  Dual Slider 2
+//------------------------------
+*/
+
+.dualSlider2 {
+	thumbSkin: ClassReference('xcelsius.layout.StretchManager');
+	lowThumbStyleName : "lowSliderThumb2";	
+	highThumbStyleName  : "highSliderThumb2";
+		
+	gutterSkin: ClassReference('xcelsius.layout.StretchManager');
+	gutterStyleName: "hSliderGutter";	
+
+	alertDisplayMaskSkin: Embed(source='../assets/novaSkin.swf', symbol='slider01_alertDisplayMask');
+	tickSize: 9;	
+	subTickSize: 5;
+	
+	titlePosition: "bottomCenter";
+  
+    valueStyleName: "valueLabel";
+    titleStyleName: "titleLabel";  
+    limitsStyleName: "limitValue"; 
+}
+
+.lowSliderThumb2 {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide02_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide02_mask");	
+}
+
+.highSliderThumb2 {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide02_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderSlide02_mask");	
+}
+
+
+/*
+//------------------------------
+//  VALUE
+//------------------------------
+*/
+ValueDisplay {
+	
+	textAlign: center;
+	fontWeight: normal;
+  	fontSize: 12;
+  	useCustomColor: true;
+	fontFamily: "Verdana";
+	
+	backgroundSkin: ClassReference("xcelsius.layout.StretchManager");
+	backgroundStyleName: "background05Skin";
+	
+	horizontalAlign: "center";	
+	titlePosition: "topCenter";
+  	
+	cursorSkin: 'cursor';	
+	
+	titleStyleName: "titleLabel"; 
+   	valueStyleName: 'spinnerLabelStyles'; 		
+}
+
+
+/* Forced Style*/
+.valueDisplay {
+	
+	textAlign: center;
+	fontWeight: normal;
+  	fontSize: 12;
+  	useCustomColor: true;
+	fontFamily: "Verdana";
+	
+	backgroundSkin: ClassReference("xcelsius.layout.StretchManager");
+	backgroundStyleName: "background05Skin";
+	
+	horizontalAlign: "center";	
+	titlePosition: "topCenter";
+  	
+	cursorSkin: 'cursor';	
+	
+	titleStyleName: "titleLabel"; 
+   	valueStyleName: 'spinnerLabelStyles'; 		
+}
+
+
+/*
+//--------------------------------
+// SPINNER 1
+//--------------------------------
+*/
+Spinner {
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'background05Skin';
+	
+	upGlyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	upGlyphUpStyleName: 'spinnerUpArrowDefault';
+	upButtonUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	upButtonUpStyleName: 'spinnerUpBackingDefault';
+	
+	upGlyphDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	upGlyphDownStyleName: 'spinnerUpArrowPressed';
+	upButtonDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	upButtonDownStyleName: 'spinnerUpBackingPressed';
+	
+	downGlyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	downGlyphUpStyleName: 'spinnerDownArrowDefault';
+	downButtonUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	downButtonUpStyleName: 'spinnerDownBackingDefault';
+	
+	downGlyphDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	downGlyphDownStyleName: 'spinnerDownArrowPressed';
+	downButtonDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	downButtonDownStyleName: 'spinnerDownBackingPressed';	
+	
+	titlePosition: "topCenter";
+	textAlign: center;
+	
+	titleStyleName: "titleLabel"; 
+   	labelStyleName: 'spinnerLabelStyles'; 
+	
+	paddingTop: 0;
+	paddingRight: 0;
+	paddingBottom: 0;
+	paddingLeft: 0;	
+}
+
+.spinnerLabelStyles {	
+	textAlign: center;
+	fontWeight: normal;
+  	fontSize: 12;
+  	useCustomColor: true;
+	fontFamily: "Verdana";
+	color: #000000;
+	
+	paddingTop: 0;
+	paddingRight: 0;
+	paddingBottom: 0;
+	paddingLeft: 0;
+}
+
+.spinnerUpArrowDefault {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonArrowUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonArrowUp01_mask");
+}
+
+.spinnerUpBackingDefault {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonBackingUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonBackingUp01_mask");
+}
+
+.spinnerUpArrowPressed {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonArrowDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonArrowDown01_mask");
+}
+
+.spinnerUpBackingPressed {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonBackingDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerUpButtonBackingDown01_mask");
+}
+
+.spinnerDownArrowDefault {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonArrowUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonArrowUp01_mask");
+}
+
+.spinnerDownBackingDefault {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonBackingUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonBackingUp01_mask");
+}
+
+.spinnerDownArrowPressed {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonArrowDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonArrowDown01_mask");
+}
+
+.spinnerDownBackingPressed {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonBackingDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="spinnerDownButtonBackingDown01_mask");
+}
+
+
+/*
+//----------------------------------
+// PLAY BUTTON
+//----------------------------------
+*/
+
+PlayButton {		
+  playStyleName: "playButtonPlayButton";		  
+  pauseStyleName: "playButtonPauseButton";	  
+}
+
+SingleValueControl {
+    playButtonColor: #FFFFFF;
+    playSymbolColor: #000000;
+}
+
+.playButtonPlayButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "playSingleValueButton";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "playSingleValueGlyph";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "playSingleValueButton";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "playSingleValueGlyph"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "playSingleValueButton";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "playSingleValueGlyph";  
+}
+
+.playButtonPauseButton {   
+	 	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "pauseSingleValueButton";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "pauseSingleValueGlyph";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "pauseSingleValueButton";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "pauseSingleValueGlyph"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "pauseSingleValueButton";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "pauseSingleValueGlyph";  
+}
+
+.playSingleValueButton{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSingleValuePlay01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSingleValuePlay01_color");	
+}
+
+.playSingleValueGlyph{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSingleValuePlay01_glyph");	
+}
+
+.pauseSingleValueButton{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSingleValuePause01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSingleValuePause01_color");	
+}
+
+.pauseSingleValueGlyph{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSingleValuePause01_glyph");
+}
+
+
+/*
+//-------------------------
+// PLAY CONTROL 
+//-------------------------
+*/
+
+PlayControl {	
+	layoutSkin: ClassReference('xcelsius.controls.playControlClasses.novaStandardLayout');
+	togglePlayPause: true;
+	
+	playStyleName: "playControlPlayButton";		
+	pauseStyleName: "playControlPauseButton";
+	nextStyleName: "playControlNextButton";
+	prevStyleName: "playControlPrevButton";
+    rewStyleName: "playControlREWButton";    
+	ffwStyleName: "playControlFFWButton";
+	
+	sliderStyleName: "hSlider";
+	
+	titlePosition: "topCenter";
+  	valuePosition: "topCenter";
+  	
+  	titleStyleName: "titleLabel"; 
+   	valueStyleName: 'spinnerLabelStyles';
+}
+	
+.playControlPlayButton {    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "playButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "playGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "playButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "playGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "playButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "playGlyph1Up";     
+}
+
+.playControlPauseButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "playButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "pauseGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "playButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "pauseGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "playButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "pauseGlyph1Up";  
+    
+}
+
+.playControlNextButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "nextButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "nextGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "nextButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "nextGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "nextButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "nextGlyph1Up";  
+  
+}
+
+.playControlPrevButton {
+   	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "prevButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "prevGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "prevButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "prevGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "prevButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "prevGlyph1Up";  
+     
+}
+
+.playControlREWButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "REWButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "REWGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "REWButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "REWGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "REWButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "REWGlyph1Up";  
+  
+}
+
+.playControlFFWButton {
+	    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "FFWButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "FFWGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "FFWButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "FFWGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "FFWButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "FFWGlyph1Up";  
+}
+
+.playButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonPlay01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonPlay01_color");
+	
+}
+.playGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonPlay01_glyph");	
+}
+
+.pauseGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonPause01_glyph");	
+}
+
+
+.nextButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonNext01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonNext01_color");	
+}
+
+.nextGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonNext01_glyph");	
+}
+
+.prevButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonPrev01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonPrev01_color");	
+}
+.prevGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonPrev01_glyph");	
+}
+
+.REWButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonREW01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonREW01_color");	
+}
+.REWGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonREW01_glyph");	
+}
+
+.FFWButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonFFW01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonFFW01_color");	
+}
+.FFWGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playButtonFFW01_glyph");	
+}
+
+
+/*
+//-----------------------------
+//-----------------------------
+// SELECTORS
+//-----------------------------
+//-----------------------------
+*/
+
+/*
+//------------------------------
+//  BUTTON
+//------------------------------
+*/
+
+Button {		
+  fontFamily:"Verdana";
+  fontSize:"13";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  
+  color: #000000;
+  textRollOverColor: #000000;  
+  textSelectedColor: #FFFFFF;
+ 
+  disabledSkin: ClassReference('xcelsius.layout.StretchManager');
+  disabledStyleName  : "buttonDisabledSkin";
+  	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "buttonUpSkin";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "buttonOverSkin";  
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "buttonDownSkin";  
+  
+  selectedDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedDisabledStyleName   : "buttonDisabledSkin";
+  
+  selectedUpSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedUpStyleName  : "buttonSelectedSkin";
+  
+  selectedOverSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedOverStyleName    : "buttonSelectedSkin";
+  
+  selectedDownSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedDownStyleName     : "buttonDownSkin"; 
+  
+  clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+      
+}
+
+
+.buttonDisabledSkin{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonDisabledEffect01_middle");
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonDisabledMask01_middle");
+}
+
+.buttonUpSkin{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonUpEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonUpMask01_middle");
+}
+	
+.buttonOverSkin{
+	stretchType: "simple";
+	
+	customColor: #CED8E3;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonOverEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonOverMask01_middle");
+}
+
+.buttonDownSkin{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonDownEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonDownMask01_middle");
+}
+
+.buttonSelectedSkin{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonSelectedEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="buttonSelectedMask01_middle");
+}
+
+/*  Forced Button Style */
+.button {		
+  fontFamily:"Verdana";
+  fontSize:"13";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  
+  color: #000000;
+  textRollOverColor: #000000;  
+  textSelectedColor: #FFFFFF;
+ 
+  disabledSkin: ClassReference('xcelsius.layout.StretchManager');
+  disabledStyleName  : "buttonDisabledSkin";
+  	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "buttonUpSkin";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "buttonOverSkin";  
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "buttonDownSkin";  
+  
+  selectedDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedDisabledStyleName   : "buttonDisabledSkin";
+  
+  selectedUpSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedUpStyleName  : "buttonSelectedSkin";
+  
+  selectedOverSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedOverStyleName    : "buttonSelectedSkin";
+  
+  selectedDownSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedDownStyleName     : "buttonDownSkin"; 
+  
+  clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+      
+}
+
+
+/*
+//------------------------------
+// PUSH BUTTON STYLE
+//------------------------------
+*/
+.pushButton {	
+  fontFamily:"Verdana";
+  fontSize:"13";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  textAlign: "center";
+  
+  color: #000000;
+  textRollOverColor: #000000;  
+  textSelectedColor: #FFFFFF;
+
+  disabledSkin: ClassReference('xcelsius.layout.StretchManager');
+  disabledStyleName  : "buttonUpSkin";
+  	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "buttonUpSkin";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "buttonUpSkin";  
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "buttonDownSkin";  
+  
+  selectedDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedDisabledStyleName   : "buttonUpSkin";
+  
+  selectedUpSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedUpStyleName  : "buttonSelectedSkin";
+  
+  selectedOverSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedOverStyleName    : "buttonSelectedSkin";
+  
+  selectedDownSkin: ClassReference('xcelsius.layout.StretchManager');
+  selectedDownStyleName     : "buttonSelectedSkin";  
+  
+  clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+}
+
+/*
+//------------------------------
+// REPORTING SERVICES BUTTON
+//------------------------------
+*/
+
+ReportingServicesButton {
+	buttonStyleName: "pushButton";	
+}
+
+
+/*
+//------------------------------
+//  LOCAL SCENARIO BUTTON
+//------------------------------
+*/
+
+LocalScenarioButton{
+	
+	backgroundSkin: ClassReference('xcelsius.layout.StretchManager');
+	backgroundStyleName: 'background02Skin';
+	
+	buttonStyleName: "pushButton";
+	
+	menuPaddingLeft:8;
+	menuPaddingRight: 8;
+	menuPaddingTop:5;
+	menuPaddingBottom: 5;
+	
+	menuVerticalGap: 10;	
+}
+
+
+/*
+//------------------------------
+// CHECK BOX
+//------------------------------
+//
+*/
+Checkbox {
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "checkBoxUpSkin";
+		
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "checkBoxUpSkin";
+			
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "checkBoxDownSkin";	
+		
+	selectedUpSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedUpStyleName: "checkBoxDownSkin";
+			
+	selectedDownSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedDownStyleName: "checkBoxDownSkin";
+			
+	selectedOverSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedOverStyleName: "checkBoxDownSkin";	
+	
+	titleStyleName: "titleLabel";
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");	
+}
+
+.checkBoxUpSkin {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="checkBoxUnchecked01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="checkBoxUnchecked01_mask");		
+}
+
+.checkBoxDownSkin {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="checkBoxChecked01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="checkBoxChecked01_mask");				
+}
+	
+
+/* 
+//-----------------------------
+// COMBO BOX
+//-----------------------------
+*/
+ComboBox {	
+	
+	fontWeight: 'normal';	
+	
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'comboBoxFrame';
+	
+	upSkin: ClassReference('xcelsius.layout.StretchManager');
+	upStyleName: 'comboBoxButtonBackingUp';
+	selectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	selectedStyleName: 'comboBoxButtonBackingSelect';
+
+	glyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	glyphUpStyleName: 'comboBoxButtonArrowUp';
+	glyphSelectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	glyphSelectedStyleName: 'comboBoxButtonArrowSelect';
+	
+	labelStyleName: 'labelStylesCB';
+	listStyleName: 'listStyleCB';
+	titleStyleName: 'titleLabel';
+	titlePosition: "topCenter";
+	
+	marginTop: 0;
+	marginRight: 0;
+	marginBottom: 0;
+	marginLeft: 0;	
+}
+
+.labelStylesCB {
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	
+	textAlign: "left";
+	
+	paddingTop: 0;
+	paddingRight: 0;
+	paddingLeft: 3;
+	paddingBottom: 1;
+}
+
+.listStyleCB {
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'background05Skin';
+	
+	itemStyleName: 'listAlert';
+		
+	verticalScrollBarStyleName: 'vScrollBar';
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+	
+	rollOverColor: #96A8C3;
+	selectionColor: #344B6D; 
+	
+	borderPaddingLeft: -1;
+	borderPaddingTop: 1;
+	borderPaddingRight: 1;
+	borderPaddingBottom: 1;
+	
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";			
+}
+
+.comboBoxFrame {
+	stretchType: "stretch3H";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxFrameEffect01_middle");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxFrameEffect01_left");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxFrameEffect01_right");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxFrameMask01_middle");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxFrameMask01_left");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxFrameMask01_right");
+	
+	marginLeft: -2;
+	marginBottom: 3;
+}
+
+.comboBoxButtonBackingUp {
+	stretchType: "stretch3H";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxUpArrowBackingEffect01_middle");		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxUpArrowBackingMask01_middle");
+	
+	marginRight: -2;
+	marginBottom: 3;	
+}
+
+.comboBoxButtonBackingSelect {
+	stretchType: "stretch3H";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxSelectArrowBackingEffect01_middle");		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxSelectArrowBackingMask01_middle");
+	
+	marginRight: -2;
+	marginBottom: 3;
+}
+
+.comboBoxButtonArrowUp {
+	stretchType: "stretch3H";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxUpArrowArrow01_effect");		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxUpArrowArrow01_mask");
+	
+	marginRight: -2;
+	marginBottom: 3;	
+}
+
+.comboBoxButtonArrowSelect {
+	stretchType: "stretch3H";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxSelectArrowArrow01_effect");		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="comboBoxSelectArrowArrow01_mask");
+
+	marginRight: -2;
+	marginBottom: 3;
+}
+
+/*Forced Style*/
+.comboBox {		
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'comboBoxFrame';
+	
+	upSkin: ClassReference('xcelsius.layout.StretchManager');
+	upStyleName: 'comboBoxButtonBackingUp';
+	selectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	selectedStyleName: 'comboBoxButtonBackingSelect';
+
+	glyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	glyphUpStyleName: 'comboBoxButtonArrowUp';
+	glyphSelectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	glyphSelectedStyleName: 'comboBoxButtonArrowSelect';
+	
+	labelStyleName: 'labelStylesCB';
+	listStyleName: 'listStyleCB';
+	titleStyleName: 'titleLabel';
+	titlePosition: "topCenter";
+	
+	marginTop: 5;
+	marginRight: 5;
+	marginBottom: 5;
+	marginLeft: 5;	
+}
+
+/* 
+//-----------------------------
+// FILTER
+//-----------------------------
+*/
+Filter {
+	titleStyleName: 'titleLabel';
+	comboBoxStyleName: 'comboBox';	
+}
+
+
+/*
+//------------------------------
+//  LIST
+//------------------------------
+*/
+
+List {
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	
+	borderSkin: ClassReference("xcelsius.layout.StretchManager");
+	borderStyleName: "background05Skin";
+	
+	verticalScrollBarStyleName: 'vScrollBar';
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+	
+	rollOverColor: #96A8C3;
+	selectionColor: #344B6D; 
+	
+	borderPaddingLeft: -1;
+	borderPaddingTop: 1;
+	borderPaddingRight: 1;
+	borderPaddingBottom: 1;
+			
+	titleStyleName: "titleLabel";	
+	titlePosition: "topCenter";
+	
+	itemStyleName: 'listAlert';	
+}
+
+/*Forced Style*/
+.list {
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	
+	borderSkin: ClassReference("xcelsius.layout.StretchManager");
+	borderStyleName: "background05Skin";
+	
+	verticalScrollBarStyleName: 'vScrollBar';
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+	
+	rollOverColor: #96A8C3;
+	selectionColor: #344B6D; 
+	
+	borderPaddingLeft: -1;
+	borderPaddingTop: 1;
+	borderPaddingRight: 1;
+	borderPaddingBottom: 1;
+	
+	titleStyleName: "titleLabel";	
+	titlePosition: "topCenter";
+	
+	itemStyleName: 'listAlert';	
+}
+
+.listAlert{
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	
+	alertSkin: ClassReference("xcelsius.layout.StretchManager");
+	alertStyleName: "alertIcon";
+	
+	color: #000000;
+	textRollOverColor: #000000;
+	textSelectedColor: #FFFFFF;	
+}
+
+.alertIcon{
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  marginTop: 3;
+  marginRight: 2;
+  marginBottom: 3;
+  marginLeft: 4;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='alertButtonOnEffect01_middle');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='alertButtonOnMask01_middle');
+}
+
+/*
+//--------------------------
+// ALERT ICON
+//--------------------------
+*/
+
+Icon {
+	/*disabledStyleName: "buttonDisabledSkin";
+	disabledSkin: ClassReference('xcelsius.layout.StretchManager');*/
+	
+	/*selectedDisabledStyleName: "iconDisabledSkin";
+	selectedDisabledSkin: ClassReference('xcelsius.layout.StretchManager');*/
+	
+	downStyleName: "iconSelectedSkin";
+	downSkin: ClassReference('xcelsius.layout.StretchManager');
+		
+	overStyleName: "iconUpSkin";
+	overSkin: ClassReference('xcelsius.layout.StretchManager');
+	
+	upStyleName: "iconUpSkin";
+	upSkin: ClassReference('xcelsius.layout.StretchManager');
+	
+	selectedDownStyleName: "iconSelectedSkin";
+	selectedDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	
+	selectedOverStyleName: "iconSelectedSkin";
+	selectedOverSkin: ClassReference('xcelsius.layout.StretchManager');
+	
+	selectedUpStyleName: "iconSelectedSkin";
+	selectedUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");	
+		
+	cornerRadius: 0;
+	fontWeight: "normal";
+	
+	horizontalGap: 0;
+	verticalGap: 0;
+	
+	textAlign: "center";	
+	
+	paddingLeft: 0;
+	paddingRight: 0;
+		
+	showValueStyleName: 'iconToolTip';
+	labelStyleName: 'labelStyles';
+	
+	backgroundColor: #344B6D;
+}
+
+.iconSelectedSkin{
+	stretchType: "simple";
+	
+	useCustomColor: true;  	
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="alertButtonOnEffect01_middle");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="alertButtonOnMask01_middle");
+	
+}
+
+.iconUpSkin{
+	stretchType: "simple";
+	
+	useCustomColor: true;  	
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="alertButtonOffEffect01_middle");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="alertButtonOffMask01_middle");
+	
+}
+
+.iconToolTip{
+	
+	backgroundColor: #DFE4EC;	
+	color: #000000;
+	fontFamily: "Verdana";
+	fontSize: 13;
+	fontWeight: "normal";
+	fontStyle: "normal";
+	textDecoration: "none";
+	
+}
+
+/*
+//---------------------
+// LABEL MENU
+//---------------------
+*/
+
+LabelMenu {
+	itemStyleName: "labelMenuItemStyles";
+	titleStyleName: "labelMenuTitleStyles";
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+	
+	horizontalGap: 0;
+	verticalGap: 0;
+}
+
+.labelMenuTitleStyles {
+	upSkin: ClassReference('xcelsius.layout.StretchManager');
+	upStyleName: 'labelMenuUp';
+	overSkin: ClassReference('xcelsius.layout.StretchManager');
+	overStyleName: 'labelMenuOver';
+	selectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	selectedStyleName: 'labelMenuSelected';
+	
+	alertSkin: ClassReference("xcelsius.layout.StretchManager");
+	alertStyleName: "alertIconLabelMenu";
+	
+	labelStyleName: 'labelMenuTitleLabelStyles';
+			
+	color: #000000;
+	textRollOverColor: #000000;
+	textSelectedColor: #FFFFFF;
+	
+	marginTop: 0;
+	marginRight: 0;
+	marginBottom: 0;
+	marginLeft: 0;	
+}
+
+.labelMenuItemStyles {
+	upSkin: ClassReference('xcelsius.layout.StretchManager');
+	upStyleName: 'labelMenuUp';
+	overSkin: ClassReference('xcelsius.layout.StretchManager');
+	overStyleName: 'labelMenuOver';
+	selectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	selectedStyleName: 'labelMenuSelected';
+	
+	alertSkin: ClassReference("xcelsius.layout.StretchManager");
+	alertStyleName: "alertIconLabelMenu";
+	
+	labelStyleName: 'labelMenuItemLabelStyles';
+			
+	color: #000000;
+	textRollOverColor: #000000;
+	textSelectedColor: #FFFFFF;
+	
+	marginTop: 0;
+	marginRight: 0;
+	marginBottom: 0;
+	marginLeft: 0;	
+}		
+
+.alertIconLabelMenu{
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  marginTop: 3;
+  marginRight: 0;
+  marginBottom: 3;
+  marginLeft: 3;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='alertButtonOnEffect01_middle');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='alertButtonOnMask01_middle');
+}
+
+.labelMenuItemLabelStyles {
+	fontFamily:"Verdana";
+	fontSize:13;
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: center;
+		
+	paddingTop: 3;
+	paddingRight: 5;
+	paddingBottom: 3;
+	paddingLeft: 5;
+}	
+
+.labelMenuTitleLabelStyles {
+	fontFamily:"Verdana";
+	fontSize:13;
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: center;
+		
+	paddingTop: 3;
+	paddingRight: 5;
+	paddingBottom: 3;
+	paddingLeft: 5;
+}			
+
+.labelMenuUp {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;	
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="menuUpEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="menuUpMask01_middle");
+}
+
+.labelMenuOver {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #CED8E3;	
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="menuOverEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="menuOverMask01_middle");
+}
+
+.labelMenuSelected {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="menuSelectedEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="menuSelectedMask01_middle");
+}
+
+
+/*
+//------------------------------
+//  LIST BUILDER 
+//------------------------------
+*/
+ListBuilder {
+	borderSkin: ClassReference("xcelsius.layout.StretchManager");
+	borderStyleName: "background03Skin";
+	
+	addRemoveXMargin: 10;
+	addRemoveYMargin: 10;	
+	executeXMargin: 0;
+	executeYMargin: 10;
+	
+	paddingTop: 5;
+	paddingRight: 10;
+	paddingBottom: 10;
+	paddingLeft: 10;	
+	
+	buttonStyleName: "pushButton";
+	
+	titleStyleName: "titleLabel"; 
+	titlePosition: "topCenter";
+	
+	sourceTitleStyleName: "titleLabel";
+	destinationTitleStyleName: "titleLabel";
+	
+	sourceListStyleName: "list";
+	destinationListStyleName: "list";
+}
+
+/*
+//-------------------------------
+// ScoreCard
+//-------------------------------
+*/
+
+.scoreCardAlert{
+	iconSkin: ClassReference("xcelsius.layout.StretchManager");
+	iconStyleName: "itemRendererIcon";
+	iconColor: #CCCCCC;
+	iconType: "01";
+	iconVisible: true;
+	
+	textColor: #000000;
+	textRollOverColor: #000000;
+	textSelectedColor: #FFFFFF;	
+	textVisible: true;
+	
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: 'left';
+	
+	backgroundColor: #FF0000;
+	
+	horizontalGap: 2;
+	verticalGap:   2;
+	
+	paddingTop:    0;
+	paddingRight:  0;
+	paddingBottom: 0;
+	paddingLeft:   0;
+	
+	textIndent:    0;
+	
+	/* Used for Gen Code Dependencies*/
+	iconSkinDep01: "itemRendererIcon01";
+}
+
+.itemRendererIcon01{
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #96A8C3;
+  
+  marginTop: 0;
+  marginRight: 0;
+  marginBottom: 0;
+  marginLeft: 0;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='alertButtonOnEffect01_middle');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='alertButtonOnMask01_middle');
+}
+
+.scoreCardComponent {
+		
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	
+	columnFontFamily:'Verdana', 'Verdana', 'Verdana', 'Verdana';
+	columnFontSize:'13', '13', '13', '13';
+	columnFontStyle:'normal', 'normal', 'normal', 'normal';
+	columnFontWeight:'normal', 'normal', 'normal', 'normal';
+	columnTextDecoration:'none', 'none', 'none', 'none';
+	
+	stretchCursor: Embed(source="../../all/assets/cursors.swf", symbol="cursorResizeH01");
+	columnDropIndicatorSkin: ClassReference('xcelsius.controls.scoreCardClasses.styles.ScoreCardColumnDropIndicator');
+	columnResizeSkin: ClassReference('xcelsius.controls.scoreCardClasses.styles.ScoreCardColumnResizeSkin');
+	
+	rollOverColor: #96A8C3;
+	selectionColor: #344B6D; 	
+	
+	textRollOverColor: #000000;
+    	textSelectedColor: #FFFFFF;	
+	
+	headerUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerUpStyleName: 'headerUpLV';	
+
+	headerOverSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerOverStyleName: 'headerOverLV';	
+
+	headerSelectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerSelectedStyleName: 'headerSelectedLV';
+	
+	sortArrowSkin: ClassReference('xcelsius.layout.StretchManager');
+	sortArrowStyleName: 'arrowSymbolDownLV';
+	
+	headerSeparatorSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerSeparatorStyleName: 'headerSeparatorLV';
+	
+	verticalScrollBarStyleName: 'vScrollBar';
+	horizontalScrollBarStyleName: 'hScrollBar';
+
+	borderColor: #344B6D;
+	verticalGridLineColor: #7D94B5;
+	verticalGridLines: true;
+	horizontalGridLineColor: #7D94B5;
+	horizontalGridLines: true;
+	alternatingItemColors: #EAEEF2, #FFFFFF;	
+	
+	titleStyleName: 'titleLabel';
+	titlePosition: "topCenter";
+	headerStyleName: 'listViewHeaderFont';
+	itemStyleName: 'scoreCardAlert';
+	
+	paddingTop: 0;
+	paddingBottom: 0;
+}
+
+/*
+//-------------------------------
+// LIST VIEW
+//-------------------------------
+*/
+
+ListView {
+		
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	
+	rollOverColor: #96A8C3;
+	selectionColor: #344B6D; 	
+	
+	textRollOverColor: #000000;
+    textSelectedColor: #FFFFFF;	
+	
+	headerUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerUpStyleName: 'headerUpLV';	
+
+	headerOverSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerOverStyleName: 'headerOverLV';	
+
+	headerSelectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerSelectedStyleName: 'headerSelectedLV';
+	
+	sortArrowSkin: ClassReference('xcelsius.layout.StretchManager');
+	sortArrowStyleName: 'arrowSymbolDownLV';
+	
+	headerSeparatorSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerSeparatorStyleName: 'headerSeparatorLV';
+	
+	verticalScrollBarStyleName: 'vScrollBar';
+	horizontalScrollBarStyleName: 'hScrollBar';
+
+	borderColor: #344B6D;
+	verticalGridLineColor: #7D94B5;
+	verticalGridLines: true;
+	horizontalGridLineColor: #7D94B5;
+	horizontalGridLines: true;
+	alternatingItemColors: #EAEEF2, #FFFFFF;	
+	
+	titleStyleName: 'titleLabel';
+	titlePosition: "topCenter";
+	headerStyleName: 'listViewHeaderFont';
+	itemStyleName: 'listViewItemFont';
+}
+
+.listViewItemFont {
+  fontFamily:"Verdana";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  fontSize: 13;
+  color: #000000;  
+}
+
+.listViewHeaderFont {
+  fontFamily:"Verdana";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  fontSize: 14;
+  color: #000000;
+  textRollOverColor: #000000;
+  textSelectedColor: #FFFFFF;
+}
+
+.headerUpLV {
+	stretchType: "simple";
+	
+	fontWeight:"normal";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderUpEffect01_middle");
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderUpMask01_middle");	
+}
+
+.headerOverLV {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #96A8C3;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderOverEffect01_middle");
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderOverMask01_middle");	
+}
+
+.headerSelectedLV {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderSelectedEffect01_middle");
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderSelectedMask01_middle");	
+}
+
+.arrowSymbolDownLV {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewSortSymbolDownEffect01_middle");
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewSortSymbolDownMask01_middle");	
+}
+
+
+.headerSeparatorLV {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderSeparatorEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="listViewHeaderSeparatorMask01_middle");
+}
+
+
+/*
+//----------------------------------
+// H SLIDING MENU / H FISH EYE MENU
+//----------------------------------
+*/
+HorizontalSlidingMenu, HorizontalFisheyeMenu {
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'background02Skin';
+	
+	headerSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerStyleName: 'SliderLabelBar';
+	
+	leftButtonUpSkin: ClassReference('xcelsius.layout.StretchManager');
+    leftButtonUpStyleName: 'slidingLeftButtonUp';
+    leftButtonDownSkin: ClassReference('xcelsius.layout.StretchManager');
+    leftButtonDownStyleName: 'slidingLeftButtonDown';
+    leftButtonDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    leftButtonDisabledStyleName: 'slidingLeftButtonDisabled';
+    
+    leftGlyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+    leftGlyphUpStyleName: 'slidingLeftArrowUp';
+    leftGlyphDownSkin: ClassReference('xcelsius.layout.StretchManager');
+    leftGlyphDownStyleName: 'slidingLeftArrowDown';
+    leftGlyphDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    leftGlyphDisabledStyleName: 'slidingLeftArrowDisabled';
+    
+    rightButtonUpSkin: ClassReference('xcelsius.layout.StretchManager');
+    rightButtonUpStyleName: 'slidingRightButtonUp';
+    rightButtonDownSkin: ClassReference('xcelsius.layout.StretchManager');
+    rightButtonDownStyleName: 'slidingRightButtonDown';
+    rightButtonDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    rightButtonDisabledStyleName: 'slidingRightButtonDisabled';
+    
+    rightGlyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+    rightGlyphUpStyleName: 'slidingRightArrowUp';
+    rightGlyphDownSkin: ClassReference('xcelsius.layout.StretchManager');
+    rightGlyphDownStyleName: 'slidingRightArrowDown';
+    rightGlyphDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    rightGlyphDisabledStyleName: 'slidingRightArrowDisabled';
+    
+    clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+
+	tiledItemSelectorStyleName: 'selectorStyles';
+	labelStyleName: 'labelStyles';
+	titleStyleName: 'titleLabel';
+	titlePosition: "topCenter";
+}
+
+.slidingLeftButtonUp {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #96A8C3;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonBackingUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonBackingUp01_mask");
+}
+
+.slidingLeftButtonDown {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #96A8C3;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonBackingDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonBackingDown01_mask");
+}
+
+.slidingLeftButtonDisabled {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #EEEEEE;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonBackingDisabled01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonBackingDisabled01_mask");
+}
+
+.slidingLeftArrowUp {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonArrowUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonArrowUp01_mask");
+}
+
+.slidingLeftArrowDown {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonArrowDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonArrowDown01_mask");
+}
+
+.slidingLeftArrowDisabled {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonArrowDisabled01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLeftButtonArrowDisabled01_mask");
+}
+
+.slidingRightButtonUp {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #96A8C3;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonBackingUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonBackingUp01_mask");
+}
+
+.slidingRightButtonDown {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #96A8C3;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonBackingDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonBackingDown01_mask");
+}
+
+.slidingRightButtonDisabled {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #EEEEEE;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonBackingDisabled01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonBackingDisabled01_mask");
+}
+
+.slidingRightArrowUp {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonArrowUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonArrowUp01_mask");
+}
+
+.slidingRightArrowDown {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonArrowDown01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonArrowDown01_mask");
+}
+
+.slidingRightArrowDisabled {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonArrowDisabled01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuRightButtonArrowDisabled01_mask");
+}
+
+
+.itemStyles {
+	defaultWidth: 60;
+	defaultHeight: 60;
+	
+	noImageSkin: Embed(source='../assets/novaSkin.swf', symbol='sliderMenuThumb01_notLoaded');
+	brokenImageSkin: Embed(source='../assets/novaSkin.swf', symbol='sliderMenuThumb01_notFound');
+	
+	upSkin: ClassReference('xcelsius.layout.StretchManager');
+	upStyleName: 'thumbWellBGUp';
+	overSkin: ClassReference('xcelsius.layout.StretchManager');
+	overStyleName: 'thumbWellOver';
+	selectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	selectedStyleName: 'thumbWellSelected';
+	
+	foregroundUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	foregroundUpStyleName: 'thumbWellEffectUp';
+	foregroundOverSkin: ClassReference('xcelsius.layout.StretchManager');
+	foregroundOverStyleName: 'thumbWellEffectOver';
+	foregroundSelectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	foregroundSelectedStyleName: 'thumbWellEffectSelected';
+	
+	/* Image Sub component */
+	marginTop: 0;
+	marginRight: 3;
+	marginBottom: 0;
+	marginLeft: 3;	
+	
+	/* Image inside component */
+	paddingTop: 3;
+	paddingRight: 3;
+	paddingBottom: 3;
+	paddingLeft: 3;
+}
+
+.selectorStyles {
+	
+	itemStyleName: 'itemStyles';
+	
+	/* all together */
+	marginTop: 0;	
+	marginRight: 0;	
+	marginBottom: 0;	
+	marginLeft: 0;	
+
+	/* between each */
+	paddingTop: 10;
+	paddingRight: 10;
+	paddingBottom: 10;
+	paddingLeft: 10;
+}
+
+.labelStyles {	
+	color: #FFFFFF; /*NOT GLOBAL*/
+	fontFamily:"Verdana";
+	fontSize: 13;
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: "center";
+	
+	paddingTop: 3;
+	paddingRight: 10;
+	paddingBottom: 3;
+	paddingLeft: 10;
+}
+
+.SliderLabelBar {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLabelBarEffect01_middle");
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuLabelBarMask01_middle");
+}
+
+
+.thumbWellBGUp {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellBackgroundUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellBackgroundUp01_mask");
+}
+
+.thumbWellOver {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #CED8E3;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellBackgroundOver01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellBackgroundOver01_mask");
+}
+
+.thumbWellSelected {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+  	customColor: #96A8C3;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellBackgroundSelected01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellBackgroundSelected01_mask");
+}
+
+.thumbWellEffectUp {
+	stretchType: "simple";
+	
+	middleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellEffectUp01_effect");
+}
+
+.thumbWellEffectOver {
+	stretchType: "simple";
+	
+	middleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellEffectOver01_effect");
+}
+
+.thumbWellEffectSelected {
+	stretchType: "simple";
+	
+	middleSkin: Embed(source="../assets/novaSkin.swf", symbol="sliderMenuThumbWellEffectSelected01_effect");
+}
+
+/* 
+//-------------------------------
+// RADIO BUTTON	
+//-------------------------------
+*/
+RadioButton {
+	itemStyleName: 'radioButtonItemStyles';
+	titleStyleName: 'titleLabel';
+	titlePosition: "topCenter";
+			
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'background02Skin';
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+}
+
+.radioButtonItemStyles {
+	upSkin: ClassReference('xcelsius.layout.StretchManager');
+	upStyleName: 'radioButtonUp';
+	overSkin: ClassReference('xcelsius.layout.StretchManager');
+	overStyleName: 'radioButtonUp';
+	selectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	selectedStyleName: 'radioButtonDown';
+		
+	buttonSize: 18;
+		
+	labelStyleName: 'radioButtonLabelStyles';
+			
+	paddingTop: 0;
+	paddingRight: 0;
+	paddingBottom: 0;
+	paddingLeft: 0;
+			
+	marginTop: 4;
+	marginRight: 5;
+	marginBottom: 4;
+	marginLeft: 10;
+}
+		
+.radioButtonLabelStyles {
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: left;
+}
+
+.radioButtonUp {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #FFFFFF;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="radioButtonUp01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="radioButtonUp01_mask");		
+}
+
+.radioButtonDown {
+	stretchType: "simple";
+	
+	useCustomColor: true;
+	customColor: #344B6D;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="radioButtonSelected01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="radioButtonSelected01_mask");				
+}
+
+/*
+//-----------------------------------
+// TICKER
+//-----------------------------------
+*/
+Ticker {
+	itemStyleName: 'listAlertTicker';	
+	titleStyleName: 'titleLabel'; 
+	titlePosition: 'topCenter';	
+	separatorStyleName: 'tickerSeparatorStyles';
+			
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'background05Skin';	
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+}
+
+.tickerSeparatorStyles {
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	
+	color: #000000;	
+	
+	paddingTop: 3;
+	paddingRight: 10;
+	paddingBottom: 3;
+	paddingLeft: 10;
+}
+
+.listAlertTicker{
+	alertSkin: ClassReference("xcelsius.layout.StretchManager");
+	alertStyleName: "alertIcon";
+	
+	color: #000000;
+	textRollOverColor: #000000;
+	textSelectedColor: #96A8C3;
+	
+	valueColor: #000000;
+	valueTextRollOverColor: #000000;
+	valueTextSelectedColor: #96A8C3;
+	
+	labelStyleName: 'labelStyles';
+	valueStyleName: 'labelStyles';
+}
+
+/*
+//----------------------------------
+// PLAY SELECTOR 
+//----------------------------------
+*/
+PlaySelector {	
+	layoutSkin: ClassReference('xcelsius.controls.playControlClasses.novaStandardSelectorLayout');
+	togglePlayPause: true;
+	
+	playStyleName: "playSelectorControlPlayButton";		
+	pauseStyleName: "playSelectorControlPauseButton";
+	nextStyleName: "playSelectorControlNextButton";
+	prevStyleName: "playSelectorControlPrevButton";
+    rewStyleName: "playSelectorControlREWButton";    
+	ffwStyleName: "playSelectorControlFFWButton";
+	
+	sliderStyleName: "hSlider";
+	
+	borderEnabled: true;
+	borderSkin: ClassReference("xcelsius.layout.StretchManager");
+	borderStyleName: "playSelectorBG";
+}
+
+.playSelectorBG{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorBackground01_effect");	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorBackground01_color");	
+}
+
+
+.playSelectorControlPlayButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "playSelectorButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "playSelectorGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "playSelectorButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "playSelectorGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "playSelectorButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "playSelectorGlyph1Up";  
+    
+}
+
+.playSelectorControlPauseButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "playSelectorButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "pauseSelectorGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "playSelectorButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "pauseSelectorGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "playSelectorButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "pauseSelectorGlyph1Up";  
+  
+}
+
+.playSelectorControlNextButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "nextSelectorButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "nextSelectorGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "nextSelectorButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "nextSelectorGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "nextSelectorButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "nextSelectorGlyph1Up";  
+    
+}
+
+.playSelectorControlPrevButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "prevSelectorButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "prevSelectorGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "prevSelectorButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "prevSelectorGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "prevSelectorButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "prevSelectorGlyph1Up";  
+     
+}
+
+.playSelectorControlREWButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "REWSelectorButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "REWSelectorGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "REWSelectorButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "REWSelectorGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "REWSelectorButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "REWSelectorGlyph1Up";   
+  
+}
+
+.playSelectorControlFFWButton {
+    	
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName : "FFWSelectorButton1Up";
+  upGlyph: ClassReference('xcelsius.layout.StretchManager');
+  upGlyphStyleName: "FFWSelectorGlyph1Up";
+  
+  overSkin: ClassReference('xcelsius.layout.StretchManager');
+  overStyleName  : "FFWSelectorButton1Up";
+  overGlyph: ClassReference('xcelsius.layout.StretchManager');
+  overGlyphStyleName: "FFWSelectorGlyph1Up"; 
+  
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName  : "FFWSelectorButton1Up";
+  downGlyph: ClassReference('xcelsius.layout.StretchManager');
+  downGlyphStyleName: "FFWSelectorGlyph1Up";  
+     
+}
+
+.playSelectorButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorPlay01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorPlay01_color");
+	
+}
+.playSelectorGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorPlay01_glyph");	
+}
+
+.pauseSelectorGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorPause01_glyph");	
+}
+
+
+.nextSelectorButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorNext01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorNext01_color");	
+}
+
+.nextSelectorGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorNext01_glyph");	
+}
+
+.prevSelectorButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorPrev01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorPrev01_color");	
+}
+.prevSelectorGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorPrev01_glyph");	
+}
+
+.REWSelectorButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorREW01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorREW01_color");	
+}
+
+.REWSelectorGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorREW01_glyph");	
+}
+
+.FFWSelectorButton1Up{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorFFW01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorFFW01_color");	
+}
+
+.FFWSelectorGlyph1Up{
+	stretchType: "simple";
+	
+	customColor: #000000;
+	useCustomColor: true;
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="playSelectorFFW01_glyph");	
+}
+
+
+/*
+//------------------------------
+//  ACCORDION MENU
+//------------------------------
+*/
+AccordionMenu
+{
+	headerHeight: 25;
+	verticalGap: 0;
+	
+	paddingBottom: 10;
+	paddingLeft: 2;
+	paddingRight: 2;
+	paddingTop: 10;	
+	
+	/* Duration set in milliseconds. Default is 250 */
+	openDuration: 250;
+	
+	/* If no style is defined, a textfield with bo style is displayed */
+	titleStyleName: "titleLabel";
+	
+	/* If no style is defined, the default Button style is applied */
+	headerStyleName: "headerStyle";
+	
+	/* If no style is defined, the default List style is applied */
+	contentStyleName: "list";
+		
+	upButtonStyleName: "topControlStyle";
+	downButtonStyleName: "bottomControlStyle";
+	
+	borderSkin: ClassReference("xcelsius.layout.StretchManager");
+	borderStyleName: "accordionBackground";
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+}
+
+.accordionBackground{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuBackingEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuBackingMask01_middle");
+}
+
+.headerStyle
+{
+	fontSize: "13";
+	fontWeight: "normal";
+	textAlign: "left";
+	fontFamily: "Verdana";
+	
+	color: #000000;
+   	textRollOverColor: #000000;
+   	textSelectedColor: #FFFFFF;
+   	
+	horizontalGap: 2;
+	
+	paddingLeft: 5;
+	paddingRight: 5;	
+	paddingTop: 3;
+	paddingBottom: 3;
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "accordionCategoryUp";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "accordionCategoryOver";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "accordionCategorySelected";
+	
+	selectedUpSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedUpStyleName: "accordionCategorySelected";
+	
+	selectedOverSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedOverStyleName: "accordionCategorySelected";
+	
+	selectedDownSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedDownStyleName: "accordionCategorySelected";
+		
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "accordionCategoryUp";
+}
+
+.accordionCategoryUp
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuHeaderUpEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuHeaderUpMask01_middle");
+}
+
+.accordionCategoryOver
+{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuHeaderOverEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuHeaderOverMask01_middle");
+}
+
+.accordionCategorySelected
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuHeaderSelectedEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuHeaderSelectedMask01_middle");
+}
+
+/*
+//----------------------------------
+// TOP BUTTON
+//----------------------------------
+*/
+
+.topControlStyle
+{
+	width: 30.9;
+	height: 9;
+	fontSize: "10";
+	fontWeight: "normal";
+	textAlign: "left";
+	
+	color: #000000;
+   	textRollOverColor: #000000;
+   	textSelectedColor: #FFFFFF;
+   	
+	horizontalGap: 2;
+	paddingLeft: 5;
+	paddingRight: 5;
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "topControlUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "topControlUpStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "topControlDownStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "topControlDisabledStyle";
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "topControlUpIconStyle";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "topControlUpIconStyle";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "topControlDownIconStyle";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "topControlDisabledIconStyle";
+	
+}
+
+.topControlUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpBackingUp01_mask");
+}
+
+.topControlDownStyle
+{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpBackingDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpBackingDown01_mask");
+}
+
+.topControlDisabledStyle
+{
+	stretchType: "simple";
+	
+	customColor: #EEEEEE;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpBackingDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpBackingDisabled01_mask");
+}
+
+
+.topControlUpIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpArrowUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpArrowUp01_mask");
+}
+
+.topControlDownIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpArrowDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpArrowDown01_mask");
+}
+
+.topControlDisabledIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpArrowDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonUpArrowDisabled01_mask");
+}
+
+/*
+//----------------------------------
+// BOTTOM BUTTON
+//----------------------------------
+*/
+
+.bottomControlStyle
+{
+	width: 30.9;
+	height: 9;
+	fontSize: "10";
+	fontWeight: "normal";
+	textAlign: "left";
+	
+	color: #000000;
+   	textRollOverColor: #000000;
+   	textSelectedColor: #FFFFFF;
+   	
+	horizontalGap: 2;
+	paddingLeft: 5;
+	paddingRight: 5;
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "bottomControlUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "bottomControlUpStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "bottomControlDownStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "bottomControlDisabledStyle";
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "bottomControlUpIconStyle";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "bottomControlUpIconStyle";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "bottomControlDownIconStyle";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "bottomControlDisabledIconStyle";
+	
+}
+
+.bottomControlUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownBackingUp01_mask");
+}
+
+.bottomControlDownStyle
+{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownBackingDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownBackingDown01_mask");
+}
+
+.bottomControlDisabledStyle
+{
+	stretchType: "simple";
+	
+	customColor: #EEEEEE;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownBackingDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownBackingDisabled01_mask");
+}
+
+
+.bottomControlUpIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownArrowUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownArrowUp01_mask");
+}
+
+.bottomControlDownIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownArrowDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownArrowDown01_mask");
+}
+
+.bottomControlDisabledIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownArrowDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="accordionMenuNavButtonDownArrowDisabled01_mask");
+}
+
+/*
+//-----------------------------------
+// SPREADSHEET TABLE
+//-----------------------------------
+*/
+
+SpreadsheetTable{
+		
+	gridColor:  #344B6D;
+	selectColor: #344B6D;
+	mouseOverColor: #96A8C3;
+		
+	selectAlpha: 0.5;
+	mouseOverAlpha: 0.5;
+	
+	verticalScrollBarStyleName: 'vScrollBar';
+	horizontalScrollBarStyleName: 'hScrollBar';
+	
+	selectSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+    browseSound: Embed(source="../../all/assets/sounds/mouseOver.mp3");
+}
+
+
+/*
+//-----------------------------
+//-----------------------------
+// OTHER
+//-----------------------------
+//-----------------------------
+*/
+
+/*
+//-----------------------------------
+// TREND ICON 1
+//-----------------------------------
+*/
+
+TrendIcon {
+	
+  downSkin: ClassReference('xcelsius.layout.StretchManager');
+  downStyleName: "downStyleTI";
+  
+  evenSkin: ClassReference('xcelsius.layout.StretchManager');
+  evenStyleName: "evenStyleTI";
+  
+  upSkin: ClassReference('xcelsius.layout.StretchManager');
+  upStyleName: "upStyleTI";
+  
+  valueStyleName: valueLabel;
+  titleStyleName: titleLabel;
+}
+
+.downStyleTI {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FF6657;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='trendIconDown01_effect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='trendIconDown01_mask');
+}
+
+.evenStyleTI {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #FD9935;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='trendIconEven01_effect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='trendIconEven01_mask');
+}
+
+.upStyleTI {
+  stretchType: "simple";
+  
+  useCustomColor: true;
+  customColor: #7593BD;
+  
+  effectMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='trendIconUp01_effect');
+  maskMiddleSkin: Embed(source='../assets/novaSkin.swf', symbol='trendIconUp01_mask');
+}
+
+/*
+//-----------------------------
+// GRID
+//-----------------------------
+*/
+
+Grid {
+	valueStyleName: "valueDisplay";
+	
+	horizontalAlign: center;
+
+	cursorSkin: 'cursor';
+	
+	horizontalGap: 0;
+	verticalGap: 0;
+}
+
+
+/*
+//--------------------------------
+// CALENDAR
+//--------------------------------
+*/
+Calendar
+{
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	
+	titleStyleName: "titleLabel";
+	headerStyleName: "calendarHeaderStyle";
+	
+	weekdayBorderSkin: ClassReference("xcelsius.layout.StretchManager");
+	weekdayBorderStyleName: "weekdayBorderStyle";
+	
+	clickSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+	
+	headerBorderSkin: ClassReference("xcelsius.layout.StretchManager");
+	headerBorderStyleName: "headerBorderStyle";
+	
+	borderSkin: ClassReference("xcelsius.layout.StretchManager");
+	borderStyleName: "calendarBackground";
+		
+	nextMonthButtonStyleName: "nextMonthButtonStyle";
+	prevMonthButtonStyleName: "prevMonthButtonStyle";
+	
+	nextYearButtonStyleName: "nextYearButtonStyle";
+	prevYearButtonStyleName: "prevYearButtonStyle";	
+	
+	dateButtonStyleName: "dateButtonStyle";
+	todayButtonStyleName: "todayButtonStyle";
+}
+
+.calendarBackground{	
+	stretchType: "stretch9";
+
+	customColor: #FFFFFF;	
+	useCustomColor: true;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect09_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask09_topRight");	
+}
+
+.calendarHeaderStyle
+{
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: "center";	
+	color: #FFFFFF;	 /* NOT GLOBAL*/
+	
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+}
+
+.headerBorderStyle
+{
+	
+    stretchType: "simple";
+    
+    customColor: #344B6D;
+    useCustomColor: true;
+    
+    effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarMonthLabelBarEffect01_middle");
+    maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarMonthLabelBarMask01_middle");
+    
+    marginRight: 0;
+    marginLeft: 0;
+}
+
+
+/*PREVIOUS MONTH BUTTON*/
+.prevMonthButtonStyle
+{
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "prevMonthUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "prevMonthUpStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "prevMonthDownStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "prevMonthDisabledStyle";
+	
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "prevMonthUpIconStyle";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "prevMonthUpIconStyle";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "prevMonthDownIconStyle";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "prevMonthDisabledIconStyle";
+	
+}
+
+.prevMonthUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingUp01_mask");
+}
+
+.prevMonthDownStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingDown01_mask");
+}
+
+.prevMonthDisabledStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingDisabled01_mask");
+}
+
+.prevMonthUpIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonArrowUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonArrowUp01_mask");
+}
+
+.prevMonthDownIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonArrowDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonArrowDown01_mask");
+}
+
+.prevMonthDisabledIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonArrowDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonArrowDisabled01_mask");
+}
+
+
+/* NEXT MONTH BUTTON */
+.nextMonthButtonStyle
+{
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "nextMonthUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "nextMonthUpStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "nextMonthDownStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "nextMonthDisabledStyle";
+	
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "nextMonthUpIconStyle";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "nextMonthUpIconStyle";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "nextMonthDownIconStyle";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "nextMonthDisabledIconStyle";
+	
+}
+
+.nextMonthUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonBackingUp01_mask");
+}
+
+.nextMonthDownStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonBackingDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonBackingDown01_mask");
+}
+
+.nextMonthDisabledStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonBackingDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonBackingDisabled01_mask");
+}
+
+.nextMonthUpIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonArrowUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonArrowUp01_mask");
+}
+
+.nextMonthDownIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonArrowDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonArrowDown01_mask");
+}
+
+.nextMonthDisabledIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonArrowDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightMonthButtonArrowDisabled01_mask");
+}
+
+
+/* PREVIOUS YEAR BUTTON */
+.prevYearButtonStyle
+{
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "prevYearUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "prevYearUpStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "prevYearDownStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "prevYearDisabledStyle";
+	
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "prevYearUpIconStyle";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "prevYearUpIconStyle";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "prevYearDownIconStyle";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "prevYearDisabledIconStyle";
+	
+}
+
+.prevYearUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonBackingUp01_mask");
+}
+
+.prevYearDownStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonBackingDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonBackingDown01_mask");
+}
+
+.prevYearDisabledStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonBackingDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonBackingDisabled01_mask");
+}
+
+.prevYearUpIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonArrowUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonArrowUp01_mask");
+}
+
+.prevYearDownIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonArrowDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonArrowDown01_mask");
+}
+
+.prevYearDisabledIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonArrowDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftYearButtonArrowDisabled01_mask");
+}
+
+
+/* NEXT YEAR BUTTON */
+.nextYearButtonStyle
+{
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "nextYearUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "nextYearUpStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "nextYearDownStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "nextYearDisabledStyle";
+	
+	
+	upGlyph: ClassReference("xcelsius.layout.StretchManager");
+	upGlyphStyleName: "nextYearUpIconStyle";
+	
+	overGlyph: ClassReference("xcelsius.layout.StretchManager");
+	overGlyphStyleName: "nextYearUpIconStyle";
+	
+	downGlyph: ClassReference("xcelsius.layout.StretchManager");
+	downGlyphStyleName: "nextYearDownIconStyle";
+	
+	disabledGlyph: ClassReference("xcelsius.layout.StretchManager");
+	disabledGlyphStyleName: "nextYearDisabledIconStyle";
+	
+}
+
+.nextYearUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonBackingUp01_mask");
+}
+
+.nextYearDownStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonBackingDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonBackingDown01_mask");
+}
+
+.nextYearDisabledStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonBackingDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonBackingDisabled01_mask");
+}
+
+.nextYearUpIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonArrowUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonArrowUp01_mask");
+}
+
+.nextYearDownIconStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonArrowDown01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonArrowDown01_mask");
+}
+
+.nextYearDisabledIconStyle
+{
+	stretchType: "simple";
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonArrowDisabled01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarRightYearButtonArrowDisabled01_mask");
+}
+
+.weekdayBorderStyle
+{
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: "center";	
+	
+	color: #FFFFFF;
+	
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;	
+	
+	stretchType: "simple";
+	
+    customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarDOTWBackingEffect01_middle");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarDOTWBackingMask01_middle");
+}
+
+
+/* DATE BUTTON */
+.dateButtonStyle
+{
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: "center";	
+	color: #000000;
+	textRollOverColor: #000000; 
+	textSelectedColor: #FFFFFF; 
+	
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	
+	fontWeight: "normal";
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "dateUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "dateOverStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "dateSelectedStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "dateUpStyle";
+	
+	selectedUpSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedUpStyleName: "dateSelectedStyle";
+	
+	selectedOverSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedOverStyleName: "dateSelectedStyle";
+	
+	selectedDownSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedDownStyleName: "dateSelectedStyle";
+}
+
+.dateUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingUp01_mask");
+}
+
+.dateOverStyle
+{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingOver01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingOver01_mask");
+}
+
+.dateSelectedStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingSelected01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingSelected01_mask");
+}
+
+
+/* TODAY BUTTON */
+/* NOTE: This is only used if the "showToday" property is set to "true" */
+
+.todayButtonStyle
+{
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: "center";	
+	color: #000000;
+	textRollOverColor: #000000; 
+	textSelectedColor: #FFFFFF;
+	
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	
+	upSkin: ClassReference("xcelsius.layout.StretchManager");
+	upStyleName: "todayUpStyle";
+	
+	overSkin: ClassReference("xcelsius.layout.StretchManager");
+	overStyleName: "todayOverStyle";
+	
+	downSkin: ClassReference("xcelsius.layout.StretchManager");
+	downStyleName: "todaySelectedStyle";
+	
+	disabledSkin: ClassReference("xcelsius.layout.StretchManager");
+	disabledStyleName: "todayUpStyle";
+	
+	selectedUpSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedUpStyleName: "todaySelectedStyle";
+	
+	selectedOverSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedOverStyleName: "todaySelectedStyle";
+	
+	selectedDownSkin: ClassReference("xcelsius.layout.StretchManager");
+	selectedDownStyleName: "todaySelectedStyle";
+}
+
+.todayUpStyle
+{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingUp01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarLeftMonthButtonBackingUp01_mask");
+}
+
+.todayOverStyle
+{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingOver01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingOver01_mask");
+}
+
+.todaySelectedStyle
+{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingSelected01_effect");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarCellBackingSelected01_mask");
+}
+
+
+/*
+//------------------------------------
+// PANEL SET
+//------------------------------------
+*/
+
+PanelSet {
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'background03Skin';
+	
+	panelStyleName: 'panelStyles';	
+	titleStyleName: "titleLabel"; 
+	titlePosition: "topCenter";
+			
+	marginTop: 5;
+	marginRight: 5;
+	marginBottom: 5;
+	marginLeft: 5;
+	
+	paddingTop: 10;
+	paddingRight: 8;
+	paddingBottom: 8;
+	paddingLeft: 10;
+}
+
+.panelStyles {
+	marginTop: 0;
+	marginRight: 5;
+	marginBottom: 5;
+	marginLeft: 0;
+	 
+	barPaddingTop: 0;
+	barPaddingRight: 0;
+	barPaddingBottom: 0;
+	barPaddingLeft: 8;
+	
+	imagePaddingTop: 5;
+	imagePaddingRight: 5;
+	imagePaddingBottom: 5;
+	imagePaddingLeft: 5;
+	
+	headerSkin: ClassReference('xcelsius.layout.StretchManager');
+	headerStyleName: 'headerPanelSetBorderStyle';
+	
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: 'background02Skin';
+	
+	dropdownButtonUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	dropdownButtonUpStyleName: 'panelSetDropDownButtonUp';
+	dropdownButtonSelectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	dropdownButtonSelectedStyleName: 'panelSetDropDownButtonDown';
+	
+	dropdownGlyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	dropdownGlyphUpStyleName: 'panelSetDropDownGlyphUp';
+	dropdownGlyphSelectedSkin: ClassReference('xcelsius.layout.StretchManager');
+	dropdownGlyphSelectedStyleName: 'panelSetDropDownGlyphDown';
+	
+	maximizeButtonUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	maximizeButtonUpStyleName: 'panelSetMaximizeButtonUp';
+	maximizeButtonDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	maximizeButtonDownStyleName: 'panelSetMaximizeButtonDown';
+	
+	maximizeGlyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	maximizeGlyphUpStyleName: 'panelSetMaximizeGlyphUp';
+	maximizeGlyphDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	maximizeGlyphDownStyleName: 'panelSetMaximizeGlyphDown';
+
+	restoreButtonUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	restoreButtonUpStyleName: 'panelSetRestoreButtonUp';
+	restoreButtonDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	restoreButtonDownStyleName: 'panelSetRestoreButtonDown';
+	
+	restoreGlyphUpSkin: ClassReference('xcelsius.layout.StretchManager');
+	restoreGlyphUpStyleName: 'panelSetRestoreGlyphUp';
+	restoreGlyphDownSkin: ClassReference('xcelsius.layout.StretchManager');
+	restoreGlyphDownStyleName: 'panelSetRestoreGlyphDown';
+	
+	labelStyleName: panelLabelStyles;
+	listStyleName: listStyleCB;
+}
+
+.headerPanelSetBorderStyle
+{
+    stretchType: "simple";
+    
+    customColor: #344B6D;
+    useCustomColor: true;
+    
+    effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarMonthLabelBarEffect01_middle");
+    maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="calendarMonthLabelBarMask01_middle");
+    
+    marginRight: 0;
+    marginLeft: 0;
+}
+
+.panelLabelStyles {
+	fontFamily:"Verdana";
+	fontSize:"13";
+	color: #FFFFFF;  /* not getting global*/
+	focusAlpha: 0.0;
+	
+	paddingLeft: 5;
+}
+
+
+/*DropDown button */
+.panelSetDropDownButtonUp {
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	                                                                   
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonBackingUpEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonBackingUpMask01_middle");
+}
+
+.panelSetDropDownButtonDown {
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	                                                                   
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonBackingDownEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonBackingDownMask01_middle");
+}
+
+.panelSetDropDownGlyphUp {
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	                                                               
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonArrowUp01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonArrowUp01_mask");
+}
+
+.panelSetDropDownGlyphDown {
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	                                                               
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonArrowDown01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetDropDownButtonArrowDown01_mask");
+}
+
+/*Maximize button */
+.panelSetMaximizeButtonUp {
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	                                                                   
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonBackingUpEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonBackingUpMask01_middle");
+}
+
+.panelSetMaximizeButtonDown {
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	                                                                   
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonBackingDownEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonBackingDownMask01_middle");
+}
+
+.panelSetMaximizeGlyphUp {
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	                                                               
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonArrowUp01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonArrowUp01_mask");
+}
+
+.panelSetMaximizeGlyphDown {
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	                                                               
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonArrowDown01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetExpandButtonArrowDown01_mask");
+}
+
+
+/*Restore button */
+.panelSetRestoreButtonUp {
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	                                                                   
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonBackingUpEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonBackingUpMask01_middle");
+}
+
+.panelSetRestoreButtonDown {
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+	                                                                   
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonBackingDownEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonBackingDownMask01_middle");
+}
+
+.panelSetRestoreGlyphUp {
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	                                                               
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonArrowUp01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonArrowUp01_mask");
+}
+
+.panelSetRestoreGlyphDown {
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	                                                               
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonArrowDown01_effect");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="panelSetContractButtonArrowDown01_mask");
+}
+
+/*
+//-----------------------------
+//-----------------------------
+// TEXT
+//-----------------------------
+//-----------------------------
+*/
+
+/*
+//---------------------
+// LABEL
+//---------------------
+*/
+
+Label {	
+	verticalScrollBarStyleName: 'vScrollBar';
+	horizontalScrollBarStyleName: 'hScrollBar';
+	
+	marginRight: -15;
+	marginBottom: -10;
+
+	borderThicknessTop: 4;
+	borderThicknessRight: 4;
+	borderThicknessBottom: 4;
+	borderThicknessLeft: 4;
+}
+
+/*
+//---------------------
+// TEXT INPUT 01
+//---------------------
+*/
+
+TextInput {
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');		
+	borderStyleName: "background05Skin";
+	
+	paddingLeft: 3;
+	paddingRight: 3;
+}
+
+/*
+//--------------------
+// TEXT AREA 01
+//--------------------
+*/
+
+InputTextArea {
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');		
+	borderStyleName: "background05Skin";
+	
+	verticalScrollBarStyleName: 'vScrollBar';
+	horizontalScrollBarStyleName: 'hScrollBar';
+	
+	paddingLeft: 2;
+	paddingRight: 2;
+	
+	marginLeft: -2;
+	marginRight: -2;	
+	marginTop: -2;
+	marginBottom: -2;
+}
+
+
+/*
+//-----------------------------
+//-----------------------------
+// CONTAINERS
+//-----------------------------
+//-----------------------------
+*/
+
+/*
+//--------------------------------
+// CANVAS
+//--------------------------------
+*/
+
+Canvas {
+	verticalScrollBarStyleName: 'vScrollBar';
+    horizontalScrollBarStyleName: 'hScrollBar';
+    
+    borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: "canvasBackground";
+}
+
+.canvasBackground{	
+	stretchType: "stretch9";
+
+	customColor: #FFFFFF;	
+	useCustomColor: true;
+	
+	marginLeft: -1;
+	marginRight: -1;	
+	marginTop: -1;
+	marginBottom: -1;
+	
+	effectBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_bottom");
+	effectBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_bottomLeft");
+	effectBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_bottomRight");
+	effectLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_left");
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_middle");
+	effectRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_right");
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect02_topRight");
+	
+	maskBottomSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_bottom");
+	maskBottomLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_bottomLeft");
+	maskBottomRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_bottomRight");
+	maskLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_left");
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_middle");
+	maskRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_right");
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask02_topRight");	
+	
+}
+
+/*
+//--------------------------------
+// TAB SET
+//--------------------------------
+*/
+TabSet {
+	tabStyleName: "middleTabButton";
+	firstButtonStyleName: "firstTabButton";
+    lastButtonStyleName: "lastTabButton";
+    
+    borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: "backgroundTabSetSkin";
+	
+	borderStyle: "solid";
+    
+    selectedTabTextStyleName: "selectedTabTextStyle";
+    
+    canvasStyleName: "tabSetBackground";
+      
+    horizontalGap: 0;
+    
+    paddingLeft: 0;
+    paddingRight: 0;
+    paddingTop: 6;
+    paddingBottom: 0;
+    
+}
+
+.tabSetBackground {
+	verticalScrollBarStyleName: 'vScrollBar';
+    horizontalScrollBarStyleName: 'hScrollBar';
+    
+    borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: "canvasBackground";
+}
+
+  
+.backgroundTabSetSkin{	
+	stretchType: "stretch9";
+
+	customColor: #344B6D;	
+	useCustomColor: true;
+	
+	effectTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect06_top");
+	effectTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect06_topLeft");
+	effectTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundEffect06_topRight");
+		
+	maskTopSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask06_top");
+	maskTopLeftSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask06_topLeft");
+	maskTopRightSkin: Embed(source="../assets/novaSkin.swf", symbol="backgroundMask06_topRight");
+	
+	marginLeft: 0;
+	marginRight: 0;	
+	marginTop: 0;
+	marginBottom: 0;
+}
+
+.selectedTabTextStyle{
+	fontFamily:"Verdana";
+	fontSize:"13";
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	focusThickness: 0; /* -> Xcelsius doesn't handle focus */
+		
+	color: #FFFFFF;
+}
+
+.middleTabButton {
+	fontWeight:"normal";
+        
+	color: #000000;
+	textRollOverColor: #000000;
+              
+    disabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    disabledStyleName: "middleTabButtonUpSkin";
+                     
+    upSkin: ClassReference('xcelsius.layout.StretchManager');
+    upStyleName: "middleTabButtonUpSkin";
+                
+    overSkin: ClassReference('xcelsius.layout.StretchManager');
+    overStyleName: "middleTabButtonOverSkin";  
+                
+    downSkin: ClassReference('xcelsius.layout.StretchManager');
+    downStyleName: "middleTabButtonSelectedSkin";  
+                
+    selectedDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedDisabledStyleName: "middleTabButtonSelectedSkin";
+                
+    selectedUpSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedUpStyleName: "middleTabButtonSelectedSkin";
+                
+    selectedOverSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedOverStyleName: "middleTabButtonSelectedSkin";
+                
+    selectedDownSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedDownStyleName: "middleTabButtonSelectedSkin";                        
+}
+
+.middleTabButtonUpSkin{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetMiddleButtonUpEffect01_middle");
+		
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetMiddleButtonUpMask01_middle");	
+}
+
+.middleTabButtonOverSkin{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetMiddleButtonOverEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetMiddleButtonOverMask01_middle");
+}
+
+.middleTabButtonSelectedSkin{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetMiddleButtonSelectedEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetMiddleButtonSelectedMask01_middle");
+}
+
+.firstTabButton {
+    fontWeight:"normal";
+        
+    color: #000000;
+	textRollOverColor: #000000;
+              
+    disabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    disabledStyleName: "firstTabButtonUpSkin";
+                     
+    upSkin: ClassReference('xcelsius.layout.StretchManager');
+    upStyleName: "firstTabButtonUpSkin";
+                
+    overSkin: ClassReference('xcelsius.layout.StretchManager');
+    overStyleName: "firstTabButtonOverSkin";  
+                
+    downSkin: ClassReference('xcelsius.layout.StretchManager');
+    downStyleName: "firstTabButtonSelectedSkin";  
+                
+    selectedDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedDisabledStyleName: "firstTabButtonSelectedSkin";
+                
+    selectedUpSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedUpStyleName: "firstTabButtonSelectedSkin";
+                
+    selectedOverSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedOverStyleName: "firstTabButtonSelectedSkin";
+                
+    selectedDownSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedDownStyleName: "firstTabButtonSelectedSkin";  
+                       
+}
+
+.firstTabButtonUpSkin{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetFirstButtonUpEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetFirstButtonUpMask01_middle");
+}
+
+.firstTabButtonOverSkin{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetFirstButtonOverEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetFirstButtonOverMask01_middle");
+}
+
+.firstTabButtonSelectedSkin{
+	stretchType: "stretch9";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetFirstButtonSelectedEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetFirstButtonSelectedMask01_middle");
+
+}
+
+.lastTabButton {
+    fontWeight:"normal";
+        
+    color: #000000;
+	textRollOverColor: #000000;
+              
+    disabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    disabledStyleName: "lastTabButtonUpSkin";
+                     
+    upSkin: ClassReference('xcelsius.layout.StretchManager');
+    upStyleName: "lastTabButtonUpSkin";
+                
+    overSkin: ClassReference('xcelsius.layout.StretchManager');
+    overStyleName: "lastTabButtonOverSkin";  
+                
+    downSkin: ClassReference('xcelsius.layout.StretchManager');
+    downStyleName: "lastTabButtonSelectedSkin";  
+                
+    selectedDisabledSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedDisabledStyleName: "lastTabButtonSelectedSkin";
+                
+    selectedUpSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedUpStyleName: "lastTabButtonSelectedSkin";
+                
+    selectedOverSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedOverStyleName: "lastTabButtonSelectedSkin";
+                
+    selectedDownSkin: ClassReference('xcelsius.layout.StretchManager');
+    selectedDownStyleName: "lastTabButtonSelectedSkin";                        
+}
+
+.lastTabButtonUpSkin{
+	stretchType: "simple";
+	
+	customColor: #FFFFFF;
+	useCustomColor: true;
+	
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetLastButtonUpEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetLastButtonUpMask01_middle");
+}
+
+.lastTabButtonOverSkin{
+	stretchType: "simple";
+	
+	customColor: #96A8C3;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetLastButtonOverEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetLastButtonOverMask01_middle");
+
+}
+
+.lastTabButtonSelectedSkin{
+	stretchType: "simple";
+	
+	customColor: #344B6D;
+	useCustomColor: true;
+		
+	effectMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetLastButtonSelectedEffect01_middle");
+	
+	maskMiddleSkin: Embed(source="../assets/novaSkin.swf", symbol="tabSetLastButtonSelectedMask01_middle");
+
+}
+
+/*
+//-----------------------------------
+// PANEL
+//-----------------------------------
+*/
+
+Panel {
+	
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: "background01Skin";
+	
+	innerBorderSkin: ClassReference('xcelsius.layout.StretchManager');
+	innerBorderStyleName: "background02Skin";
+				
+	verticalScrollBarStyleName: 'vScrollBar';
+    horizontalScrollBarStyleName: 'hScrollBar';
+    
+    borderThicknessTop: 5;
+    borderThicknessBottom: 5;
+    borderThicknessLeft: 5;
+    borderThicknessRight: 5;
+    
+	titleStyleName: "titlePanel";
+}
+
+.titlePanel {
+  fontFamily:"Verdana";
+  fontStyle:"normal";
+  fontWeight:"normal";
+  textDecoration:"none";
+  fontSize: 15;
+  textAlign: "center"; 
+}
+
+/* Forced Style */
+.panel01 {
+	
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: "background01Skin";
+	
+	innerBorderSkin: ClassReference('xcelsius.layout.StretchManager');
+	innerBorderStyleName: "background02Skin";
+				
+	verticalScrollBarStyleName: 'vScrollBar';
+    horizontalScrollBarStyleName: 'hScrollBar';
+    
+    borderThicknessTop: 5;
+    borderThicknessBottom: 5;
+    borderThicknessLeft: 5;
+    borderThicknessRight: 5;
+    
+	titleStyleName: "titlePanel";
+}
+
+.panel02 {
+	
+	borderSkin: ClassReference('xcelsius.layout.StretchManager');
+	borderStyleName: "background03Skin";
+	
+	innerBorderSkin: ClassReference('xcelsius.layout.StretchManager');
+	innerBorderStyleName: "background02Skin";
+				
+	verticalScrollBarStyleName: 'vScrollBar';
+    horizontalScrollBarStyleName: 'hScrollBar';
+    
+    borderThicknessTop: 15;
+    borderThicknessBottom: 5;
+    borderThicknessLeft: 5;
+    borderThicknessRight: 5;
+		
+	titleStyleName: "titlePanel";
+}
+
+
+/*
+//-----------------------------
+//-----------------------------
+// MAPS
+//-----------------------------
+//-----------------------------
+*/
+
+Map {
+  regionUpColor: #FFFFFF; 		 /*(up)*/
+  regionOverColor: #96A8C3;	 /*(mouse-over)*/
+  regionSelectedColor: #344B6D;	 /*(selected)*/
+  regionSelectableColor: #D7D7D7;		 /*(selectable)*/
+  lineColor: #000000;
+  
+  selectSound: Embed(source="../../all/assets/sounds/mouseSelect.mp3");
+  browseSound: Embed(source="../../all/assets/sounds/mouseOver.mp3");
+	
+  labelStyleName: "mapLabelStyles";
+  titleStyleName: "titleLabel";  
+}
+
+.mapLabelStyles {	
+	color: #000000; /*NOT GLOBAL*/
+	fontFamily:"Verdana";
+	fontSize: 13;
+	fontStyle:"normal";
+	fontWeight:"normal";
+	textDecoration:"none";
+	textAlign: "center";
+	
+	paddingTop: 3;
+	paddingRight: 10;
+	paddingBottom: 3;
+	paddingLeft: 10;
+}
+
+
+/*
+//--------------------------------
+// CANVAS CONTAINER
+//--------------------------------
+*/
+.canvasContainerComponent {
+ 	verticalScrollBarStyleName: 'vScrollBar';
+	horizontalScrollBarStyleName: 'hScrollBar'; 
+	borderColor: #A5A5A5;
+ 	borderThinkness: 1;
+	
+	backgroundSkin: Embed(source='../../all/assets/allSkin.swf', symbol='canvasBackground');
+}
