@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       user = User.authenticate(params[:name], params[:password])
       if user
         session[:user_id] = user.id
-        redirect_to(:controller => 'posts', :action => 'person', :id => user.id)
+        redirect_to(:controller => 'posts')
       else
         flash[:notice] = "Invalid user/password combination"
       end
