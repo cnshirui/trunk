@@ -42,11 +42,11 @@ class User < ActiveRecord::Base
   #END:accessors
 
   #START:after_destroy
-  def after_destroy
-    if User.count.zero?
-      raise "Can't delete last user"
-    end
-  end
+#  def after_destroy
+#    if User.count.zero?
+#      raise "Can't delete last user"
+#    end
+#  end
   #END:after_destroy
 
   private

@@ -17,7 +17,8 @@ class FragmentCacheTest
   end
 
   def perform_caching
-    true
+#    true
+    false
   end
 
   def cache_configured?

@@ -1,0 +1,8 @@
+<h1>Export</h1>
+<%= link_to "download", :action => 'export' %>
+<h1>Import</h1>
+<% form_tag({:action => 'import'}, :multipart => true) do %>
+  <%= label_tag 'Data File to Import:' %>
+  <%= file_field_tag 'file' %>
+  <%= submit_tag 'Import' %>
+<% end %>
