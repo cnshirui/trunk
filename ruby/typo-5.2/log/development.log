@@ -5186,3 +5186,537 @@ Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-03-26 00:09:26) [G
   [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
 Completed in 23ms (View: 0, DB: 4) | 200 OK [http://localhost/stylesheets/theme/local.css]
 Streaming file D:/perforce/github/wujuan/themes/metallic/stylesheets/local.css
+  [4;36;1mSQL (77.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (179.0ms)[0m   [0mselect * from sessions[0m
+  [4;36;1mSQL (7.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (53.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (76.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:00) [GET]
+  Parameters: {"filename"=>"style.css"}
+  [4;36;1mTrigger Load (70.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:00') [0m
+  [4;35;1mBlog Load (17.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 106ms (View: 0, DB: 223) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (38.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:02) [GET]
+  Parameters: {"filename"=>"reset.css"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:02') [0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 19ms (View: 0, DB: 42) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (34.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:02) [GET]
+  Parameters: {"filename"=>"layout.css"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:02') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 37) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:03) [GET]
+  Parameters: {"filename"=>"colors.css"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:03') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 21ms (View: 0, DB: 3) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+
+
+Processing ArticlesController#show (for 127.0.0.1 at 2009-05-31 20:23:21) [GET]
+  Session ID: 40b7e35e63689a0b8540d5c6447dc47e
+  Parameters: {"month"=>"03", "id"=>"hi-im-ray", "day"=>"26", "year"=>"2009"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:21') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mUser Columns (73.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (55.0ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mArticle Columns (61.0ms)[0m   [0;1mSHOW FIELDS FROM `contents`[0m
+  [4;35;1mArticle Load (99.0ms)[0m   [0mSELECT * FROM `contents` WHERE (`contents`.`permalink` = 'hi-im-ray' AND `contents`.`published_at` BETWEEN '2009-03-26 00:00:00' AND '2009-03-26 23:59:59') AND (`contents`.`published` = 1) AND ( (`contents`.`type` = 'Article' ) ) ORDER BY published_at DESC LIMIT 1[0m
+  [4;36;1mComment Columns (37.0ms)[0m   [0;1mSHOW FIELDS FROM `feedback`[0m
+#<Comment:0x7a9f89c> entering state Unclassified
+  [4;35;1mCategory Columns (21.0ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (79.0ms)[0m   [0;1mSELECT count(DISTINCT `categories`.id) AS count_categories_id FROM `categories` LEFT OUTER JOIN `categorizations` categorizations_categories ON categorizations_categories.category_id = categories.id INNER JOIN categorizations ON categories.id = categorizations.category_id WHERE ((`categorizations`.article_id = 3)) [0m
+  [4;35;1mJoin Table Columns (360.0ms)[0m   [0mSHOW FIELDS FROM `articles_tags`[0m
+  [4;36;1mTag Load (110.0ms)[0m   [0;1mSELECT * FROM `tags` INNER JOIN `articles_tags` ON `tags`.id = `articles_tags`.tag_id WHERE (`articles_tags`.article_id = 3 ) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT count(DISTINCT `categories`.id) AS count_categories_id FROM `categories` LEFT OUTER JOIN `categorizations` categorizations_categories ON categorizations_categories.category_id = categories.id INNER JOIN categorizations ON categories.id = categorizations.category_id WHERE ((`categorizations`.article_id = 3)) [0m
+Rendering template within ../../themes/typographic/layouts/default.html.erb
+Rendering articles/read
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mTextFilter Columns (56.0ms)[0m   [0mSHOW FIELDS FROM `text_filters`[0m
+  [4;36;1mTextFilter Load (12.0ms)[0m   [0;1mSELECT * FROM `text_filters` WHERE (`text_filters`.`name` = 'markdown smartypants') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `text_filters` WHERE (`text_filters`.`name` = 'markdown smartypants') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT count(DISTINCT `categories`.id) AS count_categories_id FROM `categories` LEFT OUTER JOIN `categorizations` categorizations_categories ON categorizations_categories.category_id = categories.id INNER JOIN categorizations ON categories.id = categorizations.category_id WHERE ((`categorizations`.article_id = 3)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Rendered articles/_article (13.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM `feedback` WHERE (`feedback`.article_id = 3 AND (`feedback`.`published` = 1)) AND ( (`feedback`.`type` = 'Comment' ) ) [0m
+Rendered articles/_comment_list (2.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Rendered articles/_comment_form (8.0ms)
+Rendered shared/_search (2.0ms)
+  [4;35;1mSidebar Load (29.0ms)[0m   [0mSELECT * FROM `sidebars` ORDER BY active_position ASC[0m
+  [4;36;1mSidebar Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `sidebars`[0m
+  [4;35;1mPageSidebar Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/page_sidebar/views/content.rhtml
+  [4;36;1mPage Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `contents`[0m
+  [4;35;1mPage Load (0.0ms)[0m   [0mSELECT * FROM `contents` WHERE ( (`contents`.`type` = 'Page' ) ) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mCategorySidebar Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/category_sidebar/views/content.rhtml
+  [4;36;1mCategory Load (45.0ms)[0m   [0;1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 1)
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+  [4;35;1mArchivesSidebar Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+  [4;36;1mContent Load (56.0ms)[0m   [0;1mselect count(*) as count, extract(year from published_at) as year,extract(month from published_at) as month from contents where type='Article' and published = 1 and published_at < '2009-05-31 20:23:22' group by year,month order by year desc,month desc limit 10 [0m
+  [4;35;1mContent Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `contents`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/archives_sidebar/views/content.rhtml
+  [4;36;1mStaticSidebar Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/static_sidebar/views/content.rhtml
+  [4;35;1mXmlSidebar Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/xml_sidebar/views/content.rhtml
+Completed in 1452ms (View: 492, DB: 965) | 200 OK [http://localhost/2009/03/26/hi-im-ray]
+  [4;36;1mSQL (42.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (11.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:29) [GET]
+  Parameters: {"filename"=>"style.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:29') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 19ms (View: 0, DB: 55) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:30) [GET]
+  Parameters: {"filename"=>"spinner.gif"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:30') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/spinner.gif]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/spinner.gif
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:31) [GET]
+  Parameters: {"filename"=>"reset.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:31') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 26ms (View: 0, DB: 4) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:32) [GET]
+  Parameters: {"filename"=>"layout.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:32') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 1, DB: 2) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:23:33) [GET]
+  Parameters: {"filename"=>"colors.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:33') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:33) [GET]
+  Parameters: {"filename"=>"spinner.gif"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:33') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 5) | 200 OK [http://localhost/images/theme/spinner.gif]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/spinner.gif
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:34) [GET]
+  Parameters: {"filename"=>"meta.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:34') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/meta.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/meta.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:35) [GET]
+  Parameters: {"filename"=>"world_link50.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:35') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 111ms (View: 0, DB: 3) | 200 OK [http://localhost/images/theme/world_link50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/world_link50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:36) [GET]
+  Parameters: {"filename"=>"email_open50.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:36') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 19ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/email_open50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/email_open50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:37) [GET]
+  Parameters: {"filename"=>"user50.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:37') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 21ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/user50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/user50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:37) [GET]
+  Parameters: {"filename"=>"tag.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:37') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/tag.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/tag.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:38) [GET]
+  Parameters: {"filename"=>"page_edit50.png"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:38') [0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 22ms (View: 0, DB: 5) | 200 OK [http://localhost/images/theme/page_edit50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/page_edit50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:39) [GET]
+  Parameters: {"filename"=>"accept50.png"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:39') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 3) | 200 OK [http://localhost/images/theme/accept50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/accept50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:23:40) [GET]
+  Parameters: {"filename"=>"meta.png"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:23:40') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 19ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/meta.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/meta.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (21.0ms)[0m   [0mselect * from sessions[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:25) [GET]
+  Parameters: {"filename"=>"spinner.gif"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:25') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/spinner.gif]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/spinner.gif
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+
+
+Processing ArticlesController#show (for 127.0.0.1 at 2009-05-31 20:33:30) [GET]
+  Session ID: 40b7e35e63689a0b8540d5c6447dc47e
+  Parameters: {"month"=>"03", "id"=>"hi-im-ray", "day"=>"26", "year"=>"2009"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:30') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mUser Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mArticle Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `contents`[0m
+  [4;35;1mArticle Load (0.0ms)[0m   [0mSELECT * FROM `contents` WHERE (`contents`.`permalink` = 'hi-im-ray' AND `contents`.`published_at` BETWEEN '2009-03-26 00:00:00' AND '2009-03-26 23:59:59') AND (`contents`.`published` = 1) AND ( (`contents`.`type` = 'Article' ) ) ORDER BY published_at DESC LIMIT 1[0m
+  [4;36;1mComment Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `feedback`[0m
+#<Comment:0x7c6fd70> entering state Unclassified
+  [4;35;1mCategory Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mSQL (18.0ms)[0m   [0;1mSELECT count(DISTINCT `categories`.id) AS count_categories_id FROM `categories` LEFT OUTER JOIN `categorizations` categorizations_categories ON categorizations_categories.category_id = categories.id INNER JOIN categorizations ON categories.id = categorizations.category_id WHERE ((`categorizations`.article_id = 3)) [0m
+  [4;35;1mJoin Table Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `articles_tags`[0m
+  [4;36;1mTag Load (1.0ms)[0m   [0;1mSELECT * FROM `tags` INNER JOIN `articles_tags` ON `tags`.id = `articles_tags`.tag_id WHERE (`articles_tags`.article_id = 3 ) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT count(DISTINCT `categories`.id) AS count_categories_id FROM `categories` LEFT OUTER JOIN `categorizations` categorizations_categories ON categorizations_categories.category_id = categories.id INNER JOIN categorizations ON categories.id = categorizations.category_id WHERE ((`categorizations`.article_id = 3)) [0m
+Rendering template within ../../themes/typographic/layouts/default.html.erb
+Rendering articles/read
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mTextFilter Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `text_filters`[0m
+  [4;36;1mTextFilter Load (8.0ms)[0m   [0;1mSELECT * FROM `text_filters` WHERE (`text_filters`.`name` = 'markdown smartypants') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `text_filters` WHERE (`text_filters`.`name` = 'markdown smartypants') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT count(DISTINCT `categories`.id) AS count_categories_id FROM `categories` LEFT OUTER JOIN `categorizations` categorizations_categories ON categorizations_categories.category_id = categories.id INNER JOIN categorizations ON categories.id = categorizations.category_id WHERE ((`categorizations`.article_id = 3)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Rendered articles/_article (14.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT count(*) AS count_all FROM `feedback` WHERE (`feedback`.article_id = 3 AND (`feedback`.`published` = 1)) AND ( (`feedback`.`type` = 'Comment' ) ) [0m
+Rendered articles/_comment_list (2.0ms)
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Rendered articles/_comment_form (8.0ms)
+Rendered shared/_search (1.0ms)
+  [4;35;1mSidebar Load (0.0ms)[0m   [0mSELECT * FROM `sidebars` ORDER BY active_position ASC[0m
+  [4;36;1mSidebar Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `sidebars`[0m
+  [4;35;1mPageSidebar Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/page_sidebar/views/content.rhtml
+  [4;36;1mPage Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `contents`[0m
+  [4;35;1mPage Load (1.0ms)[0m   [0mSELECT * FROM `contents` WHERE ( (`contents`.`type` = 'Page' ) ) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mCategorySidebar Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/category_sidebar/views/content.rhtml
+  [4;36;1mCategory Load (2.0ms)[0m   [0;1m
+ SELECT categories.id, categories.name, categories.permalink, categories.position, COUNT(articles.id) AS article_counter
+ FROM categories categories
+ LEFT OUTER JOIN categorizations articles_categories
+ ON articles_categories.category_id = categories.id
+ LEFT OUTER JOIN contents articles
+ ON (articles_categories.article_id = articles.id AND articles.published = 1)
+ GROUP BY categories.id, categories.name, categories.position, categories.permalink
+ ORDER BY position
+ [0m
+  [4;35;1mArchivesSidebar Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+  [4;36;1mContent Load (0.0ms)[0m   [0;1mselect count(*) as count, extract(year from published_at) as year,extract(month from published_at) as month from contents where type='Article' and published = 1 and published_at < '2009-05-31 20:33:30' group by year,month order by year desc,month desc limit 10 [0m
+  [4;35;1mContent Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `contents`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/archives_sidebar/views/content.rhtml
+  [4;36;1mStaticSidebar Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/static_sidebar/views/content.rhtml
+  [4;35;1mXmlSidebar Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `sidebars`[0m
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/xml_sidebar/views/content.rhtml
+Completed in 280ms (View: 199, DB: 38) | 200 OK [http://localhost/2009/03/26/hi-im-ray]
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:33:38) [GET]
+  Parameters: {"filename"=>"style.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:38') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 1, DB: 3) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:38) [GET]
+  Parameters: {"filename"=>"spinner.gif"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:38') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 46ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/spinner.gif]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/spinner.gif
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:33:39) [GET]
+  Parameters: {"filename"=>"reset.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:39') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:33:40) [GET]
+  Parameters: {"filename"=>"layout.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:40') [0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 111ms (View: 0, DB: 3) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:33:41) [GET]
+  Parameters: {"filename"=>"colors.css"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:41') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 23ms (View: 0, DB: 3) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:41) [GET]
+  Parameters: {"filename"=>"spinner.gif"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:41') [0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 21ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/spinner.gif]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/spinner.gif
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:42) [GET]
+  Parameters: {"filename"=>"email_open50.png"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:42') [0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 19ms (View: 0, DB: 5) | 200 OK [http://localhost/images/theme/email_open50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/email_open50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (3.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:43) [GET]
+  Parameters: {"filename"=>"user50.png"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:43') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/user50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/user50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:44) [GET]
+  Parameters: {"filename"=>"tag.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:44') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/tag.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/tag.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:45) [GET]
+  Parameters: {"filename"=>"meta.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:45') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/meta.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/meta.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:45) [GET]
+  Parameters: {"filename"=>"world_link50.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:45') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/world_link50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/world_link50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (1.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:46) [GET]
+  Parameters: {"filename"=>"page_edit50.png"}
+  [4;36;1mTrigger Load (1.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:46') [0m
+  [4;35;1mBlog Load (1.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 21ms (View: 0, DB: 6) | 200 OK [http://localhost/images/theme/page_edit50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/page_edit50.png
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;36;1mBlog Load (0.0ms)[0m   [0;1mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+  [4;35;1mBlog Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `blogs`[0m
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:33:47) [GET]
+  Parameters: {"filename"=>"accept50.png"}
+  [4;36;1mTrigger Load (0.0ms)[0m   [0;1mSELECT * FROM `triggers` WHERE (due_at <= '2009-05-31 20:33:47') [0m
+  [4;35;1mBlog Load (0.0ms)[0m   [0mSELECT * FROM `blogs` ORDER BY id LIMIT 1[0m
+Completed in 20ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/accept50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/accept50.png
