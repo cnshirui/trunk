@@ -22,8 +22,8 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = "d:/migrate/50"
-  files = ['dail_45_60.xlf', 'dail_45_60_sound.xlf']
+  dir = "D:/"
+  files = ['clear_2.xlf', 'clear_2_2.xlf']
 
   files.map! { |file| "#{dir}/#{file}" }
   puts files

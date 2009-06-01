@@ -1,3 +1,4 @@
+
 Form.Element.focus('new_comment');
 $('new_comment').focus();
 $('new_comment').scrollTo(); 
