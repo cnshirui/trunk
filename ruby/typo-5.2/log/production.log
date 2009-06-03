@@ -1,1 +1,188 @@
 # Logfile created on Fri Feb 20 12:02:26 +0800 2009
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:35:04) [GET]
+  Parameters: {"filename"=>"page_edit50.png"}
+Completed in 171ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/page_edit50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/page_edit50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:35:07) [GET]
+  Parameters: {"filename"=>"accept50.png"}
+Completed in 56ms (View: 1, DB: 0) | 200 OK [http://localhost/images/theme/accept50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/accept50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:35:07) [GET]
+  Parameters: {"filename"=>"email_open50.png"}
+Completed in 55ms (View: 1, DB: 1) | 200 OK [http://localhost/images/theme/email_open50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/email_open50.png
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:35:13) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 84ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:35:14) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 50ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:35:14) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 44ms (View: 0, DB: 0) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:35:14) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:05) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 192ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:07) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 53ms (View: 1, DB: 0) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:07) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 53ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:07) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 51ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ArticlesController#show (for 127.0.0.1 at 2009-05-31 20:42:34) [GET]
+  Session ID: 40b7e35e63689a0b8540d5c6447dc47e
+  Parameters: {"month"=>"03", "id"=>"hi-im-ray", "day"=>"26", "year"=>"2009"}
+Rendering template within ../../themes/typographic/layouts/default.html.erb
+Rendering articles/read
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/page_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/category_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/archives_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/static_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/xml_sidebar/views/content.rhtml
+Completed in 276ms (View: 136, DB: 72) | 200 OK [http://localhost/2009/03/26/hi-im-ray]
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:41) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 67ms (View: 1, DB: 1) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:41) [GET]
+  Parameters: {"filename"=>"spinner.gif"}
+Completed in 36ms (View: 1, DB: 0) | 200 OK [http://localhost/images/theme/spinner.gif]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/spinner.gif
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:42) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 50ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:42) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 55ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:42:42) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 50ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:43) [GET]
+  Parameters: {"filename"=>"meta.png"}
+Completed in 66ms (View: 1, DB: 0) | 200 OK [http://localhost/images/theme/meta.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/meta.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:43) [GET]
+  Parameters: {"filename"=>"tag.png"}
+Completed in 34ms (View: 0, DB: 0) | 200 OK [http://localhost/images/theme/tag.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/tag.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:43) [GET]
+  Parameters: {"filename"=>"email_open50.png"}
+Completed in 132ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/email_open50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/email_open50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:43) [GET]
+  Parameters: {"filename"=>"world_link50.png"}
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/images/theme/world_link50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/world_link50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:44) [GET]
+  Parameters: {"filename"=>"user50.png"}
+Completed in 30ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/user50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/user50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:44) [GET]
+  Parameters: {"filename"=>"page_edit50.png"}
+Completed in 30ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/page_edit50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/page_edit50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-05-31 20:42:44) [GET]
+  Parameters: {"filename"=>"accept50.png"}
+Completed in 42ms (View: 0, DB: 4) | 200 OK [http://localhost/images/theme/accept50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/accept50.png
+
+
+Processing ArticlesController#view_page (for 127.0.0.1 at 2009-05-31 20:43:00) [GET]
+  Session ID: 40b7e35e63689a0b8540d5c6447dc47e
+  Parameters: {"name"=>["about"]}
+Rendering template within ../../themes/typographic/layouts/default.html.erb
+Rendering articles/view_page
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/page_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/category_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/archives_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/static_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/xml_sidebar/views/content.rhtml
+Completed in 104ms (View: 72, DB: 2) | 200 OK [http://localhost/pages/about]
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:43:07) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 77ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:43:08) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 54ms (View: 0, DB: 0) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:43:08) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 48ms (View: 0, DB: 2) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:43:08) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 30ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
