@@ -1,0 +1,16 @@
+X5_FP1_323 \ Document Properties, Global Font -- Persisting into new model SWF generation, but not canvas
+
+Document Properties persist consistently or not at all
+
+Global Font settings, set in Document Properties, persist into new model sessions, however only at SWF generation and not on canvas.
+This presents a consistency issue.
+
+1.  Start a model
+2.  File > Document Properties > Use Global Properties > Symbol
+3.  Drag a chart to canvas and verify the text is Symbol
+4.  Enter preview and verify text is Symbol
+5.  Click "new" button
+6.  Drag a chart to canvas and verify the text is default Verdana
+7.  Verify File > Document Properties > Use Global Font is not checked and is set to Verdana
+8.  Enter preview
+9.  Note that chart text is Symbol

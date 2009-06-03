@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+				backgroundColor="#FFFFFF">
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			private var me:String="Rich Tretola";
+		]]>
+	</mx:Script>
+	<mx:Panel title="Simple Binding"
+			  width="500"
+			  height="90"
+			  paddingTop="10"
+			  paddingLeft="10"
+			  paddingRight="10"
+			  paddingBottom=" 10"
+			  layout="horizontal">
+		<mx:Label text="{me}"/>
+	</mx:Panel>
+</mx:Application>
