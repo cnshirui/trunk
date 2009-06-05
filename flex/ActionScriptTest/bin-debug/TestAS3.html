@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>${title}</title>
+<title></title>
 <script src="AC_OETags.js" language="javascript"></script>
 <style>
 body { margin: 0px; overflow:hidden }
@@ -12,11 +12,11 @@ body { margin: 0px; overflow:hidden }
 // -----------------------------------------------------------------------------
 // Globals
 // Major version of Flash required
-var requiredMajorVersion = ${version_major};
+var requiredMajorVersion = 9;
 // Minor version of Flash required
-var requiredMinorVersion = ${version_minor};
+var requiredMinorVersion = 0;
 // Minor version of Flash required
-var requiredRevision = ${version_revision};
+var requiredRevision = 28;
 // -----------------------------------------------------------------------------
 // -->
 </script>
@@ -47,13 +47,13 @@ if ( hasProductInstall && !hasRequestedVersion ) {
 	AC_FL_RunContent(
 		"src", "playerProductInstall",
 		"FlashVars", "MMredirectURL="+MMredirectURL+'&MMplayerType='+MMPlayerType+'&MMdoctitle='+MMdoctitle+"",
-		"width", "${width}",
-		"height", "${height}",
+		"width", "100%",
+		"height", "100%",
 		"align", "middle",
-		"id", "${application}",
+		"id", "TestAS3",
 		"quality", "high",
-		"bgcolor", "${bgcolor}",
-		"name", "${application}",
+		"bgcolor", "#869ca7",
+		"name", "TestAS3",
 		"allowScriptAccess","sameDomain",
 		"allowNetworking=","all",
 		"type", "application/x-shockwave-flash",
@@ -63,14 +63,14 @@ if ( hasProductInstall && !hasRequestedVersion ) {
 	// if we've detected an acceptable version
 	// embed the Flash Content SWF when all tests are passed
 	AC_FL_RunContent(
-			"src", "${swf}",
-			"width", "${width}",
-			"height", "${height}",
+			"src", "TestAS3",
+			"width", "100%",
+			"height", "100%",
 			"align", "middle",
-			"id", "${application}",
+			"id", "TestAS3",
 			"quality", "high",
-			"bgcolor", "${bgcolor}",
-			"name", "${application}",
+			"bgcolor", "#869ca7",
+			"name", "TestAS3",
 			"flashvars",'historyUrl=history.htm%3F&lconid=' + lc_id + '',
 			"allowScriptAccess","sameDomain",
 			"allowNetworking=","all",			
@@ -87,14 +87,14 @@ if ( hasProductInstall && !hasRequestedVersion ) {
 </script>
 <noscript>
   	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-			id="${application}" width="${width}" height="${height}"
+			id="TestAS3" width="100%" height="100%"
 			codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
-			<param name="movie" value="${swf}.swf" />
+			<param name="movie" value="TestAS3.swf" />
 			<param name="quality" value="high" />
-			<param name="bgcolor" value="${bgcolor}" />
+			<param name="bgcolor" value="#869ca7" />
 			<param name="allowScriptAccess" value="sameDomain" />
-			<embed src="${swf}.swf" quality="high" bgcolor="${bgcolor}" allowNetworking="all" 
-				width="${width}" height="${height}" name="${application}" align="middle"
+			<embed src="TestAS3.swf" quality="high" bgcolor="#869ca7" allowNetworking="all" 
+				width="100%" height="100%" name="TestAS3" align="middle"
 				play="true"
 				loop="false"
 				quality="high"
