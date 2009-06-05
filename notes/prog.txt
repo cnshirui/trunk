@@ -1,3 +1,4 @@
+上海市浦东新区晨晖路1001号 PVG03,B4.40 时睿 PH:13817261528 ZIP:201023
 <<<<<<< HEAD:notes/prog.txt
 				// delete all existing indicators
 				for(var i:int=0; i<_indicators.length; i++)
