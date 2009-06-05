@@ -1,4 +1,138 @@
-<<<<<<< HEAD:notes/prog.txt
+		((CMainFrame*)(::AfxGetMainWnd()))->LogDebug(_T("---------------------------------------rshi:"));
+		((CMainFrame*)(::AfxGetMainWnd()))->LogDebug(xa.GetAddress(range));
+		
+		/*
+	bool updateCurrentRangeDispatch() {
+		// ADAPT01130857 
+		// binding cannot work after delete a row or a column of cells in embedded excel 
+		try {
+			// if m_current_selection is deleted, we should update it.
+			m_xa.GetAddress(m_current_selection);
+		} 
+		catch (...) {
+			m_current_selection = m_xa.GetSelection();
+			return true;
+		}
+
+		return false;
+	}
+*/
+---
+	// mark current sheet invalid as we're gonna lose the event from deactivating excel
+	CComPtr<IDispatch> range;
+	CComPtr<IDispatch> sheet;
+
+	// ADAPT01130857 
+	// binding cannot work after delete a row or a column of cells in embedded excel 
+	try	{
+		range = xbm->GetCurrentRangeDispatch();
+		if(range) {
+			sheet = xa.GetSheet(range);
+		}
+	}
+	catch (...) {
+		// update current selection
+		// xbm->updateCurrentRangeDispatch();
+		range = xbm->GetCurrentRangeDispatch();
+		CString _range1 = xa.GetAddress(range);
+		if(range) {
+			sheet = xa.GetSheet(range);
+		}
+	}	
+
+	if (sheet) {
+		xc.OnSheetChange(sheet, range);
+	}
+	
+	--
+	// mark current sheet invalid as we're gonna lose the event from deactivating excel
+	CComPtr<IDispatch> r = xbm->GetCurrentRangeDispatch();
+	CString _range = xa.GetAddress(r);
+	
+	if (r) {
+		CComPtr<IDispatch> sheet = xa.GetSheet(r);
+		if (sheet) {
+			xc.OnSheetChange(sheet, r);
+		}
+	}
+
+--
+	CComPtr<IDispatch> sheet, range;
+
+	// ADAPT01130857 
+	// binding cannot work after delete a row or a column of cells in embedded excel 
+	try	{
+		range = xbm->GetCurrentRangeDispatch();
+		if(range)	sheet = xa.GetSheet(range);
+	}
+	catch (...) {
+		// update current selection
+		CString _range = xbm->GetCurrentRange();
+
+		range = xbm->GetCurrentRangeDispatch();
+		CString _range1 = xa.GetAddress(range);
+		if(range)	sheet = xa.GetSheet(range);
+	}	
+
+	if (sheet) {
+		xc.OnSheetChange(sheet, range);
+	}
+
+---
+
+	// ADAPT01130857 
+		// binding cannot work after delete a row or a column of cells in embedded excel 
+		try {
+			// if m_current_selection is deleted, we should update it.
+			CString rv = m_xa.GetAddress(m_current_selection);
+		} 
+		catch (...) {
+			m_current_selection = m_xa.GetSelection();
+		}	
+		
+CString _range = xa.GetAddress(r);
+CString _range = m_xa.GetAddress(rng);
+
+CString _r = xbm->GetCurrentRange();
+xbm->GetCurrentRangeDispatch();
+
+	CString GetCurrentRange() {
+		CString rv;
+		try {
+			rv = m_xa.GetAddress(m_current_selection);
+		} catch (...) {
+			m_current_selection = m_xa.GetSelection();
+			rv = m_xa.GetAddress(m_current_selection);
+		}
+		return rv;
+	}
+
+-		ATL::CComPtr<Excel::Range>	{0x0533f764}	ATL::CComPtr<Excel::Range>
+-		ATL::CComPtr<Excel::Range>	{0x0533f764}	ATL::CComPtr<Excel::Range>
+
+-		ATL::CComPtr<Excel::Range>	{0x0533850c}	ATL::CComPtr<Excel::Range>
+
++		ATL::CComPtrBase<IDispatch>	{p=0x053381ec }	ATL::CComPtrBase<IDispatch>
++		ATL::CComPtrBase<IDispatch>	{p=0x0024fecc }	ATL::CComPtrBase<IDispatch>
++		ATL::CComPtrBase<IDispatch>	{p=0x0534ed54 }	ATL::CComPtrBase<IDispatch>
+
+
+The error indicates that the particular object was released or is not responding. Anyway you need to get the exact line of code or exact circumstances to see the cause.
+
+> When exporting to Excel a client of ours gets this errormessage.I couldn't reproduce it.I have searched for similar error but couldn't find any relevant information.I appreciate if u could help.Thanx!
+--
+Hey all! Nevermind this post. I figured out my problem. I had deleted several objects and I was still referencing them in some areas. I have fixed it now and everything looks great! Thanks!
+--
+
++		message	{"Unknown error 0x800A01A8" (1)}	_bstr_t
+excel delete Unknown error 0x800A01A8
+Unknown error 0x800A01A8
+
+
+CNotificationHandler::OnFlashCall function failed at the following request
+
+
+
 				// delete all existing indicators
 				for(var i:int=0; i<_indicators.length; i++)
 				{
@@ -148,7 +282,6 @@ summary:
 - remove 3 liveoffice cons -> 15.swf, 
 
 ADAPT01229149, debug in preview mode.
-=======
 
 最老套的办法就是 重启机器然后就可以检索了
 还有就是关掉数据服务 再关掉信号  最后在一次依次打开信号 数据服务 在检索就可以了
@@ -156,4 +289,4 @@ ADAPT01229149, debug in preview mode.
 把滚轮按下 可以重新检索
 彩信正常使用必须前提是激活自带浏览器。记住这。
 不要为 从不就好了   我设 的是归属地检索  可以正常收发彩信
->>>>>>> 4e34f5914e34c9fbbc5922094d2045cb6d7bab4d:notes/prog.txt
+
