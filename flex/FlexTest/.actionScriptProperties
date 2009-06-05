@@ -9,8 +9,8 @@
 <sourceAttachmentPath/>
 </compiler>
 <applications>
-<application path="FlexTest.mxml"/>
 <application path="Listing2.mxml"/>
+<application path="FlexTest.mxml"/>
 </applications>
 <modules/>
 <buildCSSFiles/>
