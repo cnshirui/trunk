@@ -1,4 +1,4 @@
-// Flash Player Version Detection - Rev 1.6
+// Flash Player Version Detection - Rev 1.5
 // Detect Client Browser type
 // Copyright(c) 2005-2006 Adobe Macromedia Software, LLC. All rights reserved.
 var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
@@ -85,23 +85,17 @@ function GetSwfVer(){
 	if (navigator.plugins != null && navigator.plugins.length > 0) {
 		if (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]) {
 			var swVer2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
-			var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;
+			var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;			
 			var descArray = flashDescription.split(" ");
-			var tempArrayMajor = descArray[2].split(".");			
+			var tempArrayMajor = descArray[2].split(".");
 			var versionMajor = tempArrayMajor[0];
 			var versionMinor = tempArrayMajor[1];
-			var versionRevision = descArray[3];
-			if (versionRevision == "") {
-				versionRevision = descArray[4];
+			if ( descArray[3] != "" ) {
+				tempArrayMinor = descArray[3].split("r");
+			} else {
+				tempArrayMinor = descArray[4].split("r");
 			}
-			if (versionRevision[0] == "d") {
-				versionRevision = versionRevision.substring(1);
-			} else if (versionRevision[0] == "r") {
-				versionRevision = versionRevision.substring(1);
-				if (versionRevision.indexOf("d") > 0) {
-					versionRevision = versionRevision.substring(0, versionRevision.indexOf("d"));
-				}
-			}
+			var versionRevision = tempArrayMinor[1] > 0 ? tempArrayMinor[1] : 0;
 			var flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
 		}
 	}
@@ -167,10 +161,9 @@ function AC_Generateobj(objAttrs, params, embedAttrs)
   		str += '<object ';
   		for (var i in objAttrs)
   			str += i + '="' + objAttrs[i] + '" ';
-  		str += '>';
   		for (var i in params)
-  			str += '<param name="' + i + '" value="' + params[i] + '" /> ';
-  		str += '</object>';
+  			str += '><param name="' + i + '" value="' + params[i] + '" /> ';
+  		str += '></object>';
     } else {
   		str += '<embed ';
   		for (var i in embedAttrs)

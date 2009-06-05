@@ -22,8 +22,8 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = "D:/"
-  files = ['clear_2.xlf', 'clear_2_2.xlf']
+  dir = "D:/download"
+  files = ['HCIS WW Revenue-Backlogv16.alert.xlf', 'HCIS WW Revenue-Backlogv16.alert.ok.xlf']
 
   files.map! { |file| "#{dir}/#{file}" }
   puts files
@@ -75,4 +75,4 @@ Dir["temp/*"].each do |file|
 end
 
 # execute compare
-exec("#{compare_tool} #{xmls[0]}  #{xmls[1]}")
+exec("#{compare_tool} '#{xmls[0]}'  '#{xmls[1]}'")
