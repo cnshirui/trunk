@@ -11,10 +11,10 @@
   </div>
   <div id="side">
     <p>
-      <%= link_to 'Home', :controller => 'posts' %>
+      <%= link_to 'Index', :controller => 'posts' %>
     </p>
     <p>
-      <%= link_to "My Bolg",   :controller => 'posts', :action => 'person', :id => session[:user_id] %>
+      <%= link_to "My Bolg",   :controller => 'posts', :action => 'person', :id => 0 %>
     </p>
     <p>
       <%= link_to "List users", :controller => 'users', :action => 'list' %>

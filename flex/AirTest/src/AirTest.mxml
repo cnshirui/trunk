@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:Script>
+		<![CDATA[
+			private var _phoneNumber:String="?";
+			// Bind getter function to phoneNumberChanged event  
+			[Bindable(event="phoneNumberChanged")]
+
+			public function get phoneNumber():String
+			{
+				return _phoneNumber;
+			}
+
+// Setter method.  
+			public function set phoneNumber(value:String):void
+			{
+				if (value.length < 10)
+				{
+					_phoneNumber=value;
+				}
+				else
+				{
+					_phoneNumber=phoneFormatter.format(value);
+				}
+// Create and dispatch event  
+				var eventObj:Event=new Event("phoneNumberChanged");
+				dispatchEvent(eventObj);
+			}
+		]]>
+	</mx:Script>
+	<mx:PhoneFormatter id="phoneFormatter"
+					   formatString="(###) ###-####"
+					   validPatternChars="#-()"/>
+
+	<mx:Panel title="Bind with Getters and Setters"
+			  width="500"
+			  height="90"
+			  paddingTop="10"
+			  paddingLeft="10"
+			  paddingRight="10"
+			  paddingBottom=" 10"
+			  layout="horizontal">
+		<mx:TextInput id="ti1"
+					  change="phoneNumber=ti1.text"
+					  maxChars="10"
+					  restrict="0-9"/>
+		<mx:TextInput id="ti2"
+					  text="{phoneNumber}"/>
+	</mx:Panel>	
+</mx:WindowedApplication>

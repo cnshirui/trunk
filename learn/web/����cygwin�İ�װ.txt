@@ -1,0 +1,64 @@
+关于cygwin的安装:
+1. 最好不要到www.cygwin.com下载cygwin..也就是说不要从Internet上安装cygwin,而要从本地安装（PS:往往千奇百怪的错误就是因为从internet下载的cygwin的版本引起的）。,从这里下载http://140.116.72.80/~smallko/ns2 /ns_setup.rar
+
+2.解压下载的文件点setup..选“Install from Local Directory”，选好下载的文件所在的位置"ftp%3a%2f%2fftp.nctu.edu.tw%2fWindows%2fcygwin"，安装 XFree86-base, XFree86-bin, XFree86-prog, XFree86-lib, XFree86-etc, make, patch, perl, gcc, gcc-g++, gawk, gnuplot, tar and gzip 。
+
+在这里有几点解释，首先cygwin也是一个linux的模拟环境，但是它不像上面提到的虚拟机，不会占用系统的很大资源，关于cygwin和虚拟机的区别的具体描述大家可以从网上搜到相关的文章。下面进入正题，www.cygwin.com下载cygwin的确有一些麻烦，进入网站后，在网站的右上角有一个install now的图标，点击后就会得到一个几百k的setup.exe文件，这个文件就是一个专门下载cygwin软件的一个客户端，可以让用户自定义下载所需的部分，并且支持短点续传。
+
+运行下载下来的setup.exe大家可以选择三种方式，第一个是直接从网上安装，这个方法会帮用户将软件下载到本地和安装这两个动作一起完成。第二个是只下载不安装，第三个则是从已下载的本地文件安装，按照上面的地址下载的压缩包已经包含了setup.exe和下好的软件安装包，大家选择从本地直接安装就可以了。
+
+如果大家没有下载上面的安装包，而是直接选择第一项，点击下一步就会出现提示输入软件要安装的位置（这里推荐直接安装在c:\cygwin目录下，不然可能会有问题），再点一下步则会提示你选择软件安装文件保存在本地的位置。在点下一步会让你选择连接网络的方式，通常就是第一项直接连接，点击下一步后，客户端会下载镜像列表，下载完成后列出可用的下载站点。如果你是教育网，你就选择一个含有edu的ftp或http地址，如果你是公网就选择台湾的ftp或 http地址好了，如果这些网站都很慢，你就选择http里的cygwin.basemirror或cygwin.cybermirror这两个比较通用。选择完成后点击下一步，这时客户端会下载一个setup.bz文件，这个文件包含了你选择的下载站点的安装文件的目录信息。完成后客户端会列出所有的软件列表，这时用户可以自行选择需要安装的部分，建议点击all右边的defaul，让它变成install，这样就是完整安装，不过这样比较大，安装文件有600多兆，安装后可以达到2g左右，如果空间不是很大的人，建议下载上面给出的软件包，完全安装后也非常小。选择完成后客户端就开始下载软件，下载完成后就会开始自动安装，安装完成后，弹出一个提示框installation complete.
+
+    如果，由于某种原因在下载中途你关闭了setup.exe你可以重新启动它，按照刚才的步骤重新选择，但是注意所有的选项都必须和以前一样（setup.exe会自动记住你上次的选择）。如果你改变了任意一项都将能再断电续传。但是注意，如果某一个具体文件，比如perl.tar.gz 大小为3m左右，如果你下载了1m时退出，它还是会重新下载这个文件。但是perl.tar.gz以前的文件则不会重新下载了。
+
+选择第一项按装的时候，会在setup.exe文件所在目录下生成一个setup.log文件，这个文件记录着用户的下载和安装进度。所以在下载和安装完成之前不要删除这个文件。但是如果安装完成后，你又卸载了Cygwin软件后，再想重新从本地安装的时候，请先删除这个文件，否则系统提示不需要安装。
+
+如果你选择了第二项只保存不安装那么，点击下一步后不会问你软件需要安装的位置，而是直接问你软件要保存的位置，选择好后后面的步骤跟选择第一项时一模一样。   
+
+如果你选择了第三项从本地安装，点击下一步后，它会首先提示你软件要安装的位置，点击下一步后，它会让你选择你所下载的软件保存的位置，如果你直接下载了我所说的软件压缩包，那么你可以选择压缩包里的ftp%3a%2f%2fftp.nctu.edu.tw%2fWindows%2fcygwin文件夹，选择完成后一直点击下一步软件将自动完成安装过程。
+
+安装完成后，在桌面上会看到一个Cygwin的图标，双击运行后会弹出一个类似linux的一个字符界面。如果你点击了该图标没有反应，那么恭喜你，你的 bash文件没有安装成功，尽管你在安装的时候可能已经全选了shell包，但是这没有用，具体还需要安装哪些文件笔者也没有摸索清除，所以建议一开始就选择完全安装。这个时候，你可以重新完全安装覆盖原来的安装文件夹，或者卸载已安装的软件，重新安装（具体卸载方法请看后文）。如果第一次启动，Cygwin会在你的安装目录下(c:\cygwin)目录下生成一个home目录，并在home目录下建立一个和你的windows账户名一样的一个文件夹，比如文件夹名为yourid。并且会在这个文件夹下（c:\cygwin\home\yourid）生成三个配置文件，.bashrc,.bashprofile和.inputrc文件，这三个文件中最重要的是.bashrc文件，用户以后要自定义环境变量要用到该文件。如果你没有将软件安装在c:\cygwin目录下，首先请验证是否在你的安装目录下生成了home文件夹，如果没有请去c盘看看是否在c盘生成了一个 cygwin目录，并在底下建立了相应的home文件夹。
+
+注意，在这里很多人会遇到没有生成home文件夹或者三个配置文件夹的情况（本人就深被此问题折磨）。于是在网上狂搜了一阵，确实发现了有人给出了解决方案，比如说重启windows系统，重装系统后一开始直接装cygwin等。但是，我只能说这些方法都是不灵验的，因为没有找到根本原因。后来本人仔细读了C:\cygwin\etc\profile文件发现了问题的所在，关键问题出现在profile中第31行的脚本中，如下所示：
+
+# Here is how HOME is set, in order of priority, when starting from Windows
+#  1) From existing HOME in the Windows environment, translated to a Posix path
+#  2) from /etc/passwd, if there is an entry with a non empty directory field
+#  3) from HOMEDRIVE/HOMEPATH
+#  4) / (root)
+
+# If the home directory doesn't exist, create it.
+if [ ! -d "$HOME" ]; then
+mkdir -p "$HOME"
+echo "Copying skeleton files."
+echo "These files are for the user to personalise"
+echo "their cygwin experience."
+echo
+echo "These will never be overwritten."
+echo
+cd /etc/skel
+/bin/find . -type f | while read f; do
+  fDest=`echo $f | sed -e 's/^\.//g'`
+  if [ ! -e "$HOME$fDest" -a ! -L "$HOME$fDest" ]; then
+  /usr/bin/install -D -p -v "${f}" "${HOME}/${fDest}"
+  fi
+done
+fi
+
+我们从头5行注解中可以看到（#打头的行为注解行，每一个#代表一行），cygwin的home文件加的获取优先次序是首先从windows系统的环境变量中获取用户的windows中的home文件夹位置作为home，这样通常启动后，用户在屏幕中敲入pwd会看到显示的目录是c:\document and settings\userid，cygwin不会在安装目录下生成专门的home目录和配置文件了。如果cygwin获取不到windows的用户 home环境变量的内容，还会依次从2、3、4中寻找是否有合适的用户home信息，只有这些都没有的时候，cygwin才会尝试开始创建专门的用户 home目录以及相应的配置文件。
+
+    知道了问题所在，解决起来也就容易了，首先一个最简单的方法就是在我的电脑上点击右键，选择属性，在弹出的菜单中选择高级，然后点击环境变量，在 userid的用户变量（userid是你的账户名称）的菜单栏中找到HOME变量一栏，点中后选择删除（建议删除前先备份其中的值，以便以后有需要可以恢复。）然后点确定，确定就可以了。然后重新点开cygwin就可以看到屏幕上提示正在写用户信息。然后到c盘cygwin目录下就可以看到生成了 home\userid文件夹，并在里面生成了相应的三个配置文件信息。
+
+      当然你可能会质疑上面的方法是否会造成系统的不稳定，至少笔者到目前还没有发现任何不稳定现象。当然实际上我们之所以需要cygwin的home目录主要是希望能够获得.bachrc这个重要的用户信息配置文件。然而通常我们用cygwin都只有我们自己这一个用户，而不像在linux中可能的多用户。所以我们如果不想破坏windows系统的环境变量设置，可以采取的方法是，我们直接将想要配置的信息放到全局.bashrc文件中就可以了。全局.bashrc是安装完cygwin就存在的，它位于：c:\cygwin\etc目录下，名字是bash.bashrc。打开它会发现有一行注解# System-wide .bashrc file。只要将自己想要设的环境变量放到这里，效果和放到用户自己目录下的.bashrc中是一样的。
+
+关于cygwin的使用信息，大家可以参看linux下的常用命令。这里推荐一个好的网站：
+
+http://blog.csdn.net/onefish/archive/2004/12/25/229192.aspx
+
+这个网站描述了一些cygwin使用的比较好的设置技巧，比如说如何显示中文文件名等问题。
+
+关于cygwin的卸载，下面是一个比较好的网址：
+
+http://blog.sina.com.cn/u/4b8c4f4c010007g9
+
+这里提示的是，通常可以直接删除cygwin文件夹，再删掉注册表里的两条内容就可以了。

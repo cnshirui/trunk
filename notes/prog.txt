@@ -1,3 +1,4 @@
+<<<<<<< HEAD:notes/prog.txt
 				// delete all existing indicators
 				for(var i:int=0; i<_indicators.length; i++)
 				{
@@ -147,3 +148,12 @@ summary:
 - remove 3 liveoffice cons -> 15.swf, 
 
 ADAPT01229149, debug in preview mode.
+=======
+
+最老套的办法就是 重启机器然后就可以检索了
+还有就是关掉数据服务 再关掉信号  最后在一次依次打开信号 数据服务 在检索就可以了
+还有就是在SMS里面把发送网络设置成首选PS就可以自动检索了 但是偶尔还会得手动的 具体为什么我在一直研究中
+把滚轮按下 可以重新检索
+彩信正常使用必须前提是激活自带浏览器。记住这。
+不要为 从不就好了   我设 的是归属地检索  可以正常收发彩信
+>>>>>>> 4e34f5914e34c9fbbc5922094d2045cb6d7bab4d:notes/prog.txt

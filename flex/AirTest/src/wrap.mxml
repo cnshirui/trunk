@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" click="controls.setFocus()" layout="absolute" showFlexChrome="false" showStatusBar="false"  showTitleBar="false" backgroundAlpha="0" applicationComplete="init()" xmlns:text="flash.text.*" width="828" height="600">
+                  <mx:Script><![CDATA[
+                  import mx.core.UIComponent;
+                  import mx.core.Window;
+                  private function init():void {
+                  loader.loaderContext = new LoaderContext(false, new ApplicationDomain());
+                  loader.load("trans.swf");
+                  }
+                  ]]></mx:Script>
+                  <mx:Style>
+                  .widgetMoveButton{
+                  disabledSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Widget_moveButtonDisabledSkin");
+                  overSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Widget_moveButtonOverSkin");
+                  upSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Widget_moveButtonUpSkin");
+                  downSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Widget_moveButtonDownSkin");
+                  }
+                  .widgetCloseButton{
+                  disabledSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_closeButtonDisabledSkin");
+                  overSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_closeButtonOverSkin");
+                  upSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_closeButtonUpSkin");
+                  downSkin:Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_closeButtonDownSkin");
+                  }
+                  .widgetControls{
+                  vertical-gap:0; horizontal-align:center;
+                  background-color:#222222; border-color:#505050; border-style:solid;
+                  padding-top:1; padding-left:1; padding-right:1; corner-radius:11;
+                  }
+                  .widgetResizeButton{
+                  disabledSkin: Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_resizeButtonUpSkin");
+                  downSkin: Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_resizeButtonDownSkin");
+                  overSkin: Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_resizeButtonDownSkin");
+                  upSkin: Embed(source="d:/Perforce/depot2/X6/COR/Xcelsius/Designer/Xcelsius/Xcelsius/debug/assets/air/abidStyle.swf",symbol="Panel_resizeButtonUpSkin");
+                  }
+                  </mx:Style>                  <mx:SWFLoader id="loader" top="0" left="0" maintainAspectRatio="false"
+                  right="28" bottom="0" scaleContent="true" />
+                  <mx:Button styleName="widgetResizeButton" width="18" height="18"
+                  bottom="0" right="28" mouseDown="nativeWindow.startResize()"/>
+                  <mx:VBox id="controls" right="0" width="22" height="55" styleName="widgetControls">
+                  <mx:Button styleName="widgetCloseButton" width="18" height="18" click="nativeWindow.close()"/>
+                  <mx:Spacer height="100%"/>
+                  <mx:Button styleName="widgetMoveButton" width="18" height="18" mouseDown="nativeWindow.startMove()"/>
+                  </mx:VBox>
+</mx:WindowedApplication>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090521164306) do
+ActiveRecord::Schema.define(:version => 20090517025426) do
 
   create_table "accounts", :force => true do |t|
     t.string   "title"
@@ -35,8 +35,6 @@ ActiveRecord::Schema.define(:version => 20090521164306) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",    :default => 1
-    t.string   "category",   :default => "BEC"
-    t.string   "privacy",    :default => "private"
   end
 
   create_table "sessions", :force => true do |t|
@@ -48,10 +46,9 @@ ActiveRecord::Schema.define(:version => 20090521164306) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
 
   create_table "users", :force => true do |t|
-    t.string  "name"
-    t.string  "hashed_password"
-    t.string  "salt"
-    t.boolean "is_admin",        :default => false
+    t.string "name"
+    t.string "hashed_password"
+    t.string "salt"
   end
 
 end
