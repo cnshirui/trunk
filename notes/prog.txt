@@ -1,3 +1,292 @@
+<<<<<<< HEAD:notes/prog.txt
+		((CMainFrame*)(::AfxGetMainWnd()))->LogDebug(_T("---------------------------------------rshi:"));
+		((CMainFrame*)(::AfxGetMainWnd()))->LogDebug(xa.GetAddress(range));
+		
+		/*
+	bool updateCurrentRangeDispatch() {
+		// ADAPT01130857 
+		// binding cannot work after delete a row or a column of cells in embedded excel 
+		try {
+			// if m_current_selection is deleted, we should update it.
+			m_xa.GetAddress(m_current_selection);
+		} 
+		catch (...) {
+			m_current_selection = m_xa.GetSelection();
+			return true;
+		}
+
+		return false;
+	}
+*/
+---
+	// mark current sheet invalid as we're gonna lose the event from deactivating excel
+	CComPtr<IDispatch> range;
+	CComPtr<IDispatch> sheet;
+
+	// ADAPT01130857 
+	// binding cannot work after delete a row or a column of cells in embedded excel 
+	try	{
+		range = xbm->GetCurrentRangeDispatch();
+		if(range) {
+			sheet = xa.GetSheet(range);
+		}
+	}
+	catch (...) {
+		// update current selection
+		// xbm->updateCurrentRangeDispatch();
+		range = xbm->GetCurrentRangeDispatch();
+		CString _range1 = xa.GetAddress(range);
+		if(range) {
+			sheet = xa.GetSheet(range);
+		}
+	}	
+
+	if (sheet) {
+		xc.OnSheetChange(sheet, range);
+	}
+	
+	--
+	// mark current sheet invalid as we're gonna lose the event from deactivating excel
+	CComPtr<IDispatch> r = xbm->GetCurrentRangeDispatch();
+	CString _range = xa.GetAddress(r);
+	
+	if (r) {
+		CComPtr<IDispatch> sheet = xa.GetSheet(r);
+		if (sheet) {
+			xc.OnSheetChange(sheet, r);
+		}
+	}
+
+--
+	CComPtr<IDispatch> sheet, range;
+
+	// ADAPT01130857 
+	// binding cannot work after delete a row or a column of cells in embedded excel 
+	try	{
+		range = xbm->GetCurrentRangeDispatch();
+		if(range)	sheet = xa.GetSheet(range);
+	}
+	catch (...) {
+		// update current selection
+		CString _range = xbm->GetCurrentRange();
+
+		range = xbm->GetCurrentRangeDispatch();
+		CString _range1 = xa.GetAddress(range);
+		if(range)	sheet = xa.GetSheet(range);
+	}	
+
+	if (sheet) {
+		xc.OnSheetChange(sheet, range);
+	}
+
+---
+
+	// ADAPT01130857 
+		// binding cannot work after delete a row or a column of cells in embedded excel 
+		try {
+			// if m_current_selection is deleted, we should update it.
+			CString rv = m_xa.GetAddress(m_current_selection);
+		} 
+		catch (...) {
+			m_current_selection = m_xa.GetSelection();
+		}	
+		
+CString _range = xa.GetAddress(r);
+CString _range = m_xa.GetAddress(rng);
+
+CString _r = xbm->GetCurrentRange();
+xbm->GetCurrentRangeDispatch();
+
+	CString GetCurrentRange() {
+		CString rv;
+		try {
+			rv = m_xa.GetAddress(m_current_selection);
+		} catch (...) {
+			m_current_selection = m_xa.GetSelection();
+			rv = m_xa.GetAddress(m_current_selection);
+		}
+		return rv;
+	}
+
+-		ATL::CComPtr<Excel::Range>	{0x0533f764}	ATL::CComPtr<Excel::Range>
+-		ATL::CComPtr<Excel::Range>	{0x0533f764}	ATL::CComPtr<Excel::Range>
+
+-		ATL::CComPtr<Excel::Range>	{0x0533850c}	ATL::CComPtr<Excel::Range>
+
++		ATL::CComPtrBase<IDispatch>	{p=0x053381ec }	ATL::CComPtrBase<IDispatch>
++		ATL::CComPtrBase<IDispatch>	{p=0x0024fecc }	ATL::CComPtrBase<IDispatch>
++		ATL::CComPtrBase<IDispatch>	{p=0x0534ed54 }	ATL::CComPtrBase<IDispatch>
+
+
+The error indicates that the particular object was released or is not responding. Anyway you need to get the exact line of code or exact circumstances to see the cause.
+
+> When exporting to Excel a client of ours gets this errormessage.I couldn't reproduce it.I have searched for similar error but couldn't find any relevant information.I appreciate if u could help.Thanx!
+--
+Hey all! Nevermind this post. I figured out my problem. I had deleted several objects and I was still referencing them in some areas. I have fixed it now and everything looks great! Thanks!
+--
+
++		message	{"Unknown error 0x800A01A8" (1)}	_bstr_t
+excel delete Unknown error 0x800A01A8
+Unknown error 0x800A01A8
+
+
+CNotificationHandler::OnFlashCall function failed at the following request
+
+
+
+=======
+上海市浦东新区晨晖路1001号 PVG03,B4.40 时睿 PH:13817261528 ZIP:201023
+<<<<<<< HEAD:notes/prog.txt
+>>>>>>> d74130c19ba54b0fc90bed1f458ba65b50d0cec6:notes/prog.txt
+				// delete all existing indicators
+				for(var i:int=0; i<_indicators.length; i++)
+				{
+					deleteDataItem(i);
+				}
+				
+				// return to init status
+				currentSeriesMaxNum = 1;
+				addAutoNameDataItem();				 
+				return;
+
+				addAutoNameDataItem(1);	
+				
+				// delete all existing indicators
+				for(var i:int=0; i<_indicators.length-1; i++)
+				{
+					deleteDataItem(i);
+				}
+				
+				// return to init status
+
+				trace(_colorPicker.selectedColor);
+				//data.setFillColor(_colorPicker.selectedColor);
+				data.setFillColor = _colorPicker.selectedColor
+				trace("ok");
+
+				[Bindable]
+		public var fillColor:Number = 0xffffff;
+		
+		public function setFillColor(value:Number):void
+		{
+			if(fillColor != value)
+			{
+				fillColor = value;
+				IndicatorHelper.getInstance().setFillClors();
+			}
+		}
+
+		public function setFillColor(value:Number):void
+		{
+			if(fillColor != value)
+			{
+				fillColor = value;
+				IndicatorHelper.getInstance().setFillClors();
+			}
+		}
+		
+		Could not generate timestamp: timestamp.geotrust.com
+	csCmd +=_T("\\certificate.p12\" -tsa none -storepass bobobo123 \"");
+
+CXcelsiusDoc::ExportFlash
+d:\trans.air
+
+keytool -list -v -keystore certificate.p12 -storepass bobobo123
+keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAIKKeystore
+1: 	openssl pkcs12 -in certificate.p12
+2:	keytool -list -v -storetype pkcs12 -keystore certificate.p12 -storepass bobobo123
+
+
+
+
+时间戳
+
+对 AIR 文件进行签名时，打包工具会查询时间戳机构的服务器，以获取可独立验证的签名日期和时间。获取的时间戳嵌入在 AIR 文件中。只要签名时签名证书有效，即使在证书过期后也可以安装 AIR 文件。另一方面，如果未获取时间戳，则在证书过期或被吊销之后，AIR 文件将变得不可安装。
+
+默认情况下，AIR 打包工具会获取时间戳。然而，若要允许在时间戳服务不可用时打包应用程序，您可以禁用时间戳。Adobe 建议使所有公开分发的 AIR 文件都包含一个时间戳。
+
+AIR 打包工具所采用的默认时间戳机构是 Geotrust。
+
+java -jar "C:\Program Files\Adobe\Flex Builder 3 Plug-in\sdks\3.0\lib\adt.jar" -package -storetype PKCS12 -keystore "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air\certificate.p12" -storepass bobobo123 "opaque.air" application.xml "d:\opaque.swf"
+
+java -jar "C:\Program Files\Adobe\Flex Builder 3 Plug-in\sdks\3.0\lib\adt.jar" -package -storetype PKCS12 -keystore "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air\certificate.p12" -storepass bobobo123 "opaque.air" application.xml -C "d:" opaque.swf
+
+java -jar "C:\Program Files\Adobe\Flex Builder 3 Plug-in\sdks\3.0\lib\adt.jar" -package -storetype PKCS12 -keystore "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air\certificate.p12" -tsa none -storepass bobobo123 "opaque.air" application.xml -C "d:" opaque.swf
+
+java -jar "C:\Program Files\Adobe\Flex Builder 3 Plug-in\sdks\3.0\lib\adt.jar" -package -storetype PKCS12 -keystore "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air\certificate.p12" -storepass bobobo123 "trans.air" application.xml "d:\trans.swf"
+java -jar "C:\Program Files\Adobe\Flex Builder 3 Plug-in\sdks\3.0\lib\adt.jar" -package -storetype PKCS12 -keystore "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air\certificate.p12" -storepass bobobo123 "trans.air" application.xml "d:\trans.swf" wrap.swf -C "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air" abidStyle.swf
+java -jar "C:\Program Files\Adobe\Flex Builder 3 Plug-in\sdks\3.0\lib\adt.jar" -package -storetype PKCS12 -keystore "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air\certificate.p12" -storepass bobobo123 "trans.air"  application.xml -C "d:" trans.swf wrap.swf -C "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air" abidStyle.swf
+java -jar "C:\Program Files\Adobe\Flex Builder 3 Plug-in\sdks\3.0\lib\adt.jar" -package -storetype PKCS12 -keystore "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air\certificate.p12" -storepass bobobo123 "trans.air" application.xml  -C "d:" trans.swf wrap.swf -C "d:\Perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\assets\air" abidStyle.swf
+
+java -jar "C:\\Program Files\\Adobe\\Flex Builder 3 Plug-in\\sdks\\3.0\\lib\\adt.jar" -package -storetype PKCS12 -keystore "d:\\Perforce\\depot2\\X6\\COR\\Xcelsius\\Designer\\Xcelsius\\Xcelsius\\debug\\assets\\air\\certificate.p12" -storepass bobobo123 "trans.air" application.xml "d:\\trans.swf"
+java -jar "C:\\Program Files\\Adobe\\Flex Builder 3 Plug-in\\sdks\\3.0\\lib\\adt.jar" -package -storetype PKCS12 -keystore "d:\\Perforce\\depot2\\X6\\COR\\Xcelsius\\Designer\\Xcelsius\\Xcelsius\\debug\\assets\\air\\certificate.p12" -storepass bobobo123 "opaque.air" application.xml "d:\\opaque.swf"
+
+java -jar "C:\\Program Files\\Adobe\\Flex Builder 3 Plug-in\\sdks\\3.0\\lib\\adt.jar" -package -storetype PKCS12 -keystore "d:\\Perforce\\depot2\\X6\\COR\\Xcelsius\\Designer\\Xcelsius\\Xcelsius\\debug\\assets\\air\\certificate.p12" -storepass bobobo123 "trans.air" application.xml "d:\\trans.swf" wrap.swf -C "d:\\Perforce\\depot2\\X6\\COR\\Xcelsius\\Designer\\Xcelsius\\Xcelsius\\debug\\assets\\air" abidStyle.swf
+
+
+
+
+absolute path: d:\trans.swf
+usage:
+  adt -checkstore SIGNING_OPTIONS
+  adt -certificate -cn <name> ( -ou <org-unit> )? ( -o <org-name> )? ( -c <country> )? <key-type> <pfx-file> <password>
+  adt -help
+  adt -migrate SIGNING_OTIONS <air-file-in> <air-file-out>
+  adt -package SIGNING_OPTIONS <air-file> <app-desc> FILE_ARGS
+  adt -prepare <airi-file> <app-desc> FILE_ARGS
+  adt -sign SIGNING_OPTIONS <airi-file> <air-file>
+  adt -version
+
+SIGNING_OPTIONS: -storetype <type> ( -keystore <store> )? ( -storepass <pass> )? ( -keypass <pass> )? ( -providerName <name> )? ( -tsa <url> )?
+FILE_ARGS: <fileOrDir>* (( -C <dir> <fileOrDir>+ ) | ( -e <file> <path> ))*
+
+
+Text property sheet is not updated to previous setting when user changes “Global Font” under “Document Property”
+-Not a regression issue, both X5_SP2 and X5 1.3 have the problem. (refer to attachment)
+
+Reproduce Environment
+X6_56
+
+Reproduce Steps:
+1.Create a new Label component.
+2.Come to “Appearance-Text” tab in property sheet.
+3.Choose the “Text” and set “Bold”, “Italic”, “Dash” and change the color to “Green”.
+4.Choose “File-Document Property”.
+5.Check “Use Global Font”.
+6.Choose a font and click “OK”.
+7.See the property sheet is updated, and the previous setting is lost. (Refer to attachment)
+
+--------------------------
+TE:Xcelsius Gauge Display
+
+The alerts colors to show as it is set in the gauge.
+
+The gauge component tends to looses the alerts color intermittently for some of the selection. It does shows
+back if we make some other selection and select back the same labels.
+
+-Create a model with gauge and a selectors.
+-Apply alerts in the gauge with colors,
+-Change the values in the gauge with change in the labels from the selectors.
+-The gauge will not show the alerts for some labels intermittently.
+
+summary:
+- Xcelsius 2008 -> Open -> Preview -> Failed
+- Xcelsius 2008 -> Open -> Preview -> Resave -> OK!
+- RightClick -> Preview -> OK!
+
+- low -> high - 6.swf
+- value selected -> 7.swf, failed!
+- value unselected -> 8.swf, failed!
+- auto unselected -> selected -> 9.swf, ok!
+- low -> high -> 10.swf, ok!
+- value selected -> unselected -> 11.swf, failed!
+- low -> high -> 12.swf, failed!
+- auto unselected -> selected -> 13.swf, failed!
+- auto unselected -> selected -> 14.swf, ok!
+- refresh, ok, ok, failed
+- remove 3 liveoffice cons -> 15.swf, 
+
+ADAPT01229149, debug in preview mode.
 
 最老套的办法就是 重启机器然后就可以检索了
 还有就是关掉数据服务 再关掉信号  最后在一次依次打开信号 数据服务 在检索就可以了
@@ -5,3 +294,4 @@
 把滚轮按下 可以重新检索
 彩信正常使用必须前提是激活自带浏览器。记住这。
 不要为 从不就好了   我设 的是归属地检索  可以正常收发彩信
+

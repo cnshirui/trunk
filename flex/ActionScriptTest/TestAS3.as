@@ -1,6 +1,9 @@
 package
 {
 	import flash.display.Sprite;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 	import flash.text.TextFormat;
 
 	public class TestAS3 extends Sprite
@@ -8,16 +11,20 @@ package
 
 		public function TestAS3()
 		{
-			var a:Array = [null, "", " "];
-			for(var i:int=0; i<a.length; i++)
-			{
-				trace(i);
-				var o:* = a[i];
-				if(o!=null && o.length >= 0)
-				{
-					trace("OK");
-				}
-			}
+			var s:String = "\\\\\\";
+			trace(s);
+			var loader:URLLoader = new URLLoader();
+			// file://///shg-d-11-rshi/share/中国/
+			// file://///shg-d-06-aemon/boost
+			// \\shg-d-06-aemon\boost
+//            var request:URLRequest = new URLRequest("file:///d:/中国");
+            var request:URLRequest = new URLRequest("file://///shg-d-11-rshi/share/中国/");
+//            try {
+            	navigateToURL(request, "_self");
+                loader.load(request);
+    /*          } catch (error:Error) {
+                trace("Unable to load requested document.");
+            } 	 */		
 		}
 
 		private function hashObject(object:Object):String
@@ -46,6 +53,31 @@ package
 
 
 /*
+            var loader:URLLoader = new URLLoader();
+
+			// \\\\shg-d-11-rshi\\share
+			// file:///shg-d-11-rshi/share/中国
+			// file://shg-d-11-rshi/share/中国
+			// file:///d:/中国
+//            var request:URLRequest = new URLRequest("file:///d:/中国");
+            var request:URLRequest = new URLRequest("file://///shg-d-11-rshi/share/中国/");
+//            try {
+            	navigateToURL(request, "_self");
+                loader.load(request);
+             } catch (error:Error) {
+                trace("Unable to load requested document.");
+            } 
+			
+			var a:Array = [null, "", " "];
+			for(var i:int=0; i<a.length; i++)
+			{
+				trace(i);
+				var o:* = a[i];
+				if(o!=null && o.length >= 0)
+				{
+					trace("OK");
+				}
+			}
 
    var xml:XML = <component className="xcelsius.controls.Label" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <properties>
