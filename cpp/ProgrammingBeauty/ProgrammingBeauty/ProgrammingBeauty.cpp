@@ -8,6 +8,8 @@
 using namespace std;
 
 #include "PointsGame2.h"
+//#include "HDOJ_1427.h"
+//#include "stdlib_stl.h"
 
 void TestHere()
 {
@@ -19,12 +21,12 @@ void TestHere()
 	i = pow(2.0, 4);
 	cout << "pow(2,4) = " << i << endl;
 }
-
+/*
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//TestHere();
-	TestPointsGame2();
+	TestPointsGame();
 	return 0;
-}
+}*/
 
 

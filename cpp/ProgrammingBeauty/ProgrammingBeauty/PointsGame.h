@@ -6,7 +6,7 @@ using namespace std;
 const double Threshold = 1E-6;
 const int CardsNumber = 4;
 const int ResultValue = 24;
-double number[CardsNumber] = {1, 8, 3, 5};
+double number[CardsNumber] = {1, 2, 3, 4};
 // {5, 5, 5, 1};
 // {1, 8, 3, 5};
 string result[CardsNumber];
@@ -109,6 +109,7 @@ bool PointsGame(int n)
 
 void TestPointsGame()
 {
+	cout << "Game Start... " << endl;
 	char buffer[20];
 	for(int i=0; i<CardsNumber; i++)
 	{

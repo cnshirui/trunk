@@ -204,18 +204,56 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\PointsGame.h"
+			<Filter
+				Name="24points"
 				>
-			</File>
-			<File
-				RelativePath=".\PointsGame2.h"
-				>
-			</File>
-			<File
-				RelativePath=".\stdafx.h"
-				>
-			</File>
+				<File
+					RelativePath=".\HDOJ_1427.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PointsGame.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PointsGame2.h"
+					>
+				</File>
+				<File
+					RelativePath=".\stdlib_stl.h"
+					>
+				</File>
+				<File
+					RelativePath=".\stdlib_stl.py"
+					>
+				</File>
+				<File
+					RelativePath=".\struct_ansnode.h"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\$(InputName)1.obj"
+							XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\struct_node.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
