@@ -9,9 +9,9 @@ TOP=`pwd`
 PLATFORM=Cygwin-Windows
 TMPDIR=build/Debug/${PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/Debug/${PLATFORM}/lexyacc_1
-OUTPUT_BASENAME=lexyacc_1
-PACKAGE_TOP_DIR=lexyacc1/
+OUTPUT_PATH=dist/Debug/${PLATFORM}/lexyaccsample
+OUTPUT_BASENAME=lexyaccsample
+PACKAGE_TOP_DIR=lexyaccsample/
 
 # Functions
 function checkReturnCode
@@ -56,15 +56,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/lexyacc1/bin
+makeDirectory ${TMPDIR}/lexyaccsample/bin
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f dist/Debug/${PLATFORM}/package/lexyacc1.tar
+rm -f dist/Debug/${PLATFORM}/package/lexyaccsample.tar
 cd ${TMPDIR}
-tar -vcf ../../../../dist/Debug/${PLATFORM}/package/lexyacc1.tar *
+tar -vcf ../../../../dist/Debug/${PLATFORM}/package/lexyaccsample.tar *
 checkReturnCode
 
 # Cleanup

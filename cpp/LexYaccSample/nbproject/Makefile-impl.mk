@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=LexYacc_1
+PROJECTNAME=LexYaccSample
 
 # Active Configuration
 DEFAULTCONF=Debug
