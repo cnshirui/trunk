@@ -1,0 +1,205 @@
+
+        最近使用 
+
+    * 日志 <http://blog.xiaonei.com/>
+    * 相册 <http://photo.xiaonei.com/>
+    * 品牌专区 <http://group.xiaonei.com/tribenav.do>
+    * 分享 <http://share.xiaonei.com/share/ShareList.do>
+    * 礼物 <http://gift.xiaonei.com/>
+    * 投票
+      <http://abc.xiaonei.com/knowabc/investigation/KnowVotingList.do?showType=all>
+
+    * 开发者 <http://app.xiaonei.com/developers/home.do>
+    * 开源应用示例 <http://apps.xiaonei.com/os_friendsale?origin=104>
+    * 程序达人 <http://apps.xiaonei.com/openjudge?origin=104>
+    * 校园漫步 <http://apps.xiaonei.com/campus_roamer?origin=104>
+    * OpenSocial Test <http://apps.xiaonei.com/opensocial_test?origin=104>
+    * 好友头像识别 <http://apps.xiaonei.com/findfriend?origin=104>
+
+    * 宠物抱抱 <http://apps.xiaonei.com/ichongwu/?origin=104>
+    * rshi
+    * 好读书-读好书 <http://apps.xiaonei.com/bookshare/?origin=104>
+    * 真心话大冒险
+      <http://apps.xiaonei.com/thetruth/userTruth/add?origin=104>
+    * 天书奇谈 <http://t.xiaonei.com/ts.do>
+    * 送您一束玫瑰 <http://apps.xiaonei.com/sendyourose?origin=104>
+    * 好友贪吃蛇 <http://apps.xiaonei.com/greedysnake?origin=104>
+    * MOTO音乐雷达神八宇航员招募 <http://songid.xiaonei.com/>
+    * 年年有余 <http://apps.xiaonei.com/all_have_fish?origin=104>
+    * 古惑仔 <http://mob.xiaonei.com>
+    * 历史上的今天 <http://apps.xiaonei.com/todayonhistory/?origin=104>
+    * 更多 » <#nogo>
+
+    * 宠物抱抱 <http://apps.xiaonei.com/ichongwu/?origin=104>
+    * rshi
+    * 好读书-读好书 <http://apps.xiaonei.com/bookshare/?origin=104>
+    * 真心话大冒险
+      <http://apps.xiaonei.com/thetruth/userTruth/add?origin=104>
+    * 天书奇谈 <http://t.xiaonei.com/ts.do>
+    * 送您一束玫瑰 <http://apps.xiaonei.com/sendyourose?origin=104>
+    * 好友贪吃蛇 <http://apps.xiaonei.com/greedysnake?origin=104>
+    * MOTO音乐雷达神八宇航员招募 <http://songid.xiaonei.com/>
+    * 年年有余 <http://apps.xiaonei.com/all_have_fish?origin=104>
+    * 古惑仔 <http://mob.xiaonei.com>
+    * 历史上的今天 <http://apps.xiaonei.com/todayonhistory/?origin=104>
+    * 活动 <http://event.xiaonei.com/EventHome.do> 
+
+    * 班级 <http://class.xiaonei.com>
+    * 课程 <http://course.xiaonei.com/Course.do>
+    * 猫游记 <http://maoyou.xiaonei.com/index.do?from=leftapp>
+    * 论坛 <http://club.xiaonei.com/>
+
+    * 管理我的应用 (27) <http://app.xiaonei.com/apps/editapps.do?origin=105>
+    * 浏览更多应用
+      <http://app.xiaonei.com/apps/apps.do?ref=top_menu&selected=3&type=1&origin=106>
+
+    * 隐私设置 <http://www.xiaonei.com/privacyhome.do>
+    * 帐户设置 <http://www.xiaonei.com/personallink.do>
+    * 应用设置 <http://app.xiaonei.com/apps/editapps.do?origin=118>
+
+    * 搜索同学 <http://browse.xiaonei.com/ns.do?action=classmates>
+    * 搜索同事 <http://browse.xiaonei.com/ns.do?action=coworkers>
+    * 高级搜索 <http://browse.xiaonei.com/advanced.do>
+
+
+  校内 <http://home.xiaonei.com/Home.do?id=50836>
+
+首页 <http://home.xiaonei.com/Home.do?id=50836>
+个人主页 <http://xiaonei.com/profile.do?id=50836>
+修改 <http://www.xiaonei.com/BasicInfo.do>
+好友 <http://friend.xiaonei.com/myfriendlistx.do>
+应用 <http://app.xiaonei.com/apps/apps.do?selected=3&type=1&origin=119>
+游戏 <http://game.xiaonei.com/>
+站内信 <http://msg.xiaonei.com>
+充值 <http://pay.xiaonei.com>
+会员 <http://i.xiaonei.com/>
+设置 <#nogo>
+退出 <http://www.xiaonei.com/Logout.do>
+搜索 <http://browse.xiaonei.com/os.do>
+  <http://browse.xiaonei.com/os.do>
+
+<http://xiaonei.com/profile.do?id=225326387>
+
+
+    jingmouren的日志
+
+发站内信
+<http://msg.xiaonei.com/SendMessage.do?id=225326387&from=jingmouren%E7%9A%84%E6%97%A5%E5%BF%97&oriUrl=http%3A%2F%2Fblog.xiaonei.com%2FGetEntry.do%3Fid%3D391320973%26owner%3D225326387%26ref%3Dnewsfeed>
+
+
+    * jingmouren的日志 <http://blog.xiaonei.com/GetBlog.do?id=225326387>
+    * 与jingmouren相关的日志
+      <http://blog.xiaonei.com/SomeoneRelativeBlog.do?id=225326387>
+
+上一篇
+<http://blog.xiaonei.com/GetNextBlog.do?id=391320973&owner=225326387&time=1243322510000&op=next>
+/ 下一篇
+<http://blog.xiaonei.com/GetPreBlog.do?id=391320973&owner=225326387&time=1243322510000&op=pre>
+共*126*篇日志
+
+
+      分享 <javascript:void(0);>
+      http://cuteser.blog.sohu.com/101113272.html摆平颈椎病个人秘笈这年
+      头，很多职业都离不开整日操作电脑，特别是一些所谓的白领和灰领才俊。
+      俺曾经颈项酸痛，一扭头就嘎嘎直响。2005年1月核磁共振了一下，拿到北
+      医三院号称专家的教授们那里鉴定了一...
+      *摆平颈椎病个人秘笈 zz* 2009-05-26 15:21 | (分类:默认分类
+      <http://blog.xiaonei.com/GetBlog.do?id=225326387&categoryId=0>)
+
+
+      http://cuteser.blog.sohu.com/101113272.html
+
+
+      摆平颈椎病个人秘笈
+
+ 
+
+这年头，很多职业都离不开整日操作电脑，特别是一些所谓的白领和灰领才俊。
+
+    俺曾经颈项酸痛，一扭头就嘎嘎直响。2005年1月核磁共振了一下，拿到北医
+三院号称专家的教授们那里鉴定了一下，不到五分钟给打发出来："还不到做手术
+的地步"。开药“根痛平”冲剂五盒。俺根本就没买这药。
+
+    现在想来那时真是医盲，这点毛病还找医生作甚，自己在家就能治了。
+    
+    治急先治标：
+    病因其实很简单，长期伏案，正好是心经与心包经跟桌面接触最多，既有压
+迫，也有桌上的寒凉之气侵袭。说起这胳膊下的垫子，可是真有讲究。曾经在洋人
+的桌子上工作过，人家在桌子摆放上臂的位置专门加了块钢片，那是起冰镇作用
+的。咱们吃草长大的和人家吃肉的真是比不了，俺们这些吃草长大的同事纷纷把那
+钢片拆掉。
+
+   病因已经很清楚了，治疗方案也就很简单了，冲着跟心经相表里的小肠经下手
+就是了：
+   最简单的方式是拔罐，在背部肩贞、天宗等小肠经的穴位上拔罐一刻钟左右，
+如果颜色深红甚至紫黑，那显然是寒气太重了。大约三五天至一周，这几个穴位的
+颜色就会逐渐褪掉，如果肩背还是发紧，再拔一次。
+ 
+    如果拔罐三次，效果不很明显，估计病得不轻，可以考虑隔姜灸。切姜数片，
+大概一两毫米厚，贴在背部痛区，然后点燃艾条或艾绒，放入温灸器，将温灸器置
+于姜片上，灸个一刻钟左右，其间如果感觉太烫，赶紧将温灸器拿开一会儿。
+
+    如果拔罐、艾灸这法子都用了，还是感觉不够彻底不够过瘾，还有一个长效点
+的法子：在热水袋里灌上热水，晚上睡觉时放在肩背部酸痛处，一般一宿见效。注
+意拧紧瓶塞。
+
+    如果上述三个法子依然不见效，请重新考虑自己是否还有其他经络不通的可能
+或另寻高明。
+    
+    好了伤疤不能忘了疼，很多人健时多向忙中求，有病方知身是苦。上工治未
+病，咱们还是多注意防疼于未然吧。方法也很简单，路子也很多：
+    比如在电脑里设置每小时一次提醒“身体是革命的本钱”，弄个哑铃在办公室，
+练练直拳、摆拳、勾拳，练练扩胸运动，做跑步摆臂状，做平举哑铃的动作。
+    对于奉行低调做人不愿在办公室搞沙袋哑铃等家伙事的赤手空拳的好汉，可以
+认真回忆广播体操的动作，或者学学太极中的云手动作，或者练练八段锦中的“五
+劳七伤往后瞧”的缓缓蓦然回首的动作。
+    或者经常按揉一下心经和心包经上的穴位，比如小海穴，极泉穴，应该是酸痛
+无比的。
+    还有一些家务活对活动上肢也很有帮助，比如拖地，比如手洗衣服。 
+    爱好体育运动的不妨练练投篮，特别是勾手投篮。或者练习一下自由泳的划水
+动作。或者引体向上，等等，方法多得很。
+   
+    俺同学他老爸曾经脖子疼得睡不着教，后来一搞中医的哥们告诉他，每天坚持
+放松站立，尽量回头看脚后跟，每次坚持一分钟左右。据说效果不错。
+
+    仅供参考。
+    
+    如果您也曾被颈椎病困扰，欢迎一起探讨，千万别等带上那大脖套才后悔。在
+侬还没有被庸医蛊惑着做手术之前，先试着自己研究一下出路。
+
+发表评论 <#mycomment> | 举报日志
+<http://admin.xiaonei.com/admin/newreportblog.do?contentId=391320973&userId=225326387&origURL=http://blog.xiaonei.com/GetEntry.do?id=391320973%26owner=225326387>
+阅读(10)| 评论(0)| 分享(4)
+
+    * 插入链接
+    * 插入表情
+
+将评论同步发送到新鲜事
+
+悄悄话
+
+
+        更多jingmouren的日志
+
+    * 要健身，更要有智慧 zz
+      <http://blog.xiaonei.com/GetEntry.do?id=391448883&owner=225326387>
+    * 摆平颈椎病个人秘笈 zz
+      <http://blog.xiaonei.com/GetEntry.do?id=391320973&owner=225326387>
+    * 写不出论文的几种人 z
+      <http://blog.xiaonei.com/GetEntry.do?id=390273784&owner=225326387>
+    * 上网本的蝴蝶效应 zz
+      <http://blog.xiaonei.com/GetEntry.do?id=390085526&owner=225326387>
+
+更多 <http://blog.xiaonei.com/GetBlog.do?id=225326387>
+
+
+      特别推荐
+
+校内日志 <http://xiaonei.com/getsysupdateinfo.do>|关于
+<http://xiaonei.com/info/About.do>|开放平台
+<http://app.xiaonei.com/developers/portal.do>|招聘
+<http://xiaonei.com/info/jobs.jsp>|客服
+<http://support.xiaonei.com/GetGuestbookList.do>|帮助
+<http://xiaonei.com/info/Help.do>|隐私声明
+<http://xiaonei.com/info/PrivacyClaim.do>|友情链接
+<http://xiaonei.com/info/Link.do> 千橡公司 © 2009

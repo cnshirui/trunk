@@ -1,0 +1,120 @@
+我的空间 </cnshirui/space> 
+*主页* <http://hi.baidu.com/cnshirui>|空间装扮
+<http://hi.baidu.com/cnshirui/modify/spmodules/0>
+*博客* <http://hi.baidu.com/cnshirui/blog/>|写新文章
+<http://hi.baidu.com/cnshirui/creat/blog/>
+*相册* <http://hi.baidu.com/cnshirui/album>|上传照片
+<http://hi.baidu.com/cnshirui/creat/picture/album>
+*好友* <http://hi.baidu.com/cnshirui/friends>|找新朋友
+<http://ren.baidu.com/uquery/>
+*档案* <http://hi.baidu.com/cnshirui/profile>|留言板
+<http://hi.baidu.com/cnshirui/board>
+*cnshirui <https://passport.baidu.com>* 0 | 我的消息(1/1)
+<http://msg.baidu.com> | 我的空间 </cnshirui/space>  | 百度空间
+<http://hi.baidu.com> | 百度首页 <http://www.baidu.com/> | 退出
+<https://passport.baidu.com/?logout&u=http://hi.baidu.com/yjpro/blog/item/07cd088bd836d7d6fd1f1001%252Ehtml>
+
+在路上.. 技术,职业,思考 </yjpro>
+关注编译技术,语言设计,系统底层...
+ 
+主页 </yjpro>博客 </yjpro/blog>相册 </yjpro/album>|个人档案
+</yjpro/profile> |好友 </yjpro/friends>
+  	
+查看文章
+		 
+
+关于Lex/Yacc的乱谈
+2008-05-27 20:21
+
+毕业工作快一年时间了.这一年里主要作的是编译器前端的工作.
+工作需要让自己经常会用到编译原理中的知识和相关工具.
+使用最多的工具当然是Lex/Yacc了,这也是构造编译器前端parser的最经典的工具组合.
+(
+   记得本科毕业设计自己作的是一个CASL汇编语言的编译系统,就曾经在里面使用过
+   Lex和Yacc来构造了一个汇编语言的parser.谁能想到多年以后,又有机会作同样
+的事情了.
+)
+
+一个有趣的现象是,虽然Lex/Yacc自70年代被开发出来以后就基本保持稳定,并确立了其
+在编译器前端领域的主导地位,但目前一些主流的计算机语言的parser似乎都不太
+喜欢用
+Lex/Yacc来实现.
+
+我选择了4款开源的编译器/解释器进行分析:
+
+1. 嵌入式脚本语言 Lua
+第一个版本是用Yacc作的语法parser,但紧接着在后续版本里就更换为一个递归下
+降的手写parser.
+
+2. 通用型脚本语言 Python
+我没有关注过之前的版本,但曾经泛泛地看过Python 2.5的代码,使用的也是一个手
+写的递归下降的parser.
+
+3. 传统编译型语言 GCC
+我依稀记得GCC的早期版本的语法部分是用Yacc实现的(时间比较早,不敢保证自己
+记的一定准确^-^),但
+现在的GCC的语法部分早就已经是递归下降手写parser的天下了.
+
+4. 动态脚本语言 Ruby
+Ruby倒是用到了Yacc实现其语法解析部分.题外话,值得一提的是Ruby的词法部分没
+有采用Lex来实现,而是直接采用
+Gperf这个工具,对Ruby的词法成分建立起了完美hash表,以保证词法模块的效率.
+
+(其他能想到的但是限于时间精力没有分析到的还有Mono, Nasm, Lcc, Perl, PHP
+等等.以后我会再进行分析,并一并加入这个
+分析列表中)
+
+
+既然Lex/Yacc在编译器前端领域具有如此重要的地位,为什么还是有这么多计算机
+语言的编译器都没有采用Lex/Yacc来实现其前端呢.
+
+我曾经想过这个问题,刚进公司的时候还专门和一个精通Lex/Yacc的同事就此展开
+过讨论.
+
+他的观点是:使用Lex/Yacc开发parser还是非常有优势的,一则方便,简化了工作量,
+用户主要的工作是
+编写相应语言的词法和语法规则即可,而不需要考虑实现parser的细节,二来,由于
+yacc是基于LALR(1)的
+算法实现的语法解析,与递归下降分析法相比,在速度上具有显著的优势. 唯一的不
+足他认为是在Yacc
+中对于语法错误的处理不太方便,限制了其应用场合.
+
+目前来说,我基本上也同意这位同事的观点.
+
+
+欢迎大家拍砖.
+
+
+
+类别：编译相关 </yjpro/blog/category/%B1%E0%D2%EB%CF%E0%B9%D8> | 添加到
+搜藏 <http://cang.baidu.com/do/add> | 浏览(72) | 评论 <#send> (0)
+ 
+上一篇：<<比尔.盖茨的野蛮军团>>读书有...
+</yjpro/blog/item/b3a32ec2e20bad1e0ef47736.html>    下一篇：<<牧星人>>对
+白 </yjpro/blog/item/8237b0f3cfb95d55352acc18.html>
+ 
+最近读者：
+</noyy>	</hik%5Fjik>	</yangguangli>	</freelancer%5F194>	</shanfenggood>	
+ctxhhm </noyy>	hik_jik </hik%5Fjik>	jidalyg_8711 </yangguangli>
+freelancer_194 </freelancer%5F194>	shanfenggood </shanfenggood>	
+
+ 
+网友评论：
+发表评论：
+姓　名： 	cnshirui
+*姓名最长为50字节
+  	
+内　容： 	
+插入表情
+
+  	
+验证码： 	请点击后输入四位验证码，字母不区分大小写
+看不清? <#>
+  	    取消回复 <#>
+
+
+  	  	 
+
+
+&#169;2009 Baidu
+
