@@ -1,32 +1,51 @@
 package
 {
 	import flash.display.Sprite;
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
-	import flash.net.navigateToURL;
-	import flash.text.TextFormat;
 
 	public class TestAS3 extends Sprite
 	{
 
 		public function TestAS3()
 		{
-			var s:String = "\\\\\\";
-			trace(s);
-			var loader:URLLoader = new URLLoader();
-			// file://///shg-d-11-rshi/share/中国/
-			// file://///shg-d-06-aemon/boost
-			// \\shg-d-06-aemon\boost
-//            var request:URLRequest = new URLRequest("file:///d:/中国");
-            var request:URLRequest = new URLRequest("file://///shg-d-11-rshi/share/中国/");
-//            try {
-            	navigateToURL(request, "_self");
-                loader.load(request);
-    /*          } catch (error:Error) {
-                trace("Unable to load requested document.");
-            } 	 */		
+/* 			var array:Array = [];
+			array[9] = "a";
+			trace(array); */
+			
+			var a:* = 123;
+			trace(a == null);
+			var b:* = String(a);
+			var c:* = String("123");
+			trace(String(a) == String(null) || a == null);
+		
 		}
+	}
+}
 
+
+
+
+/*
+		private function testStringRef(str:String):void
+		{
+			str += " ok!";
+		}
+		
+			var s:String = "shirui";
+			testStringRef(s);
+			trace(s);
+
+			var i:int = 0;
+			i = 14/10;
+			trace(Math.ceil(14/10));
+			i = 19/10;
+			trace(i);
+			i = 21/10;
+			trace(i);
+			i = 25/10;
+			trace(i);
+			i = 5/10;
+			trace(i);
+			
 		private function hashObject(object:Object):String
 		{
 			var a:Array = [1, 2, null];
@@ -46,13 +65,22 @@ package
 			
 			return value;
 		}
-	}
-}
-
-
-
-
-/*
+		
+			var s:String = "\\\\\\";
+			trace(s);
+			var loader:URLLoader = new URLLoader();
+			// file://///shg-d-11-rshi/share/中国/
+			// file://///shg-d-06-aemon/boost
+			// \\shg-d-06-aemon\boost
+//            var request:URLRequest = new URLRequest("file:///d:/中国");
+            var request:URLRequest = new URLRequest("file://///shg-d-11-rshi/share/中国/");
+//            try {
+            	navigateToURL(request, "_self");
+                loader.load(request);
+              } catch (error:Error) {
+                trace("Unable to load requested document.");
+            } 	 	
+            
             var loader:URLLoader = new URLLoader();
 
 			// \\\\shg-d-11-rshi\\share
