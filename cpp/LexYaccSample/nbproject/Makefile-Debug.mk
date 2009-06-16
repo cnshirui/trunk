@@ -27,9 +27,7 @@ include Makefile
 OBJECTDIR=build/Debug/${PLATFORM}
 
 # Object Files
-OBJECTFILES= \
-	${OBJECTDIR}/y.tab.o \
-	${OBJECTDIR}/lex.yy.o
+OBJECTFILES=
 
 # C Compiler Flags
 CFLAGS=
@@ -46,25 +44,15 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/lexyacc_1.exe
+	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/lexyaccsample.exe
 
-dist/Debug/${PLATFORM}/lexyacc_1.exe: ${OBJECTFILES}
+dist/Debug/${PLATFORM}/lexyaccsample.exe: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug/${PLATFORM}
-	${LINK.c} -o dist/Debug/${PLATFORM}/lexyacc_1 ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/y.tab.o: y.tab.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/y.tab.o y.tab.c
+	${LINK.c} -o dist/Debug/${PLATFORM}/lexyaccsample ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 y.tab.c + y.tab.h: token.y 
 	@echo Running yacc...
 	yacc -d token.y
-
-${OBJECTDIR}/lex.yy.o: lex.yy.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/lex.yy.o lex.yy.c
 
 lex.yy.c: token.l y.tab.h
 	@echo Running lex...
@@ -76,7 +64,7 @@ lex.yy.c: token.l y.tab.h
 # Clean Targets
 .clean-conf:
 	${RM} -r build/Debug
-	${RM} dist/Debug/${PLATFORM}/lexyacc_1.exe
+	${RM} dist/Debug/${PLATFORM}/lexyaccsample.exe
 	${RM} y.tab.c y.tab.h
 	${RM} lex.yy.c
 

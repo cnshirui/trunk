@@ -1,9 +1,3 @@
-
-
-上海市浦东新区晨晖路1001号 PVG03,B4.40 时睿 PH:13817261528 ZIP:201023
-
-
-
 keytool -list -v -keystore certificate.p12 -storepass bobobo123
 keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAIKKeystore
 1: 	openssl pkcs12 -in certificate.p12
@@ -20,6 +14,51 @@ keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAI
 
 AIR 打包工具所采用的默认时间戳机构是 Geotrust。
 
+java -jar adt.jar -package -storetype PKCS12 -keystore certificate.p12 -tsa none -storepass bobobo123 1.air application.xml  -C "d:" 1.swf wrap.swf abidStyle.swf
+mxmlc.exe +configname=air -locale en_US -include-libraries=framework.swc wrap.mxml
+
+\\10.58.0.28\Public\Slide for Share & Learn Session\ABAP Compiler Infrastructure and ABAP Code Search.ppt
+https://wiki.wdf.sap.corp/display/bprsh
+StandardFocus#getLinerFocus
+
+
+关于7290输入法设置的具体含义
+
+刚入手7290没几天，一直在琢磨，关于输入法的设置有几点发现，大家可以试试。
+在选项－－语言－－输入法进入编辑输入法选项：
+声    音：如果开的话，用shift加数字1，2，3，4就是拼音的4声
+记    忆：就是记录大家经常打的词组，方便下次输入，比如黑莓这个词，第一次输入的时候，莓字要选择，第二次输入的时候莓字就是第一个了
+输入短语：顾名思义就是可以直接输入一些词，比如：为什么=wsm
+预    测：就是联想功能，这跟手机自带的词库大小有关系，不过平常用的短语还是能提前预测出来的
+智能编号：我觉得这个功能比较好，在选择字的时候直接按数字键就可以了，不用再按shift
+
+
+商务 日本 txt
+天堂的雷霆号
+
+雷霆号
+　　电视剧名称：《雷霆号》
+　　另译名：《天堂的雷霆号》
+　　故事梗概：
+　　在一个叫天堂的海滩，住着退伍的海军陆战队员斯宾塞和他的朋友罗宾以及斯宾塞的女儿，他们有一条高科技的快艇"雷霆号" 。"雷霆号"是一艘带高级电脑（能识别图像、语音），配有加速引擎、机器人车，有自己的武器系统的快艇，防弹。斯宾塞是肌肉男，力大无比，和他的朋友罗宾一样以前是海军陆战队的，有丰富的战斗经验，每一集都有一个小故事，带有些科幻以及冒险的色彩。
+　　其他相关资料：
+　　除此之外还有两部有关的电视剧，总共凑成“海、路、空”三部。他们是
+　　《霹雳游侠》是说的一辆神气的黑色轿车，可以说话、自动驾驶、刀枪不入等等的功能。
+　　《飞狼》的原形来自于美国的啊帕齐武装直升机。其他资料不详。
+
+霹雳游侠
+一共有4季
+2000年有一部电影
+08年重出江湖，先是一部电影介绍了08年重新开始的剧集的重要人物
+然后就是下半年开始新一季，主角是先前部的男主角的儿子
+上星期播完，一共17集
+可以在电驴上找到全部剧集的资源 
+
+《霹雳游侠》。《霹雳游侠》是自1982年至1986年起源自美国的热门电视剧，曾放映过霹雳游侠的国家超过80国。警官麦克朗在一次执行任务中被子弹击中头部，醒来后发现自己竟然变成了一个陌生人的模样！不仅如此，他的身份也完全改变了。救活他的是政府立法基地的戴文，戴文告诉他：麦克朗已经死了，代替他的将是麦克奈特！并且交给他一辆独一无二的汽车——基特（K.I.T.T.），从此，世界上多了一位专门惩治逃避法律制裁的罪犯的——霹雳游侠（Knight Rider）。 
+
+
+
+上海市浦东新区晨晖路1001号 PVG03,B4.40 时睿 PH:13817261528 ZIP:201023
 
 
 
