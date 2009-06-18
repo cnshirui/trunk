@@ -1,3 +1,36 @@
+========
+1. swfObjList, quick delete blank element
+2. shared_ptr usage
+3. 
+
+========
+		std::list<boost::shared_ptr<swfObj>> swfObjList;
+        shared_ptr<swfObj> pObj = ( *cursor);
+
+        //Check refcount for all objects other than template bucket
+        if (ut.isInUse (pObj.get ()))
+========		
+		
+// #include <windows.h>
+// #include <sstream>
+// #include <boost/timer.hpp>
+// boost::timer readPart;
+// report(readPart, L"---------------> ");
+static void report (boost::timer &t, const wchar_t *prefix)
+{
+    std::wstringstream message;
+    message << prefix << ": ";
+    message << t.elapsed();
+    message << "\n";
+    ::OutputDebugString (message.str().c_str());
+    t.restart();
+}
+
+#include <boost/timer.hpp>
+first chance exception	0x80000001	Not implemented
+[Frames below may be incorrect and/or missing, no symbols loaded for FlDbg10b.ocx]	
+The details of how to suppress this error are different for every IDE, but in VC7, you go to Debug->Exceptionsa€|, select Win32 Exceptions, then hit Adda€| - for number input 0?¡ª80000001, and description can be whatever you like. Ia€?d recommend a€?page guarda€
+
 keytool -list -v -keystore certificate.p12 -storepass bobobo123
 keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAIKKeystore
 1: 	openssl pkcs12 -in certificate.p12
