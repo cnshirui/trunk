@@ -1,3 +1,15 @@
+Hi Elaine, 
+
+Can I ask some questions about it? Thanks!
+
+1. Will the new offer apply?
+2. What's the schedule of the recruting?
+
+Best wishes,
+Roy Shi
+
+?	Standard recruiting and offer process will apply.
+
 ========
 1. swfObjList, quick delete blank element
 2. shared_ptr usage
