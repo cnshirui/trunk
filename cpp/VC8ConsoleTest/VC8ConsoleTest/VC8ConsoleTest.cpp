@@ -22,7 +22,8 @@ using namespace std;
 
 void GetFunctionName();
 
-int _tmain(int argc, _TCHAR* argv[])
+
+int _t_main(int argc, _TCHAR* argv[])
 {
 	PRINT_IN
 	GetFunctionName();

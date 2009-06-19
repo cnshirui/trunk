@@ -198,6 +198,10 @@
 				RelativePath=".\VC8ConsoleTest.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\VectorVsList.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
