@@ -1,3 +1,33 @@
+#ifndef SWFOBJ_LIST_AS_VECTOR	
+#else	
+#endif
+
+#ifndef SWFOBJ_LIST_AS_VECTOR
+    std::list<swfObj*>::iterator m_itrBeforeSymbolClass;
+    std::list<swfObj*>::iterator m_itrBeforeShowFrame;
+#else	
+    std::vector<swfObj*>::iterator m_itrBeforeSymbolClass;
+    std::vector<swfObj*>::iterator m_itrBeforeShowFrame;
+#endif
+
+  也就是说，在第二次vec.push_back的时候，vec的capacity加倍了。  
+  也就是说，第二次push_back的时候，系统将vec的容量加倍，然后将原先的值拷贝到新内存中，释放原先的内存。  
+  所以你那个变成野指针了
+  
+  +		iter2	-17891602	std::_Vector_iterator<int,std::allocator<int> >
+
+
+	/*
+	std::vector<boost::shared_ptr<swfObj>>::iterator iter = m_mapFrames[p];
+	boost::shared_ptr<swfObj> obj = *iter;
+	std::vector<boost::shared_ptr<swfObj>>::iterator iter2 = swfObjList.end();
+	if(m_mapFrames[p] == swfObjList.end())
+	{
+		return boost::shared_ptr<swfObj> ();
+	}*/
+
+===
+	
 Hi Elaine, 
 
 Can I ask some questions about it? Thanks!

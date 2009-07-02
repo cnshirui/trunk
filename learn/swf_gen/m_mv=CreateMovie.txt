@@ -1,0 +1,266 @@
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\Xcelsius.exe', Symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\ntdll.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\kernel32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\BCGCBPRO910ud80.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.VC80.DebugMFC_1fc8b3b9a1e18e3b_8.0.50727.762_x-ww_257740a4\mfc80ud.dll', Symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.VC80.DebugCRT_1fc8b3b9a1e18e3b_8.0.50727.762_x-ww_5490cd9f\msvcr80d.dll', Symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msvcrt.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\gdi32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\user32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\advapi32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\rpcrt4.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\secur32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\shlwapi.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\comdlg32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.3790.3959_x-ww_D8713E55\comctl32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\shell32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\oleaut32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\ole32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\odbc32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\winmm.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\icuuc38.dll', Binary was not built with debug information.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\icudt38.dll', Binary was not built with debug information.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.VC80.CRT_1fc8b3b9a1e18e3b_8.0.50727.3053_x-ww_b80fa8ca\msvcr80.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\version.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\AddOnManager.dll', Symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.VC80.DebugCRT_1fc8b3b9a1e18e3b_8.0.50727.762_x-ww_5490cd9f\msvcp80d.dll', Symbols loaded.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\zlib.dll', Binary was not built with debug information.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\TreeBtnExtDll.dll', Symbols loaded.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\AccordionExtDll.dll', Symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.3790.4278_x-ww_AD682293\GdiPlus.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\icuin38.dll', Binary was not built with debug information.
+'Xcelsius.exe': Loaded 'D:\perforce\depot2\X6\COR\Xcelsius\Designer\Xcelsius\Xcelsius\debug\xlparse.dll', Symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\shimeng.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\apphelp.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\imm32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\lpk.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\usp10.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\WinSxS\x86_Microsoft.VC80.MFCLOC_1fc8b3b9a1e18e3b_8.0.50727.762_x-ww_91481303\mfc80ENU.dll', Binary was not built with debug information.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\odbcint.dll', Binary was not built with debug information.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\uxtheme.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msimg32.dll', No symbols loaded.
+BCGCBPRO.DLL Initializing!
+TREEBTNEXTDLL.DLL Initializing!
+ACCORDIONEXTDLL.DLL Initializing!
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\shimeng.dll'
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\apphelp.dll'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msctf.dll', No symbols loaded.
+
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\apphelp.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msctfime.ime', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\clbcatq.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\comres.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msxml4.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\urlmon.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\iertutil.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\Macromed\Flash\FlDbg10b.ocx', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\wininet.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\normaliz.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\crypt32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msasn1.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\mscms.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\winspool.drv', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\ws2_32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\ws2help.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\wdmaud.drv', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\setupapi.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\wintrust.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\imagehlp.dll', No symbols loaded.
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\setupapi.dll'
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\wdmaud.drv'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\wdmaud.drv', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\setupapi.dll', No symbols loaded.
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\setupapi.dll'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msacm32.drv', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msacm32.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\midimap.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\userenv.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\xpsp2res.dll', Binary was not built with debug information.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msi.dll', No symbols loaded.
+Control bar must be created with unique ID!
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\ieframe.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\psapi.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\sxs.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\setupapi.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\mshtml.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msls31.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\mlang.dll', No symbols loaded.
+
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\netapi32.dll', No symbols loaded.
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\netapi32.dll'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\actxprxy.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msapsspc.dll', Cannot find or open a required DBG file.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msvcrt40.dll', No symbols loaded.
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\msapsspc.dll'
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\msvcrt40.dll'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\schannel.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\netapi32.dll', No symbols loaded.
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\schannel.dll'
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\netapi32.dll'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\digest.dll', No symbols loaded.
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\digest.dll'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\msnsspc.dll', Cannot find or open a required DBG file.
+'Xcelsius.exe': Unloaded 'C:\WINDOWS\system32\msnsspc.dll'
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\schannel.dll', No symbols loaded.
+'Xcelsius.exe': Loaded 'C:\WINDOWS\system32\netapi32.dll', No symbols loaded.
+
+  Time to read int table: 0.032
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.062
+  Time to read scope table: 0.016
+  Time to read scope group table: 0
+  Time to read symbol table: 0.031
+  Time to read fn proto table: 0.016
+  Time to read attribute table: 0
+  Time to read class table: 0.031
+  Time to read script info table: 0
+  Time to read fn body table: 0.063
+Time to read doABC: 0.267
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.613
+  Time to read scope table: 0.078
+  Time to read scope group table: 0.283
+  Time to read symbol table: 0.283
+  Time to read fn proto table: 0.189
+  Time to read attribute table: 0.047
+  Time to read class table: 0.11
+  Time to read script info table: 0.031
+  Time to read fn body table: 0.66
+Time to read doABC: 2.294
+2844 Stage <Read template> took 2813 ms
+4438 Stage <miscellaneous> took 1594 ms
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.566
+  Time to read scope table: 0.078
+  Time to read scope group table: 0.032
+  Time to read symbol table: 0.267
+  Time to read fn proto table: 0.063
+  Time to read attribute table: 0
+  Time to read class table: 0.015
+  Time to read script info table: 0
+  Time to read fn body table: 0.047
+Time to read doABC: 1.084
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.11
+  Time to read scope table: 0.031
+  Time to read scope group table: 0.142
+  Time to read symbol table: 0.078
+  Time to read fn proto table: 0.047
+  Time to read attribute table: 0.016
+  Time to read class table: 0.063
+  Time to read script info table: 0.015
+  Time to read fn body table: 0.236
+Time to read doABC: 0.754
+6328 Stage <Read function libraries> took 1890 ms
+  Time to read int table: 0.016
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.063
+  Time to read scope table: 0
+  Time to read scope group table: 0.031
+  Time to read symbol table: 0.016
+  Time to read fn proto table: 0.016
+  Time to read attribute table: 0
+  Time to read class table: 0.016
+  Time to read script info table: 0
+  Time to read fn body table: 0.047
+Time to read doABC: 0.205
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0.016
+  Time to read string table: 1.446
+  Time to read scope table: 0.125
+  Time to read scope group table: 1.022
+  Time to read symbol table: 0.581
+  Time to read fn proto table: 0.471
+  Time to read attribute table: 0.519
+  Time to read class table: 0.314
+  Time to read script info table: 0.063
+  Time to read fn body table: 1.901
+Time to read doABC: 6.474
+SWFGeneratorImpl::initGenerator = 13.418s
+SWFGeneratorImpl::start -> initGenerator () = 13.418s (13.418s)
+SWFGeneratorImpl::generate -> xcelsiusDocument.LoadXML () = 0s (0s)
+SWFGeneratorImpl::generate -> xcelsiusDocument.LoadColorSchemes () = 0s (0s)
+SWFGeneratorImpl::generate -> xcelsiusDocument.GetCurrentSkin() = 0s (0s)
+SWFGeneratorImpl::generate -> new skinParser() = 0.362s (0.362s)
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0
+  Time to read scope table: 0.016
+  Time to read scope group table: 0
+  Time to read symbol table: 0
+  Time to read fn proto table: 0
+  Time to read attribute table: 0
+  Time to read class table: 0
+  Time to read script info table: 0.016
+  Time to read fn body table: 0
+Time to read doABC: 0.032
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.189
+  Time to read scope table: 0.062
+  Time to read scope group table: 0.063
+  Time to read symbol table: 0.11
+  Time to read fn proto table: 0.047
+  Time to read attribute table: 0.016
+  Time to read class table: 0.078
+  Time to read script info table: 0.079
+  Time to read fn body table: 0.44
+Time to read doABC: 1.1
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.095
+  Time to read scope table: 0.015
+  Time to read scope group table: 0.079
+  Time to read symbol table: 0.031
+  Time to read fn proto table: 0.032
+  Time to read attribute table: 0.016
+  Time to read class table: 0.047
+  Time to read script info table: 0.015
+  Time to read fn body table: 0.189
+Time to read doABC: 0.519
+SWFGeneratorImpl::generate -> generator->SetCSSobj() = 5.499s (5.861s)
+SWFGeneratorImpl::generate -> generator->ParseDefaultXML() = 1.775s (7.636s)
+SWFGeneratorImpl::generate -> generateContextMenu() = 0.032s (7.668s)
+SWFGeneratorImpl::generate -> generator->Read() = 0.22s (7.888s)
+SWFGeneratorImpl::generate -> generator->GenerateCSS() = 1.414s (9.302s)
+SWFGeneratorImpl::generate -> new excelReader = 9.993s (19.295s)
+
+
+SWFGeneratorImpl::generate -> generateDataModel() = 0.33s (19.625s)
+Time to process spreadsheet: 10.323seconds
+SWFGeneratorImpl::generate -> generator->GenerateFont() = 0s (19.625s)
+SWFGeneratorImpl::generate -> generator->SetSavePath() = 0s (19.625s)
+SWFGeneratorImpl::generate -> generator->GenerateComponents() = 0.032s (19.657s)
+SWFGeneratorImpl::generate -> generator->EnablePoweredLogo() = 0s (19.657s)
+SWFGeneratorImpl::generate -> generator->EnableTrialBanner() = 0s (19.657s)
+SWFGeneratorImpl::generate -> generator->GenerateUUID() = 0s (19.657s)
+SWFGeneratorImpl::generate -> generateMetadata() = 0.031s (19.688s)
+SWFGeneratorImpl::generate -> processMetadata() = 0s (19.688s)
+--------------> GenerateLocale();: 0
+--------------> if(bResetExcel) : 0
+--------------> for(methItr=newMethods.begin();methItr!=newMethods.end();methItr++): 0
+--------------> if (docClass != NULL): 0
+--------------> m_mv->SetAddAllRef(true, getUsageTracker ());: 0.188
+--------------> pContainer1->findString(main_class.c_str());: 0
+--------------> m_pInfoMethod->Write();: 0.016
+--------------> ChangeAppName(newAppName.c_str(),newAppSysName.c_str());: 0
+--------------> m_mv->CreateMovie(path, sizex, sizey );	: 6.584
+--------------> dumpMovie: 0
+SWFGeneratorImpl::generate -> generator->Generate() = 6.804s (26.492s)
+SWFGeneratorImpl::generate -> generator->PostGenerate() = 0s (26.492s)
+SWFGeneratorImpl::generate = 26.492s
+SWFGeneratorImpl::start -> generate () = 26.617s (40.035s)
+Total time for SWF generation: 40.051 seconds
+SWFGeneratorImpl::start = 40.051s

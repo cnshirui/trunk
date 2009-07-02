@@ -1,0 +1,1282 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CXCanvas guid="3367157351-17651-04574-187-070-037119000165095009" version="6.0" width="800" height="600">
+  <ExportSettings useCurrent="-1" path=""/>
+  <colorTheme>Nova</colorTheme>
+  <Notes/>
+  <colorScheme/>
+  <ColorSchemes/>
+  <font fontName="Verdana">
+    <embed>0</embed>
+  </font>
+  <component id="5FA189AF-D904-26BC-CC12-D34FD25B98C9" className="xcelsius.controls.Grid" styleName="" displayName="Grid 1">
+    <colorScheme/>
+    <properties>
+      <property>
+        <name>
+          <string>width</string>
+        </name>
+        <value>
+          <number>200</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>minWidth</string>
+        </name>
+        <value>
+          <number>20</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>x</string>
+        </name>
+        <value>
+          <number>21</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>y</string>
+        </name>
+        <value>
+          <number>21</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>height</string>
+        </name>
+        <value>
+          <number>120</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>rowHeight</string>
+        </name>
+        <value>
+          <number>20.000000</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>dataNumberFormats</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <array>
+                <property id="0">
+                  <string/>
+                </property>
+                <property id="1">
+                  <string/>
+                </property>
+                <property id="2">
+                  <string/>
+                </property>
+                <property id="3">
+                  <string/>
+                </property>
+              </array>
+            </property>
+            <property id="1">
+              <array>
+                <property id="0">
+                  <string/>
+                </property>
+                <property id="1">
+                  <string/>
+                </property>
+                <property id="2">
+                  <string/>
+                </property>
+                <property id="3">
+                  <string/>
+                </property>
+              </array>
+            </property>
+            <property id="2">
+              <array>
+                <property id="0">
+                  <string/>
+                </property>
+                <property id="1">
+                  <string/>
+                </property>
+                <property id="2">
+                  <string/>
+                </property>
+                <property id="3">
+                  <string/>
+                </property>
+              </array>
+            </property>
+            <property id="3">
+              <array>
+                <property id="0">
+                  <string/>
+                </property>
+                <property id="1">
+                  <string/>
+                </property>
+                <property id="2">
+                  <string/>
+                </property>
+                <property id="3">
+                  <string/>
+                </property>
+              </array>
+            </property>
+            <property id="4">
+              <array>
+                <property id="0">
+                  <string/>
+                </property>
+                <property id="1">
+                  <string/>
+                </property>
+                <property id="2">
+                  <string/>
+                </property>
+                <property id="3">
+                  <string/>
+                </property>
+              </array>
+            </property>
+            <property id="5">
+              <array>
+                <property id="0">
+                  <string/>
+                </property>
+                <property id="1">
+                  <string/>
+                </property>
+                <property id="2">
+                  <string/>
+                </property>
+                <property id="3">
+                  <string/>
+                </property>
+              </array>
+            </property>
+          </array>
+        </value>
+      </property>
+    </properties>
+    <bindings>
+      <property>
+        <name>
+          <string>data</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BO69AF5F3A8BD844DF97E2B3E4BEC2541F" displayname="Sheet1!$A$1:$D$6" isStyle="0">
+              <workbook>[Object]</workbook>
+              <inputtype>
+                <string/>
+              </inputtype>
+              <outputtype>
+                <string>xcelsius.binding.tableMaps.output.TableToArray2D</string>
+              </outputtype>
+              <range>Sheet1!$A$1:$D$6</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R1C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R1C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R1C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R2C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R2C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R2C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R3C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R3C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R3C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R4C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R4C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R4C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R5C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R5C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R5C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="5">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R6C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R6C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R6C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R6C4</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array/>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>output</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>dataOut</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BOF7BACA292F634F6C819B4B17A1975635" displayname="Sheet1!$A$1:$D$6" isStyle="0">
+              <workbook>[Object]</workbook>
+              <inputtype>
+                <string>xcelsius.binding.tableMaps.input.Array2DToTable</string>
+              </inputtype>
+              <outputtype>
+                <string/>
+              </outputtype>
+              <range>Sheet1!$A$1:$D$6</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R1C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R1C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R1C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R2C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R2C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R2C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R3C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R3C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R3C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R4C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R4C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R4C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R5C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R5C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R5C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="5">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R6C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R6C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R6C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R6C4</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array/>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>input</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>inputEnabledArray</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BODF5ACEBB38A648F0AD6D0B593CD89380" displayname="Sheet1!$A$1:$D$6" isStyle="0">
+              <workbook>[Object]</workbook>
+              <inputtype>
+                <string/>
+              </inputtype>
+              <outputtype>
+                <string>xcelsius.binding.tableMaps.output.TableToHasFormulaArray2D</string>
+              </outputtype>
+              <range>Sheet1!$A$1:$D$6</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R1C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R1C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R1C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R2C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R2C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R2C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R3C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R3C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R3C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R4C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R4C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R4C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R5C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R5C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R5C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="5">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R6C1</string>
+                          </property>
+                          <property id="1">
+                            <string>Sheet1!R6C2</string>
+                          </property>
+                          <property id="2">
+                            <string>Sheet1!R6C3</string>
+                          </property>
+                          <property id="3">
+                            <string>Sheet1!R6C4</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array/>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array>
+                  <property id="0">
+                    <object>
+                      <property id="name">
+                        <string>inverted</string>
+                      </property>
+                      <property id="value">
+                        <true/>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </outputmapproperties>
+              <direction>
+                <string>output</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+    </bindings>
+    <Persist>
+      <array/>
+    </Persist>
+  </component>
+  <component id="7DE5E287-6DB2-F310-D1C0-D350D7073452" className="xcelsius.controls.List" styleName="" displayName="List Box 1">
+    <colorScheme/>
+    <properties>
+      <property>
+        <name>
+          <string>width</string>
+        </name>
+        <value>
+          <number>120</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>height</string>
+        </name>
+        <value>
+          <number>160</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>minWidth</string>
+        </name>
+        <value>
+          <number>60</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>minHeight</string>
+        </name>
+        <value>
+          <number>60</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>noSelectionString</string>
+        </name>
+        <value>
+          <string>none</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectedType</string>
+        </name>
+        <value>
+          <string>label</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>labels</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <string>Label 1</string>
+            </property>
+            <property id="1">
+              <string>Label 2</string>
+            </property>
+            <property id="2">
+              <string>Label 3</string>
+            </property>
+            <property id="3">
+              <string>Label 4</string>
+            </property>
+            <property id="4">
+              <string>Label 5</string>
+            </property>
+            <property id="5">
+              <string>Label 6</string>
+            </property>
+            <property id="6">
+              <string>Label 7</string>
+            </property>
+            <property id="7">
+              <string>Label 8</string>
+            </property>
+            <property id="8">
+              <string>Label 9</string>
+            </property>
+            <property id="9">
+              <string>Label 10</string>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>x</string>
+        </name>
+        <value>
+          <number>250</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>y</string>
+        </name>
+        <value>
+          <number>16</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectionDes</string>
+        </name>
+        <value>
+          <null/>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectedItemOrIndex</string>
+        </name>
+        <value>
+          <number>3.000000</number>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectionSeries</string>
+        </name>
+        <value>
+          <object>
+            <property id="Series0">
+              <object>
+                <property id="insertOption">
+                  <string>statusList</string>
+                </property>
+                <property id="reinsert">
+                  <true/>
+                </property>
+              </object>
+            </property>
+            <property id="Series1">
+              <object>
+                <property id="insertOption">
+                  <string>value</string>
+                </property>
+                <property id="reinsert">
+                  <true/>
+                </property>
+              </object>
+            </property>
+            <property id="Series2">
+              <null/>
+            </property>
+          </object>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>labelsNumberFormat</string>
+        </name>
+        <value>
+          <array>
+            <property id="0">
+              <string/>
+            </property>
+            <property id="1">
+              <string/>
+            </property>
+            <property id="2">
+              <string/>
+            </property>
+            <property id="3">
+              <string/>
+            </property>
+            <property id="4">
+              <string/>
+            </property>
+            <property id="5">
+              <string/>
+            </property>
+          </array>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectionSrc</string>
+        </name>
+        <value>
+          <array/>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>reinsertEnabled</string>
+        </name>
+        <value>
+          <true/>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>insertOption</string>
+        </name>
+        <value>
+          <string>Value</string>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>reinsertEnabledCheckBox</string>
+        </name>
+        <value>
+          <true/>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>ignoreEndBlanks</string>
+        </name>
+        <value>
+          <true/>
+        </value>
+      </property>
+    </properties>
+    <Persist>
+      <array>
+        <property id="0">
+          <object>
+            <property id="name">
+              <string>_mainTab</string>
+            </property>
+            <property id="value">
+              <number>0.000000</number>
+            </property>
+          </object>
+        </property>
+      </array>
+    </Persist>
+    <bindings>
+      <property>
+        <name>
+          <string>labels</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BO4ED9E370CE3446B3AF1914516E61F571" displayname="Sheet1!$C$1:$C$6" isStyle="0">
+              <workbook>[Book1]</workbook>
+              <inputtype>
+                <string/>
+              </inputtype>
+              <outputtype>
+                <string>xcelsius.binding.tableMaps.output.TableToArray</string>
+              </outputtype>
+              <range>Sheet1!$C$1:$C$6</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C3</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C3</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C3</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C3</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C3</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="5">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R6C3</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array/>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>output</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectionSrc</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BOB4637A3FC785418491261815371DA471" displayname="Sheet1!$B$1:$B$6" isStyle="0">
+              <workbook>[Book1]</workbook>
+              <inputtype>
+                <string/>
+              </inputtype>
+              <outputtype>
+                <string>xcelsius.binding.tableMaps.output.TableToArray2D</string>
+              </outputtype>
+              <range>Sheet1!$B$1:$B$6</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C2</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="5">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R6C2</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array>
+                  <property id="0">
+                    <object>
+                      <property id="className">
+                        <string>xcelsius.binding.chain::ObjectChainAccessor</string>
+                      </property>
+                      <property id="properties">
+                        <array>
+                          <property id="0">
+                            <object>
+                              <property id="name">
+                                <string>propertyName</string>
+                              </property>
+                              <property id="value">
+                                <string>Series0</string>
+                              </property>
+                            </object>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                  <property id="1">
+                    <object>
+                      <property id="className">
+                        <string>xcelsius.binding.chain::ObjectChainAccessor</string>
+                      </property>
+                      <property id="properties">
+                        <array>
+                          <property id="0">
+                            <object>
+                              <property id="name">
+                                <string>propertyName</string>
+                              </property>
+                              <property id="value">
+                                <string>sourceData</string>
+                              </property>
+                            </object>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>output</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectionDes</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BO1AEEB9122792417EBD4B4B43A295E86A" displayname="Sheet1!$E$1:$E$6" isStyle="0">
+              <workbook>[Book1]</workbook>
+              <inputtype>
+                <string>xcelsius.binding.tableMaps.input.ArrayToTable</string>
+              </inputtype>
+              <outputtype>
+                <string/>
+              </outputtype>
+              <range>Sheet1!$E$1:$E$6</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C5</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C5</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C5</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C5</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C5</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="5">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R6C5</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array>
+                  <property id="0">
+                    <object>
+                      <property id="className">
+                        <string>xcelsius.binding.chain::ObjectChainAccessor</string>
+                      </property>
+                      <property id="properties">
+                        <array>
+                          <property id="0">
+                            <object>
+                              <property id="name">
+                                <string>propertyName</string>
+                              </property>
+                              <property id="value">
+                                <string>Series1</string>
+                              </property>
+                            </object>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                  <property id="1">
+                    <object>
+                      <property id="className">
+                        <string>xcelsius.binding.chain::ObjectChainAccessor</string>
+                      </property>
+                      <property id="properties">
+                        <array>
+                          <property id="0">
+                            <object>
+                              <property id="name">
+                                <string>propertyName</string>
+                              </property>
+                              <property id="value">
+                                <string>insertIn</string>
+                              </property>
+                            </object>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>input</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+      <property>
+        <name>
+          <string>selectionDes</string>
+        </name>
+        <value>
+          <binding>
+            <endpoint type="excelbinding" id="BO0D61B6DD40364BC88C0CE4358AC47C58" displayname="Sheet1!$D$1:$D$6" isStyle="0">
+              <workbook>[Book1]</workbook>
+              <inputtype>
+                <string>xcelsius.binding.tableMaps.input.ArrayToTable</string>
+              </inputtype>
+              <outputtype>
+                <string/>
+              </outputtype>
+              <range>Sheet1!$D$1:$D$6</range>
+              <cells>
+                <array>
+                  <property id="0">
+                    <array>
+                      <property id="0">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R1C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="1">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R2C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="2">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R3C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="3">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R4C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="4">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R5C4</string>
+                          </property>
+                        </array>
+                      </property>
+                      <property id="5">
+                        <array>
+                          <property id="0">
+                            <string>Sheet1!R6C4</string>
+                          </property>
+                        </array>
+                      </property>
+                    </array>
+                  </property>
+                </array>
+              </cells>
+              <chain>
+                <array>
+                  <property id="0">
+                    <object>
+                      <property id="className">
+                        <string>xcelsius.binding.chain::ObjectChainAccessor</string>
+                      </property>
+                      <property id="properties">
+                        <array>
+                          <property id="0">
+                            <object>
+                              <property id="name">
+                                <string>propertyName</string>
+                              </property>
+                              <property id="value">
+                                <string>Series0</string>
+                              </property>
+                            </object>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                  <property id="1">
+                    <object>
+                      <property id="className">
+                        <string>xcelsius.binding.chain::ObjectChainAccessor</string>
+                      </property>
+                      <property id="properties">
+                        <array>
+                          <property id="0">
+                            <object>
+                              <property id="name">
+                                <string>propertyName</string>
+                              </property>
+                              <property id="value">
+                                <string>insertIn</string>
+                              </property>
+                            </object>
+                          </property>
+                        </array>
+                      </property>
+                    </object>
+                  </property>
+                </array>
+              </chain>
+              <inputmapproperties>
+                <array/>
+              </inputmapproperties>
+              <outputmapproperties>
+                <array/>
+              </outputmapproperties>
+              <direction>
+                <string>input</string>
+              </direction>
+            </endpoint>
+          </binding>
+        </value>
+      </property>
+    </bindings>
+  </component>
+</CXCanvas>

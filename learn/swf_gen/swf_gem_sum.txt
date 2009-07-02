@@ -1,0 +1,173 @@
+  Time to read int table: 0.016
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.062
+  Time to read scope table: 0.016
+  Time to read scope group table: 0
+  Time to read symbol table: 0.015
+  Time to read fn proto table: 0.016
+  Time to read attribute table: 0
+  Time to read class table: 0.015
+  Time to read script info table: 0
+  Time to read fn body table: 0.047
+Time to read doABC: 0.187
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.281
+  Time to read scope table: 0.031
+  Time to read scope group table: 0.094
+  Time to read symbol table: 0.125
+  Time to read fn proto table: 0.062
+  Time to read attribute table: 0.031
+  Time to read class table: 0.047
+  Time to read script info table: 0.016
+  Time to read fn body table: 0.359
+Time to read doABC: 1.046
+1482 Stage <Read template> took 1451 ms
+2231 Stage <miscellaneous> took 749 ms
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0.015
+  Time to read string table: 0.297
+  Time to read scope table: 0.031
+  Time to read scope group table: 0
+  Time to read symbol table: 0.39
+  Time to read fn proto table: 0.234
+  Time to read attribute table: 0
+  Time to read class table: 0.14
+  Time to read script info table: 0.016
+  Time to read fn body table: 0.062
+Time to read doABC: 1.185
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.093
+  Time to read scope table: 0.016
+  Time to read scope group table: 0.094
+  Time to read symbol table: 0.015
+  Time to read fn proto table: 0.015
+  Time to read attribute table: 0
+  Time to read class table: 0.032
+  Time to read script info table: 0
+  Time to read fn body table: 0.171
+Time to read doABC: 0.468
+3931 Stage <Read function libraries> took 1700 ms
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.296
+  Time to read scope table: 0
+  Time to read scope group table: 0.016
+  Time to read symbol table: 0.015
+  Time to read fn proto table: 0.016
+  Time to read attribute table: 0
+  Time to read class table: 0.016
+  Time to read script info table: 0
+  Time to read fn body table: 0.031
+Time to read doABC: 0.39
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.998
+  Time to read scope table: 0.078
+  Time to read scope group table: 0.484
+  Time to read symbol table: 0.327
+  Time to read fn proto table: 0.218
+  Time to read attribute table: 0.328
+  Time to read class table: 0.14
+  Time to read script info table: 0.063
+  Time to read fn body table: 1.107
+Time to read doABC: 3.759
+First-chance exception at 0x76f6fbae in Xcelsius.exe: 0xE0000001: 0xe0000001.
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0
+  Time to read scope table: 0.015
+  Time to read scope group table: 0
+  Time to read symbol table: 0
+  Time to read fn proto table: 0
+  Time to read attribute table: 0
+  Time to read class table: 0
+  Time to read script info table: 0
+  Time to read fn body table: 0
+Time to read doABC: 0.015
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.156
+  Time to read scope table: 0.047
+  Time to read scope group table: 0.031
+  Time to read symbol table: 0.078
+  Time to read fn proto table: 0.032
+  Time to read attribute table: 0
+  Time to read class table: 0.046
+  Time to read script info table: 0.172
+  Time to read fn body table: 0.28
+Time to read doABC: 0.874
+  Time to read int table: 0.015
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.998
+  Time to read scope table: 0.219
+  Time to read scope group table: 0.109
+  Time to read symbol table: 0.156
+  Time to read fn proto table: 0.062
+  Time to read attribute table: 0
+  Time to read class table: 0.031
+  Time to read script info table: 0
+  Time to read fn body table: 0.11
+Time to read doABC: 1.716
+Time to process spreadsheet: 3.432seconds
+Total time for SWF generation: 44.585 seconds
+
+==========================================================
+
+  Time to read int table	0
+  Time to read uint table	0
+  Time to read double table	0
+  Time to read string table	0.093
+  Time to read scope table	0.016
+  Time to read scope group table	0.094
+  Time to read symbol table	0.015
+  Time to read fn proto table	0.015
+  Time to read attribute table	0
+  Time to read class table	0.032
+  Time to read script info table	0
+  Time to read fn body table	0.171
+Time to read doABC	0.468
+
+==========================================================
+
+Time to read 			 0.187
+Time to read 			 1.046
+1482 Stage <Read template> took 1451 ms
+2231 Stage <miscellaneous> took 749 ms
+Time to read 			 1.185
+Time to read 			 0.468
+3931 Stage <Read function libraries> took 1700 ms
+Time to read 			 0.39
+Time to read 			 3.759
+Time to read 			 0.015
+Time to read 			 0.874
+Time to read 			 1.716
+Time to process spreadsheet: 3.432seconds
+Total time for SWF generation: 44.585 seconds
+
+==========================================================
+
+
+==========================================================
+
+
+==========================================================
+
+
+==========================================================
+
+
+
+
+
+

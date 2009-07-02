@@ -80,7 +80,7 @@ void nonSequentialAccess();
 std::vector<int> vector1;
 std::list<int>   list1;
 
-int main() {
+void main_() {
 	// Calculate time for adding to end
 	addToEnd();
 
