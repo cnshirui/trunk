@@ -1,0 +1,1575 @@
+/*
+ * Ruby On Flash is a compiler written in Java that compiles Ruby source code directly into Flash applications(.swf files), 
+ * and aims to provide a programmer-friendly approach to casual Flash game development.   
+ * 
+ * Copyright (C) 2006-2007 Lem Hongjian (http://sourceforge.net/projects/rubyonflash)
+ * 
+ * This file is part of Ruby On Flash.
+ *
+ * Ruby On Flash is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Ruby On Flash is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Ruby On Flash.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+import java_cup.runtime.*;
+import rubyToSwf.ast.*;
+import rubyToSwf.common.*;
+import java.util.Vector;
+
+init with {: ((rubyToSwf.parser.Scanner)getScanner()).init(); :};
+scan with {: return ((rubyToSwf.parser.Scanner)getScanner()).next_token(); :};
+
+terminal AstInteger tINTEGER;
+terminal AstFloat tFLOAT;
+terminal AstSingleQuote tSINGLE_QUOTE_STR;
+terminal AstDoubleQuote tDOUBLE_QUOTE_STR;
+terminal AstVariableLocal tVAR_LOCAL;
+terminal AstVariableClass tVAR_CLASS;
+terminal AstVariableInstance tVAR_INSTANCE;
+terminal AstVariableGlobal tVAR_GLOBAL;
+terminal AstConstant tCONSTANT;
+
+terminal AstObject tNLINE, tPLUS, tMINUS, tMULTIPLY, tDIVIDE, tMODULO, tUMINUS, tUPLUS, tPOW,tLEFT_SHIFT,tRIGHT_SHIFT;
+terminal AstObject tEQ, tEQQ, tLESS, tGREAT, tLEQ, tGEQ, tNEQ, tCOMPARE,tNOT, tANDOP, tOROP;
+terminal AstObject tLPAREN, tRPAREN, tCOMMA, tLSQUAREBRACE, tRSQUAREBRACE, tBAR, tLCURLYBRACE, tRCURLYBRACE,tQMARK,tCOLON;
+terminal AstObject tASSIGN;
+terminal AstObject tSEMI_COLON,tAMP,tBIT_XOR;
+terminal AstObject tHASH_ARROW;
+terminal AstObject tDOT,tCOLON2;// . and ::
+terminal AstObject tDOT2, tDOT3; // .. and ...
+
+terminal AstObject kDO, kEND,kAS,kIF,kTHEN,kELSE,kELSIF, kTRUE, kFALSE, kNIL,kWHILE,kAND,kOR,kNOT,kUNLESS,kUNTIL,kBREAK,kNEXT,kDEF,kYIELD,kCLASS,kRETURN,kALIAS,kUNDEF,kREDO,kSUPER,kDEFINED,kCASE,kWHEN,kMODULE,kLOAD,kRAISE;
+
+non terminal AstStatements program;
+non terminal AstStatements stmts;
+non terminal AstStatements stmtsInner;
+non terminal term;
+non terminal terms;
+non terminal optTerms;
+non terminal IAstStatement stmt;
+non terminal IAstExpression expr;
+non terminal IAstExpression opExpr;
+non terminal IAstExpression numeric;
+non terminal IAstExpression string;
+non terminal IAstExpression literal;
+non terminal AstArray array;
+non terminal AstFunctionCall functionCall;
+non terminal AstFunctionCall methodFuncCall;
+non terminal Vector<AstFunctionCall.Argument> optArgs;
+non terminal Vector<AstFunctionCall.Argument> args;
+non terminal Vector<IAstExpression> optArrayArgs;
+non terminal Vector<IAstExpression> arrayArgs;
+non terminal AstClosure optClosure;
+non terminal AstClosure closure;
+non terminal Vector<AstClosure.ClosureFormal> optClosureParams;
+non terminal Vector<AstClosure.ClosureFormal> closureParams;
+non terminal AstVariableLocal predefinedVar;
+non terminal IAstExpression lhs;
+non terminal AstDereference deRef;
+non terminal AstMethodCall methodCall;
+non terminal AstNative nativeDeref;
+non terminal Object separator;
+non terminal AstArrayDeRef arrayDeRef;
+non terminal IAstExpression atomic;
+non terminal AstIfExpression ifExpr,unlessExpr;
+non terminal AstObject optThen;
+non terminal AstStatements optElses,elses,elseEnd,optUnlessElse;
+non terminal AstWhileLoop whileLoop;
+non terminal AstObject optDo;
+non terminal IAstExpression whileCond;
+non terminal AstHash hash;
+non terminal AstHash optHashElements;
+non terminal AstHash hashElements;
+non terminal AstMethodDef methodDef;
+non terminal IAstExpression MethodReceiver;
+non terminal Vector<AstMethodDef.FormalParam> optFormals;
+non terminal Vector<AstMethodDef.FormalParam> formalsList;
+non terminal AstYield yield;
+non terminal Vector<AstFunctionCall.Argument> optYieldArgs;
+non terminal Vector<AstFunctionCall.Argument> yieldArgs;
+non terminal AstClassDef classDef;
+non terminal IAstExpression optClassBase;
+non terminal AstAlias alias;
+non terminal String methodOp;
+non terminal AstSuper superCall;
+non terminal AstDefined definedExpr;
+non terminal AstCase caseExpr;
+non terminal Vector<AstCase.When> whens;
+non terminal AstStatements optCaseElse;
+non terminal AstModuleDef moduleDef;
+non terminal AstRaise raiseStmt;
+non terminal String keywordsAsVar;
+
+precedence left kAND, kOR;
+precedence right kNOT;
+precedence right tASSIGN;
+precedence left tQMARK,tCOLON;
+precedence nonassoc tDOT2, tDOT3;
+precedence left tOROP;
+precedence left tANDOP;
+precedence nonassoc tEQ, tEQQ, tNEQ;
+precedence left tLESS, tGREAT, tLEQ, tGEQ,tCOMPARE;
+precedence left tBAR, tBIT_XOR;
+precedence left tAMP;
+precedence left tLEFT_SHIFT, tRIGHT_SHIFT;
+precedence left tPLUS, tMINUS;
+precedence left tMULTIPLY, tDIVIDE, tMODULO;
+precedence right tUMINUS;
+precedence right tPOW;
+precedence right tUPLUS,tNOT;
+precedence left tDOT, tCOLON2;
+
+program ::= stmts:e1 {: RESULT=e1;
+						if(Global.verbose){
+							System.out.println("Reduced: program -> stmts");
+						}
+					 :}
+		;
+
+stmts ::= stmtsInner:e1 optTerms {: 
+								if(e1!=null){
+									RESULT = e1;
+								}else{
+									RESULT = new AstStatements(0);
+								}
+							   if(Global.verbose){
+								   System.out.println("Reduced: stmts -> stmtsInner");
+							   }
+							:}
+		;
+
+stmtsInner ::= /*empty string*/ {:
+								   if(Global.verbose){
+									   System.out.println("Reduced: stmtsInner -> empty"); 
+								   }
+								:}
+		   | stmtsInner:e1 terms stmt:e2 {: AstStatements statements = null;
+											if(e1==null){
+												statements = new AstStatements(e2.getLine());
+											}else{
+												statements = e1;
+											}
+											statements.add(e2);
+											RESULT = statements; 
+											if(Global.verbose){
+												System.out.println("Reduced: stmtsInner -> stmtsInner terms stmt"); 
+											}
+										 :}
+		  | stmt:e1 {: AstStatements statements = new AstStatements(e1.getLine());
+					   statements.add(e1);
+					   RESULT = statements;
+					   if(Global.verbose){
+							System.out.println("Reduced: stmtsInner -> stmt");
+					    }
+					:}
+		  ;
+
+optTerms ::= /* empty string*/ {:
+								   if(Global.verbose){
+									   System.out.println("Reduced: optTerms -> empty string");
+								   }
+							   :}
+		 |	 terms {:
+						if(Global.verbose){
+						   System.out.println("Reduced: optTerms -> terms");
+						}
+				   :}
+		 ;
+terms ::= term {:
+			  if(Global.verbose){
+				  System.out.println("Reduced: terms -> term");
+			  }
+			   :}
+	  |	  terms term {:
+					  if(Global.verbose){
+						  System.out.println("Reduced: terms -> terms term");
+					  }
+					 :}
+	  ;
+
+term ::= tNLINE {: if(Global.verbose){
+						  System.out.println("Reduced: term -> tNLINE");
+					  }
+				   :}
+		| tSEMI_COLON {: if(Global.verbose){
+							System.out.println("Reduced: term -> tSEMI_COLON");
+						 }
+					  :}
+		;
+		
+stmt ::= expr:e1 {: RESULT = new AstExprStatement(e1);
+				  if(Global.verbose){
+					  System.out.println("Reduced: stmt -> expr");
+				  }
+			   :}
+	  | kBREAK:e1 {: RESULT = new AstBreak(e1.getLine());
+					 if(Global.verbose){
+						 System.out.println("Reduced: stmt -> kBreak");
+					 }
+				  :}
+	  | kNEXT:e1 {: RESULT = new AstNext(e1.getLine());
+					if(Global.verbose){
+						System.out.println("Reduced: stmt -> kNext");
+					}
+				  :}
+	  | kREDO:e1 {: RESULT = new AstRedo(e1.getLine());
+					if(Global.verbose){
+						System.out.println("Reduced: stmt -> kREDO");
+					}
+				  :}
+	  | kRETURN:e1 {: RESULT = new AstReturn(null,e1.getLine());
+					  if(Global.verbose){
+						  System.out.println("Reduced: stmt -> return");
+					  }
+				   :}
+	  | kRETURN:e1 expr:e2 {: RESULT = new AstReturn(e2,e1.getLine());
+								if(Global.verbose){
+									System.out.println("Reduced: stmt -> yield");
+								}
+							 :}
+	  | kLOAD:e1 string:e2 {: 
+							  RESULT = new AstLoad((AstStatements)(new parser(new Scanner(Global.getFullLoadPath(e2.toString())))).parse().value,e1.getLine());
+							  if(Global.verbose){
+								  System.out.println("Reduced: stmt -> load \"" + e2 + "\"");
+							  }
+						   :}
+	  | raiseStmt:e1{: RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: stmt -> raiseStmt");
+					   }
+					:}
+	 ;
+
+raiseStmt ::= kRAISE:e1 expr:e2 {: RESULT = new AstRaise(e2,e1.getLine());
+								   if(Global.verbose){
+									   System.out.println("Reduced: raiseStmt -> raise expr");
+								   }
+								:}
+		  | kRAISE:e1{: RESULT = new AstRaise(null,e1.getLine());
+						if(Global.verbose){
+							System.out.println("Reduced: raiseStmt -> raise");
+					    }
+					 :}
+		  ;
+		  
+alias ::= kALIAS:e1 tVAR_LOCAL:e2 tVAR_LOCAL:e3 {: RESULT = new AstAlias(e2.getName(),e3.getName(),e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 tVAR_LOCAL:e2 methodOp:e3 {: RESULT = new AstAlias(e2.getName(),e3,e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 methodOp:e2 tVAR_LOCAL:e3 {: RESULT = new AstAlias(e2,e3.getName(),e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 methodOp:e2 methodOp:e3 {: RESULT = new AstAlias(e2,e3,e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 tVAR_LOCAL:e2 keywordsAsVar:e3 {: RESULT = new AstAlias(e2.getName(),e3,e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 keywordsAsVar:e2 keywordsAsVar:e3 {: RESULT = new AstAlias(e2,e3,e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 methodOp:e2 keywordsAsVar:e3 {: RESULT = new AstAlias(e2,e3,e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 keywordsAsVar:e2 methodOp:e3 {: RESULT = new AstAlias(e2,e3,e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+		| kALIAS:e1 keywordsAsVar:e2 tVAR_LOCAL:e3 {: RESULT = new AstAlias(e2,e3.getName(),e1.getLine());
+												   if(Global.verbose){
+													   System.out.println("Reduced: alias -> alias "+e2+" "+e3);
+												   }
+												:}
+	  ;
+	  
+moduleDef ::= kMODULE:e1 tCONSTANT:e2 term stmts:e4 kEND:e5 {:
+				RESULT = new AstModuleDef(e2.toString(),e4,e1.getLine());
+				if(Global.verbose){
+					System.out.println("Reduced: moduleDef -> module "+e2.toString()+" stmts end");
+				}
+			  :}
+		  ;
+		  
+classDef ::= kCLASS:e1 tCONSTANT:e2 optClassBase:e3 term stmts:e4 kEND:e5 {: RESULT = new AstClassDef(e2.toString(),e3,e4,e1.getLine());
+																		if(Global.verbose){
+																			System.out.println("Reduced: classDef -> class "+e2.toString()+" optClassBase stmts end");
+																		}
+																	 :}
+		 ;
+
+optClassBase ::= tLESS atomic:e1 {: RESULT = e1;
+									if(Global.verbose){
+										System.out.println("Reduced: optClassBase -> atomic");
+									}
+								 :}
+			 | /*empty*/ {: RESULT = null;
+							if(Global.verbose){
+								System.out.println("Reduced: optClassBase -> empty");
+							}
+						 :}
+			 ;
+			 
+yield ::= kYIELD:e1 tLPAREN:e2 optYieldArgs:e3 tRPAREN:e4{: RESULT = new AstYield(e3,e1.getLine());
+															if(Global.verbose){
+																System.out.println("Reduced: yield -> kYIELD ( optYieldArgs )");
+															}
+														 :}
+	  ;
+
+optYieldArgs ::= /*empty String*/{: RESULT = null;
+									if(Global.verbose){
+										System.out.println("Reduced: optYieldArgs -> empty string");
+									}
+								 :}
+			 | yieldArgs:e1 {: RESULT = e1;
+								if(Global.verbose){
+									System.out.println("Reduced: optYieldArgs -> yieldArgs");
+								}
+							:}
+			 ;
+	
+yieldArgs ::= expr:e1 {: RESULT = new Vector<AstFunctionCall.Argument>();
+						   RESULT.add(new AstFunctionCall.Argument(e1));
+						   if(Global.verbose){
+							   System.out.println("Reduced: yieldArgs -> atomic");
+						   }
+						:}
+		  | tMULTIPLY expr:e1 {: RESULT = new Vector<AstFunctionCall.Argument>();
+							AstFunctionCall.Argument temp = new AstFunctionCall.Argument(e1);
+							temp.setArray();
+						   RESULT.add(temp);
+						   if(Global.verbose){
+							   System.out.println("Reduced: yieldArgs -> * atomic");
+						   }
+						:}
+		  | yieldArgs:e1 tCOMMA:e2 expr:e3 {: RESULT = e1;
+												RESULT.add(new AstFunctionCall.Argument(e3));
+												if(Global.verbose){
+													System.out.println("Reduced: yieldArgs -> yieldArgs , atomic");
+												}
+											 :}
+		  | yieldArgs:e1 tCOMMA:e2 tMULTIPLY expr:e3 {: RESULT = e1;
+												AstFunctionCall.Argument temp = new AstFunctionCall.Argument(e3);
+												temp.setArray();
+												RESULT.add(temp);
+												if(Global.verbose){
+													System.out.println("Reduced: yieldArgs -> yieldArgs , *atomic");
+												}
+											 :}
+		  ;
+		  
+methodDef ::= kDEF:e1 MethodReceiver:e2 tVAR_LOCAL:e3 tLPAREN:e4 optFormals:e5 tRPAREN:e6 term:e7 stmts:e8 kEND:e9{:
+				  RESULT = new AstMethodDef(e2,e3.getName(),(Vector<AstMethodDef.FormalParam>)e5,e8,e1.getLine());
+				  if(Global.verbose){
+					  System.out.println("Reduced: methodDef -> def MethodReceiver::"+ e3.toString() +"( optFormals ) tNLINE stmts end");
+				  }
+			  :}
+		 | kDEF:e1 tVAR_LOCAL:e3 tLPAREN:e4 optFormals:e5 tRPAREN:e6 term:e7 stmts:e8 kEND:e9{:
+				  RESULT = new AstMethodDef(null,e3.getName(),(Vector<AstMethodDef.FormalParam>)e5,e8,e1.getLine());
+				  if(Global.verbose){
+					  System.out.println("Reduced: methodDef -> def "+e3.toString()+"( optFormals ) tNLINE stmts end");
+				  }
+			  :}
+		 | kDEF:e1 methodOp:e3 tLPAREN:e4 optFormals:e5 tRPAREN:e6 term:e7 stmts:e8 kEND:e9{:
+				  RESULT = new AstMethodDef(null,e3,(Vector<AstMethodDef.FormalParam>)e5,e8,e1.getLine());
+				  if(Global.verbose){
+					  System.out.println("Reduced: methodDef -> def "+e3+"( optFormals ) tNLINE stmts end");
+				  }
+			  :}
+		 | kDEF:e1 MethodReceiver:e2 methodOp:e3 tLPAREN:e4 optFormals:e5 tRPAREN:e6 term:e7 stmts:e8 kEND:e9{:
+				  RESULT = new AstMethodDef(e2,e3,(Vector<AstMethodDef.FormalParam>)e5,e8,e1.getLine());
+				  if(Global.verbose){
+					  System.out.println("Reduced: methodDef -> def MethodReceiver::"+e3+"( optFormals ) tNLINE stmts end");
+				  }
+			  :}
+		 | kDEF:e1 keywordsAsVar:e3 tLPAREN:e4 optFormals:e5 tRPAREN:e6 term:e7 stmts:e8 kEND:e9{:
+				  RESULT = new AstMethodDef(null,e3,(Vector<AstMethodDef.FormalParam>)e5,e8,e1.getLine());
+				  if(Global.verbose){
+					  System.out.println("Reduced: methodDef -> def "+e3+"( optFormals ) tNLINE stmts end");
+				  }
+			  :}
+		 | kDEF:e1 MethodReceiver:e2 keywordsAsVar:e3 tLPAREN:e4 optFormals:e5 tRPAREN:e6 term:e7 stmts:e8 kEND:e9{:
+				  RESULT = new AstMethodDef(e2,e3,(Vector<AstMethodDef.FormalParam>)e5,e8,e1.getLine());
+				  if(Global.verbose){
+					  System.out.println("Reduced: methodDef -> def MethodReceiver::"+e3+"( optFormals ) tNLINE stmts end");
+				  }
+			  :}
+		  ;
+
+methodOp ::= tPLUS:e1 {: RESULT = "+";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> +");
+						 }
+					  :}
+		 | tMINUS:e1 {: RESULT = "-";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> -");
+						 }
+					  :}
+		 | tMULTIPLY:e1 {: RESULT = "*";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> *");
+						 }
+					  :}
+		 | tDIVIDE:e1 {: RESULT = "/";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> /");
+						 }
+					  :}
+		 | tMODULO:e1 {: RESULT = "%";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> %");
+						 }
+					  :}
+		 | tPOW:e1 {: RESULT = "**";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> **");
+						 }
+					  :}
+		 | tGREAT:e1 {: RESULT = ">";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> >");
+						 }
+					  :}
+		 | tLESS:e1 {: RESULT = "<";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> <");
+						 }
+					  :}
+		 | tGEQ:e1 {: RESULT = ">=";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> >=");
+						 }
+					  :}
+		 | tLEQ:e1 {: RESULT = "<=";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> <=");
+						 }
+					  :}
+		 | tCOMPARE:e1 {: RESULT = "<=>";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> <=>");
+						 }
+					  :}
+		 | tEQQ:e1 {: RESULT = "===";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> ===");
+						 }
+					  :}
+		 | tEQ:e1 {: RESULT = "==";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> ==");
+						 }
+					  :}
+		 | tAMP:e1 {: RESULT = "&";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> &");
+						 }
+					  :}
+		 | tBAR:e1 {: RESULT = "|";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> |");
+						 }
+					  :}
+		  | tBIT_XOR:e1 {: RESULT = "^";
+						 if(Global.verbose){
+							 System.out.println("Reduced: methodOp -> ^");
+						 }
+					  :}
+		  | tLEFT_SHIFT:e1 {: RESULT = "<<";
+							  if(Global.verbose){
+								  System.out.println("Reduced: methodOp -> <<");
+							  }
+						   :}
+		  | tRIGHT_SHIFT:e1 {: RESULT = ">>";
+							   if(Global.verbose){
+								   System.out.println("Reduced: methodOp -> >>");
+							   }
+						    :}
+		  | tLSQUAREBRACE:e1 tRSQUAREBRACE:e2 {: RESULT = "[]";
+											     if(Global.verbose){
+												     System.out.println("Reduced: methodOp -> []");
+											     }
+										      :}
+		  | tLSQUAREBRACE:e1 tRSQUAREBRACE:e2 tASSIGN:e3{: 
+								RESULT = "[]=";
+								if(Global.verbose){
+									System.out.println("Reduced: methodOp -> []=");
+								}
+							:}
+		 ;
+
+keywordsAsVar ::= kDO {: RESULT = "do"; :}
+			  | kEND {: RESULT = "end"; :}
+			  | kAS {: RESULT = "as"; :}
+			  | kIF {: RESULT = "if"; :}
+			  | kTHEN {: RESULT = "then"; :}
+			  | kELSE {: RESULT = "else"; :}
+			  | kELSIF {: RESULT = "elsif"; :}
+			  | kTRUE {: RESULT = "true"; :}
+			  | kFALSE {: RESULT = "false"; :}
+			  | kNIL {: RESULT = "nil"; :}
+			  | kWHILE {: RESULT = "while"; :}
+			  | kAND {: RESULT = "and"; :}
+			  | kOR {: RESULT = "or"; :}
+			  | kNOT {: RESULT = "not"; :}
+			  | kUNLESS {: RESULT = "unless"; :}
+			  | kUNTIL {: RESULT = "until"; :}
+			  | kBREAK {: RESULT = "break"; :}
+			  | kNEXT {: RESULT = "next"; :}
+			  | kDEF {: RESULT = "def"; :}
+			  | kYIELD {: RESULT = "yield"; :}
+			  | kCLASS {: RESULT = "class"; :}
+			  | kRETURN {: RESULT = "return"; :}
+			  | kALIAS {: RESULT = "alias"; :}
+			  | kUNDEF {: RESULT = "undef"; :}
+			  | kREDO {: RESULT = "redo"; :}
+			  | kSUPER {: RESULT = "super"; :}
+			  | kDEFINED {: RESULT = "defined?"; :}
+			  | kCASE {: RESULT = "case"; :}
+			  | kWHEN {: RESULT = "when"; :}
+			  | kMODULE {: RESULT = "module"; :}
+			  | kLOAD {: RESULT = "load"; :}
+			  | kRAISE {: RESULT = "raise"; :}
+			  ;
+			  
+MethodReceiver ::= tVAR_LOCAL:e1 separator {: RESULT = e1;
+											  if(Global.verbose){
+												  System.out.println("Reduced: MethodReceiver -> tVAR_LOCAL");
+											  }
+										   :}
+			   | tVAR_CLASS:e1 separator {: RESULT = e1;
+										    if(Global.verbose){
+												System.out.println("Reduced: MethodReceiver -> tVAR_CLASS");
+											}
+									     :}
+			   | tVAR_INSTANCE:e1 separator {: RESULT = e1;
+											   if(Global.verbose){
+											       System.out.println("Reduced: MethodReceiver -> tVAR_INSTANCE");
+											   }
+										    :}
+			   | tVAR_GLOBAL:e1 separator {: RESULT = e1;
+											 if(Global.verbose){
+											     System.out.println("Reduced: MethodReceiver -> tVAR_GLOBAL");
+											 }
+										  :}
+			   | tCONSTANT:e1 separator {: RESULT = e1;
+											if(Global.verbose){
+												System.out.println("Reduced: MethodReceiver -> tCONSTANT");
+											}
+										:}
+			   ;
+			   
+optFormals ::= /*empty string*/ {: RESULT = null;
+								   if(Global.verbose){
+									   System.out.println("Reduced: optFormals -> empty");
+								   }
+								:}
+		   | formalsList:e1{: RESULT = e1;
+							  if(Global.verbose){
+								  System.out.println("Reduced: optFormals -> formalsList");
+							  }
+						   :}
+		   ;
+
+formalsList ::= tVAR_LOCAL:e1{: RESULT = new Vector<AstMethodDef.FormalParam>();
+								RESULT.add(new AstMethodDef.FormalParam(e1.getName(),null,e1.getLine()));
+								if(Global.verbose){
+									System.out.println("Reduced: formalsList -> tVAR_LOCAL");
+								}
+							 :}
+			| tVAR_LOCAL:e1 tASSIGN:e2 expr:e3{:
+												RESULT = new Vector<AstMethodDef.FormalParam>();
+												RESULT.add(new AstMethodDef.FormalParam(e1.getName(),e3,e1.getLine()));
+												if(Global.verbose){
+													System.out.println("Reduced: formalsList -> tVAR_LOCAL = expr");
+												}
+											  :}
+			| tMULTIPLY:e1 tVAR_LOCAL:e2{: RESULT = new Vector<AstMethodDef.FormalParam>();
+										   AstMethodDef.FormalParam temp = new AstMethodDef.FormalParam(e2.getName(),null,e1.getLine());
+										   temp.setArrayFlag();
+										   RESULT.add(temp);
+										   if(Global.verbose){
+												System.out.println("Reduced: formalsList -> * tVAR_LOCAL");
+											}
+										:}
+			| tAMP:e1 tVAR_LOCAL:e2{: RESULT = new Vector<AstMethodDef.FormalParam>();
+									  AstMethodDef.FormalParam temp = new AstMethodDef.FormalParam(e2.getName(),null,e1.getLine());
+									  temp.setProcFlag();
+									  RESULT.add(temp);
+									  if(Global.verbose){
+										  System.out.println("Reduced: formalsList -> & tVAR_LOCAL");
+									  }
+								   :}
+			| formalsList:e1 tCOMMA:e2 tVAR_LOCAL:e3{: RESULT = e1;
+													   RESULT.add(new AstMethodDef.FormalParam(e3.getName(),null,e3.getLine()));
+													   if(Global.verbose){
+														   System.out.println("Reduced: formalsList -> formalsList , tVAR_LOCAL");
+													   }
+													:}
+			| formalsList:e1 tCOMMA:e2 tVAR_LOCAL:e3 tASSIGN:e4 expr:e5{:
+					RESULT = e1;
+					RESULT.add(new AstMethodDef.FormalParam(e3.getName(),e5,e3.getLine()));
+					if(Global.verbose){
+						System.out.println("Reduced: formalsList -> formalsList , tVAR_LOCAL = expr");
+					}
+			  :}
+			| formalsList:e1 tCOMMA:e2 tMULTIPLY:e3 tVAR_LOCAL:e4{: 
+				  RESULT = e1;
+				  AstMethodDef.FormalParam temp = new AstMethodDef.FormalParam(e4.getName(),null,e3.getLine());
+				  temp.setArrayFlag();
+				  RESULT.add(temp);
+				  if(Global.verbose){
+					  System.out.println("Reduced: formalsList -> formalsList , * tVAR_LOCAL");
+				  }
+			  :}
+			| formalsList:e1 tCOMMA:e2 tAMP:e3 tVAR_LOCAL:e4{:
+				  RESULT = e1;
+				  AstMethodDef.FormalParam temp = new AstMethodDef.FormalParam(e4.getName(),null,e3.getLine());
+				  temp.setProcFlag();
+				  RESULT.add(temp);
+				  if(Global.verbose){
+					  System.out.println("Reduced: formalsList -> formalsList , & tVAR_LOCAL");
+				  }
+			  :}
+			;
+			
+expr ::= opExpr:e1 {: RESULT = e1;
+						 if(Global.verbose){
+							System.out.println("Reduced: expr -> opExpr");
+						 }
+					  :}
+	  | ifExpr:e1 {: RESULT = e1;
+					 if(Global.verbose){
+						System.out.println("Reduced: expr -> ifExpr");
+					 }
+				  :}
+	  | unlessExpr:e1 {: RESULT = e1;
+						 if(Global.verbose){
+							System.out.println("Reduced: expr -> unlessExpr");
+						 }
+					  :}
+	  | whileLoop:e1 {: RESULT = e1;
+						if(Global.verbose){
+							System.out.println("Reduced: expr -> whileLoop");
+						}
+					 :}
+	  | alias:e1 {: RESULT = e1;
+					if(Global.verbose){
+						System.out.println("Reduced: expr -> alias");
+					}
+				 :}
+	  | kUNDEF:e1 tVAR_LOCAL:e2{: RESULT = new AstUndef(e2.getName(),e1.getLine());
+								  if(Global.verbose){
+									  System.out.println("Reduced: expr -> undef "+e2);
+								  }
+							   :}
+	  | kUNDEF:e1 methodOp:e2{: RESULT = new AstUndef(e2,e1.getLine());
+								  if(Global.verbose){
+									  System.out.println("Reduced: expr -> undef "+e2);
+								  }
+							   :}
+	  | kUNDEF:e1 keywordsAsVar:e2{: RESULT = new AstUndef(e2,e1.getLine());
+								  if(Global.verbose){
+									  System.out.println("Reduced: expr -> undef "+e2);
+								  }
+							   :}
+	  | methodDef:e1 {: RESULT = e1;
+						if(Global.verbose){
+							System.out.println("Reduced: expr -> methodDef");
+						}
+					 :}
+	  | classDef:e1 {: RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: expr -> classDef");
+					   }
+					:}
+	  | moduleDef:e1 {: RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: expr -> moduleDef");
+					   }
+					:}
+	  | definedExpr:e1 {: RESULT = e1;
+						  if(Global.verbose){
+							  System.out.println("Reduced: atomic -> definedExpr");
+						  }
+					   :}
+	 ;
+
+optThen ::= kTHEN:e1 {: RESULT = e1;
+						if(Global.verbose){
+							System.out.println("Reduced: optThen -> kTHEN");
+						}
+					 :}
+		| tNLINE:e1 {: RESULT = e1;
+						if(Global.verbose){
+							System.out.println("Reduced: optThen -> tNLINE");
+						}
+					 :}
+		| tSEMI_COLON:e1 {: RESULT = e1;
+							if(Global.verbose){
+								System.out.println("Reduced: optThen -> tSEMI_COLON");
+							}
+						 :}
+		;
+		
+ifExpr ::= kIF:e1 expr:e2 optThen:e3 stmts:e4 optElses:e5 kEND:e6 {: 
+																	 RESULT = new AstIfExpression(e2,e4,e5,e1.getLine());
+																	 if(Global.verbose){
+																		 System.out.println("Reduced: ifExpr -> if expr optThen stmts optElses end");
+																	 }
+																  :}
+		;
+
+optElses ::= /*empty string*/{: RESULT = null;
+								if(Global.verbose){
+									System.out.println("Reduced: optElses -> empty");
+								}
+							 :}
+		 | elses:e1 {: RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: optElses -> elses");
+					   }
+					:}
+		 ;
+
+elses ::= elseEnd:e1 {: RESULT = e1;
+					    if(Global.verbose){
+							System.out.println("Reduced: elses -> elseEnd");
+						}
+					 :}
+	  | kELSIF:e1 expr:e2 optThen:e3 stmts:e4 elses:e5 {: 
+														  AstIfExpression ifExpr = new AstIfExpression(e2,e4,e5,e1.getLine());
+														  AstStatements statements = new AstStatements(e1.getLine());
+														  statements.add(new AstExprStatement(ifExpr));
+														  RESULT = statements;
+														  if(Global.verbose){
+															  System.out.println("Reduced: else -> elsif expr optThen stmts elses");
+														  }
+													 :}
+	  ;
+
+	   
+unlessExpr ::= kUNLESS:e1 expr:e2 optThen:e3 stmts:e4 optUnlessElse:e5 kEND:e6 {: RESULT = new AstIfExpression(new AstUnaryOpCall(e2,AstUnaryOpCall.OP_NOT,e2.getLine()),e4,e5,e1.getLine());
+																				  if(Global.verbose){
+																				      System.out.println("Reduced: unlessExpr -> unless expr then stnts optUnlessElse");
+																			      }
+																			   :}
+		  ;
+
+	   
+optUnlessElse ::= /*empty*/ {: RESULT = null;
+							   if(Global.verbose){
+								   System.out.println("Reduced: optUnlessElse -> empty");
+						       }
+							:}
+			  | kELSE:e1 stmts:e2 {: 
+									 RESULT = e2;
+								     if(Global.verbose){
+									     System.out.println("Reduced: optUnlessElse -> else stmts");
+							         }
+								  :}
+			  ;
+
+	   
+elseEnd ::= kELSE:e1 stmts:e2 {: RESULT = e2;
+							     if(Global.verbose){
+								     System.out.println("Reduced: elseEnd -> else stmts");
+							     }
+							  :}
+		| kELSIF:e1 expr:e2 optThen:e3 stmts:e4 {: AstIfExpression ifExpr = new AstIfExpression(e2,e4,null,e1.getLine());
+													 RESULT = new AstStatements(e1.getLine());
+													 RESULT.add(new AstExprStatement(ifExpr));
+												     if(Global.verbose){
+													     System.out.println("Reduced: elseEnd -> elsif atomic then stmts");
+												     }
+												  :}
+		;
+
+
+whileLoop ::= whileCond:e1 optDo:e3 stmts:e4 kEND:e5 {: RESULT = new AstWhileLoop(e1,e4,e1.getLine());
+															 if(Global.verbose){
+															     System.out.println("Reduced: whileLoop -> whileCond optDo stmts end");
+														     }
+														  :}							  
+		  ;
+
+whileCond ::= kWHILE:e1 expr:e2 {: 
+								   RESULT = e2;
+								   if(Global.verbose){
+									   System.out.println("Reduced: whileCond -> while expr");
+					 		        }
+								:}
+		  | kUNTIL:e1 expr:e2 {: 
+								 RESULT = new AstUnaryOpCall(e2,AstUnaryOpCall.OP_NOT,e2.getLine());
+								 if(Global.verbose){
+									   System.out.println("Reduced: whileCond -> until expr");
+					 		     }
+							   :}
+		  ;
+	   
+optDo ::= tNLINE:e1 {: RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: optDo -> tNLINE");
+				       }
+					:}
+	  | kDO:e1 {: RESULT = e1;
+				  if(Global.verbose){
+					  System.out.println("Reduced: optDo -> kDO");
+				  }
+			   :}
+	  | tSEMI_COLON:e1 {: RESULT = e1;
+						  if(Global.verbose){
+							  System.out.println("Reduced: optDo -> tSEMI_COLON");
+						  }
+					   :}
+	  ;
+//atomic are structures that do not need parenthesis
+
+atomic ::= literal:e1 {: RESULT = e1;
+					  if(Global.verbose){
+						  System.out.println("Reduced: atomic -> literal");
+					  }
+				   :}
+	  | predefinedVar:e1 {: RESULT = e1;
+							if(Global.verbose){
+								System.out.println("Reduced: atomic -> predefinedVar");
+							}
+						 :}
+	  | tLPAREN expr:e2 tRPAREN {: RESULT = e2;
+								   if(Global.verbose){
+									   System.out.println("Reduced: atomic -> ( expr )");
+								   }
+								:}
+	  | functionCall:e1 {: RESULT = e1;
+						   if(Global.verbose){
+							   System.out.println("Reduced: atomic -> functionCall");
+						   }
+						:}
+	  | lhs:e1 {: RESULT = e1;
+				  if(Global.verbose){
+					  System.out.println("Reduced: atomic -> lhs");
+				  }
+		   	   :}
+	  | methodCall:e1 {: RESULT = e1;
+						 if(Global.verbose){
+						     System.out.println("Reduced: atomic -> methodCall");
+						 }
+					  :}
+	  | hash:e1 {: RESULT = e1;
+				   if(Global.verbose){
+					   System.out.println("Reduced: atomic -> hash");
+				   }
+				:}
+	  | yield:e1 {: RESULT = e1;
+					if(Global.verbose){
+						System.out.println("Reduced: atomic -> yield");
+					}
+				 :}
+	  | superCall:e1 {: RESULT = e1;
+					if(Global.verbose){
+						System.out.println("Reduced: atomic -> superCall");
+					}
+				 :}
+	  | caseExpr:e1 {: RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: atomic -> caseExpr");
+					   }
+					:}
+	  ;
+
+caseExpr ::= kCASE:e1 atomic:e2 tNLINE:e3 optTerms whens:e4 optCaseElse:e5 kEND:e6{:
+				RESULT = new AstCase(e2,e4,e5,e1.getLine());
+				if(Global.verbose){
+					System.out.println("Reduced: caseExpr -> case atomic tNLINE whens optCaseElse end");
+				}
+			 :}
+		 ;
+		 
+whens ::= kWHEN:e1 atomic:e2 optThen:e3 stmts:e4 {: RESULT = new Vector<AstCase.When>();
+													RESULT.add(new AstCase.When(e2,e4,e1.getLine()));
+													if(Global.verbose){
+													    System.out.println("Reduced: whens -> when atomic optThen stmts");
+												    }
+		  :}
+	  | whens:e1 kWHEN:e3 atomic:e4 optThen:e5 stmts:e6 {:
+			RESULT = e1;
+			RESULT.add(new AstCase.When(e4,e6,e3.getLine()));
+			if(Global.verbose){
+				System.out.println("Reduced: whens -> whens when atomic optThen stmts");
+		    }
+	    :}
+	  ;
+	  
+optCaseElse ::= /*empty String*/ {: RESULT = null;
+									if(Global.verbose){
+										System.out.println("Reduced: optCaseElse -> empty string");
+								    }
+								 :}
+			| kELSE:e1 stmts:e2 {: RESULT = e2;
+								   if(Global.verbose){
+									   System.out.println("Reduced: optCaseElse -> else stmts");
+								   }
+			  :}
+			;
+			
+definedExpr ::= kDEFINED:e1 atomic:e2 {:RESULT = new AstDefined(e2,e1.getLine());
+											if(Global.verbose){
+											    System.out.println("Reduced: definedExpr -> defined? atomic: "+e2.toString());
+										    }
+										  :}
+			| kDEFINED:e1 kYIELD:e2 {:RESULT = new AstDefined(new AstYield(null,e1.getLine()),e1.getLine());
+											if(Global.verbose){
+											    System.out.println("Reduced: definedExpr -> defined? yield: "+e2.toString());
+										    }
+										  :}
+			;
+separator ::= tDOT {:
+					 if(Global.verbose){
+						 System.out.println("Reduced: separator -> .");
+	 			     }
+				   :}
+		  | tCOLON2 {:
+					  if(Global.verbose){
+						  System.out.println("Reduced: separator -> ::");
+					  }
+					:}
+		  ;
+		  
+deRef ::= atomic:e1 separator tVAR_LOCAL:e3 {: RESULT = new AstDereference(e1,e3,e1.getLine());
+											 ((AstVariableLocal)e3).setPropertyFlag(true);
+	 									     if(Global.verbose){
+											     System.out.println("Reduced: deRef -> atomic separator tVAR_LOCAL");
+										     }
+										  :}
+	  | atomic:e1 separator tCONSTANT:e3 {: RESULT = new AstDereference(e1,e3,e1.getLine());
+										 ((AstConstant)e3).setPropertyFlag(true);
+	 									 if(Global.verbose){
+									 	     System.out.println("Reduced: deRef -> atomic separator constant");
+									     }
+									  :}
+	  ;
+
+methodCall ::= atomic:e1 separator functionCall:e3 {: RESULT = new AstMethodCall(e1,e3,e1.getLine());
+													  e3.setMethodFlag();
+													if(Global.verbose){
+											 	        System.out.println("Reduced: methodCall -> atomic separator functionCall");
+											        }
+											     :}
+			| atomic:e1 separator methodFuncCall:e3 {: RESULT = new AstMethodCall(e1,e3,e1.getLine());
+													  e3.setMethodFlag();
+													if(Global.verbose){
+											 	        System.out.println("Reduced: methodCall -> atomic separator functionCall");
+											        }
+											     :}
+		   ;
+
+nativeDeref ::= kAS separator tVAR_LOCAL:e3 {: RESULT = new AstNative(e3,e3.getLine());
+											   if(Global.verbose){
+									 		       System.out.println("Reduced: nativeDeref -> AS separator "+e3.getName());
+										       }
+										    :}
+		   | kAS separator tCONSTANT:e3 {: RESULT = new AstNative(e3,e3.getLine());
+										  if(Global.verbose){
+									 	      System.out.println("Reduced: nativeDeref -> AS separator "+e3.getName());
+									      }
+									   :}
+		   | kAS separator functionCall:e3 {: RESULT = new AstNative(e3,e3.getLine());
+											  if(Global.verbose){
+											      System.out.println("Reduced: nativeDeref -> AS separator functionCall");
+											  }
+										   :}
+		   | kAS separator tCONSTANT:e1 tLPAREN optArgs:e3 tRPAREN {: 
+																				  AstFunctionCall temp = new AstFunctionCall(e1.getName(), e3,null,e1.getLine());
+																				  RESULT = new AstNative(temp,e1.getLine());
+																				  if(Global.verbose){
+																					  System.out.println("Reduced: nativeDeref -> AS separator " + e1.getName() + "(functionCallArgs) closure");
+																				  }
+																				  :}
+		   ;
+
+opExpr ::= opExpr:e1 tPLUS opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_PLUS,e1.getLine());
+									   if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tPLUS opExpr");
+									   }
+									:}
+		  | opExpr:e1 tMINUS opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_MINUS,e1.getLine());
+									  if(Global.verbose){
+										System.out.println("Reduced: opExpr -> opExpr tMINUS opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tMULTIPLY opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_MULTIPLY,e1.getLine());
+										 if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tMULTIPLY opExpr");
+										 }
+									  :}
+		  | opExpr:e1 tDIVIDE opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_DIVIDE,e1.getLine());
+									   if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tDIVIDE opExpr");
+									   }
+									:}
+		  | opExpr:e1 tMODULO opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_MODULO,e1.getLine());
+									   if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tMODULO opExpr");
+									   }
+									:}
+		  | opExpr:e1 tPOW opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_POW,e1.getLine());
+									if(Global.verbose){
+										System.out.println("Reduced: opExpr -> opExpr tPOW opExpr");
+									}
+								 :}
+		  | opExpr:e1 tDOT2 opExpr:e3 {: RESULT = new AstRange(e1,e3,false,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tDOT2 opExpr");
+										}
+									  :}
+		  | opExpr:e1 tDOT3 opExpr:e3 {: RESULT = new AstRange(e1,e3,true,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tDOT3 opExpr");
+										}
+									  :}
+		  | opExpr:e1 tAMP opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_BIT_AND,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr & opExpr");
+										}
+									  :}
+		  | opExpr:e1 tBAR opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_BIT_OR,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr | opExpr");
+										}
+									  :}
+		  | opExpr:e1 tBIT_XOR opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_BIT_XOR,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr ^ opExpr");
+										}
+									  :}
+		  | opExpr:e1 tLEFT_SHIFT opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_LEFT_SHIFT,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr << opExpr");
+										}
+									  :}
+		  | opExpr:e1 tRIGHT_SHIFT opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_RIGHT_SHIFT,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr >> opExpr");
+										}
+									  :}
+		  | tUPLUS opExpr:e2 {: RESULT = new AstUnaryOpCall(e2,AstUnaryOpCall.OP_UPLUS,e2.getLine());
+							  if(Global.verbose){
+									System.out.println("Reduced: opExpr -> tUPLUS opExpr");
+							  }
+						   :}
+		  | tNOT opExpr:e2 {: RESULT = new AstUnaryOpCall(e2,AstUnaryOpCall.OP_NOT,e2.getLine());
+							  if(Global.verbose){
+								  System.out.println("Reduced: opExpr -> tNOT opExpr");
+							  }
+						   :}
+		  | kNOT opExpr:e2 {: RESULT = new AstUnaryOpCall(e2,AstUnaryOpCall.OP_NOT,e2.getLine());
+							  if(Global.verbose){
+								  System.out.println("Reduced: opExpr -> kNOT opExpr");
+							  }
+						   :}
+		  | tUMINUS opExpr:e2 {: RESULT = new AstUnaryOpCall(e2,AstUnaryOpCall.OP_UMINUS,e2.getLine());
+							   if(Global.verbose){
+									System.out.println("Reduced: opExpr -> tUMINUS opExpr");
+							   }
+							:}
+		  | opExpr:e1 tGREAT opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_GREAT,e1.getLine());
+									  if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tGREAT opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tLESS opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_LESS,e1.getLine());
+									  if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tLESS opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tGEQ opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_GEQ,e1.getLine());
+									  if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tGEQ opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tCOMPARE opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_COMPARE,e1.getLine());
+											if(Global.verbose){
+												System.out.println("Reduced: opExpr -> opExpr tCOMPARE opExpr");
+											}
+								   :}
+		  | opExpr:e1 tLEQ opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_LEQ,e1.getLine());
+									  if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tLEQ opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tEQ opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_EQ,e1.getLine());
+									  if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tEQ opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tEQQ opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_EQQ,e1.getLine());
+									  if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr tEQQ opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tNEQ opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_NEQ,e1.getLine());
+									  if(Global.verbose){
+										  System.out.println("Reduced: opExpr -> opExpr tNEQ opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tANDOP opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_AND,e1.getLine());
+									  if(Global.verbose){
+										  System.out.println("Reduced: opExpr -> opExpr tANDOP opExpr");
+									  }
+								   :}
+		  | opExpr:e1 tOROP opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_OR,e1.getLine());
+									  if(Global.verbose){
+										  System.out.println("Reduced: opExpr -> opExpr tOROP opExpr");
+									  }
+								   :}
+		  | opExpr:e1 kAND opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_AND,e1.getLine());
+										if(Global.verbose){
+											System.out.println("Reduced: opExpr -> opExpr kAND opExpr");
+										}
+								     :}
+		  | opExpr:e1 kOR opExpr:e3 {: RESULT = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_OR,e1.getLine());
+									   if(Global.verbose){
+										   System.out.println("Reduced: opExpr -> opExpr kOR opExpr");
+									   }
+									:}
+		  | lhs:e1 tASSIGN:e2 opExpr:e3 {: String s1 = (String)(e2.getValue());
+											  IAstExpression operand2 = null;
+											  if(s1.equals("+")){
+												  operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_PLUS,e1.getLine());
+											  }else if(s1.equals("-")){
+												  operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_MINUS,e1.getLine());
+											  }else if(s1.equals("*")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_MULTIPLY,e1.getLine());
+											  }else if(s1.equals("/")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_DIVIDE,e1.getLine());
+											  }else if(s1.equals("%")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_MODULO,e1.getLine());
+											  }else if(s1.equals(" ")){
+													operand2 = e3;
+											  }else if(s1.equals("**")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_POW,e1.getLine());
+											  }else if(s1.equals("<<")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_LEFT_SHIFT,e1.getLine());
+											  }else if(s1.equals(">>")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_RIGHT_SHIFT,e1.getLine());
+											  }else if(s1.equals("&")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_BIT_AND,e1.getLine());
+											  }else if(s1.equals("|")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_BIT_OR,e1.getLine());
+											  }else if(s1.equals("^")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_BIT_XOR,e1.getLine());
+											  }else if(s1.equals("&&")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_AND,e1.getLine());
+											  }else if(s1.equals("||")){
+													operand2 = new AstBinaryOpCall(e1,e3,AstBinaryOpCall.OP_OR,e1.getLine());
+											  }
+											  RESULT = new AstBinaryOpCall(e1,operand2,AstBinaryOpCall.OP_ASSIGN,e1.getLine());
+											  if(Global.verbose){
+												  System.out.println("Reduced: opExpr -> lhs tASSIGN opExpr");
+											  }
+										  :}
+		  | atomic:e1 {: RESULT = e1;
+						 if(Global.verbose){
+							 System.out.println("Reduced: opExpr -> atomic");
+	  				     }
+					  :}
+		  | opExpr:e1 tQMARK:e2 opExpr:e3 tCOLON:e4 opExpr:e5 {: 
+															AstStatements trueStmts = new AstStatements(e3.getLine());
+															trueStmts.add(new AstExprStatement(e3));
+															AstStatements falseStmts = new AstStatements(e5.getLine());
+															falseStmts.add(new AstExprStatement(e5));
+															RESULT = new AstIfExpression(e1,trueStmts,falseStmts,e1.getLine());
+															if(Global.verbose){
+																System.out.println("Reduced: atomic -> opExpr ? opExpr : opExpr");
+															}
+														  :}
+		  ;
+
+superCall ::= kSUPER:e1 tLPAREN optArgs:e3 tRPAREN {: 
+												  RESULT = new AstSuper(e3,e1.getLine());
+												  if(Global.verbose){
+													  System.out.println("Reduced: superCall -> super(optArgs)");
+												  }
+											   :}
+	  | kSUPER:e1 {:
+					RESULT = new AstSuper(null,e1.getLine());
+					RESULT.setDefaultFlag();
+					if(Global.verbose){
+						System.out.println("Reduced: superCall -> super");
+					}
+				  :}
+	  ;
+	  
+functionCall ::=  tVAR_LOCAL:e1 tLPAREN optArgs:e3 tRPAREN optClosure:e5 {: 
+																				  RESULT = new AstFunctionCall(e1.getName(), e3,e5,e1.getLine());
+																				  if(Global.verbose){
+																					  System.out.println("Reduced: functionCall -> " + e1.getName() + "(functionCallArgs) closure");
+																				  }
+																			   :}
+			 ;
+
+methodFuncCall ::=  methodOp:e1 tLPAREN:e2 optArgs:e3 tRPAREN optClosure:e5 {: 
+																				  RESULT = new AstFunctionCall(e1, e3,e5,e2.getLine());
+																				  if(Global.verbose){
+																					  System.out.println("Reduced: functionCall -> " + e1 + "(functionCallArgs) closure");
+																				  }
+																			   :}
+			   | keywordsAsVar:e1 tLPAREN:e2 optArgs:e3 tRPAREN optClosure:e5 {: 
+																				  RESULT = new AstFunctionCall(e1, e3,e5,e2.getLine());
+																				  if(Global.verbose){
+																					  System.out.println("Reduced: functionCall -> " + e1 + "(functionCallArgs) closure");
+																				  }
+																			   :}
+			 ;
+
+optArrayArgs ::= /*empty string*/ {: RESULT = null;
+									if(Global.verbose){
+										System.out.println("Reduced: optArrayArgs -> empty string");
+									}
+								 :}
+		| arrayArgs:e1 {: RESULT = e1;
+						 if(Global.verbose){
+							 System.out.println("Reduced: optArrayArgs -> arrayArgs");
+						 }
+					  :}
+		;
+
+
+arrayArgs ::= expr:e1 {: RESULT = new Vector<IAstExpression>();
+								   RESULT.add(e1);
+								   if(Global.verbose){
+									   System.out.println("Reduced: args -> expr");
+								   }
+								:}
+	  |	arrayArgs:e1 tCOMMA expr:e3 {: e1.add(e3);
+								  RESULT = e1;
+								  if(Global.verbose){
+									  System.out.println("Reduced: args -> args , expr");
+								  }
+							   :}
+	  ;
+	  
+optArgs ::= /*empty string*/ {: RESULT = null;
+								if(Global.verbose){
+									System.out.println("Reduced: optArgs -> empty string");
+								}
+							 :}
+		| args:e1 {: RESULT = e1;
+					 if(Global.verbose){
+						 System.out.println("Reduced: optArgs -> args");
+					 }
+				  :}
+		;
+
+
+args ::= expr:e1 {: RESULT = new Vector<AstFunctionCall.Argument>();
+								   RESULT.add(new AstFunctionCall.Argument(e1));
+								   if(Global.verbose){
+									   System.out.println("Reduced: args -> expr");
+								   }
+								:}
+	  | tMULTIPLY expr:e1 {: RESULT = new Vector<AstFunctionCall.Argument>();
+									AstFunctionCall.Argument temp = new AstFunctionCall.Argument(e1);
+									temp.setArray();
+								   RESULT.add(temp);
+								   if(Global.verbose){
+									   System.out.println("Reduced: args -> * expr");
+								   }
+								:}
+	  | tAMP expr:e1 {: RESULT = new Vector<AstFunctionCall.Argument>();
+									AstFunctionCall.Argument temp = new AstFunctionCall.Argument(e1);
+									temp.setProc();
+								   RESULT.add(temp);
+								   if(Global.verbose){
+									   System.out.println("Reduced: args -> & expr");
+								   }
+								:}
+	  |	args:e1 tCOMMA expr:e3 {: e1.add(new AstFunctionCall.Argument(e3));
+								  RESULT = e1;
+								  if(Global.verbose){
+									  System.out.println("Reduced: args -> args , expr");
+								  }
+							   :}
+	  |	args:e1 tCOMMA tMULTIPLY expr:e3 {:
+										  AstFunctionCall.Argument temp = new AstFunctionCall.Argument(e3);
+										  temp.setArray();
+										  e1.add(temp);
+										  RESULT = e1;
+										  if(Global.verbose){
+											  System.out.println("Reduced: args -> args , *expr");
+										  }
+									   :}
+	  |	args:e1 tCOMMA tAMP expr:e3 {:
+										  AstFunctionCall.Argument temp = new AstFunctionCall.Argument(e3);
+										  temp.setProc();
+										  e1.add(temp);
+										  RESULT = e1;
+										  if(Global.verbose){
+											  System.out.println("Reduced: args -> args , &expr");
+										  }
+									   :}
+	  ;
+
+optClosure ::= /*empty string*/ {:RESULT = null;
+								  if(Global.verbose){
+									  System.out.println("Reduced: optClosure -> empty string");
+								  }
+								:}
+		   | closure:e1 {:RESULT = e1;
+						  if(Global.verbose){
+						      System.out.println("Reduced: optClosure -> closure");
+						  }
+					    :}
+		   ;
+			
+closure ::= kDO:e1 optClosureParams:e2 stmts:e3 kEND {: RESULT = new AstClosure(e2,e3,e1.getLine());
+														if(Global.verbose){
+															System.out.println("Reduced: do optClosureParams stmts end");
+														}
+													 :}
+		|	tLCURLYBRACE:e1 optClosureParams:e2 stmts:e3 tRCURLYBRACE {: RESULT = new AstClosure(e2,e3,e1.getLine());
+																		 if(Global.verbose){
+																		    System.out.println("Reduced: { optClosureParams stmts }");
+																		 }
+																	  :}
+		;
+		
+optClosureParams ::= /*empty string*/ {: RESULT = null;
+										 if(Global.verbose){
+											 System.out.println("Reduced: optClosureParams -> empty string");
+										 }
+									  :}
+				 |	 tBAR closureParams:e2 tBAR {: RESULT = e2;
+												   if(Global.verbose){
+													   System.out.println("Reduced: | closureParams |");
+												   }
+												:}
+				 ;
+	
+closureParams ::= tVAR_LOCAL:e1 {: 
+								   RESULT = new Vector<AstClosure.ClosureFormal>();
+								   RESULT.add(new AstClosure.ClosureFormal(e1.getName()));
+								   if(Global.verbose){
+									   System.out.println("Reduced: closureParams -> "+e1);
+								   }
+							 :}
+			   | tMULTIPLY tVAR_LOCAL:e1 {: 
+								   RESULT = new Vector<AstClosure.ClosureFormal>();
+								   RESULT.add(new AstClosure.ClosureFormal(e1.getName(),true));
+								   if(Global.verbose){
+									   System.out.println("Reduced: closureParams -> *" + e1);
+								   }
+							 :}
+			   | closureParams:e1 tCOMMA tVAR_LOCAL:e3 {: 
+														   e1.add(new AstClosure.ClosureFormal(e3.getName()));
+														   RESULT = e1;
+														   if(Global.verbose){
+															   System.out.println("Reduced: closureParams , "+e3);
+														   }
+														:}
+			   | closureParams:e1 tCOMMA tMULTIPLY tVAR_LOCAL:e3 {: 
+														   e1.add(new AstClosure.ClosureFormal(e3.getName(),true));
+														   RESULT = e1;
+														   if(Global.verbose){
+															   System.out.println("Reduced: closureParams , *"+e3);
+														   }
+														:}
+			  ;
+
+			  
+literal ::= numeric:e1 {:RESULT = e1; 
+					   if(Global.verbose){
+						   System.out.println("Reduced: literal -> numeric: "+e1); 
+					   }
+					:}
+		|	string:e1 {:RESULT = e1; 
+					   if(Global.verbose){
+						   System.out.println("Reduced: literal -> string: "+e1); 
+					   }
+					:}
+		|	array:e1 {:RESULT = e1; 
+					if(Global.verbose){
+						System.out.println("Reduced: literal -> array: "+e1); 
+					}
+			:}
+		;
+		
+array ::= tLSQUAREBRACE:e1 optArrayArgs:e2 tRSQUAREBRACE{:
+													  RESULT = new AstArray(e2,e1.getLine());
+													  if(Global.verbose){
+														  System.out.println("Reduced: array -> [ optArgs ] : "+e2); 
+													  }
+												  :}
+	  ;
+			  
+numeric ::= tINTEGER:e1 {: RESULT = e1; 
+						   if(Global.verbose){
+							   System.out.println("Reduced: numeric -> tINTEGER: "+e1); 
+						   }
+						:}
+		| tFLOAT:e1 {: RESULT = e1; 
+					   if(Global.verbose){
+						   System.out.println("Reduced: numeric -> tFLOAT: "+e1); 
+					   }
+					:}
+		| tQMARK:e1 tVAR_LOCAL:e2 {:
+									String str = e2.getName();
+									if(str.length()>1){
+										throw new RuntimeException("Error: Invalid character for ?"+e2);
+									}
+									
+									RESULT = new AstInteger(new Integer(str.charAt(0)),e2.getLine());
+									if(Global.verbose){
+									    System.out.println("Reduced: numeric -> ?"+e2); 
+								    }
+								  :}
+		;
+
+lhs ::= tVAR_LOCAL:e1 {:RESULT = e1;
+						if(Global.verbose){
+						    System.out.println("Reduced: lhs -> tVAR_LOCAL: "+e1);
+					    }
+					  :}
+	| tVAR_CLASS:e1 {:RESULT = e1;
+					  if(Global.verbose){
+					      System.out.println("Reduced: lhs -> tVAR_CLASS: "+e1);
+					  }
+					:}
+	| tVAR_INSTANCE:e1 {:RESULT = e1;
+						 if(Global.verbose){
+						 	 System.out.println("Reduced: lhs -> tVAR_INSTANCE: "+e1);
+						 }
+					   :}
+	| tVAR_GLOBAL:e1 {:RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: lhs -> tVAR_GLOBAL: "+e1);
+					   }
+					 :}
+	| tCONSTANT:e1 {:RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: lhs -> tCONSTANT: "+e1);
+					   }
+					 :}
+	| arrayDeRef:e1 {: RESULT = e1;
+					   if(Global.verbose){
+						   System.out.println("Reduced: lhs -> arrayDeRef: "+e1);
+					   }
+					:}
+	| deRef:e1 {: RESULT = e1;
+				  if(Global.verbose){
+				      System.out.println("Reduced: lhs -> deRef");
+				  }
+			   :}
+	| nativeDeref:e1 {: RESULT = e1;
+						if(Global.verbose){
+						    System.out.println("Reduced: lhs -> nativeDeref");
+						}
+					 :}
+	;
+
+arrayDeRef ::= atomic:e1 tLSQUAREBRACE arrayArgs:e3 tRSQUAREBRACE {: RESULT = new AstArrayDeRef(e1,e3,e1.getLine());
+															  if(Global.verbose){
+																  System.out.println("Reduced: arrayDeRef -> atomic [ arrayArgs ] ");
+															  }
+														   :}
+		   ;
+
+		 
+hash ::= tLCURLYBRACE:e1 optHashElements:e2 tRCURLYBRACE:e3{: RESULT = e2;
+															  if(Global.verbose){
+																  System.out.println("Reduced: hash -> { optHashElements } ");
+															  }
+														   :}
+	 ;
+
+optHashElements ::= /*empty*/ {: RESULT = null;
+								 if(Global.verbose){
+									 System.out.println("Reduced: optHashElements -> empty ");
+								 }
+							  :}
+				| hashElements:e1 {: RESULT = e1;
+									 if(Global.verbose){
+										 System.out.println("Reduced: hashElements -> optHashElements ");
+									 }
+								  :}
+				;
+				
+hashElements ::= expr:e1 tHASH_ARROW:e2 expr:e3 {: RESULT = new AstHash(e1.getLine());
+												   RESULT.add(e1,e3);
+												   if(Global.verbose){
+													   System.out.println("Reduced: hashElements -> expr => expr ");
+												   }
+												 :}
+			 | hashElements:e1 tCOMMA:e2 expr:e3 tHASH_ARROW:e4 expr:e5 {: RESULT = e1;
+																			RESULT.add(e3,e5);
+																			if(Global.verbose){
+																				System.out.println("Reduced: hashElements -> hashElements, expr => expr ");
+																			}
+																		 :}
+			 ;
+
+predefinedVar ::= kTRUE:e1 {: RESULT = new AstVariableLocal("true",e1.getLine());
+							 if(Global.verbose){
+							    System.out.println("Reduced: predefinedVar -> kTRUE: "+"true");
+							 }
+						  :}
+			  | kFALSE:e1 {: RESULT = new AstVariableLocal("false",e1.getLine());
+								if(Global.verbose){
+									System.out.println("Reduced: predefinedVar -> kFALSE: "+"false");
+								}
+						  :}
+			  | kNIL:e1 {: RESULT = new AstVariableLocal("nil",e1.getLine());
+						   if(Global.verbose){
+							   System.out.println("Reduced: predefinedVar -> kNIL: "+"nil");
+						   }
+						:}
+			  ;
+		 
+string ::= tSINGLE_QUOTE_STR:e1 {: RESULT = e1;
+									if(Global.verbose){
+										System.out.println("Reduced: strings -> tSINGLE_QUOTE_STR: "+e1);
+									}
+								 :}
+	   | tDOUBLE_QUOTE_STR:e1 {: RESULT = e1;
+								 if(Global.verbose){
+									 System.out.println("Reduced: strings -> tDOUBLE_QUOTE_STR: "+e1);
+								 }
+							  :}
+	   | string:e1 tSINGLE_QUOTE_STR:e2  {: RESULT = new AstDoubleQuote(e1.toString() + e2.toString(),e1.getLine());
+											if(Global.verbose){
+												System.out.println("Reduced: strings -> string tSINGLE_QUOTE_STR: "+e1);
+											}
+										 :}
+	   | string:e1 tDOUBLE_QUOTE_STR:e2  {: RESULT = new AstDoubleQuote(e1.toString() + e2.toString(),e1.getLine());
+											if(Global.verbose){
+												System.out.println("Reduced: strings -> string tDOUBLE_QUOTE_STR: "+e1);
+											}
+										 :}
+		;
