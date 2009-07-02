@@ -26,21 +26,15 @@
 		return boost::shared_ptr<swfObj> ();
 	}*/
 
-===
-	
-Hi Elaine, 
 
-Can I ask some questions about it? Thanks!
+你直接用ftp看吧 221.231.137.111 端口21 hsenviro 1985918
+peter.wll 说 (5:50 PM):
+用户名hsenviro 密码1985918
 
-1. Will the new offer apply?
-2. What's the schedule of the recruting?
 
-Best wishes,
-Roy Shi
+20  4270305600196313 2009-05-25 2009-05-25 人民币自动转帐还款 第一支行(信用卡业务 1,342.55  人民币 1,342.55  人民币 -1,315.92 
 
-?	Standard recruiting and offer process will apply.
 
-========
 1. swfObjList, quick delete blank element
 2. shared_ptr usage
 3. 
