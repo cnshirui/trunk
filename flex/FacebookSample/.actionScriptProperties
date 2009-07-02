@@ -9,6 +9,7 @@
 <sourceAttachmentPath/>
 </compiler>
 <applications>
+<application path="StallonsHelloUser.mxml"/>
 <application path="Sample4.mxml"/>
 <application path="Sample3.mxml"/>
 <application path="Sample2.mxml"/>

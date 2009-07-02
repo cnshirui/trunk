@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" 
+	backgroundColor="white" backgroundImage=""
+	applicationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import com.facebook.data.users.GetInfoData;
+			import com.facebook.utils.FacebookSessionUtil;
+			import com.facebook.data.users.FacebookUser;
+			import com.facebook.data.users.GetInfoFieldValues;
+			import com.facebook.commands.users.GetInfo;
+			import com.facebook.net.FacebookCall;
+			import com.facebook.events.FacebookEvent;
+			import com.facebook.Facebook;
+			
+			private var fbook:Facebook;
+			private var session:FacebookSessionUtil;
+			private var user:FacebookUser;
+
+			private function init():void{
+				session=new FacebookSessionUtil("76b12b2c46e0a4f255fc9a50a575c222","b1318cdbee3edc07fc5e14781dfc2478",loaderInfo);
+				session.addEventListener(FacebookEvent.CONNECT,onConnect);
+				fbook=session.facebook;
+				session.login();
+			}
+			private function onConfirmLogin():void{
+				this.removeChild(loginbutton);
+				session.validateLogin();
+			}
+			private function onConnect(e:FacebookEvent):void{
+				var call:FacebookCall=fbook.post(new GetInfo([fbook.uid],[GetInfoFieldValues.ALL_VALUES]));
+				call.addEventListener(FacebookEvent.COMPLETE,onGetInfo);
+			}
+			private function onGetInfo(e:FacebookEvent):void{
+				user=(e.data as GetInfoData).userCollection.getItemAt(0) as FacebookUser;
+				title.text="Hello "+user.first_name+" "+user.last_name;
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Label id="title" text="Hello you"/>
+	
+	<mx:Button id="loginbutton" label="Click after you log into Facebook" click="onConfirmLogin()"/>
+
+</mx:Application>
