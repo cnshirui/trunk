@@ -6,11 +6,11 @@
 	<!--
 	Input the full path name for the JSwiff library here!
 	-->
-	<property name="jswiff.path" value="d:/tech/rubyOnFlash_release0.1a/libs/jswiff-8.0-beta-2.jar" />
+	<property name="jswiff.path" value="./libs/jswiff-8.0-beta-2.jar" />
 	
 	<!--Input the full path name for the Java Cup library here!
 	-->
-	<property name="jcup.path" value="d:/tech/rubyOnFlash_release0.1a/libs/java-cup-11a.jar" />
+	<property name="jcup.path" value="./libs/java-cup-11a.jar" />
 	
 	<target name="main" depends="compile">
 		<mkdir dir="${doc.dir}" />
@@ -45,10 +45,12 @@
 	
 	<target name="yacc">
 		<mkdir dir="${src.dir}/rubyToSwf/parser"/>
-		<java classname="java_cup.Main" input="${src.dir}/rubyToSwf/parser/parse.cup">
+		<java classname="java_cup.Main" input="${src.dir}/rubyToSwf/parser/parse.cup" classpath="${classes.dir};${jswiff.path};${jcup.path}">
 			<arg line="-package rubyToSwf.parser -expect 10"/>
 		</java>
+		<!--
 		<move file="parser.java" tofile="${src.dir}/rubyToSwf/parser/parser.java"/>
 		<move file="sym.java" tofile="${src.dir}/rubyToSwf/parser/sym.java"/>
+		-->
 	</target>
 </project>
