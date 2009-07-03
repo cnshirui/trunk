@@ -2,21 +2,27 @@ package
 {
 	import flash.display.Sprite;
 
-	public class TestAS3 extends Sprite
+	public class TestAS3 extends Sprite implements MyInterface
 	{
 
 		public function TestAS3()
 		{
 /* 			var array:Array = [];
 			array[9] = "a";
-			trace(array); */
+			trace(array); 
 			
 			var a:* = 123;
 			trace(a == null);
 			var b:* = String(a);
 			var c:* = String("123");
 			trace(String(a) == String(null) || a == null);
+*/
+			test();
+		}
 		
+		public function test(b:Boolean = false):void {
+			trace(b);
+			
 		}
 	}
 }
