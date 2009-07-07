@@ -1,0 +1,726 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><link id="ctl00_HeaderLink1" rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Global/Global-bn20090514.css" /><link id="ctl00_HeaderLink2" rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/Platform/MasterPages/Library/Library-bn20090514.css" /><meta name="ROBOTS" content="NOINDEX,NOFOLLOW" /><meta name="MN" content="74838606-10:47:14 PM" /><meta name="ms.locale" content="en-us" /><meta name="Search.ShortId" content="aa366549" />
+<!-- Looking for metadata? Use the robot view instead http://currentsite/currenturl(robot).aspx -->
+<meta name="DCS.dcsuri" content="/en-us/library(d=default)/aa366549(l=en-us,v=VS.85).aspx" />
+<link rel="stylesheet" type="text/css" href="http://i3.msdn.microsoft.com/en-us/library/mtps-bn20090514.css?l=en-us&amp;i=library&amp;ct=AlternateSelector;CCEditor;CCItem;CCSection;CCTagEditor;CodeSnippet;ContentFallback;DropDownFilter;ExpandCollapseAll;Eyebrow;Footer;InteractiveToolbar;iRootBrand;LibraryLoBandSwitch;LocaleManagementFlyout;Masthead;MemberlistFrameworksFilter;MemberlistMembersFilter;MtpsLoginStatus;MtpsRating;MtViewDropDown;Omniture;RelatedPages;ResizeableAreaD10;Search;SurveyLauncher;TabStrip;TagCloud;TemplatedFlyout;Tickler;Toc;UserRecognition;WebMetrix;WebTrends&amp;clustimg=1"></link><link rel="alternate" media="print" href="/en-us/library/aa366549(printer).aspx" />
+<title>
+	Creating Guard Pages  (Windows)
+</title></head>
+<body id="ctl00_Mtps_body" dir="ltr">
+
+  <form name="aspnetForm" method="post" action="aa366549.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUBMGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFImN0bDAwJE1hc3RoZWFkMSRjdGwwMCRTZWFyY2hCdXR0b275xmcowsp6eperqf2RJKnFAf2Lhw==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=y48MEe_dRk_v_rnD4dSyAA2&amp;t=633697072909504432" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+var CurUserId="AxUFAAAAAADQCAAAbB2OoeRBy0X8BeeIPJCdEw!!";var ClientURL="http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary(d%3ddefault)%2faa366549(l%3den-us%2cv%3dVS.85).aspx";var maxRating=5;var RatingObjId="ctl00_ib1_Flyout_Rating1";var tbCommentsId="ctl00_ib1_Flyout_tbComments";var PageId="aa366549";var pageTag="contentRatingaa366549VS.85en-us";var sendBtnId="ctl00_ib1_Flyout_btnSend";var curRating="4";var contentRated=false;var RatingTooltipText="Click a star and provide feedback";var RatedTooltipText="You have already rated this content. Thank you for your feedback.";var userIPAddress="57.72.22.63";var MtpsPageDirection="ltr";var CCI_DeleteConfirmationText="Are you sure you want to delete?";function wkAddNewItemClick(){CCE_EditAnnotation(-1);};
+var CCS_AddLinkID="ctl00_WikiContent_Add";var CCS_User="";var CCS_ContentUrl="http://msdn.microsoft.com/en-us/library/aa366549(VS.85).aspx";//]]>
+</script>
+
+<script src="http://i2.msdn.microsoft.com/Platform/cjs/jquery-1.2.6-bn20090514.js" type="text/javascript"></script>
+<script src="http://i2.msdn.microsoft.com/Platform/cjs/Silverlight-bn20090514.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var wt_nvr_ru = "WT_NVR_RU";var wt_fpcdom = ".microsoft.com";var wt_domlist = "msdn.microsoft.com";var wt_pathlist = "";var wt_paramlist = "DCSext.mtps_devcenter";var wt_siteid = "MSDN";var gDomain="m.webtrends.com";
+var gDcsId="dcsmgru7m99k7mqmgrhudo0k8_8c6m";
+var gFpc="WT_FPC";
+/*<![CDATA[*/
+if(document.cookie.indexOf(gFpc+"=")==-1){document.write("<scr"+"ipt type='text/javascript' src='"+"http"+(window.location.protocol.indexOf('https:')==0?'s':'')+"://"+gDomain+"/"+gDcsId+"/wtid.js"+"'><\/scr"+"ipt>");}
+/*]]>*/
+var detectedLocale = 'en-us';
+var wtsp="_msdnlib_es_dev_win32com_";
+var gTrackEvents = 0;
+var omni_guid='1c34d137-6ef6-421a-b0a2-c16ff9ddbed5';  jQuery(document).ready(function() {  jQuery.getScript('http://i2.msdn.microsoft.com/platform/Controls/Omniture/resources/MSDN/omni_rsid_msdn-bn20090514.js')});//]]>
+</script>
+<noscript><a href='http://www.omniture.com' title='Web Analytics'><img src='http://msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0'  height='1' width='1' border='0' alt='' /></a></noscript>
+<script type="text/javascript">
+//<![CDATA[
+var CCT_Browse="Browse other topics containing this tag";var CCT_Remove="Remove the tag from this topic";var CCT_NoTags="No tags entered";var CCT_Error="An error has occurred";var CCT_BugTag="contentbug";var CCE_ErrSameContent = "Content has not changed";
+var CCE_ErrEmptyTitle = "Title can not be empty";
+var CCE_ErrEmptyContent = "Content cannot be empty";
+var CCE_ErrTitleTooLong = "Title is limited to 100 characters";
+var CCE_ErrContentTooLong = "Content is limited to 50,000 characters";
+var CCE_ErrServerError = "Error occurred while saving your data.";
+var CCE_IsEditing=false;var CCE_IsTaggingEnabled=true;var CCE_TitleMaxLen=100;var CCE_ContentMaxLen=50000;var CCE_UpdateText="Please Wait"; $(document).ready(function() {$('A[rel="sitefeedback"]').click(function() {   var t = $(this).attr('targetUrl');   window.open(t,'SiteFeedback','width=670,resizable=no,height=700,toolbar=no,location=no,scrollbars=yes,directories=no,status=no,menubar=no'); return false; }); });//]]>
+</script>
+
+<script src="http://i2.msdn.microsoft.com/platform/cjs/extract/compositejscript2.js" type="text/javascript"></script>
+<script src="/Platform/Controls/InteractiveToolbar/RatingsWebService.asmx/js" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="S_FZ4xOOepEquwne4ILwZkHkE1N-IMQu4lB3XF8-cao1" />
+</div>
+  <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', document.getElementById('aspnetForm'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['fctl00$WikiContent$ctl00$ItemUpdatePanel'], [], [], 90);
+//]]>
+</script>
+
+   
+  <div id="rheader">
+    
+
+<div class="mastheadfontbase">
+  <div>
+		<div class="GlobalBar">
+			<div class="Teaser">
+				
+
+<span id="ticklerWrapper" >
+<a id="ctl00_Masthead1_Tickler1_InstallLink" onclick="javascript:Track('ctl00_Masthead1_Tickler1|_InstallLink',this);" class="slLink" href="http://clk.atdmt.com/MRT/go/141489558/direct/01/">Upgrade your Internet Experience</a>
+</span>
+
+
+			</div>
+			<div class="GlobalBarRight">
+			  <div class="LocaleFlyout">
+				  <div class="LocaleManagementFlyoutStatic" style="position:relative;" id="ctl00$Masthead1$LocaleManagement$ctl00"><a class="LocaleManagementFlyoutStaticLink" href="javascript:void(0)">United States - English&nbsp;</a><img class="LocaleManagementFlyoutPopArrow LibC_popdownarrow" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" alt="Dropdown Arrow" style="height:4px;width:7px;border-width:0px;" /><div id="ctl00$Masthead1$LocaleManagement$ctl00_Popup" class="LocaleManagementFlyoutPopup" style="position: absolute;visibility:hidden;left:-1000px;">
+		<table border="0" style="width:175px;">
+			<tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl05','')">Argentina (Español)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl06','')">Australia (English)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl07','')">Brasil (Português)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl08','')">Canada (English)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl09','')">Canada (Français)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl10','')">中国 (简体中文)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl11','')">Colombia (Español)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl12','')">Deutschland (Deutsch)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl13','')">España (Español)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl14','')">France (Français)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl15','')">India (English)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl16','')">Italia (Italiano)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl17','')">日本 (日本語)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl18','')">México (Español)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl19','')">Perú (Español)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl20','')">Россия (Pусский)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl21','')">United Kingdom (English)</a></td>
+			</tr><tr>
+				<td><a href="javascript:__doPostBack('ctl00$Masthead1$LocaleManagement$ctl00$ctl22','')">United States (English)</a></td>
+			</tr><tr>
+				<td class="LocaleManagementFlyoutPopupHr"></td>
+			</tr><tr>
+				<td><a href="/en-us/ms376822.aspx">More...</a></td>
+			</tr>
+		</table></div><div id="ctl00$Masthead1$LocaleManagement$ctl00_Anim" class="TFlyPopupAnimate"></div>
+</div>
+
+
+
+		    </div>
+		    <div class="SiteMap">
+				  <a id="ctl00_Masthead1_MSFT_Site" title="Microsoft.com" class="SiteMapLink" href="http://www.microsoft.com">Microsoft.com</a>
+			  </div>
+			  <div class="PassportScarab">
+				  <span id="ctl00_Masthead1_UserRecognitionFlyout_lbwelcom" class="UserRecognitionStaticText">Welcome</span>
+
+  
+  
+<a id="idPPScarab" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=10&amp;ct=1245304034&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=msdn%24msdn%24msdn&amp;wreply=http:%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Faa366549.aspx&amp;lc=1033&amp;id=254354" onclick="MtpsLoginStatus.OverlayImagePath = &quot;http://i.msdn.microsoft.com:80/Platform/Controls/MtpsLoginStatus/resources/veil.gif&quot;; return MtpsLoginStatus.DoPassportSignIn('https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=10&amp;ct=1245304034&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=msdn%24msdn%24msdn&amp;wreply=http:%2F%2Fmsdn.microsoft.com%2FPlatform%2FControls%2FMtpsLoginStatus%2FPassport%2Fppsignin.htm&amp;lc=1033&amp;id=254354');"><span id="idPPScarabSIT" class="MTPS_GlobalToolbarLinks_msdn">Sign in</span></a>
+<div id="idPPMWOverlay" style="display: none;">
+</div>
+
+
+			  </div>
+			  
+			  
+		  </div>
+		</div>
+	</div>
+	<div class="ThinNavBox">
+		<a href="/en-us/default.aspx" id="ctl00_Masthead1_brandlink"><div id="ctl00_Masthead1_BrandLogo" class="BrandLogo">
+
+</div></a>
+		<div id="ctl00_Masthead1_ctl00_SearchBox" class="SearchBox">
+            <input name="ctl00$Masthead1$ctl00$returnSubmit" type="text" id="ctl00_Masthead1_ctl00_returnSubmit" style="visibility:hidden;display:none;" />
+            <input name="ctl00$Masthead1$ctl00$SearchTextBox" type="text" id="ctl00_Masthead1_ctl00_SearchTextBox" title="Search MSDN" class="TextBoxSearchActive" />
+            <input type="image" name="ctl00$Masthead1$ctl00$SearchButton" id="ctl00_Masthead1_ctl00_SearchButton" title="Click here to search" class="SearchButton LibC_search SearchButtonFF" alt="Click here to search" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />
+            <input type="submit" name="ctl00$Masthead1$ctl00$WebButton" value="Web" onclick="dolivesearch('ctl00_Masthead1_ctl00_SearchTextBox');" id="ctl00_Masthead1_ctl00_WebButton" title="Search Web" class="WebButton WebButtonFF WebButtonFF3" />
+            <input type="hidden" value="true" id="go" name="go" />        
+<script type="text/javascript" defer="defer" src="http://i4.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=ctl00_Masthead1_ctl00_SearchTextBox&btnid=ctl00_Masthead1_ctl00_SearchButton&brand=msdn&loc=en-us" id="mscom.srch.searchBox"></script></div>
+		<div class="evergreenLinks">
+	    
+      
+     
+        <a id="ctl00_Masthead1_eventlink"><div id="ctl00_Masthead1_EventLogo" class="EventLogo">
+
+</div></a>
+     </div>
+     
+       
+	</div>
+	<div class="Clear"></div>
+
+
+	<div class="NavigationBox">
+		<div id="ctl00_Masthead1_tabs_CenterTitle" class="HeaderTitle">Microsoft Developer Network</div>
+		<div class="Sponsor">
+		  
+		</div>
+		<div class="ClearLeft"></div>
+		<div id="ctl00_Masthead1_tabs_manTabsHolder" class="SiteNavigation">
+		<div class="SiteNavTabOffLeft msdn_TabC_msdn_SiteNavTabOff1Left"></div><div class="TabOff"><a id="ctl00_Masthead1_tabs_ctl01" onclick="javascript:Track('|TabStrip Link|ctl00_Masthead1_tabs_ctl00|ctl00_Masthead1_tabs_ctl01',this);" href="http://msdn.microsoft.com/en-us/default.aspx">Home</a></div><div class="SiteNavTabOffRight msdn_TabC_msdn_SiteNavTabOff1Right"></div><div class="SiteNavTabOnLeft msdn_TabC_msdn_SiteNavTabOnLeft"></div><div class="TabOn"><a id="ctl00_Masthead1_tabs_ctl03" onclick="javascript:Track('|TabStrip Link|ctl00_Masthead1_tabs_ctl02|ctl00_Masthead1_tabs_ctl03',this);" href="http://msdn.microsoft.com/en-us/library/default.aspx">Library</a></div><div class="SiteNavTabOnRight msdn_TabC_msdn_SiteNavTabOnRight"></div><div class="SiteNavTabOffLeft msdn_TabC_msdn_SiteNavTabOff1Left"></div><div class="TabOff"><a id="ctl00_Masthead1_tabs_ctl05" onclick="javascript:Track('|TabStrip Link|ctl00_Masthead1_tabs_ctl04|ctl00_Masthead1_tabs_ctl05',this);" href="http://msdn.microsoft.com/en-us/bb188199.aspx">Learn</a></div><div class="SiteNavTabOffRight msdn_TabC_msdn_SiteNavTabOff1Right"></div><div class="SiteNavTabOffLeft msdn_TabC_msdn_SiteNavTabOff1Left"></div><div class="TabOff"><a id="ctl00_Masthead1_tabs_ctl07" onclick="javascript:Track('|TabStrip Link|ctl00_Masthead1_tabs_ctl06|ctl00_Masthead1_tabs_ctl07',this);" href="http://msdn.microsoft.com/en-us/aa570309.aspx">Downloads</a></div><div class="SiteNavTabOffRight msdn_TabC_msdn_SiteNavTabOff1Right"></div><div class="SiteNavTabOffLeft msdn_TabC_msdn_SiteNavTabOff1Left"></div><div class="TabOff"><a id="ctl00_Masthead1_tabs_ctl09" onclick="javascript:Track('|TabStrip Link|ctl00_Masthead1_tabs_ctl08|ctl00_Masthead1_tabs_ctl09',this);" href="http://msdn.microsoft.com/en-us/aa570318.aspx">Support</a></div><div class="SiteNavTabOffRight msdn_TabC_msdn_SiteNavTabOff1Right"></div><div class="SiteNavTabOffLeft msdn_TabC_msdn_SiteNavTabOff1Left"></div><div class="TabOff"><a id="ctl00_Masthead1_tabs_ctl11" onclick="javascript:Track('|TabStrip Link|ctl00_Masthead1_tabs_ctl10|ctl00_Masthead1_tabs_ctl11',this);" href="http://msdn.microsoft.com/en-us/aa497440.aspx">Community</a></div><div class="SiteNavTabOffRight msdn_TabC_msdn_SiteNavTabOff1Right"></div><div class="SiteNavTabOffLeft msdn_TabC_msdn_SiteNavTabOff1Left"></div><div class="TabOff"><a id="ctl00_Masthead1_tabs_ctl13" onclick="javascript:Track('|TabStrip Link|ctl00_Masthead1_tabs_ctl12|ctl00_Masthead1_tabs_ctl13',this);" href="http://social.msdn.microsoft.com/Forums/en-US/categories">Forums</a></div><div class="SiteNavTabOffRight msdn_TabC_msdn_SiteNavTabOff1Right"></div></div>
+	</div>
+	<div class="Clear"></div>
+	<div id="ctl00_Masthead1_tabs_LocalNavigation" class="LocalNavigation" style="height:2px;">
+	
+	</div>
+	<div class="cleartabstrip"></div>
+	<div id="ctl00_Masthead1_tabs_LocalNavBottom" class="LocalNavBottom"><img class="LibC_space" width="100%" height="1px" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" /></div>
+	
+</div>
+<div class="Clear"></div>
+    <div id="ctl00_ib1_Panel1" class="miniRatings">
+	
+  <div id="ctl00_ib1_miniRatings_left" class="miniRatings_left">
+		
+    <a id="ctl00_ib1_hlPrint" title="Print This Content" class="itPrint" href="http://msdn.microsoft.com/en-us/library/aa366549(printer).aspx"><img id="ctl00_ib1_imgPrint" class="LibC_rtg_print" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />&nbsp;Printer Friendly Version</a>&nbsp;&nbsp;
+    &nbsp;&nbsp;
+    <a id="ctl00_ib1_hlSendCont" title="Send This Content" class="itSend" href="mailto:?subject=Creating Guard Pages  (Windows)&amp;body=This URL points to a page on MSDN that may interest you: http://msdn.microsoft.com/en-us/library/aa366549.aspx"><img id="ctl00_ib1_imgSendCont" class="LibC_rtg_email" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />&nbsp;Send</a>&nbsp;&nbsp;
+    <a id="ctl00_ib1_hlComCon" title="Click here to jump to the Community Content section on this page." class="itComCon" href="http://msdn.microsoft.com/en-us/library/Community-Signup.aspx?ru=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faa366549(VS.85).aspx%3fwbi%3dnew"><img id="ctl00_ib1_imgComCon" class="LibC_rtg_comCon" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />&nbsp;Add Content...</a>&nbsp;&nbsp;
+   
+	</div>
+  <div id="ctl00_ib1_miniRatings_right" class="miniRatings_right">
+		
+        <div class="ratingFlyoutStatic" style="position:relative;" id="ctl00$ib1$Flyout"><div id="ctl00_ib1_Flyout_rtgContainer" title="Turn scripting on  to submit a rating and send feedback." style="display: block; text-align:right;">
+				
+              <table>
+                <tr>
+                  <td style="text-align:right;line-height:70%;">
+                    <span id="ctl00_ib1_Flyout_rateTitleLabel" class="tbFont">Click to Rate and Give Feedback</span>
+                  </td>
+                  <td id="ctl00_ib1_Flyout_tdRtg" style="width:85px" onclick="if($get('ctl00_ib1_Flyout_tbComments')!=null &amp;&amp; $get('ctl00_ib1_Flyout_tbComments').visible == 'true') $get('ctl00_ib1_Flyout_tbComments').focus();">
+                      <div id="ctl00_ib1_Flyout_Rating1" title="Click a star and provide feedback" dir="ltr" style="height:16px;">
+					<a href="#" id="ctl00_ib1_Flyout_Rating1_A" title="Click a star and provide feedback" onmouseout="MTPS.Controls.MtpsRating.mouseOutHandler();" style="text-decoration:none"><span id="ctl00_ib1_Flyout_Rating1_Star_1" class="ratingStar filledRatingStar" onclick="MTPS.Controls.MtpsRating.starClickHandler('1');" onmouseover="MTPS.Controls.MtpsRating.starMouseOverHandler('1');" style="float:left;">&nbsp;</span><span id="ctl00_ib1_Flyout_Rating1_Star_2" class="ratingStar filledRatingStar" onclick="MTPS.Controls.MtpsRating.starClickHandler('2');" onmouseover="MTPS.Controls.MtpsRating.starMouseOverHandler('2');" style="float:left;">&nbsp;</span><span id="ctl00_ib1_Flyout_Rating1_Star_3" class="ratingStar filledRatingStar" onclick="MTPS.Controls.MtpsRating.starClickHandler('3');" onmouseover="MTPS.Controls.MtpsRating.starMouseOverHandler('3');" style="float:left;">&nbsp;</span><span id="ctl00_ib1_Flyout_Rating1_Star_4" class="ratingStar filledRatingStar" onclick="MTPS.Controls.MtpsRating.starClickHandler('4');" onmouseover="MTPS.Controls.MtpsRating.starMouseOverHandler('4');" style="float:left;">&nbsp;</span><span id="ctl00_ib1_Flyout_Rating1_Star_5" class="ratingStar emptyRatingStar" onclick="MTPS.Controls.MtpsRating.starClickHandler('5');" onmouseover="MTPS.Controls.MtpsRating.starMouseOverHandler('5');" style="float:left;">&nbsp;</span></a>
+				</div>
+                  </td>
+				
+                </tr>
+              </table>
+            
+			</div>
+            <div style="display: block; float: none; clear: both;">
+            </div>
+          <div id="ctl00$ib1$Flyout_Popup" class="ratingFlyoutPopup" style="position: absolute;visibility:hidden;left:-1000px;">
+				<span id="ctl00_ib1_Flyout_lbOptText" class="OptionalText">Give feedback on this content</span><textarea name="ctl00$ib1$Flyout$tbComments" rows="2" cols="20" id="ctl00_ib1_Flyout_tbComments" class="Comment"></textarea><input name="ctl00$ib1$Flyout$btnClose" type="button" id="ctl00_ib1_Flyout_btnClose" Class="Button" value="Close" OnClick="CloseFLY(&quot;ctl00$ib1$Flyout&quot;) " /><input name="ctl00$ib1$Flyout$btnSend" type="button" id="ctl00_ib1_Flyout_btnSend" Class="Button" value="Send" OnClick="return IsPageRated(&quot;ctl00_ib1_Flyout_Rating1&quot;,&quot;ctl00_ib1_Flyout_lbOptText&quot;,'Please rate the page first.', &quot;ctl00$ib1$Flyout&quot;,this)" /></div><div id="ctl00$ib1$Flyout_Anim" class="TFlyPopupAnimate"></div>
+		</div>
+		
+      
+	</div>
+  <div style="display: block; clear: both; visibility: hidden;"></div>
+
+</div>
+
+  </div>
+  <div id="contents">
+ 
+    <div id="ctl00_LibFrame" class="resizableArea">
+	<div id="ctl00_raLeft" class="leftSection" style="width:300px;display:none;">
+		
+        <img id="ctl00_TocVector1_o" class="hidden" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />
+<img id="ctl00_TocVector1_c" class="hidden" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />
+<img id="ctl00_TocVector1_e" class="hidden" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />
+<div id="holder" onclick="TocClick(event)">
+<div id="ctl00_TocVector1_root" class="rootToc">
+			<ul class="toc" id="tocVectorTreeId"><li name="ms310241(n)"><img src="http://i.msdn.microsoft.com/Global/Images/clear.gif" class="LibC_c"/><a href="http://msdn.microsoft.com/en-us/library/ms123401.aspx" target="_top">MSDN Library</a></li></ul>
+		</div>
+</div>
+
+
+      
+	</div><div id="ctl00_raSplitter" title="Click and drag to resize. Double click or press 't' to toggle visibility." class="splitter" style="left:0px;">
+		<div class="LibC_lib_grippy" style="position:absolute;top:50%;"></div>
+	</div><div id="ctl00_raRight" class="rightSection">
+		
+        <div >
+          <div id="ctl00_eb1_Panel1" class="EyebrowMenuBar">
+			
+<div class="stat" style="position:relative;" id="ctl00$eb1$ctl00"><a title="MSDN" href="http://msdn.microsoft.com/en-us/ms348103.aspx">MSDN</a><div id="ctl00$eb1$ctl00_Popup" class="popup" style="position: absolute;visibility:hidden;left:-1000px;">
+					<span name="http://msdn.microsoft.com/en-us/library/36cf08ac-18d1-4fe0-abc8-466852a0f9c7(n).aspx">Please Wait</span></div><div id="ctl00$eb1$ctl00_Anim" class="TFlyPopupAnimate"></div>
+			</div>
+			<div class="stat" style="position:relative;" id="ctl00$eb1$ctl01"><a title="MSDN Library" href="http://msdn.microsoft.com/en-us/library/ms123401.aspx">MSDN Library</a><div id="ctl00$eb1$ctl01_Popup" class="popup" style="position: absolute;visibility:hidden;left:-1000px;">
+					<span name="http://msdn.microsoft.com/en-us/library/ms310241(n).aspx">Please Wait</span></div><div id="ctl00$eb1$ctl01_Anim" class="TFlyPopupAnimate"></div>
+			</div>
+			<div class="stat" style="position:relative;" id="ctl00$eb1$ctl02"><a title="Win32 and COM Development" href="http://msdn.microsoft.com/en-us/library/aa139672.aspx">Win32 and COM Development</a><div id="ctl00$eb1$ctl02_Popup" class="popup" style="position: absolute;visibility:hidden;left:-1000px;">
+					<span name="http://msdn.microsoft.com/en-us/library/aa139672(n).aspx">Please Wait</span></div><div id="ctl00$eb1$ctl02_Anim" class="TFlyPopupAnimate"></div>
+			</div>
+			<div class="stat" style="position:relative;" id="ctl00$eb1$ctl03"><a title="System Services" href="http://msdn.microsoft.com/en-us/library/aa163284.aspx">System Services</a><div id="ctl00$eb1$ctl03_Popup" class="popup" style="position: absolute;visibility:hidden;left:-1000px;">
+					<span name="http://msdn.microsoft.com/en-us/library/aa163284(n).aspx">Please Wait</span></div><div id="ctl00$eb1$ctl03_Anim" class="TFlyPopupAnimate"></div>
+			</div>
+			<div class="stat" style="position:relative;" id="ctl00$eb1$ctl04"><a title="Memory Management" href="http://msdn.microsoft.com/en-us/library/aa366779(VS.85).aspx">Memory Management</a><div id="ctl00$eb1$ctl04_Popup" class="popup" style="position: absolute;visibility:hidden;left:-1000px;">
+					<span name="http://msdn.microsoft.com/en-us/library/ms759516(VS.85,n).aspx">Please Wait</span></div><div id="ctl00$eb1$ctl04_Anim" class="TFlyPopupAnimate"></div>
+			</div>
+			<div class="stat" style="position:relative;" id="ctl00$eb1$ctl05"><a title="Using the Memory Management Functions" href="http://msdn.microsoft.com/en-us/library/aa366885(VS.85).aspx">Using the Memory Management Functio...</a><div id="ctl00$eb1$ctl05_Popup" class="popup" style="position: absolute;visibility:hidden;left:-1000px;">
+					<span name="http://msdn.microsoft.com/en-us/library/ms759536(VS.85,n).aspx">Please Wait</span></div><div id="ctl00$eb1$ctl05_Anim" class="TFlyPopupAnimate"></div>
+			</div>
+			<div class="nochildstat"><strong>&nbsp;Creating Guard Pages</strong></div><span style="float:none;clear:both;display:block;"></span>
+		</div>
+
+        </div>
+        
+        <div >
+          <br/>&nbsp;&nbsp;<a href="http://msdn.microsoft.com/en-us/library/aa366549(loband).aspx" alt="Switch on low bandwidth view">Switch on low bandwidth view</a>
+        </div>
+                
+        
+
+        <div class="RightPanel">
+          <div class="ContentBar">
+            
+            
+<script type="text/Javascript">
+</script>
+
+<style type="text/css">
+.vb, .cs, .cpp, .nu
+{
+	display:none;
+}
+</style>
+<style id="LanguageSpecificTextStyle" type="text/css">
+.nu
+{
+   display:inline;
+}
+</style><div id="ctl00_DropDownFilter_DropDownFilterMain" class="DropDownFilterStyle"><img id="ctl00_DropDownFilter_MTPS_DD_ImageArrow" title="Language Filter" class="MTPS_DropDownImage LibC_arrow-off" onclick="DDFilterOn(event);" onmouseover="ChangeDropDownImage(true);ResetLanguagesMenuTimer(event);" onmouseout="ChangeDropDownImage(false);RequestHideLanguagesMenu();" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" alt="Language Filter" style="border-width:0px;" /><a id="ctl00_DropDownFilter_Mtps_DropDownFilterText" title="Language Filter" class="DropDownFilterOff" onclick="DDFilterOn(event);" onmouseover="ChangeDropDownImage(true);" onmouseout="ChangeDropDownImage(false);" href="/en-us/library/aa366549.aspx#Mtps_DropDownFilterText">Language Filter</a><div id="ctl00_DropDownFilter_Mtps_DropDownPopUp" style="display:none" class="MTPS_PopupDivPanel" onmouseover="ResetLanguagesMenuTimer(event);" onmouseout="RequestHideLanguagesMenu();"><div class="DivCbxLabelLanguage">
+			<input name="ctl00$DropDownFilter$DropDownLngFilterCtrl" type="checkbox" id="ctl00_DropDownFilter_DropDownLngFilterCtrl" checked="checked" value="Visual Basic" arrayValue="visualbasic" onclick="SetLangFilter(null,false);" /><span id="ctl00_DropDownFilter_ctl00_DropDownFilter_DropDownLngFilterCtrl_0" title="Visual Basic">Visual Basic<br/></span>
+		</div><div class="DivCbxLabelLanguage">
+			<input name="ctl00$DropDownFilter$DropDownLngFilterCtrl" type="checkbox" id="ctl00_DropDownFilter_DropDownLngFilterCtrl" checked="checked" value="C#" arrayValue="csharp" onclick="SetLangFilter(null,false);" /><span id="ctl00_DropDownFilter_ctl00_DropDownFilter_DropDownLngFilterCtrl_1" title="C#">C#<br/></span>
+		</div><div class="DivCbxLabelLanguage">
+			<input name="ctl00$DropDownFilter$DropDownLngFilterCtrl" type="checkbox" id="ctl00_DropDownFilter_DropDownLngFilterCtrl" checked="checked" value="C++" arrayValue="managedcplusplus" onclick="SetLangFilter(null,false);" /><span id="ctl00_DropDownFilter_ctl00_DropDownFilter_DropDownLngFilterCtrl_2" title="C++">C++<br/></span>
+		</div><div class="DivCbxLabelLanguage">
+			<input name="ctl00$DropDownFilter$DropDownLngFilterCtrl" type="checkbox" id="ctl00_DropDownFilter_DropDownLngFilterCtrl" checked="checked" value="J#" arrayValue="jsharp" onclick="SetLangFilter(null,false);" /><span id="ctl00_DropDownFilter_ctl00_DropDownFilter_DropDownLngFilterCtrl_3" title="J#">J#<br/></span>
+		</div><div class="DivCbxLabelLanguage">
+			<input name="ctl00$DropDownFilter$DropDownLngFilterCtrl" type="checkbox" id="ctl00_DropDownFilter_DropDownLngFilterCtrl" checked="checked" value="JScript" arrayValue="jscript" onclick="SetLangFilter(null,false);" /><span id="ctl00_DropDownFilter_ctl00_DropDownFilter_DropDownLngFilterCtrl_4" title="JScript">JScript<br/></span>
+		</div><div class="DivCbxLabelLanguage">
+			<input name="ctl00$DropDownFilter$DropDownLngFilterCtrl" type="checkbox" id="ctl00_DropDownFilter_DropDownLngFilterCtrl" checked="checked" value="XAML" arrayValue="xaml" onclick="SetLangFilter(null,false);" /><span id="ctl00_DropDownFilter_ctl00_DropDownFilter_DropDownLngFilterCtrl_5" title="XAML">XAML<br/></span>
+		</div></div>
+<script type="text/Javascript">
+var strConstLangFilterAll ="All";
+var strConstLangFilterMulti ="Multiple";
+var strConstLangFilterNone ="None";
+var strConstLangFilterText ="Language Filter";
+var oMTPS_DD_ImgArrow = document.getElementById("ctl00_DropDownFilter_MTPS_DD_ImageArrow");
+var oMTPS_DD_PanelLink = document.getElementById("ctl00_DropDownFilter_Mtps_DropDownFilterText");
+var oMTPS_DD_Div = document.getElementById("ctl00_DropDownFilter_DropDownFilterMain");
+var oMTPS_DD_PopUpDiv = document.getElementById("ctl00_DropDownFilter_Mtps_DropDownPopUp");
+</script>
+</div>
+              
+            
+            
+          </div>
+           <div class="ContentArea">
+      
+          
+          <span id="ctl00_altSelector"></span>
+          
+        
+          <!--starting processing--><div class="topic" ><div class="majorTitle"><!----></div><div class="title">Creating Guard Pages</div><!--Content type: HTML. Transform: webcollection2mtps.xslt.--><div id="mainSection">
+<div class="clsServerSDKContent" />
+<p><!----></p><p>A guard page provides a one-shot alarm for memory page access. This can be useful for an application that needs to monitor the growth of large dynamic data structures. For example, there are operating systems that use guard pages to implement automatic stack checking.</p>
+
+<p>To create a guard page, set the PAGE_GUARD page protection modifier for the page. This value can be specified, along with other page protection modifiers, in the 
+<a id="ctl00_MTContentSelector1_mainContentContainer_ctl01" onclick="javascript:Track('ctl00_MTContentSelector1_mainContentContainer_ctl00|ctl00_MTContentSelector1_mainContentContainer_ctl01',this);" href="http://msdn.microsoft.com/en-us/library/aa366887(VS.85).aspx"><strong>VirtualAlloc</strong></a>, 
+<a id="ctl00_MTContentSelector1_mainContentContainer_ctl02" onclick="javascript:Track('ctl00_MTContentSelector1_mainContentContainer_ctl00|ctl00_MTContentSelector1_mainContentContainer_ctl02',this);" href="http://msdn.microsoft.com/en-us/library/aa366890(VS.85).aspx"><strong>VirtualAllocEx</strong></a>, 
+<a id="ctl00_MTContentSelector1_mainContentContainer_ctl03" onclick="javascript:Track('ctl00_MTContentSelector1_mainContentContainer_ctl00|ctl00_MTContentSelector1_mainContentContainer_ctl03',this);" href="http://msdn.microsoft.com/en-us/library/aa366898(VS.85).aspx"><strong>VirtualProtect</strong></a>, and 
+<a id="ctl00_MTContentSelector1_mainContentContainer_ctl04" onclick="javascript:Track('ctl00_MTContentSelector1_mainContentContainer_ctl00|ctl00_MTContentSelector1_mainContentContainer_ctl04',this);" href="http://msdn.microsoft.com/en-us/library/aa366899(VS.85).aspx"><strong>VirtualProtectEx</strong></a> functions. The PAGE_GUARD modifier can be used with any other page protection modifiers, except PAGE_NOACCESS.</p>
+<p>If a program attempts to access an address within a guard page, the system raises a STATUS_GUARD_PAGE_VIOLATION (0x80000001) exception. The system also clears the PAGE_GUARD modifier, removing the memory page's guard page status. The system will not stop the next attempt to access the memory page with a STATUS_GUARD_PAGE_VIOLATION exception.</p>
+<p>If a guard page exception occurs during a system service, the service fails and typically returns some failure status indicator. Since the system also removes the relevant memory page's guard page status, the next invocation of the same system service won't fail due to a STATUS_GUARD_PAGE_VIOLATION exception (unless, of course, someone reestablishes the guard page).</p>
+<p>The following short program illustrates the behavior of guard page protection.</p>
+<p><!----></p>
+<div class="" id="ctl00_MTContentSelector1_mainContentContainer_ctl05_" ><div class="CodeSnippetTitleBar"><div class="CodeDisplayLanguage"></div><div class="CopyCodeButton"><a class="copyCode" title="Copy Code" href="javascript:CopyCode('ctl00_MTContentSelector1_mainContentContainer_ctl05');"><div border="0" height="9px" width="auto" align="middle" class="LibC_copy_off"></div>Copy Code</a></div></div><div dir="ltr"><pre class="libCScode" style="white-space:pre-wrap" id="ctl00_MTContentSelector1_mainContentContainer_ctl05" space="preserve">
+<code>/* A program to demonstrate the use of guard pages of memory. Allocate
+   a page of memory as a guard page, then try to access the page. That
+   will fail, but doing so releases the lock on the guard page, so the
+   next access works correctly.
+
+   The output will look like this. The actual address may vary.
+
+   This computer has a page size of 4096.
+   Committed 4096 bytes at address 00520000
+   Cannot lock at 00520000, error = 0x80000001
+   2nd Lock Achieved at 00520000
+
+   This sample does not show how to use the guard page fault to
+   "grow" a dynamic array, such as a stack. */
+
+#include &lt;windows.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+  LPVOID lpvAddr;               // address of the test memory
+  DWORD dwPageSize;             // amount of memory to allocate.
+  BOOL bLocked;                 // address of the guarded memory
+  SYSTEM_INFO sSysInfo;         // useful information about the system
+
+  GetSystemInfo(&amp;sSysInfo);     // initialize the structure
+
+  printf("This computer has page size %d.\n", sSysInfo.dwPageSize);
+
+  dwPageSize = sSysInfo.dwPageSize;
+
+  // Try to allocate the memory.
+
+  lpvAddr = VirtualAlloc(NULL, dwPageSize,
+                         MEM_RESERVE | MEM_COMMIT,
+                         PAGE_READONLY | PAGE_GUARD);
+
+  if(lpvAddr == NULL) {
+    printf("VirtualAlloc failed. Error: %ld\n",
+           GetLastError());
+    return 1;
+
+  } else {
+    fprintf(stderr, "Committed %lu bytes at address %lp\n",
+            dwPageSize, lpvAddr);
+  }
+
+  // Try to lock the committed memory. This fails the first time 
+  // because of the guard page.
+
+  bLocked = VirtualLock(lpvAddr, dwPageSize);
+  if (!bLocked) {
+    fprintf(stderr, "Cannot lock at %lp, error = 0x%lx\n",
+            lpvAddr, GetLastError());
+  } else {
+    fprintf(stderr, "Lock Achieved at %lp\n", lpvAddr);
+  }
+
+  // Try to lock the committed memory again. This succeeds the second
+  // time because the guard page status was removed by the first 
+  // access attempt.
+
+  bLocked = VirtualLock(lpvAddr, dwPageSize);
+
+  if (!bLocked) {
+    fprintf(stderr, "Cannot get 2nd lock at %lp, error = %lx\n",
+            lpvAddr, GetLastError());
+  } else {
+    fprintf(stderr, "2nd Lock Achieved at %lp\n", lpvAddr);
+  }
+
+  return 0;
+}
+</code></pre></div></div><p>The first attempt to lock the memory block fails, raising a STATUS_GUARD_PAGE_VIOLATION exception. The second attempt succeeds, because the memory block's guard page protection has been toggled off by the first attempt.</p><p><a href="mailto:wsddocfb@microsoft.com?subject=Documentation%20feedback [memory\base]:%20Creating Guard Pages%20 RELEASE:%20(5/7/2009)&amp;body=%0A%0APRIVACY STATEMENT%0A%0AThe SDK team uses the feedback submitted to improve the SDK documentation. We do not use your e-mail address for any other purpose. We will remove your e-mail address from our system after the issue you are reporting has been resolved. While we are working to resolve this issue, we may send you an e-mail message to request more information about your feedback. After the issues have been addressed, we may send you an e-mail message to let you know that your feedback has been addressed.%0A%0AFor more information about Microsoft's privacy policy, see http://privacy.microsoft.com/en-us/default.aspx." title="Send comments about this topic to Microsoft">Send comments about this topic to Microsoft</a></p>
+<p>Build date: 5/7/2009</p>
+</div></div>
+        
+          
+        </div>
+      </div>
+
+      
+
+<span id="CommunityContent"></span>
+<div id="ctl00_WikiContent_cc" class="CCS_Container">
+			
+
+  <div class="CCS_TopicTagEditor">
+	  <div id="ctl00_WikiContent_TopicTagEditor_panel" class="CCT_Panel">
+  <div id="tagsPanel" class="CCT_TagsPanel">
+    <span id="ctl00_WikiContent_TopicTagEditor_title" class="CCT_Title">Tags</span>
+    <a href="/platform/Controls/CCTagEditor/resources/taghelp.htm" id="ctl00_WikiContent_TopicTagEditor_helpLink" class="CCT_HelpLink" onclick="CCS_ShowHelp(&quot;/platform/Controls/CCTagEditor/resources/taghelp.htm&quot;,800,600);return false;">
+      <img src="http://i.msdn.microsoft.com/Global/Images/clear.gif" id="ctl00_WikiContent_TopicTagEditor_helpImage" class="CCT_HelpImage LibC_help" alt="What's this?" title="What's this?" /></a>:
+    <span id="ctl00_WikiContent_TopicTagEditor_tags" class="CCT_Text"></span>
+    <span id="ctl00_WikiContent_TopicTagEditor_view" class="CCT_View">
+      <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_TopicTagEditor_addTagLink" class="CCT_LinkButton" onclick="return CCT_AddATag(&quot;http://msdn.microsoft.com/en-us/library/Community-Signup.aspx?ru=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faa366549(VS.85).aspx&quot;,-1);" title="Add a tag to this topic">Add a tag</a>
+    </span>
+
+    <span id="ctl00_WikiContent_TopicTagEditor_editPanel" style="display:none" class="CCT_Edit">
+      <input name="ctl00$WikiContent$TopicTagEditor$textbox" type="text" id="ctl00_WikiContent_TopicTagEditor_textbox" class="CCT_TextBox" autocomplete="off" />
+      <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_TopicTagEditor_addLink" class="CCT_LinkButton" onclick="return CCT_AddTags(-1);" title="Submit the tags for this topic">Add</a>
+
+      &nbsp;
+      <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_TopicTagEditor_cancelLink" class="CCT_LinkButton" onclick="return CCT_CancelAddTag(-1);" title="Cancel this operation">Cancel</a>
+    </span>
+    <span id="ctl00_WikiContent_TopicTagEditor_messagePanel" class="CCT_Message"></span>
+  </div>
+  <div id="ctl00_WikiContent_TopicTagEditor_flagAsPanel" class="CCT_FlagAsPanel" style="display:none">
+    <span id="ctl00_WikiContent_TopicTagEditor_flagAsLabel">Flag as </span>
+    <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_TopicTagEditor_contentBugLink" class="CCT_LinkButton" onclick="return CCT_FlagContentBug(&quot;http://msdn.microsoft.com/en-us/library/Community-Signup.aspx?ru=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faa366549(VS.85).aspx&quot;,-1);" title="Flagging this annotation as a 'ContentBug' will let the author know that this topic needs to be reviewed">ContentBug</a>
+  </div>
+  <div style="clear:both"></div>
+</div>
+
+  </div>
+
+  <div class="CCS_WikiLogo">
+	  <img id="ctl00_WikiContent_wikiLogo" class="LibC_wiki" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" />
+  </div>
+
+  <div id="ctl00_WikiContent_contentContainer" class="CCS_ContentContainer">
+				
+    <div id="ctl00_WikiContent_headerContainer" class="CCS_HeaderContainer">
+					
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="CCS_Header">
+				<tr>
+					<td>
+  					<div class="CCS_HeaderTitle">
+  					  <span id="ctl00_WikiContent_headerTitle">Community Content</span>&nbsp;&nbsp;
+              <a href="/platform/Controls/CCSection/resources/cchelp.htm" id="ctl00_WikiContent_helpLink" class="CCS_HelpLink" onclick="CCS_ShowHelp(&quot;/platform/Controls/CCSection/resources/cchelp.htm&quot;,400,400);return false;"><img src="http://i.msdn.microsoft.com/Global/Images/clear.gif" id="ctl00_WikiContent_helpImage" class="CCS_HelpImage  LibC_help" alt="What is Community Content?" title="What is Community Content?" /></a>
+  					</div>
+					</td>
+				</tr>
+			</table>
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="CCS_Toolbar">
+				<tr>
+					<td class="CCS_Add">
+					  <a id="ctl00_WikiContent_Add" class="CCS_Link" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$WikiContent$Add&quot;, &quot;&quot;, false, &quot;&quot;, &quot;http://msdn.microsoft.com/en-us/library/Community-Signup.aspx?ru=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faa366549(VS.85).aspx%3fwbi%3dnew&quot;, false, true))">Add new content</a>
+					</td>
+					<td class="CCS_RecentChanges">
+					  <a href="http://msdn.microsoft.com/en-us/library/community-edits.rss?topic=aa366549|en-us|85" id="ctl00_WikiContent_recentPageLink"><img id="ctl00_WikiContent_imageRSS" class="CCS_RSSImage LibC_rss_button" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" alt="RSS" align="middle" style="border-width:0px;" /></a>&nbsp;
+					  <span id="ctl00_WikiContent_recentChangesTitle" class="CCS_RecentChangesText">Annotations</span>
+					</td>
+					<td align="right" class="CCS_Profile">
+						
+					</td>
+				</tr>
+			</table>
+    
+				</div>
+
+    <div id="ctl00_WikiContent_wikiItems" class="CCS_ItemsContainer">
+					<div id="ctl00_WikiContent_ctl00_ItemUpdatePanel">
+						
+    <div id="ctl00_WikiContent_ctl00_Container" class="CCI_Container" style="display:none;">
+							
+      <div id="ctl00_WikiContent_ctl00_Header" class="CCI_Header">
+								
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td align="left">
+                    <span id="ctl00_WikiContent_ctl00_HeaderTitle" class="CCI_Header_Title"></span>
+                </td>
+                <td>
+                    <span id="ctl00_WikiContent_ctl00_Label2" class="CCI_Header_Spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </td>
+
+                
+                  <td align="right" class="CCI_Header_Actions">
+                      <span id="ctl00_WikiContent_ctl00_EditInfo"></span><span id="ctl00_WikiContent_ctl00_Separator">
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                      </span><span id="ctl00_WikiContent_ctl00_EditLabel"><a id="ctl00_WikiContent_ctl00_Edit" title="Edit this version" class="CCI_Header_Link" href="javascript:__doPostBack('ctl00$WikiContent$ctl00$Edit','')">Edit</a></span>
+                  </td>
+                
+                
+            </tr>
+        </table>
+      
+							</div>
+
+      
+
+      <div id="ctl00_WikiContent_ctl00_EditorPanel" class="CCI_Text" style="cursor:default;">
+								
+        <div id="ctl00_WikiContent_ctl00_Editor_Container" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_WikiContent_ctl00_Editor_Save')">
+									
+	  
+    <div id="ctl00_WikiContent_ctl00_Editor_RadEditor" title="Double-click to edit this block" class=" CCE_Editor_Disabled" style="width:680px;height:400px;height:auto;width:auto;">
+										<!-- 2008.2.723.35 -->
+									</div>
+    <input type="hidden" name="ctl00$WikiContent$ctl00$Editor$editorData" id="ctl00_WikiContent_ctl00_Editor_editorData" />
+    <input type="hidden" name="ctl00$WikiContent$ctl00$Editor$tagEditorData" id="ctl00_WikiContent_ctl00_Editor_tagEditorData" />
+    
+    
+  
+								</div>
+
+      
+							</div>
+
+      <div id="ctl00_WikiContent_ctl00_TagEditor_panel" class="CCT_Panel">
+  <div id="tagsPanel" class="CCT_TagsPanel">
+    <span id="ctl00_WikiContent_ctl00_TagEditor_title" class="CCT_Title">Tags</span>
+    <a href="/platform/Controls/CCTagEditor/resources/taghelp.htm" id="ctl00_WikiContent_ctl00_TagEditor_helpLink" class="CCT_HelpLink" onclick="CCS_ShowHelp(&quot;/platform/Controls/CCTagEditor/resources/taghelp.htm&quot;,800,600);return false;">
+      <img src="http://i.msdn.microsoft.com/Global/Images/clear.gif" id="ctl00_WikiContent_ctl00_TagEditor_helpImage" class="CCT_HelpImage LibC_help" alt="What's this?" title="What's this?" /></a>:
+    <span id="ctl00_WikiContent_ctl00_TagEditor_tags" class="CCT_Text"></span>
+    <span id="ctl00_WikiContent_ctl00_TagEditor_view" class="CCT_View">
+      <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_ctl00_TagEditor_addTagLink" class="CCT_LinkButton" title="Add a tag to this topic">Add a tag</a>
+    </span>
+
+    <span id="ctl00_WikiContent_ctl00_TagEditor_editPanel" style="display:none" class="CCT_Edit">
+      <input name="ctl00$WikiContent$ctl00$TagEditor$textbox" type="text" id="ctl00_WikiContent_ctl00_TagEditor_textbox" class="CCT_TextBox" autocomplete="off" />
+      <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_ctl00_TagEditor_addLink" class="CCT_LinkButton" title="Submit the tags for this topic">Add</a>
+
+      &nbsp;
+      <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_ctl00_TagEditor_cancelLink" class="CCT_LinkButton" title="Cancel this operation">Cancel</a>
+    </span>
+    <span id="ctl00_WikiContent_ctl00_TagEditor_messagePanel" class="CCT_Message"></span>
+  </div>
+  <div id="ctl00_WikiContent_ctl00_TagEditor_flagAsPanel" class="CCT_FlagAsPanel" style="display:none">
+    <span id="ctl00_WikiContent_ctl00_TagEditor_flagAsLabel">Flag as </span>
+    <a href="../../Platform/Controls/CCTagEditor/#" id="ctl00_WikiContent_ctl00_TagEditor_contentBugLink" class="CCT_LinkButton" onclick="return CCT_FlagContentBug(&quot;http://msdn.microsoft.com/en-us/library/Community-Signup.aspx?ru=http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faa366549(VS.85).aspx&quot;,-1);" title="Flagging this annotation as a 'ContentBug' will let the author know that this topic needs to be reviewed">ContentBug</a>
+  </div>
+  <div style="clear:both"></div>
+</div>
+
+
+    
+						</div>
+  
+					</div>
+
+				</div>
+
+    <div id="ctl00_WikiContent_EditorPanel" class="CCI_Container_Edit" style="display:none">
+					
+      <div id="ctl00_WikiContent_Editor_Container" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_WikiContent_Editor_Save')">
+						
+	  
+    <div id="ctl00_WikiContent_Editor_RadEditor" title="Double-click to edit this block" class=" CCE_Editor_Disabled" style="width:680px;height:400px;height:auto;width:auto;">
+							
+						</div>
+    <input type="hidden" name="ctl00$WikiContent$Editor$editorData" id="ctl00_WikiContent_Editor_editorData" />
+    <input type="hidden" name="ctl00$WikiContent$Editor$tagEditorData" id="ctl00_WikiContent_Editor_tagEditorData" />
+    
+    
+  
+					</div>
+
+    
+				</div>
+    
+
+    <div id="ProgressIndicator" class="CCS_Progress">
+      <img src="http://i.msdn.microsoft.com/Global/Images/clear.gif" id="ctl00_WikiContent_progressImage" class="LibC_spinner" alt="Processing" />
+    </div>
+
+    <div class="CCS_Footer"></div>
+   
+			</div>
+
+		</div>
+      
+
+<div style="overflow:hidden;display:block;position:relative;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+    <td id="ctl00_mtpsFooter_FooterFadeCell" class="MTPS_FooterFade">
+      <div id="ctl00_mtpsFooter_SiteLinks" class="MTPS_FooterLinks">
+
+		</div>
+      <span id="ctl00_mtpsFooter_MSFT_copyright" title="© 2009  Microsoft Corporation. All rights reserved." class="MTPS_FooterCopyright">&copy; 2009  Microsoft Corporation. All rights reserved.</span>
+      <a id="ctl00_mtpsFooter_MSFT_Terms" title="Terms of Use" class="MTPS_FooterLinks" href="/cc300389.aspx">Terms of Use</a>
+      &nbsp;|&nbsp;
+      <a id="ctl00_mtpsFooter_MSFT_Trademarks" title="Trademarks" class="MTPS_FooterLinks" href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a>
+      &nbsp;|&nbsp;
+      <a id="ctl00_mtpsFooter_MSFT_PrivacyStatement" title="Privacy Statement" class="MTPS_FooterLinks" href="http://www.microsoft.com/info/privacy.mspx">Privacy Statement</a>
+    </td>
+		
+    <td id="ctl00_mtpsFooter_FooterLogoCell">
+      <a id="ctl00_mtpsFooter_MSFT_LOGO" title="Microsoft Corporation" href="http://www.microsoft.com"><img id="ctl00_mtpsFooter_MSFT_imgLogo" class="msdn_TabC_mslogo" src="http://i.msdn.microsoft.com/Global/Images/clear.gif" style="border-width:0px;" /></a>
+    </td>
+		
+  </tr>
+</table>
+
+</div>
+ 
+      
+	</div>
+</div>
+  </div>
+  <div style="display:none"><img src="http://c.microsoft.com/trans_pixel.asp?source=msdn&amp;TYPE=PV&amp;uri=%2fen-us%2flibrary(d%3ddefault)%2faa366549(l%3den-us%2cv%3dVS.85).aspx&amp;p=_en-us_library(d=default)_aa366549(l=en-us,v=VS.85).aspx&amp;r=http%3a%2f%2fcoderhump.com%2farchives%2f104" width="0" height="0" hspace="0" vspace="0" border="0" alt="Page view tracker" /></div>
+  
+<script src="http://i2.msdn.microsoft.com/platform/Controls/WebTrends/resources/webtrendsscript-bn20090514.js" type="text/javascript"></script>
+<noscript>
+<div><img alt="DCSIMG" id="Img1" width="1" height="1" src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div>
+</noscript>
+
+  <script type="text/javascript" src="http://i2.msdn.microsoft.com/en-us/library/mtps-bn20090514.js?l=en-us&amp;i=library&amp;ct=AlternateSelector;CCEditor;CCItem;CCSection;CCTagEditor;CodeSnippet;ContentFallback;DropDownFilter;ExpandCollapseAll;Eyebrow;Footer;InteractiveToolbar;iRootBrand;LibraryLoBandSwitch;LocaleManagementFlyout;Masthead;MemberlistFrameworksFilter;MemberlistMembersFilter;MtpsLoginStatus;MtpsRating;MtViewDropDown;Omniture;RelatedPages;ResizeableAreaD10;Search;SurveyLauncher;TabStrip;TagCloud;TemplatedFlyout;Tickler;Toc;UserRecognition;WebMetrix;WebTrends"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        setTimeout(function() {
+            var hashElementId = document.location.hash.substr(1);
+            var hashElement = document.getElementById(hashElementId);
+            if (hashElement != null) {
+                hashElement.scrollIntoView(true);
+            }
+        }, 1);
+        //]]>
+    </script>
+  
+<script type="text/javascript">
+//<![CDATA[
+var CCT_Controls =  new Array({id:-1,prefix:'ctl00_WikiContent_TopicTagEditor_'}, {id:-2,prefix:'ctl00_WikiContent_ctl00_TagEditor_'});
+var CCE_EditorInfo =  new Array({i:-2,p:'ctl00_WikiContent_ctl00_Editor_',c:'ctl00_WikiContent_ctl00_'}, {i:-1,p:'ctl00_WikiContent_Editor_',c:''});
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+window.setTimeout(function(){EC_Init("ctl00_ExpandCollapse","Expand All","Collapse All","LibC_c","LibC_o");},0);Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(CCS_BeginRequestHandler);Sys.WebForms.PageRequestManager.getInstance().add_endRequest(CCS_EndRequestHandler); RegisterAutoSubmit('ctl00_ib1_Flyout_Rating1','ctl00_ib1_Flyout_btnSend','contentRatingaa366549VS.85en-us');
+//]]>
+</script>
+<script type="text/javascript" language="javascript">
+<!--
+ function GetContentWnd(){ return parent; } function OnInitPage(){var oWnd = GetContentWnd();} function OnSave(){ var oWnd = GetContentWnd(); window.external.addFavorite('http://msdn.microsoft.com/en-us/library/aa366549.aspx', oWnd.document.title ); }
+
+-->
+</script>
+<script type="text/javascript">
+//<![CDATA[
+document.getElementById('ctl00_ib1_Flyout_rtgContainer').title="Click a star and provide feedback";
+CCT_Init("false","http%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2faa366549(VS.85).aspx");$addHandler($get("ctl00_WikiContent_TopicTagEditor_editPanel"),"keydown",CCT_KeyDown);Sys.Application.initialize();
+TFly_Init('ctl00$Masthead1$LocaleManagement$ctl00',0,0,1,0,0,'LocaleManagementFlyoutStaticHover','',0,400,'','','','');
+TFly_Init('ctl00$ib1$Flyout',5,2,1,0,0,'','',0,400,'','','','');
+MTPS.Controls.MtpsRating.createMtpsRating('ctl00_ib1_Flyout_Rating1','ratingStar','filledRatingStar','emptyRatingStar','savedRatingStar','5','LeftToRightTopToBottom');MTPS.Controls.ResizeableArea = new MTPS.Controls.CreateResizeableArea('ctl00_LibFrame','ctl00_raSplitter','ctl00_raLeft','ctl00_raRight','tocwidth','toccollapsed','173');MTPS.Controls.ResizeableArea.ClientCollapseEvents = function(isCollapsing) {TocResizableAreaChange(isCollapsing);};var tocVectorObject;var hostbase;var closedImg;var openImg;var emptyImg;var loadingImg;var tocVector;var tocIndex = 0;var holder;var tocLoaded = false;var tocCollapsed = 'True';tocVectorObject = {"nodes": [{"id": "ms310241(n)" ,"url": "/ms310241(n)"},{"id": "aa139672(n)" ,"url": "/aa139672(n)"},{"id": "aa163284(n)" ,"url": "/aa163284(n)"},{"id": "ms759516(vs.85,n)" ,"url": "/ms759516(VS.85,n)"},{"id": "ms759536(vs.85,n)" ,"url": "/ms759536(VS.85,n)"},{"id": "aa366549(vs.85,n)" ,"url": "/aa366549(VS.85,n)"}]};hostbase ="http://msdn.microsoft.com/en-us/library";tocVector = eval(tocVectorObject);closedImg = "LibC_c";openImg = "LibC_o";emptyImg = "LibC_e";var tocDir = false;Sys.Application.add_load(LoadToc);TFly_Init('ctl00$eb1$ctl00',0,-1,-1,0,0,'statHover','',0,0,'EyeBrowMenuBarSetHeight','ExpEye','','');
+TFly_Init('ctl00$eb1$ctl01',0,-1,-1,0,0,'statHover','',0,0,'EyeBrowMenuBarSetHeight','ExpEye','','');
+TFly_Init('ctl00$eb1$ctl02',0,-1,-1,0,0,'statHover','',0,0,'EyeBrowMenuBarSetHeight','ExpEye','','');
+TFly_Init('ctl00$eb1$ctl03',0,-1,-1,0,0,'statHover','',0,0,'EyeBrowMenuBarSetHeight','ExpEye','','');
+TFly_Init('ctl00$eb1$ctl04',0,-1,-1,0,0,'statHover','',0,0,'EyeBrowMenuBarSetHeight','ExpEye','','');
+TFly_Init('ctl00$eb1$ctl05',0,-1,-1,0,0,'statHover','',0,0,'EyeBrowMenuBarSetHeight','ExpEye','','');
+CheckDropDownClientCookie(false);SetFilterText(false);//]]>
+</script>
+</form>
+</body>
+
+<script language="javascript" type="text/javascript" src="http://js.microsoft.com/library/svy/sto/broker.js"></script>
+</html>

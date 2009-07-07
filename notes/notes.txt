@@ -1,6 +1,5 @@
 *** todo ***
 南京大学鼓楼校区5舍601室 陈兴国 210093 13951835361
-- download 9290 JDE, ROM
 - xiaonei tuanzhang, embed youtube
 - ssh, https, rsa, dsa, sha1 relationship
 - hangzhou, xiamen, flight 99-199

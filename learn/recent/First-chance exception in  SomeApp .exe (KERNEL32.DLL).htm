@@ -1,0 +1,374 @@
+<html lang="zh-cn"><head><link title="微软支持搜索" type="application/opensearchdescription+xml" rel="search" href="/common/opensearchdescriptor.aspx?ln=zh-cn" /><meta name="DCSext.sup_cid" content="250563" /><meta name="DCSext.sup_cln" content="en-us" /><meta name="DCSext.sup_ct" content="kb" /><meta name="DCSext.sup_ln" content="zh-cn" /><meta name="DCSext.sup_sd" content="gn" /><script type="text/javascript" src="/common/script/gsfx/jquery-1.2.6.js"></script><script type="text/javascript" src="/common/script/gsfx/default.js?21"></script><script type="text/javascript">setcookieval("gssSITE","gn",'',true);</script><script type="text/javascript">setcookieval("gssTHEME","gn",'',true);</script><script type="text/javascript">setcookieval("gssTOOLBAR","gn",'',true);</script><script type="text/javascript">var g_currentContent='kb\x3ben-us\x3b250563';</script><script type="text/javascript" src="/common/script/fx/survey.js?21"></script><meta name="robots" content="noarchive" /><meta name="Search.Assets" content="3" /><meta name="Search.Description" content="Explains&#32;the&#32;reason&#32;why&#32;a&#32;&#34;first&#32;chance&#34;&#32;exception&#32;is&#32;displayed&#32;in&#32;the&#32;output&#32;window.&#32;To&#32;work&#32;around&#32;this&#32;issue,&#32;use&#32;one&#32;of&#32;three&#32;alternatives&#32;in&#32;this&#32;article." /><meta name="Search.DateModified" content="2006-11-15T05&#58;25&#58;00" /><meta name="Search.scid" content="kb&#59;en-us&#59;250563" /><meta name="Search.Title" content="You&#32;receive&#32;a&#32;&#34;First-chance&#32;exception&#32;in&#32;&#60;SomeApp&#62;.exe&#32;&#40;KERNEL32.DLL&#41;&#34;&#32;error&#32;message&#32;when&#32;you&#32;debug&#32;a&#32;default&#32;an&#32;MFC&#32;AppWizard&#32;program" /><meta name="Search.Products" content="357152&#32;185507&#32;230209&#32;36727&#32;36728" /><meta name="Search.KBParents" content="10435&#32;7864&#32;9980&#32;6713&#32;6513&#32;1139&#32;6912&#32;6898&#32;7482&#32;5631&#32;3003&#32;1109&#32;5632" /><meta name="KBParents" content="10435&#32;7864&#32;9980&#32;6713&#32;6513&#32;1139&#32;6912&#32;6898&#32;7482&#32;5631&#32;3003&#32;1109&#32;5632" /><meta name="Search.Audiences" content="kbAudDeveloper" /><meta name="Search.ContentType" content="kb" /><meta name="Search.Retire" content="0" /><meta name="Search.ContentID" content="250563" /><meta name="Search.KeyWords" content="kbbug&#32;kbnofix&#32;kbdebug&#32;kbprb&#32;kb3rdparty&#32;KB250563" /><meta name="Search.MT" content="0" /><meta name="Search.KB3" content="0" /><meta name="Keywords" content="kbbug kbnofix kbdebug kbprb kb3rdparty KB250563" /><meta name="Description" content="Explains&#32;the&#32;reason&#32;why&#32;a&#32;&#34;first&#32;chance&#34;&#32;exception&#32;is&#32;displayed&#32;in&#32;the&#32;output&#32;window.&#32;To&#32;work&#32;around&#32;this&#32;issue,&#32;use&#32;one&#32;of&#32;three&#32;alternatives&#32;in&#32;this&#32;article." /><meta name="MS.LOCALE" content="en" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><script type="text/javascript" src="/common/script/gsfx/search.js?21"></script><script type="text/javascript" src="http://autocomplete.support.microsoft.com/script/ac.js?21"></script><script type="text/javascript">var gCookieDomain='';</script><title>You receive a &#34;First-chance exception in &#60;SomeApp&#62;.exe &#40;KERNEL32.DLL&#41;&#34; error message when you debug a default an MFC AppWizard program</title><XMLREADER><link rel="stylesheet" type="text/css" href="/common/css/default/default.css?21" /><link rel="stylesheet" type="text/css" href="/common/css/default/xmlContent.css?21" /><script type="text/javascript" src="/common/script/gsfx/kb.js?21"></script><script type="text/javascript" src="/common/script/gsfx/stickypanel.js?21"></script><link rel="stylesheet" type="text/css" href="/common/css/default/stickypanel.css?21" /><link rel="stylesheet" type="text/css" href="/common/css/default/languages/dbcsRightNav.css?21" /><link rel="stylesheet" type="text/css" href="/common/css/default/branding.css?21" /></XMLREADER>
+<!-- RESG: 6/17/2009 7:20:30 PM - RESX: 1/1/0001 12:00:00 AM -->
+<!-- (c) 2009 Microsoft Corporation. All Rights Reserved -->
+<style type="text/css">html body, html select, html input, html form, html textarea{font-family : Verdana, Arial, Helvetica, Sans-Serif;}</style><script type="text/javascript">var PersonalizationInfo='a2IyNTA1NjMIZW4tdXMIWW91IHJlY2VpdmUgYSAiRmlyc3QtY2hhbmM_';</script><script type="text/javascript">var enableSiteSurvey = false;</script><link rel="stylesheet" type="text/css" href="/common/css/fx/surveytrigger.css?21">
+<script type="text/javascript" src="/common/script/fx/surveycookieutil.js?21"></script><script type="text/javascript" src="/common/script/fx/surveytrigger.js?21"></script><script>animationDuration = 0.5;</script><script>var embedSurveyPrompt='nothing';var Exp=90;var Delay=0;var Freq=35;var SurveyStyle='popup';var DisplayIntroPage=1;var EmailStyle=0;var EmailSurveyID='';var ReferringURL='';var TrEvent='onunload';var TriggerId='12115';var IntervalType = 'session';var surveyTrigger = new MS.Support.Fms.Gsfx.SurveyTrigger();</script></head><body onload="thisLoad();" onunload="thisUnload();">
+<style type="text/css">  
+    body 
+    {
+        
+            background:url('/library/images/support/cn/gsfx_brnd_gn_top_bgrd.gif') repeat-x #C8E3F1;
+        
+    }
+
+    
+    
+    #gsfx_brnd_SiteHeaderImage
+    {
+        height:0px;
+    }
+    
+    
+    
+    .gsfx_brnd_NetworkLink, .gsfx_brnd_NetworkLink:visited, .gsfx_brnd_NetworkLink a, .gsfx_brnd_NetworkLink a:visited
+    {
+        color: #cdcbce;
+    }
+    
+    .gsfx_brnd_NetworkLink:hover, .gsfx_brnd_NetworkLink:active, .gsfx_brnd_NetworkLink:focus, 
+    .gsfx_brnd_NetworkLink a:hover, .gsfx_brnd_NetworkLink a:active, .gsfx_brnd_NetworkLink a:focus
+    #gsfx_brnd_NetworkFooter .gsfx_brnd_NetworkLink:hover span, #gsfx_brnd_NetworkFooter .gsfx_brnd_NetworkLink:active span, #gsfx_brnd_NetworkFooter.gsfx_brnd_NetworkLink:focus span, 
+    #gsfx_brnd_NetworkFooter .gsfx_brnd_NetworkLink a:hover span, #gsfx_brnd_NetworkFooter .gsfx_brnd_NetworkLink a:active span, #gsfx_brnd_NetworkFooter .gsfx_brnd_NetworkLink a:focus span
+    {
+        color: #f9d060;
+        border-bottom-color: #f9d060;
+    }
+    
+    #gsfx_brnd_NetworkHeader, #gsfx_brnd_NetworkHeaderLinks
+    {
+        color: #ffffff;
+    }
+
+    #gsfx_brnd_SiteHeader, #gsfx_brnd_PageLogoWrapper, #gsfx_brnd_PageTitle, #gsfx_brnd_SearchWrapper a, #gsfx_bsrch_poweredbycell span
+    {
+        color: #ffffff;
+    }
+    
+    #gsfx_bsrch_catsel a, #gsfx_bsrch_catsel span
+    {
+        border-color: #ffffff;
+    }
+
+    #gsfx_brnd_SiteFooter, #gsfx_brnd_SiteFooterWrap
+    {
+        color: #ffffff;
+    }
+
+    #gsfx_brnd_NetworkFooter, #gsfx_brnd_FooterLinkContainer, #gsfx_brnd_FooterLinkContainer span, 
+    #gsfx_brnd_copyright_container, #gsfx_brnd_copyright_container span
+    {
+        color: #ffffff;
+    }
+        
+    
+    </style>
+<!--[if lte IE 6]>
+<style type="text/css">
+    #gsfx_brnd_PageHeaderImage {background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='', sizingMethod='image');}
+    #gsfx_brnd_SiteImgWedge {background:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='', sizingMethod='scale');}    
+    #gsfx_brnd_PageLogo {visibility:hidden;}
+    #gsfx_brnd_legacy_PageLogo {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/library/images/support/cn/gsfx_brnd_ms_logo.png', sizingMethod='image');}
+    #gsfx_brnd_MSLogo {visibility:hidden;}
+    #gsfx_brnd_legacy_MSLogo {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/library/images/support/cn/gsfx_brnd_ms_logo_sml_wht.png', sizingMethod='image');}
+</style>
+<![endif]-->
+
+
+<div id="gsfx_brnd_CenterContent">
+<div id="gsfx_brnd_PageWrapper">
+    <div id="gsfx_brnd_PageContainer">
+        <div id="gsfx_brnd_PageHeaderImage"></div>    
+        <div id="gsfx_brnd_HeaderContainer">
+            <div id="gsfx_brnd_NetworkHeader">
+                <div id="gsfx_brnd_CorpMarketingContainer" class="gsfx_brnd_NetworkLeft">
+                    <div id="gsfx_brnd_CorpMarketingSpace" class="gsfx_brnd_NetworkLeft">
+                        
+                    </div>
+                </div>
+                <!--Table is used here in order to properly order the links for LTR and RTL while maintaining the correct tab order-->
+                <table summary="Network Header Links" id="gsfx_brnd_NetworkHeaderLinks" class="gsfx_brnd_NetworkRight">
+                    <tr>
+                        <td class="gsfx_brnd_NetworkLinkContainer">
+                            <span id="gsfx_brnd_LocalName">
+                                中国大陆
+                            </span>
+                        </td>
+                        <td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_NetworkLink">
+                            <a href="/common/international.aspx" id="L_156468">更改</a>
+                        </td>
+                        
+                        <td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_HeaderSeperator">|</td>
+                        
+                        <td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_NetworkLink">
+                            <a href="http://www.microsoft.com/library/toolbar/3.0/sitemap/zh-cn.mspx" id="L_156467">微软站点地图</a>
+                        </td>
+                        
+                        
+                    </tr>
+                </table>
+            </div>
+            <div id="gsfx_brnd_SiteHeader">            
+                <div id="gsfx_brnd_SiteHeaderImageContainer">
+                    <div id="gsfx_brnd_SiteHeaderImage">
+                    
+                    </div>
+                </div>
+                <!--[if lte IE 6]><div id="gsfx_brnd_legacy_PageLogo" class="gsfx_brnd_NetworkLeft"></div><![endif]-->
+                <div id="gsfx_brnd_PageLogoWrapper" class="gsfx_brnd_NetworkLeft">
+                    <a id="gsfx_brnd_PageLogoLink" href="http://www.microsoft.com/china"><img id="gsfx_brnd_PageLogo" alt="微软" src="/library/images/support/cn/gsfx_brnd_ms_logo.png" /></a>
+                    <span id="gsfx_brnd_PageTitle">帮助和支持</span>
+                </div>
+                <div id="gsfx_brnd_SearchWrapper" class="gsfx_brnd_NetworkRight">
+                    
+<form id="frmsrch" action="/search/default.aspx" onsubmit="return SaveSimpleSearch();" method="get">
+    <style type="text/css">
+    #gsfx_cat_sel_ie6
+    {
+    	visibility:hidden;
+    }
+    </style>
+    <script type='text/javascript'>setACStartChars('4:4:');</script>    
+    <!--[if lte IE 6]>
+    <style type="text/css">
+    .gsfx_bsrch_container
+    {
+        background-image:none;
+    }
+    .gsfx_bsrch_container1
+    {
+        display:none;
+        position:absolute;
+        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/library/images/support/cn/ss_live_glass_border.png');
+    }
+    #gsfx_cat_sel
+    {
+        background-image:none;
+    }
+    #gsfx_cat_sel_ie6
+    {
+        position:absolute;
+        filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/library/images/support/cn/ss_dd_select1.png');
+        visibility:visible;
+        width:12px;
+        height:24px;
+    }
+    </style>
+    <div id="gsfx_bsrch_bg_ie6" class="gsfx_bsrch_container gsfx_bsrch_container1" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/library/images/support/cn/ss_live_glass_border.png');"></div>
+<![endif]-->
+    <div id="gsfx_bsrch_bg" class="gsfx_bsrch_container">
+    <div id="gsfx_bsrch_divQuery" style="width:292px">
+        <input type="text" id="gsfx_bsrch_query" style="width:260px" name="query" maxlength="200" value="" class="siteseltxt" autocomplete="off" />
+        <!--span class="gsfx_bsrch_buttonwrap" id="gsfx_bsrch_websrch"-->
+            <!--input type="image" id="gsfx_bsrch_btnimg" onclick="submitSimpleSearch('http://www.bing.com/search?mkt=zh-cn&q=', $('#gsfx_bsrch_query').get(0).value);" /-->
+            <input type="image" alt="" class="gsfx_img_png" style="width: 20;height: 20;" src="/library/images/support/CN/ss_live_button.png" onclick="SaveSimpleSearch();" id="gsfx_bsrch_btnimg" /><!--[if lte IE 6]><input type="image" src="/library/images/support/cn/onepix.gif" alt="" class="gsfx_div_png" style="width:20px;height:20px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/library/images/support/CN/ss_live_button.png', sizingMethod='scale');" onclick="SaveSimpleSearch();" id="gsfx_bsrch_btnimg" /><![endif]-->
+            
+        <!--/span-->
+    </div>
+    
+    <div id="gsfx_cat_sel" onmouseover="ChangeBackground(this, true)" onmouseout="ChangeBackground(this, false)" onclick="ShowHideLangSel(event)" style="">
+    <div id="gsfx_cat_sel_ie6" onmouseover="ChangeBackground(this, true)" onmouseout="ChangeBackground(this, false)" style=""></div>
+    
+        
+                <div id='gsfx_cat_sel_cntnr'>
+    
+                    <noscript>
+                        <input type="hidden" id="catalog" name="catalog" value="LCID=2052" />
+                        <style type="text/css">
+                            #gsfx_cat_sel{display:none;}
+                            #gsfx_bsrch_divQuery{width:304px! important;}
+                            #gsfx_bsrch_query{width:272px! important;}
+                        </style>
+                    </noscript>
+    
+                    <div class="gsfx_optsub_cotnr" id="gsfx_cat_sel_div0" onclick="gsfx_bsrch_changeCatSelection(0);if(document.getElementById('acListWrappergsfx_bsrch_query')){changeLcidForSelect(this, 'gsfx_bsrch_query', 'LCID=2052', '0');}">
+                        <div class="gsfx_catoptimg_cotnr" id="gsfx_catOptSel_0" >
+                            <img class="gsfx_bsrch_chkimg" id="gsfx_cat_sel_img0" src="/library/images/support/cn/ss_check.png"/>
+                        </div>
+                        <div class="gsfx_catopttxt_cotnr" id="gsfx_cat_0" onclick="gsfx_bsrch_changeCatSelection(0);if(document.getElementById('acListWrappergsfx_bsrch_query')){changeLcidForSelect(this, 'gsfx_bsrch_query', 'LCID=2052', '0');}">
+                            中文
+                        </div>
+                    </div>
+    
+                    <div class="gsfx_optsub_cotnr" id="gsfx_cat_sel_div1" onclick="gsfx_bsrch_changeCatSelection(1);if(document.getElementById('acListWrappergsfx_bsrch_query')){changeLcidForSelect(this, 'gsfx_bsrch_query', 'LCID=1033', '1');}">
+                        <div class="gsfx_catoptimg_cotnr" id="gsfx_catOptSel_1" >
+                            <img class="gsfx_bsrch_chkimg" id="gsfx_cat_sel_img1" src="/library/images/support/cn/ss_check.png"/>
+                        </div>
+                        <div class="gsfx_catopttxt_cotnr" id="gsfx_cat_1" onclick="gsfx_bsrch_changeCatSelection(1);if(document.getElementById('acListWrappergsfx_bsrch_query')){changeLcidForSelect(this, 'gsfx_bsrch_query', 'LCID=1033', '1');}">
+                            英文
+                        </div>
+                    </div>
+    
+                </div>
+    
+
+    </div>
+    <div id="gsfx_bsrch_logo_div">
+    <img alt="" class="gsfx_img_png" style="width: 51;height: 17;" src="/library/images/support/CN/bing_logo_white.png" onclick="CallWebSearch('http\x3a\x2f\x2fwww.bing.com\x2fsearch\x3fmkt\x3dzh-cn\x26q\x3d','http\x3a\x2f\x2fwww.bing.com\x2fsearch\x3fmkt\x3dzh-cn\x26q\x3d');" id="gsfx_bsrch_logo" /><!--[if lte IE 6]><div alt="" class="gsfx_div_png" style="width:51px;height:17px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/library/images/support/CN/bing_logo_white.png', sizingMethod='scale');" onclick="CallWebSearch('http\x3a\x2f\x2fwww.bing.com\x2fsearch\x3fmkt\x3dzh-cn\x26q\x3d','http\x3a\x2f\x2fwww.bing.com\x2fsearch\x3fmkt\x3dzh-cn\x26q\x3d');" id="gsfx_bsrch_logo"></div><![endif]-->
+    </div>
+    <br />
+    </div>
+    <script type="text/javascript">try{MS.Support.AC.MakeAutoComplete({id:'gsfx_bsrch_query', lcid:'2052', acURL:'http://autocomplete.support.microsoft.com', statsObj:StatsDotNet, startChar:'4', bubbleside:'left'});}catch(e){}</script><script type='text/javascript'>supportedSites.push(new Site('\u641c\u7d22\u5fae\u8f6f\u5e2e\u52a9\u548c\u652f\u6301', '\x2fsearch\x2fdefault.aspx', true));supportedSites.push(new Site('\u6574\u4e2aMicrosoft.com', 'http\x3a\x2f\x2fsearch.microsoft.com\x2fsearch\x2fresults.aspx\x3fview\x3dzh-cn\x26qu\x3d', false));supportedSites.push(new Site('\u4e92\u8054\u7f51', 'http\x3a\x2f\x2fwww.bing.com\x2fsearch\x3fmkt\x3dzh-cn\x26q\x3d', false));avlCatalogs.push(new Catalog('\u4e2d\u6587', 'LCID\x3d2052', true));avlCatalogs.push(new Catalog('\u82f1\u6587', 'LCID\x3d1033', false));</script>
+    
+        <!--div id="gsfx_bsrch_poweredbycell" class="gsfx_brnd_NetworkTextRight">
+            
+        </div-->
+    
+        
+    <div class="hiddenformels">
+        <input type="hidden" name="mode" value="r" />
+    </div>
+    <noscript>
+        <style type="text/css">
+            #gsfx_bsrch_catsel a {display:none;} 
+            #gsfx_bsrch_websrch {display:none;}
+            #gsfx_bsrch_query{font-style:normal;color:Black;}
+        </style>
+        <!--[if lte IE 6]>
+        <style>
+        #gsfx_bsrch_bg_ie6{display:block;right:1px}
+        </style><![endif]-->
+    </noscript>
+</form>
+                </div>
+            </div>
+        </div>
+        <div id="gsfx_brnd_TopCorners" class="gsfx_brnd_CornerContainer">
+            <div class="gsfx_brnd_TBBorders gsfx_brnd_TransBG" id="gsfx_brnd_TopBorder">
+            </div>
+            <div class="gsfx_brnd_Corner" id="gsfx_brnd_LUpperCorner">
+            </div>
+        </div>
+        <div id="gsfx_brnd_LocalToolBar" class="gsfx_brnd_TransBG gsfx_brnd_SideBorder"><ul id="gsfx_brnd_LocalLinks"><li class="gsfx_brnd_LocalLink"><a href="/" id="L_156473"><span>帮助和支持首页</span></a></li><li class="gsfx_brnd_LocalSeperator">&nbsp;</li><li class="gsfx_brnd_LocalLink"><a href="/select/?target=hub" id="L_156474"><span>选择产品支持中心</span></a></li><li class="gsfx_brnd_LocalSeperator">&nbsp;</li><li class="gsfx_brnd_LocalLink"><a href="/search/?adv=1" id="L_156475"><span>高级搜索</span></a></li><li class="gsfx_brnd_LocalSeperator">&nbsp;</li><li class="gsfx_brnd_LocalLink"><a href="http://support.microsoft.com/gp/downloadover/zh-cn" id="L_159742"><span>下载与更新</span></a></li><li class="gsfx_brnd_LocalSeperator">&nbsp;</li><li class="gsfx_brnd_LocalLink"><a href="http://support.microsoft.com/gp/bbsindex/zh-cn" id="L_171632"><span>社区或论坛</span></a></li><li class="gsfx_brnd_LocalSeperator">&nbsp;</li><li class="gsfx_brnd_LocalLink"><a href="/contactus/?ws=support" id="L_168698"><span>联系微软</span></a></li></ul></div>
+        
+        <div id="gsfx_brnd_ToolbarShadow" class="gsfx_brnd_TransBG gsfx_brnd_SideBorder"><div id="gsfx_brnd_shadow"></div></div>
+        
+        <div id="gsfx_brnd_ContentContainer" class="gsfx_brnd_TransBG gsfx_brnd_SideBorder">
+            <div id="contentArea">            
+
+<div id="mainRow"><div class="primaryTable"><table cellpadding="0" cellspacing="0" class="primaryTable"><tr><td class="primaryMainColumn"><div id="mainColumn" lang="en-us"><div id="kb" class="kb"><div id="kb_default" class="kb_default ltr"><!-- - -KB 3 start- - --><a id="top"></a><div class="articleProperty">Article ID: 250563 - Last Review: November 15, 2006 - Revision: 2.1</div><h1 class="title">You receive a "First-chance exception in &lt;SomeApp&gt;.exe (KERNEL32.DLL)" error message when you debug a default an MFC AppWizard program</h1><div class="appliesToLink"><a href="#appliesto">View products that this article applies to.</a></div><script type="text/javascript">if (!loadTOCNode) {var loadTOCNode = function(){}}</script><div class="notice">This article was previously published under Q250563</div><div class="notice"><b>IMPORTANT</b>: This article contains information about modifying the registry.
+			 Before you modify the registry, make sure to back it up and make sure that you
+			 understand how to restore the registry if a problem occurs. For information
+			 about how to back up, restore, and edit the registry, click the following
+			 article number to view the article in the Microsoft Knowledge Base: <div class="indent"><a class="KBlink" href="/kb/256986/EN-US/">256986</a> 
+                            <span class="pLink">
+            (http://support.microsoft.com/kb/256986/EN-US/
+                        )
+        </span> Description of the Microsoft Windows Registry
+</div></div><div id="kb_section" class="section"><div id="kb_expandcollapseall" class="expandcollapseall"><a href="javascript:void(0);" class="expandalltext">Expand all</a> | <a href="javascript:void(0);" class="collapsealltext">Collapse all</a><script type="text/javascript">
+                    if (kb_page_object)
+                    {
+                    kb_page_object.kb_imageExpandHoverText = 'Click to expand this image';
+                    }
+                </script></div><h2 class="subTitle" id="tocHeadRef"><span><a href="javascript:void(0);">SYMPTOMS</a></span><div class="sectionpreview_closed"></div></h2><script type="text/javascript">
+                            loadTOCNode(1, 'symptoms');
+                        </script><div class="sbody"> When you debug a default Microsoft Foundation Class Library
+		  (MFC) AppWizard-generated program, the output window may display the following
+		  error message: <div class="kb_errormsgbody"><div class="kb_errorcontent"><div class="errormsg">First-chance exception in
+		  &lt;SomeApp&gt;.exe (KERNEL32.DLL): 0xC0000005: Access Violation.
+		  </div></div></div><div class="topOfPage"><a href="#top"><img src="/library/images/support/kbgraphics/public/en-us/uparrow.gif" alt="">Back to the top</a></div></div><h2 class="subTitle" id="tocHeadRef"><span><a href="javascript:void(0);">CAUSE</a></span><div class="sectionpreview_closed"></div></h2><script type="text/javascript">
+                            loadTOCNode(1, 'cause');
+                        </script><div class="sbody"> The Encompass Monitor or EncMonitor service is preinstalled
+		  on some systems. This service starts Monitor.exe and is loaded before the user
+		  logs on to the system. Monitor.exe performs the same function as the
+		  performance monitor Alert and Logging facility. With this utility, you can
+		  generate alerts and log data. This service causes the first-chance exception
+		  that is displayed in the output window. <br><br><b>IMPORTANT</b>: 
+		  The
+			 third-party products that are discussed in this article are manufactured by
+			 companies that are independent of Microsoft. Microsoft makes no warranty,
+			 implied or otherwise, regarding the performance or reliability of these
+			 products.<br><div class="topOfPage"><a href="#top"><img src="/library/images/support/kbgraphics/public/en-us/uparrow.gif" alt="">Back to the top</a></div></div><h2 class="subTitle" id="tocHeadRef"><span><a href="javascript:void(0);">RESOLUTION</a></span><div class="sectionpreview_closed"></div></h2><script type="text/javascript">
+                            loadTOCNode(1, 'resolution');
+                        </script><div class="sbody"><b>WARNING</b>: If you use Registry Editor incorrectly, you may cause serious
+			 problems that may require you to reinstall your operating system. Microsoft
+			 cannot guarantee that you can solve problems that result from using Registry
+			 Editor incorrectly. Use Registry Editor at your own
+			 risk.<br><br> To work around the problem, use any of the
+		  following three alternatives: 
+		  <ol><li>You can ignore the first chance exception message, this
+				message is harmless. This message is seen only when you debug programs, and not
+				seen in Release versions.</li><li>You can remove the service and run it manually, whenever
+				needed, to alleviate the problem. </li><li> You can use RegEdit and remove the values "Encompass
+				Monitor" and "EncMonitor" from the following Registry keys (do not delete the
+				keys):<b>Encompass Monitor</b>: <div class="indent">
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+</div><b>EncMonitor</b>: <div class="indent">
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices
+</div></li></ol> Before making any modification to the registry, back up the
+		  Registry or export these keys to the Desktop before making any edits.
+		  <div class="topOfPage"><a href="#top"><img src="/library/images/support/kbgraphics/public/en-us/uparrow.gif" alt="">Back to the top</a></div></div><h2 class="subTitle" id="tocHeadRef"><span><a href="javascript:void(0);">REFERENCES</a></span><div class="sectionpreview_closed"></div></h2><script type="text/javascript">
+                            loadTOCNode(1, 'references');
+                        </script><div class="sbody">For additional information about
+			 RunServices, click the article number below to view the article in the
+			 Microsoft Knowledge Base: <div class="indent"><a class="KBlink" href="/kb/179365/EN-US/">179365</a> 
+                            <span class="pLink">
+            (http://support.microsoft.com/kb/179365/EN-US/
+                        )
+        </span> INFO: Run, RunOnce, RunServices, RunServicesOnce and Startup
+</div><div class="topOfPage"><a href="#top"><img src="/library/images/support/kbgraphics/public/en-us/uparrow.gif" alt="">Back to the top</a></div></div></div><div class="sbody norollup"><div class="appliesTo"><hr><a id="appliesto"></a><h5>APPLIES TO</h5><ul><li>Microsoft Windows 95</li><li>Microsoft Windows 98 Standard Edition</li><li>Microsoft Windows 98 Second Edition</li><li>Microsoft Visual C++ 6.0 Enterprise Edition</li><li>Microsoft Visual C++ 6.0 Professional Edition</li><li>Microsoft Visual C++, 32-bit Learning Edition 6.0</li></ul></div><div class="topOfPage"><a href="#top"><img src="/library/images/support/kbgraphics/public/en-us/uparrow.gif" alt="">Back to the top</a></div><div class="keywords"><table><tr><td class="header"><h5>Keywords: 
+                            </h5></td><td class="text">kbbug kbnofix kbdebug kbprb kb3rdparty KB250563</td></tr></table></div><div class="topOfPage"><a href="#top"><img src="/library/images/support/kbgraphics/public/en-us/uparrow.gif" alt="">Back to the top</a></div></div><!-- - -KB 3 end- - --></div></div><span class="bookmark"><a id="survey" name="survey">&nbsp;</a></span><div class="wp" id="fmsSurvey" style="display:none;"><div class="fms"><noscript><div class="SURVEYNOSCRIPT"></div></noscript><input type="hidden" id="surveyname" name="surveyname" value=""><input type="hidden" id="showpage" name="showpage" value="1"><div id="SURVEYSECTIONCONTAINER"><div id="SURVEYSECTION_132" class="SURVEYSECTION" style="display:none;" xmlns:sw="urn:schemas-microsoft-com/PSS/PSS_Survey01"><input type="hidden" name="id" value="132"><input type="hidden" name="CompoundingBranchRules" value=""><input type="hidden" name="NextSectionByTopicRef" value="0"><div id="SURVEYQUESTION_9089" class="QUESTIONCONTAINER"><input type="hidden" name="id" value="9089"><input type="hidden" name="type" value="LABEL"><input type="hidden" name="required" value="0"><div class="QUESTIONTEXT"><h5>Provide feedback on this information</h5></div><div class="QUESTIONINSTRUCTION"></div><div class="QUESTIONREQUIRED"></div></div><div id="SURVEYQUESTION_9088" class="QUESTIONCONTAINER"><input type="hidden" name="id" value="9088"><input type="hidden" name="type" value="CHOICE"><input type="hidden" name="required" value="0"><div class="QUESTIONTEXT">Did this information solve your problem?</div><div class="QUESTIONINSTRUCTION"></div><div class="QUESTIONREQUIRED"></div><input type="hidden" name="randomization" value=""><table cellspacing="0" cellpadding="0" border="0"><tr><td valign="top"><table cellspacing="2" cellpadding="0" border="0"><tr><td valign="top"><input type="radio" name="QUESTION_132_90889088" id="14471" value="0"></td><td class="ANSWERTEXT">Yes</td></tr></table></td></tr><tr><td valign="top"><table cellspacing="2" cellpadding="0" border="0"><tr><td valign="top"><input type="radio" name="QUESTION_132_90889088" id="14472" value="1"></td><td class="ANSWERTEXT">No</td></tr></table></td></tr><tr><td valign="top"><table cellspacing="2" cellpadding="0" border="0"><tr><td valign="top"><input type="radio" name="QUESTION_132_90889088" id="14473" value="2"></td><td class="ANSWERTEXT">I don't know</td></tr></table></td></tr></table></div><div id="SURVEYQUESTION_9086" class="QUESTIONCONTAINER"><input type="hidden" name="id" value="9086"><input type="hidden" name="type" value="CHOICE"><input type="hidden" name="required" value="0"><div class="QUESTIONTEXT">Was this information relevant?</div><div class="QUESTIONINSTRUCTION"></div><div class="QUESTIONREQUIRED"></div><input type="hidden" name="randomization" value=""><table cellspacing="0" cellpadding="0" border="0"><tr><td valign="top"><table cellspacing="2" cellpadding="0" border="0"><tr><td valign="top"><input type="radio" name="QUESTION_132_90869086" id="14471" value="0"></td><td class="ANSWERTEXT">Yes</td></tr></table></td></tr><tr><td valign="top"><table cellspacing="2" cellpadding="0" border="0"><tr><td valign="top"><input type="radio" name="QUESTION_132_90869086" id="14472" value="1"></td><td class="ANSWERTEXT">No</td></tr></table></td></tr></table></div><div id="SURVEYQUESTION_9087" class="QUESTIONCONTAINER"><input type="hidden" name="id" value="9087"><input type="hidden" name="type" value="TEXT-BLOCK"><input type="hidden" name="required" value="0"><div class="QUESTIONTEXT">What can we do to improve this information?</div><div class="QUESTIONINSTRUCTION"></div><div class="QUESTIONREQUIRED"></div><textarea class="ANSWERBOX" name="TEXTBLOCK_9087" rows="6" cols="80" onpaste="enforceMaxLength(this,500,event)" onkeydown="enforceMaxLength(this,500,event)"></textarea></div><div id="SURVEYQUESTION_7813" class="QUESTIONCONTAINER"><input type="hidden" name="id" value="7813"><input type="hidden" name="type" value="LABEL"><input type="hidden" name="required" value="0"><div class="QUESTIONTEXT">To protect your privacy, do not include contact information in your feedback.</div><div class="QUESTIONINSTRUCTION"></div><div class="QUESTIONREQUIRED"></div></div><div class="NAVIGATION"><table class="NAVBUTTONCONTAINER"><tr><td class="PADDINGCELL"></td><td class="NAVBUTTONCELL"><input class="NAVBUTTON" type="button" value="Submit" onclick="kbSurvey.next();this.blur();"></td><td class="ENDPADDINGCELL"></td></tr></table></div></div><div ID="DIV_CLOSE" style="display:none" xmlns:sw="urn:schemas-microsoft-com/PSS/PSS_Survey01"><div class="SURVEYTHANKYOUCONTAINER"><div class="SURVEYINTROTEXT">Thank you! Your feedback is used to help us improve our support content. For more assistance options, please visit the <a href="http://support.microsoft.com">Help and Support Home Page</a>.</div></div><div class="NAVIGATION"><table class="NAVBUTTONCONTAINER" nowrap="yes"><tr><td class="PADDINGCELL"></td><td class="NAVBUTTONCELL"></td><td class="ENDPADDINGCELL"></td></tr></table></div></div></div></div></div><script type="text/javascript">
+			var kbSurvey = new MS.Support.Fms.Survey("fmsSurvey");
+			kbSurvey.isKBEmbedded = true;
+			kbSurvey.addSubmitField('REGIONID', 'zh-cn');
+			kbSurvey.addSubmitField('SITE', 'gn');
+			kbSurvey.addSubmitField('SURVEYSCID', 'sw;en;1496');
+			kbSurvey.addSubmitField('SURVEYID', '1496');
+			kbSurvey.addSubmitField('SURVEYNAME', '');
+			kbSurvey.addSubmitField('BROWSERLANGCODE', 'zh-cn,en-us\x3bq\x3d0.7,en\x3bq\x3d0.3');
+			kbSurvey.addSubmitField('SURVEYLANGCODE', 'en');
+			kbSurvey.addSubmitField('FMSURL', '%252fdefault.aspx%252fkb%252f250563%252fen-us');
+			kbSurvey.parameters = ['kb','en-us','250563','','','','','','',''];
+			kbSurvey.maxKBsInCookie = '10';
+			kbSurvey.kbvisited = '';
+		</script></div></td><td class="primaryThinColumn"><div id="thinColumn" style="float: none;"><div class="wp getHelp"><table align="center" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="/gethelp/default.aspx?content=kb;en-us;250563" id="L_177568" title="请通过电子邮件、联机或电话与支持工程师联系"><img alt="请通过电子邮件、联机或电话与支持工程师联系" src="/library/images/support/en-US/Help_support_55.gif" /></a></td><td class="text"><h3>需要更多帮助?</h3><a href="/gethelp/default.aspx?content=kb;en-us;250563" id="L_177568" title="请通过电子邮件、联机或电话与支持工程师联系">请通过电子邮件、联机或电话与支持工程师联系</a></td></tr></table></div><div class="wp articleTrans"><h3><span class="linkCon">Article Translations</span><span class="linkConTop"></span></h3><form name="frmArticleTrans" action="/" onsubmit="return SwitchLanguage(29803);"><div><table cellpadding="0" cellspacing="0"><tr><td><select name="scid"><option value="kb;ar;250563">Arabic</option><option value="kb;fr;250563">French</option><option value="kb;de;250563">German</option><option value="kb;it;250563">Italian</option><option value="kb;ja;250563">Japanese</option><option value="kb;ko;250563">Korean</option><option value="kb;pt-br;250563">Portuguese (Brazil)</option><option value="kb;pt;250563">Portuguese (Portugal)</option><option value="kb;zh-cn;250563" selected>Simplified Chinese</option><option value="kb;es;250563">Spanish</option><option value="kb;zh-tw;250563">Traditional Chinese</option></select></td><td class="spacer">&nbsp;</td><td><input type="image" alt="Translate the article" style="width: 24;height: 24;" onmouseover="this.src='/library/images/support/EN-US/go_right_02-over.gif';" onmouseout="this.src='/library/images/support/en-US/GSSSM_rltlngRelatedlanguages.gif';" src="/library/images/support/en-US/GSSSM_rltlngRelatedlanguages.gif" /><a id="KBLangListRedirect" href="" /></td></tr></table></div></form></div><div id="divRelContent" style="display:none"></div><div id="divRelTags" style="display:none"></div><div class="wp" id="RelatedSupportCenters"><table cellspacing="0" class="LCT"><tr><td class="textColumn"><h3><span class="linkCon">相关支持中心</span><span class="linkConTop"></span></h3><ul><li><span><a href="/ph/1139/zh-cn">Windows 98</a></span></li><li><span><a href="/ph/3003/zh-cn">Visual C++ 6.0</a></span></li></ul></td></tr></table></div><div class="wp" id="SupportTools"><table cellspacing="0" class="LCT"><tr><td class="textColumn"><h3><span class="linkCon">页面工具</span><span class="linkConTop"></span></h3><ul><li id="PrintPage_tr"><span><a href="/gp/noscript" id="PrintPage" title="打印此页" onclick="return MS_HandleClick(this,'SupportTools', true);">打印此页</a></span></li><li id="EmailPage_tr"><span><a href="mailto:?subject=You%20receive%20a%20%22First-chance%20exception%20in%20%3cSomeApp%3e.exe%20%28KERNEL32.DLL%29%22%20error%20message%20when%20you%20debug%20a%20default%20an%20MFC%20AppWizard%20program&amp;body=http%3a%2f%2fsupport.microsoft.com%2fdefault.aspx%2fkb%2f250563%2fen-us" id="EmailPage" title="通过电子邮件发送此页" onclick="return MS_HandleClick(this,'SupportTools', true);">通过电子邮件发送此页</a></span></li></ul></td></tr></table></div></div></td></tr></table></div></div><div id="bottomRow"><div class="wp getHelp"><table align="center" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="/gethelp/default.aspx?content=kb;en-us;250563" id="L_177568" title="请通过电子邮件、联机或电话与支持工程师联系"><img alt="请通过电子邮件、联机或电话与支持工程师联系" src="/library/images/support/en-US/Help_support_55.gif" /></a></td><td class="text"><h3>需要更多帮助?</h3><a href="/gethelp/default.aspx?content=kb;en-us;250563" id="L_177568" title="请通过电子邮件、联机或电话与支持工程师联系">请通过电子邮件、联机或电话与支持工程师联系</a></td></tr></table></div></div>
+                        
+            </div>
+        </div>
+        
+        <div id="gsfx_brnd_BottomCorners" class="gsfx_brnd_CornerContainer">
+            <div class="gsfx_brnd_TBBorders gsfx_brnd_TransBG" id="gsfx_brnd_BottomBorder"></div>
+            <div class="gsfx_brnd_Corner" id="gsfx_brnd_LLowerCorner"></div>
+        </div>
+        
+        <div id="gsfx_brnd_WidthFix"></div>
+        
+        <div id="gsfx_brnd_FooterContainer">
+            <div id="gsfx_brnd_SiteFooter" class="gsfx_brnd_NetworkLeft">
+                技术支持与服务
+            </div>
+
+            <table id="gsfx_brnd_NetworkFooter" class="gsfx_brnd_NetworkRight"><tr>
+                <td id="gsfx_brnd_FooterLinkContainer">
+                    <!--Table is wrapped in a div tag to facilitate proper alignment and stacking-->
+                    <div class="gsfx_brnd_FooterLinks" id="gsfx_brnd_SiteFooterLinks">
+                        <!--Table is used here in order to properly order the links for LTR and RTL while maintaining the correct tab order-->                        
+                        <table summary="Site Footer Links" class="gsfx_brnd_NetworkRight"><tr><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_NetworkLink"><a href="/gp/csa" id="L_157698"><span>服务协议</span></a></td></tr></table>                        
+                    </div>
+                    
+
+                    <!--Table is wrapped in a div tag to facilitate proper alignment and stacking-->
+                    <div class="gsfx_brnd_FooterLinks" id="gsfx_brnd_NetworkFooterLinks">
+                        <!--Table is used here in order to properly order the links for LTR and RTL while maintaining the correct tab order-->
+                        <table summary="Network Footer Links" class="gsfx_brnd_NetworkRight"><tr><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_NetworkLink"><a href="/contactus/?ws=support" id="L_156469"><span>联系微软</span></a></td><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_FooterSeperator">|</td><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_NetworkLink"><a href="http://www.microsoft.com/china/info/cpyright.mspx" id="L_156470"><span>保留所有权利</span></a></td><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_FooterSeperator">|</td><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_NetworkLink"><a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/zh-cn.mspx" id="L_156471"><span>商标</span></a></td><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_FooterSeperator">|</td><td class="gsfx_brnd_NetworkLinkContainer gsfx_brnd_NetworkLink"><a href="http://privacy.microsoft.com/zh-cn/default.aspx" id="L_156472"><span>隐私权声明</span></a></td></tr></table>
+                    </div>
+                </td>
+                <td id="gsfx_brnd_copyright_container">
+                    <div id="gsfx_brnd_MSLogoContainer" >
+                        <!--[if lte IE 6]><div id="gsfx_brnd_legacy_MSLogo"></div><![endif]-->
+                        <img id="gsfx_brnd_MSLogo" alt="Microsoft" src="/library/images/support/cn/gsfx_brnd_ms_logo_sml_wht.png" />
+                        <img id="gsfx_brnd_MSLogoPrint" alt="Microsoft" src="/library/images/support/cn/gsfx_brnd_ms_logo_sml_blk.png" />
+                    </div>
+                    <span id="gsfx_brnd_copyright">&copy;2009 Microsoft</span>
+                </td>
+            </tr></table>
+        </div>
+    </div>
+</div>
+</div>
+<style type="text/css">   
+    #gsfx_brnd_CenterContent, #gsfx_brnd_PageWrapper
+    {
+        background: url('/library/images/support/cn/gsfx_brnd_gn_bottom_bgrd.png') repeat-x bottom;
+    }    
+</style>
+<script type="text/javascript" src="/common/script/gsfx/branding.js?21"></script><script type="text/javascript" src="/common/script/gsfx/wtInit.js?21"></script><script type="text/javascript" src="/common/script/gsfx/wtCore.js?21"></script><noscript><img alt="" id="DCSIMG" width="1" height="1" src="http://m.webtrends.com/dcsxia05c00000s926v0z4tru_3w4l/njs.gif?dcsuri=/nojavascript&WT.js=No" /></noscript><img id="webmetriximg" alt="" src="/library/images/support/cn/onepix.gif" /><noscript><img id="StatsDotNetImgNoScript" alt="" src="http://support.microsoft.com/LTS/default.aspx?SSID=1&#38;SiteLCID=2052&#38;SsVersion=GSS4.9&#38;SiteCulture=zh-cn&#38;ContentCulture=en-us&#38;In404Url=&#38;EventCollectionID=1&#38;URL=%2fdefault.aspx&#38;ContentType=kb&#38;ContentLCID=1033&#38;ContentID=250563&#38;Platform=windows%20nt%205.2&#38;BrandID=1&#38;ContentProperties=6%3d9%7c7%3d2.1%7c9%3dkbAudDeveloper%20%20%7c" /></noscript><img id="StatsDotNetImg" name="StatsDotNetImg" alt="" src="/library/images/support/cn/onepix.gif" /><script type="text/javascript">StatsDotNet.disabled=false;StatsDotNet.enableCollTierParams=false;StatsDotNet.host='http\x3a\x2f\x2fsupport.microsoft.com\x2fLTS\x2fdefault.aspx';StatsDotNet.ssId='1';StatsDotNet.siteLcId='2052';StatsDotNet.SiteCulture='zh-cn';StatsDotNet.SsVersion='GSS4.9';StatsDotNet.url='\x2fdefault.aspx';StatsDotNet.ContentCulture ='en-us';StatsDotNet.contentType='kb';StatsDotNet.contentLn='1033';StatsDotNet.contentId='250563';StatsDotNet.platform='windows nt 5.2';StatsDotNet.eventCollectionId=1;StatsDotNet.siteBrandId='1';StatsDotNet.onUnloadTimeout=300;StatsDotNet.ltsIdleTimeout=296000;StatsDotNet.userAgentString='mozilla\x2f5.0 \x28windows\x3b u\x3b windows nt 5.2\x3b zh-cn\x3b rv\x3a1.9.0.10\x29 gecko\x2f2009042316 firefox\x2f3.0.10 gtb5 \x28.net clr 3.5.30729\x29';StatsDotNet.ContentProperties='6\x3d9\x7c7\x3d2.1\x7c9\x3dkbAudDeveloper  \x7c';</script><script type="text/javascript">function isDomainTracking(){var entry = fetchcookieval('fmshb');if (entry){try{return entry.split(',')[0] == '1' ? true : false;}catch (e){return false;}}return false;};window.setInterval("document.cookie = 'fmshb=' + (isDomainTracking() ? '1' : '0') + ',' + new Date().getTime() + ';path=/'", 1000);</script><script type="text/javascript">var CookieDef = 'ST_GN_ZH-CN';function fmsLastExp(){var visits = fetchcookieval(CookieDef);if (visits){var parts = visits.split('_');if (parts.length == 3 && !isNaN(parts[0])){return parseInt(parts[2]);}}setcookieval(CookieDef, '1_0_0');return 0;}function fmsSurveyExpired(days){var MiliDay = 86400000;var visits = fetchcookieval(CookieDef);if (visits){var parts = visits.split('_');if(parts.length == 3 && !isNaN(parts[0])){var origDate = parseInt(parts[1]);var curDate = new Date();return (curDate.getTime()/MiliDay - days) >= origDate;}}setcookieval(CookieDef, '1_0_0');return true;}function activateSiteSurvey(){if(window.top == window && !isDomainTracking() && enableSiteSurvey && fmsSurveyExpired(fmsLastExp())){document.write('<script language="javascript" src="/library/svy/broker.js"></scr'+'ipt>');}}</script><script language="javascript">if(surveyTrigger.triggerInit(0)){surveyTrigger.fireTrigger('/common/survey.aspx?scid=sw;zh-sim;1487&XSL=','gn','gn','gn','zh-cn','http\x253a\x252f\x252fsupport.microsoft.com\x252fdefault.aspx\x252fkb\x252f250563\x252fen-us','kb','en-us','250563','','','','','','','');}else{activateSiteSurvey();}</script><script type="text/javascript">function thisLoad(){makeAjaxCall('LoadRelatedContent','250563\x3ben-us');makeAjaxCall('LoadRelatedTags','250563\x3ben-us');KBFeedBackShowSurvey();CreateSearchOptions('acListWrappergsfx_bsrch_query', 294);SetCatLangPos();InitSrch();InitAC('gsfx_bsrch_query');$(document).ready(function() {gsfx_bsrch_InitCatSelection('gsfx_bsrch_query', '4:4:');});MS_WebMetrix('http\x3a\x2f\x2fc.microsoft.com\x2ftrans_pixel.asp\x3fTYPE\x3dSSPV\x26SOURCE\x3dSUPPORT\x26GUID\x3d1F4FC18C-F71E-47fb-8FC9-612F8EE59C61\x26URI\x3d\x252fgn\x252fzh-cn\x252fkb_en-us_250563\x26R\x3d');StatsDotNet.LogPageOnLoad();}function thisUnload(){}</script></body></html>

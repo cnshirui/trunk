@@ -1,0 +1,56 @@
+<project name="RubyToSwf" basedir="." default="main">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="doc.dir" value="doc" />
+	<!--
+	Input the full path name for the JSwiff library here!
+	-->
+	<property name="jswiff.path" value="./libs/jswiff-8.0-beta-2.jar" />
+	
+	<!--Input the full path name for the Java Cup library here!
+	-->
+	<property name="jcup.path" value="./libs/java-cup-11a.jar" />
+	
+	<target name="main" depends="compile">
+		<mkdir dir="${doc.dir}" />
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}">
+			<package name="rubyToSwf"/>
+			<package name="rubyToSwf.ast"/>
+			<package name="rubyToSwf.codegen"/>
+			<package name="rubyToSwf.common"/>
+			<package name="rubyToSwf.parser"/>
+			<package name="rubyToSwf.test"/>
+			<package name="rubyToSwf.util"/>
+		</javadoc>
+	</target>
+	
+	<target name="compile" depends="yacc">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${classes.dir};${jswiff.path};${jcup.path}"/>
+		<jar destfile="rubyToSwf.jar" basedir="${classes.dir}">
+			<include name="rubyToSwf/**"/>
+		    <manifest>
+				<attribute name="Main-Class" value="rubyToSwf.RubyToSwfW"/>
+				<attribute name="Class-Path" value="jcup.jar jswiff.jar"/>
+		    </manifest>
+		 </jar>
+		<mkdir dir="Ruby"/>
+		<copy todir="Ruby">
+			<fileset dir="${src.dir}/Ruby"/>
+		</copy>
+		<copy file="${jswiff.path}" tofile="jswiff.jar"/>
+		<copy file="${jcup.path}" tofile="jcup.jar"/>
+	</target>
+	
+	<target name="yacc">
+		<mkdir dir="${src.dir}/rubyToSwf/parser"/>
+		<java classname="java_cup.Main" input="${src.dir}/rubyToSwf/parser/parse.cup" classpath="${classes.dir};${jswiff.path};${jcup.path}">
+			<arg line="-package rubyToSwf.parser -expect 10"/>
+		</java>
+		<!--
+		<move file="parser.java" tofile="${src.dir}/rubyToSwf/parser/parser.java"/>
+		<move file="sym.java" tofile="${src.dir}/rubyToSwf/parser/sym.java"/>
+		-->
+	</target>
+</project>

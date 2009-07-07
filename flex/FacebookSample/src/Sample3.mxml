@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" applicationComplete="init();" backgroundColor="0xFFFFFF" backgroundImage="">
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+		
+			import com.facebook.Facebook;
+			import com.facebook.events.FacebookEvent;
+			import com.facebook.net.FacebookCall;
+			import com.facebook.data.photos.GetAlbumsData;
+			import com.facebook.data.photos.GetPhotosData;
+			import com.facebook.commands.photos.GetAlbums;
+			import com.facebook.commands.photos.GetPhotos;
+			import com.facebook.utils.FacebookSessionUtil;
+			
+			private var fbook:Facebook;
+			private var session:FacebookSessionUtil;
+			
+			private var API_KEY:String = "76b12b2c46e0a4f255fc9a50a575c222";
+			private var SECRET_KEY:String = "b1318cdbee3edc07fc5e14781dfc2478";
+			
+			[Bindable] private var facebookPhotoAlbums:ArrayCollection; 
+			[Bindable] private var facebookPhotos:ArrayCollection;
+			
+			private function init():void {
+				session=new FacebookSessionUtil(API_KEY, SECRET_KEY, loaderInfo);
+				session.addEventListener(FacebookEvent.CONNECT, onConnect);
+				fbook=session.facebook;
+			}
+			
+			private function onConnect(e:FacebookEvent):void {
+				status.text = "Facebook API Ready";	
+			}
+			
+			private function doneLoggingIn():void {
+				session.validateLogin();
+			}
+		
+			private function getPhotoAlbums():void {
+				var call:FacebookCall = fbook.post(new GetAlbums(fbook.uid));
+				call.addEventListener(FacebookEvent.COMPLETE, handleGetAlbumsResponse);
+			}
+		
+			private function handleGetAlbumsResponse(e:FacebookEvent):void {
+				var albumsResponseData:GetAlbumsData = e.data as GetAlbumsData;
+				
+				if (!albumsResponseData || e.error){ // an error occurred
+					status.text = "Error";
+					return;
+				}
+				
+				facebookPhotoAlbums = new ArrayCollection();
+																		
+				for(var i:int = 0; i < albumsResponseData.albumCollection.length; i++){
+					facebookPhotoAlbums.addItem(albumsResponseData.albumCollection.getItemAt(i));	
+				}
+			
+			}
+			
+			private function handleGetPhotosResponse(e:FacebookEvent):void {
+				var photosResponseData:GetPhotosData = e.data as GetPhotosData;
+				
+				if (!photosResponseData || e.error){ // an error occurred
+					status.text = "Error";
+					return;
+				}				
+										
+				facebookPhotos = new ArrayCollection();
+												
+				for(var i:int = 0; i < photosResponseData.photoCollection.length; i++){
+					facebookPhotos.addItem(photosResponseData.photoCollection.getItemAt(i));	
+				}
+			}
+			
+			private function showSelectedAlbum():void {
+				var selectedAlbumID:String = albumsDataGrid.selectedItem.aid;
+								
+				var call:FacebookCall = fbook.post(new GetPhotos('', selectedAlbumID));
+				call.addEventListener(FacebookEvent.COMPLETE, handleGetPhotosResponse);
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Button label="1. Login to Facebook" click="session.login();" />
+	<mx:Button label="2. Done logging in" click="doneLoggingIn()" />
+	<mx:Button label="3. Browse Photos" click="getPhotoAlbums()" />
+	
+	<mx:Label id="status" text="Please log in" />
+	
+	<mx:HBox>
+	
+		<mx:List id="albumsDataGrid" dataProvider="{facebookPhotoAlbums}" itemClick="showSelectedAlbum()">
+			<mx:itemRenderer>
+				<mx:Component>
+					<mx:Label text="{data.name}" />
+				</mx:Component>
+			</mx:itemRenderer>			
+		</mx:List>
+		
+		<mx:TileList id="photosList" dataProvider="{facebookPhotos}" click="{fullsizePhoto.source = photosList.selectedItem.src_big}">
+			<mx:itemRenderer>
+				<mx:Component>
+					<mx:Image source="{data.src_small}" />
+				</mx:Component>
+			</mx:itemRenderer>
+		</mx:TileList>
+		
+	</mx:HBox>
+	
+	<mx:Image id="fullsizePhoto" />
+
+</mx:Application>

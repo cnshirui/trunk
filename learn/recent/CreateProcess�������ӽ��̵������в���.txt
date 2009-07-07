@@ -1,0 +1,301 @@
+网站首页 <http://www.diybl.com/> 		新闻首页 <http://news.diybl.com/> 	
+网页设计 </course/1_web/>		图形动画 </course/2_picdesign/>		软件编程
+</course/3_program/>		网站开发 </course/4_webprogram/>		办公软件
+</course/5_office/>		操作系统 </course/6_system/>		数据库
+</course/7_databases/>		网络技术 </course/webjsh/>		认证考试
+</course/comshiti/>		范文资料 </course/fwzl/>		黑客攻防
+</course/hack/>		书籍教程 <http://www.diybl.com/chm/> 		进入论坛
+<http://bbs.diybl.com/>
+
+<http://www.diybl.com/>
+<http://video.diybl.com> <http://www.thxun.com>
+
+    * C++ </course/3_program/c++/>
+    * C++系列教程 </course/3_program/c++/cppxl/>
+    * C++实例教程 </course/3_program/c++/cppsl/67cdwvpysd.html>
+    * C++技术文章 </course/3_program/c++/cppjs/>
+    * C++/C语言函数 </course/3_program/c++/chs/>
+
+		
+
+    * 加入收藏
+      <javascript:window.external.addFavorite('http://www.diybl.com
+      /','DIY部落');>
+    * 网站地图 </map.html>
+    * 书籍教程 <http://www.diybl.com/chm/>
+    * 会员注册 </user/register.asp>
+
+<http://www.zzy.cn/count.php?id=206>
+DIY部落 <http://www.diybl.com/> >> 软件编程 </course/3_program/> >> C++
+</course/3_program/c++/> >> C++实例教程
+</course/3_program/c++/cppsl/67cdwvpysd.html> >> 正文
+
+
+  CreateProcess创建的子进程的命令行参数
+
+http://www.diybl.com/　2008-8-9 　网络　点击: 　[ 评论 ] <#comment>
+-
+-
+文章搜索：    【点击打包该文章】
+<javascript:self.location='/user/chm/rar.asp?c_id=48375'>
+<http://video.diybl.com>
+【本站开通在线QQ讨论群】
+<http://bbs.diybl.com/viewthread.php?tid=20852&extra=page%3D1>
+
+ 
+
+用CreateProcess创建的子 <http://www.qqread.com/z/windows/process
+/index.html>所获得的命令行参数有以下几种情况：
+
+1．子进程中，WinMain函数的第三个参数lpCmdLine表示的命令行参数中除去应用
+程序路径、文件名以及与参数相隔的空格等字符串后的内容。比如
+
+父进程：
+
+
+CreateProcess(NULL, “c:\\test.exe -p“, NULL, NULL, FALSE, 0, NULL, NULL,
+&si, &pi);
+
+子进程中，lpCmdLine参数为-p,注意没有双引号
+
+2．如果通过lpCmdLine参数查看命令行参数，那么父进程创建子进程的时候，需要
+在子程序和参数中加上空格号。比如：
+
+父进程：
+
+CreateProcess(“c:\\test.exe”，“ -p“, NULL, NULL, FALSE, 0, NULL, NULL,
+&si, &pi);
+
+子进程中，lpCmdLine参数为-p，没有空格了。
+
+3．如果想获得子进程的完整命令行参数，调用GetCommandLine函数。通常通过
+GetCommandLine函数获得的命令行参数，是父进程调用时的完整参数。
+
+CreateProcess(NULL, “c:\\test.exe -p“, NULL, NULL, FALSE, 0, NULL, NULL,
+&si, &pi);
+
+子进程中，GetCommandLine返回的参数为c:\\test.exe -p,注意没有双引号
+
+以下情况都是调用GetCommandLine函数获得命令行参数
+
+4．CreateProcess第一个参数是NULL，第二个参数指定子应用程序和命令行参数，
+那么子进程的命令行参数是第二个参数，不带双引号。比如：
+
+父进程：
+
+CreateProcess(NULL, “c:\\test.exe -p“, NULL, NULL, FALSE, 0, NULL, NULL,
+&si, &pi);
+
+子进程中，GetCommandLine获得的命令行参数为c:\\test.exe -p
+
+5．CreateProcess第一个参数指定子应用程序路径和文件名，第二个参数为NULL，
+那么子进程的命令行参数是第一个参数，带双引号。比如：
+
+父进程：
+
+CreateProcess(“c:\\test.exe“, NULL， NULL, NULL, FALSE, 0, NULL, NULL,
+&si, &pi);
+
+子进程中，GetCommandLine获得的命令行参数为”c:\\test.exe“
+
+6．CreateProcess第一个参数指定子应用程序路径和文件名，第二个参数为传递给
+子进程的参数，那么子进程的命令行参数是第二个参数，不带双引号。比如：
+
+父进程：
+
+CreateProcess(“c:\\test.exe“, ”-p“， NULL, NULL, FALSE, 0, NULL, NULL,
+&si, &pi);
+
+子进程中，GetCommandLine获得的命令行参数为-p。
+
+此处注意同第二点比较，如果用lpCmdLine查看命令行参数，没什么都没有。但是
+将”-p”改成” -p”，用可以看到参数是-p，是不是很混乱？
+
+-
+*文章整理:**DIY部落* <http://www.diybl.com> *http://www.diybl.com* (本
+站) 　　【点击打包该文章】
+<javascript:self.location='/user/chm/rar.asp?c_id=135348'>
+如果图片或页面不能正常显示请点击这里　站内搜索：   
+【收藏此页 <javascript:window.external.addFavorite(window.location,'
+CreateProcess创建的子进程的命令行参数-DIY部落');>】【栏目页面
+<http://www.diybl.com/course/3_program/c++/cppsl/67cdwvpysd.html>】【发
+表评论 <#comment>】【返回顶部 <#>】【关闭 <javascript:window.close()>】
+上一篇文章： 在 Win32 Application 和 Win32 Console Application 中使用
+MFC </course/3_program/c++/cppsl/200889/135349.html>
+下一篇文章： 经典游戏问题算法集
+</course/3_program/c++/cppsl/200889/135347.html>
+
+
+      推荐文章
+
+VC Studio 使用技巧 </course/3_program/c++/cppsl/2008123/96980.html>
+《C++0x漫谈》系列之：右值引用 </course/3_program/c++/cppsl/2007919/72119.html>
+c++中的system函数可以调用的Dos命令
+</course/3_program/c++/cppsl/200899/140698.html>
+矢量图形组件TCAD加入了自由画的功能，改进了弧线的画法
+</course/3_program/c++/cppsl/200853/112360.html>
+类成员函数指针浅析 </course/3_program/c++/cppsl/200899/140561.html>
+gcc与g++区别和联系 </course/3_program/c++/cppsl/2008327/107609.html>
+I/O Routines 输入/输出API函数
+</course/3_program/c++/cppsl/2008516/117042.html>
+FFT算法实现 </course/3_program/c++/cppsl/20071019/78081.html>
+PE格式文件的代码注入 </course/3_program/c++/cppsl/200832/102445.html>
+希望认识编程及商业界的朋友 </course/3_program/c++/cppsl/2008625/128219.html>
+关于 0x04bd8 的解释 </course/3_program/c++/cppsl/2007919/72115.html>
+PE分析工具--PE-T代码2 </course/3_program/c++/cppsl/200899/141293.html>
+用邻接表实现深度和广度搜索 </course/3_program/c++/cppsl/2008824/137256.html>
+TUXEDO SALT简介 </course/3_program/c++/cppsl/2007918/71981.html>
+用之则为虎，不用则为鼠－谈编程中的变量赋值
+</course/3_program/c++/cppsl/2008121/96878.html>
+花儿开了，好美啊 </course/3_program/c++/cppsl/2008320/105869.html>
+
+
+      文章评论
+
+
+      请您留言
+
+昵称: 　　　　 注册会员 </user/register.asp> 会员登陆 </user/login.asp>
+*点击这里* </user/chgpage/cata.asp?num=1030202> 自己制作打包的chm电子书
+教程 验证:    验证码,看不清楚?请点击刷新验证码        
+
+
+      网友推荐文章
+
+    * 字符串 左移I个位置
+      <http://www.diybl.com/course/3_program/c++/cppsl/20071211/91644.html>
+    * trie 树
+      <http://www.diybl.com/course/3_program/c++/cppsl/200855/113042.html>
+    * VisualFC简介(WTL、WinxGUI可视化开发环境)
+      <http://www.diybl.com/course/3_program/c++/cppsl/20071119/87024.html>
+    * 线程 进程学习之一 CreateProcess
+      <http://www.diybl.com/course/3_program/c++/cppsl/2008222/100461.html>
+    * kermit使用注意事项
+      <http://www.diybl.com/course/3_program/c++/cppsl/2008825/137407.html>
+    * inverse,combination,interior,raster,device,apply,exclusive,unary
+      <http://www.diybl.com/course/3_program/c++/cppsl/2007919/72113.html>
+    * 自己动手实现UPnP进行端口映射的经过
+      <http://www.diybl.com/course/3_program/c++/cppsl/20071218/92686.html>
+    * GUI-Based RunAsEx
+      <http://www.diybl.com/course/3_program/c++/cppsl/2008618/126202.html>
+
+ 
+<http://www.now.cn/indexr.php?r=!M3OT_366>
+
+
+    最新新闻
+
+    * 微软起诉TomTom捅马蜂窝 开源界领袖纷表不满
+      <http://news.diybl.com/news/it/open/2009228/13764.html>
+    * Novell近日宣布将与VMware开展广泛合作
+      <http://news.diybl.com/news/it/enterprise/2009228/13759.html>
+    * HP与Sun达成一致 将帮助售卖Solaris系统
+      <http://news.diybl.com/news/it/enterprise/2009228/13760.html>
+    * 苹果称乔布斯仍将于6月底重掌大权
+      <http://news.diybl.com/news/it/enterprise/2009228/13761.html>
+    * 谷歌中国原首席战略官郭去疾创办外贸B2C公司
+      <http://news.diybl.com/news/it/enterprise/2009228/13762.html>
+    * 沃达丰将向中小企业提供微软网络服务
+      <http://news.diybl.com/news/it/enterprise/2009228/13763.html>
+
+
+    相关教程文章
+
+    * Core Dump?! </course/3_program/c++/cppsl/2008810/135609.html>
+    * 深入浅出VA函数的使用技巧
+      </course/3_program/c++/cppsl/2008810/135608.html>
+    * 去除属性表下默认的几个按钮的方法
+      </course/3_program/c++/cppsl/2008810/135607.html>
+    * mangos源文件中英文对照表
+      </course/3_program/c++/cppsl/2008810/135606.html>
+    * 进程 </course/3_program/c++/cppsl/2008810/135605.html>
+    * 邮件编程一个绝好的例子
+      </course/3_program/c++/cppsl/2008810/135604.html>
+    * C语言常用算法 </course/3_program/c++/cppsl/2008810/135603.html>
+    * gnu c language extension
+      </course/3_program/c++/cppsl/2008810/135602.html>
+    * 函数调用规范 </course/3_program/c++/cppsl/2008810/135601.html>
+    * 文件时间设置与读取的代码
+      </course/3_program/c++/cppsl/200889/135351.html>
+    * 最简单的反弹后门设计和基本模块代码
+      </course/3_program/c++/cppsl/200889/135350.html>
+    * 在 Win32 Application 和 Win32 Console Application 中使用 MFC
+      </course/3_program/c++/cppsl/200889/135349.html>
+    * CreateProcess创建的子进程的命令行参数
+      </course/3_program/c++/cppsl/200889/135348.html>
+    * 经典游戏问题算法集 </course/3_program/c++/cppsl/200889/135347.html>
+    * 3个著名加密算法(MD5、RSA、DES)的解析
+      </course/3_program/c++/cppsl/200889/135346.html>
+    * 一些面试题目 </course/3_program/c++/cppsl/200889/135345.html>
+    * ISO C++ operator 重载类型转换时对指针的重要约束！
+      </course/3_program/c++/cppsl/200889/135344.html>
+    * 找硬币 </course/3_program/c++/cppsl/200889/135343.html>
+    * 获取文件属性的三个函数(Linux).
+      </course/3_program/c++/cppsl/200889/135342.html>
+    * Understand inline </course/3_program/c++/cppsl/200889/135341.html>
+    * bfin-xxx-gcc中options.h的生成
+      </course/3_program/c++/cppsl/200889/135340.html>
+    * Reference in C++ </course/3_program/c++/cppsl/200889/135339.html>
+    * How to use (data_member | member function) pointers in class
+      </course/3_program/c++/cppsl/200889/135338.html>
+    * 使用C/C++实现内存池技术
+      </course/3_program/c++/cppsl/200889/135337.html>
+
+
+    本栏目热门教程
+
+    * MFC中ListControl控件的使用
+      </course/3_program/c++/cppsl/200864/121412.html>
+    * 在Windows下使用VC++6.0编译器生成Qt应用程序
+      </course/3_program/c++/cppsl/2008121/96891.html>
+    * 在VC对话框中实现打印和打印预览（附实现步骤）
+      </course/3_program/c++/cppsl/2008127/97806.html>
+    * C/C++笔试题目大全 </course/3_program/c++/cppsl/200815/95889.html>
+    * 什么是MFC </course/3_program/c++/cppsl/20071119/86928.html>
+    * CStdioFile类学习笔记 </course/3_program/c++/cppsl/2008130/98056.html>
+    * 基于ACE应用编程框架——线程池（1）
+      </course/3_program/c++/cppsl/2007124/89882.html>
+    * prim算法求最小生成树程序
+      </course/3_program/c++/cppsl/2007124/89846.html>
+    * WINDOWS.H already included. MFC apps must not #include
+      </course/3_program/c++/cppsl/2008419/110662.html>
+    * HTTP服务器上断点下载文件
+      </course/3_program/c++/cppsl/2008111/96228.html>
+
+
+    频道地图
+
+C++ <http://www.diybl.com/course/3_program/c++/>
+　C++系列教程 <http://www.diybl.com/course/3_program/c++/cppxl/>
+　C++实例教程 <http://www.diybl.com/course/3_program/c++/cppsl/>
+　C++技术文章 <http://www.diybl.com/course/3_program/c++/cppjs/>
+　C++/C语言函数 <http://www.diybl.com/course/3_program/c++/chs/>
+C <http://www.diybl.com/course/3_program/c/>
+C++ <http://www.diybl.com/course/3_program/c++/>
+Java <http://www.diybl.com/course/3_program/java/>
+VB <http://www.diybl.com/course/3_program/vb/>
+Delphi <http://www.diybl.com/course/3_program/delphi/>
+Foxpro <http://www.diybl.com/course/3_program/rfoxpro/>
+汇编语言 <http://www.diybl.com/course/3_program/hb/>
+游戏开发 <http://www.diybl.com/course/3_program/game/>
+移动开发 <http://www.diybl.com/course/3_program/jdkf/>
+软件工程师 <http://www.diybl.com/course/3_program/gcs/>
+软工与管理 <http://www.diybl.com/course/3_program/rg/>
+VC <http://www.diybl.com/course/3_program/vc/>
+shell编程 <http://www.diybl.com/course/3_program/shell/>
+DIY部落意见反馈留言板 </guest.html>　QQ：258622672　email：diybl@163.com
+　　欢迎批评指正
+
+DIY部落简介 <http://www.diybl.com/info_c.html> | About DIY部落
+<http://www.diybl.com/info_e.html> | 广告联系 <javascript:openadinfo();>
+| 联系我们 <javascript:openadinfo();> | 收藏本站
+<javascript:window.external.addFavorite('http://www.diybl.com/','DIY部落
+');> | 友情链接 </link/index.asp> | 网站地图 </map.html> | 会员注册
+</user/register.asp> | 站长主页 <http://blog.diybl.com/space.php?uid=1>
+
+本站文章均为网上网友上传，如果有非法内容请联系我们，我们会在第一时间删除
+
+本站招聘编辑一名：联系电话:15009259087 联系qq 258622672
+
+陕ICP备06011157号　DIY部落 版权所有 <http://www.miibeian.gov.cn/>
+<http://www.cnzz.com/stat/website.php?web_id=272073>

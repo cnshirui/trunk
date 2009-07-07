@@ -1,0 +1,70 @@
+User’s Guide for Ruby On Flash (ver. 0.1a)
+http://sourceforge.net/projects/rubyonflash
+
+Running Ruby On Flash
+Upon installation, the following directory structure will be observed (only files relevant to our discussion will be shown):
+
+installation directory
+  |
+  |--/build
+  |----|
+  |----|----/classes
+  |--/Ruby
+  |--rubyToSwf.jar
+
+Of particular note is rubyToSwf.jar.  This is the main program of Ruby On Flash.  
+rubyToSwf.jar can be executed from the command prompt:
+
+java –jar rubyToSwf.jar [-flag flagArgument]*
+where flag can be:
+-s|--source		the ruby source path
+-o|--output		the output file name
+-r|--resource		the resource file path
+-w|--width		the width in pixels, default is 400
+-h|--height		the height in pixels, default is 300
+-f|--framerate		the frame rate in frames per sec, default is 12
+-b|background		the background color in hexadecimal, default is 0 (black)
+-l|--lib			the external swf file to link
+-h|--help		help
+
+None of the above flags are compulsory.  
+If –s|--source is omitted, the ruby source is assumed to be from the standard input.  
+However, if the source is supplied, but not the output filename (-o|--output flag), and the source filename is of the form “source.rb”, then the output filename will be “source.swf”.  
+Also, resource files and external swf files are not required.  
+The width, height, background color and frame rate’s default values are as denoted above.  
+
+Note that with the exception of –h|--help, all the other flags are followed by one argument.  
+
+Example use:
+java –jar rubyToSwf –s pacman.rb –w 560 –h 650 –f 20 –b ff0000 –r pacmanResource.txt –l lib1.swf –l lib2.swf
+
+The above example tries to compile a ruby source, pacman.rb to pacman.swf, with width 560px, height 650px, frame rate of 20fps and a red background (ff0000).  This compilation requires a resource file, pacmanResource.txt, and also links 2 external swf files, lib1.swf and lib2.swf.  
+
+Alternatively, rubyToSwf.jar provides a simple GUI.  To run the GUI, run
+java –jar rubyToSwf.jar
+without any command prompt flags/arguments.  
+Under Windows systems, you can simply double-click the jar file.  
+The use of the GUI is pretty obvious, and will not be further discussed.  
+
+Creating a Resource File
+In Flash, resources such as images can be embedded into a Flash movie.  As such, it’s not surprising that Ruby On Flash offers this capability as well.  
+In order to embed images into Ruby On Flash, a resource file is required.  A resource file is a plain text file, where each line represents a single resource in the form of resourceID:imagePath pair.  
+
+Example:
+##################################################################
+Food:D:\hyp\code\build\classes\dot.gif
+SuperFood:D:\hyp\code\build\classes\superFood.gif
+BlinkyUp1:D:\hyp\code\build\classes\blinkyUp1.gif
+BlinkyUp2:D:\hyp\code\build\classes\blinkyUp2.gif
+BlinkyDown1:D:\hyp\code\build\classes\blinkyDown1.gif
+BlinkyDown2:D:\hyp\code\build\classes\blinkyDown2.gif
+BlinkyLeft1:D:\hyp\code\build\classes\blinkyLeft1.gif
+BlinkyLeft2:D:\hyp\code\build\classes\blinkyLeft2.gif
+BlinkyRight1:D:\hyp\code\build\classes\blinkyRight1.gif
+BlinkyRight2:D:\hyp\code\build\classes\blinkyRight2.gif
+###################################################################
+
+Note that the resource IDs should be unique within the file.  Also, note that in the above examples, the paths are absolute paths.  While relative paths are possible, bear in mind that these relative paths are relative to the rubyToSwf’s installation directory!  
+
+The tutorials can be found in the tut directory.
+

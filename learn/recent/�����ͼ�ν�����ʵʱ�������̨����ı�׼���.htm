@@ -1,0 +1,339 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>VC知识库文章 - 编写自己的IDE</title>
+<meta NAME="keywords" CONTENT="ide,gui,stdin,stdout,pipe,管道">
+<meta NAME="description" CONTENT="ide,gui,stdin,stdout,pipe,管道">
+<link rel="stylesheet" href="style.css">
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="#A0D39B"> 
+    <td width="14%" height="78">&nbsp;<img src="../image/vckcom.gif" width="109" height="13"></td>
+    <td width="76%" align="left"><script type="text/javascript"><!--
+google_ad_client = "pub-4159669282587342";
+/* 728x90, 创建于 09-4-19 */
+google_ad_slot = "4947706540";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></td>
+    <td height="78" valign="bottom" align="right"><img src="../image/earch.gif" width="89" height="27"></td>
+  </tr>
+  <tr bgcolor="#EEEEEE">     <td colspan="2"><font color="#333333" class="small">::</font><a href="/"><font color='black'><span class=small>首页</span></font></a> 
+      &gt;&gt; <a href="/document"><font color='black'><span class=small>文档中心</span></font></a>
+&gt;&gt;  <span class=small><font color='black'>一般文档</font></span> &gt;&gt;  <a href='/document/listdoc.asp?sclsid=1305'><span class=small><font color='black'>多任务(多进程、多线程)</font></span></a></td>
+    <td width="10%" align="right" class="small">
+ </td>
+  </tr>
+</table>
+<div align="center"><br>
+    <iframe id="adIFrame1" frameborder="0" marginwidth="0" framespacing="0" marginheight="0" scrolling="No" src="/link/ad/uipower.html" height="136" width="990"></iframe>
+</div>
+<br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td HEIGHT="1" background="/image/dotline2.gif"></td>
+  </tr>
+</table> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="40" height="74"></td>
+    <td width="*" height="74" valign="top"><form name="form2" method="post" action="/SYS/script/find.asp"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td><span id="docinfo">[ <font color=#009900>转载文档</font> 本文适合中级读者 已阅读14755次 ]</span></td>
+            <td align="right">
+<input type="text" name="keyword"  size="10" maxlength="20" class="rect">
+              <select name="gclsid" class="rect">
+                <option value="100" selected>文档</option>
+                <option value="200">代码</option>
+                <option value="400">工具</option>
+    </select>
+    <input type="image" border="0" name="imageField" src="../image/go.gif" width="21" height="15" align="absmiddle">
+            </td>
+        </tr>
+      </table></form>
+      <div align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4159669282587342";
+/* 728x15, 创建于 09-4-19 */
+google_ad_slot = "9155085061";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><p align="center"><strong>编写自己的&quot;IDE&quot;</strong><br>
+        -- 如何在图形界面中实时捕获控制台程序的标准输出<br>
+        <br>
+        作者：王咏刚</p>
+      <p>本文出处：<a href="http://www.contextfree.net/wangyg/tech/myIDE.htm" target="_blank">http://www.contextfree.net/wangyg/tech/myIDE.htm</a><br>
+        <br>
+        IDE是集成开发环境（Integrated Development Environment）的简称。印象里有很多出色的IDE，比如JBuilder和Kylix，比如Visual 
+        Studio。不知大家是否留意过，大多数IDE本身只提供代码编辑、工程管理等人机交互功能，我们在IDE中编译代码、调试程序时，IDE需要调用命令行的编译器、调试器完成相应的操作。例如，使用Visual 
+        Studio编译C++程序时，我们会在IDE下方的Output窗口中看到编译和连接的全过程，虽然我们看不到弹出的DOS窗口，但实际上是IDE先后启动了Microsoft 
+        C++编译器cl.exe和连接器link.exe这两个命令行程序，而cl.exe和link.exe的输出又实时反映到了IDE的Output窗口中。还有，我们可以在Visual 
+        Studio中配置自己需要的工具程序（比如特殊的编译器），然后让Visual Studio在适当的时候运行这些工具，并将工具程序的输出实时显示到Output窗口中。下图是我在Visual 
+        Studio 6.0的Output窗口中运行J2SDK的javac.exe编译java源程序并显示程序中语法错误的情形：<br>
+        <br>
+        <img src="/document/journal/vckbase0/images/myide1.gif" width="486" height="444"> 
+        <br>
+        <br>
+        也就是说，大多数IDE工具都可以在集成环境中调用特定的命令行程序（WIN32里更确切的说法是控制台程序），然后实时捕获它们的输出（这多半是输出到标准的stdout和stderr流里的东西），并将捕获到的信息显示在图形界面的窗口中。</p>
+      <p>这显然是一种具备潜在价值的功能。利用这一技术，我们至少可以</p>
+      <p>1. 编写出自己的IDE，如果我们有足够的耐心的话；</p>
+      <p>2. 在我们自己的应用程序里嵌入全文检索功能（调用Borland C++里的grep.exe工具），或者压缩和解压缩功能（调用控制台方式的压缩解压程序，比如arj.exe、pkzip.exe等）；</p>
+      <p>3. 连接其他人编写的，或者我们自己很久以前编写的控制台程序——我经常因为难以调用一个功能强大但又没有源码的控制台程序而苦恼万分。</p>
+      <p>这样好的功能是如何实现的呢？</p>
+      <p>首先，如果我们想做的是用一个控制台程序调用另一个控制台程序，那就再简单不过了。我们只消把父进程的stdout重定向到某个匿名管道的WRITE端，然后启动子进程，这时，子进程的stdout因为继承的关系也连在了管道的WRITE端，子进程的所有标准输出都写入了管道，父进程则在管道的另一端随时“侦听”——这一技术叫做输入输出的重定向。</p>
+      <p>可现在的问题是，GUI方式的Windows程序根本没有控制台，没有stdin、stdout之类的东西，子进程又是别人写好的东西无法更改，这重定向该从何谈起呢？</p>
+      <p>还有另外一招：我们可以直接在调用子进程时用命令行中的管道指令“&gt;”将子进程的标准输出重定向到一个文件，子进程运行完毕后再去读取文件内容。这种方法当然可行，但它的问题是，我们很难实时监控子进程的输出，如果子进程不是随时刷新stdout的话，那我们只能等一整块数据实际写入文件之后才能看到运行结果；况且，访问磁盘文件的开销也远比内存中的管道操作来得大。</p>
+      <p>我这里给出的方案其实很简单：既然控制台程序可以调用另一个控制台程序并完成输入输出的重定向，那我们完全可以编写一个中介程序，这个中介程序调用我们需要调用的工具程序并随时获取该程序的输出信息，然后直接将信息用约定的进程间通讯方式（比如匿名管道）传回GUI程序，就象下图中这样：<br>
+        <img src="/document/journal/vckbase0/images/myide2.gif" width="523" height="176"> 
+        <br>
+        图中，工具程序和中介程序都是以隐藏的方式运行的。工具程序原本输出到stdout的信息被重定向到中介程序开辟的管道中，中介程序再利用GUI程序创建的管道将信息即时传递到GUI程序的一个后台线程里，后台线程负责刷新GUI程序的用户界面（使用后台线程的原因是，只有这样才可以保证信息在GUI界面中随时输出时不影响用户正在进行的其他操作，就象我们在Visual 
+        Studio中执行耗时较长的编译功能那样）。</p>
+      <p>我写的中介程序名字叫wSpawn，这个名字来自Visual Studio里完成类似功能的中介程序VcSpawn（你可以在Visual Studio的安装目录中找到它）。我的wSpawn非常简单，它利用系统调用_popen()同时完成创建子进程和输入输出重定向两件工作。GUI程序则使用一种特殊的命令行方式调用wSpawn：<br>
+<pre>wspawn –h &lt;n> &lt;command> [arg1] [arg2] ...</pre>
+      其中，-h后跟的是GUI程序提供的管道句柄，由GUI程序自动将其转换为十进制数字，wSpawn运行时将信息写入该句柄中，随后的内容是GUI程序真正要执行的命令行，例如调用C++编译器cl.exe的方式大致如下：<pre>wspawn –h 1903 cl /Id:\myInclude Test.cpp</pre>
+      wspawn.cpp的程序清单如下：<pre>#include &lt;stdlib.h>
+#include &lt;stdio.h>
+#include &lt;string.h>
+#include &lt;string>
+#include &lt;windows.h>
+
+using namespace std;
+
+void exit_friendly(void)
+{
+    puts("请不要单独运行wSpawn.");
+    exit(0);
+}
+
+int main( int argc, char *argv[] )
+{
+    HANDLE  hWrite = NULL;
+    DWORD   dwWrited;
+    int     i = 0, ret = 0, len = 0;
+    char    psBuffer[256];
+    FILE*   child_output;
+    string  command_line = "";
+
+    // 检查命令行，如存在管道句柄，则将其转换为HANDLE类型
+
+    if (argc &lt; 2)
+        exit_friendly();
+
+    if (!stricmp(argv[1], "-h"))
+    {
+        if (argc &lt; 4)
+            exit_friendly();
+        hWrite = (HANDLE)atoi(argv[2]);
+        i = 3;
+    }
+    else
+        i = 1;
+
+    // 提取要执行的命令
+
+    for (; i &lt; argc; i++)
+    {
+        command_line += argv[i];
+        command_line += " ";
+    }
+
+    // 使用_popen创建子进程并重定向其标准输出到文件指针中
+
+    if( (child_output = _popen( command_line.c_str(), "rt" )) == NULL )
+        exit( 1 );
+
+    while( !feof( child_output ) )
+    {
+        if( fgets( psBuffer, 255, child_output ) != NULL )
+        {
+            if (hWrite)
+            {
+                // 将子进程的标准输出写入管道，提供给自己的父进程
+                // 格式是先写数据块长度（0表示结束），再写数据块内容
+
+                len = strlen(psBuffer);
+                WriteFile(hWrite, &len, sizeof(int), &dwWrited, NULL);
+                WriteFile(hWrite, psBuffer, len, &dwWrited, NULL);
+            }
+            else
+                // 如命令行未提供管道句柄，则直接打印输出
+                printf(psBuffer);
+        }
+    }
+
+     // 写“0”表示所有数据都已写完
+
+    len = 0;
+    if (hWrite)
+        WriteFile(hWrite, &len, sizeof(int), &dwWrited, NULL);
+
+     return _pclose( child_output );
+}
+
+</pre>
+      下面，我们就利用wSpawn程序，写一个简单的“IDE”工具。我们选择Visual Studio 6.0作为开发环境（本文给出的代码也在Visual 
+      Studio.NET 7.0中做过测试）。首先，创建Visual C++工程myIDE，工程类型为MFC AppWizard(EXE)中的Dialog 
+      based类型，即创建了一个主窗口为对话框的GUI程序。工程myIDE的主对话框类是CMyIDEDlg。现在我们要在资源编辑器中为主对话框添加一个足够大的多行编辑框（Edit 
+      Box），它的控制ID是IDC_EDIT1，必须为IDC_EDIT1设置以下属性：<br>
+      <br>
+      Multiline, Horizontal scroll, Auto HScroll, Vertical scroll, Auto VScroll, 
+      Want return <br>
+      <br>
+      然后用ClassWizard为IDC_EDIT1添加一个对应的成员变量（注意变量的类型要选CEdit型而非字符串CString型） 
+<pre>CEdit m_edit1;</pre>使用ClassWizard为“确定”按钮添加消息响应方法OnOK()，编辑该方法：
+<pre>void CMyIDEDlg::OnOK() 
+{
+    AfxBeginThread(myThread, this);
+    InvalidateRect(NULL);
+    UpdateWindow();
+}</pre>也就是说，我们在“确定”按钮按下时，启动了后台线程myThread()，那么，myThread()到底做了些什么呢？我们先在CMyIDEDlg类的头文件myIDEDlg.h中加上一个成员函数声明：
+<pre>protected:
+    static UINT myThread(LPVOID pParam);
+</pre>然后，在CMyIDEDlg类的实现文件myIDEDlg.cpp里添加myThread()的实现代码：<pre>UINT CMyIDEDlg::myThread(LPVOID pParam)
+{
+    PROCESS_INFORMATION pi;
+    STARTUPINFO siStartInfo;
+    SECURITY_ATTRIBUTES saAttr;
+    CString Output, tmp;
+    char command_line[200];
+    DWORD dwRead;
+    char* buf; int len;
+    HANDLE hRead, hWrite;
+
+    CMyIDEDlg* pDlg = (CMyIDEDlg*)pParam;
+
+    // 创建与wSpawn.exe通讯的可继承的匿名管道
+
+    saAttr.nLength = sizeof(SECURITY_ATTRIBUTES);
+    saAttr.bInheritHandle = TRUE;
+    saAttr.lpSecurityDescriptor = NULL;
+    if (!CreatePipe(&hRead, &hWrite, &saAttr, 0))
+    {
+        AfxMessageBox("创建管道失败");
+        return 0;
+    }
+
+    // 准备wSpawn的命令行，在命令行给出写管道句柄和要wSpawn执行的命令
+    memset(&pi, 0, sizeof(pi));
+    sprintf(command_line, "wspawn -h %d cl /?", (unsigned int)hWrite);
+
+    // 子进程以隐藏方式运行
+
+    ZeroMemory( &siStartInfo, sizeof(STARTUPINFO) );
+    siStartInfo.cb = sizeof(STARTUPINFO);
+    siStartInfo.wShowWindow = SW_HIDE;
+    siStartInfo.dwFlags = STARTF_USESHOWWINDOW;
+
+    // 创建wSpawn子进程
+
+    if (!CreateProcess( NULL, command_line, NULL, NULL, TRUE,
+                        0, NULL, NULL, &siStartInfo, &pi))
+    {
+        AfxMessageBox("调用wSpawn时失败");
+        return 0;
+    }
+
+    // 读管道，并显示wSpawn从管道中返回的输出信息
+
+    if(!ReadFile( hRead, &len, sizeof(int), &dwRead, NULL) || dwRead == 0)
+        return 0;
+
+    while(len)
+    {
+        buf = new char[len + 1];
+        memset(buf, 0, len + 1);
+
+        if(!ReadFile( hRead, buf, len, &dwRead, NULL) || dwRead == 0)
+            return 0;
+
+        // 将返回信息中的"\n"替换为Edit Box可识别的"\r\n"
+
+        tmp = buf;
+        tmp.Replace("\n", "\r\n");
+        Output += tmp;
+
+        // 将结果显示在Edit Box中，并刷新对话框
+
+        pDlg->m_edit1.SetWindowText(Output);
+        pDlg->InvalidateRect(NULL);
+        pDlg->UpdateWindow();
+
+        delete[] buf;
+
+        if(!ReadFile( hRead, &len, sizeof(int), &dwRead, NULL) || dwRead == 0)
+            return 0;
+
+    }
+
+    // 等待wSpawn结束
+
+    WaitForSingleObject(pi.hProcess, 30000);
+
+    // 关闭管道句柄
+
+    CloseHandle(hRead);
+    CloseHandle(hWrite);
+    return 0;
+}</pre>
+      <br>
+      很简单，不是吗？后台线程创建一个匿名管道，然后以隐藏方式启动wSpawn.exe并将管道句柄通过命令行传给wSpawn.exe，接下来只要从管道里读取信息就可以了。现在我们可以试着编译运行myIDE.exe了，记住要把myIDE.exe和wSpawn.exe放在同一目录下。还有，我在myThread()函数中写死了传给wSpawn.exe的待执行的命令行是“cl 
+      /?”，这模拟了一次典型的编译过程，如果你不打算改变这一行代码的话，那一定要注意在你的计算机上，C++编译器cl.exe必须位于环境变量PATH指明的路径里，否则wSpawn.exe可就找不到cl.exe了。下面是myIDE程序的运行结果：<br>
+      <br>
+      <img src="/document/journal/vckbase0/images/myide3.gif" width="420" height="283"> 
+      <br>
+      <br>
+      补充一点，上面给出的wSpawn利用_popen()完成子进程创建和输入输出重定向，这一方法虽然简单，但只能重定向子进程的stdout或stdin，如果还需要重定向子进程的stderr的话（Java编译器javac就利用stderr输出结果信息），那我们就不能这么投机取巧了。根据以上讨论，你一定可以使用传统的_pipe()、_dup()等系统调用，写出功能更完整的新版wSpawn来，我这里就不再罗嗦了。 
+    </td>
+  </tr>
+</table>
+    </td>
+  </tr>
+</table>
+<br>
+<div align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-4159669282587342";
+/* 728x90, 创建于 09-4-19 */
+google_ad_slot = "9400561186";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+  <br>
+  <table width="98%" border="0" cellspacing="0" cellpadding="0" class="small" height="18">
+    <tr valign="middle"> 
+      <td bgcolor="#A0D39B" width="47%"><img src="/SYS/script/image/toplogo.gif" width="10" height="10">最新评论 
+        <a href="/SYS/script/viewcomment.asp?gclsid=100&itemid=1097" target='_blank'><span class=small>[发表评论]</span></a> <a href="http://www.vckbase.com/support/contribute.html" target='_blank'><span class=small>[文章投稿]</span></a></td>
+      <td bgcolor="#A0D39B" width="53%" align="right"><img src="image/rec1.gif" width="9" height="9"> 
+        <a href="/SYS/script/viewcomment.asp?gclsid=100&itemid=1097" target='_blank'><span class=small>查看所有评论</span></a>
+        <img src="image/rec1.gif" width="9" height="9"> <a href="/SYS/script/writemail.asp?gclsid=100&itemid=1097&title=%b1%e0%d0%b4%d7%d4%bc%ba%b5%c4IDE" target='_blank'><span class=small>推荐给好友</span></a>
+        <img src="image/rec1.gif" width="9" height="9"> <a href="javascript:window.print();"><span class=small>打印</span></a></td>
+    </tr>
+  </table>
+<table width='98%' border=0 cellspacing=1 cellpadding=0 bgcolor='#ffffff' class='small'><tr><td bgcolor='#FFFFFF'><br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> http://www.contextfree.net/wangyg/b/tech/myide.html<br>补充：相反方向的信息传递 ( flyingxu 发表于 2006-9-15 15:35:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> ::CloseHandle(hSTDOUTWrite);&nbsp;&nbsp;&nbsp;<br>	::CloseHandle(hSTDINRead);<br>	<br>	char&nbsp;strData[1024]&nbsp;=&nbsp;{0,&nbsp;};<br>	DWORD&nbsp;dwBytes;<br>	while(::ReadFile(hSTDOUTRead,&nbsp;strData,&nbsp;sizeof(strData),&nbsp;&amp;dwBytes,&nbsp;NULL))<br>	{&nbsp;&nbsp;&nbsp;<br>		strData[dwBytes]&nbsp;=&nbsp;'\0';<br>		SetMessage(strData);<br>	}&nbsp;&nbsp;&nbsp;<br>	<br>	::WaitForSingleObject(pi.hProcess,&nbsp;INFINITE);&nbsp;&nbsp;&nbsp;<br>	::CloseHandle(hSTDOUTRead);&nbsp;&nbsp;&nbsp;<br>	::CloseHandle(hSTDINWrite);&nbsp;&nbsp;&nbsp;<br>	::CloseHandle(pi.hProcess);&nbsp;&nbsp;&nbsp;<br>	::CloseHandle(pi.hThread);&nbsp;&nbsp;<br>}//&nbsp;end&nbsp;of&nbsp;function ( robin_fox_nan 发表于 2006-8-27 20:52:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 	PROCESS_INFORMATION&nbsp;&nbsp;pi;&nbsp;&nbsp;&nbsp;<br>	ZeroMemory(&amp;pi,&nbsp;sizeof(pi));&nbsp;&nbsp;&nbsp;<br>	STARTUPINFO&nbsp;&nbsp;si;&nbsp;<br>	GetStartupInfo(&amp;si);<br><br>	si.cb&nbsp;=&nbsp;sizeof(STARTUPINFO);<br>&nbsp;&nbsp;&nbsp;&nbsp;si.dwFlags&nbsp;=&nbsp;STARTF_USESTDHANDLES&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;STARTF_USESHOWWINDOW;<br>	si.wShowWindow&nbsp;=&nbsp;SW_HIDE;<br>	si.hStdInput&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;hSTDINRead;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//重定向子进程输入&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;si.hStdOutput&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;hSTDOUTWrite;&nbsp;&nbsp;&nbsp;//重定向子进程输入&nbsp;&nbsp;&nbsp;&nbsp;<br>	si.hStdError&nbsp;=&nbsp;hSTDOUTWrite;&nbsp;//GetStdHandle(&nbsp;STD_ERROR_HANDLE&nbsp;);&nbsp;<br><br>	char&nbsp;cmd[20]&nbsp;=&nbsp;{0,&nbsp;};<br>	::strcpy(cmd,&nbsp;&quot;c:\\fport.exe&quot;);<br>	<br>	if(&nbsp;!::CreateProcess(NULL,&nbsp;cmd,&nbsp;NULL,&nbsp;NULL,&nbsp;TRUE,&nbsp;NORMAL_PRIORITY_CLASS,&nbsp;NULL,&nbsp;NULL,&nbsp;&amp;si,&nbsp;&amp;pi)&nbsp;)&nbsp;&nbsp;&nbsp;<br>	{&nbsp;&nbsp;&nbsp;<br>		int&nbsp;errorNo&nbsp;=&nbsp;::GetLastError();<br>		AfxMessageBox(&quot;create&nbsp;process&nbsp;failed&quot;);&nbsp;&nbsp;&nbsp;<br>		return;&nbsp;&nbsp;&nbsp;<br>	}<br>	<br>	 ( robin_fox_nan 发表于 2006-8-27 20:51:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 有那么费劲么？真的累死了，其实可以这样做的：<br>void&nbsp;function()<br>{<br>	HANDLE&nbsp;&nbsp;&nbsp;hSTDINWrite,&nbsp;hSTDINRead;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;用于重定向子进程输入的句柄&nbsp;&nbsp;&nbsp;<br>	HANDLE&nbsp;&nbsp;&nbsp;hSTDOUTWrite,&nbsp;hSTDOUTRead;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;用于重定向子进程输出的句柄&nbsp;&nbsp;&nbsp;<br>	SECURITY_ATTRIBUTES&nbsp;&nbsp;&nbsp;sa;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>	sa.bInheritHandle&nbsp;=&nbsp;TRUE;&nbsp;&nbsp;&nbsp;<br>	sa.lpSecurityDescriptor&nbsp;=&nbsp;NULL;&nbsp;&nbsp;&nbsp;<br>	sa.nLength&nbsp;=&nbsp;sizeof(sa);&nbsp;&nbsp;&nbsp;<br><br>	//&nbsp;创建子进程输出匿名管道&nbsp;&nbsp;&nbsp;<br>	if(&nbsp;!CreatePipe(&amp;hSTDOUTRead,&nbsp;&amp;hSTDOUTWrite,&nbsp;&amp;sa,&nbsp;0)&nbsp;)&nbsp;&nbsp;&nbsp;<br>	{&nbsp;&nbsp;&nbsp;<br>		AfxMessageBox(&quot;Create&nbsp;&nbsp;&nbsp;STDOUT&nbsp;&nbsp;&nbsp;pipe&nbsp;&nbsp;&nbsp;failed&quot;);&nbsp;&nbsp;&nbsp;<br>		return;&nbsp;&nbsp;&nbsp;<br>	}&nbsp;&nbsp;<br>	<br>	//&nbsp;创建子进程输入匿名管道&nbsp;&nbsp;&nbsp;<br>	if(&nbsp;!CreatePipe(&amp;hSTDINRead,&nbsp;&amp;hSTDINWrite,&nbsp;&amp;sa,&nbsp;0)&nbsp;)&nbsp;&nbsp;&nbsp;<br>	{&nbsp;&nbsp;&nbsp;<br>		AfxMessageBox(&quot;Create&nbsp;&nbsp;&nbsp;STDIN&nbsp;&nbsp;&nbsp;pipe&nbsp;&nbsp;&nbsp;failed&quot;);&nbsp;&nbsp;&nbsp;<br>		return;&nbsp;&nbsp;&nbsp;<br>	} ( robin_fox_nan 发表于 2006-8-27 20:50:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 其他的还行，不过建议把刷新改为pDlg-&gt;m_edit1.LineScroll(pDlg-&gt;m_edit1.GetLineCount()); ( fanged 发表于 2004-7-22 12:06:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 请教各位：我刚刚接触管道，想实现进程交互通信，我在父程序中创建子进程和两个匿名管道，怎么输入的数据传递给子进程叫子进程来处理？我将标准输入设为一个管道的读句柄，然后由另一个管道传出来，怎么没反应？谢谢！ ( chebyshe 发表于 2004-5-4 21:41:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 唉,&nbsp;还用中间程序啊.&nbsp;直接在STARTUPINFO中指定一个管道的句柄就行了.&nbsp;即不必用到临时文件,也不必用到中介程序.<br><br> ( 我酷我用弱智王 发表于 2004-5-1 19:23:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 这样是不是麻烦了一些?我觉得,既然CreateProcess中的STARTUPINFO结构体中可以指定标准输入输出流,那么,只需要把这个流传给子进程(即是那些命令行程序),然后再通过readfile来读取这个流,那不是更简捷吗? ( 童梦 发表于 2004-4-26 18:58:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 发现牛的程序员都很有文采。<br>可见知识是相通的。。。。。。<br><br>尔曰浅显，彼曰艰深，唯其深入，方可浅出。 ( superdai 发表于 2004-4-22 10:25:00)<br>&nbsp;<br><img src='../image/doc2.gif' width=11 height=11 align='absmiddle'> 作者就是经常在《程序员》上发表文章的那个王咏刚。<br>我阅读作者的多篇技术文章，对作者的技术功底简直崇拜的要死：） ( wuhuaqiang 发表于 2004-4-21 17:51:00)<br>&nbsp;<br>.......................................................<BR><a href='/SYS/script/viewcomment.asp?gclsid=100&itemid=1097' target='_blank'><span class=small>More...</span></a> </td></tr></table>
+<br>
+
+<div align="right"><br>
+  <span class="small">版权所有 &copy; 1999 - 2009 VC知识库&nbsp; <script src="http://s98.cnzz.com/stat.php?id=1295967&web_id=1295967&show=pic" language="JavaScript" charset="gb2312"></script><br>
+  <br>
+</body>
+</html>

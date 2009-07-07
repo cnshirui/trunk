@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;SHIRUI"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -175,6 +175,18 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\std_vector_correct.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\std_vector_dereferencable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\std_vector_quicksort.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -196,6 +208,10 @@
 			</File>
 			<File
 				RelativePath=".\VC8ConsoleTest.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\VectorVsList.cpp"
 				>
 			</File>
 		</Filter>

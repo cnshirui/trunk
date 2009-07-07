@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" >
+ <head>
+    <script type="text/javascript">var _starttime = new Date().getTime();</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/skins/mozilla/Fox3/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title="What's new feed" href="/index.php?title=Special:Recentchanges&amp;feed=rss" />
+<link rel="alternate" type="application/rss+xml" title="Page and subpages changes feed" href="/index.php?title=Special:Article&amp;type=feed&amp;feedtype=subpagechanges&amp;pageid=38438" />
+<link rel="alternate" type="application/rss+xml" title="Page changes feed" href="/index.php?title=Special:Article&amp;type=feed&amp;pageid=38438" />
+<meta name="generator" content="MindTouch  9.02.2" />
+<link rel="search" type="application/opensearchdescription+xml" title="MDC Search" href="/deki/gui/opensearch.php?type=description" />    <title>Tamarin Build Documentation - MDC</title>
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="/skins/common/css.php" /> <!--[if IE 7]><style type="text/css">@import "/skins/common/_ie7.css";</style><![endif]--><!--[if IE 6]><style type="text/css">@import "/skins/common/_ie.css";</style><![endif]-->    <script type="text/javascript" src="/skins/common/js.php?perms=LOGIN,BROWSE,READ,SUBSCRIBE"></script>
+        <link rel="stylesheet" type="text/css" media="screen,projection" href="/skins/mozilla/Fox3/css.php" title="Default Style" />
+        <link rel="stylesheet" type="text/css" media="print" href="/skins/mozilla/print.css" />
+
+    <!--[if IE]><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/skins/mozilla/Fox3/ie7.css" /><!endif]-->
+    <!--[if lte IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/skins/mozilla/Fox3/ie6.css" /><![endif]-->
+
+    <script type="text/javascript">// <![CDATA[
+    if ('jQuery') { // None of this works without jQuery
+    
+      function siteToolsMenu() {
+        var sitetools = DekiWiki.$("#sitetools");
+        var toolslink = DekiWiki.$("#toolslink");
+        sitetools.hide().addClass("collapsed").insertAfter(toolslink);
+        toolslink.click(function() {
+          toolslink.toggleClass("menuopen").blur();
+          sitetools.toggle();
+          DekiWiki.$("#languages ul").hide();
+          return false;
+        });
+      }; // end siteToolsMenu
+		
+      function pageLanguageMenu() {
+        var langbox = DekiWiki.$("#languages");
+        var langhead = DekiWiki.$("#languages h5");
+        var langs = DekiWiki.$("#languages ul");
+        if (langbox) { // if the element exists
+          langs.hide();
+          langbox.toggleClass("collapsed");
+          langhead.click(function() {
+            langs.toggle();
+            DekiWiki.$("#sitetools").hide();
+            DekiWiki.$("#toolslink").removeClass("menuopen");
+            langs.css({	
+              top: langhead.offset().top,
+              left: langhead.offset().left
+            });
+          });
+        };
+      }; // end pageLanguageMenu
+    
+      DekiWiki.$(document).ready(function() {
+        siteToolsMenu(); // render the site tools menu
+        pageLanguageMenu(); // render the languages menu
+        DekiWiki.$(document).click(function(e) {
+          var node = e.target;
+          while (node && !node.id) {
+            node = node.offsetParent;
+          };
+          if (!node || (node.id != 'languages' && node.id != 'sitetools' && node.id != 'toolslink')) {
+            DekiWiki.$("#sitetools").hide();
+            DekiWiki.$("#toolslink").removeClass("menuopen");
+            if (DekiWiki.$("#languages")) { // if the element exists
+              DekiWiki.$("#languages ul").hide();
+            };
+          };
+        });
+        if ( document.getElementById("menuPageOptions") ) {
+          menuOff("menuPageOptions");
+        };
+      }); // end dom ready
+			
+    }; // end if jQuery
+
+    // ]]></script>
+	
+  	<script type="text/javascript">
+
+		Deki.BaseHref = 'https://developer.mozilla.org';
+Deki.PageId = 38438;
+Deki.PageTitle = 'En/Tamarin/Tamarin Build Documentation';
+Deki.PathTpl = '/skins/mozilla';
+Deki.PathSkin = '/skins/mozilla/Fox3';
+Deki.PathCommon = '/skins/common';
+Deki.UserName = 'Anonymous';
+Deki.Today = '17 Jun 2009';
+Deki.EditorStyles = [];
+Deki.EditorStyles.push('/skins/mozilla/_editor.css');
+Deki.EditorStyles.push('/skins/mozilla/Fox3/_content.css');
+Deki.EditorStyles.push('/skins/common/custom_css.php');
+
+		window.onbeforeunload = function() {
+			if ( Deki.Editor && Deki.Editor.IsChanged() ) {
+				return "You have made changes to the content without saving your changes. Are you sure you want to exit this page?";
+			}
+		};
+
+		var aLt = new Array();aLt["attach-no-description"] = 'No description'; aLt["cancel"] = 'Cancel'; aLt["close"] = 'Close'; aLt["comment-delete"] = 'Are you sure you want to delete this comment?'; aLt["error"] = 'Error'; aLt["gallery-close"] = 'close'; aLt["gallery-next"] = 'next'; aLt["gallery-prev"] = 'prev'; aLt["internal-error"] = 'Sorry, but there was an internal problem - please try again soon.'; aLt["js-label_cancel"] = 'Cancel'; aLt["js-label_save"] = 'Save'; aLt["js-tooltip_cancel"] = 'Exit Without Saving Changes'; aLt["js-tooltip_save"] = 'Save and Exit (Alt+S)'; aLt["ldap-provide-credentials"] = 'Please provide external service login credentials.'; aLt["loading"] = 'Loading...'; aLt["menu-confirm-delete"] = 'Are you sure you want to delete this file?'; aLt["menu-delete-file"] = 'Delete'; aLt["menu-edit-description"] = 'Edit description'; aLt["menu-move-file"] = 'Move'; aLt["menu-previous-versions"] = 'Previous versions'; aLt["menu-view-original"] = 'View original'; aLt["print-end-notes"] = 'Endnotes'; aLt["ready"] = 'Ready'; aLt["remove-tag"] = 'Remove tag'; aLt["restore-tag"] = 'Restore tag'; aLt["save"] = 'Save'; aLt["submit"] = 'Submit'; aLt["wikibits-attach-another"] = 'Attach another file'; aLt["wikibits-attach-file"] = 'Attach File'; aLt["wikibits-cant-attach-editing"] = 'Sorry, you can\'t attach files while editing a page. Please close the editor first.'; aLt["wikibits-edit-section"] = 'Edit section'; aLt["wikibits-remove-file"] = 'Remove file';  var wfMsg = function (key) { return aLt[key] ? aLt[key] : 'MISSING: ' + key; };
+	//hook in menu clicking events to the document's body
+	YAHOO.util.Event.addListener(document, "click", function () { FileMenu.bodyClick(); DWMenu.BodyClick(); });
+	YAHOO.util.Event.onDOMReady(function () { new clientWindow });
+
+			
+	
+			YAHOO.util.Event.onDOMReady(function() {
+			tb_init('a.lightbox, area.lightbox, input.lightbox, a[@rel=awesomebox]');//pass where to apply thickbox
+			imgLoader = new Image();// preload image
+			imgLoader.src = tb_pathToImage;
+		});
+
+		YAHOO.util.Event.onDOMReady(function() {
+			MTComments.HookBehavior();
+			showWebDavLinks();
+		});
+		</script>
+  <link href="/skins/common/custom_css.php" rel="stylesheet" type="text/css" /> 
+</head>
+
+<body class="yui-skin-sam en ">
+<ul id="nav-access">
+  <li><a href="#pageContent">Skip to the main content</a></li>
+  <li><a href="#searchInput">Skip to the site search</a></li>
+</ul>
+
+
+	<div class="globalWrap">
+		<div class="header">
+			<div class="siteLogo">
+		    <h4><a href="/" title="Go to the main page"><img src="/skins/mozilla/Fox3/img/mdc-logo.png" alt="Mozilla Developer Center" /></a></h4>
+			</div>
+			
+      <div class="siteNav">
+        <ul>
+                  <li class="siteTools"><a href="#sitetools" id="toolslink">Site tools</a></li>
+          <li class="siteHelp"><a href="http://developer.mozilla.org/Project:en/Using_the_Mozilla_Developer_Center">Help</a></li>
+        </ul>
+        
+        		<div class="userAuth">				
+	 		<a href="/index.php?title=Special:Userlogin&register=true" class="userLogin">Register</a> | <a href="/index.php?title=Special:Userlogin&returntotitle=En%2FTamarin%2FTamarin+Build+Documentation" class="userLogin">Log in</a>		</div>
+	      </div>
+      
+      <p id="moztab"><a href="http://www.mozilla.com" title="Go to mozilla.com">Mozilla.com</a></p>
+			
+				
+	<div class="siteSearch">
+		<form action="/Special:Search">
+			<fieldset class="search">
+	 			<input id="searchInput" class="inputText" name="search" type="text" value="" />
+				<input type="hidden" name="type" value="fulltext" />
+		    <input type="submit" name="go" class="inputSubmit" value="Search" />
+		  </fieldset>
+		</form>
+	</div>
+							
+              <div class="hierarchy">
+          <ol class="dw-hierarchy deki-hierarchy"><li class="first"><a href="https://developer.mozilla.org/" class="deki-ns">MDC</a></li>
+<li><a href="https://developer.mozilla.org/en" class="deki-ns">Main page</a></li>
+<li><a href="https://developer.mozilla.org/en/Tamarin" class="deki-ns">Tamarin</a></li>
+<li class="last"><a href="https://developer.mozilla.org/En/Tamarin/Tamarin_Build_Documentation" class="deki-ns current">Tamarin Build Documentation</a></li></ol>        </div>
+      		
+      <ul id="sitetools" class="menu">
+      	<li class="siteRecentchanges"><a href="/Special:Recentchanges" title="Recent changes">Recent changes</a></li>
+	<li class="siteListRss"><a href="/Special:ListRss" title="RSS feeds">RSS feeds</a></li>
+	<li class="siteListusers"><a href="/User:" title="Users">Users</a></li>
+	<li class="siteListTemplates"><a href="/Template:" title="Templates">Templates</a></li>
+	<li class="siteSitemap"><a href="/Special:Sitemap" title="Sitemap">Sitemap</a></li>
+	<li class="sitePopularpages"><a href="/Special:Popularpages" title="Popular pages">Popular pages</a></li>
+	<li class="siteAbout"><a href="/Special:About" title="About MDC">About MDC</a></li>
+</ul>
+		</div><!-- end header -->
+		
+    
+    <div class="body">
+      <noscript><div id="noscript"><p>Some features of this site require JavaScript.</p></div></noscript>
+
+          <div class="pageBar">				
+        <ul class="pageTools">
+                  <li class="pagePrint"><a href="/index.php?title=En/Tamarin/Tamarin_Build_Documentation&action=print" title="Print this page or save a PDF" onclick="return Print.open('/index.php?title=En/Tamarin/Tamarin_Build_Documentation&action=print');">Print page</a></li>
+                  <li class="pageHistory"><a href="/index.php?title=En/Tamarin/Tamarin_Build_Documentation&action=history" title="Page history">History</a></li>
+          <li class="pageEdit"><a href="#" title="Edit page" onclick="return false" class="disabled"><span></span>Edit page</a></li>
+        	<li class="pageTalk"><a href="/Talk:En/Tamarin/Tamarin_Build_Documentation" onclick="menuOff('menuPageOptions');">Talk page</a></li>
+          <li class="pageMore"><a href="#menuPageOptions" title="More options for this page" id="moreopts" onclick="return menuPosition('menuPageOptions', this, 0, 0);">More options</a></li>        
+        </ul>
+      </div>
+    					
+    <div id="pageContent" class="pageContent PageDW-EnTamarinTamarinBuildDocumentation">
+	
+    	
+      <div id="article-nav">
+              <div id="deki-page-alerts" class="disabled">
+				<div class="toggle">
+					<a href="/index.php?title=Special:PageAlerts&id=38438" class="off">
+						<span>Page Notifications</span>
+						<span class="status">Off</span>
+					</a>
+				</div></div><br />
+          <div class="pageToc"><h5>Table of contents</h5><ol style="list-style-type:none; margin-left:0px; padding-left:0px;"><li><span>1.</span> <a href="#Tamarin_Source_Versions" rel="internal">Tamarin Source Versions</a></li><li><span>2.</span> <a href="#Supported_platforms" rel="internal">Supported platforms</a></li><li><span>3.</span> <a href="#Getting_the_Tamarin_source" rel="internal">Getting the Tamarin source</a></li><li><span>4.</span> <a href="#Building_Tamarin" rel="internal">Building Tamarin</a><ol style="list-style-type:none; margin-left:0px; padding-left:15px;"><li><span>4.1.</span> <a href="#Cross-platform_build" rel="internal">Cross-platform build</a></li><li><span>4.2.</span> <a href="#Using_Cross-Platform_scripts_in_CYGWIN_on_Windows.3a" rel="internal">Using Cross-Platform scripts in CYGWIN on Windows:</a></li><li><span>4.3.</span> <a href="#Microsoft_Visual_Studio" rel="internal">Microsoft Visual Studio</a></li><li><span>4.4.</span> <a href="#Apple_XCode" rel="internal">Apple XCode</a></li><li><span>4.5.</span> <a href="#Linux_and_Unix" rel="internal">Linux and Unix</a></li></ol></li><li><span>5.</span> <a href="#Compiling_and_running_applications" rel="internal">Compiling and running applications</a></li><li><span>6.</span> <a href="#Running_Tamarin_compliance_tests" rel="internal">Running Tamarin compliance tests</a><ol style="list-style-type:none; margin-left:0px; padding-left:15px;"><li><span>6.1.</span> <a href="#Notes_on_using_acceptance_runtests.py" rel="internal">Notes on using acceptance runtests.py</a></li></ol></li><li><span>7.</span> <a href="#Running_Tamarin_performance_tests" rel="internal">Running Tamarin performance tests</a></li><li><span>8.</span> <a href="#Tamarin_BuildBot" rel="internal">Tamarin BuildBot</a></li><li><span>9.</span> <a href="#Tamarin_BuildBot_TryServer" rel="internal">Tamarin BuildBot TryServer</a><ol style="list-style-type:none; margin-left:0px; padding-left:15px;"><li><span>9.1.</span> <a href="#How_To" rel="internal">How To</a></li><li><span>9.2.</span> <a href="#TryServer_Etiquette" rel="internal">TryServer Etiquette</a></li></ol></li></ol></div>	<div class="suggestchannels">
+<div>
+<h5>Discuss in IRC</h5>
+<ul class="suggestchannels">         <li><a class="link-irc" rel="external nofollow" href="irc://irc.mozilla.org/developers" title="irc://irc.mozilla.org/developers" target="_blank">#developers</a></li>       
+</ul>
+</div>	</div>
+        <ul class="page-anchors">
+          <li class="anchor-tags"><a href="#page-tags" title="Jump to tags for this article">Tags</a></li>
+          <li class="anchor-files"><a href="#page-files" title="Jump to files for this article">Files</a></li>
+        </ul>
+      </div>
+    				
+          <div class="pageTitle">
+            <h1 id="title">Tamarin Build Documentation</h1>
+      </div>
+    				
+      <div id="page-update" class="pageStatus  hastoc">
+ 			   			</div>
+
+	 		<div id="page-top"><div id="pageToc"><div class="pageToc"><h5>Table of contents</h5><ol style="list-style-type:none; margin-left:0px; padding-left:0px;"><li><span>1.</span> <a href="#Tamarin_Source_Versions" rel="internal">Tamarin Source Versions</a></li><li><span>2.</span> <a href="#Supported_platforms" rel="internal">Supported platforms</a></li><li><span>3.</span> <a href="#Getting_the_Tamarin_source" rel="internal">Getting the Tamarin source</a></li><li><span>4.</span> <a href="#Building_Tamarin" rel="internal">Building Tamarin</a><ol style="list-style-type:none; margin-left:0px; padding-left:15px;"><li><span>4.1.</span> <a href="#Cross-platform_build" rel="internal">Cross-platform build</a></li><li><span>4.2.</span> <a href="#Using_Cross-Platform_scripts_in_CYGWIN_on_Windows.3a" rel="internal">Using Cross-Platform scripts in CYGWIN on Windows:</a></li><li><span>4.3.</span> <a href="#Microsoft_Visual_Studio" rel="internal">Microsoft Visual Studio</a></li><li><span>4.4.</span> <a href="#Apple_XCode" rel="internal">Apple XCode</a></li><li><span>4.5.</span> <a href="#Linux_and_Unix" rel="internal">Linux and Unix</a></li></ol></li><li><span>5.</span> <a href="#Compiling_and_running_applications" rel="internal">Compiling and running applications</a></li><li><span>6.</span> <a href="#Running_Tamarin_compliance_tests" rel="internal">Running Tamarin compliance tests</a><ol style="list-style-type:none; margin-left:0px; padding-left:15px;"><li><span>6.1.</span> <a href="#Notes_on_using_acceptance_runtests.py" rel="internal">Notes on using acceptance runtests.py</a></li></ol></li><li><span>7.</span> <a href="#Running_Tamarin_performance_tests" rel="internal">Running Tamarin performance tests</a></li><li><span>8.</span> <a href="#Tamarin_BuildBot" rel="internal">Tamarin BuildBot</a></li><li><span>9.</span> <a href="#Tamarin_BuildBot_TryServer" rel="internal">Tamarin BuildBot TryServer</a><ol style="list-style-type:none; margin-left:0px; padding-left:15px;"><li><span>9.1.</span> <a href="#How_To" rel="internal">How To</a></li><li><span>9.2.</span> <a href="#TryServer_Etiquette" rel="internal">TryServer Etiquette</a></li></ol></li></ol></div></div><div class="pageText" id="pageText">
+<div id="section_1"><span id="Tamarin_Source_Versions"></span><h2 class="editable">Tamarin Source Versions</h2>
+<p>The following instructions are for obtaining and building the Tamarin Central source code. For instructions on Tamarin Tracing, please see <a rel="internal" href="https://developer.mozilla.org/en/Tamarin_Tracing_Build_Documentation">Tamarin Tracing Build Documentation</a>.</p>
+</div><div id="section_2"><span id="Supported_platforms"></span><h2 class="editable">Supported platforms</h2>
+<table class="standard-table"> <tbody> <tr> <th>platform</th> <th>status</th> </tr> <tr> <td>Windows XP</td> <td>supported, acceptance and performance tests automated in buildbot</td> </tr> <tr> <td>Windows 64 bit XP</td> <td>supported, acceptance and performance tests automated in buildbot</td> </tr> <tr> <td>mac x86 OSX 10.4</td> <td>supported, acceptance and performance tests automated in buildbot</td> </tr> <tr> <td>mac x86 OSX 10.5</td> <td>supported, acceptance tests automated in buildbot</td> </tr> <tr> <td>mac x64 OSX 10.5</td> <td>supported, acceptance and performance tests automated in buildbot</td> </tr> <tr> <td>mac ppc OSX 10.4</td> <td>supported, acceptance and performance tests automated in buildbot</td> </tr> <tr> <td>mac ppc OSX 10.5</td> <td>supported, acceptance tests automated in buildbot</td> </tr> <tr> <td>mac ppc64 OSX 10.5</td> <td>supported, acceptance tests automated in buildbot</td> </tr> <tr> <td>linux x86 Ubuntu 8.04</td> <td>supported, acceptance and performance tests automated in buildbot</td> </tr> <tr> <td>linux x64 Ubuntu 8.10</td> <td>supported, acceptance tests automated in buildbot</td> </tr> <tr> <td>Windows Mobile 5</td> <td>supported, acceptance and performance tests automated in buildbot</td> </tr> <tr> <td>Solaris Sparc 10</td> <td>supported, acceptance tests automated in buildbot</td> </tr> </tbody>
+</table>
+</div><div id="section_3"><span id="Getting_the_Tamarin_source"></span><h2 class="editable">Getting the Tamarin source</h2>
+<p>The Tamarin source resides in <a class="external" rel="external nofollow" href="http://www.selenic.com/mercurial/wiki/" title="http://www.selenic.com/mercurial/wiki/" target="_blank">Mercurial</a> at <a class="external" rel="external nofollow" href="http://hg.mozilla.org/tamarin-central" title="http://hg.mozilla.org/tamarin-central" target="_blank">Tamarin Central</a>.&nbsp; Active development source resides at <a title="http://hg.mozilla.org/tamarin-redux" class="external" rel="external nofollow" href="http://hg.mozilla.org/tamarin-redux" target="_blank">Tamarin Redux</a>.&nbsp; In this document replace instances of tamarin-central with tamarin-redux to operate in the redux repository.&nbsp; Use the following command to create a copy of the Tamarin repository:</p>
+<pre class="eval">$ hg clone http://hg.mozilla.org/tamarin-central tamarin-central
+</pre>
+</div><div id="section_4"><span id="Building_Tamarin"></span><h2 class="editable">Building Tamarin</h2>
+<p>Building Tamarin will create all the libraries for the AVMPlus and garbage collector (MMgc), and create a standalone executable (shell) for executing files in the ABC file format. Running the shell without any arguments will list the available options. Note that additional command-line arguments are only available in the debug configuration.</p>
+<p>The <a rel="internal" href="https://developer.mozilla.org/en/Tamarin">Tamarin</a> codebase contains a cross-platform build system for Mozilla developers. The cross-platform build system is used for daily automated build testing so it is the most reliable system.</p>
+<p>The Tamarin codebase has the ability to build additional code which supports debugging hooks. In the XCode project, this is the <code>Debug_Debugger</code> and <code>Release_Debugger</code> configurations. The Flash Player builds Tamarin with the debugging hooks off for codesize reasons, but the Mozilla client will build Tamarin with the debugging hooks on.</p>
+<div id="section_5"><span id="Cross-platform_build"></span><h3 class="editable">Cross-platform build</h3>
+<p><strong>Prerequisites:</strong> You need Python 2.5 or later and GNU <code>make</code> 3.81 or later. (<strong>GNU <code>make</code> 3.80 does not work.</strong> Nor does any other brand of <code>make</code>.)</p>
+<p>With the right prerequisites, use these commands to build Tamarin:</p>
+<pre class="eval">
+ $ hg clone <a class=" external" rel="external nofollow" href="http://hg.mozilla.org/tamarin-central/" title="http://hg.mozilla.org/tamarin-central/" target="_blank">http://hg.mozilla.org/tamarin-central/</a>
+ $ cd tamarin-central
+ $ mkdir objdir-release
+ $ cd objdir-release
+ $ python ../configure.py --enable-shell
+ $ make
+ ...
+ $ shell/avmshell
+ shell 1.0 build cyclone
+ ...
+</pre>
+<p>That's all. The AVMPlus executable is <code>avmshell</code>.</p>
+<p>Optional Flags:</p>
+<ul> <li><code>--enable-debugger</code> - Debugger build</li> <li><code>--enable-debug</code> - Debug build</li>
+</ul>
+<p>For verbose build of Tamarin, you can pass CPPFLAGS to make.</p>
+<pre class="eval">
+ $ make CPPFLAGS=-DAVMPLUS_VERBOSE
+</pre>
+</div><div id="section_6"><span id="Using_Cross-Platform_scripts_in_CYGWIN_on_Windows.3a"></span><h3 class="editable">Using Cross-Platform scripts in CYGWIN on Windows:</h3>
+<p><strong>Prerequisites: </strong>You need Python 2.5 or later and GNU <code>make</code> 3.81 or later. (<strong>GNU <code>make</code> 3.80 does not work.</strong> Nor does any other brand of <code>make</code>.)</p>
+<p><strong>Setup:</strong></p>
+<ul> <li>If you normally work in a cygwin mounted place (eg /home/user/...) then you must cd around to the cygdrive path equivalent (eg /cygdrive/c/cygwin/home/user/).</li> <li>Setup the shell environment with the following environment variables:</li>
+</ul>
+<pre style="margin-left: 40px;">
+# NOTE: The INCLUDE, LIB and LIBPATH must contain windows path information and separator and not cygwin paths.
+VS_HOME_PATH=&quot;/c/Program Files/Microsoft Visual Studio 9.0&quot;
+VS_HOME=&quot;c:\Program Files\Microsoft Visual Studio 9.0&quot;
+
+export PATH=&quot;$VS_HOME_PATH/Common7/IDE:$VS_HOME_PATH/VC/bin:$VS_HOME_PATH/Common7/Tools:$VS_HOME_PATH/VC/VCPackages:$PATH&quot;
+export INCLUDE=&quot;$VS_HOME\VC\atlmfc\include;$VS_HOME\VC\include;C:\Program Files\Microsoft SDKs\Windows\v6.0A\Include;&quot;
+export LIB=&quot;$VS_HOME\VC\atlmfc\lib;$VS_HOME\VC\lib;C:\Program Files\Microsoft SDKs\Windows\v6.0A\Lib&quot;
+export LIBPATH=&quot;$VS_HOME\VC\atlmfc\lib;$VS_HOME\VC\lib;C:\Program Files\Microsoft SDKs\Windows\v6.0A\Lib&quot;
+</pre>
+<p>With the above setup you should now be able to build:</p>
+<pre style="margin-left: 40px;">
+$ hg clone http://hg.mozilla.org/tamarin-central/
+$ cd tamarin-central
+$ mkdir objdir-release
+$ cd objdir-release
+$ python ../configure.py --enable-shell
+$ make
+...
+$ shell/avmshell.exe
+shell 1.0 build cyclone
+...
+</pre>
+<p>&nbsp;</p>
+</div><div id="section_7"><span id="Microsoft_Visual_Studio"></span><h3 class="editable">Microsoft Visual Studio</h3>
+<p>Visual Studio 2008 (VS2008) is the preferred Windows build environment. To build Tamarin using Microsoft Visual Studio 2008, open the Tamarin project file <span class="lang lang-en"><a rel="external nofollow" href="http://hg.mozilla.org/tamarin-central/?file/tip/platform/win32/avmplus2008.sln" title="http://hg.mozilla.org/tamarin-central/?file/tip/platform/win32/avmplus2008.sln" target="_blank" class=" external"><code>platform/win32/avmplus2008.sln</code></a>
+</span>. Visual Studio 2003 and 2005 are no longer supported.</p>
+</div><div id="section_8"><span id="Apple_XCode"></span><h3 class="editable">Apple XCode</h3>
+<p>The project files are designed for XCode 3.0. See <span class="lang lang-en"><a rel="external nofollow" href="http://hg.mozilla.org/tamarin-central/?file/tip/platform/mac/avmplus/avmplus.xcodeproj/" title="http://hg.mozilla.org/tamarin-central/?file/tip/platform/mac/avmplus/avmplus.xcodeproj/" target="_blank" class=" external"><code>platform/mac/avmplus/avmplus.xcodeproj/</code></a>
+</span>. XCode 2.2, 2.3, and 2.4&nbsp;will not work.</p>
+<p>The project file builds a universal executable by default.</p>
+<p>Execute the following command to build a PowerPC Tamarin:</p>
+<pre class="eval">
+   $ cd tamarin-central
+   $ xcodebuild ARCHS=ppc -project platform/mac/avmshell/avmshell.xcodeproj
+</pre>
+<p>For a debug build, add <code>-configuration Debug</code> (note the capital <code>D</code>). Additional configurations are: <code>Debug_Debugger, Release, Release_Debugger</code>.</p>
+<p>Intel Macs build correctly by setting <code>ARCHS=i386</code>.</p>
+<p>The resulting executable is built at <code>platform/mac/shell/build/Release/avmshell</code>.</p>
+</div><div id="section_9"><span id="Linux_and_Unix"></span><h3 class="editable">Linux and Unix</h3>
+<p>Tamarin is tested on Linux but not on other Unix flavors. Nonetheless, it is possible to build Tamarin on Unix.&nbsp;</p>
+<p>Execute the following commands to build:</p>
+<pre class="eval">
+   $ cd tamarin-central/platform/unix
+   $ make
+</pre>
+<p>The resulting executable &quot;shell&quot; is built in the current directory.</p>
+</div></div><div id="section_10"><span id="Compiling_and_running_applications"></span><h2 class="editable">Compiling and running applications</h2>
+<p>Currently the only compiler for Tamarin is the Adobe ActionScript compiler. The source code for the ActionScript compiler, <code>asc</code>, has been open sourced as part of Adobe Flex&reg;. This compiler is written in Java and will require the installation of a Java&trade; 1.4 or later JDK.</p>
+<p>A prototype self-hosting ECMAScript Edition 4 compiler, <code>esc</code>, is provided with Tamarin but it is not yet capable of bootstrapping itself or building applications. <code>esc</code> is under active development and will be able to generate Tamarin applications later this year.</p>
+<p>Use the following steps to build and install the ActionScript compiler.</p>
+<ol> <li>Download and build the asc source code using the subversion client</li>
+</ol>
+<pre class="eval">
+ $ svn co <a class=" external" rel="external nofollow" href="http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/asc" title="http://opensource.adobe.com/svn/opensource/flex/sdk/trunk/modules/asc" target="_blank">http://opensource.adobe.com/svn/open...nk/modules/asc</a> asc
+ $ cd asc/build/java
+ $ ant
+ ...
+ jar:
+ [jar] Building jar asc\lib\asc.jar
+ $ cd ../..
+ $ java -jar lib/asc.jar   # shows usage
+</pre>
+<p>You should now copy asc.jar into tamarin-central/utils.</p>
+<p><code>asc.jar</code> can be used to compile the <code>builtin.abc</code> file. The <code>builtin.abc</code> file provides internal information about the built-in classes (Object, Array, etc). This file is located in the <code>core</code> directory; you shouldn't normally need to rebuild it, unless you edit any of the ActionScript source for the built-in classes. To rebuild it, use the <code>builtin.py</code> script:</p>
+<pre class="eval">
+ $ cd tamarin-central/core
+ $ export ASC=../utils/asc.jar       # builtin.py uses this to find asc.jar
+ $ python builtin.py
+ building builtin.abc, builtin.cpp, builtin.h
+ builtin: 26795
+ Files: 6 Time: 1709ms
+</pre>
+<p>You can now use</p>
+<p><code>asc.jar</code> to compile applications.</p>
+<pre class="eval">
+ $ cd tamarin-central
+ $ echo 'print(&quot;hello, world&quot;)' &gt; hello.as
+ $ java -jar ./utils/asc.jar -import ./core/builtin.abc hello.as
+ hello.abc, 86 bytes written
+</pre>
+<p>Use the AVMPlus standalone executable (<code>avmshell</code>) built previously to run the application:</p>
+<pre class="eval">
+ $ avmshell hello.abc
+ hello, world
+</pre>
+<p>Use the <code>-help</code> options of <code>asc.jar</code> and <code>avmshell</code> for more details.</p>
+</div><div id="section_11"><span id="Running_Tamarin_compliance_tests"></span><h2 class="editable">Running Tamarin compliance tests</h2>
+<p>The Tamarin compliance tests can now be used to verify your installation . Running the Tamarin test suite requires the following steps:</p>
+<ol> <li>Set the <code>AVM</code> environment variable to the path of the AVMPlus executable (<code>avmshell</code>). Note: the name of the <code>avmshell</code> executable varies among the build systems; use the name of the AVM shell produced from the build process you used, above.</li> <li>Set the <code>BUILTINABC</code> environment variable to the path of the <code>builtin.abc</code>.</li> <li>You may build the .abc files build by downloading the latest asc.jar. The latest asc.jar can be downloaded from from <a class=" link-ftp" rel="external nofollow" href="ftp://ftp.mozilla.org/pub/js/tamarin/builds/asc/latest/asc.jar" title="ftp://ftp.mozilla.org/pub/js/tamarin/builds/asc/latest/asc.jar" target="_blank">ftp://ftp.mozilla.org/pub/js/tamarin...latest/asc.jar</a>. Also the source to asc.jar may be downloaded and rebuilt from <a class=" external" rel="external nofollow" href="http://opensource.adobe.com/wiki/display/flexsdk/Flex+SDK" title="http://opensource.adobe.com/wiki/display/flexsdk/Flex+SDK" target="_blank">http://opensource.adobe.com/wiki/dis...exsdk/Flex+SDK</a>.</li> <li>Set the <code>ASC</code> environment variable, as described above.</li> <li>Set the <code>SHELLABC</code> environment variable to the appropriate <code>shell_toplevel.abc</code>.</li> <li>For tamarin-central: Execute the test Python script <span class="lang lang-en"><a rel="external nofollow" href="http://hg.mozilla.org/tamarin-central/?file/tip/test/acceptance/runtests.py" title="http://hg.mozilla.org/tamarin-central/?file/tip/test/acceptance/runtests.py" target="_blank" class=" external"><code>test/acceptance/runtests.py</code></a>
+</span>.</li>
+</ol>
+<pre class="eval">
+$ <strong>cd tamarin-central/test/acceptance</strong>
+$ <strong>python runtests.py -f</strong>
+Writing results to /home/kaitlin/tamarin-central/test/acceptance/2007-12-04.3.html
+Tamarin tests started: 2007/12/04 15:30:37
+Executing 1791 tests against vm: /home/kaitlin/tamarin-central/platform/mac/shell/build/Debug/shell
+
+1790 running /home/kaitlin/tamarin-central/test/acceptance/as3/AbcDecoder/useNS.as
+   PASSED passes:3 fails:0
+1789 running /home/kaitlin/tamarin-central/test/acceptance/as3/AbcDecoder/typeAnnotation.as
+   PASSED passes:2 fails:0
+1788 running /home/kaitlin/tamarin-central/test/acceptance/as3/AbcDecoder/simple.as
+   PASSED passes:2 fails:0
+1787 running /home/kaitlin/tamarin-central/test/acceptance/as3/AbcDecoder/inheritClass.as
+   PASSED passes:3 fails:0
+
+...
+</pre>
+<p>The steps for tamarin-tracing are identical. The same runtests.py script is located in tamarin-tracing/test/acceptance.</p>
+<p>The</p>
+<p><code>-f</code> flag tells <code>runtests.py</code> to force recompilation of all the scripts. For help on <code>runtests.py</code> options, see below or use <strong><code>python runtests.py -h</code></strong>.</p>
+<p>If the avmplus reports that the</p>
+<p><code>.abc</code> file is invalid, ensure that you've used a binary transfer protocol for the files download in step 2 above.</p>
+<div id="section_12"><span id="Notes_on_using_acceptance_runtests.py"></span><h3 class="editable">Notes on using acceptance runtests.py</h3>
+<div id="section_13"><span id="Threading"></span><h4 class="editable">Threading</h4>
+<p>In order to speed up the execution time of the acceptance testsuite, threading can be enabled via the --threads switch:</p>
+<p><code>python ./runtests.py --threads=3</code></p>
+<p>One caveat with using threads is that it may take a few moments to cancel a test run (using Ctrl-C) or may take multiple Ctrl-C presses to abort the run.&nbsp; It is also possible (though rare) that aborting a test run will leave a zombie process.</p>
+<div id="section_14"><span id="Threading_on_cygwin_.2f_windows"></span><h5 class="editable">Threading on cygwin / windows</h5>
+<p>Due to an issue with cygwin python, threading does not work, and threads will always be set to 1.&nbsp; In order to use threading on windows you must install windows python and invoke runtests using that python executable in cygwin.&nbsp; The locations of AVM, ASC, BUILTINABC and SHELLABC must also be defined using windows paths (replace backslashes [\] with forward slashes [/]):</p>
+<p><code>export AVM=c:/location/of/avmshell.exe<br />
+export ASC=c:/location/of/asc.jar<br />
+...<br />
+c:/Python26/python.exe ./runtests.py --threads=3</code></p>
+</div></div><div id="section_15"><span id="Other_flags_of_interest"></span><h4 class="editable">Other flags of interest</h4>
+<p>--nohtml : will suppress the creation of an html output file<br />
+--forcerebuild :&nbsp;will only rebuild test .abc's, will not attempt to run them.&nbsp; Can also be using in conjunction with --threads<br />
+-q --quiet :&nbsp;will print a period (.) for each test run regardless of results, then print the test run summary when finished<br />
+--ascargs= :&nbsp;additional arguments to pass to asc.jar<br />
+--vmargs= :&nbsp;additional arguments to pass to avmshell</p>
+</div></div></div><div id="section_16"><span id="Running_Tamarin_performance_tests"></span><h2 class="editable">Running Tamarin performance tests</h2>
+<p>The tamarin performance tests can be used to measure performance changes made to tamarin. Running the performance tests requires the following steps:</p>
+<ol> <li>Set the AVM environment variable to the path of the avmshell executable.</li> <li>Set the GLOBALABC environment variable to the path of the builtin.abc.</li> <li>Set the ASC environment variable to the path of the asc.jar compiler. You may download the latest asc.jar from <a class=" link-ftp" rel="external nofollow" href="ftp://ftp.mozilla.org/pub/js/tamarin/builds/asc/latest/asc.jar" title="ftp://ftp.mozilla.org/pub/js/tamarin/builds/asc/latest/asc.jar" target="_blank">ftp://ftp.mozilla.org/pub/js/tamarin...latest/asc.jar</a>. Also the source to asc.jar may be downloaded and rebuilt from <a class=" external" rel="external nofollow" href="http://opensource.adobe.com/wiki/display/flexsdk/Flex+SDK" title="http://opensource.adobe.com/wiki/display/flexsdk/Flex+SDK" target="_blank">http://opensource.adobe.com/wiki/dis...exsdk/Flex+SDK</a>.</li> <li>(Optional) You may compare the performance of the avmshell to another avmshell. For example you may download or build the latest checked in avmshell to compare against a local change. To compare a build against another build set the AVM2 environment variable to the other avmshell. Results from the two shells will be shown side to side and the percent speedup will be shown.</li>
+</ol>
+<pre class="eval">
+$ cd tamarin-central/test/performance
+$ python runtests.py
+Executing tests at 2008-07-22 13:56:54.820920
+avm: c:/dev/tamarin-tracing/bld/shell/avmshell.exe
+
+test                                                   avm
+sunspider/access-binary-trees.as                      82.0
+sunspider/access-fannkuch.as                         152.0
+sunspider/access-nbody.as                            173.0
+sunspider/access-nsieve.as                            65.0
+sunspider/bitops-3bit-bits-in-byte.as                 13.0
+sunspider/bitops-bits-in-byte.as                      36.0
+
+$ export AVM2=c:/dev/tamarin-tracing2/bld/shell/avmshell.exe
+$ python ./runtests.py
+Executing tests at 2008-07-22 14:03:51.957381
+avm:  c:/dev/tamarin-tracing/bld/shell/avmshell.exe
+avm2: c:/dev/tamarin-tracing2/bld/shell/avmshell.exe
+
+test                                                   avm    avm2    &nbsp;%sp
+
+sunspider/access-binary-trees.as                      82.0    80.0     2.5
+sunspider/access-fannkuch.as                         153.0   155.0    -1.3
+sunspider/access-nbody.as                            176.0   178.0    -1.1
+sunspider/access-nsieve.as                            65.0    68.0    -4.4
+sunspider/bitops-3bit-bits-in-byte.as                 12.0    13.0    -7.7
+sunspider/bitops-bits-in-byte.as                      36.0    36.0     0.0
+</pre>
+<p>By default tests sunspider and sunspider-as3 (optimized for as3) and run. Other tests may be specified by selecting ./runtests.py -c [misc,scimark,jsbench]. Also for better accuracy tests may be run multiple times. Specifying ./runtests.py -i 10 will run each tests 10 time and use the fastest result. If more than 2 repetitions are specified the 95% percentile confidence rating is calculated. The confidence rating measure the percentage of the mean 95% of the results were within the range.</p>
+<p>The tamarin-tracing performance scripts and tests are identical to the tamarin-central scripts. The same instructions may be followed.</p>
+</div><div id="section_17"><span id="Tamarin_BuildBot"></span><h2 class="editable">Tamarin BuildBot</h2>
+<p>Adobe maintains a</p>
+<p><a class="external" rel="external nofollow" href="http://tamarin-builds.mozilla.org/tamarin-tracing/waterfall" title="http://tamarin-builds.mozilla.org/tamarin-tracing/waterfall" target="_blank">continuous build and test system</a> for Tamarin Tracing and <a class="external" rel="external nofollow" href="http://tamarin-builds.mozilla.org/tamarin-central/waterfall" title="http://tamarin-builds.mozilla.org/tamarin-central/waterfall" target="_blank">continuous build and test system</a> for Tamarin Central, similar to TinderBox.</p>
+</div><div id="section_18"><span id="Tamarin_BuildBot_TryServer"></span><h2 class="editable">Tamarin BuildBot TryServer</h2>
+<p>The TryServer/Sandbox is setup to allow users to push any code changes that they would like to have tested in the automated build/test process prior to actually pushing the changes. The Sandbox is setup so that it is able to build and test branches that are based on either tamarin-central or tamarin-tracing.</p>
+<p>Any comments, questions or problems can be directed to</p>
+<p><a class="link-mailto" title="mailto:brbaker@adobe.com" rel="external nofollow" href="mailto:brbaker@adobe.com" target="_blank">Brent Baker</a>&nbsp;</p>
+<div id="section_19"><span id="How_To"></span><h3 class="editable">How To</h3>
+<ol> <li>Setup a user repository with the source and patches that will be compiled. Documentation on how to setup a user repository <a rel="internal" href="https://developer.mozilla.org/../../../../En/Publishing_Mercurial_Clones" class="new ">http://developer.mozilla.org/En/Publishing_Mercurial_Clones</a>. Push any changes that you want to test into this repository.</li> <li>Request a build via the form at <a class="external" title="http://tamarin-builds.mozilla.org/build_trigger/requestbuild.cfm" rel="external nofollow" href="http://tamarin-builds.mozilla.org/build_trigger/requestbuild.cfm" target="_blank">http://tamarin-builds.mozilla.org/build_trigger/requestbuild.cfm</a>&nbsp; <ul> <li><strong>User Email:</strong> Your email address. An email with the build status will be sent to this address when a builder completes whether it is passes or fails.</li> <li><strong>Mercurial Repository:</strong> Give the location of the repository that will be used for the build. NOTE: Only repositories hosted on <a class=" external" rel="external nofollow" href="http://hg.mozilla.org/" title="http://hg.mozilla.org/" target="_blank">http://hg.mozilla.org/</a> are accepted.</li> <li><strong>Revision:</strong> Specify the revision number that will be built. Currently this only accepts the change number and not the hash.</li> <li><strong>Branch:</strong> Which branch of tamarin the repository is based on, Tamarin-Central or Tamarin-Tracing.</li> <li><strong>Builders:</strong> Which platforms will be compiled and tested.</li> <li><strong>Description:</strong> Self explanatory</li> </ul> </li> <li>Check the status of the build @ <a class="external" title="http://tamarin-builds.mozilla.org/sandbox/" rel="external nofollow" href="http://tamarin-builds.mozilla.org/sandbox/" target="_blank">http://tamarin-builds.mozilla.org/sandbox/</a>&nbsp;</li>
+</ol>
+</div><div id="section_20"><span id="TryServer_Etiquette"></span><h3 class="editable">TryServer Etiquette</h3>
+<p>The Sandbox is not a good substitute for running the regression tests locally to catch obvious problems.</p>
+<p>This is a shared resource, each request takes approximately 3+ hours to run so please use wisely.</p>
+<p></p></div></div></div></div><div class="printfooter" id="printfooter"><hr />
+<p>Retrieved from "<a href="https://developer.mozilla.org/En/Tamarin/Tamarin_Build_Documentation">https://developer.mozilla.org/En/Tamarin/Tamarin_Build_Documentation</a>"</p>
+</div>
+	 				
+	 			 		  <div id="languages">
+	 		    <h5>Languages</h5>
+          <ul><li><a rel="internal" href="https://developer.mozilla.org/ja/Tamarin_Build_Documentation">&#26085;&#26412;&#35486;</a></li></ul>				</div>
+									
+
+					
+				<p class="pageLastchange">Page last modified <a href="/index.php?title=En/Tamarin/Tamarin_Build_Documentation&action=history" title="22:08, 12 Jun 2009">22:08, 12 Jun 2009</a> by <a href="/User:Cpeyer" class="link-user" rel="internal">Cpeyer</a></p>
+    
+      </div><!-- end #pageContent -->
+      				
+            <div id="page-tags">
+        <strong class="tag-label">Tags:</strong> <div id="deki-page-tags"><div class="pageTagList"><div class="item taglist"><a href="https://developer.mozilla.org/Special:Tags?tag=Build+documentation" title="Build documentation">Build documentation</a>, <a href="https://developer.mozilla.org/Special:Tags?tag=Developing+Mozilla" title="Developing Mozilla">Developing Mozilla</a>, <a href="https://developer.mozilla.org/Special:Tags?tag=Tamarin" title="Tamarin">Tamarin</a></div><div><a href="/index.php?title=Special:Tags&pageId=38438"class="disabled" onclick="return false;"" id="deki-page-tags-toggleview">Edit tags</a></div></div></div>      </div>
+				
+      <div id="page-files" class="pageSection">
+        <h3 class="secTitle">Files <span class="unweight" id="fileCount">(0)</span></h3>
+              <div class="fileList">
+          <div id="pageFiles"><div class="nofiles">&nbsp;</div></div>        </div>
+      </div>
+			
+		
+
+  
+    </div><!-- end div.body -->
+
+      <div id="siteFooter">
+      <p id="license">Content is available under<a href="/Project:Copyrights"> these licenses</a></p>
+      <p id="footabout"><a href='/Project:en/About'>About MDC</a></p>
+      <div class="poweredBy"><a href="http://www.mindtouch.com" title="Powered by MindTouch Standard 2009">Powered by <span class="product">MindTouch Standard 2009</span></a></div>    
+          </div><!-- end #siteFooter -->
+  
+	</div><!-- end div.globalWrap -->
+
+<div id="popupMessage"></div> 
+<script type="text/javascript">var _endtime = new Date().getTime(); var _size = 43124;</script>
+<div id="popupMask">&nbsp;</div>
+
+<div id="popupContainer" class="inlinedialogue">
+	<div class="id-top"><div class="id-topinner">&nbsp;</div></div>
+	<div id="popupInner">
+		<div id="popupTitleBar" class="id-title"><div class="id-titleinner"><div id="popupTitle"></div></div></div>
+		<div class="id-body"><div class="id-bodyinner">
+		  <iframe src="/skins/common/loading.html" style="width:100%;height:100%;background-color:transparent;" scrolling="auto" frameborder="0" id="popupFrame" name="popupFrame" width="100%" height="100%"></iframe>
+		</div></div>
+	</div>
+</div>
+
+<ul onclick="menuBubble=true;" class="menu" id="menuPageOptions">
+<li class="pageBacklinks"><a href="/index.php?title=Special:Article&type=backlinks&pageid=38438">Pages that link here</a></li></ul>
+
+
+			
+<div class="ui-msg-wrap" id="MTMessage" style="display: none;">
+	<div class="ui-msg ui-errormsg" id="MTMessageStyle">
+		<div class="ui-msg-opt">
+			<ul>
+				<li><a href="#" class="dismiss" onclick="return MTMessage.Hide();">dismiss message</a></li>
+				<li><a href="#" class="details" id="MTMessageDetailsLink" onclick="return MTMessage.ShowDetails(this);">view details</a></li>
+			</ul>
+			<div class="ui-msg-autoclose">
+				<span id="MTMessageUnpaused" style="display: inline;">Message will close by itself in <span id="MTMessageTimer"></span> seconds</span>
+				<span id="MTMessagePaused" style="display: none;">Message timer has been stopped</span>
+			</div>
+		</div>
+		<div class="ui-msg-header" id="MTMessageHeader"></div>
+		<div class="ui-msg-desc" id="MTMessageDesc"></div>
+		<div class="ui-msg-desc" id="MTMessageDetails" style="display: none;">
+			<p>Viewing Details:</p>
+		</div>
+	</div>
+</div><div id="menuFiller"></div><div id="bodyHeight"></div>
+<!-- Served by pm-dekiwiki02 in 0.10 secs. -->
+
+</body>
+</html>

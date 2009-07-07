@@ -1,0 +1,129 @@
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.047
+  Time to read scope table: 0.015
+  Time to read scope group table: 0
+  Time to read symbol table: 0.016
+  Time to read fn proto table: 0.015
+  Time to read attribute table: 0
+  Time to read class table: 0
+  Time to read script info table: 0
+  Time to read fn body table: 0.032
+Time to read doABC: 0.125
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.39
+  Time to read scope table: 0.047
+  Time to read scope group table: 0.124
+  Time to read symbol table: 0.172
+  Time to read fn proto table: 0.094
+  Time to read attribute table: 0.031
+  Time to read class table: 0.062
+  Time to read script info table: 0.016
+  Time to read fn body table: 0.421
+Time to read doABC: 1.373
+2075 Stage <Read template> took 2075 ms
+2948 Stage <miscellaneous> took 873 ms
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.016
+  Time to read scope table: 0.016
+  Time to read scope group table: 0
+  Time to read symbol table: 0.015
+  Time to read fn proto table: 0.016
+  Time to read attribute table: 0
+  Time to read class table: 0
+  Time to read script info table: 0
+  Time to read fn body table: 0.031
+Time to read doABC: 0.094
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.141
+  Time to read scope table: 0.031
+  Time to read scope group table: 0.281
+  Time to read symbol table: 0.14
+  Time to read fn proto table: 0.078
+  Time to read attribute table: 0.016
+  Time to read class table: 0.078
+  Time to read script info table: 0.015
+  Time to read fn body table: 0.546
+Time to read doABC: 1.326
+4758 Stage <Read function libraries> took 1810 ms
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.047
+  Time to read scope table: 0
+  Time to read scope group table: 0.016
+  Time to read symbol table: 0.015
+  Time to read fn proto table: 0.016
+  Time to read attribute table: 0
+  Time to read class table: 0
+  Time to read script info table: 0
+  Time to read fn body table: 0.047
+Time to read doABC: 0.141
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0.015
+  Time to read string table: 0.983
+  Time to read scope table: 0.078
+  Time to read scope group table: 0.655
+  Time to read symbol table: 0.375
+  Time to read fn proto table: 0.296
+  Time to read attribute table: 0.343
+  Time to read class table: 0.172
+  Time to read script info table: 0.047
+  Time to read fn body table: 1.279
+Time to read doABC: 4.243
+swfGenerator::SetCSSobj -> ResetSkinData () = 6.272s (6.272s)
+swfGenerator::SetCSSobj -> cssObj = obj = 0s (6.272s)
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0
+  Time to read scope table: 0
+  Time to read scope group table: 0
+  Time to read symbol table: 0
+  Time to read fn proto table: 0
+  Time to read attribute table: 0
+  Time to read class table: 0
+  Time to read script info table: 0
+  Time to read fn body table: 0
+Time to read doABC: 0.016
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.187
+  Time to read scope table: 0.047
+  Time to read scope group table: 0.14
+  Time to read symbol table: 0.109
+  Time to read fn proto table: 0.078
+  Time to read attribute table: 0.016
+  Time to read class table: 0.094
+  Time to read script info table: 0.358
+  Time to read fn body table: 0.687
+Time to read doABC: 1.732
+  Time to read int table: 0
+  Time to read uint table: 0
+  Time to read double table: 0
+  Time to read string table: 0.141
+  Time to read scope table: 0.031
+  Time to read scope group table: 0.156
+  Time to read symbol table: 0.078
+  Time to read fn proto table: 0.062
+  Time to read attribute table: 0.016
+  Time to read class table: 0.094
+  Time to read script info table: 0.062
+  Time to read fn body table: 0.546
+Time to read doABC: 1.186
+swfGenerator::SetCSSobj -> GenSkinSwfs () = 3.573s (9.86s)
+swfGenerator::GetDefaultXML -> bo::CSkinColorProcessor::getInstance() = 0.514s (0.514s)
+swfGenerator::GetDefaultXML -> skinMgr->process() = 0.515s (1.029s)
+First-chance exception at 0x7715fbae in Xcelsius.exe: Microsoft C++ exception: _com_error at memory location 0x43fff53c..
+First-chance exception at 0x7715fbae in Xcelsius.exe: Microsoft C++ exception: _com_error at memory location 0x43fff53c..
+Time to process spreadsheet: 14.664seconds
+Total time for SWF generation: 64.022 seconds
