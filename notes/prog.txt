@@ -1,3 +1,64 @@
+sgsine15.sin.sap.corp
+Shi, Roy
+
+===
+		try {
+			// add your block here
+		}
+		catch (_com_error &e) {
+			_bstr_t source = e.Source ();
+			_bstr_t description = e.Description ();
+			std::wstring errorMessage (e.ErrorMessage ());
+
+			// include <sstream>
+			std::wstringstream message;
+
+			message << L"COM error - source: <" << source 
+				<< L">, description: <" << description 
+				<< L">, error message: <" << errorMessage 
+				<< L">" 
+				<< std::endl;
+
+			::OutputDebugString (message.str ().c_str ());
+		}
+====
+		/**
+		 * Returns whether a formula is in the first cell of the binding or not.
+		 * 
+		 * @param binding  				The id of the bind.
+		 * @param anyOrFirst			true means any cell has formula, 
+		 * 								false means the first cell has formula
+		 * @return         				A boolean flag.
+		 */
+		function hasFormulaInFirstCell(binding:String, anyOrFirst:Boolean = true):Boolean;	
+
+		bindingButton="{_valueBinding}" 
+ 
+ titleXOffset
+
+source['embed']
+source['temporaryFile']
+source['originalFile']
+		  
+shg-s-xi31
+administrator/Bo123456
+http://shg-s-xi31:8080/dswsbobje/services/session
+
+//depot2/X6/COR/Xcelsius/Designer/...@2022272
+//depot2/X6/COR/Xcelsius/Designer/...@1993279
+//depot2/X6/COR/Xcelsius/Designer/...@1987035
+//depot2/X6/COR/Xcelsius/Designer/...@1973652
+
+
+//depot2/X6/REL/Xcelsius/Designer/Xcelsius/Xcelsius/migrate6.cpp'
+		MSXML2::IXMLDOMNodePtr reinsertNode = compNode->selectSingleNode("properties/property[name/string='reinsert']/value");
+		CString reinsert = reinsertNode ? reinsertNode->Gettext() : "false";
+
+		Ability to relocate employees is limited due to current cost restraints. 
+ 
+ new BindingData("valueParentColor", null, true);
+
+
 keytool -list -v -keystore certificate.p12 -storepass bobobo123
 keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAIKKeystore
 1: 	openssl pkcs12 -in certificate.p12

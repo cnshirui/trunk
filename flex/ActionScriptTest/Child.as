@@ -7,6 +7,10 @@ package
 		{
 			super(this);
 		}
+		
+		public override function run():void {
+			trace("Child->run()");
+		}
 
 	}
 }
