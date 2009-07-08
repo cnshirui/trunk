@@ -1,3 +1,13 @@
+ad44076357
+90088282
+graduate: 102841200705150103
+		  102841200705150103
+		  10284120070515103
+请牢记您的报名编号： 093102004018
+http://www.shmeea.edu.cn cnshirui cnshirui@_sjtu
+https://www.chsi.com.cn
+shiruide@gmail.com: 777777		  
+
 #ifndef SWFOBJ_LIST_AS_VECTOR	
 #else	
 #endif
