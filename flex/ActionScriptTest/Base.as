@@ -13,6 +13,11 @@ package
 				throw new IllegalOperationError("Abstract Class, so please don't call me!");
 			}
 		}
+		
+		public function run():void {
+			trace("Base->run()");
+		}
+		
 
 	}
 }

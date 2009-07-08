@@ -1,2 +1,3 @@
 <javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${classes.dir};${jswiff.path};${jcup.path}"/>
 javac -s src -d build/classes
+javac -d build/classes src

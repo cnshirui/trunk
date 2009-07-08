@@ -1,11 +1,20 @@
 <?xml version="1.0"?>
 <!-- Simple example to demonstrate the List Control -->
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()">
 
     <mx:Script>
         <![CDATA[
+        	import mx.rpc.xml.SimpleXMLEncoder;
             [Bindable]
             public var selectedItem:Object;
+            
+            private function init():void
+            {
+            	trace('ok');
+            	var x:XML = <hello>
+					</hello>;
+            	trace(x.toXMLString());
+            }
        ]]>
     </mx:Script>
 

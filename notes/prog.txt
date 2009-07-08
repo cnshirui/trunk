@@ -8,6 +8,86 @@ http://www.shmeea.edu.cn cnshirui cnshirui@_sjtu
 https://www.chsi.com.cn
 shiruide@gmail.com: 777777		  
 
+=======
+sgsine15.sin.sap.corp
+Shi, Roy
+
+===
+		try {
+			// add your block here
+		}
+		catch (_com_error &e) {
+			_bstr_t source = e.Source ();
+			_bstr_t description = e.Description ();
+			std::wstring errorMessage (e.ErrorMessage ());
+
+			// include <sstream>
+			std::wstringstream message;
+
+			message << L"COM error - source: <" << source 
+				<< L">, description: <" << description 
+				<< L">, error message: <" << errorMessage 
+				<< L">" 
+				<< std::endl;
+
+			::OutputDebugString (message.str ().c_str ());
+		}
+====
+		/**
+		 * Returns whether a formula is in the first cell of the binding or not.
+		 * 
+		 * @param binding  				The id of the bind.
+		 * @param anyOrFirst			true means any cell has formula, 
+		 * 								false means the first cell has formula
+		 * @return         				A boolean flag.
+		 */
+		function hasFormulaInFirstCell(binding:String, anyOrFirst:Boolean = true):Boolean;	
+
+		bindingButton="{_valueBinding}" 
+ 
+ titleXOffset
+
+source['embed']
+source['temporaryFile']
+source['originalFile']
+		  
+shg-s-xi31
+administrator/Bo123456
+http://shg-s-xi31:8080/dswsbobje/services/session
+
+//depot2/X6/COR/Xcelsius/Designer/...@2022272
+//depot2/X6/COR/Xcelsius/Designer/...@1993279
+//depot2/X6/COR/Xcelsius/Designer/...@1987035
+//depot2/X6/COR/Xcelsius/Designer/...@1973652
+
+
+//depot2/X6/REL/Xcelsius/Designer/Xcelsius/Xcelsius/migrate6.cpp'
+		MSXML2::IXMLDOMNodePtr reinsertNode = compNode->selectSingleNode("properties/property[name/string='reinsert']/value");
+		CString reinsert = reinsertNode ? reinsertNode->Gettext() : "false";
+
+		Ability to relocate employees is limited due to current cost restraints. 
+ 
+ new BindingData("valueParentColor", null, true);
+
+
+
+
+
+  1¡¢ÄãÈç¹ûÒªÔÚÄãºÍ³ÌÐòÖÐ¼ÓÈëword   µÄ´úÂë£ºCtrl+W->Add   Class->form   ...  
+  ´ò¿ªofficeÄ¿Â¼ÏÂµÄmsword9.olb£¬È«Ñ¡ÆäÖÐµÄÀà¡£  
+   
+  2¡¢ÓÃÄãµÄ³ÌÐòµ÷ÓÃword   :  
+  °´ÕÕMSDN   Q221992   µÄ²½ÖèÔÚÄãºÍ³ÌÐòÖÐ¼ÓÈëºê(ÒÔOnInitialUpdate()Îª»ù×¼º¯Êý)£¬ÔÚµ÷ÓÃºêµÄµØ·½ÊäÈë    
+  Set   obj=CreateObject("word.application")  
+  obj.visible=true  
+  msgbox("ok")  
+  Set   Obj=nothing
+  
+=========
+
+  ÔÚOfficeÓ¦ÓÃ³ÌÐòÖÐ£¬²Ëµ¥ºÍ¹¤¾ßÀ¸±»ºÏ³ÉÔÚÒ»¸ö¿É±à³ÌµÄÃûÎªCommandBarsµÄ¼¯ºÏÖÐ¡£×÷ÎªÒ»ÖÖÍ¨ÓÃµÄ¿É±à³Ì¶ÔÏó£¬CommandBars¿ÉÒÔ³ÉÎªÈÎºÎµÄOfficeÓ¦ÓÃ³ÌÐò¶ÔÏóÄ£ÐÍµÄÒ»²¿·Ö£¬CommandBarsËùÑÚ¸ÇµÄÊÇÒ»ÖÖÍ³Ò»µÄ±à³Ì»úÖÆ£¬¸Ã»úÖÆÊ¹µÃµ¥¸öµÄ¹¤¾ßÀ¸ºÍ²Ëµ¥Ïî¿ÉÒÔ±»Ìí¼Óµ½ÏàÓ¦µÄÓ¦ÓÃ³ÌÐòÖÐ¡£Ã¿Ò»¸öCommandBars¼¯ºÏ¶¼ÊÇÓÐ²»Í¬µÄCommandBar   Objects×é³É£»Ã¿Ò»¸öCommandBars   Object   ÓÐÓÖ²»Í¬µÄ³ÆÎªCommandBarControlsµÄ¶ÔÏó×é³É£¡  
+  CommadBarControls   Ëù±íÊ¾µÄÊÇÓÉ²»Í¬µÄ¶ÔÏóºÍ×Ó¶ÔÏó¹¹³ÉµÄ¸´ÔÓµÄ¼Ü¹¹£¬½ø¶øÓÃÕâÐ©¶ÔÏóºÍ×Ó¶ÔÏó×é³ÉÒ»¸öµ¥¶ÀµÄ¶ÔÏóÄ£ÐÍ¡£Ò»¸öCommandBarControl   ±¾Éí°üº¬Ò»¸öCommandBar   ¶ÔÏó£¨¿ÉÒÔ·ÃÎÊ²å¼þÖÐµÄ¸Ã¶ÔÏóµÄÊôÐÔ£©¡£Òò´Ë£¬×îÖÕÊ¹µÃÃ¿Ò»¸ö´¦ÓÚCommandBarControls   ¼¯ºÏÖÐCommandBarControl   ¶ÔÏó¼È¿ÉÒÔÊÇÒ»¸öCommandBarComoboBox(Toolbar   combobox),Ò²¿ÉÒÔÊÇÒ»¸öCommandBarButton(Toolbar   button),ÒÖ»òÊÇÒ»¸öCommandBarPopup(Popup   menu).ÎÒ¿ÊÍûÄÜ»æ³öÒ»¸öÇåÎúµÄ±íÊ¾¶ÔÏó¹ØÏµµÄÊ¾ÒâÍ¼£¬µ«ÊÇÎÒÈ·Êµ²»ÉÃ³¤»æÍ¼£¨ËµÐÄÀï»°£©£¬µ±È»ÁË£¬ÎÒÒ²È·ÐÅÕâÑùµÄ¹ØÏµÍ¼ÔÚmsdnÖÐ¹ØÓÚÈçºÎÃèÊö MS   Office   CommandBarsµÄÕÂ½ÚÖÐÓÐÇåÎúµØËµÃ÷£¡
+  
 #ifndef SWFOBJ_LIST_AS_VECTOR	
 #else	
 #endif
@@ -76,6 +156,7 @@ static void report (boost::timer &t, const wchar_t *prefix)
 first chance exception	0x80000001	Not implemented
 [Frames below may be incorrect and/or missing, no symbols loaded for FlDbg10b.ocx]	
 The details of how to suppress this error are different for every IDE, but in VC7, you go to Debug->Exceptionsa€|, select Win32 Exceptions, then hit Adda€| - for number input 0?¡ª80000001, and description can be whatever you like. Ia€?d recommend a€?page guarda€
+
 
 keytool -list -v -keystore certificate.p12 -storepass bobobo123
 keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAIKKeystore

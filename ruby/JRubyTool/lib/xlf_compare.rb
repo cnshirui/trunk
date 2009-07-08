@@ -22,9 +22,10 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = "D:/download"
-  files = ['HCIS WW Revenue-Backlogv16.alert.xlf', 'HCIS WW Revenue-Backlogv16.alert.ok.xlf']
-
+  dir = 'D:\xcelsius\bugfix\qaas_lost'
+  files = ['qaas_45_60.xlf', 'qaas_45_60_refresh.xlf']
+  dir = dir.gsub("\\", "/") if(dir.index("\\")!=-1)
+  
   files.map! { |file| "#{dir}/#{file}" }
   puts files
   puts "please choose the original xlf file in command line!"
