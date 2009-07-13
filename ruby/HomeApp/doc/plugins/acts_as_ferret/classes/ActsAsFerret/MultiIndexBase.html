@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActsAsFerret::MultiIndexBase</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActsAsFerret::MultiIndexBase</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/acts_as_ferret/lib/multi_index_rb.html">
+                vendor/plugins/acts_as_ferret/lib/multi_index.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Base class for remote and local multi-indexes
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000153">ar_find</a>&nbsp;&nbsp;
+      <a href="#M000154">determine_stored_fields</a>&nbsp;&nbsp;
+      <a href="#M000152">new</a>&nbsp;&nbsp;
+      <a href="#M000155">shared?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="FerretFindMethods.html">FerretFindMethods</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">logger</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000152" class="method-detail">
+        <a name="M000152"></a>
+
+        <div class="method-heading">
+          <a href="#M000152" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(indexes, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000152-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000152-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 8</span>
+ 8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">indexes</span>, <span class="ruby-identifier">options</span> = {})
+ 9:       <span class="ruby-comment cmt"># ensure all models indexes exist</span>
+10:       <span class="ruby-ivar">@indexes</span> = <span class="ruby-identifier">indexes</span>
+11:       <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">ensure_index_exists</span> }
+12:       <span class="ruby-identifier">default_fields</span> = <span class="ruby-identifier">indexes</span>.<span class="ruby-identifier">inject</span>([]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fields</span>, <span class="ruby-identifier">idx</span><span class="ruby-operator">|</span> 
+13:         <span class="ruby-identifier">fields</span> <span class="ruby-operator">+</span> [ <span class="ruby-identifier">idx</span>.<span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:ferret</span>][<span class="ruby-identifier">:default_field</span>] ]
+14:       <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">uniq</span>
+15:       <span class="ruby-ivar">@options</span> = {
+16:         <span class="ruby-identifier">:default_field</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">default_fields</span>
+17:       }.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>)
+18:       <span class="ruby-ivar">@logger</span> = <span class="ruby-constant">IndexLogger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">ActsAsFerret</span><span class="ruby-operator">::</span><span class="ruby-identifier">logger</span>, <span class="ruby-node">&quot;multi: #{indexes.map(&amp;:index_name).join(',')}&quot;</span>)
+19:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000153" class="method-detail">
+        <a name="M000153"></a>
+
+        <div class="method-heading">
+          <a href="#M000153" class="method-signature">
+          <span class="method-name">ar_find</span><span class="method-args">(query, options = {}, ar_options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000153-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000153-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 21</span>
+21:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ar_find</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-identifier">ar_options</span> = {})
+22:       <span class="ruby-identifier">limit</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:limit</span>)
+23:       <span class="ruby-identifier">offset</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:offset</span>) <span class="ruby-operator">||</span> <span class="ruby-value">0</span>
+24:       <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:limit</span>] = <span class="ruby-identifier">:all</span>
+25:       <span class="ruby-identifier">total_hits</span>, <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">ar_options</span>  
+26:       <span class="ruby-identifier">total_hits</span> = <span class="ruby-identifier">result</span>.<span class="ruby-identifier">size</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ar_options</span>[<span class="ruby-identifier">:conditions</span>]
+27:       <span class="ruby-comment cmt"># if limit &amp;&amp; limit != :all</span>
+28:       <span class="ruby-comment cmt">#   result = result[offset..limit+offset-1]</span>
+29:       <span class="ruby-comment cmt"># end</span>
+30:       [<span class="ruby-identifier">total_hits</span>, <span class="ruby-identifier">result</span>]
+31:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000154" class="method-detail">
+        <a name="M000154"></a>
+
+        <div class="method-heading">
+          <a href="#M000154" class="method-signature">
+          <span class="method-name">determine_stored_fields</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000154-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000154-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 33</span>
+33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">determine_stored_fields</span>(<span class="ruby-identifier">options</span>)
+34:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">:lazy</span>)
+35:       <span class="ruby-identifier">stored_fields</span> = []
+36:       <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+37:         <span class="ruby-identifier">stored_fields</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">index</span>.<span class="ruby-identifier">determine_stored_fields</span>(<span class="ruby-identifier">options</span>)
+38:       <span class="ruby-keyword kw">end</span>
+39:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">stored_fields</span>.<span class="ruby-identifier">uniq</span>
+40:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000155" class="method-detail">
+        <a name="M000155"></a>
+
+        <div class="method-heading">
+          <a href="#M000155" class="method-signature">
+          <span class="method-name">shared?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000155-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000155-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 42</span>
+42:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shared?</span>
+43:       <span class="ruby-keyword kw">false</span>
+44:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

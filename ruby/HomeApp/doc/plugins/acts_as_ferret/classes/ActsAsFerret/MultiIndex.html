@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActsAsFerret::MultiIndex</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActsAsFerret::MultiIndex</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/acts_as_ferret/lib/multi_index_rb.html">
+                vendor/plugins/acts_as_ferret/lib/multi_index.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="MultiIndexBase.html">
+                MultiIndexBase
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This class can be used to <a href="MultiIndex.html#M000102">search</a>
+multiple physical indexes at once.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000107">[]</a>&nbsp;&nbsp;
+      <a href="#M000110">close</a>&nbsp;&nbsp;
+      <a href="#M000106">doc</a>&nbsp;&nbsp;
+      <a href="#M000111">ensure_searcher</a>&nbsp;&nbsp;
+      <a href="#M000100">extract_stored_fields</a>&nbsp;&nbsp;
+      <a href="#M000104">latest?</a>&nbsp;&nbsp;
+      <a href="#M000109">process_query</a>&nbsp;&nbsp;
+      <a href="#M000108">query_parser</a>&nbsp;&nbsp;
+      <a href="#M000102">search</a>&nbsp;&nbsp;
+      <a href="#M000103">search_each</a>&nbsp;&nbsp;
+      <a href="#M000105">searcher</a>&nbsp;&nbsp;
+      <a href="#M000101">total_hits</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <span class="method-name">[]</span><span class="method-args">(i)</span>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Alias for <a href="MultiIndex.html#M000106">doc</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000110" class="method-detail">
+        <a name="M000110"></a>
+
+        <div class="method-heading">
+          <a href="#M000110" class="method-signature">
+          <span class="method-name">close</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000110-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000110-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 100</span>
+100:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+101:       <span class="ruby-ivar">@searcher</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@searcher</span>
+102:       <span class="ruby-ivar">@reader</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@reader</span>
+103:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="#M000106" class="method-signature">
+          <span class="method-name">doc</span><span class="method-args">(i)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000106-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000106-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 86</span>
+86:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">doc</span>(<span class="ruby-identifier">i</span>)
+87:       <span class="ruby-identifier">searcher</span>[<span class="ruby-identifier">i</span>]
+88:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="#M000100" class="method-signature">
+          <span class="method-name">extract_stored_fields</span><span class="method-args">(doc, stored_fields)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000100-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000100-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_stored_fields</span>(<span class="ruby-identifier">doc</span>, <span class="ruby-identifier">stored_fields</span>)
+52:       <span class="ruby-constant">ActsAsFerret</span><span class="ruby-operator">::</span><span class="ruby-identifier">get_index_for</span>(<span class="ruby-identifier">doc</span>[<span class="ruby-identifier">:class_name</span>]).<span class="ruby-identifier">extract_stored_fields</span>(<span class="ruby-identifier">doc</span>, <span class="ruby-identifier">stored_fields</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">stored_fields</span>.<span class="ruby-identifier">blank?</span>
+53:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="#M000104" class="method-signature">
+          <span class="method-name">latest?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+checks if all our sub-searchers still are up to date
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000104-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000104-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 71</span>
+71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">latest?</span>
+72:       <span class="ruby-comment cmt">#return false unless @reader</span>
+73:       <span class="ruby-comment cmt"># segfaults with 0.10.4 --&gt; TODO report as bug @reader.latest?</span>
+74:       <span class="ruby-ivar">@reader</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@reader</span>.<span class="ruby-identifier">latest?</span>
+75:       <span class="ruby-comment cmt">#@sub_readers.each do |r| </span>
+76:       <span class="ruby-comment cmt">#  return false unless r.latest? </span>
+77:       <span class="ruby-comment cmt">#end</span>
+78:       <span class="ruby-comment cmt">#true</span>
+79:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="#M000109" class="method-signature">
+          <span class="method-name">process_query</span><span class="method-args">(query, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000109-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000109-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 95</span>
+95:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_query</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span> = {})
+96:       <span class="ruby-identifier">query</span> = <span class="ruby-identifier">query_parser</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">query</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">query</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+97:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">query</span>
+98:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="#M000108" class="method-signature">
+          <span class="method-name">query_parser</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000108-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000108-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 91</span>
+91:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query_parser</span>
+92:       <span class="ruby-ivar">@query_parser</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Ferret</span><span class="ruby-operator">::</span><span class="ruby-constant">QueryParser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@options</span>)
+93:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="#M000102" class="method-signature">
+          <span class="method-name">search</span><span class="method-args">(query, options={})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000102-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000102-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 59</span>
+59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span>={})
+60:       <span class="ruby-identifier">query</span> = <span class="ruby-identifier">process_query</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span>)
+61:       <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;parsed query: #{query.to_s}&quot;</span>
+62:       <span class="ruby-identifier">searcher</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span>)
+63:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="#M000103" class="method-signature">
+          <span class="method-name">search_each</span><span class="method-args">(query, options = {}, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000103-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000103-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 65</span>
+65:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search_each</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+66:       <span class="ruby-identifier">query</span> = <span class="ruby-identifier">process_query</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span>)
+67:       <span class="ruby-identifier">searcher</span>.<span class="ruby-identifier">search_each</span>(<span class="ruby-identifier">query</span>, <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+68:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="#M000105" class="method-signature">
+          <span class="method-name">searcher</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000105-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000105-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 81</span>
+81:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">searcher</span>
+82:       <span class="ruby-identifier">ensure_searcher</span>
+83:       <span class="ruby-ivar">@searcher</span>
+84:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="#M000101" class="method-signature">
+          <span class="method-name">total_hits</span><span class="method-args">(q, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000101-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000101-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 55</span>
+55:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">total_hits</span>(<span class="ruby-identifier">q</span>, <span class="ruby-identifier">options</span> = {})
+56:       <span class="ruby-identifier">search</span>(<span class="ruby-identifier">q</span>, <span class="ruby-identifier">options</span>).<span class="ruby-identifier">total_hits</span>
+57:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000111" class="method-detail">
+        <a name="M000111"></a>
+
+        <div class="method-heading">
+          <a href="#M000111" class="method-signature">
+          <span class="method-name">ensure_searcher</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000111-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000111-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/multi_index.rb, line 107</span>
+107:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ensure_searcher</span>
+108:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">latest?</span>
+109:           <span class="ruby-ivar">@sub_readers</span> = <span class="ruby-ivar">@indexes</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">idx</span><span class="ruby-operator">|</span> 
+110:             <span class="ruby-keyword kw">begin</span>
+111:               <span class="ruby-identifier">reader</span> = <span class="ruby-constant">Ferret</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span><span class="ruby-operator">::</span><span class="ruby-constant">IndexReader</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">idx</span>.<span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:index_dir</span>])
+112:               <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;sub-reader opened: #{reader}&quot;</span>
+113:               <span class="ruby-identifier">reader</span>
+114:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span>
+115:               <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;error opening reader on index for class #{clazz.inspect}: #{$!}&quot;</span>
+116:             <span class="ruby-keyword kw">end</span>
+117:           }
+118:           <span class="ruby-identifier">close</span>
+119:           <span class="ruby-ivar">@reader</span> = <span class="ruby-constant">Ferret</span><span class="ruby-operator">::</span><span class="ruby-constant">Index</span><span class="ruby-operator">::</span><span class="ruby-constant">IndexReader</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@sub_readers</span>)
+120:           <span class="ruby-ivar">@searcher</span> = <span class="ruby-constant">Ferret</span><span class="ruby-operator">::</span><span class="ruby-constant">Search</span><span class="ruby-operator">::</span><span class="ruby-constant">Searcher</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@reader</span>)
+121:         <span class="ruby-keyword kw">end</span>
+122:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

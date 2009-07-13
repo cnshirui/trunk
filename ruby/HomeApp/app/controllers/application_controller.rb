@@ -21,4 +21,10 @@ class ApplicationController < ActionController::Base
       redirect_to(:controller => "users", :action => "login")
     end
   end
+
+  def admin
+    unless User.find_by_id(session[:user_id]).is_admin
+      redirect_to(:controller => "posts")
+    end
+  end
 end
