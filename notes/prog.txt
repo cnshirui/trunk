@@ -1,8 +1,31 @@
-ad44076357
-90088282
+https://docs.google.com/View?id=dcwptqgd_160d4j37qct
+
+然后需要 https 访问，
+用火狐的同学有福了，可以直接安装 http 转 https 的油猴子脚本，
+
+https://addons.mozilla.org/zh-CN/firefox/addon/748 油猴子
+https://userscripts.org/scripts/show/29090 自动转换 https 脚本，增加配置 facebook.com/*
+
+具体步骤可仿照访问 Twitter 的方式
+http://www.kenengba.com/post/1298.html
+
+%Systemroot%\System32\Drivers\Etc
+124.40.42.105 www.facebook.com
+69.63.180.173 login.facebook.com
+69.192.34.110 s-static.ak.facebook.com
+69.63.176.69 secure-profile.facebook.com
+69.63.176.59 secure-media-sf2p.facebook.com
+69.63.178.13 ssl.facebook.com
+96.6.122.57 profile.ak.facebook.com
+64.211.21.152 b.static.ak.facebook.com
+
+===========
+
+ADSL: ad44076357@90088282
+
 graduate: 102841200705150103
-		  102841200705150103
 		  10284120070515103
+		  
 请牢记您的报名编号： 093102004018
 http://www.shmeea.edu.cn cnshirui cnshirui@_sjtu
 https://www.chsi.com.cn

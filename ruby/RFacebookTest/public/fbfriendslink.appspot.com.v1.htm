@@ -474,7 +474,7 @@
       }
 
       function load_pictures() {
-        var api_key = '75a3c10503e406c24165d1c8522ae051';
+        var api_key = 'c7285a1bcbd8d507b466d244202ed498';
         var channel_path = 'xd_reveiver.htm';
         var img = null;
 
@@ -497,7 +497,7 @@
               friends_array = result;
               //console.log(friends_array, 'friendsResult from non-batch execution');
               //console.log(friends_array.length);
-              var fields = ["pic_square"];
+              var fields = ["pic_square", "status"];
               api.users_getInfo(friends_array, fields, function(info_result, exception) {
                 drawLoadingProcessBar(36);
                 //console.log(info_result);
