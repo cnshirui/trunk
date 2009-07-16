@@ -6,19 +6,13 @@ package
 	{
 		public function ActionScriptTest()
 		{
-			var page:Pagination = new Pagination(25, 10);
-			
-/* 			// test
-			while(nextAvailable())
-			{
-				trace(getNext());
-			}
-
- 			while(beforeAvaiable())
-			{
-				trace(getBefore());
-			}	 
-			 */			
+/* 			var x:Base = new Child();
+			x.run(); */
+			var s:String = "july";
+			var i:Number = Number(s);
+			trace(i);
+			trace(isNaN(i));
+			trace(isNaN(9));
 		}
 	}
 }

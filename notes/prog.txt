@@ -1,13 +1,6 @@
-IDS_WARNING_COMPS_NOT_FOUND 
-                            "The model you are loading contains components that are not installed on your version of Xcelsius.  These components and their features will not be loaded, therefore the model may not function as intended."
     
 	GuangFa	027001023941:May16, 2009
-
-				this->CleanupDoc();
-				m_strTitle.LoadString(IDS_UNTITLED);
-					//GetFeatureSet()->SetApplicationTitle(m_strTitle);
-					((CXcelsiusApp*)AfxGetApp())->OnFileNew();
-					//GetFeatureSet()->SetApplicationTitle(m_strTitle);
+027001023941	0270010239415 	Ç×°®µÄ¹ã·¢¿Í»§£¬»¶Ó­ÄúµÇÂ¼¹ã·¢ÍøÕ¾¡£Èç¹ûÄãÊÇµÚÒ»´ÎµÇÂ¼±¾ÍøÕ¾£¬ÇëÊ¹ÓÃ¡°¿Í»§±àºÅ·½Ê½¡±µÇÂ¼£¬Í¬Ê±ÎÒÃÇÎªÄúÔ¤ÉèÁËÃÜÂë¡£ Ê×´ÎµÇÂ¼ÇëÊ¹ÓÃÄúÉí·ÝÖ¤µÄºóÁùÎ»Êý×÷ÎªÃÜÂë£¬µ±È»ÄãÒÔºóÒ²¿ÉÒÔÐÞ¸ÄÄúµÄÃÜÂë£¬´ÓµÚ¶þ´ÎÆð¾Í¿ÉÒÔÊ¹ÓÃ¡°ÓÃ»§êÇ³Æ¡±µÇÂ¼¡£
 					
 Test case:
 Open xlf_version_50, should popup a previous_version warning. The file should be locked, open another file, the file should be unlocked. The opened file should be locked. Create a new document, the second file should be unlocked.
@@ -16,10 +9,6 @@ Open xlf_version_60, should popup a newer_version warning. Click "Yes" should op
 
 Open xlf_version_53, then open xlf_version_60, give an above warning, Click "No", 
 
-
-This file was created using a newer version of Xcelsius.  It may not be compatible with the version of Xcelsius that you are using.  As a result, the file may not display or operate in the way the creator intended.  It is recommended that you upgrade your Xcelsius to the latest version before opening this file.  Do you want to continue opening this file?
-
-========
 		MSXML2::IXMLDOMCDATASectionPtr cData = noteNode->GetfirstChild();
 		if(cData) {
 			cData->data = _bstr_t(csNote);
@@ -28,21 +17,93 @@ This file was created using a newer version of Xcelsius.  It may not be compatib
 			cData = pDom->createCDATASection(_bstr_t(csNote));
 			noteNode->appendChild(cData);
 		}
-		
-
-	// ADAPT01259701 : X6_REL_84: Migration 4.5 model to Sorrento, image component is disappeared in runtime preview.
-	// Solution: whether increase/decrease canvas size, the canvas center should be fixed.
-	function.addArgument(_T("center"));
-
-	
-	
-IDS_WARNING_LATER_VERSION     "Xcelsius has detected the file you just opened has been created with a later version of Xcelsius. Some model features may not function and the layout may differ.  If you overwrite this file, you will not be able to open it with later versions of Xcelsius."
-
 
 www.fescoshanghai.com: id-cnshirui@fesco
 
 {"Open method of Workbooks class failed" (1)}
 "Unknown error 0x800A03EC"
+=======
+https://docs.google.com/View?id=dcwptqgd_160d4j37qct
+
+È»ºóÐèÒª https ·ÃÎÊ£¬
+ÓÃ»ðºüµÄÍ¬Ñ§ÓÐ¸£ÁË£¬¿ÉÒÔÖ±½Ó°²×° http ×ª https µÄÓÍºï×Ó½Å±¾£¬
+
+https://addons.mozilla.org/zh-CN/firefox/addon/748 ÓÍºï×Ó
+https://userscripts.org/scripts/show/29090 ×Ô¶¯×ª»» https ½Å±¾£¬Ôö¼ÓÅäÖÃ facebook.com/*
+
+¾ßÌå²½Öè¿É·ÂÕÕ·ÃÎÊ Twitter µÄ·½Ê½
+http://www.kenengba.com/post/1298.html
+
+%Systemroot%\System32\Drivers\Etc
+124.40.42.105 www.facebook.com
+69.63.180.173 login.facebook.com
+69.192.34.110 s-static.ak.facebook.com
+69.63.176.69 secure-profile.facebook.com
+69.63.176.59 secure-media-sf2p.facebook.com
+69.63.178.13 ssl.facebook.com
+96.6.122.57 profile.ak.facebook.com
+64.211.21.152 b.static.ak.facebook.com
+
+===========
+
+ADSL: ad44076357@90088282
+
+graduate: 102841200705150103
+		  10284120070515103
+		  
+ÇëÀÎ¼ÇÄúµÄ±¨Ãû±àºÅ£º 093102004018
+http://www.shmeea.edu.cn cnshirui cnshirui@_sjtu
+https://www.chsi.com.cn
+shiruide@gmail.com: 777777		  
+
+=======
+sgsine15.sin.sap.corp
+Shi, Roy
+
+===
+		try {
+			// add your block here
+		}
+		catch (_com_error &e) {
+			_bstr_t source = e.Source ();
+			_bstr_t description = e.Description ();
+			std::wstring errorMessage (e.ErrorMessage ());
+
+			// include <sstream>
+			std::wstringstream message;
+
+			message << L"COM error - source: <" << source 
+				<< L">, description: <" << description 
+				<< L">, error message: <" << errorMessage 
+				<< L">" 
+				<< std::endl;
+
+			::OutputDebugString (message.str ().c_str ());
+		}
+====
+		/**
+		 * Returns whether a formula is in the first cell of the binding or not.
+		 * 
+		 * @param binding  				The id of the bind.
+		 * @param anyOrFirst			true means any cell has formula, 
+		 * 								false means the first cell has formula
+		 * @return         				A boolean flag.
+		 */
+		function hasFormulaInFirstCell(binding:String, anyOrFirst:Boolean = true):Boolean;	
+
+		bindingButton="{_valueBinding}" 
+ 
+ titleXOffset
+
+source['embed']
+source['temporaryFile']
+source['originalFile']
+		  
+shg-s-xi31
+administrator/Bo123456
+http://shg-s-xi31:8080/dswsbobje/services/session
+
+
 
 
   1¡¢ÄãÈç¹ûÒªÔÚÄãºÍ³ÌÐòÖÐ¼ÓÈëword   µÄ´úÂë£ºCtrl+W->Add   Class->form   ...  
@@ -128,6 +189,7 @@ static void report (boost::timer &t, const wchar_t *prefix)
 first chance exception	0x80000001	Not implemented
 [Frames below may be incorrect and/or missing, no symbols loaded for FlDbg10b.ocx]	
 The details of how to suppress this error are different for every IDE, but in VC7, you go to Debug->Exceptionsa€|, select Win32 Exceptions, then hit Adda€| - for number input 0?¡ª80000001, and description can be whatever you like. Ia€?d recommend a€?page guarda€
+
 
 keytool -list -v -keystore certificate.p12 -storepass bobobo123
 keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAIKKeystore
