@@ -1,0 +1,2 @@
+API Key	75a3c10503e406c24165d1c8522ae051	Your public API key.
+Secret	a2f6b5e4dbc43ebdb19e379b48086d47	Do not share your secret key with anyone.

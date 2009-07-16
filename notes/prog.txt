@@ -1,4 +1,48 @@
-CA514-JJ6100M-00N1WJB-0H3F
+IDS_WARNING_COMPS_NOT_FOUND 
+                            "The model you are loading contains components that are not installed on your version of Xcelsius.  These components and their features will not be loaded, therefore the model may not function as intended."
+    
+	GuangFa	027001023941:May16, 2009
+
+				this->CleanupDoc();
+				m_strTitle.LoadString(IDS_UNTITLED);
+					//GetFeatureSet()->SetApplicationTitle(m_strTitle);
+					((CXcelsiusApp*)AfxGetApp())->OnFileNew();
+					//GetFeatureSet()->SetApplicationTitle(m_strTitle);
+					
+Test case:
+Open xlf_version_50, should popup a previous_version warning. The file should be locked, open another file, the file should be unlocked. The opened file should be locked. Create a new document, the second file should be unlocked.
+
+Open xlf_version_60, should popup a newer_version warning. Click "Yes" should open xlf as usual.
+
+Open xlf_version_53, then open xlf_version_60, give an above warning, Click "No", 
+
+
+This file was created using a newer version of Xcelsius.  It may not be compatible with the version of Xcelsius that you are using.  As a result, the file may not display or operate in the way the creator intended.  It is recommended that you upgrade your Xcelsius to the latest version before opening this file.  Do you want to continue opening this file?
+
+========
+		MSXML2::IXMLDOMCDATASectionPtr cData = noteNode->GetfirstChild();
+		if(cData) {
+			cData->data = _bstr_t(csNote);
+		}
+		else {
+			cData = pDom->createCDATASection(_bstr_t(csNote));
+			noteNode->appendChild(cData);
+		}
+		
+
+	// ADAPT01259701 : X6_REL_84: Migration 4.5 model to Sorrento, image component is disappeared in runtime preview.
+	// Solution: whether increase/decrease canvas size, the canvas center should be fixed.
+	function.addArgument(_T("center"));
+
+	
+	
+IDS_WARNING_LATER_VERSION     "Xcelsius has detected the file you just opened has been created with a later version of Xcelsius. Some model features may not function and the layout may differ.  If you overwrite this file, you will not be able to open it with later versions of Xcelsius."
+
+
+www.fescoshanghai.com: id-cnshirui@fesco
+
+{"Open method of Workbooks class failed" (1)}
+"Unknown error 0x800A03EC"
 
 
   1、你如果要在你和程序中加入word   的代码：Ctrl+W->Add   Class->form   ...  

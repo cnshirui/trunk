@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <application xmlns="http://ns.adobe.com/air/application/1.0">
   <!-- Adobe AIR Application Descriptor File Template.
 
@@ -19,7 +19,7 @@
 	     May have multiple values for each language. See samples or xsd schema file. Optional. -->
   <name>Dial</name>
   <!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
-  <version>&amp; >> </version>
+  <version>&amp; &gt;&gt; </version>
   <!-- Description, displayed in the AIR application installer.
 	     May have multiple values for each language. See samples or xsd schema file. Optional. -->
   <!-- <description></description> -->
@@ -29,7 +29,7 @@
   <initialWindow>
     <!-- The main SWF or HTML file of the application. Required. -->
     <!-- Note: In Flex Builder, the SWF reference is set automatically. -->
-    <content>[This value will be overwritten by Flex Builder in the output app.xml]</content>
+    <content>AirTest.swf</content>
     <!-- The title of the main window. Optional. -->
     <!-- <title></title> -->
     <!-- The type of system chrome to use (either "standard" or "none"). Optional. Default standard. -->
