@@ -1,3 +1,4 @@
+<<<<<<< HEAD:notes/prog.txt
 订单编号：	6277371
 北京  	北京、天津、河北、山西、河南、辽宁、吉林、黑龙江、内蒙古、山东、湖北、四川、重庆、贵州、云南、西藏、陕西、甘肃、青海、宁夏、新疆  	010-82625500
 上海 	江苏、浙江、上海、安徽、钓鱼岛 	021-51785500
@@ -72,6 +73,67 @@ C:\Documents and Settings\rshi\Desktop\1/.air
 							
 38
 46-38=6
+=======
+    
+	GuangFa	027001023941:May16, 2009
+027001023941	0270010239415 	亲爱的广发客户，欢迎您登录广发网站。如果你是第一次登录本网站，请使用“客户编号方式”登录，同时我们为您预设了密码。 首次登录请使用您身份证的后六位数作为密码，当然你以后也可以修改您的密码，从第二次起就可以使用“用户昵称”登录。
+					
+Test case:
+Open xlf_version_50, should popup a previous_version warning. The file should be locked, open another file, the file should be unlocked. The opened file should be locked. Create a new document, the second file should be unlocked.
+
+Open xlf_version_60, should popup a newer_version warning. Click "Yes" should open xlf as usual.
+
+Open xlf_version_53, then open xlf_version_60, give an above warning, Click "No", 
+
+		MSXML2::IXMLDOMCDATASectionPtr cData = noteNode->GetfirstChild();
+		if(cData) {
+			cData->data = _bstr_t(csNote);
+		}
+		else {
+			cData = pDom->createCDATASection(_bstr_t(csNote));
+			noteNode->appendChild(cData);
+		}
+
+www.fescoshanghai.com: id-cnshirui@fesco
+
+{"Open method of Workbooks class failed" (1)}
+"Unknown error 0x800A03EC"
+=======
+https://docs.google.com/View?id=dcwptqgd_160d4j37qct
+
+然后需要 https 访问，
+用火狐的同学有福了，可以直接安装 http 转 https 的油猴子脚本，
+
+https://addons.mozilla.org/zh-CN/firefox/addon/748 油猴子
+https://userscripts.org/scripts/show/29090 自动转换 https 脚本，增加配置 facebook.com/*
+
+具体步骤可仿照访问 Twitter 的方式
+http://www.kenengba.com/post/1298.html
+
+%Systemroot%\System32\Drivers\Etc
+124.40.42.105 www.facebook.com
+69.63.180.173 login.facebook.com
+69.192.34.110 s-static.ak.facebook.com
+69.63.176.69 secure-profile.facebook.com
+69.63.176.59 secure-media-sf2p.facebook.com
+69.63.178.13 ssl.facebook.com
+96.6.122.57 profile.ak.facebook.com
+64.211.21.152 b.static.ak.facebook.com
+
+===========
+
+ADSL: ad44076357@90088282
+
+graduate: 102841200705150103
+		  10284120070515103
+		  
+请牢记您的报名编号： 093102004018
+http://www.shmeea.edu.cn cnshirui cnshirui@_sjtu
+https://www.chsi.com.cn
+shiruide@gmail.com: 777777		  
+
+=======
+>>>>>>> 32598c8456f1098971157f31f2c8f72b7924bbe3:notes/prog.txt
 sgsine15.sin.sap.corp
 Shi, Roy
 
@@ -117,21 +179,6 @@ source['originalFile']
 shg-s-xi31
 administrator/Bo123456
 http://shg-s-xi31:8080/dswsbobje/services/session
-
-//depot2/X6/COR/Xcelsius/Designer/...@2022272
-//depot2/X6/COR/Xcelsius/Designer/...@1993279
-//depot2/X6/COR/Xcelsius/Designer/...@1987035
-//depot2/X6/COR/Xcelsius/Designer/...@1973652
-
-
-//depot2/X6/REL/Xcelsius/Designer/Xcelsius/Xcelsius/migrate6.cpp'
-		MSXML2::IXMLDOMNodePtr reinsertNode = compNode->selectSingleNode("properties/property[name/string='reinsert']/value");
-		CString reinsert = reinsertNode ? reinsertNode->Gettext() : "false";
-
-		Ability to relocate employees is limited due to current cost restraints. 
- 
- new BindingData("valueParentColor", null, true);
-
 
 
 

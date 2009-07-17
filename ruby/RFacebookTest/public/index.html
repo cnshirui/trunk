@@ -1,275 +1,558 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>Ruby on Rails: Welcome aboard</title>
-    <style type="text/css" media="screen">
-      body {
-        margin: 0;
-        margin-bottom: 25px;
-        padding: 0;
-        background-color: #f0f0f0;
-        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
-        font-size: 13px;
-        color: #333;
-      }
-      
-      h1 {
-        font-size: 28px;
-        color: #000;
-      }
-      
-      a  {color: #03c}
-      a:hover {
-        background-color: #03c;
-        color: white;
-        text-decoration: none;
-      }
-      
-      
-      #page {
-        background-color: #f0f0f0;
-        width: 750px;
-        margin: 0;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      #content {
-        float: left;
-        background-color: white;
-        border: 3px solid #aaa;
-        border-top: none;
-        padding: 25px;
-        width: 500px;
-      }
-      
-      #sidebar {
-        float: right;
-        width: 175px;
-      }
+    <title>Facebook Link and Look</title>
+    <meta name="DC.creator" content="Allen Zheng, capken@gmail.com">
+    <script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+    <script type="application/x-javascript">
 
-      #footer {
-        clear: both;
-      }
-      
+      // Global Variables //
+      var images_count = 16;
+      var images = new Array(16);
 
-      #header, #about, #getting-started {
-        padding-left: 75px;
-        padding-right: 30px;
-      }
+      var process_value = 0;
 
+      var canvas = null;
+      var ctx = null;
+      var start = null;
+      var end = null;
+      var statusArr = null;
+      var avatars = null;
+      var linkedAudio = null;
+      var errorAudio = null;
 
-      #header {
-        background-image: url("images/rails.png");
-        background-repeat: no-repeat;
-        background-position: top left;
-        height: 64px;
-      }
-      #header h1, #header h2 {margin: 0}
-      #header h2 {
-        color: #888;
-        font-weight: normal;
-        font-size: 16px;
-      }
-      
-      
-      #about h3 {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 14px;
-      }
-      
-      #about-content {
-        background-color: #ffd;
-        border: 1px solid #fc0;
-        margin-left: -11px;
-      }
-      #about-content table {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        font-size: 11px;
-        border-collapse: collapse;
-      }
-      #about-content td {
-        padding: 10px;
-        padding-top: 3px;
-        padding-bottom: 3px;
-      }
-      #about-content td.name  {color: #555}
-      #about-content td.value {color: #000}
-      
-      #about-content.failure {
-        background-color: #fcc;
-        border: 1px solid #f00;
-      }
-      #about-content.failure p {
-        margin: 0;
-        padding: 10px;
-      }
-      
-      
-      #getting-started {
-        border-top: 1px solid #ccc;
-        margin-top: 25px;
-        padding-top: 15px;
-      }
-      #getting-started h1 {
-        margin: 0;
-        font-size: 20px;
-      }
-      #getting-started h2 {
-        margin: 0;
-        font-size: 14px;
-        font-weight: normal;
-        color: #333;
-        margin-bottom: 25px;
-      }
-      #getting-started ol {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #getting-started li {
-        font-size: 18px;
-        color: #888;
-        margin-bottom: 25px;
-      }
-      #getting-started li h2 {
-        margin: 0;
-        font-weight: normal;
-        font-size: 18px;
-        color: #333;
-      }
-      #getting-started li p {
-        color: #555;
-        font-size: 13px;
-      }
-      
-      
-      #search {
-        margin: 0;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-size: 11px;
-      }
-      #search input {
-        font-size: 11px;
-        margin: 2px;
-      }
-      #search-text {width: 170px}
-      
-      
-      #sidebar ul {
-        margin-left: 0;
-        padding-left: 0;
-      }
-      #sidebar ul h3 {
-        margin-top: 25px;
-        font-size: 16px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ccc;
-      }
-      #sidebar li {
-        list-style-type: none;
-      }
-      #sidebar ul.links li {
-        margin-bottom: 5px;
-      }
-      
-    </style>
-    <script type="text/javascript" src="javascripts/prototype.js"></script>
-    <script type="text/javascript" src="javascripts/effects.js"></script>
-    <script type="text/javascript">
-      function about() {
-        if (Element.empty('about-content')) {
-          new Ajax.Updater('about-content', 'rails/info/properties', {
-            method:     'get',
-            onFailure:  function() {Element.classNames('about-content').add('failure')},
-            onComplete: function() {new Effect.BlindDown('about-content', {duration: 0.25})}
-          });
+      // first corner point
+      var fp = null;
+      // second corner point
+      var sp = null;
+
+      // Class Definitions //
+      function Point(x, y, fromDirection) {
+        this.i = x;
+        this.j = y;
+        if(fromDirection === undefined) {
+          this.fromDirection = null;
         } else {
-          new Effect[Element.visible('about-content') ? 
-            'BlindUp' : 'BlindDown']('about-content', {duration: 0.25});
+          this.fromDirection = fromDirection;
         }
       }
-      
-      window.onload = function() {
-        $('search-text').value = '';
-        $('search').onsubmit = function() {
-          $('search-text').value = 'site:rubyonrails.org ' + $F('search-text');
+
+
+      // Event Function //
+      function mouseClick(e) {
+        // get the mouse click position relative to canvas
+        var x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - canvas.offsetLeft;
+        var y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop - canvas.offsetTop;
+
+        // filter those clicks within the edge area
+        if(x < 54 || x > 486 || y < 54 || y > 486 ) return;
+        // calculate the index in x and y axies
+        var m = Math.floor(x / 54);
+        var n = Math.floor(y / 54);
+
+        if(statusArr[m][n] == 0) return;
+
+        // draw the border
+        ctx.strokeRect(m * 54 + 1, n * 54 + 1, 52, 52);
+
+        if(start == null) {
+          start = new Point(m, n);
+        } else {
+          end = new Point(m, n);
+
+          if(isSamePoint(start.i, start.j, end.i, end.j) || 
+             isDifferentAvatar(start.i, start.j, end.i, end.j)) {
+            //errorAudio.play();
+            setTimeout("clearAndRedraw()", 100);
+          } else {
+            if(isConnected(start.i, start.j, end.i, end.j)) {
+              updateRightPanel();
+              // update picture status
+              statusArr[start.i][start.j] = 0;
+              statusArr[end.i][end.j] = 0;
+              avatars[start.i][start.j] = -1;
+              avatars[end.i][end.j] = -1;
+              // update UI
+              drawLinkedLines();
+              //linkedAudio.play();
+              setTimeout("clear()", 300);
+            } else {
+              //errorAudio.play();
+              setTimeout("clearAndRedraw()", 100);
+            }
+          }
         }
       }
+
+
+      // Logic Functions //
+      function isConnected(i, j, x, y) {
+        fp = null;
+        sp = null;
+
+        var pointsInLevel1 = findDirectConnectedPoints(i, j, null);
+        if(includePoint(x, y, pointsInLevel1)) {
+          return true;
+        }
+
+        var p = null;
+        var ep = null;
+        var cp = null;
+        var cpInCurrentLevel = [];
+
+        var emptyPointsInLevel1 = getEmptyPoints(pointsInLevel1);
+        var pointsInLevel2 = [];
+        for(p = 0; p < emptyPointsInLevel1.length; p++) {
+          ep = emptyPointsInLevel1[p];
+          cp = findDirectConnectedPoints(ep.i, ep.j, ep.fromDirection);
+          cpInCurrentLevel = diff(cp, pointsInLevel1);
+          if(includePoint(x, y, cpInCurrentLevel)) {
+            fp = new Point(ep.i, ep.j);
+            return true;
+          } else {
+            pointsInLevel2 = pointsInLevel2.concat(cpInCurrentLevel);
+          }
+        }
+
+        var emptyPointsInLevel2 = getEmptyPoints(pointsInLevel2);
+        for(p = 0; p < emptyPointsInLevel2.length; p++) {
+          ep = emptyPointsInLevel2[p];
+          cp = findDirectConnectedPoints(ep.i, ep.j, ep.fromDirection);
+          cpInCurrentLevel = diff(diff(cp, pointsInLevel2), pointsInLevel1);
+          if(includePoint(x, y, cpInCurrentLevel)) {
+            sp = new Point(ep.i, ep.j);
+            if(ep.fromDirection === "left" || ep.fromDirection === "right") {
+              fp = new Point(i, ep.j);
+            } else {
+              fp = new Point(ep.i, j);
+            }
+            return true;
+          }
+        }
+
+        return false;
+      }
+
+      function isStillAlive() {
+        var a, b;
+        var i, j, x, y;
+        for(a = 0; a < 64; a++) {
+          i = Math.floor(a / 8) + 1;
+          j = a % 8 + 1;
+          if(statusArr[i][j] === 1) {
+            for(b = a + 1; b < 64; b++) {
+              x = Math.floor(b / 8) + 1;
+              y = b % 8 + 1;
+              if(statusArr[x][y] === 1 && isSameAvatar(i, j, x, y) && isConnected(i, j, x, y)) {
+                //alert("(" + i + "," + j + ")(" + x + "," + y + ")");
+                return true;
+              }
+            }
+          }
+        }
+        return false;
+      }
+
+      function isSamePoint(i, j, x, y) {
+        return (i === x && j === y);
+      }
+
+      function isDifferentAvatar(i, j, x, y) {
+        return !isSameAvatar(i, j, x, y);
+      }
+
+      function isSameAvatar(i, j, x, y) {
+        return (avatars[i][j] === avatars[x][y]);
+      }
+
+      function includePoint(i, j, points) {
+        for(var p = 0; p < points.length; p++) {
+          var point = points[p];
+          if(i == point.i && j == point.j) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function getEmptyPoints(points) {
+        var emptyPoints = new Array();
+        for(var p = 0; p < points.length; p++) {
+          var point = points[p];
+          if(statusArr[point.i][point.j] == 0) {
+            emptyPoints.push(new Point(point.i, point.j, point.fromDirection));
+          }
+        }
+        return emptyPoints;
+      }
+
+      function diff(a, b) {
+        var difference = new Array();
+        for(var p = 0; p < a.length; p++) {
+          var point = a[p];
+          if(includePoint(point.i, point.j, b) == false) {
+            difference.push(new Point(point.i, point.j, point.fromDirection))
+          }
+        }
+        return difference;
+      }
+
+      function findDirectConnectedPoints(i, j, filterDirection) {
+
+        var points = new Array();
+        var p = null;
+        var isBlocked = null;
+
+        if(filterDirection == null || filterDirection != "left") {
+          // left direction
+          p = i;
+          isBlocked = false;
+
+          while(isBlocked == false && p > 0) {
+            p--;
+            if(p >= 0 && isBlocked == false) {
+              points.push(new Point(p, j, "right"));
+              if(statusArr[p][j] == 1) {
+                isBlocked = true;
+              }
+            }
+          }
+        }
+
+        if(filterDirection == null || filterDirection != "top") {
+          // top direction
+          p = j;
+          isBlocked = false;
+
+          while(isBlocked == false && p > 0) {
+            p--;
+            if(p >= 0 && isBlocked == false) {
+              points.push(new Point(i, p, "bottom"));
+              if(statusArr[i][p] == 1) {
+                isBlocked = true;
+              }
+            }
+          }
+        }
+
+        if(filterDirection == null || filterDirection != "right") {
+          // right direction
+          p = i;
+          isBlocked = false;
+
+          while(isBlocked == false && p < 9) {
+            p++;
+            if(p < 10 && isBlocked == false) {
+              points.push(new Point(p, j, "left"));
+              if(statusArr[p][j] == 1) {
+                isBlocked = true;
+              }
+            }
+          }
+        }
+
+        if(filterDirection == null || filterDirection != "bottom") {
+          // bottom direction
+          p = j;
+          isBlocked = false;
+
+          while(isBlocked == false && p < 9) {
+            p++;
+            if(p < 10 && isBlocked == false) {
+              points.push(new Point(i, p, "top"));
+              if(statusArr[i][p] == 1) {
+                isBlocked = true;
+              }
+            }
+          }
+        }
+
+        return points;
+      }
+
+      // Rendering Functions //
+      function drawLinkedLines() {
+        if(fp === null && sp === null) {
+          drawLinkedLine(start, end);
+        }
+
+        if(fp !== null && sp === null) {
+          drawLinkedLine(start, fp);
+          drawLinkedLine(fp, end);
+        }
+
+        if(fp !== null && sp !== null) {
+          drawLinkedLine(start, fp);
+          drawLinkedLine(fp, sp);
+          drawLinkedLine(sp, end);
+        }
+      }
+
+      function drawLinkedLine(first, second) {
+        var x1, y1, x2, y2;
+        if(first.i === second.i) {
+          // at the same column
+          x1 = 54 * first.i + 27;
+          x2 = x1;
+          y1 = 54 * first.j + 27;
+          y2 = 54 * second.j + 27;
+        } else if(first.j === second.j) {
+          // at the same row
+          x1 = 54 * first.i + 27;
+          x2 = 54 * second.i + 27;
+          y1 = 54 * first.j + 27;
+          y2 = y1;
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
+
+      function drawAvatars() {
+        for(var i = 0; i < 8; i++) {
+          for(var j = 0; j < 8; j++) {
+            var img = images[avatars[i+1][j+1]];
+            var x = 56 + i * 54;
+            var y = 56 + j * 54;
+            ctx.drawImage(img, x, y);
+          }
+        }
+      }
+
+      function updateRightPanel() {
+        //document.getElementById("current_friend").src = images[avatars[start.i][start.j]].src;
+        
+        //var img = images[avatars[start.i][start.j]];
+        //ctx.drawImage(img, 550, 54);
+        //ctx.fillText("Hello World", 550, 128);
+      }
+
+      function clearAndRedraw() {
+        var p = new Point(start.i, start.j)
+        var q = new Point(end.i, end.j)
+        clearLinkedItems(start.i, start.j, end.i, end.j);
+        start = null;
+        end = null;
+        drawAvatar(p.i, p.j);
+        drawAvatar(q.i, q.j);
+      }
+
+      function drawAvatar(i, j) {
+        var img = images[avatars[i][j]];
+        var x = 2 + i * 54;
+        var y = 2 + j * 54;
+        ctx.drawImage(img, x, y);
+      }
+
+      // Clear Functions //
+      function clear() {
+        clearLinkedLines();
+
+        if(start != null && end != null) {
+          clearLinkedItems(start.i, start.j, end.i, end.j);
+          start = null;
+          end = null;
+        }
+
+        if(isStillAlive() === false) {
+          resetAvatars();
+          drawAvatars();
+        }
+      }
+
+      function clearLinkedLines() {
+        if(fp === null && sp === null) {
+          clearLinkedLine(start, end);
+        }
+
+        if(fp !== null && sp === null) {
+          clearLinkedLine(start, fp);
+          clearLinkedLine(fp, end);
+        }
+
+        if(fp !== null && sp !== null) {
+          clearLinkedLine(start, fp);
+          clearLinkedLine(fp, sp);
+          clearLinkedLine(sp, end);
+        }
+      }
+
+      function clearLinkedLine(first, second) {
+        var p = 0, l = 0;
+        if(first.i === second.i) {
+          if(first.j < second.j) {
+            p = first.j;
+            l = second.j;
+          } else {
+            p = second.j;
+            l = first.j;
+          }
+          for(; p <= l; p++) {
+            clearItem(first.i, p);
+          }
+        } else if(first.j === second.j) {
+          if(first.i < second.i) {
+            p = first.i;
+            l = second.i;
+          } else {
+            p = second.i;
+            l = first.i;
+          }
+          for(; p <= l; p++) {
+            clearItem(p, first.j);
+          }
+        }
+      }
+
+      function clearLinkedItems(i, j, p, q) {
+        clearItem(i, j);
+        clearItem(p, q);
+      }
+
+      function clearItem(i, j) {
+        var x = i * 54;
+        var y = j * 54;
+        ctx.clearRect(x, y, 54, 54);
+      }
+
+
+      // Initialization //
+      function resetAvatars() {
+        var i = 0;
+        var j = 0;
+        var t = 0;
+        var m = 0;
+        var n = 0;
+        // TO-DO: improve the random algorithm
+        for(i = 1; i < 9; i++) {
+          for(j = 1; j < 9; j++) {
+            m = Math.round(Math.random() * 7) + 1;
+            n = Math.round(Math.random() * 7) + 1;
+            t = avatars[i][j];
+            avatars[i][j] = avatars[m][n];
+            avatars[m][n] = t;
+          }
+        }
+      }
+
+      function init() {
+        canvas = document.getElementById('canvas');
+        ctx = canvas.getContext('2d');
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#00FF00";
+        ctx.fillStyle = "orange";
+        canvas.onclick = mouseClick;
+
+        ctx.strokeRect(170, 270, 200, 14);
+
+        //linkedAudio = document.getElementsByTagName('audio')[0];
+        //errorAudio = document.getElementsByTagName('audio')[1];
+        statusArr = new Array(10);
+        avatars = new Array(10);
+
+        var i, j;
+        for(i = 0; i < 10; i++) {
+          statusArr[i] = new Array(10);
+          avatars[i] = new Array(10);
+          for(j = 0; j < 10; j++) {
+            if(i == 0 || i == 9 || j == 0 || j == 9) {
+              statusArr[i][j] = 0;
+              avatars[i][j] = -1;
+            } else {
+              statusArr[i][j] = 1;
+              avatars[i][j] = ((i - 1) + (j - 1) * 8) % 16;
+            }
+          }
+        }
+
+      }
+
+      function initAvatars() {
+        resetAvatars();
+        drawAvatars();
+      }
+
+      function load_pictures() {
+        var api_key = '75a3c10503e406c24165d1c8522ae051';
+        var channel_path = 'xd_reveiver.htm';
+        var img = null;
+
+        init();
+
+        FB_RequireFeatures(["Api"], function(){
+          // Create an ApiClient object, passing app's API key and 
+          // a site relative URL to xd_receiver.htm
+          FB.Facebook.init(api_key, channel_path);
+
+          var api = FB.Facebook.apiClient;
+          // require user to login 
+          api.requireLogin(function(exception) {
+            //console.log("Current user id is " + api.get_session().uid);
+            // Get friends list
+            var friends_array = null;
+  
+            api.friends_get(new Array(), function(result, exception){
+              drawLoadingProcessBar(18);
+              friends_array = result;
+              //console.log(friends_array, 'friendsResult from non-batch execution');
+              //console.log(friends_array.length);
+              var fields = ["pic_square"];
+              api.users_getInfo(friends_array, fields, function(info_result, exception) {
+                drawLoadingProcessBar(36);
+                //console.log(info_result);
+                var count = 0;
+                for(var c = 0; c < info_result.length && count < 16; c++) {
+                  if(info_result[c].pic_square !== "") {
+                    img = new Image();
+                    img.onload = imageLoadComplete; 
+                    img.src = info_result[c].pic_square;
+                    images[count] = img;
+                    count++;
+                  }
+                }
+              });
+            });
+          });
+        });
+      }
+
+      function imageLoadComplete() {
+        images_count--;
+        // TODO: update load process bar
+        if(images_count === 0) {
+          // clear canvas
+          ctx.clearRect(54, 54, 432, 432);
+          initAvatars();
+        } else {
+          drawLoadingProcessBar(36 + (16 - images_count) * 4);
+        }
+      }
+
+      function drawLoadingProcessBar(value) {
+        ctx.fillRect(172, 272, 2 * value, 10);
+      }
+
     </script>
+
+    <style type="text/css">
+      #canvas_container { background: 0 -100px repeat-x url(images/bg_gallery.png) #4F191A; }
+      canvas { border-right: 1px dotted #ccc; }
+    </style>
+
   </head>
-  <body>
-    <div id="page">
-      <div id="sidebar">
-        <ul id="sidebar-items">
-          <li>
-            <form id="search" action="http://www.google.com/search" method="get">
-              <input type="hidden" name="hl" value="en" />
-              <input type="text" id="search-text" name="q" value="site:rubyonrails.org " />
-              <input type="submit" value="Search" /> the Rails site
-            </form>
-          </li>
-        
-          <li>
-            <h3>Join the community</h3>
-            <ul class="links">
-              <li><a href="http://www.rubyonrails.org/">Ruby on Rails</a></li>
-              <li><a href="http://weblog.rubyonrails.org/">Official weblog</a></li>
-              <li><a href="http://wiki.rubyonrails.org/">Wiki</a></li>
-            </ul>
-          </li>
-          
-          <li>
-            <h3>Browse the documentation</h3>
-            <ul class="links">
-              <li><a href="http://api.rubyonrails.org/">Rails API</a></li>
-              <li><a href="http://stdlib.rubyonrails.org/">Ruby standard library</a></li>
-              <li><a href="http://corelib.rubyonrails.org/">Ruby core</a></li>
-              <li><a href="http://guides.rubyonrails.org/">Rails Guides</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+  <body onload="load_pictures()">
 
-      <div id="content">
-        <div id="header">
-          <h1>Welcome aboard</h1>
-          <h2>You&rsquo;re riding Ruby on Rails!</h2>
-        </div>
-
-        <div id="about">
-          <h3><a href="rails/info/properties" onclick="about(); return false">About your application&rsquo;s environment</a></h3>
-          <div id="about-content" style="display: none"></div>
-        </div>
-        
-        <div id="getting-started">
-          <h1>Getting started</h1>
-          <h2>Here&rsquo;s how to get rolling:</h2>
-          
-          <ol>          
-            <li>
-              <h2>Use <tt>script/generate</tt> to create your models and controllers</h2>
-              <p>To see all available options, run it without parameters.</p>
-            </li>
-            
-            <li>
-              <h2>Set up a default route and remove or rename this file</h2>
-              <p>Routes are set up in config/routes.rb.</p>
-            </li>
-
-            <li>
-              <h2>Create your database</h2>
-              <p>Run <tt>rake db:migrate</tt> to create your database. If you're not using SQLite (the default), edit <tt>config/database.yml</tt> with your username and password.</p>
-            </li>
-          </ol>
-        </div>
-      </div>
-      
-      <div id="footer">&nbsp;</div>
+  <div id="canvas_container">
+    <div>
+      <canvas id="canvas" width="540" height="540"></canvas>
     </div>
+    <div>
+    </div>
+  </div>
+
+  <audio src="audio/linked.wav"></audio>
+  <audio src="audio/error.wav"></audio>
+
   </body>
 </html>

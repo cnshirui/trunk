@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActsAsFerret::AbstractIndex</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActsAsFerret::AbstractIndex</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/vendor/plugins/acts_as_ferret/lib/index_rb.html">
+                vendor/plugins/acts_as_ferret/lib/index.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+base class for local and remote indexes
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000149">change_index_dir</a>&nbsp;&nbsp;
+      <a href="#M000146">new</a>&nbsp;&nbsp;
+      <a href="#M000147">register_class</a>&nbsp;&nbsp;
+      <a href="#M000148">shared?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="FerretFindMethods.html">FerretFindMethods</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">index_definition</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">index_name</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">logger</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">registered_models_config</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000146" class="method-detail">
+        <a name="M000146"></a>
+
+        <div class="method-heading">
+          <a href="#M000146" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(index_definition)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000146-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000146-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/index.rb, line 24</span>
+24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">index_definition</span>)
+25:       <span class="ruby-ivar">@index_definition</span> = <span class="ruby-identifier">index_definition</span>
+26:       <span class="ruby-ivar">@registered_models_config</span> = {}
+27:       <span class="ruby-ivar">@index_name</span> = <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:name</span>]
+28:       <span class="ruby-ivar">@logger</span> = <span class="ruby-constant">IndexLogger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">ActsAsFerret</span><span class="ruby-operator">::</span><span class="ruby-identifier">logger</span>, <span class="ruby-ivar">@index_name</span>)
+29:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="#M000149" class="method-signature">
+          <span class="method-name">change_index_dir</span><span class="method-args">(new_dir)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Switches the index to a <a href="AbstractIndex.html#M000146">new</a> index
+directory. Used by the DRb server when switching to a <a
+href="AbstractIndex.html#M000146">new</a> index version.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000149-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000149-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/index.rb, line 88</span>
+88:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">change_index_dir</span>(<span class="ruby-identifier">new_dir</span>)
+89:       <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;[#{index_name}] changing index dir to #{new_dir}&quot;</span>
+90:       <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:index_dir</span>] = <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:ferret</span>][<span class="ruby-identifier">:path</span>] = <span class="ruby-identifier">new_dir</span>
+91:       <span class="ruby-identifier">reopen!</span>
+92:       <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;[#{index_name}] index dir is now #{new_dir}&quot;</span>
+93:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000147" class="method-detail">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+          <a href="#M000147" class="method-signature">
+          <span class="method-name">register_class</span><span class="method-args">(clazz, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+TODO allow for per-class field configuration (i.e. different via, boosts
+for the same field among different models)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000147-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000147-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/index.rb, line 33</span>
+33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">register_class</span>(<span class="ruby-identifier">clazz</span>, <span class="ruby-identifier">options</span> = {})
+34:       <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;register class #{clazz} with index #{index_name}&quot;</span>
+35: 
+36:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">force</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:force_re_registration</span>)
+37:         <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:registered_models</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">clazz</span>)
+38:       <span class="ruby-keyword kw">end</span>
+39: 
+40:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:registered_models</span>].<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:name</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">clazz</span>.<span class="ruby-identifier">name</span>)
+41:         <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span>(<span class="ruby-node">&quot;refusing re-registration of class #{clazz}&quot;</span>)
+42:       <span class="ruby-keyword kw">else</span>
+43:         <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:registered_models</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">clazz</span>
+44:         <span class="ruby-ivar">@registered_models_config</span>[<span class="ruby-identifier">clazz</span>] = <span class="ruby-identifier">options</span>
+45: 
+46:         <span class="ruby-comment cmt"># merge fields from this acts_as_ferret call with predefined fields</span>
+47:         <span class="ruby-identifier">already_defined_fields</span> = <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:ferret_fields</span>]
+48:         <span class="ruby-identifier">field_config</span> = <span class="ruby-constant">ActsAsFerret</span><span class="ruby-operator">::</span><span class="ruby-identifier">build_field_config</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:fields</span>]
+49:         <span class="ruby-identifier">field_config</span>.<span class="ruby-identifier">update</span> <span class="ruby-constant">ActsAsFerret</span><span class="ruby-operator">::</span><span class="ruby-identifier">build_field_config</span>( <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:additional_fields</span>] )
+50:         <span class="ruby-identifier">field_config</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span>, <span class="ruby-identifier">config</span><span class="ruby-operator">|</span>
+51:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">already_defined_fields</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">field</span>)
+52:             <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;ignoring redefinition of ferret field #{field}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">shared?</span> 
+53:           <span class="ruby-keyword kw">else</span>
+54:             <span class="ruby-identifier">already_defined_fields</span>[<span class="ruby-identifier">field</span>] = <span class="ruby-identifier">config</span>
+55:             <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;adding new field #{field} from class #{clazz.name} to index #{index_name}&quot;</span>
+56:           <span class="ruby-keyword kw">end</span>
+57:         <span class="ruby-keyword kw">end</span>
+58: 
+59:         <span class="ruby-comment cmt"># update default field list to be used by the query parser, unless it </span>
+60:         <span class="ruby-comment cmt"># was explicitly given by user.</span>
+61:         <span class="ruby-comment cmt">#</span>
+62:         <span class="ruby-comment cmt"># It will include all content fields *not* marked as :untokenized.</span>
+63:         <span class="ruby-comment cmt"># This fixes the otherwise failing CommentTest#test_stopwords. Basically</span>
+64:         <span class="ruby-comment cmt"># this means that by default only tokenized fields (which all fields are</span>
+65:         <span class="ruby-comment cmt"># by default) will be searched. If you want to search inside the contents </span>
+66:         <span class="ruby-comment cmt"># of an untokenized field, you'll have to explicitly specify it in your </span>
+67:         <span class="ruby-comment cmt"># query.</span>
+68:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:user_default_field</span>]
+69:           <span class="ruby-comment cmt"># grab all tokenized fields</span>
+70:           <span class="ruby-identifier">ferret_fields</span> = <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:ferret_fields</span>]
+71:           <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:ferret</span>][<span class="ruby-identifier">:default_field</span>] = <span class="ruby-identifier">ferret_fields</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">select</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span>
+72:             <span class="ruby-identifier">ferret_fields</span>[<span class="ruby-identifier">field</span>][<span class="ruby-identifier">:index</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">:untokenized</span>
+73:           <span class="ruby-keyword kw">end</span>
+74:           <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;default field list for index #{index_name}: #{index_definition[:ferret][:default_field].inspect}&quot;</span>
+75:         <span class="ruby-keyword kw">end</span>
+76:       <span class="ruby-keyword kw">end</span>
+77: 
+78:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">index_definition</span>
+79:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000148" class="method-detail">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+          <a href="#M000148" class="method-signature">
+          <span class="method-name">shared?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+true if this index is used by more than one model class
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000148-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000148-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/acts_as_ferret/lib/index.rb, line 82</span>
+82:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shared?</span>
+83:       <span class="ruby-identifier">index_definition</span>[<span class="ruby-identifier">:registered_models</span>].<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+84:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

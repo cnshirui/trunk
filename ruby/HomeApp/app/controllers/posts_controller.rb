@@ -2,12 +2,13 @@ require 'utils/time'
 
 class PostsController < ApplicationController
   
-  before_filter :authorize
+  before_filter :authorize, :except => [:index]
 
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.paginate(:page => params[:page], :order => "created_at DESC", :per_page => 5)
+    @posts = Post.paginate(:page => params[:page], :order => "created_at DESC", \
+        :per_page => 5, :conditions => ["user_id = ? AND privacy = ?", User.find_by_name("shirui").id, 'public'])
 
     @comments = Comment.find(:all)
     @comments.sort! { |a, b| a.updated_at <=> b.updated_at }
@@ -96,18 +97,26 @@ class PostsController < ApplicationController
   end
 
   def person
-    if(params[:id] != "0")
-      @user = User.find(params[:id])
-    else
-      @user = User.find(session[:user_id])
-    end
+    id_person = params[:id]
+    id_person ||= session[:user_id]
+    @user = User.find(id_person)
     
     @posts = Post.paginate(:page => params[:page], :conditions => { :user_id => @user.id }, :order => "created_at DESC", :per_page => 5)
     @comments = []
     Post.find(:all, :conditions => { :user_id => @user.id }).each { |post| @comments.concat post.comments }
     @comments.sort! { |a, b| a.updated_at <=> b.updated_at }
     @comments.reverse!
-#    @comments.sort_by { |comment| comment.updated_at }
+  end
+
+  def search
+    content = params[:posts_search][:keys]
+    content ||= "bec"
+    @results_count, results = Post.find_id_by_contents(content)
+    @posts = results.map { |result| Post.find(result[:id] )}
+
+    @comments = Comment.find(:all)
+    @comments.sort! { |a, b| a.updated_at <=> b.updated_at }
+    @comments.reverse!
   end
 
 end
