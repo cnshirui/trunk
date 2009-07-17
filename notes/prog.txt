@@ -1,3 +1,77 @@
+订单编号：	6277371
+北京  	北京、天津、河北、山西、河南、辽宁、吉林、黑龙江、内蒙古、山东、湖北、四川、重庆、贵州、云南、西藏、陕西、甘肃、青海、宁夏、新疆  	010-82625500
+上海 	江苏、浙江、上海、安徽、钓鱼岛 	021-51785500
+广州 	广东、广西、福建、湖南、江西、海南、台湾、香港、澳门 	020-83963900
+  <parameterMap name="xcelsius.controls.ListView">
+    <parameter>
+      <parameter50>insertOption</parameter50>
+      <valueMap>
+        <value>
+          <value45>Status List</value45>
+          <value50>statusList</value50>
+        </value>
+      </valueMap>
+    </parameter>
+  </parameterMap>
+
+  if(m_hXlfFile) 
+		{
+			// close file, give access control to copy from the temp zip file to the original file
+			CloseHandle(m_hXlfFile);
+			BOOL b = CopyFile(tmpFileName.c_str(), fileName.c_str(), FALSE);
+
+			// create a new file handle to lock the xlf file
+			m_hXlfFile = CreateFile(fileName.c_str(),		// open file
+								  GENERIC_READ,             // open for reading
+								  0,                        // do not share
+								  NULL,                     // no security
+								  OPEN_EXISTING,            // existing file only
+								  FILE_ATTRIBUTE_NORMAL,    // normal file
+								  NULL);					// no attr. template
+			LockFile(m_hXlfFile, 0, 0, GetFileSize(m_hXlfFile,  NULL), 0);
+
+			DWORD errorCode = GetLastError();
+				3154 31B4
+301C 3038
+    IDS_AIR_ID_ILLEGAL      "AIR application ID is restricted in {0-9, a-z, A-z, .(dot), -(hyphen)}, and must contain 1 to 212 characters."
+    IDS_AIR_FOLDER_ILLEGAL  "AIR export destination can contain any Unicode(UTF-8) characters except {*, "", :, >, <, ?, |}"
+    IDS_AIR_NAME_ILLEGAL    "AIR application name/filename can contain any Unicode(UTF-8) characters except {*, "", :, >, <, ?,  |}"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://ns.adobe.com/air/application/1.0" minimumPatchLevel="4">
+<id>com.sap.Hello</id>
+<name>Dial /</name>
+<version>1.0</version>
+<filename>Dial /</filename>
+<description>made in China</description>
+<copyright>SAP BusinessObjects</copyright>
+<initialWindow>
+ <title>Dial /</title>
+ <content>wrap.swf</content>
+ <systemChrome>none</systemChrome>
+ <transparent>true</transparent>
+ <visible>true</visible>
+ <maximizable>false</maximizable>
+ <resizable>false</resizable>
+ <minSize>100 100</minSize>
+</initialWindow>
+</application>
+C:\Documents and Settings\rshi\Desktop\1/.air
+
+    IDS_AIR_FILENAME_ILLEGAL 
+                            "AIR application filename can contain any Unicode(UTF-8) characters except {*, \", ;, >, <, ?, |}"
+							AIR application filename can contain any Unicode(UTF-8) characters except {*, ", ;, >, <, ?, |}
+    
+	#define IDS_AIR_FILENAME_ILLEGAL        33229
+
+    IDS_AIR_ID_ILLEGAL      "AIR application ID is restricted in {0-9, a-z, A-z, .(dot), -(hyphen)}, and must contain 1 to 212 characters."
+    IDS_AIR_FILENAME_ILLEGAL 
+                            "AIR application filename can contain any Unicode(UTF-8) characters except {*, "", ;, >, <, ?, |}"
+
+:*? /\<>"
+							
+38
+46-38=6
 sgsine15.sin.sap.corp
 Shi, Roy
 

@@ -54,7 +54,7 @@ void print( vector<int>::iterator first, vector<int>::iterator last )
 	return;
 }
 
-int main_3214()
+int main_qsort()
 {
 	vector< int > ivec;
 	ivec.push_back( 54 );
