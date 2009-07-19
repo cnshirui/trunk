@@ -3,6 +3,55 @@
 
 #include "stdafx.h"
 
+#include "boost/shared_ptr.hpp"
+#include <cassert>
+class A {  boost::shared_ptr<int> no_;public:  A(boost::shared_ptr<int> no) : no_(no) {}  void value(int i) {    *no_=i;  }};
+class B {  boost::shared_ptr<int> no_;public:  B(boost::shared_ptr<int> no) : no_(no) {}  int value() const {    return *no_;  }};
+int main() {    boost::shared_ptr<int> temp(new int(14));    A a(temp);    B b(temp);    a.value(28);    assert(b.value()==28);}
+
+
+// dymanic link: boost_regex-vc80-mt-gd-1_39.lib
+// static link:	 libboost_regex-vc80-mt-gd-1_39.lib
+// #define BOOST_ALL_DYN_LINK	
+
+
+/*	==========================================================
+#include <boost/regex.hpp>
+#include <iostream>
+#include <string>
+
+
+int main()
+{
+    std::string line;
+    boost::regex pat( "^Subject: (Re: |Aw: )*(.*)" );
+
+    while (std::cin)
+    {
+        std::getline(std::cin, line);
+        boost::smatch matches;
+        if (boost::regex_match(line, matches, pat))
+            std::cout << matches[2] << std::endl;
+    }
+}
+
+/*	==========================================================
+#include <boost/lambda/lambda.hpp>
+#include <iostream>
+#include <iterator>
+#include <algorithm>
+
+int main()
+{
+    using namespace boost::lambda;
+    typedef std::istream_iterator<int> in;
+
+    std::for_each( in(std::cin), in(), std::cout << (_1 * 3) << " " );
+
+	return 0;
+}
+
+/*	==========================================================
 #include <boost/lexical_cast.hpp>
 #include <iostream>
 int main()
@@ -34,7 +83,6 @@ int main()
 	std::cout<<s<<std::endl;
 	return 0;
 }
-
 
 /*	==========================================================
 #include <boost/lexical_cast.hpp>

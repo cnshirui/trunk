@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="D:\Perforce\depot2\X6\COR\External\boost\1.36.0\"
+				AdditionalIncludeDirectories="D:\perforce\svn\boost_1_39_0\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,6 +62,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="D:\perforce\svn\boost_1_39_0\stage\lib\;D:\perforce\svn\boost_1_39_0\stage\dymnic_link_debug\"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"

@@ -1,0 +1,18 @@
+Boost库文件文件名完全解析
+
+
+今天总算完全弄明白了编译boost文件名前缀和后缀的含义。
+
+在Windows上完整的编译boost大约会生成4GB左右的库文件。总的来说有如下分类：
+
+   1. st和mt，分别对应单线程和多线程。如果你在使用Visual Studio .Net 2005及以上的版本。请直接删除st系列，因为KB154753中提到，The /ML and /MLd library compiler options for static single-threaded libraries were removed in Visual C++ 2005 and in later versions of Visual C++. 令人奇怪的是编译boost的时候它们是怎么跑出来的，在编译器都抛弃它们的情况下…
+   2. 带gd和不带gd的，这个大家都知道，分别是debug和release。
+   3. 带s和不带s的，s当然是指static，但并不是用于static链接，而是指是否已经把runtime library静态链接，参见这里。
+   4. 以libboost开头和以boost开头的，前者是静态链接用的，后者是动态链接用的。动态链接版本的包括一个链接时需要的lib文件和一个运行时需要的dll文件；而静态链接版本的就只有一个lib文件。
+   5. 带版本号和不带版本号的，这两种完全一样，都是Windows没有符号链接的错。建议保留版本号。
+
+通常情况下只需要动态链接的库文件即可，mt和mt+gd，大约25MB而已。但记得定义BOOST_ALL_DYN_LINK宏，否则boost的自动链接指令默认的是静态库。
+
+ps. 不小心把文章删掉了，从Google Reader里面重新找了出来。
+
+ps. 增加一条：后缀带p的是指使用STLport编译的。
