@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main_()
+int main_der()
 {
 	vector< int > ivec;
 	ivec.push_back( 54 );

@@ -1,6 +1,31 @@
+
 先炒题材股,再做大盘股,半年做了两波行情,等于是赚了一年的钱
 
 GuangFa	027001023941:May16, 2009
+
+订单编号：	6277371
+北京  	北京、天津、河北、山西、河南、辽宁、吉林、黑龙江、内蒙古、山东、湖北、四川、重庆、贵州、云南、西藏、陕西、甘肃、青海、宁夏、新疆  	010-82625500
+上海 	江苏、浙江、上海、安徽、钓鱼岛 	021-51785500
+广州 	广东、广西、福建、湖南、江西、海南、台湾、香港、澳门 	020-83963900
+
+  if(m_hXlfFile) 
+		{
+			// close file, give access control to copy from the temp zip file to the original file
+			CloseHandle(m_hXlfFile);
+			BOOL b = CopyFile(tmpFileName.c_str(), fileName.c_str(), FALSE);
+
+			// create a new file handle to lock the xlf file
+			m_hXlfFile = CreateFile(fileName.c_str(),		// open file
+								  GENERIC_READ,             // open for reading
+								  0,                        // do not share
+								  NULL,                     // no security
+								  OPEN_EXISTING,            // existing file only
+								  FILE_ATTRIBUTE_NORMAL,    // normal file
+								  NULL);					// no attr. template
+			LockFile(m_hXlfFile, 0, 0, GetFileSize(m_hXlfFile,  NULL), 0);
+
+			DWORD errorCode = GetLastError();
+
 027001023941	0270010239415 	亲爱的广发客户，欢迎您登录广发网站。如果你是第一次登录本网站，请使用“客户编号方式”登录，同时我们为您预设了密码。 首次登录请使用您身份证的后六位数作为密码，当然你以后也可以修改您的密码，从第二次起就可以使用“用户昵称”登录。
 					
 Test case:
@@ -57,11 +82,11 @@ http://www.shmeea.edu.cn cnshirui cnshirui@_sjtu
 https://www.chsi.com.cn
 shiruide@gmail.com: 777777		  
 
-=======
+
 sgsine15.sin.sap.corp
 Shi, Roy
 
-===
+
 		try {
 			// add your block here
 		}
@@ -81,24 +106,6 @@ Shi, Roy
 
 			::OutputDebugString (message.str ().c_str ());
 		}
-====
-		/**
-		 * Returns whether a formula is in the first cell of the binding or not.
-		 * 
-		 * @param binding  				The id of the bind.
-		 * @param anyOrFirst			true means any cell has formula, 
-		 * 								false means the first cell has formula
-		 * @return         				A boolean flag.
-		 */
-		function hasFormulaInFirstCell(binding:String, anyOrFirst:Boolean = true):Boolean;	
-
-		bindingButton="{_valueBinding}" 
- 
- titleXOffset
-
-source['embed']
-source['temporaryFile']
-source['originalFile']
 		  
 shg-s-xi31
 administrator/Bo123456
