@@ -1,4 +1,48 @@
+PropertySheetGlobal.PropertySheet.initProperty("maximum", false, this, "maxSeriesIndex");
 
+		[Bindable]
+		public function get maxSeriesIndex1():Number
+		{
+			return _maxSeriesIndex;	
+		}
+		public function set maxSeriesIndex1(value:Number):void
+		{
+			if(this._maxSeriesIndex != value)
+			{
+				this._maxSeriesIndex = value;
+				buildSelectableItems();
+			}
+		}
+		
+
+		[Bindable]
+		public function get maxSeriesIndex():*
+		{
+			return super.maximum;	
+		}
+		
+		public function set maxSeriesIndex(newValue:*):void
+		{
+			super.maximum = newValue;
+		}  
+
+  
+
+		// lastNotEmpty is an index, we'll return the count of non-black elements
+            return lastNotEmpty + 1;
+			
+					
+			//PropertySheetGlobal.Proxy.setProperty("maximum", 60);
+			
+			// init maxSeriesIndex
+/* 			var proxy:IPropertySheetProxy = PropertySheetGlobal.Proxy;
+			var array:Array = proxy.getProperties(["maxSeriesIndex", "displayKey"]);
+			maxSeriesIndex = array[0].value;	 */			
+
+			
+			// init maxSeriesIndex
+			maxSeriesIndex = PropertySheetGlobal.Proxy.getProperties(["maximum"])[0].value;
+			
 先炒题材股,再做大盘股,半年做了两波行情,等于是赚了一年的钱
 
 GuangFa	027001023941:May16, 2009
