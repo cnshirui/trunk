@@ -1,3 +1,4 @@
+
     CString prompt;
     AfxFormatString1(prompt, IDP_ASK_TO_SAVE, name);
     switch (AfxMessageBox(prompt, MB_YESNOCANCEL, AFX_IDP_ASK_TO_SAVE))
@@ -13,7 +14,78 @@
 
 美女，请教你一个问题
 我报了个在职硕士，学校发的资格审查表需要单位人事部门的盖章，你那儿可以盖么？
+=======
+			if(_tcscmp(_T("labels"), p->GetName()) == 0) {
 
+
+	}
+	else {
+		if ( range.length() == 0 && !a ) return NULL;
+	}
+
+	
+		protected function setDefaultTableScale():void {
+			setTableScale();
+		}
+
+        <property id="7">
+          <object>
+            <property id="name">
+              <string>_isAutoColorpercentages</string>
+            </property>
+            <property id="value">
+              <false/>
+            </property>
+          </object>
+        </property>
+
+
+	
+	PropertySheetGlobal.PropertySheet.initProperty("maximum", false, this, "maxSeriesIndex");
+
+		[Bindable]
+		public function get maxSeriesIndex1():Number
+		{
+			return _maxSeriesIndex;	
+		}
+		public function set maxSeriesIndex1(value:Number):void
+		{
+			if(this._maxSeriesIndex != value)
+			{
+				this._maxSeriesIndex = value;
+				buildSelectableItems();
+			}
+		}
+		
+
+		[Bindable]
+		public function get maxSeriesIndex():*
+		{
+			return super.maximum;	
+		}
+		
+		public function set maxSeriesIndex(newValue:*):void
+		{
+			super.maximum = newValue;
+		}  
+
+  
+
+		// lastNotEmpty is an index, we'll return the count of non-black elements
+            return lastNotEmpty + 1;
+			
+					
+			//PropertySheetGlobal.Proxy.setProperty("maximum", 60);
+			
+			// init maxSeriesIndex
+/* 			var proxy:IPropertySheetProxy = PropertySheetGlobal.Proxy;
+			var array:Array = proxy.getProperties(["maxSeriesIndex", "displayKey"]);
+			maxSeriesIndex = array[0].value;	 */			
+
+			
+			// init maxSeriesIndex
+			maxSeriesIndex = PropertySheetGlobal.Proxy.getProperties(["maximum"])[0].value;
+			
 先炒题材股,再做大盘股,半年做了两波行情,等于是赚了一年的钱
 
 GuangFa	027001023941:May16, 2009

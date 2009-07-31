@@ -22,8 +22,8 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = 'D:\xcelsius\bugfix\migrate_version'
-  files = ['gauge_50_53.xlf', 'gauge_50_53_2.xlf']
+  dir = 'D:\xcelsius\bugfix\migrate_alert_lost'
+  files = ['gauge_45_53_alert_use.xlf', 'gauge_45_53_alert_use_bind.xlf']
   dir = dir.gsub("\\", "/") if(dir.index("\\")!=-1)
   
   files.map! { |file| "#{dir}/#{file}" }

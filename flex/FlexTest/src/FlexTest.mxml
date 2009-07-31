@@ -30,11 +30,11 @@
         <state label="Connecticut" data="CT"/>
       </states>
     </mx:Model>
+        <mx:Label text="黑体" fontFamily="黑体" fontSize="20"/>
 
+<!--
     <mx:Panel title="List Control Example" height="75%" width="75%" 
         paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
-
-        <mx:Label text="Select a state to see its abbreviation."/>
 
         <mx:List id="source" width="100%" color="blue"
             dataProvider="{mystates.state}"
@@ -44,7 +44,7 @@
             <mx:Label text="Selected State: {selectedItem.label}"/>
             <mx:Label text="State abbreviation: {selectedItem.data}"/>
         </mx:VBox>
-        
 
     </mx:Panel>
+        -->
 </mx:Application>    
