@@ -1,4 +1,29 @@
-PropertySheetGlobal.PropertySheet.initProperty("maximum", false, this, "maxSeriesIndex");
+			if(_tcscmp(_T("labels"), p->GetName()) == 0) {
+
+	}
+	else {
+		if ( range.length() == 0 && !a ) return NULL;
+	}
+
+	
+		protected function setDefaultTableScale():void {
+			setTableScale();
+		}
+
+        <property id="7">
+          <object>
+            <property id="name">
+              <string>_isAutoColorpercentages</string>
+            </property>
+            <property id="value">
+              <false/>
+            </property>
+          </object>
+        </property>
+
+
+	
+	PropertySheetGlobal.PropertySheet.initProperty("maximum", false, this, "maxSeriesIndex");
 
 		[Bindable]
 		public function get maxSeriesIndex1():Number
