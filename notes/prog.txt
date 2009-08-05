@@ -1,4 +1,22 @@
+
+    CString prompt;
+    AfxFormatString1(prompt, IDP_ASK_TO_SAVE, name);
+    switch (AfxMessageBox(prompt, MB_YESNOCANCEL, AFX_IDP_ASK_TO_SAVE))
+
+	CString temp;
+	temp.LoadString(IDS_ADDON_REMOVE);
+
+	CString packageName;
+	int index = getCurrentSelection(&packageName);
+
+	CString message;
+	message.Format(temp, packageName);
+
+美女，请教你一个问题
+我报了个在职硕士，学校发的资格审查表需要单位人事部门的盖章，你那儿可以盖么？
+=======
 			if(_tcscmp(_T("labels"), p->GetName()) == 0) {
+
 
 	}
 	else {
