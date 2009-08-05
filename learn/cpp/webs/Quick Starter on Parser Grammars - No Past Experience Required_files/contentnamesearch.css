@@ -1,0 +1,34 @@
+a.search-for span {
+    background-image: url(../../../images/icons/classic/16/70.png);
+}
+
+ul.ajs-drop-down li.error {
+    color: #535353;
+    display: block;
+    outline: none;
+    position: relative;
+    text-decoration: none;
+    text-align: left;
+    background-color:#FFFFFF;
+    background-image: url(../../../images/icons/classic/16/10.png);
+    background-repeat: no-repeat;
+    background-position: 7px 50%;
+    padding-left: 2.5em;
+}
+
+#quick-nav-drop-down {
+    width: 25em;
+    font-size: 0.9em;
+    top: 2em;
+}
+
+#quick-nav-drop-down li,
+#quick-nav-drop-down li span {
+    height: 2.2em;
+    line-height: 2.2;
+}
+
+#quick-nav-drop-down li span em {
+    font-style: normal;
+    cursor: pointer; 
+}

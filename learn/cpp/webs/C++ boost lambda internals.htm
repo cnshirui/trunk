@@ -1,0 +1,637 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+
+  <title>Meditation, The Art of Exploitation: C++ boost lambda internals</title>
+
+  <script type="text/javascript">(function() { var a=window;function f(e){this.t={};this.tick=function(d,b,c){var i=c?c:(new Date).getTime();this.t[d]=[i,b]};this.tick("start",null,e)}var g=new f;a.jstiming={Timer:f,load:g};try{a.jstiming.pt=a.external.pageT}catch(h){};a.tickAboveFold=function(e){var d,b=e,c=0;if(b.offsetParent){do c+=b.offsetTop;while(b=b.offsetParent)}d=c;d<=750&&a.jstiming.load.tick("aft")};var j=false;function k(){if(!j){j=true;a.jstiming.load.tick("firstScrollTime")}}a.addEventListener?a.addEventListener("scroll",k,false):a.attachEvent("onscroll",k); })();</script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="MSSmartTagsPreventParsing" content="true">
+<meta name="generator" content="Blogger">
+<link rel="icon" type="image/vnd.microsoft.icon" href="http://www.blogger.com/favicon.ico">
+<link rel="alternate" type="application/atom+xml" title="Meditation, The Art of Exploitation - Atom" href="http://meditation-art.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="Meditation, The Art of Exploitation - RSS" href="http://meditation-art.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="Meditation, The Art of Exploitation - Atom" href="http://www.blogger.com/feeds/23323574/posts/default">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blogger.com/rsd.g?blogID=23323574">
+<link rel="alternate" type="application/atom+xml" title="Meditation, The Art of Exploitation - Atom" href="http://meditation-art.blogspot.com/feeds/1873516112024835401/comments/default">
+ <link rel="stylesheet" type="text/css" href="C++%20boost%20lambda%20internals_files/3727950723-blog_controls.css"> <link rel="stylesheet" type="text/css" href="C++%20boost%20lambda%20internals_files/authorization.css">
+
+  <style type="text/css">
+/*
+-----------------------------------------------------
+Blogger Template Style Sheet
+Name:     Scribe
+Designer: Todd Dominey
+URL:      domineydesign.com / whatdoiknow.org
+Date:     27 Feb 2004
+------------------------------------------------------ */
+
+
+/* Defaults
+----------------------------------------------- */
+body {
+	margin:0;
+	padding:0;
+	font-family: Georgia, Times, Times New Roman, sans-serif;
+	font-size: small;
+	text-align:center;
+	color:#29303B;
+	line-height:1.3;
+	background:#483521 url("http://www.blogblog.com/scribe/bg.gif") repeat;
+}
+
+blockquote {
+	font-style:italic;
+	padding:0 32px;
+	line-height:1.6;
+	margin:0 0 .6em 0;
+}
+
+p {margin:0;padding:0};
+
+abbr, acronym {
+	cursor:help;
+	font-style:normal;
+}
+	
+code {font:12px monospace;white-space:normal;color:#666;}
+
+hr {display:none;}
+
+img {border:0;}
+
+/* Link styles */
+a:link {color:#473624;text-decoration:underline;}
+a:visited {color:#716E6C;text-decoration:underline;}
+a:hover {color:#956839;text-decoration:underline;}
+a:active {color:#956839;}
+
+
+/* Layout
+----------------------------------------------- */
+@media all {
+  #wrap {
+            background-color:#473624;
+            border-left:1px solid #332A24;
+            border-right:1px solid #332A24;
+            width:1000px;
+            margin:0 auto;
+            padding:8px;
+            text-align:center;
+    }
+  #main-top {
+            width:1000px;
+            height:49px;
+            background:#FFF3DB url("http://zpbbs.minidns.net/~feiliu/bg_paper_mid1.jpg") no-repeat top left;
+            margin:0;padding:0;
+            display:block;
+    }
+  #main-bot {
+            width:1000px;
+            height:81px;
+            background:#FFF3DB url("http://zpbbs.minidns.net/~feiliu/bg_paper_mid1.jpg") no-repeat top left;
+            margin:0;
+            padding:0;
+            display:block;
+    }
+  #main-content {
+            width:1000px;
+            background:#FFF3DB url("http://zpbbs.minidns.net/~feiliu/bg_paper_mid1.jpg") repeat-y;
+            margin:0;
+            text-align:left;
+            display:block;
+    }
+  }
+@media handheld {
+  #wrap {
+            width:90%;
+    }
+  #main-top {
+            width:100%;
+            background:#FFF3DB;
+    }
+  #main-bot {
+            width:100%;
+            background:#FFF3DB;
+    }
+  #main-content {
+            width:100%;
+            background:#FFF3DB;
+    }
+  }
+#inner-wrap {
+	padding:0 20px;
+}
+#blog-header {
+	margin-bottom:12px;
+}
+#blog-header h1 {
+	margin:0;
+	padding:0 0 6px 0;
+	font-size:225%;
+	font-weight:normal;
+	color:#612E00;
+}
+#blog-header h1 a:link {
+	text-decoration:none;
+}
+#blog-header h1 a:visited {
+	text-decoration:none;
+	}
+#blog-header h1 a:hover {
+	border:0;
+	text-decoration:none;
+}
+#blog-header p {
+	margin:0;
+	padding:0;
+	font-style:italic;
+	font-size:94%;
+	line-height:1.5em;
+}
+div.clearer {
+	clear:left;
+	line-height:0;
+	height:10px;
+	margin-bottom:12px;
+	_margin-top:-4px; /* IE Windows target */
+	background:url("http://www.blogblog.com/scribe/divider.gif") no-repeat bottom left;
+}
+@media all {
+  #main {
+            width:680px;
+            float:right;
+            padding:8px 0;
+            margin:0;
+    }
+  #sidebar {
+            width:250px;
+            float:left;
+            padding:8px 0;
+            margin:0;
+    }
+  }
+@media handheld {
+  #main {
+            width:100%;
+            float:none;
+    }
+  #sidebar {
+            width:100%;
+            float:none;
+    }
+  }
+#footer {
+	clear:both;
+	background:url("http://www.blogblog.com/scribe/divider.gif") no-repeat top left;
+	padding-top:10px;
+	_padding-top:6px; /* IE Windows target */
+}
+#footer p {
+	line-height:1.5em;
+	font-family:Verdana, sans-serif;
+	font-size:75%;
+}
+
+
+/* Typography :: Main entry
+----------------------------------------------- */
+h2.date-header {
+	font-weight:normal;
+	text-transform:uppercase;
+	letter-spacing:.1em;
+	font-size:90%;
+	margin:0;
+	padding:0;
+}
+.post {
+	margin:8px 0 24px 0;
+	line-height:1.5em;
+}
+h3.post-title {
+	font-weight:normal;
+	font-size:140%;
+	color:#1B0431;
+	margin:0;
+	padding:0;
+}
+.post-body p {
+	margin:0 0 .6em 0;
+	}
+.post-footer {
+	font-family:Verdana, sans-serif;
+	color:#211104;
+	font-size:74%;
+	border-top:1px solid #BFB186;
+	padding-top:6px;
+}
+.post ul {
+	margin:0;
+	padding:0;
+}
+.post li {
+	line-height:1.5em;
+	list-style:none;
+	background:url("http://www.blogblog.com/scribe/list_icon.gif") no-repeat 0px .3em;
+	vertical-align:top;
+	padding: 0 0 .6em 17px;
+	margin:0;
+}
+
+
+/* Typography :: Sidebar
+----------------------------------------------- */
+h2.sidebar-title {
+	font-weight:normal;
+	font-size:120%;
+	margin:0;
+	padding:0;
+	color:#211104;
+}
+h2.sidebar-title img {
+	margin-bottom:-4px;
+	}
+#sidebar ul {
+	font-family:Verdana, sans-serif;
+	font-size:86%;
+	margin:6px 0 12px 0;
+	padding:0;
+}
+#sidebar ul li {
+	list-style: none;
+	padding-bottom:6px;
+	margin:0;
+}
+#sidebar p {
+	font-family:Verdana,sans-serif;
+	font-size:86%;
+	margin:0 0 .6em 0;
+}
+
+
+/* Comments
+----------------------------------------------- */
+#comments {}
+#comments h4 {
+  font-weight:normal;
+	font-size:120%;
+	color:#29303B;
+	margin:0;
+	padding:0;
+	}
+#comments-block {
+  line-height:1.5em;
+  }
+.comment-poster {
+	background:url("http://www.blogblog.com/scribe/list_icon.gif") no-repeat 2px .35em;
+	margin:.5em 0 0;
+	padding:0 0 0 20px;
+	font-weight:bold;
+}
+.comment-body {
+	margin:0;
+	padding:0 0 0 20px;
+}
+.comment-body p {
+	font-size:100%;
+	margin:0 0 .2em 0;
+}
+.comment-timestamp {
+	font-family:Verdana, sans-serif;
+	color:#29303B;
+	font-size:74%;
+	margin:0 0 10px;
+	padding:0 0 .75em 20px;
+}
+.comment-timestamp a:link {
+	color:#473624;
+	text-decoration:underline;
+}
+.comment-timestamp a:visited {
+	color:#716E6C;
+	text-decoration:underline;
+}
+.comment-timestamp a:hover {
+	color:#956839;
+	text-decoration:underline;
+}
+.comment-timestamp a:active {
+	color:#956839;
+	text-decoration:none;
+}
+.deleted-comment {
+  font-style:italic;
+  color:gray;
+  }
+.comment-link {
+  margin-left:.6em;
+  }
+	
+/* Profile
+----------------------------------------------- */
+#profile-container {
+	margin-top:12px;
+	padding-top:12px;
+	height:auto;
+	background:url("http://www.blogblog.com/scribe/divider.gif") no-repeat top left;
+
+}
+.profile-datablock {
+	margin:0 0 4px 0;
+}
+.profile-data {
+	display:inline;
+	margin:0;
+	padding:0 8px 0 0;
+	text-transform:uppercase;
+	letter-spacing:.1em;
+	font-size:90%;
+	color:#211104;
+}
+.profile-img {display:inline;}
+.profile-img img {
+	float:left;
+	margin:0 8px 0 0;
+	border:1px solid #A2907D;
+	padding:2px;
+  }
+.profile-textblock {
+	font-family:Verdana, sans-serif;font-size:86%;margin:0;padding:0;
+}
+.profile-link {
+	margin-top:5px;
+	font-family:Verdana,sans-serif;
+	font-size:86%;
+}
+
+/* Post photos
+----------------------------------------------- */
+img.post-photo {
+	border:1px solid #A2907D;
+	padding:4px;
+}
+</style>
+
+
+<!-- --><style type="text/css">@import url(http://www.blogger.com/static/v1/v-css/navbar/697174003-classic.css);
+div.b-mobile {display:none;}
+</style>
+
+</head><body><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener("load",
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<iframe src="C++%20boost%20lambda%20internals_files/navbar.htm" marginwidth="0" marginheight="0" id="navbar-iframe" title="Blogger Navigation and Search" frameborder="0" height="30px" width="100%" scrolling="no"></iframe>
+<div></div>
+
+<!-- Outer Dark Brown Container / Centers Content -->
+<div id="wrap">
+	
+		<!-- Top Paper Graphic -->
+		<div id="main-top"></div>
+		
+		<!-- Main Content Area (This shows background image) -->
+		<div id="main-content">
+		  
+		  <div id="inner-wrap">
+		  
+		  	<!-- Blog Header -->
+		  	<div id="blog-header">
+  				<h1><a href="http://meditation-art.blogspot.com/">
+	               Meditation, The Art of Exploitation
+	               </a></h1>
+  				<p>Thinking?
+At last I have discovered it--thought; this alone is inseparable from
+me. I am, I exist--that is certain. But for how long? For as long as I
+am thinking. For it could be, that were I totally to cease from
+thinking, I should totally cease to exist....I am, then, in the strict
+sense only a thing that thinks.</p>
+
+			</div>
+			<!-- End Blog Header -->
+			
+			<!-- Begin #profile-container -->
+            
+            <div id="profile-container"><h2 class="sidebar-title">About Me</h2>
+<dl class="profile-datablock">
+<dd class="profile-data"><strong>Name:</strong>  Fei Liu </dd>
+</dl>
+
+<p class="profile-link"><a href="http://www.blogger.com/profile/12454727186441725070">View my complete profile</a></p></div>
+			
+			<!-- End #profile -->
+			
+			<!-- Spacer and horizontal rule -->
+			<div class="clearer"></div>
+			<!-- End .clearer -->
+
+			
+				<!-- Begin #sidebar :: left column :: blog archives, links -->
+				<div id="sidebar">
+					
+					<h2 class="sidebar-title">
+						<img src="C++%20boost%20lambda%20internals_files/header_recentposts.gif" alt="Recent Posts" height="28" width="110">
+					</h2>
+    
+					<ul id="recently">
+					    
+					        <li><a href="http://meditation-art.blogspot.com/2007/10/generic-programming-fundamental.html">Generic programming: fundamental concepts in C++ t...</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/10/c-template-programming-name-lookup.html">C++ template programming name lookup</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/09/installing-vmware-on-opensuse-102-and.html">Installing vmware on opensuse 10.2 (and similar Li...</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/09/c-error-code-return-value-assert-and.html">C++ error code, return value, assert, and exceptio...</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/09/c-const-correctness-and-boost-sharedptr.html">C++ const correctness, boost shared_ptr and refere...</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/08/another-subtle-difference-between-linux.html">Another subtle difference between linux threads an...</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/08/spin-lock-os-scheduler-and-smp.html">Spin lock, OS scheduler, and SMP</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/08/its-hard-to-write-safe-and-sound-c-code.html">It's hard to write safe and sound C++ code</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/08/linux-threads-process-signals-c.html">Linux Threads, Process, Signals, C++ Exceptions</a></li>
+  					   
+					        <li><a href="http://meditation-art.blogspot.com/2007/07/comparison-of-c-postgresql-database.html">Comparison of C++ postgresql database interface li...</a></li>
+  					   
+ 				    </ul>
+					
+					
+
+                                <p><a href="http://meditation-art.blogspot.com/atom.xml" title="ATOM"><b>ATOM FEED</b></a></p>			
+		                <p><a href="http://cpptruths.blogspot.com/" title="CPP Truths"><b>CPP Truths</b></a></p>
+				<p><a href="http://www.blogger.com/" title="Powered by Blogger"><img src="C++%20boost%20lambda%20internals_files/bloggerbutton1.gif" alt="Powered by Blogger"></a></p>
+				
+				<!--
+				<p>This is a paragraph of text that could go in the sidebar.</p>
+				-->
+
+				
+				</div>
+			
+				<!-- Begin #main :: right column :: blog entry content -->
+				<div id="main">
+
+					
+
+                       
+                          <h2 class="date-header">Tuesday, October 23, 2007</h2>
+                       
+						 
+					  <!-- Begin .post -->
+					  <div class="post"><a name="1873516112024835401"></a>
+						 
+						
+                          <h3 class="post-title">
+                      	 
+                      	 C++ boost lambda internals
+	                       
+                          </h3>
+                        
+						 
+						<div class="post-body">
+						
+						  <p></p><div style="clear: both;"></div>Theoretical Background:<br><br>In
+computer science, lambda as an abbreviation refers to lambda function
+in lambda calculus (http://en.wikipedia.org/wiki/Lambda_calculus).
+lambda calculus is a fundamental concept in theory of computability
+developed by Alonzo Church. It's the theoretical foundation of many
+functional programming languages. <br><br>Informally, in lambda
+calculus, every expression stands for a function with a single input,
+called its argument; the argument of the function is in turn a function
+with a single argument, and the value of the function is another
+function with a single argument. A function is anonymously defined by a
+lambda expression which expresses the function's action on its
+argument. For instance, the "add-two" function f such that f(x) = x + 2
+would be expressed in lambda calculus as λ x. x + 2 (or equivalently as
+λ y. y + 2; the name of the formal argument is immaterial) and the
+application of the function f(3) would be written as (λ x. x + 2) 3.
+Function application is left associative: f x y = (f x) y.<br><br>Formally lambda calculus can be expressed in the following BNF rules:<br><br><expr> ::= <identifier><br><expr> ::= (λ <identifier> . <expr>)<br><expr> ::= (<expr> <expr>)<br><br>The
+first 2 rules are used to describe logical forms to construct lambda
+functions. The last rule describe applications of lambda function.<br><br>Two note worthy observations from the above description:<br><br>1)
+C++ non member function, static member function, non static member
+function, in general a C++ function that assumes the form of
+return_type func(argument) DOES not qualify as a lambda function
+because return_type cannot be function in C++. return_type could be a
+function pointer or a functor, used in a form similar to a function.
+Due to this reason, when we talk about C++ lambda function our relaxed
+defintion often does not conform to the precise definition given in
+lambda calculus.<br><br>2) The 3rd rule implies that it's possible to
+have a lambda function that takes itself as argument and thus results
+in infinite recursion (left recursion) depending on the action the
+lambda function performs.<br><br><br>lambda in C++ <br><br>A popular
+implementation of lambda calculus in C++ is provided by lambda library
+in boost distribution (http://www.boost.org/doc/html/lambda.html).
+First we start with a boost lambda example and demonstrate the
+internals of boost lambda. During investigation, the following tools
+are used: vim, grep, totalview, ksnapshot, g++<br><br>#include "boost/lambda/lambda.hpp"<br><br>#include <iostream><br>#include <algorithm><br><br>using namespace std;<br>using namespace boost::lambda;<br><br>int main(){<br><br>    int x[5] = {1,2,3,4,5};<br><br>    for_each(x, x+5, cout &lt;&lt; _1 &lt;&lt; '\n');<br>}<br><br>In
+this example, we defined 2 lambdas (lambda and function with previous
+clarification are inter-exchangeable terms from now on) and applied
+lambda for_each on the 2nd user defined lambda 'cout &lt;&lt; _1
+&lt;&lt; '\n'. <br><br>_1 is a place holder defined in /usr/include/boost/lambda/core.hpp as:<br><pre><br>namespace boost {<br>namespace lambda {<br><br>namespace {<br><br>  // These are constants types and need to be initialised<br>  boost::lambda::placeholder1_type free1 = boost::lambda::placeholder1_type();<br>  boost::lambda::placeholder2_type free2 = boost::lambda::placeholder2_type();<br>  boost::lambda::placeholder3_type free3 = boost::lambda::placeholder3_type();<br><br>  boost::lambda::placeholder1_type&amp; _1 = free1;<br>  boost::lambda::placeholder2_type&amp; _2 = free2;<br>  boost::lambda::placeholder3_type&amp; _3 = free3;<br>  // _1, _2, ... naming scheme by Peter Dimov<br>} // unnamed<br><br>} // lambda<br>} // boost<br></pre><br><br>/usr/include/boost/lambda/detail/lambda_functors.hpp defines the placeholder1_type as:<br><code><br></code><pre><br>typedef const lambda_functor&lt; placeholder<first> &gt;  placeholder1_type;<br>template <int i=""> struct placeholder; <br>    <br>template&lt;&gt; struct placeholder<first> {<br><br>  template<class sigargs=""> struct sig {<br>    typedef typename detail::get_element_or_null_type&lt;0, SigArgs&gt;::type type;<br>  };<br><br>  template<class ret,="" call_template_args=""> <br>  RET call(CALL_FORMAL_ARGS) const { <br>    BOOST_STATIC_ASSERT(boost::is_reference<ret>::value); <br>    CALL_USE_ARGS; // does nothing, prevents warnings for unused args<br>    return a;<br>  }<br>};<br><br>Or in the form after macro expansion:<br><br>template <int i=""> struct placeholder;<br><br>template&lt;&gt; struct placeholder<first> {<br><br>  template<class sigargs=""> struct sig {<br>    typedef typename detail::get_element_or_null_type&lt;0, SigArgs&gt;::type type;<br>  };<br><br>  template<class ret,="" a,="" b,="" c,="" class="" env=""><br>  RET call(A&amp; a, B&amp; b, C&amp; c, Env&amp; env) const {<br>    typedef ::boost::static_assert_test&lt; sizeof(::boost::STATIC_ASSERTION_FAILURE&lt; (bool)( boost::is_reference<ret>::value ) &gt;)&gt; boost_static_assert_typedef_60;<br>    ::boost::lambda::detail::do_nothing(a, b, c, env);<br>    return a;<br>  }<br>};<br><br></ret></class></class></first></int></ret></class></class></first></int></first></pre><br><br>Notable
+keywords here are: sig, call, as they clue us eventually to how the
+lambda library implements for_each lambda call. The macro expanded form
+is obtained by supplying "--save-temps' argument to g++. Similar option
+is available for other c++ compilers to aid analysis of complex c++
+template and macro laiden programs.<br><br>Compile time C++ parser
+picks up lambda 'cout &lt;&lt; _1 &lt;&lt; '\n'' and uses Koenig name
+look up rule (argument dependent name lookup) to resolve first
+'&lt;&lt;' into an operator overloaded in lambda namespace. The
+overloaded operator is defined in
+/usr/include/boost/lambda/detail/operators.hpp<br><br><pre><br>#define BOOST_LAMBDA_BE2(OPER_NAME, ACTION, CONSTA, CONSTB, CONVERSION)      \<br>template<class a,="" class="" arg="">                                                 \<br>inline const                                                                 \<br>lambda_functor&lt;                                                              \<br>  lambda_functor_base&lt;                                                       \<br>    ACTION,                                                                  \<br>    tuple&lt; typename CONVERSION <consta>::type, lambda_functor<arg> &gt;        \<br>  &gt;                                                                          \<br>&gt;                                                                            \<br>OPER_NAME (CONSTA&amp; a, const lambda_functor<arg>&amp; b) {                      \<br>  return                                                                     \<br>    lambda_functor_base&lt;                                                     \<br>      ACTION,                                                                \<br>      tuple&lt; typename CONVERSION <consta>::type, lambda_functor<arg> &gt;      \<br>    &gt;                                                                        \<br>  (tuple&lt; typename CONVERSION <consta>::type, lambda_functor<arg> &gt;(a, b)); \<br>}<br>BOOST_LAMBDA_BE2(BOOST_LAMBDA_COMMA_OPERATOR_NAME, other_action<comma_action>, const A, const B, const_copy_argument)<br><br>Or in the macro expanded form:<br><br>template<class a,="" class="" arg=""> inline const lambda_functor&lt; lambda_functor_base&lt; bitwise_action<leftshift_action>, tuple&lt; typename const_copy_argument <const a="">::type, lambda_functor<arg> &gt; &gt; &gt; operator&lt;&lt; (const A&amp; a, const lambda_functor<arg>&amp; b) { return lambda_functor_base&lt; bitwise_action<leftshift_action>, tuple&lt; typename const_copy_argument <const a="">::type, lambda_functor<arg> &gt; &gt; (tuple&lt; typename const_copy_argument <const a="">::type, lambda_functor<arg> &gt;(a, b)); }<br></arg></const></arg></const></leftshift_action></arg></arg></const></leftshift_action></class></comma_action></arg></consta></arg></consta></arg></arg></consta></class></pre><br><br>Instantiation
+of lambda_functor requires instantiation of the following classes:
+lambda_functor_base, boost::tuples::tuple, boost::tuples::cons.
+lambda_functor_base is defined in <br>/usr/include/boost/lambda/detail/operator_lambda_func_base.hpp as yet another macro:<br>BOOST_LAMBDA_BINARY_ACTION(&lt;&lt;,bitwise_action<leftshift_action>)<br><br>The
+relevant definitions of bitwise_action and leftshift_action can be
+found in /usr/include/boost/lambda/detail/operator_actions.hpp<br><br><pre><br>#define BOOST_LAMBDA_BINARY_ACTION(SYMBOL, ACTION_CLASS)  \<br>template<class args="">                                                      \<br>class lambda_functor_base<action_class, args=""> {                           \<br>public:                                                                   \<br>  Args args;                                                              \<br>public:                                                                   \<br>  explicit lambda_functor_base(const Args&amp; a) : args(a) {}                \<br>                                                                          \<br>  template<class ret,="" call_template_args="">                                 \<br>  RET call(CALL_FORMAL_ARGS) const {                                      \<br>    return detail::select(boost::tuples::get&lt;0&gt;(args), CALL_ACTUAL_ARGS)  \<br>           SYMBOL                                                         \<br>           detail::select(boost::tuples::get&lt;1&gt;(args), CALL_ACTUAL_ARGS); \<br>  }                                                                       \<br>  template<class sigargs=""> struct sig {                                    \<br>    typedef typename                                                      \<br>      detail::binary_rt<action_class, args,="" sigargs="">::type type;          \<br>  };                                                                      \<br>}; <br><br>Or in macro expanded form:<br>template<class ret,="" class="" args=""><br>class lambda_functor_base&lt; explicit_return_type_action<ret>, Args&gt;<br>{<br>public:<br>  Args args;<br><br>  explicit lambda_functor_base(const Args&amp; a) : args(a) {}<br><br>  template <class sigargs=""> struct sig { typedef RET type; };<br><br>  template<class ret_,="" a,="" b,="" c,="" class="" env=""><br>  RET call(A&amp; a, B&amp; b, C&amp; c, Env&amp; env) const<br>  {<br>    return detail::constify_rvals<ret>::go(<br>     detail::r_select<ret>::go(boost::tuples::get&lt;0&gt;(args), a, b, c, env));<br>  }<br>};<br><br></ret></ret></class></class></ret></class></action_class,></class></class></action_class,></class></pre><br><br>Inside
+std::for_each, __Function is expanded into a lambda_functor_base data
+structure. When invoked as a functor, it resolves to:<br><pre><br>   template<class a=""><br>   typename inherited::template sig&lt; tuple<a&> &gt;::type<br>   operator()(A&amp; a) const { <br>     return inherited::template call&lt;<br>       typename inherited::template sig&lt; tuple<a&> &gt;::type<br>     &gt;(a, cnull_type(), cnull_type(), cnull_type());<br>   }<br></a&></a&></class></pre><br><br>At this point, A&amp; a contains the value of array element in x. <br><br>The complete type of lambda_functor is defined as:<br><pre><br>boost::lambda::lambda_functor&lt; boost::lambda::lambda_functor_base&lt; boost::lambda::bitwise_action&lt; boost::lambda::leftshift_action&gt;,boost::tuples::tuple&lt; boost::lambda::lambda_functor&lt; boost::lambda::lambda_functor_base&lt; boost::lambda::bitwise_action&lt; boost::lambda::leftshift_action&gt;,boost::tuples::tuple&lt; std::ostream&amp;,boost::lambda::lambda_functor&lt; boost::lambda::placeholder&lt;1&gt; &gt;,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type&gt; &gt; &gt;,const char,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type,boost::tuples::null_type&gt; &gt; &gt;::operator ()<int><br></int></pre><br><br><br>Conclusion<br><br>Through
+source code analysis and debugging, we glimpsed through part of the
+internals of boost lambda libary. This library uses macro and template
+metaprogramming extensively. It's tightly coupled to boost tuple
+library. It uses type traits technique and other generative programming
+techniques freely. <br><br>We use overloaded '&lt;&lt;' to demonstrate
+the inner working of lambda. This analysis does not show a complete a
+picture of lambda library, e.g without lambda::bind. But it provides
+sufficient insight into the library and how to analyze similar C++
+library if needed.<div style="clear: both; padding-bottom: 0.25em;"></div>
+
+						</leftshift_action></algorithm></iostream></expr></expr></expr></expr></identifier></expr></identifier></expr></div>
+						
+						<p class="post-footer">posted by Fei Liu | <a href="http://meditation-art.blogspot.com/2007/10/c-boost-lambda-internals.html" title="permanent link">8:12 AM</a>
+       <span class="item-action"><a href="http://www.blogger.com/email-post.g?blogID=23323574&amp;postID=1873516112024835401" title="Email Post"><img class="icon-action" alt="" src="C++%20boost%20lambda%20internals_files/icon18_email.gif" height="13" width="18"></a></span><span class="item-control blog-admin pid-940950681"><a style="border: medium none ;" href="http://www.blogger.com/post-edit.g?blogID=23323574&amp;postID=1873516112024835401" title="Edit Post"><img class="icon-action" alt="" src="C++%20boost%20lambda%20internals_files/icon18_edit_allbkg.gif" height="18" width="18"></a></span> </p>
+					  
+					  </div>
+					  <!-- End .post -->
+					  
+					   <!-- Begin #comments -->
+ 					
+
+  					<div id="comments">
+
+					<a name="comments"></a>
+    
+                     <h4>1 Comments:</h4>
+						
+						<dl id="comments-block">
+                        
+						  <dt class="comment-poster" id="c3612167092094707668"><a name="c3612167092094707668"></a>
+							<span style="line-height: 16px;" class="comment-icon anon-comment-icon"><img src="C++%20boost%20lambda%20internals_files/anon16-rounded.gif" alt="Anonymous" style="display: inline;"></span>&nbsp;<span class="anon-comment-author">Anonymous</span> said...
+						  </dt>
+						  <dd class="comment-body">
+							<p>Thank you.  Very illuminating.</p>
+						  </dd>
+						  <dd class="comment-timestamp"><a href="#c3612167092094707668" title="comment permalink">3:26 PM</a>
+	                     <span class="item-control blog-admin pid-524040696"><a style="border: medium none ;" href="http://www.blogger.com/delete-comment.g?blogID=23323574&amp;postID=3612167092094707668" title="Delete Comment"><span class="delete-comment-icon">&nbsp;</span></a></span>
+	                     </dd>
+                        
+						</dl>
+	
+	<p class="comment-timestamp">
+    <a class="comment-link" href="https://www.blogger.com/comment.g?blogID=23323574&amp;postID=1873516112024835401">Post a Comment</a>
+    </p>
+  
+  	    
+    
+
+
+	
+	<p class="comment-timestamp">
+	<a href="http://meditation-art.blogspot.com/">&lt;&lt; Home</a>
+    </p>
+    </div>
+
+
+					  <!-- End #comments -->
+
+
+					  
+				</div>
+		  
+		  	
+		  	<!-- Begin #footer :: bottom area -->
+		  	<div id="footer">
+		  		<p>
+		  			<!-- Copyright &copy; 2004 [Your name] (plus any additional footer info) -->&nbsp;
+		  		</p>
+		  	</div>
+		 
+		</div>
+		
+		</div>
+		<!-- End #main-content -->
+		
+		
+		<!-- Bottom Paper Graphic -->
+		<div id="main-bot"></div>
+	
+</div>
+
+</body></html>

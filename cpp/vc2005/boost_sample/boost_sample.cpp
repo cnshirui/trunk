@@ -17,7 +17,7 @@ using namespace BOOST_SPIRIT_CLASSIC_NS;
 const string input = "This Hello World program using Spirit counts the number of	\
  Hello World occurrences in the input";
 
-int main ()
+int main_boost ()
 {
 	int count = 0;
 	parse (input.c_str(),

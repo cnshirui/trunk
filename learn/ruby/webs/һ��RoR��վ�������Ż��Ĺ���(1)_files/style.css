@@ -1,0 +1,132 @@
+/*
+
+Theme Name: Carrington Mobile
+Theme URI: http://carringtontheme.com
+Description: A mobile-friendly theme for your blog. Best used with (and included with) the WordPress Mobile Edition plugin. Supports basic mobile browsers as well as advanced and touch-screen browsers with a display optimized for each. Built on the Carrington framework.
+Version: 1.0.2
+Author: Crowd Favorite
+Author URI: http://crowdfavorite.com
+Tags: silver, white, one-column, flexible-width
+
+// This file is part of the Carrington Mobile Theme for WordPress
+// http://carringtontheme.com
+//
+// Copyright (c) 2008-2009 Crowd Favorite, Ltd. All rights reserved.
+// http://crowdfavorite.com
+//
+// Released under the GPL license
+// http://www.opensource.org/licenses/gpl-license.php
+//
+// **********************************************************************
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+// **********************************************************************
+
+*/
+
+body {
+	font-family: Verdana, sans-serif;
+}
+h1, h2, h3, p {
+	margin: 0 0 5px 0;
+	padding: 0;
+}
+ul, ol {
+	margin-top: 0;
+	margin-bottom: 5px;
+	margin-left:10px;
+	padding: 0;
+}
+hr {
+	color: #999;
+	height: 1px;
+}
+
+/* including for compatibility */
+
+.alignleft {
+	float:left;
+	margin-right:1em;
+	margin-bottom:1em;
+}
+.alignright {
+	float:right;
+	margin-left:1em;
+	margin-bottom:1em;
+}
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.wp-caption {
+	border: 1px solid #ddd;
+	text-align: center;
+	background-color: #f3f3f3;
+	padding-top: 4px;
+	margin: 10px;
+	/* optional rounded corners for browsers that support it */
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.wp-caption img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+.wp-caption p.wp-caption-text {
+	font-size: 11px;
+	line-height: 17px;
+	padding: 0 4px 5px;
+	margin: 0;
+}
+
+span.sociable_tagline span { display: none; width: 14em; }
+span.sociable_tagline:hover span {
+        position: absolute;
+        display: block;
+        top: -5em;
+        background: #ffe;
+        border: 1px solid #ccc;
+        color: black;
+        line-height: 1.25em;
+}
+.sociable span {
+        display: block;
+}
+.sociable ul {
+        display: inline;
+        margin: 0 !important;
+        padding: 0 !important;
+}
+.sociable ul li {
+        background: none;
+        display: inline !important;
+        list-style-type: none;
+        margin: 0;
+        padding: 1px;
+}
+.sociable ul li:before { content: ""; }
+.sociable img {
+        float: none;
+        width: 16px;
+        height: 16px;
+        border: 0;
+        margin: 0;
+        padding: 0;
+}
+
+.sociable-hovers {
+        opacity: .4;
+        -moz-opacity: .4;
+        filter: alpha(opacity=40);
+}
+.sociable-hovers:hover {
+        opacity: 1;
+        -moz-opacity: 1;
+        filter: alpha(opacity=100);
+}
+

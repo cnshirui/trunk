@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+
+	<title>一个RoR的站点性能优化的故事(2) | ityum.net</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+	<link rel="stylesheet" href="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%282%29_files/style.css" type="text/css" media="screen" charset="utf-8">
+	<style type="text/css">
+		@import url(http://ityum.net/wp-content/themes/carrington-mobile/css/advanced.css);
+	</style>
+	<script type="text/javascript">
+	<!--
+	CFMOBI_IS_PAGE = false;	CFMOBI_PAGES_TAB = 'Pages';	CFMOBI_POSTS_TAB = 'Recent Posts';	var CFMOBI_TOUCH = ["iPhone","iPod","Android","BlackBerry9530","LG-TU915 Obigo","LGE VX","webOS"];
+	for (var i = 0; i < CFMOBI_TOUCH.length; i++) {
+		if (navigator.userAgent.indexOf(CFMOBI_TOUCH[i]) != -1) {
+			document.write('<link rel="stylesheet" href="http:\/\/ityum.net\/wp-content\/themes\/carrington-mobile\/css\/touch.css" type="text\/css" media="screen" charset="utf-8" \/>');
+			break;
+		}
+	}
+ 
+	document.write('<script type=\'text\/javascript\' src=\'http:\/\/ityum.net\/wp-includes\/js\/jquery\/jquery.js?ver=1.3.2\'><\/script><script type=\'text\/javascript\' src=\'http:\/\/ityum.net\/wp-content\/themes\/carrington-mobile\/js\/mobile.js?ver=1.0\'><\/script><script type=\'text\/javascript\'>\/* <![CDATA[ *\/var ie6w = {	url: "http:\/\/ityum.net\/wp-content\/plugins\/shockingly-big-ie6-warning",	test: "false",	jstest: "false",	t1: "WARNING",	t2: "You are using Internet Explorer version 6.0 or lower. Due to security issues and lack of support for Web Standards it is highly recommended that you upgrade to a modern browser.",	t3: "After the update you can acess this site normally.",	firefox: "true",	opera: "true",	chrome: "true",	safari: "false",	ie: "false",	firefoxu: "http:\/\/www.getfirefox.net\/",	operau: "http:\/\/www.opera.com\/",	chromeu: "http:\/\/www.google.com\/chrome\/",	safariu: "http:\/\/www.apple.com\/safari\/",	ieu: "http:\/\/www.microsoft.com\/windows\/ie\/"};\/* ]]> *\/<\/script><script type=\'text\/javascript\' src=\'http:\/\/ityum.net\/wp-content\/plugins\/shockingly-big-ie6-warning\/js\/ie6w_center.js?ver=2.8.2\'><\/script>');
+	//--></script><script type="text/javascript" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%282%29_files/jquery.js"></script><script type="text/javascript" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%282%29_files/mobile.js"></script><script type="text/javascript">/* <![CDATA[ */var ie6w = {	url: "http://ityum.net/wp-content/plugins/shockingly-big-ie6-warning",	test: "false",	jstest: "false",	t1: "WARNING",	t2: "You are using Internet Explorer version 6.0 or lower. Due to security issues and lack of support for Web Standards it is highly recommended that you upgrade to a modern browser.",	t3: "After the update you can acess this site normally.",	firefox: "true",	opera: "true",	chrome: "true",	safari: "false",	ie: "false",	firefoxu: "http://www.getfirefox.net/",	operau: "http://www.opera.com/",	chromeu: "http://www.google.com/chrome/",	safariu: "http://www.apple.com/safari/",	ieu: "http://www.microsoft.com/windows/ie/"};/* ]]> */</script><script type="text/javascript" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%282%29_files/ie6w_center.js"></script>
+</head><body>
+
+<h1 id="site-name"><a rel="home" href="http://ityum.net/">ityum.net</a></h1>
+
+<hr>
+
+<p id="navigation-top" class="navigation">
+	<a class="to-home" href="http://ityum.net/">Home</a> |
+<a href="#recent">Recent Posts</a> | <a href="#pages">Pages</a></p>
+
+<hr><p id="next-prev-top" class="pagination"><span>«</span> 
+<span class="next"><a href="http://ityum.net/2009/08/01/00/14/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b3.html">一个RoR的站点性能优化的故事(3)</a></span> 
+<span>|</span> 
+<span class="prev"><a href="http://ityum.net/2009/08/01/00/02/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b.html">一个RoR的站点性能优化的故事(1)</a></span> 
+<span>»</span></p>
+
+<div id="content" class="group">
+<h1>一个RoR的站点性能优化的故事(2)</h1>
+
+<p>原文链接: http://poocs.net/articles/2006/03/20/the-adventures-of-scaling-stage-2</p>
+<p>中文链接: <span id="sample-permalink">http://ityum.net/2009/08/01/00/12/<span id="editable-post-name" title="Click to edit this part of the permalink">一个ror的站点性能优化的故事2</span>.html</span></p>
+<p><strong style="font-weight: bold;">圣诞节前</strong></p>
+<p>11月份，仍然还在旧系统的框架下，一些新的想法还是出的比较慢。</p>
+<p>这并不能说是一次失败，我们尝试将一些可能的影响性能的因素都做了调整。</p>
+<p>首先，我们用源码重新编译
+了Ruby，而不是使用Debian系统提供的二进制包。Debian有些时候基于某种考虑打了一些不太正规的补丁。在某些情况下，这样不失为一种好办
+法，然而为了性能，我们还是从源码重新安装了Ruby，甚至安装了专为i686优化过的libc6包。</p>
+<p>与此同时，我们还将Debian提供的Mysql二进制包，改成了Mysql官方提供的安装包，并且将版本从5.0.16升级到5.0.17。</p>
+<p>（译者评：Debian/Ubuntu这类linux发行版中，还是自己编译吧）</p>
+<p>一般说来，Mysql5已经被证明是非常稳定的产品。我们曾经碰到过一点点数据同步复制
+的问题（master-master中有出现重复自增ID的情况，这个在5.0.19中已经修复了这个bug），但有时候Mysql数据库每秒中查询达到
+2000-3000次的时候，后台守护进程经常会在几个月内崩溃一两次。</p>
+<p><strong style="font-weight: bold;">让我们具体谈谈Mysql吧</strong></p>
+<p><strong style="font-weight: bold;"><br>
+</strong></p>
+<p>如果针对数据库的配置错误或者优化不好的话，它很容易拖慢整个系统。有许多书都是专门讲数据库优化的比如<a title="whole books" href="http://www.oreilly.com/catalog/hpmysql/">whole books</a>和 <a title="webinars" href="http://www.mysql.com/news-and-events/web-seminars/mysql-performance-tuning.php">webinars</a> 。我在这里就简单的介绍一下。</p>
+<p>eins.de利用了Mysql的 全文检索 Full TEXT来做搜索功能。MyISAM存储引擎不能支持事务。你可以用InnoDB和MyISAM两种引擎结合起来用。</p>
+<p>解决问题有一下几个办法：</p>
+<p>1.另买一台数据库服务器，用MySIAM类型的表，然后从类型是InnoDB的
+Master数据库表中（我听说Flickr是这么做的）。然而这样就需要仔细的设计程序，得以突破Rails的局限性，Rails不能很好的区分读数据
+库和写数据库。即便能这么弄，我们也不会走这条技术路线，因为我们没有预算来买第三台数据库服务器。</p>
+<p>2.不去使用全文检索， 可以使用类似<a title="Ruby-Odeum" href="http://www.zedshaw.com/projects/ruby_odeum/">Ruby-Odeum</a> 这样的搜索引擎。这里面比较头疼的是，如何让数据库地更新时，同时搜索引擎索引也重建索引保持数据同步。这条路我们也不选择。</p>
+<p>这样我们最终使用了一种混合的方式。</p>
+<p>当前，可用的内存有4G，将它分成InnoDB和MyISAM两部份。2/3的内存给InnoDB用（因为这系统主要的表用的是InnDB，还用于缓存MyISM表的索引数据）</p>
+<p>剩下的1/3是给MyISAM的。另外，我们使用了查询SQL结果的大缓存，也就是Mysql中的query cache。(这个参数是否被用起来了可以通过Mysql的show status命令来看)</p>
+<p>我们数据库参数设置如下：</p>
+<p>key_buffer=700M</p>
+<p>myisam_sort_buffer_size=128M</p>
+<p>query_cache_size=64M</p>
+<p>innodb_buffer_pool_size=1600M</p>
+<p>如果前端的分发器是单个服务器，并且是持久连接，数据库连接数的参数设置就没有什么必要了。</p>
+<p><strong style="font-weight: bold;">继续进行应用服务器的优化</strong></p>
+<p>对于系统进行反复的研究找出一共有多少请求是非常有用的。这个是没有“一劳永逸”的解决办法。一般说来，你需要包含系统高峰时期并且不能当机，如此大量的线程并行运行以至于机器变慢，这是因为对于CPU来说线程相互之间是阻塞的。</p>
+<p>以前我们在每台服务器上设置20个并发时，系统的负载一般都是在30或30以上。事情进展的非常顺利，我们降低了并发数量。这样的效果非常明显。</p>
+<p>通过简单的计算，我们从一天PV数量计算出整个的监听数量。eins.de那时大概每天100万PV，所有的用户都在同一个时区，访问遍布在一天的14个小时中（从早上9点到晚上11点）。我们再做一个简单的计算：</p>
+<p>1M page requrest / 14 hours = 20 requests per second</p>
+<p>假设系统平均处理每个页面请求都会少于1秒中，那么我们需要20个并发进程来监听请求。以上计算是根据平均值进行的，为了能够处理高峰时的峰值，我们将每台应用服务器的监听数目从10减小到7，这样四台应用服务器加起来一共有28个监听，应该能满足当前压力的要求。</p>
+<p><strong style="font-weight: bold;">（译者评：一般峰值是平均值的5-10倍，根据各自的网站特点来确定）</strong></p>
+<p><strong style="font-weight: bold;"><br>
+</strong></p>
+<p>另外，每台机器上安装的Rails从0.14.4逐步升级到了1.0.虽然这对性能不一定有帮助，但是说不定是有用的。</p>
+<p>到了11月中旬，据报道Linux 内核2.6对于性能、内存管理和进程管理等等都是非常好的，因此我们将所有的系统的内核从2.4.27升级到了2.6.14。</p>
+<p>大家对这个内核升级对性能的提升将信将疑，后来根据监控软件Cacti的显示，系统升级后确实提高了不少。数据库服务器虽然提高不少，但应用服务器的负载却</p>
+<p>下降得非常明显。记录显示内核的升级使得系统在高峰时期的负载从8降到了5。</p>
+<p>升级内核所取得的效果让我们有了些兴奋，我们继续所做的事情是将应用服务器的压力再次给到两台数据库服务器上。在此以前，所有的压力都是由一台机器支撑的，另外一台只是安静的呆在那儿复制主力数据库的数据，仅仅是主力坏了它来顶上的灾难恢复而存在的。</p>
+<p>我们没有去考虑<strong style="font-weight: bold;">haproxy</strong>的灾难恢复，只是简单的将请求按照2：1的比率分配到两台数据库服务器上。</p>
+<p>在写的压力很大的时候，偶尔会出现两台数据库同步不能跟上的问题，直到
+一台的写处理完才能恢复。如果碰上几秒钟这种倒霉的事情，一个用户可能一次请求在一台数据库服务器上，而另外一次则在另一台上，这样就比较尴尬。举一个最
+糟糕的例子，AJAX开始的时候请求了一台机器，而后AJAX执行的操作却从另外一台获得，数据是不同步的造成了混乱。</p>
+<p>为了减少写操作，我们经用户证明发现在用户没有获取任何有用数据的时候，系统不仅通过ActiveRecordStore
+更新了session，而且更新了用户的在线状态表和token数据。事实是，虽然多个MySQL线程能够更新多张表（甚至能通过InnoDB的行级锁来
+一次更新一张表里面的多行），但是你只能有一个线程来处理将所有的写操作写到另外一台服务器上。这个问题困扰了我们不止一次。</p>
+<p>另外，我们将缓存memcached在两个数据库上移来移去以更好的分摊机器的压力，让另外一台机器来处理广告信息<a href="http://phpadsnew.com/">phpAdsNew</a><strong style="font-weight: bold;">（译者评：一个广告投放系统）</strong></p>
+<p>在11月底，我们完成了以上这些事情，到目前为止我们已经多次达到了百万PV的情况，流量每天已经达到了85G。</p>
+<p>整个系统配置如下:</p>
+<p><img style="" title="dcfq8s4f_10g6dt93fw" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%282%29_files/dcfq8s4f_10g6dt93fw.png" alt="dcfq8s4f_10g6dt93fw" height="818" width="575"></p>
+<p>到此系统调优的文章已经写了2/3，后续文章将会包括<strong style="font-weight: bold;">memcached</strong>的最佳实践，session的优化以及更多系统优化技术。</p>
+
+
+<p>Related posts:</p><ol><li><a href="http://ityum.net/2009/08/01/00/02/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b.html" rel="bookmark" title="Permanent Link: 一个RoR的站点性能优化的故事(1)">一个RoR的站点性能优化的故事(1)</a></li><li><a href="http://ityum.net/2009/08/01/00/14/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b3.html" rel="bookmark" title="Permanent Link: 一个RoR的站点性能优化的故事(3)">一个RoR的站点性能优化的故事(3)</a></li><li><a href="http://ityum.net/2009/08/01/00/17/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b4.html" rel="bookmark" title="Permanent Link: 一个RoR的站点性能优化的故事(4)">一个RoR的站点性能优化的故事(4)</a></li></ol>
+<div class="clear"></div>
+
+<p class="byline small">Posted by <a href="http://ityum.net/author/admin/" title="Posts by Khan.Chan">Khan.Chan</a> on August 1, 2009.</p>
+
+<p class="tags small">Tags: <a href="http://ityum.net/tag/haproxy" rel="tag">haproxy</a>, <a href="http://ityum.net/tag/lighttpd" rel="tag">lighttpd</a>, <a href="http://ityum.net/tag/memcached" rel="tag">memcached</a></p>
+<p class="categories small">Categories: <a href="http://ityum.net/category/%e6%a1%88%e4%be%8b%e5%88%86%e6%9e%90" title="View all posts in 案例分析" rel="category tag">案例分析</a></p>
+<h2 id="comments" class="title-divider"><span>0 Responses</span></h2>
+
+
+<form id="respond" action="http://ityum.net/wp-comments-post.php" method="post">
+	<h3 class="title-divider"><span>Leave a Reply</span></h3>
+			<p>
+			<input name="author" id="author" size="22" type="text">
+			<label for="author"><small>Name (required)</small></label>
+		</p>
+		<p>
+			<input name="email" id="email" size="22" type="text">
+			<label for="email"><small>Email (required, but never shared)</small></label>
+		</p>
+		<p>
+			<input name="url" id="url" size="22" type="text">
+			<label title="Your website address" for="url"><small>Web</small></label>	
+		</p>
+		<p><textarea name="comment" id="comment" rows="8" cols="40"></textarea></p>
+	<p>
+		<input name="submit" id="submit" value="Submit comment" tabindex="5" type="submit">
+		<input name="comment_post_ID" value="150" type="hidden">
+	</p>
+	<script type="text/javascript">
+	<!--
+	refJS = escape( document[ 'referrer' ] );
+	document.write("<input type='hidden' name='refJS' value='"+refJS+"'>");
+	// -->
+	</script><input name="refJS" value="http%3A//ityum.net/2009/08/01/00/02/%25e4%25b8%2580%25e4%25b8%25aaror%25e7%259a%2584%25e7%25ab%2599%25e7%2582%25b9%25e6%2580%25a7%25e8%2583%25bd%25e4%25bc%2598%25e5%258c%2596%25e7%259a%2584%25e6%2595%2585%25e4%25ba%258b.html" type="hidden">
+	<p style="font-size: 9px; clear: both;">Spam Protection by <a href="http://www.hybrid6.com/webgeek/plugins/wp-spamfree" title="WP-SpamFree WordPress Anti-Spam Plugin">WP-SpamFree</a></p>
+</form>
+</div><!--#content-->
+
+<p id="next-prev-bottom" class="pagination"><span>«</span> 
+<span class="next"><a href="http://ityum.net/2009/08/01/00/14/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b3.html">一个RoR的站点性能优化的故事(3)</a></span> 
+<span>|</span> 
+<span class="prev"><a href="http://ityum.net/2009/08/01/00/02/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b.html">一个RoR的站点性能优化的故事(1)</a></span> 
+<span>»</span></p>
+
+
+<hr>
+
+<div class="group">
+	<form id="search" action="http://ityum.net" method="get">
+		<div>
+			<input name="s" id="s" inputmode="predictOn" type="text">
+			<input name="submit_button" value="Search" type="submit">
+		</div>
+	</form>
+</div>
+<hr>
+
+<div class="tabbed"><ul class="tabs"><li class="active"><a href="#recent">Recent Posts</a></li><li class=""><a href="#pages">Pages</a></li></ul>
+	<div id="recent_tab">
+		<hr>
+		<h2 style="display: none;" class="table-title" id="recent">Recent Posts</h2>
+		<ul style="border-top: 0pt none; margin-top: 0pt;" class="disclosure table group">
+				<li><a href="http://ityum.net/2009/08/01/17/25/digg%e7%ab%99%e7%82%b9%e7%9a%84lamp%e6%9e%b6%e6%9e%84.html" title="Digg站点的LAMP架构">Digg站点的LAMP架构</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/17/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b4.html" title="一个RoR的站点性能优化的故事(4)">一个RoR的站点性能优化的故事(4)</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/14/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b3.html" title="一个RoR的站点性能优化的故事(3)">一个RoR的站点性能优化的故事(3)</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/12/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b2.html" title="一个RoR的站点性能优化的故事(2)">一个RoR的站点性能优化的故事(2)</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/02/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b.html" title="一个RoR的站点性能优化的故事(1)">一个RoR的站点性能优化的故事(1)</a></li>
+	<li><a href="http://ityum.net/2009/07/29/13/10/%e7%bd%91%e7%bb%9c%e6%b5%81%e9%87%8f%e7%9b%91%e6%8e%a7%e8%bd%af%e4%bb%b6vnstat%e7%ae%80%e7%95%a5.html" title="网络流量监控软件vnStat简略">网络流量监控软件vnStat简略</a></li>
+	<li><a href="http://ityum.net/2009/07/29/01/34/myspace%e7%9a%84%e5%85%ad%e6%ac%a1%e9%87%8d%e6%9e%84.html" title="MySpace的六次重构">MySpace的六次重构</a></li>
+	<li><a href="http://ityum.net/2009/07/29/01/14/memcached-clientjava%e6%80%a7%e8%83%bd%e5%af%b9%e6%af%94.html" title="Memcached Client(Java)性能对比">Memcached Client(Java)性能对比</a></li>
+	<li><a href="http://ityum.net/2009/07/28/00/29/facebook-performance-caching.html" title="Facebook performance caching">Facebook performance caching</a></li>
+	<li><a href="http://ityum.net/2009/07/16/11/38/mod_gzip-vs-mod_deflate.html" title="mod_gzip vs mod_deflate">mod_gzip vs mod_deflate</a></li>
+		</ul>
+	</div>
+	<div style="display: none;" id="pages_tab">
+		<hr>
+		<h2 style="display: none;" class="table-title" id="pages">Pages</h2>
+		<ul style="border-top: 0pt none; margin-top: 0pt;" class="disclosure table group">
+			<li class="page_item page-item-2"><a href="http://ityum.net/about">About</a></li>
+<li class="page_item page-item-39"><a href="http://ityum.net/community">Community</a></li>
+<li class="page_item page-item-8"><a href="http://ityum.net/license">License</a></li>
+		</ul>
+	</div>
+</div>
+
+<hr>
+
+<p id="navigation-bottom" class="navigation">
+	<a class="to-home" href="http://ityum.net/">Home</a> |
+<a href="#recent">Recent Posts</a> | <a href="#pages">Pages</a></p>
+
+<hr>
+
+<div id="about" class="group">
+	<h3>About ityum.net</h3>
+ityum|IT技术云旨在为架构师，运维进阶者提供交流技术的空间
+
+
+No related posts.<a class="more" href="http://ityum.net/about">more →</a></div>
+<div id="footer">
+
+	<hr>
+
+	<p class="small">
+		Proudly powered by <a href="http://wordpress.org/"><strong>WordPress</strong></a> and <a href="http://carringtontheme.com/"><strong>Carrington</strong></a>. <a href="http://ityum.net/wp-login.php">Log in</a> | <a href="http://ityum.net/wp-login.php?action=register">Register</a> <a href="http://ityum.net/feed" title="Subscribe RSS"><img src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%282%29_files/feed.gif" alt="Subscribe RSS"><br>
+	</a></p>
+<a href="http://ityum.net/feed" title="Subscribe RSS">	</a><div class="clear"></div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%282%29_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10039282-1");
+pageTracker._trackPageview();
+} catch(err) {}</script></body></html>

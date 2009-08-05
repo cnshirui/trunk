@@ -16,14 +16,14 @@ import 'org.dom4j.io.XMLWriter'
 import 'org.dom4j.io.OutputFormat'
 import 'org.dom4j.io.SAXReader'
 
-compare_tool = "C:/Program Files/Beyond Compare 3/BCompare.exe"
+compare_tool = "D:\\dev\\BC2\\BC2.exe"
 
 argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = 'D:\xcelsius\bugfix\migrate_alert_lost'
-  files = ['gauge_45_53_alert_use.xlf', 'gauge_45_53_alert_use_bind.xlf']
+  dir = 'D:\xcelsius\bugfix\import_excel_lost_binding'
+  files = ['base_delete_rebind.xlf', 'base_delete.xlf']
   dir = dir.gsub("\\", "/") if(dir.index("\\")!=-1)
   
   files.map! { |file| "#{dir}/#{file}" }
@@ -76,4 +76,5 @@ Dir["temp/*"].each do |file|
 end
 
 # execute compare
+puts "#{compare_tool} '#{xmls[0]}'  '#{xmls[1]}'"
 exec("#{compare_tool} '#{xmls[0]}'  '#{xmls[1]}'")

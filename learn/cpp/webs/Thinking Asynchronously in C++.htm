@@ -1,0 +1,1128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr"><head>
+
+
+<script type="text/javascript">(function() { var a=window;function f(e){this.t={};this.tick=function(d,b,c){var i=c?c:(new Date).getTime();this.t[d]=[i,b]};this.tick("start",null,e)}var g=new f;a.jstiming={Timer:f,load:g};try{a.jstiming.pt=a.external.pageT}catch(h){};a.tickAboveFold=function(e){var d,b=e,c=0;if(b.offsetParent){do c+=b.offsetTop;while(b=b.offsetParent)}d=c;d<=750&&a.jstiming.load.tick("aft")};var j=false;function k(){if(!j){j=true;a.jstiming.load.tick("firstScrollTime")}}a.addEventListener?a.addEventListener("scroll",k,false):a.attachEvent("onscroll",k); })();</script>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="true" name="MSSmartTagsPreventParsing">
+<meta content="blogger" name="generator">
+<link href="http://www.blogger.com/favicon.ico" rel="icon" type="image/vnd.microsoft.icon">
+<link href="http://blog.think-async.com/" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="Thinking Asynchronously in C++ - Atom" href="http://blog.think-async.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="Thinking Asynchronously in C++ - RSS" href="http://blog.think-async.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="Thinking Asynchronously in C++ - Atom" href="http://www.blogger.com/feeds/35024958/posts/default">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blogger.com/rsd.g?blogID=35024958">
+<link rel="me" href="http://www.blogger.com/profile/09159109667366328919">
+<link rel="openid.server" href="http://www.blogger.com/openid-server.g">
+<title>Thinking Asynchronously in C++</title>
+<link type="text/css" rel="stylesheet" href="Thinking%20Asynchronously%20in%20C++_files/779315794-widget_css_bundle.css">
+ <link rel="stylesheet" type="text/css" href="Thinking%20Asynchronously%20in%20C++_files/3727950723-blog_controls.css">
+ <link rel="stylesheet" type="text/css" href="Thinking%20Asynchronously%20in%20C++_files/authorization.css">
+<style type="text/css">#navbar-iframe { display:block }
+</style>
+
+<style id="page-skin-1" type="text/css"><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Denim
+Designer: Darren Delaye
+URL:      www.DarrenDelaye.com
+Date:     11 Jul 2006
+-----------------------------------------------
+*/
+/* Variable definitions
+====================
+<Variable name="bgColor" description="Page Background Color"
+type="color" default="#efefef">
+<Variable name="textColor" description="Text Color"
+type="color" default="#333333">
+<Variable name="linkColor" description="Link Color"
+type="color" default="#336699">
+<Variable name="headerBgColor" description="Page Header Background Color"
+type="color" default="#336699">
+<Variable name="headerTextColor" description="Page Header Text Color"
+type="color" default="#ffffff">
+<Variable name="headerCornersColor" description="Page Header Corners Color"
+type="color" default="#528bc5">
+<Variable name="mainBgColor" description="Main Background Color"
+type="color" default="#ffffff">
+<Variable name="borderColor" description="Border Color"
+type="color" default="#cccccc">
+<Variable name="dateHeaderColor" description="Date Header Color"
+type="color" default="#999999">
+<Variable name="sidebarTitleBgColor" description="Sidebar Title Background Color"
+type="color" default="#ffd595">
+<Variable name="sidebarTitleTextColor" description="Sidebar Title Text Color"
+type="color" default="#333333">
+<Variable name="bodyFont" description="Text Font"
+type="font" default="normal normal 100% Verdana, Arial, Sans-serif;">
+<Variable name="headerFont" description="Page Header Font"
+type="font" default="normal normal 210% Verdana, Arial, Sans-serif;">
+<Variable name="startSide" description="Start side in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="End side in blog language"
+type="automatic" default="right">
+*/
+body {
+background: #efefef;
+margin: 0;
+padding: 0px;
+font: x-small Verdana, Arial;
+text-align: center;
+color: #333333;
+font-size/* */:/**/small;
+font-size: /**/small;
+}
+a:link {
+color: #336699;
+}
+a:visited {
+color: #336699;
+}
+a img {
+border-width: 0;
+}
+#outer-wrapper {
+font: normal normal 100% Verdana, Arial, Sans-serif;;
+}
+/* Header
+----------------------------------------------- */
+#header-wrapper {
+margin:0;
+padding: 0;
+background-color: #528bc5;
+text-align: left;
+}
+#header {
+width: 760px;
+margin: 0 auto;
+background-color: #336699;
+border: 1px solid #336699;
+color: #ffffff;
+padding: 0;
+font: normal normal 210% Verdana, Arial, Sans-serif;;
+}
+h1.title {
+padding-top: 38px;
+margin: 0 14px .1em;
+line-height: 1.2em;
+font-size: 100%;
+}
+h1.title a, h1.title a:visited {
+color: #ffffff;
+text-decoration: none;
+}
+#header .description {
+display: block;
+margin: 0 14px;
+padding: 0 0 40px;
+line-height: 1.4em;
+font-size: 50%;
+}
+/* Content
+----------------------------------------------- */
+.clear {
+clear: both;
+}
+#content-wrapper {
+width: 760px;
+margin: 0 auto;
+padding: 0 0 15px;
+text-align: left;
+background-color: #ffffff;
+border: 1px solid #cccccc;
+border-top: 0;
+}
+#main-wrapper {
+margin-left: 14px;
+width: 464px;
+float: left;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+margin-right: 14px;
+width: 240px;
+float: right;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2, h3 {
+margin: 0;
+}
+/* Posts
+----------------------------------------------- */
+.date-header {
+margin: 1.5em 0 0;
+font-weight: normal;
+color: #999999;
+font-size: 100%;
+}
+.post {
+margin: 0 0 1.5em;
+padding-bottom: 1.5em;
+}
+.post-title {
+margin: 0;
+padding: 0;
+font-size: 125%;
+font-weight: bold;
+line-height: 1.1em;
+}
+.post-title a, .post-title a:visited, .post-title strong {
+text-decoration: none;
+color: #333333;
+font-weight: bold;
+}
+.post div {
+margin: 0 0 .75em;
+line-height: 1.3em;
+}
+.post-footer {
+margin: -.25em 0 0;
+color: #333333;
+font-size: 87%;
+}
+.post-footer .span {
+margin-right: .3em;
+}
+.post img {
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.post blockquote {
+margin: 1em 20px;
+}
+.post blockquote p {
+margin: .75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin: 1em 0;
+color: #999999;
+}
+#comments h4 strong {
+font-size: 110%;
+}
+#comments-block {
+margin: 1em 0 1.5em;
+line-height: 1.3em;
+}
+#comments-block dt {
+margin: .5em 0;
+}
+#comments-block dd {
+margin: .25em 0 0;
+}
+#comments-block dd.comment-footer {
+margin: -.25em 0 2em;
+line-height: 1.4em;
+font-size: 78%;
+}
+#comments-block dd p {
+margin: 0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar h2 {
+margin: 1.6em 0 .5em;
+padding: 4px 5px;
+background-color: #ffd595;
+font-size: 100%;
+color: #333333;
+}
+.sidebar ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.sidebar li {
+margin: 0;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: .5em;
+padding-left: 15px;
+text-indent: -15px;
+line-height: 1.5em;
+}
+.sidebar {
+color: #333333;
+line-height:1.3em;
+}
+.sidebar .widget {
+margin-bottom: 1em;
+}
+.sidebar .widget-content {
+margin: 0 5px;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font-weight: bold;
+line-height: 1.6em;
+font-size: 78%;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+clear: both;
+text-align: center;
+color: #333333;
+}
+#footer .widget {
+margin:.5em;
+padding-top: 20px;
+font-size: 85%;
+line-height: 1.5em;
+text-align: left;
+}
+
+--></style>
+</head><body>
+<div class="navbar section" id="navbar"><div class="widget Navbar" id="Navbar1"><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener("load",
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<iframe src="Thinking%20Asynchronously%20in%20C++_files/navbar.htm" marginwidth="0" marginheight="0" id="navbar-iframe" title="Blogger Navigation and Search" frameborder="0" height="30px" width="100%" scrolling="no"></iframe>
+<div></div></div></div>
+<div id="outer-wrapper"><div id="wrap2">
+<!-- skip links for text browsers -->
+<span id="skiplinks" style="display: none;">
+<a href="#main">skip to main </a> |
+      <a href="#sidebar">skip to sidebar</a>
+</span>
+<div id="header-wrapper">
+<div class="header section" id="header"><div class="widget Header" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+Thinking Asynchronously in C++
+</h1>
+</div>
+<div class="descriptionwrapper">
+<p class="description"><span>
+</span></p>
+</div>
+</div>
+</div></div>
+</div>
+<div id="content-wrapper">
+<div id="crosscol-wrapper" style="text-align: center;">
+<div class="crosscol section" id="crosscol"></div>
+</div>
+<div id="main-wrapper">
+<div class="main section" id="main"><div class="widget Blog" id="Blog1">
+<div class="blog-posts hfeed">
+<!-- google_ad_section_start(name=default) -->
+<h2 class="date-header">Wednesday, July 29, 2009</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="2854367704991908383"></a>
+<h3 class="post-title entry-title">
+<a href="http://blog.think-async.com/2009/07/wife-says-i-cant-believe-it-works.html">Wife says: "I can't believe it works"</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<p>Just a teaser:<br></p><pre>int main()<br>{<br>  try<br>  {<br>    using asio::ip::tcp;<br>    using namespace boost::lambda;<br><br>    asio::io_service io_service;<br>    tcp::acceptor acceptor(io_service,<br>        tcp::endpoint(tcp::v4(), 54321));<br><br>    const int max_clients = 100;<br>    coroutine coro[max_clients];<br>    std::auto_ptr&lt;tcp::socket&gt; socket[max_clients];<br>    asio::error_code ec[max_clients];<br>    std::size_t length[max_clients];<br>    boost::array&lt;char, 1024&gt; data[max_clients];<br><br>    // Kick off all the coroutines.<br>    int n = -1;<br>    for (int i = 0; i &lt; max_clients; ++i)<br>    {<br>      socket[i].reset(new tcp::socket(io_service));<br>      io_service.post(<br>          unlambda((<br>            var(n) = i<br>          )));<br>    }<br><br>    for (; io_service.run_one() &gt; 0; n = -1)<br>    {<br>      if (n != -1)<br>      {<br>        reenter (coro[n])<br>        {<br>        entry:<br>          for (;;)<br>          {<br>            // Wait for a client to connect.<br>            yield acceptor.async_accept(<br>                *socket[n],<br>                unlambda((<br>                  var(n) = n,<br>                  var(ec[n]) = _1<br>                )));<br><br>            // Echo at will.<br>            while (!ec[n])<br>            {<br>              yield socket[n]-&gt;async_read_some(<br>                  asio::buffer(data[n]),<br>                  unlambda((<br>                    var(n) = n,<br>                    var(ec[n]) = _1,<br>                    var(length[n]) = _2<br>                  )));<br><br>              if (!ec[n])<br>              {<br>                yield asio::async_write(<br>                    *socket[n],<br>                    asio::buffer(data[n], length[n]),<br>                    unlambda((<br>                      var(n) = n,<br>                      var(ec[n]) = _1<br>                    )));<br>              }<br>            }<br><br>            // Clean up before accepting next client.<br>            socket[n]-&gt;close();<br>          }<br>        }<br>      }<br>    }<br>  }<br>  catch (std::exception&amp; e)<br>  {<br>    std::cerr &lt;&lt; "Exception: " &lt;&lt; e.what() &lt;&lt; "\n";<br>  }<br>}<br></pre><p>One function. One fully asynchronous server. Bog standard C++.<br></p>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">chris</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://blog.think-async.com/2009/07/wife-says-i-cant-believe-it-works.html" rel="bookmark" title="permanent link"><abbr class="published" title="2009-07-29T23:04:00+10:00">11:04 PM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+<a class="comment-link" href="https://www.blogger.com/comment.g?blogID=35024958&amp;postID=2854367704991908383" onclick="">3
+comments</a>
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-660467121">
+<a href="http://www.blogger.com/post-edit.g?blogID=35024958&amp;postID=2854367704991908383" title="Edit Post">
+<img alt="" class="icon-action" src="Thinking%20Asynchronously%20in%20C++_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://blog.think-async.com/search/label/asio" rel="tag">asio</a>,
+<a href="http://blog.think-async.com/search/label/c%2B%2B" rel="tag">c++</a>,
+<a href="http://blog.think-async.com/search/label/coroutines" rel="tag">coroutines</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<h2 class="date-header">Tuesday, July 14, 2009</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="2835395496399779181"></a>
+<h3 class="post-title entry-title">
+<a href="http://blog.think-async.com/2009/07/user-friendly-compile-errors-for.html">User-friendly compile errors for templates in C++0x</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<p>The C++0x features <tt>decltype</tt>, <tt>static_assert</tt> and the "new function declarator syntax" can be combined with our old friend <a href="http://en.wikipedia.org/wiki/SFINAE">SFINAE</a> to generate nicer template compile errors.<br></p><p>As a simple example, consider a container class similar to <tt>std::set</tt>. Normally if you just declare a variable<br></p><pre>set&lt;my_type&gt; s;<br></pre><p>it will compile without error even if <tt>my_type</tt> has no <tt>operator&lt;</tt>. You will only get an error when you try to call a set member function, such as <tt>insert()</tt>.
+Worse still, the errors tend to be quite verbose. (Too verbose for me
+to want to paste here, anyway.) It would be really nice to generate a
+short, readable error at the point of the original variable
+declaration. Let's see how we can do just that in C++0x.<br></p><p>First, we need to write a compile-time test for <tt>operator&lt;</tt>. This is where SFINAE, <tt>decltype</tt> and the new function declarator syntax come together. We write the test function:<br></p><pre>auto less_than_test(const T* t)<br>  -&gt; decltype(*t &lt; *t, char(0));<br></pre><p>and the fallback overload:<br></p><pre>std::array&lt;char, 2&gt; less_than_test(...);<br></pre><p>The trick here is that, according to the C++0x grammar, we have:<br></p><pre><b>decltype</b> <b>(</b> <i>expression</i> <b>)</b><br></pre><p>and <br></p><pre><i>expression:</i><br>    <i>assignment-expression</i><br>    <i>expression</i> <b>,</b> <i>assignment-expression</i><br></pre><p>This means that the first overload uses <tt>decltype</tt> to do two things: it makes the overload a viable candidate only if the expression <tt>*t &lt; *t</tt> is valid; and it says the overload returns a <tt>char</tt>.<br></p><p>Second, we can use <tt>sizeof</tt> to determine which of the overloads is selected for a given type <tt>T</tt>, and <tt>static_assert</tt> to generate a readable error:<br></p><pre>template &lt;typename T&gt;<br>class set<br>{<br>public:<br>  static_assert(<br>      sizeof(less_than_test((T*)0)) == 1,<br>      "type T must provide operator&lt;");<br>};<br></pre><p>The g++ 4.4 compiler then gives the following output on the original variable declaration:<br></p><pre>test.cpp: In instantiation of set&lt;my_type&gt;<br>test.cpp:21:   instantiated from here<br>test.cpp:13: error: static assertion failed:<br>    "type T must provide operator&lt;"<br></pre><p>It works with function templates too. To add a check to Asio's <tt>async_read</tt> function's <tt>ReadHandler</tt> parameter, I could write the check as follows:<br></p><pre>template &lt;typename T&gt;<br>auto read_handler_test(T* t)<br>  -&gt; decltype(<br>      (*t)(<br>        *(const error_code*)0,<br>        (const std::size_t)0),<br>      char(0));<br><br>std::array&lt;char, 2&gt; read_handler_test(...);<br><br>template &lt;..., typename ReadHandler&gt;<br>void async_read(..., ReadHandler handler)<br>{<br>  static_assert(<br>      sizeof(read_handler_test(&amp;handler)) == 1,<br>      "ReadHandler type requirements not met");<br>  ...<br>}<br></pre><p>Perhaps with a touch of macro magic, checks of this sort could become quite easy to write.<br></p><p>"Hang on, what about C++0x concepts?" I hear you ask. What are they? <tt>;-)</tt></p>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">chris</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://blog.think-async.com/2009/07/user-friendly-compile-errors-for.html" rel="bookmark" title="permanent link"><abbr class="published" title="2009-07-14T21:36:00+10:00">9:36 PM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+<a class="comment-link" href="https://www.blogger.com/comment.g?blogID=35024958&amp;postID=2835395496399779181" onclick="">0
+comments</a>
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-660467121">
+<a href="http://www.blogger.com/post-edit.g?blogID=35024958&amp;postID=2835395496399779181" title="Edit Post">
+<img alt="" class="icon-action" src="Thinking%20Asynchronously%20in%20C++_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://blog.think-async.com/search/label/c%2B%2B" rel="tag">c++</a>,
+<a href="http://blog.think-async.com/search/label/c%2B%2B0x" rel="tag">c++0x</a>,
+<a href="http://blog.think-async.com/search/label/decltype" rel="tag">decltype</a>,
+<a href="http://blog.think-async.com/search/label/sfinae" rel="tag">sfinae</a>,
+<a href="http://blog.think-async.com/search/label/static_assert" rel="tag">static_assert</a>,
+<a href="http://blog.think-async.com/search/label/templates" rel="tag">templates</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<h2 class="date-header">Monday, October 06, 2008</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="2234533118841563732"></a>
+<h3 class="post-title entry-title">
+<a href="http://blog.think-async.com/2008/10/asynchronous-forkjoin-using-asio.html">Asynchronous Fork/Join using Asio</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<p>As most Asio users will no doubt be aware, multiple threads can call <tt>io_service::run()</tt> to set up a pool of threads from which the completion handlers will be executed. This can be used in conjunction with <tt>io_service::post()</tt> to <a href="https://tenermerx.com/Asio/Recipes#A_thread_pool_for_executing_arbi">execute arbitrary tasks in the thread pool</a>.</p><p>In
+some rare spare moments I have used this facility to dabble in parallel
+algorithms (mainly to do with sorting large data sets). However, I was
+not completely satisfied with its ease-of-use when it came to
+implementing the algorithms.</p><p>Recently I came across the new <a href="http://gee.cs.oswego.edu/dl/papers/fj.pdf">Fork/Join framework</a> that's going to be included in Java 7. I was particularly struck by the simplicity of the <tt>coinvoke()</tt>
+function, and was inspired to implement something similar on top of
+Asio. Of course, what with Asio and my preferred mode of thinking, I
+wanted to implement an asynchronous version.</p><h3>And the result...</h3><p>I created a function template that may be used to initiate two or more tasks to run in parallel:</p><pre>template &lt;typename TaskCont0, ..., typename TaskContN,<br>    typename Task0, ..., typename TaskN, Cont&gt;<br>void coinvoke(asio::io_service&amp; io_service,<br>    Task0 task0, ..., TaskN taskN, Cont cont);</pre><p>Each
+task must be a function object with a single argument, where the
+argument is the continuation function object for the task. The <tt>TaskContN</tt> template parameters explicitly specify the function signatures used for each of the task continuations. For example:</p><pre>coinvoke&lt;void(int), void(int)&gt;(task0, task1, cont);</pre><p>says that both tasks have a continuation with the signature <tt>void(int)</tt>.
+The combining continuation has a signature that is the concatenation of
+all of the task continuations' arguments. In the above example, that's <tt>void(int, int)</tt>.</p><p>The operation of <tt>coinvoke()</tt> works as follows (click image for full size view):</p><p><a href="http://tenermerx.com/Pub/Asio/AsyncForkJoin/coinvoke.png"><img src="Thinking%20Asynchronously%20in%20C++_files/coinvoke.png" width="425"></a></p><p>You can get the implementation <a href="http://tenermerx.com/Pub/Asio/AsyncForkJoin/coinvoke.hpp">here</a>. Don't expect the source to be readable; it contains hairy uses of template metaprogramming and preprocessor magic.</p><h3>Why continuations?</h3><p>You
+might be wondering why each task passes its result to a continuation
+function rather than simply returning it. The answer to that is that a
+task need not be a single calcuation; it could instead be the start of
+a chain of asynchronous operations. This means that <tt>coinvoke()</tt>
+could be used to simplify management of parallel operations, such as
+writing data to multiple sockets, and not having the handler called
+until all operations have finished. I plan to explore those and other
+related ideas further in the near future, but for now let's just look
+at parallel algorithms.</p><h3>Fibonacci revisited</h3><p>The equivalent implementation of the Fibonacci example from the Java Fork/Join paper looks like:</p><pre>void combine_fib(<br>    int a, int b,<br>    function&lt;void(int)&gt; h)<br>{<br>  h(a + b);<br>}<br><br>void calc_fib(<br>    asio::io_service&amp; io_service,<br>    int n,<br>    function&lt;void(int)&gt; f)<br>{<br>  if (n &lt;= threshold)<br>  {<br>    f(seq_fib(n));<br>  }<br>  else<br>  {<br>    coinvoke&lt;void(int), void(int)&gt;(io_service,<br>        bind(calc_fib, ref(io_service), n - 1, _1),<br>        bind(calc_fib, ref(io_service), n - 2, _1),<br>        bind(combine_fib, _1, _2, f));<br>  }<br>}</pre><h3>Can I have C++0x lambdas now, please?</h3><p>The need to define a separate <tt>combine_fib</tt>
+is not ideal, since a key part of the algorithm is off in another spot.
+Fortunately, C++0x's new monomorphic lambdas come to the rescue:</p><pre>void calc_fib(<br>    asio::io_service&amp; io_service,<br>    int n,<br>    function&lt;void(int)&gt; f)<br>{<br>  if (n &lt;= threshold)<br>  {<br>    f(seq_fib(n));<br>  }<br>  else<br>  {<br>    coinvoke&lt;void(int), void(int)&gt;(io_service,<br>        [&amp;io_service, =n](function&lt;void(int)&gt; c)<br>        {<br>          calc_fib(io_service, n - 1, c),<br>        },<br>        [&amp;io_service, =n](function&lt;void(int)&gt; c)<br>        {<br>          calc_fib(io_service, n - 2, c),<br>        },<br>        [=f](int a, int b)<br>        {<br>          f(a + b);<br>        });<br>  }<br>}</pre><h3>A useful example</h3><p>Since that has to come close to being the most convoluted way of calculating a Fibonacci value, here is an example where <tt>coinvoke()</tt> is used for a parallel merge sort:</p><pre>template &lt;typename Iterator&gt;<br>void merge(<br>    Iterator begin,<br>    Iterator middle,<br>    Iterator end,<br>    function&lt;void()&gt; f)<br>{<br>  std::inplace_merge(begin, middle, end);<br>  f();<br>}<br><br>template &lt;typename Iterator&gt;<br>void sort(<br>    asio::io_service&amp; io_service,<br>    Iterator begin,<br>    Iterator end,<br>    function&lt;void()&gt; f)<br>{<br>  std::size_t n = end - begin;<br>  if (n &lt;= 16384)<br>  {<br>    std::sort(begin, end);<br>    io_service.post(f);<br>  }<br>  else<br>  {<br>    coinvoke&lt;void(), void()&gt;(io_service,<br><br>        // First task sorts the initial half of the range.<br>        bind(&amp;sort&lt;Iterator&gt;,<br>          ref(io_service),<br>          begin, begin + n / 2, _1),<br><br>        // Second task sorts the latter half of the range.<br>        bind(&amp;sort&lt;Iterator&gt;,<br>          ref(io_service),<br>          begin + n / 2, end, _1),<br><br>        // Continuation function merges the two sorted ranges.<br>        bind(&amp;merge&lt;Iterator&gt;,<br>          begin, begin + n / 2, end, f)<br><br>        );<br>  }<br>}</pre><p>On my 8-core machine, this gives a little more than a threefold speedup in sorting large vectors.</p>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">chris</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://blog.think-async.com/2008/10/asynchronous-forkjoin-using-asio.html" rel="bookmark" title="permanent link"><abbr class="published" title="2008-10-06T23:58:00+11:00">11:58 PM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+<a class="comment-link" href="https://www.blogger.com/comment.g?blogID=35024958&amp;postID=2234533118841563732" onclick="">3
+comments</a>
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-660467121">
+<a href="http://www.blogger.com/post-edit.g?blogID=35024958&amp;postID=2234533118841563732" title="Edit Post">
+<img alt="" class="icon-action" src="Thinking%20Asynchronously%20in%20C++_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://blog.think-async.com/search/label/asio" rel="tag">asio</a>,
+<a href="http://blog.think-async.com/search/label/parallelism" rel="tag">parallelism</a>,
+<a href="http://blog.think-async.com/search/label/threads" rel="tag">threads</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<h2 class="date-header">Friday, June 27, 2008</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="1470866374757445750"></a>
+<h3 class="post-title entry-title">
+<a href="http://blog.think-async.com/2008/06/mention-in-stroustrup-interview.html">Mention in Stroustrup Interview</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<a href="http://www.computerworld.com.au/index.php/id;408408016;pp;1;fp;16;fpid;1">The A-Z of Programming Languages: C++</a>, top of page 5:<br><blockquote><br><span style="font-style: italic;"><span style="font-weight: bold;">Do you feel that resources like the boost libraries will provide this functionality/accessibility for C++?</span></span><br><br><span style="font-style: italic;">Some
+of the boost libraries - especially the networking library - are a good
+beginning. The C++0x standard threads look a lot like boost threads. If
+at all possible, a C++ programmer should begin with an existing library
+(and/or tool), rather than building directly on fundamental language
+features and/or system threads.</span><br></blockquote><br>Not by name, but hey! The rest of the interview is worth reading too. <tt>;)</tt>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">chris</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://blog.think-async.com/2008/06/mention-in-stroustrup-interview.html" rel="bookmark" title="permanent link"><abbr class="published" title="2008-06-27T11:49:00+10:00">11:49 AM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+<a class="comment-link" href="https://www.blogger.com/comment.g?blogID=35024958&amp;postID=1470866374757445750" onclick="">5
+comments</a>
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-660467121">
+<a href="http://www.blogger.com/post-edit.g?blogID=35024958&amp;postID=1470866374757445750" title="Edit Post">
+<img alt="" class="icon-action" src="Thinking%20Asynchronously%20in%20C++_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://blog.think-async.com/search/label/asio" rel="tag">asio</a>,
+<a href="http://blog.think-async.com/search/label/boost" rel="tag">boost</a>,
+<a href="http://blog.think-async.com/search/label/c%2B%2B" rel="tag">c++</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<h2 class="date-header">Friday, May 23, 2008</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="2336561869955145643"></a>
+<h3 class="post-title entry-title">
+<a href="http://blog.think-async.com/2008/05/boostasio-vs-asio.html">Boost.Asio vs Asio</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<p>Sometimes I am asked what the difference is between the (non-Boost)
+Asio and Boost.Asio packages I provide. Here is the definitive word on
+the subject, presented as a series of questions and answers.</p><h3>What are the differences in the source code?</h3><p>— Asio is in a namespace called <tt>asio::</tt>, whereas Boost.Asio puts everything under <tt>boost::asio::</tt>.</p><p>— The main Asio header file is called <tt>asio.hpp</tt>. The corresponding header in Boost.Asio is <tt>boost/asio.hpp</tt>. All other headers are similarly changed.</p><p>— Any macros used by or defined in Asio are prefixed with <tt>ASIO_</tt>. In Boost.Asio they are prefixed with <tt>BOOST_ASIO_</tt>.</p><p>— Asio includes a class for launching threads, <tt>asio::thread</tt>. Boost.Asio does not include this class, to avoid overlap with the Boost.Thread library</p><p>— Boost.Asio uses the Boost.System library to provide support for error codes (<tt>boost::system::error_code</tt> and <tt>boost::system::system_error</tt>). Asio includes these under its own namespace (<tt>asio::error_code</tt> and <tt>asio::system_error</tt>). The Boost.System version of these classes currently supports better extensibility for user-defined error codes.</p><p>—
+Asio is header-file-only and for most uses does not require linking
+against any Boost library. Boost.Asio always requires that you link
+against the Boost.System library, and also against Boost.Thread if you
+want to launch threads using <tt>boost::thread</tt>.</p><h3>Where do I get a release package?</h3><p>Asio is available for download from <a href="http://asio.sourceforge.net/">sourceforge</a>, in a package named <tt>asio-X.Y.Z.tar.gz</tt> (or <tt>.tar.bz2</tt> or <tt>.zip</tt>).</p><p>Boost.Asio is included in the Boost 1.35 distribution. It is also available as a separate package on sourceforge, named <tt>boost_asio_X_Y_Z.tar.gz</tt>. The latter is intended to be copied over the top of an existing Boost source code distribution.</p><h3>Where are the source code repositories?</h3><p>Asio uses a sourceforge-hosted CVS repository. Details of how to access it may be found <a href="http://sourceforge.net/cvs/?group_id=122478">here</a>. It may also be <a href="http://asio.cvs.sourceforge.net/">browsed via the web</a>.</p><p>Boost.Asio is checked into <a href="http://svn.boost.org/">Boost's subversion repository</a>.</p><h3>How do you maintain both versions?</h3><p>All development is done in the Asio CVS repository. I periodically convert the source into Boost format using a script called <a href="http://asio.cvs.sourceforge.net/asio/asio/boostify.pl?view=markup"><tt>boostify.pl</tt></a>, and merge the changes into the Boost subversion repository.</p><h3>Will Asio be discontinued now that Boost.Asio is included with Boost?</h3><p>No.
+There are projects using Asio and they will continue to be supported. I
+also prefer to use Asio over Boost.Asio in my own projects, for the
+convenience of header-file-only and shorter namespaces.<br></p><h3>Should I use Asio or Boost.Asio?</h3><p>It depends. Here are some things to consider:<br></p><p>— If you (like me) prefer the convenience of header-file-only libraries then I'd suggest using Asio over Boost.Asio.</p>—
+If you must use a version of Boost older than 1.35 then Boost.Asio is
+not included. You can use Boost.Asio by copying it over the top of your
+Boost distribution (see above), but not everyone is comfortable doing
+this. In that case, I would suggest using Asio over Boost.Asio.<p></p><p>—
+I will be creating new versions of both the Asio and Boost.Asio
+packages on a faster release cycle than that followed by Boost. If you
+want to use the latest features you can still use Boost.Asio as long as
+you are happy to copy it over the top of your Boost distribution. If
+you don't want to do this, use Asio rather than Boost.Asio.</p><h3>Can Asio and Boost.Asio coexist in the same program?</h3><p>Yes.
+Since they use different namespaces there should be no conflicts,
+although obviously the types themselves are not interchangeable. (In
+case you're wondering why you might want to do this, consider a
+situation where a program is using third party libraries that are also
+using Asio internally.)</p>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">chris</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://blog.think-async.com/2008/05/boostasio-vs-asio.html" rel="bookmark" title="permanent link"><abbr class="published" title="2008-05-23T08:05:00+10:00">8:05 AM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+<a class="comment-link" href="https://www.blogger.com/comment.g?blogID=35024958&amp;postID=2336561869955145643" onclick="">2
+comments</a>
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-660467121">
+<a href="http://www.blogger.com/post-edit.g?blogID=35024958&amp;postID=2336561869955145643" title="Edit Post">
+<img alt="" class="icon-action" src="Thinking%20Asynchronously%20in%20C++_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://blog.think-async.com/search/label/asio" rel="tag">asio</a>,
+<a href="http://blog.think-async.com/search/label/boost" rel="tag">boost</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<h2 class="date-header">Sunday, March 30, 2008</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="4177722057383242517"></a>
+<h3 class="post-title entry-title">
+<a href="http://blog.think-async.com/2008/03/739-days-ago.html">739 days ago ...</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+... asio was <a href="http://lists.boost.org/Archives/boost/2006/03/102287.php">accepted into Boost</a>. Today you can find it as part of a <a href="http://www.boost.org/users/news/version_1_35_0">Boost release</a>. Woohoo!
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">chris</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://blog.think-async.com/2008/03/739-days-ago.html" rel="bookmark" title="permanent link"><abbr class="published" title="2008-03-30T22:09:00+11:00">10:09 PM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+<a class="comment-link" href="https://www.blogger.com/comment.g?blogID=35024958&amp;postID=4177722057383242517" onclick="">4
+comments</a>
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-660467121">
+<a href="http://www.blogger.com/post-edit.g?blogID=35024958&amp;postID=4177722057383242517" title="Edit Post">
+<img alt="" class="icon-action" src="Thinking%20Asynchronously%20in%20C++_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://blog.think-async.com/search/label/asio" rel="tag">asio</a>,
+<a href="http://blog.think-async.com/search/label/boost" rel="tag">boost</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<h2 class="date-header">Wednesday, August 08, 2007</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="9091214669274461484"></a>
+<h3 class="post-title entry-title">
+<a href="http://blog.think-async.com/2007/08/time-travel.html">Time Travel</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+Many event-driven programs involve state changes that are triggered according to the system clock. You might be coding for:<ul><br><li> A share market that opens at 10:00am and closes at 4:00pm.</li><br><li> An off-peak phone billing rate that starts after 7:00pm.</li><br><li> An interest calculation that is run on the last day of every month.</li><br></ul>The <code>asio::deadline_timer</code> class lets you handle this easily. For example:<br><pre>using namespace boost::posix_time;<br>typedef boost::date_time::c_local_adjustor&lt;ptime&gt; local_adj;<br><br>...<br><br>asio::deadline_timer timer(io_service);<br><br>ptime open_time(second_clock::local_time().date(), hours(10));<br>timer.expires_at(local_adj::local_to_utc(open_time));<br>timer.async_wait(open_market);<br></pre>There's
+a catch: to test that your timer events work correctly, you have to run
+your program at the right time of day. It usually isn't practical to
+sit around all day (or, worse, all year) waiting for the timers to
+expire.<br><br><h3>Time Traits</h3><br>You may have noticed that the <code>asio::deadline_timer</code> class is actually a typedef:<br><pre>typedef basic_deadline_timer&lt;boost::posix_time::ptime&gt;<br>  deadline_timer;</pre>where the basic_deadline_timer class template is declared as follows:<br><pre>template &lt;<br>    typename Time,<br>    typename TimeTraits<br>      = asio::time_traits&lt;Time&gt;,<br>    typename TimerService<br>      = deadline_timer_service&lt;Time, TimeTraits&gt; &gt;<br>class basic_deadline_timer;<br></pre>In the context of our problem, the most interesting template parameter is the second one: <code>TimeTraits</code>. An implementation of <code>TimeTraits</code> lets us customise the treatment of the template's <code>Time</code> parameter, and consequently the behaviour of the timer itself.<br><br>A <code>TimeTraits</code> class must implement an interface that matches the following:<br><pre>class TimeTraits<br>{<br>public:<br>  // The type used to represent an absolute time, i.e. the same<br>  // as the Time template parameter to basic_deadline_timer.<br>  typedef ... time_type;<br><br>  // The type used to represent the difference between two<br>  // absolute times.<br>  typedef ... duration_type;<br><br>  // Returns the current time.<br>  static time_type now();<br><br>  // Returns a new absolute time resulting from adding the<br>  // duration d to the absolute time t.<br>  static time_type add(time_type t, duration_type d);<br><br>  // Returns the duration resulting from subtracting t2 from t1.<br>  static duration_type subtract(time_type t1, time_type t2);<br><br>  // Returns whether t1 is to be treated as less than t2.<br>  static bool less_than(time_type t1, time_type t2);<br><br>  // Returns a "posix" duration corresponding to the duration d.<br>  static boost::posix_time::time_duration to_posix_duration(<br>      duration_type d);<br>};</pre>As you can see from the declaration of the <code>basic_deadline_timer</code> class template, Asio provides a default <code>TimeTraits</code> implementation called <code>asio::time_traits&lt;&gt;</code>.<br><br><h3>Offsetting Now</h3><br>To test our timer events at any time of our choosing, we simply need to change the definition of "now" using a custom <code>TimeTraits</code> class.<br><br>Since we want to use the same time types as the regular <code>deadline_timer</code> class, we'll start by reusing the default traits implementation:<br><pre>class offset_time_traits<br>  : public asio::deadline_timer::traits_type<br>{<br>};</pre>The value returned by the <code>now()</code> function will be offset from the system clock by a specified duration:<br><pre>class offset_time_traits<br>  : public asio::deadline_timer::traits_type<br>{<br><br>private:<br>  <font color="red">static duration_type offset_;</font><br>};</pre>which is simply added to the system clock:<br><pre>class offset_time_traits<br>  : public asio::deadline_timer::traits_type<br>{<br>public:<br>  <font color="red">static time_type now()<br>  {<br>    return add(asio::deadline_timer::traits_type::now(), offset_);<br>  }</font><br><br>private:<br>  static duration_type offset_;<br>};</pre>Of course, we will also need to provide a way to set the offset, which can be done by setting an initial value for "now":<br><pre>class offset_time_traits<br>  : public asio::deadline_timer::traits_type<br>{<br>public:<br>  static time_type now()<br>  {<br>    return add(asio::deadline_timer::traits_type::now(), offset_);<br>  }<br><br>  <font color="red">static void set_now(time_type t)<br>  {<br>    offset_ =<br>      subtract(t, asio::deadline_timer::traits_type::now());<br>  }</font><br><br>private:<br>  static duration_type offset_;<br>};</pre><br><h3>Creating a Timer</h3><br>To use our custom traits type with the <code>basic_deadline_timer</code> template, we simply need to add the following typedef:<br><pre>typedef asio::basic_deadline_timer&lt;<br>    boost::posix_time::ptime, offset_time_traits&gt; offset_timer;</pre>To
+see the offset timer in action, let's create a timer to fire precisely
+at the start of the coming new year. So we don't have to wait until
+then, we'll set "now" to be just ten seconds prior to midnight:<br><pre>offset_time_traits::set_now(<br>    boost::posix_time::from_iso_string("20071231T235950"));<br><br>offset_timer timer(io_service);<br>timer.expires_at(<br>    boost::posix_time::from_iso_string("20080101T000000"));<br>timer.async_wait(handle_timeout);<br><br>io_service.run();</pre>When the program is run, it will take just ten seconds to complete.<br><br><h3>Jumping Through Time</h3><br>One
+feature not supported by the above solution is the ability to change
+the definition of "now" after the timers have been started. However, if
+your timer events are spread across a long period of time, then this is
+likely to be something you would want.<br><br>Let's say that the next timer does not expire for several hours, but in an attempt to speed things up we call <code>set_now()</code>
+to move to just seconds before. The problem with the above traits class
+is that the existing asynchronous wait operation does not know about
+the change to "now", and so will continue to run for the remaining
+hours.<br><br>Fortunately, Asio provides a way around this: by customising the <code>to_posix_duration()</code> function in our traits class.<br><br>The <code>to_posix_duration()</code> function is normally used to convert from a user-defined duration type to a type that Asio knows about (namely <code>boost::posix_time::time_duration</code>).
+The key point here is that this converted duration value is used by
+Asio to determine how long to wait until the timer expires.
+Furthermore, it doesn't matter if this function returns a duration that
+is smaller (even substantially so) than the actual duration. The timer
+won't fire early, because Asio guarantees that it won't expire until
+the following condition holds true:<br><pre>!TimeTraits::less_than(Time_Traits::now(), timer.expires_at())</pre>So, by adding the <code>to_posix_duration()</code> function to our traits class:<br><pre>class offset_time_traits<br>  : public asio::deadline_timer::traits_type<br>{<br>public:<br>  static time_type now()<br>  {<br>    return add(asio::deadline_timer::traits_type::now(), offset_);<br>  }<br><br>  static void set_now(time_type t)<br>  {<br>    offset_ =<br>      subtract(t, asio::deadline_timer::traits_type::now());<br>  }<br><br>  <font color="red">static boost::posix_time::time_duration to_posix_duration(<br>      duration_type d)<br>  {<br>    return d &lt; boost::posix_time::seconds(5)<br>      ? d : boost::posix_time::seconds(5);<br>  }</font><br><br>private:<br>  static duration_type offset_;<br>};</pre>we can ensure that Asio detects changes to the offset within seconds.
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">chris</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://blog.think-async.com/2007/08/time-travel.html" rel="bookmark" title="permanent link"><abbr class="published" title="2007-08-08T23:00:00+10:00">11:00 PM</abbr></a>
+</span>
+<span class="reaction-buttons">
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+<a class="comment-link" href="https://www.blogger.com/comment.g?blogID=35024958&amp;postID=9091214669274461484" onclick="">1 comments</a>
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-660467121">
+<a href="http://www.blogger.com/post-edit.g?blogID=35024958&amp;postID=9091214669274461484" title="Edit Post">
+<img alt="" class="icon-action" src="Thinking%20Asynchronously%20in%20C++_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://blog.think-async.com/search/label/asio" rel="tag">asio</a>,
+<a href="http://blog.think-async.com/search/label/boost" rel="tag">boost</a>,
+<a href="http://blog.think-async.com/search/label/timer" rel="tag">timer</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3">
+<span class="post-location">
+</span>
+</div>
+</div>
+</div>
+<!-- google_ad_section_end -->
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://blog.think-async.com/search?updated-max=2007-08-08T23%3A00%3A00%2B10%3A00" id="Blog1_blog-pager-older-link" title="Older Posts">Older Posts</a>
+</span>
+</div>
+<div class="clear"></div>
+<div class="blog-feeds">
+<div class="feed-links">
+Subscribe to:
+<a class="feed-link" href="http://blog.think-async.com/feeds/posts/default" target="_blank" type="application/atom+xml">Posts (Atom)</a>
+</div>
+</div>
+</div></div>
+</div>
+<div id="sidebar-wrapper">
+<div class="sidebar section" id="sidebar"><div class="widget Profile" id="Profile1">
+<h2>About Me</h2>
+<div class="widget-content">
+<dl class="profile-datablock">
+<dt class="profile-data">Chris Kohlhoff</dt>
+<dd class="profile-textblock">Author of the Boost.Asio library for networking in C++.</dd>
+</dl>
+<a class="profile-link" href="http://www.blogger.com/profile/09159109667366328919">View my complete profile</a>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=35024958&amp;widgetType=Profile&amp;widgetId=Profile1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("Profile1"));' target="configProfile1" title="Edit">
+<img alt="" src="Thinking%20Asynchronously%20in%20C++_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget BlogArchive" id="BlogArchive1">
+<h2>Blog Archive</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul>
+<li class="archivedate expanded">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=close&amp;toggle=YEARLY-1230728400000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy toggle-open">▼ </span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/search?updated-min=2009-01-01T00%3A00%3A00%2B11%3A00&amp;updated-max=2010-01-01T00%3A00%3A00%2B11%3A00&amp;max-results=2">2009</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul>
+<li class="archivedate expanded">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=close&amp;toggle=MONTHLY-1246370400000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy toggle-open">▼ </span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2009_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2009/07/wife-says-i-cant-believe-it-works.html">Wife says: "I can't believe it works"</a></li>
+<li><a href="http://blog.think-async.com/2009/07/user-friendly-compile-errors-for.html">User-friendly compile errors for templates in C++0...</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=YEARLY-1199106000000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/search?updated-min=2008-01-01T00%3A00%3A00%2B11%3A00&amp;updated-max=2009-01-01T00%3A00%3A00%2B11%3A00&amp;max-results=4">2008</a>
+<span class="post-count" dir="ltr">(4)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1222783200000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2008_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2008/10/asynchronous-forkjoin-using-asio.html">Asynchronous Fork/Join using Asio</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1212242400000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2008_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2008/06/mention-in-stroustrup-interview.html">Mention in Stroustrup Interview</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1209564000000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2008_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2008/05/boostasio-vs-asio.html">Boost.Asio vs Asio</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1204290000000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2008_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2008/03/739-days-ago.html">739 days ago ...</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=YEARLY-1167570000000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/search?updated-min=2007-01-01T00%3A00%3A00%2B11%3A00&amp;updated-max=2008-01-01T00%3A00%3A00%2B11%3A00&amp;max-results=3">2007</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1185890400000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2007_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2007/08/time-travel.html">Time Travel</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1175349600000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2007_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2007/04/new-home-heating-solution.html">New home heating solution</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1167570000000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2007_01_01_archive.html">January</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2007/01/unbuffered-socket-iostreams.html">Unbuffered socket iostreams</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=YEARLY-1136034000000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/search?updated-min=2006-01-01T00%3A00%3A00%2B11%3A00&amp;updated-max=2007-01-01T00%3A00%3A00%2B11%3A00&amp;max-results=4">2006</a>
+<span class="post-count" dir="ltr">(4)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1162299600000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2006_11_01_archive.html">November</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2006/11/buffer-debugging.html">Buffer debugging</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1159624800000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2006_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2006/10/freebsd-support.html">FreeBSD support</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://blog.think-async.com/?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1157032800000&amp;toggleopen=MONTHLY-1246370400000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://blog.think-async.com/2006_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://blog.think-async.com/2006/09/ssl-password-callbacks.html">SSL password callbacks</a></li>
+<li><a href="http://blog.think-async.com/2006/09/whats-this-all-about.html">What's this all about?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=35024958&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target="configBlogArchive1" title="Edit">
+<img alt="" src="Thinking%20Asynchronously%20in%20C++_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget LinkList" id="LinkList1">
+<h2>Links</h2>
+<div class="widget-content">
+<ul>
+<li><a href="http://www.boost.org/">Boost C++ Libraries</a></li>
+<li><a href="http://asio.sourceforge.net/">Boost.Asio Library</a></li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=35024958&amp;widgetType=LinkList&amp;widgetId=LinkList1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("LinkList1"));' target="configLinkList1" title="Edit">
+<img alt="" src="Thinking%20Asynchronously%20in%20C++_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class="clear">&nbsp;</div>
+</div>
+<!-- end content-wrapper -->
+<div id="footer-wrapper">
+<div class="footer section" id="footer"></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript" src="Thinking%20Asynchronously%20in%20C++_files/817566579-widgets.js"></script>
+<script type="text/javascript">
+_WidgetManager._Init('http://www.blogger.com/rearrange?blogID=35024958', 'http://blog.think-async.com/','35024958');
+_WidgetManager._SetPageActionUrl('http://www.blogger.com/display?blogID=35024958', '4aT7zLeqCpNlj-hgeJhlFsMHICk:1248908206422');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'title': 'Thinking Asynchronously in C++', 'pageType': 'index', 'url': 'http://blog.think-async.com/', 'homepageUrl': 'http://blog.think-async.com/', 'enabledCommentProfileImages': false, 'searchLabel': '', 'searchQuery': '', 'pageName': '', 'pageTitle': 'Thinking Asynchronously in C++', 'encoding': 'UTF-8', 'locale': 'en-AU', 'isPrivate': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42Thinking Asynchronously in C++ - Atom\42 href\75\42http://blog.think-async.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42Thinking Asynchronously in C++ - RSS\42 href\75\42http://blog.think-async.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42Thinking Asynchronously in C++ - Atom\42 href\75\42http://www.blogger.com/feeds/35024958/posts/default\42 /\76\n\74link rel\75\42EditURI\42 type\75\42application/rsd+xml\42 title\75\42RSD\42 href\75\42http://www.blogger.com/rsd.g?blogID\07535024958\42 /\076', 'meTag': '\74link rel\75\42me\42 href\75\42http://www.blogger.com/profile/09159109667366328919\42 /\76\n', 'openIdOpTag': '\74link rel\75\42openid.server\42 href\75\42http://www.blogger.com/openid-server.g\42 /\76\n', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var a\75window;function f(e){this.t\75{};this.tick\75function(d,b,c){var i\75c?c:(new Date).getTime();this.t[d]\75[i,b]};this.tick(\42start\42,null,e)}var g\75new f;a.jstiming\75{Timer:f,load:g};try{a.jstiming.pt\75a.external.pageT}catch(h){};a.tickAboveFold\75function(e){var d,b\75e,c\0750;if(b.offsetParent){do c+\75b.offsetTop;while(b\75b.offsetParent)}d\75c;d\74\075750\46\46a.jstiming.load.tick(\42aft\42)};var j\75false;function k(){if(!j){j\75true;a.jstiming.load.tick(\42firstScrollTime\42)}}a.addEventListener?a.addEventListener(\42scroll\42,k,false):a.attachEvent(\42onscroll\42,k); })();\74/script\076'}}]);
+_WidgetManager._SetSystemMarkup({'layout': {'varName': '', 'template': '\74div class\75\47widget-wrap1\47\76\n\74div class\75\47widget-wrap2\47\76\n\74div class\75\47widget-wrap3\47\76\n\74div class\75\47widget-content\47\76\n\74div class\75\47layout-title\47\76\74data:layout-title\76\74/data:layout-title\76\74/div\76\n\74a class\75\47editlink\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 target\75\47chooseWidget\47\76\74data:edit-link\76\74/data:edit-link\76\74/a\76\n\74/div\76\n\74/div\76\n\74/div\76\n\74/div\076'}, 'quickedit': {'varName': '', 'template': '\74div class\75\47clear\47\76\74/div\76\n\74span class\75\47widget-item-control\47\76\n\74span class\75\47item-control blog-admin\47\76\n\74a class\75\47quickedit\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 expr:target\75\47\46quot;config\46quot; + data:widget.instanceId\47 expr:title\75\47data:edit-link\47\76\n\74img alt\75\47\47 height\75\04718\47 src\75\47http://img1.blogblog.com/img/icon18_wrench_allbkg.png\47 width\75\04718\47/\76\n\74/a\76\n\74/span\76\n\74/span\76\n\74div class\75\47clear\47\76\74/div\076'}, 'all-head-content': {'varName': 'page', 'template': '\74data:blog.latencyHeadScript\76\74/data:blog.latencyHeadScript\76\n\74meta expr:content\75\47\46quot;text/html; charset\75\46quot; + data:page.encoding\47 http-equiv\75\47Content-Type\47/\76\n\74meta content\75\47true\47 name\75\47MSSmartTagsPreventParsing\47/\76\n\74meta content\75\47blogger\47 name\75\47generator\47/\76\n\74link href\75\47http://www.blogger.com/favicon.ico\47 rel\75\47icon\47 type\75\47image/vnd.microsoft.icon\47/\76\n\74link expr:href\75\47data:blog.url\47 rel\75\47canonical\47/\76\n\74data:blog.feedLinks\76\74/data:blog.feedLinks\76\n\74data:blog.meTag\76\74/data:blog.meTag\76\n\74data:blog.openIdOpTag\76\74/data:blog.openIdOpTag\76\n\74b:if cond\75\47data:page.isPrivate\47\76\n\74meta content\75\47NOINDEX,NOFOLLOW\47 name\75\47robots\47/\76\n\74/b:if\076'}});
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74b:if cond\75\47data:team \75\75 \46quot;true\46quot;\47\76\n\74ul\76\n\74b:loop values\75\47data:authors\47 var\75\47i\47\76\n\74li\76\74a expr:href\75\47data:i.userUrl\47\76\74data:i.display-name\76\74/data:i.display-name\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:photo.url !\75 \46quot;\46quot;\47\76\n\74a expr:href\75\47data:userUrl\47\76\74img class\75\47profile-img\47 expr:alt\75\47data:photo.alt\47 expr:height\75\47data:photo.height\47 expr:src\75\47data:photo.url\47 expr:width\75\47data:photo.width\47/\76\74/a\76\n\74/b:if\76\n\74dl class\75\47profile-datablock\47\76\n\74dt class\75\47profile-data\47\76\74data:displayname\76\74/data:displayname\76\74/dt\76\n\74b:if cond\75\47data:showlocation \75\75 \46quot;true\46quot;\47\76\n\74dd class\75\47profile-data\47\76\74data:location\76\74/data:location\76\74/dd\76\n\74/b:if\76\n\74b:if cond\75\47data:aboutme !\75 \46quot;\46quot;\47\76\74dd class\75\47profile-textblock\47\76\74data:aboutme\76\74/data:aboutme\76\74/dd\76\74/b:if\76\n\74/dl\76\n\74a class\75\47profile-link\47 expr:href\75\47data:userUrl\47\76\74data:viewProfileMsg\76\74/data:viewProfileMsg\76\74/a\76\n\74/b:if\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74div id\75\47ArchiveList\47\76\n\74div expr:id\75\47data:widget.instanceId + \46quot;_ArchiveList\46quot;\47\76\n\74b:if cond\75\47data:style \75\75 \46quot;HIERARCHY\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;FLAT\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47flat\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;MENU\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47menu\47\76\74/b:include\76\n\74/b:if\76\n\74/div\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}, 'flat': {'varName': 'data', 'template': '\74ul\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74li class\75\47archivedate\47\76\n\74a expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76 (\74data:i.post-count\76\74/data:i.post-count\76)\n      \74/li\76\n\74/b:loop\76\n\74/ul\076'}, 'menu': {'varName': 'data', 'template': '\74select expr:id\75\47data:widget.instanceId + \46quot;_ArchiveMenu\46quot;\47\76\n\74option value\75\47\47\76\74data:title\76\74/data:title\76\74/option\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74option expr:value\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76 (\74data:i.post-count\76\74/data:i.post-count\76)\74/option\76\n\74/b:loop\76\n\74/select\076'}, 'interval': {'varName': 'intervalData', 'template': '\74b:loop values\75\47data:intervalData\47 var\75\47i\47\76\n\74ul\76\n\74li expr:class\75\47\46quot;archivedate \46quot; + data:i.expclass\47\76\n\74b:include data\75\47i\47 name\75\47toggle\47\76\74/b:include\76\n\74a class\75\47post-count-link\47 expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76\n\74span class\75\47post-count\47 dir\75\47ltr\47\76(\74data:i.post-count\76\74/data:i.post-count\76)\74/span\76\n\74b:if cond\75\47data:i.data\47\76\n\74b:include data\75\47i.data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:i.posts\47\76\n\74b:include data\75\47i.posts\47 name\75\47posts\47\76\74/b:include\76\n\74/b:if\76\n\74/li\76\n\74/ul\76\n\74/b:loop\076'}, 'toggle': {'varName': 'interval', 'template': '\74b:if cond\75\47data:interval.toggleId\47\76\n\74b:if cond\75\47data:interval.expclass \75\75 \46quot;expanded\46quot;\47\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +       \46quot;\46amp;dir\75close\46amp;toggle\75\46quot; + data:interval.toggleId +       \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy toggle-open\47\76\46#9660; \74/span\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +         \46quot;\46amp;dir\75open\46amp;toggle\75\46quot; + data:interval.toggleId +         \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy\47\76\n\74b:if cond\75\47data:blog.languageDirection \75\75 \46quot;rtl\46quot;\47\76\n              \46#9668;\n            \74b:else\76\74/b:else\76\n              \46#9658;\n            \74/b:if\76\n\74/span\76\n\74/a\76\n\74/b:if\76\n\74/b:if\076'}, 'posts': {'varName': 'posts', 'template': '\74ul class\75\47posts\47\76\n\74b:loop values\75\47data:posts\47 var\75\47i\47\76\n\74li\76\74a expr:href\75\47data:i.url\47\76\74data:i.title\76\74/data:i.title\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\076'}}, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\74h2\76\74data:title\76\74/data:title\76\74/h2\76\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74ul\76\n\74b:loop values\75\47data:links\47 var\75\47link\47\76\n\74li\76\74a expr:href\75\47data:link.target\47\76\74data:link.name\76\74/data:link.name\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('LinkList1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main'));
+</script>
+</body></html>

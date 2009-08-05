@@ -13,7 +13,7 @@ using namespace std;
 
 
 
-void main(int argc, _TCHAR* argv[])
+void main_cstring(int argc, _TCHAR* argv[])
 {
 	CString title = "ÖÐ¹ú";
 	CString path = "ÑÇÖÞ.txt";

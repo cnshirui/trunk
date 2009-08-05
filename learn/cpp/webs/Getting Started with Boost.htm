@@ -1,0 +1,1337 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:expr="http://www.google.com/2005/gml/expr" xmlns:data="http://www.google.com/2005/gml/data" xmlns:b="http://www.google.com/2005/gml/b" xmlns="http://www.w3.org/1999/xhtml" dir="ltr"><head>
+
+
+<script type="text/javascript">(function() { var a=window;function f(e){this.t={};this.tick=function(d,b,c){var i=c?c:(new Date).getTime();this.t[d]=[i,b]};this.tick("start",null,e)}var g=new f;a.jstiming={Timer:f,load:g};try{a.jstiming.pt=a.external.pageT}catch(h){};a.tickAboveFold=function(e){var d,b=e,c=0;if(b.offsetParent){do c+=b.offsetTop;while(b=b.offsetParent)}d=c;d<=750&&a.jstiming.load.tick("aft")};var j=false;function k(){if(!j){j=true;a.jstiming.load.tick("firstScrollTime")}}a.addEventListener?a.addEventListener("scroll",k,false):a.attachEvent("onscroll",k); })();</script>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="true" name="MSSmartTagsPreventParsing">
+<meta content="blogger" name="generator">
+<link href="http://www.blogger.com/favicon.ico" rel="icon" type="image/vnd.microsoft.icon">
+<link href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="The C++ and Boost Code Shop - Atom" href="http://shoddykid.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="The C++ and Boost Code Shop - RSS" href="http://shoddykid.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="The C++ and Boost Code Shop - Atom" href="http://www.blogger.com/feeds/26653368/posts/default">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blogger.com/rsd.g?blogID=26653368">
+<link rel="alternate" type="application/atom+xml" title="The C++ and Boost Code Shop - Atom" href="http://shoddykid.blogspot.com/feeds/5632940848553059842/comments/default">
+<title>The C++ and Boost Code Shop: Getting Started with Boost</title>
+<link type="text/css" rel="stylesheet" href="Getting%20Started%20with%20Boost_files/2446921439-widget_css_bundle.css">
+ <link rel="stylesheet" type="text/css" href="Getting%20Started%20with%20Boost_files/3727950723-blog_controls.css">
+ <link rel="stylesheet" type="text/css" href="Getting%20Started%20with%20Boost_files/authorization.css">
+<style type="text/css">#navbar-iframe { display:block }
+</style>
+
+<style id="page-skin-1" type="text/css"><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Stretch Denim
+Designer: Darren Delaye
+URL:      www.DarrenDelaye.com
+Date:     11 Jul 2006
+-----------------------------------------------
+*/
+/* Variable definitions
+====================
+<Variable name="bgColor" description="Page Background Color"
+type="color" default="#efefef">
+<Variable name="textColor" description="Text Color"
+type="color" default="#333333">
+<Variable name="linkColor" description="Link Color"
+type="color" default="#336699">
+<Variable name="headerBgColor" description="Page Header Background Color"
+type="color" default="#336699">
+<Variable name="headerTextColor" description="Page Header Text Color"
+type="color" default="#ffffff">
+<Variable name="headerCornersColor" description="Page Header Corners Color"
+type="color" default="#528bc5">
+<Variable name="mainBgColor" description="Main Background Color"
+type="color" default="#ffffff">
+<Variable name="borderColor" description="Border Color"
+type="color" default="#cccccc">
+<Variable name="dateHeaderColor" description="Date Header Color"
+type="color" default="#999999">
+<Variable name="sidebarTitleBgColor" description="Sidebar Title Background Color"
+type="color" default="#ffd595">
+<Variable name="sidebarTitleTextColor" description="Sidebar Title Text Color"
+type="color" default="#333333">
+<Variable name="bodyFont" description="Text Font"
+type="font" default="normal normal 100% Verdana, Arial, Sans-serif;">
+<Variable name="headerFont" description="Page Header Font"
+type="font" default="normal normal 210% Verdana, Arial, Sans-serif;">
+<Variable name="startSide" description="Start side in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="End side in blog language"
+type="automatic" default="right">
+*/
+body {
+background: #efefef;
+margin: 0;
+padding: 0px;
+font: x-small Verdana, Arial;
+text-align: center;
+color: #000000;
+font-size/* */:/**/small;
+font-size: /**/small;
+}
+a:link {
+color: #336699;
+}
+a:visited {
+color: #336699;
+}
+a img {
+border-width: 0;
+}
+#outer-wrapper {
+font: normal normal 100% Georgia, Times, serif;
+}
+/* Header
+----------------------------------------------- */
+#header-wrapper {
+margin:0;
+padding: 0;
+background-color: #528bc5;
+text-align: left;
+}
+#header {
+margin: 0 2%;
+background-color: #336699;
+color: #ffffff;
+padding: 0;
+font: normal normal 210% Georgia, Times, serif;
+position: relative;
+}
+h1.title {
+padding-top: 38px;
+margin: 0 1% .1em;
+line-height: 1.2em;
+font-size: 100%;
+}
+h1.title a, h1.title a:visited {
+color: #ffffff;
+text-decoration: none;
+}
+#header .description {
+display: block;
+margin: 0 1%;
+padding: 0 0 40px;
+line-height: 1.4em;
+font-size: 50%;
+}
+/* Content
+----------------------------------------------- */
+.clear {
+clear: both;
+}
+#content-wrapper {
+margin: 0 2%;
+padding: 0 0 15px;
+text-align: left;
+background-color: #ffffff;
+border: 1px solid #cccccc;
+border-top: 0;
+}
+#main-wrapper {
+margin-left: 1%;
+width: 64%;
+float: left;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+margin-right: 1%;
+width: 29%;
+float: right;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2, h3 {
+margin: 0;
+}
+/* Posts
+----------------------------------------------- */
+.date-header {
+margin: 1.5em 0 0;
+font-weight: normal;
+color: #999999;
+font-size: 100%;
+}
+.post {
+margin: 0 0 1.5em;
+padding-bottom: 1.5em;
+}
+.post-title {
+margin: 0;
+padding: 0;
+font-size: 125%;
+font-weight: bold;
+line-height: 1.1em;
+}
+.post-title a, .post-title a:visited, .post-title strong {
+text-decoration: none;
+color: #000000;
+font-weight: bold;
+}
+.post div {
+margin: 0 0 .75em;
+line-height: 1.3em;
+}
+.post-footer {
+margin: -.25em 0 0;
+color: #000000;
+font-size: 87%;
+}
+.post-footer .span {
+margin-right: .3em;
+}
+.post img {
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.post blockquote {
+margin: 1em 20px;
+}
+.post blockquote p {
+margin: .75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin: 1em 0;
+color: #999999;
+}
+#comments h4 strong {
+font-size: 110%;
+}
+#comments-block {
+margin: 1em 0 1.5em;
+line-height: 1.3em;
+}
+#comments-block dt {
+margin: .5em 0;
+}
+#comments-block dd {
+margin: .25em 0 0;
+}
+#comments-block dd.comment-footer {
+margin: -.25em 0 2em;
+line-height: 1.4em;
+font-size: 78%;
+}
+#comments-block dd p {
+margin: 0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar h2 {
+margin: 1.6em 0 .5em;
+padding: 4px 5px;
+background-color: #ffd595;
+font-size: 100%;
+color: #333333;
+}
+.sidebar ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.sidebar li {
+margin: 0;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: .5em;
+padding-left: 15px;
+text-indent: -15px;
+line-height: 1.5em;
+}
+.sidebar {
+color: #000000;
+line-height:1.3em;
+}
+.sidebar .widget {
+margin-bottom: 1em;
+}
+.sidebar .widget-content {
+margin: 0 5px;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font-weight: bold;
+line-height: 1.6em;
+font-size: 78%;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+clear: both;
+text-align: center;
+color: #000000;
+}
+#footer .widget {
+margin:.5em;
+padding-top: 20px;
+font-size: 85%;
+line-height: 1.5em;
+text-align: left;
+}
+/** Page structure tweaks for layout editor wireframe */
+body#layout #header {
+width: 750px;
+}
+
+--></style>
+<style>
+   
+     span.fullpost {display:inline;}
+  
+</style>
+<script type="text/javascript">
+function getElementsByClassName(oElm, strTagName, strClassName){
+    var arrElements = (strTagName == "*" && document.all)? document.all : oElm.getElementsByTagName(strTagName);
+    var arrReturnElements = new Array();
+    strClassName = strClassName.replace(/\-/g, "\\-");
+    var oRegExp = new RegExp("(^|\\s)" + strClassName + "(\\s|$)");
+    var oElement;
+    for(var i=0; i<arrElements.length; i++){
+        oElement = arrElements[i];
+        if(oRegExp.test(oElement.className)){
+            arrReturnElements.push(oElement);
+        }
+    }
+    return (arrReturnElements)
+}
+
+function hideLineNums(className) {
+    var lineNums = getElementsByClassName(document, "span", className);
+    var oElement;
+    for(var i=0; i<lineNums.length; i++){
+        oElement = lineNums[i];
+        if ( oElement.style.display != 'none' ) {
+            oElement.style.display = 'none';
+        } else {
+            oElement.style.display = '';
+        }
+    }
+}
+</script>
+</head><body>
+<div class="navbar section" id="navbar"><div class="widget Navbar" id="Navbar1"><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener("load",
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<iframe src="Getting%20Started%20with%20Boost_files/navbar.htm" marginwidth="0" marginheight="0" id="navbar-iframe" title="Blogger Navigation and Search" frameborder="0" height="30px" width="100%" scrolling="no"></iframe>
+<div></div></div></div>
+<div id="outer-wrapper"><div id="wrap2">
+<!-- skip links for text browsers -->
+<span id="skiplinks" style="display: none;">
+<a href="#main">skip to main </a> |
+      <a href="#sidebar">skip to sidebar</a>
+</span>
+<div id="header-wrapper">
+<div class="header section" id="header"><div class="widget Header" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+<a href="http://shoddykid.blogspot.com/">The C++ and Boost Code Shop</a>
+</h1>
+</div>
+<div class="descriptionwrapper">
+<p class="description"><span>
+</span></p>
+</div>
+</div>
+</div></div>
+</div>
+<div id="content-wrapper">
+<div id="crosscol-wrapper" style="text-align: center;">
+<div class="crosscol section" id="crosscol"></div>
+</div>
+<div id="main-wrapper">
+<div class="main section" id="main"><div class="widget Blog" id="Blog1">
+<div class="blog-posts hfeed">
+<!-- google_ad_section_start(name=default) -->
+<h2 class="date-header">Friday, July 04, 2008</h2>
+<div class="post hentry uncustomized-post-template">
+<a name="5632940848553059842"></a>
+<h3 class="post-title entry-title">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html">Getting Started with Boost</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+<span class="fullpost"><h2>Getting Started with Boost</h2><br><br><br><br><br><br><br><table><thead><tr><td colspan="3"><span style="font-size: 85%;"><b>Table of Contents</b></span></td></tr></thead><tfoot><tr><td colspan="3"></td></tr></tfoot><tbody align="left"><tr><td><span style="font-size: 85%;">1.</span></td><td colspan="2"><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#intro">Introduction</a></span></td></tr><tr><td><span style="font-size: 85%;">2.</span></td><td colspan="2"><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#purp">Purpose &amp; Motivation</a></span></td></tr><tr><td><span style="font-size: 85%;">3.</span></td><td colspan="2"><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#bboost">Building Boost</a></span></td></tr><tr><td><span style="font-size: 85%;"></span></td><td><span style="font-size: 85%;">3.1</span></td><td><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#bboostproc">The Boost Build Process</a></span></td></tr><tr><td><span style="font-size: 85%;"></span></td><td><span style="font-size: 85%;">3.2</span></td><td><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#bboostwin">Building Boost on Windows</a></span></td></tr><tr><td><span style="font-size: 85%;"></span></td><td><span style="font-size: 85%;">3.3</span></td><td><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#bboostlin">Building Boost on Linux</a></span></td></tr><tr><td><span style="font-size: 85%;"></span></td><td><span style="font-size: 85%;">3.4</span></td><td><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#bboostbin">Boost Binaries</a></span></td></tr><tr><td><span style="font-size: 85%;">4.</span></td><td colspan="2"><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#boostprog">Using the Boost Libraries</a></span></td></tr><tr><td><span style="font-size: 85%;"></span></td><td><span style="font-size: 85%;">4.1</span></td><td><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#winlink">Linking to Boost libraries on Windows </a></span></td></tr><tr><td><span style="font-size: 85%;"></span></td><td><span style="font-size: 85%;">4.2</span></td><td><span style="font-size: 85%;"><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html#nixlink">Linking to Boost libraries on Unix-like system </a></span></td></tr></tbody></table><br><br><h3>1. <a href="javascript:void(0);" name="intro">Introduction</a></h3><br>The Boost C++ Libraries ( <a href="http://boost.org/">http://boost.org/</a>
+) are an open source peer reviewed collection of C++ libraries, aimed
+at extending and complementing the functionality of the Standard C++
+Libraries in several different directions. These libraries are
+available under the Boost Software License, which is one of the most
+liberal of open source licenses, and unlike GPL, allows free use of the
+Boost libraries in both Open Source and proprietary (closed-source)
+projects.<br><br>Boost represents a collection of libraries some of
+which are as simple as conversion utilities and some of which are as
+complex as recursive decent parsers of context-free grammars. A
+significant number of these libraries are the sort you would like to
+use everyday - file system manipulation, graph algorithms, heap memory
+life cycle management, variant data types, regular expressions,
+conversion utilities, zip and bzip2 file streams, signals and slots
+mechanisms, etc. Some have compelling features use of which gives your
+code a level of readability and edge that only C++ can - template
+driven lambda functions and expression construction. Finally, a good
+number of these libraries will make their appearance in the upcoming
+C++ standard (codenamed C++0x). In short, if you are a serious C++
+programmer, you cannot afford to stay ignorant about Boost.<br><br><h3>2. <a href="javascript:void(0);" name="purp">Purpose &amp; Motivation</a></h3><br></span><br><span style="font-size: 100%;">Purpose
+of this short tutorial introduction to Boost is to show the C++
+programmer new to Boost, how to download, build and install the Boost
+libraries on Windows or Linux developer machines, and then get started
+with writing programs using these libraries.</span><br><br><p>For
+building I have chosen Windows and Linux as two representative
+platforms. I would only be showing how to use the "first-choice"
+compilers on these platforms - Microsoft C++ (14.0 or above) and GNU
+g++ (4.1 or above), both of which happen to be free. The reader should,
+in principle, be able to extrapolate the details to other platforms and
+compilers.</p><p>For the introduction to using the Boost Libraries, the
+intention is to cover basic use cases of as many Boost libraries as
+possible - limiting the size of the individual illustrative programs,
+but giving enough insight into their non-trivial use. The emphasis will
+be on those libraries that have made it to C++ standard already. But in
+due course, we will try to cover all the Boost libraries.<br><br>Finally,
+the sections on Building Boost and Using the Boost Libraries are fairly
+independent. Therefore the interested reader can read either section
+ahead of the other.</p><br><span class="fullpost"><h3>3. <a href="javascript:void(0);" name="bboost">Building Boost</a></h3><p>Boost
+distributions are available for download in both source and binary
+distribution formats. However, just as the best Linux kernel for your
+box is the one you can build by tweaking the default configuration,
+similarly the best Boost distribution for your box is the one you build
+on your box with your preferred compiler. Building Boost involves a
+fair number of configuration steps, and there are several optional
+features that you can<span class="optdata"><a href="javascript:hideLineNums('optdata')"> turn off</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')"> turn on</a></span>
+in the description below. The optional features are normally described
+in gray boxes so that they stand-out. This section is a step-by-step,
+hands-on guide to building the Boost library from source.</p><h4>3.1 <a href="javascript:void(0);" name="bboostproc">The Boost build process</a></h4><p><b>3.1.1 Basic Ingredients </b></p><p>The
+boost sources are available in the form of a compressed tar ball or a
+zip archive. Download the Boost sources, [ Latest version 1.35.0 ],
+from <a href="http://boost.org/">http://boost.org/</a> (or <a href="http://sourceforge.net/projects/boost">http://sourceforge.net/projects/boost</a>).
+The size of the download is around 22 MB. Download one of the zip,
+tar.gz/tgz, or tar.bz2 source archives. On Windows, if you are
+downloading a tar.gz or tar.bz2 archive, this could get downloaded as
+boost_&lt;version&gt;.tar.tar and you will need to rename it to
+boost_&lt;version&gt;.tar.gz or boost_&lt;version&gt;.tar.bz2 as the
+case may be.<br><br>The Boost source does not require any external configuration before building on a specific platform - so there are no <b>make config</b> or <b>configure</b> scripts to run. In fact, there is no <b>make</b>.
+Instead, Boost uses a build system that uses Boost-Jam or bjam, a
+spin-off from the Perforce Jam build utility. Bjam reads jam files just
+as make reads Makefiles. However, we are not about to go into the
+details of the syntax of the Jam files.</p><p><b>3.1.2 Build configuration</b></p><p>The Boost libraries can be built as a vast number of variants, all in one go or separately. We can have <i><b>debug</b></i> and <i><b>release</b></i> variants of the same library. For each such library, we can have <i><b>static</b></i> or <i><b>shared</b></i> libraries. For each such combination we can have <i><b>threading-challenged</b></i> or <i><b>thread-aware</b></i>
+libraries. And finally, for each such combination, we can have
+libraries which link statically or dynamically with the C++ Standard
+and Runtime Libraries of the platform, libraries which link with the
+debug versions of the C++ Standard and Runtime Libraries of the
+platform, libraries which have no optimization and inlining (even
+release libraries), etc. That's a mind-boggling array of combinations.
+We will stick to a simple set of rules:</p><ul><li>Build only thread-aware libraries - not threading-challenged ones. </li><li>Build only shared libraries - not static ones. </li><li>Build both debug and release versions of each library.</li></ul><p>The build system defaults automatically take care of certain things:</p><ul><li>The libraries always link dynamically if the C++ Standard and Runtime libraries are available as shared libraries or DLLs. </li><li>The
+libraries always link with the debug versions of the C++ Standard and
+Runtime libraries for debug builds and release versions of the C++
+Standard and Runtime libraries for release builds. </li><li>Optimization, inlining, etc is turned off for debug builds and done for release builds. </li></ul><p>In
+addition, some features of some of the Boost Libraries, and the
+Boost.Python library itself are not built into the libraries by default
+but require additional third party libraries. We do not attempt to
+build the Boost.Python and Boost.MPI libraries in this tutorial, but we
+do attempt to build all the remaining third-party libraries and use
+them for the build. <b>All sections which deal with these libraries
+have a gray background to indicate that these are optional steps and
+can be skipped for a basic functional build.<br></b></p><br><p><b>3.1.3 Optional enhancements</b> </p><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"><p>The
+following third-party, free libraries can be downloaded optionally, in
+order to support certain features of the Boost libraries which are by
+default not built. They are platform-agnostic downloads - so a single
+downloaded archive can be used on both Windows and Linux.<b> If you don't need a particular feature from among these, you need not download the library required for it.</b><br></p><ul><li>zlib - [latest version 1.2.3] from <a href="http://www.zlib.net/">http://www.zlib.net/</a>.
+Small download of around 500 K. Download one of the zip, tar.gz/tgz, or
+tar.bz2 source archives. On Windows, if you are downloading a tar.gz or
+tar.bz2 archive, this could get dowloaded as
+zlib-&lt;version&gt;.tar.tar and you will have to rename it to
+zlib-&lt;version&gt;.tar.bz2. <b>Needed to support reading from / writing to zipped streams in Boost.IOStreams.<br></b><br></li><li>Download libbz2 [latest version 1.0.5] - from <a href="http://www.bzip.org/downloads.html">http://www.bzip.org/downloads.html</a>.
+Small download of around 850 K. Download one of the zip, tar.gz/tgz, or
+tar.bz2 source archives. On Windows, if you are downloading a tar.gz or
+tar.bz2 archive, this could get dowloaded as
+bzip2-&lt;version&gt;.tar.tar and you will have to rename it to
+bzip2-&lt;version&gt;.tar.gz. <b>Needed to support reading from / writing to bzip2-compressed streams in Boost.IOStreams.<br></b><br></li><li>Download ICU C++ library [latest stable version 4.0] - from <a href="http://www.icu-project.org/download/">http://www.icu-project.org/download/</a> or <a href="ftp://ftp.software.ibm.com/software/globalization/icu">ftp://ftp.software.ibm.com/software/globalization/icu</a> (supports anonymous logins). Download the zipped version for Windows. It is a moderately large download - about 12 MB. <b>Needed to support Unicode regular expressions in Boost.Regex.</b> </li></ul></div></span><br><h4>3.2 <a href="javascript:void(0);" name="bboostwin">Building Boost on Windows</a></h4><p>In order to build Boost 1.35 on Microsoft Windows, you need to have the following software installed.</p><ul><li>Microsoft
+C++ compiler version 12.00.8168 or above. Version 12 was shipped with
+Visual C++ 6. The recommended version is Microsoft C++ compiler version
+15.00. Version 15 ships with Visual C++ 9.0 (2008) and is available for
+free download in the form of the Microsoft Visual Studio 2008 Xpress
+Edition and Microsoft Visual C++ 2008 Xpress Edition. </li><li>Boost
+Jam v3.1.12 or above. This is a build utility like make based on
+Perforce Jam. Download the ntx86 version. It's a small download of
+about 120 KB. Latest version 3.1.16, can be downloaded from [ <a href="http://sourceforge.net/projects/boost">http://sourceforge.net/projects/boost</a> ]. </li></ul><br><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"><p>The
+following third-party, free libraries can be downloaded optionally, in
+order to support certain features of the Boost libraries that are not
+built by default. <b>If you don't need a particular feature from among these, you need not download the library required for it.</b><br></p><ul><li>Download Expat for Windows [latest version 2.0.1] - from <a href="http://sourceforge.net/projects/expat">http://sourceforge.net/projects/expat</a>. Small download of around 535 K. This is a binary which needs to be installed on your build box. <b>Needed to support GraphML vocabulary used by Boost Graph Library.</b> </li></ul></div></span><br><p><b>3.2.1 Build Procedure</b><br></p><ul><li>Open a cmd shell. </li><li>Create
+a suitable directory for holding all the sources of individual
+libraries (Boost and others, if any). Make sure you don't have any
+spaces in its path name. This directory will henceforth be referred to
+as BOOST_BUILD_ROOT. On my system, I have chosen C:\src as the
+BOOST_BUILD_ROOT.<br><br>Set the following environment variable:<br><span style="font-family: Courier New;">C:\src&gt; set BOOST_BUILD_ROOT=C:\src<br></span></li><li>Change
+your current directory to BOOST_BUILD_ROOT, copy the source archive for
+Boost into BOOST_BUILD_ROOT and extract it in the current directory,
+doing the equivalent of "Extract here ...". If everything is
+successful, you should have the following directory:<br><br>%BOOST_BUILD_ROOT%\boost_&lt;version&gt;<br></li><li><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">Copy
+each of the source archives for zlib, libbz2 and icu into
+BOOST_BUILD_ROOT and extract each of them in the current directory,
+doing the equivalent of "Extract here ..." on each of the archives. If
+everything is successful, you should have the following directories:<br><br>%BOOST_BUILD_ROOT%\bzip2-&lt;version&gt;<br>%BOOST_BUILD_ROOT%\zlib-&lt;version&gt;<br>%BOOST_BUILD_ROOT%\icu</div></span></li></ul><ul><li>Copy
+the boost-jam Windows binary archive into BOOST_BUILD_ROOT and extract
+it in the current directory, doing the equivalent of "Extract here
+...". If everything is successful, you should have the following
+directory.<br><br>%BOOST_BUILD_ROOT%\boost-jam-&lt;version&gt;-1-ntx86<br><br>For
+simplicity, rename %BOOST_BUILD_ROOT%\boost-jam-&lt;version&gt;-1-ntx86
+to %BOOST_BUILD_ROOT%\bjam. Add this directory to your PATH environment
+variable.<br><br><span style="font-family: Courier New;">C:\src&gt; set PATH=%PATH%:%BOOST_BUILD_ROOT%\bjam</span><br></li><li><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">Double
+click expat-win32bin-&lt;version&gt;.exe to install Expat. During
+installation, modify the default installation path so that the files
+are installed at:<br>%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;<br><br>Make sure there are no spaces in the directory name as in "Expat 2.0.1", and rename it to "Expat-2.0.1".<br><ul><li>After
+installation, the %BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Bin
+directory will contain the pre-built binaries. However, a better idea
+will be to build everything with the compiler of your choice - the one
+you will use for building Boost. For this, open the expat.dsw VC6
+workspace under %BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source.
+Depending on which compiler you intend to use to build Boost, could
+either open it in VC6 or in a more recent version of Visual C++.<br><br></li><ul><li>On
+VC6: If you open it in VC6, then choose each of the listed projects -
+elements, expat, expat_static, expatw, expatw_static, outline and
+xmlfw, in turn. Build the chosen project once in Debug and once in
+Release configuration. To choose these projects and corresponding
+configurations, from the menu choose Build --&gt; Set Active
+Configuration and choose the appropriate Debug or Release
+configuration. It builds these versions in the directories
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32\bin\Debug or
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32\bin\Release.<br><br>Close
+the Visual C++ 6 IDE and rename the directory
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32 to
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32-vc6.<br><br></li><li>If
+you open it in a version new than VC6, then you will be prompted to
+transform the workspace to a Visual C++ Solution - go ahead and
+complete this migration. Then choose the "expat" solution and build it.
+By default, it builds the debug version in the directory
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32\bin\Debug.<br><br>To
+build the release version, in Visual C++ IDE, from the menu select
+Build--&gt;Configuration Manager, and then choose the Release
+configuration from the drop down on the top-left, then close. Rebuild
+the solution. This time the release version of the binaries are created
+under the directory
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32\bin\Release.<br><br>Close
+the Visual C++ IDE and rename the directory
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32 to
+%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32-vc&lt;X&gt; where
+&lt;X&gt; is the version number of Visual Studio - 7 (for 2002), 7.1
+(for 2003), 8 (for 2005) and 9 (for 2008).<br></li></ul></ul></div></span><br><br></li><li><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">Build
+the ICU library inside Visual Studio using the solution file
+allinone.sln present under %BOOST_BUILD_ROOT%\icu\allinone. Make sure
+that you build in both Debug and Release configurations.<br>The built
+binaries will be available under %BOOST_BUILD_ROOT%\icu\bin, and the
+static and import libraries will be available under
+%BOOST_BUILD_ROOT%\icu\lib. If you are using ICU version 3 or later, in
+order to build with Boost, you will need to rename a couple of
+libraries - icuin.lib to icui18n.lib, icuind.lib to icui18nd.lib,
+icudtd.lib to icudatad.lib, icuind.pdb to icui18nd.pdb and icudtd.pdb
+to icudatad.pdb.</div></span></li></ul><ul><li>Determine your toolset
+name, based on the compiler you're using. For Visual Studio, it is
+msvc. For GNU g++, it is, you guessed it - gcc.<br><br>If you have only
+one version of Microsoft Visual Studio installed, you could just
+specify msvc for the toolset. If you have multiple versions, then
+depending on which version you want to use for the build, you should
+try one of the following as the toolset name:</li><ul><li>msvc-9.0 (for Visual Studio .NET 2008) </li><li>msvc-8.0 (for Visual Studio .NET 2005) </li><li>msvc-7.1 (for Visual Studio .NET 2003) </li><li>msvc-7.0 (for Visual Studio .NET 2002) </li><li>msvc-6.0 (for Visual Studio 6)<br></li></ul><li>Define the following environment variables:<br><ul><br><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"><li>If you have downloaded and extracted the libbz2 source code, then:<br>set BZIP2_SOURCE=%BOOST_BUILD_ROOT%\bzip2-&lt;version&gt;<br><br></li><li>If you have downloaded and extracted the zlib source code, then:<br>set ZLIB_SOURCE=%BOOST_BUILD_ROOT%\zlib-&lt;version&gt;<br><br></li><li>If you have downloaded and built the eXpat source code, then:<br>set EXPAT_INCLUDE=%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\lib<br>set EXPAT_LIBPATH=%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32-vc&lt;VCversion&gt;\&lt;variant&gt;<br><br>Here
+&lt;VCversion&gt; could be 6, 7, 7.1, 8, 9 or any further version
+depending on the version of VC++ you are using to build Boost.<br>&lt;variant&gt; is Debug or Release depending on the kind of build you are doing for Boost.<br><br>Finally, make two small changes to your the Jamfile.v2 script found under %BOOST_BUILD_ROOT%\boost_<version>\libs\graph\build. You could backup your Jamfile.v2 file before making the following changes to it.<br><br>1. Look for a line like: <i>optional_reqs += ...</i>. In the block of directives following it, look for a directive like <i>&lt;find-static-library&gt;expat</i>. Change it to:<br><br>&lt;find-static-library&gt;libexpatwMT<br><br>2. Look for the line <i>lib boost_graph</i>. In the block of directives following this - look for a directive like <i>&lt;define&gt;BOOST_GRAPH_NO_LIB=1</i>. Following this line, add an additional line like this:<br><br>&lt;define&gt;XML_STATIC<br><br></version></li><li>set HAVE_ICU=1<br></li><li>set ICU_PATH=%BOOST_BUILD_ROOT%\icu<br></li></div></span><li>set BOOST_BIN_ROOT=%BOOST_BUILD_ROOT%\boost-binary<br></li></ul><br></li><li>Set the MS VC++ environment variables.<br><ul><li>For
+VC++ 6.0, run the batch file vcvars32.bat under
+&lt;MSVC_Install_Dir&gt;\Microsoft Visual Studio\VC98\Bin.
+&lt;MSVC_Install_Dir&gt; is typically C:\Program Files.</li><br><li>For
+VC++ 7.0 and 7.1, run the batch file vcvarsall.bat under
+&lt;MSVCS_Install_Dir&gt;\Microsoft Visual Studio .NET 2002\VC or
+&lt;MSVCS_Install_Dir&gt;\Microsoft Visual Studio .NET 2003\VC.</li><br><li>For
+VC++ 8.0 onwards, run the batch file vcvarsall.bat under
+&lt;MSVCS_Install_Dir&gt;\Microsoft Visual Studio &lt;version&gt;\VC
+where &lt;version&gt; is 8 or 9.0.<br></li></ul></li><li>Change current directory to: %BOOST_BUILD_ROOT%\boost_1_35_0. Make sure that the environment variables you set earlier ((<span class="optdata">BZIP2_SOURCE, ZLIB_SOURCE, EXPAT_LIBPATH, EXPAT_INCLUDE, HAVE_ICU, ICU_PATH and </span>BOOST_BIN_ROOT) are available in the cmd shell from where you fire the above command.<br><br>Make sure that the EXPAT_LIBPATH points to the release version of the Expat library.<br><br>set EXPAT_LIBPATH=%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32-vc&lt;VCversion&gt;\Release<br><br>Fix
+your installation directory. Say C:\Program Files\Boost. To be on the
+safe side, figure out the DOS name of any directory which contains
+spaces, like Program Files. On all my systems it is PROGRA~1 and it may
+or may not be so on your systems. Set the following environment
+variable with something like:<br><br>set BOOST_INSTALL_DIR=C:\PROGRA~1\Boost<br><br>Finally, fire the following command to build the "release" variant:<br><span style="font-family: courier new,monospace;">bjam
+threading=multi variant=release link=shared toolset=msvc-9.0
+--build-dir="%BOOST_BUILD_ROOT%\boost-binary"
+--prefix="%BOOST_INSTALL_DIR%" --without-python --without-mpi install<br><br></span>Reset any environment variables, like EXPAT_LIBPATH appropriately to the debug variant:<br>set EXPAT_LIBPATH=%BOOST_BUILD_ROOT%\Expat-&lt;version&gt;\Source\win32-vc&lt;VCversion&gt;\Debug<br><br>Fire the following command to build the "debug" variant:<br><span style="font-family: courier new,monospace;">bjam
+threading=multi variant=debug link=shared toolset=msvc-9.0
+--build-dir="%BOOST_BUILD_ROOT%\boost-binary"
+--prefix="%BOOST_INSTALL_DIR%" --without-python --without-mpi install<br><br></span>After
+the build, the build area can be cleaned of the intermediate files for
+each class of variants by replacing the "install" target with "clean"
+in the above commands.<br></li></ul><br><span style="">We did not show
+the way to build static Boost libraries, and Boost libraries which link
+statically with the runtime. To create static libraries, simply replace
+<span style="font-family: courier new,monospace;">link=shared</span> with <span style="font-family: courier new,monospace;">link=static</span> in the above commands.<br><br>To build Boost libraries that link statically with the VC runtime, you have to just introduce an additional directive: <span style="font-family: courier new,monospace;">runtime-link=static</span>.
+Note that these libraries themselves can be either static or shared -
+but they always link statically with the VC Runtime libraries. Because
+Regex with ICU support necessarily links with ICU's runtime DLLs, the
+Regex library that links statically to the VC runtime cannot also link
+with the ICU DLLs. So ICU support is not available for Boost Regex
+which is statically linked to the VC Runtime. To account for this, you
+have to set HAVE_ICU and ICU_PATH environment variables to blank before
+you start the build - otherwise the build fails at the outset.</span><br><h4>3.3 <a href="javascript:void(0);" name="bboostlin">Building Boost on Linux (x86)<br></a></h4><br><p>In order to build Boost 1.35 on GNU/Linux (on x86), you need to have the following software installed.</p><ul><li>GNU
+gcc (g++) compiler version 3.4.x or above. The build exercise for this
+tutorial was done with GNU gcc (g++) compiler version 4.1.2 on OpenSUSE
+10.2.<br></li><li>Boost Jam v3.1.12 or above. This is a build utility
+like make based on Perforce Jam. Download the version for linuxx86.
+It's a small download of about 65 KB. Latest version 3.1.16, can be
+downloaded from [ <a href="http://sourceforge.net/projects/boost">http://sourceforge.net/projects/boost</a> ].<br></li></ul><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"><p>The
+following third-party, free libraries can be downloaded optionally, in
+order to support certain features of the Boost libraries. <b>If you don't need a particular feature from among these, you need not download the library required for it.</b><br></p><ul><li>Download Expat source archive [latest version 2.0.1] - from <a href="http://sourceforge.net/projects/expat">http://sourceforge.net/projects/expat</a>. Small download of around 450 K. <b>Needed to support GraphML vocabulary used by Boost Graph Library.</b> </li></ul></div></span><br><p><b>3.2.1 Build Procedure</b><br></p><ul><li>Log on with a non-root account. The build should be done with a non-root account. </li><li>From
+the command prompt, create a suitable directory for holding all the
+sources of individual libraries (Boost and others, if any). Make sure
+you don't have any spaces in its path name. This directory will
+henceforth be referred to as BOOST_BUILD_ROOT. On my system, I have
+chosen ~/boost as the BOOST_BUILD_ROOT.<br><br>Set the following environment variable:<br><br><span style="font-family: Courier New;">$ BOOST_BUILD_ROOT=~/boost # or whatever directory your created<br>$ export BOOST_BUILD_ROOT<br></span></li><li>Change
+your current directory to BOOST_BUILD_ROOT, copy the source archive for
+Boost into BOOST_BUILD_ROOT and extract it in the current directory. If
+everything is successful, you should have the following directory:<br><br>$BOOST_BUILD_ROOT/boost_&lt;version&gt;<br><br>On my system, this is how the extraction commands looked:<br><span style="font-family: courier new,monospace;">$ bzip2 -cd boost_1_35_0.tar.bz2 tar xf -<br></span><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"></span></li><li><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">Copy
+each of the source archives for zlib, libbz2, icu and expat into
+$BOOST_BUILD_ROOT, change your current directory to $BOOST_BUILD_ROOT
+and extract each of them in the current directory. If everything is
+successful, you should have the following directories:<br><br>$BOOST_BUILD_ROOT/bzip2-&lt;version&gt;<br>$BOOST_BUILD_ROOT/zlib-&lt;version&gt;<br>$BOOST_BUILD_ROOT/icu<br>$BOOST_BUILD_ROOT/expat-&lt;version&gt;<br><br>On my system, this is how the extraction commands looked:<br><br><span style="font-family: courier new,monospace;">$ bzip2 -cd zlib-1.2.3.tar.bz2 tar xf -<br>$ gzip -cd bzip2-1.0.5.tar.gz tar xf -<br>$ unzip -o icu4c-4_0-src.zip -d .</span></div></li></ul><ul><li>Copy
+the boost-jam Linux binary archive into BOOST_BUILD_ROOT and extract it
+in the current directory. If everything is successful, you should have
+the following directory.<br><br>$BOOST_BUILD_ROOT/boost-jam-&lt;version&gt;-1-linuxx86<br><br>I extracted it this way:<br><span style="font-family: courier new,monospace;">$ gzip -cd boost-jam-3.1.16-1-linuxx86.tgz tar xf -</span><span style="font-family: courier new,monospace;"></span><br><br>For
+simplicity, rename $BOOST_BUILD_ROOT/boost-jam-&lt;version&gt;-linuxx86
+to $BOOST_BUILD_ROOT/bjam. Add this directory to your PATH environment
+variable.<br><br><span style="font-family: Courier New;">$ PATH=$PATH:$BOOST_BUILD_ROOT/bjam<br>$ export PATH</span><br><br></li><li><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">Building expat:<br><ul><li>Change
+your current directory to $BOOST_BUILD_ROOT/expat-&lt;version&gt;
+directory and look for a file called configure. If it does not exist,
+run the following command:<br><br><span style="font-family: courier new,monospace;">$ ./buildconf.sh<br></span><br></li><li>Run the following commands to configure the build:<br><span style="font-family: courier new,monospace;">$ ./configure --prefix=</span><span style="font-family: courier new,monospace;">$BOOST_BUILD_ROOT/expat<br><br></span>The argument <span style="font-family: courier new,monospace;">--prefix=</span><span style="font-family: courier new,monospace;">$BOOST_BUILD_ROOT/expat
+indicates that after building, the libraries, executables, include
+files, man pages, etc. should be installed under the directory </span><span style="font-family: courier new,monospace;"></span><span style="font-family: courier new,monospace;">$BOOST_BUILD_ROOT/expat.
+If you have write access to other standard directories for third-party
+installation like /opt, or you know the root password, then you could
+also do the following:<br><br></span><span style="font-family: courier new,monospace;">$ ./configure --prefix=/opt</span><span style="font-family: courier new,monospace;">/expat<br></span><br></li><li>If the above step (configure) is successful, run the following commands to build and install the eXpat library.<br><br><span style="font-family: courier new,monospace;">$ make</span><br style="font-family: courier new,monospace;"><span style="font-family: courier new,monospace;">$ make install</span><br><br>If
+you overrode the prefix option during the configure step with a path
+which requires root access to write to, then run the following command
+to do the install itself:<br><br><span style="font-family: courier new,monospace;">$ su -c "make install"</span><br><br>This requires you to know the root password.<br><br>This will build expat and install it to the designated directory (<span style="font-family: courier new,monospace;">$BOOST_BUILD_ROOT/expat</span> or /opt/expat). </li></ul></div></span><br></li><li><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">Building ICU:<br><ul><li>Change your current directory to $BOOST_BUILD_ROOT/icu/source.<br></li><li>Add execute permissions to a couple of scripts:<br><span style="font-family: courier new,monospace;">$ chmod +x install-sh runConfigureICU configure config.sub mkinstalldir \<br>config.guess config.status<br></span><span style="font-family: courier new,monospace;">$ dox2unix install-sh runConfigureICU configure </span><span style="font-family: courier new,monospace;">config.sub</span><span style="font-family: courier new,monospace;"> mkinstalldir \<br>config.guess config.status</span><br><br></li><li>Run the following command:<br><br><span style="font-family: courier new,monospace;">$ ./runConfigureICU Linux --prefix=/opt/icu # if you have the root password, or write access to /opt</span><br>or<br><span style="font-family: courier new,monospace;">$ ./runConfigureICU Linux --prefix=$BOOST_BUILD_ROOT/icu # if you neither have the root password, nor write access to /opt</span><br><br></li><li>Upon successful conclusion of runConfigureICU, run the following command:<br><span style="font-family: courier new,monospace;">$ make</span><br style="font-family: courier new,monospace;"><span style="font-family: courier new,monospace;">$ make install</span><br>or<br><span style="font-family: courier new,monospace;">$ su -c "make install" # in case the installation target directory, set as prefix above, requires root access to write to</span></li></ul></div></span></li></ul><ul><li>Determine your toolset name, based on the compiler you're using. For GNU g++, it is gcc.<br></li><li>Define the following environment variables:<br><ul><br><span class="optdata"><a href="javascript:hideLineNums('optdata')">Hide</a></span><span class="optdata" style="display: none;"><a href="javascript:hideLineNums('optdata')">Optional steps</a></span><br><span class="optdata"><div style="border: thin solid black; padding: 1em; background: silver none repeat scroll 0% 50%; display: block; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"><li>If you have downloaded and extracted the libbz2 source code, then:<br>BZIP2_SOURCE=$BOOST_BUILD_ROOT/bzip2-&lt;version&gt;<br>export BZIP2_SOURCE<br><br></li><li>If you have downloaded and extracted the zlib source code, then:<br>ZLIB_SOURCE=$BOOST_BUILD_ROOT/zlib-&lt;version&gt;<br>ZLIB_SOURCE<br><br></li><li>If you have downloaded and built the eXpat source code, then:<br>EXPAT_INCLUDE=/opt/expat/include<br>EXPAT_LIBPATH=/opt/expat/lib<br>or<br>EXPAT_INCLUDE=$BOOST_BUILD_ROOT/expat/include<br>EXPAT_LIBPATH=$BOOST_BUILD_ROOT/expat/lib<br>export EXPAT_INCLUDE EXPAT_LIBPATH<br><br></li><li>If you have downloaded and built the ICU source code, then:<br>HAVE_ICU=1<br>ICU_PATH=/opt/icu<br>or<br>ICU_PATH=$BOOST_BUILD_ROOT/icu<br>export HAVE_ICU ICU_PATH<br><br></li></div></span><li>BOOST_BIN_ROOT=$BOOST_BUILD_ROOT/boost-binary<br></li></ul><br></li><li>Change current directory to: $BOOST_BUILD_ROOT/boost_1_35_0.<br>Make sure that the environment variables you set earlier (<span class="optdata">BZIP2_SOURCE, ZLIB_SOURCE, EXPAT_LIBPATH, EXPAT_INCLUDE, HAVE_ICU, ICU_PATH and </span>BOOST_BIN_ROOT) are available in the shell you are in.<br><br>Identify
+a location where you'd like to install the Boost libraries on your
+system. On my system, I chose /opt/boost, and because I have root
+access to this box, I could do the following, which is necessary:<br><br><pre><br>$ su -c "mkdir /opt/boost"<br>$ su -c "chown arindam:devuser /opt/boost"<br></pre><br><br>Finally, fire the following command to build the "release" variant:<br><span style="font-family: courier new,monospace;">bjam
+threading=multi variant=release link=shared toolset=gcc
+--build-dir=$BOOST_BIN_ROOT --prefix=/opt/boost --without-python
+--without-mpi install<br><br></span>Fire the following command to build the "debug" variant:<br><span style="font-family: courier new,monospace;">bjam
+threading=multi variant=debug link=shared toolset=gcc
+--build-dir=$BOOST_BIN_ROOT --prefix=/opt/boost --without-python
+--without-mpi install</span><br><br>If you have python-devel and
+python-tk installed, then you need not add the --without-python
+directive. Th build process would then generate Boost.Python libraries
+as well.<br><br>After the build, the object files for each kind of
+variant can be cleaned by replacing the "stage" target with "clean" in
+the above commands.<br><br></li></ul><br><h4>3.4 <a href="javascript:void(0);" name="bboostbin">Boost Binaries: What's in a name</a></h4><p>If
+your build was successful, you should now have a set of DLLs and import
+libraries built from the source code. If you used the <i>install</i>
+target as in the examples above, then the libraries (DLLs, shared
+objects, import libraries, etc) should all be copied to some convenient
+location (like /opt/boost/lib or D:\Boost\lib). But the Boost libraries
+are created in an elaborate directory structure under
+$BOOST_BIN_ROOT/boost/bin.v2/libs, that needs some scrutiny.<br><br>A
+large number of the Boost libraries are source-only - in other words
+all the code in the library is in header files which get included in
+your own source code directly or through other headers. Needless to
+say, some of these are typically entirely template code. But a smaller
+yet significant number of Boost libraries are actually built as shared
+or static libraries, and need to be linked to your code if you want to
+use them. For each such library there is a directory created under
+$BOOST_BIN_ROOT/boost/bin.v2/libs, which goes by the name of the
+library. You will at least get the following directories:</p><ul><li>date_time </li><li>filesystem </li><li>graph </li><li>iostreams </li><li>program_options </li><li>regex </li><li>serialization </li><li>signals </li><li>system </li><li>test </li><li>thread </li><li>wave </li></ul><p>Since
+we did not choose to build Boost.Python and Boost.MPI, directories for
+these libraries will not be present. The directory structure under each
+of these directories looks a bit like this:<br></p><p><span style="font-family: courier new,monospace;"><pre>&lt;library&gt;/<br>---- build/<br>      ---- &lt;toolset&gt;/<br>            -------- &lt;variant&gt;/<br>                      -------- &lt;threading-model&gt;</pre></span><br>- Assuming that we have used the Microsoft Visual Studio 9, the toolset will be msvc-9.0.<br>- We have built both debug and release variants.<br>-
+We have only built thread-aware libraries. So for the date_time
+library, based on the above structure, you will get the following
+directories.<br><span style="font-family: courier new,monospace;"><br><pre>date_time/<br>---- build/<br>      ---- msvc-9.0/<br>            ------- debug/<br>                     ------ threading-multi/<br>            ------- release/<br>                     ------ threading-multi/</pre></span><br></p><p>Since
+we specified "link" as "shared", only DLLs (Windows) or .so.* (Linux)
+will be build. Of course on Windows, along with each DLL, and Import
+Library (.lib) for linking is also creared. The dlls, libs and so files
+are created under the &lt;threading-model&gt; directory which in the
+above case is threading-multi.</p><p>Each .dll, .lib or .so file that is created has a naming convention as well, that needs to be understood:</p><br><ul><li>On
+Unix, each library name starts with "lib". On Windows only static
+libraries have a name starting with lib, while the import libraries for
+DLLs and DLLs themselves miss the lib prefix. Barring this, and the
+file extension, the rest of the naming convention is same on both
+Windows and Unix.<br><br>&lt;library_name&gt;-&lt;toolset-tag&gt;-&lt;threading-tag&gt;-&lt;abi-tag&gt;-&lt;version&gt;<br><ul><br><li>On Windows, this takes the form:<br><br>&lt;library_name&gt;-&lt;toolset-tag&gt;[-&lt;threading-tag&gt;][-&lt;abi-tag&gt;]-&lt;version&gt;.dll<br>or &lt;library_name&gt;-&lt;toolset-tag&gt;[-&lt;threading-tag&gt;][-&lt;abi-tag&gt;]-&lt;version&gt;.lib<br><br>The parts within brackets [...] represent optional segments that need not be present in all cases.</li><br><li>On Unix, this takes the form:<br><br>lib&lt;library_name&gt;-&lt;toolset-tag&gt;-&lt;threading-tag&gt;-&lt;abi-tag&gt;-&lt;version&gt;.so[.&lt;version&gt;]<br></li></ul><br></li><br><li>&lt;library_name&gt; - All library names start with boost_. Thus we have boost_date_time, boost_filesystem, etc.<br></li><li>&lt;toolset-tag&gt;
+need not be same as &lt;toolset-name&gt; - for the toolsets we have
+considered, it would be gcc (not g++) on Linux, or vc60, vc71, vc80,
+vc90, etc. on Windows. </li><li>&lt;threading-tag&gt; - For
+multi-threaded builds, it will be mt. For single threaded builds, this
+part does not appear in the name. </li><li>&lt;abi-tag&gt; - This is a string of one or more characters. For us, the characters of interest are s, g, d.<br>s - indicates that the library is statically linked to the C++ Standard Library and Runtime Library.<br>g
+- indicates that the debug versions of the standard and runtime support
+libraries are linked against. On a typical Windows installation you
+will get a debug version of the runtime libraries to link against, but
+this need not be the case on Unix boxes.<br>d - indicates all debug
+symbols are available in the library, no inlining and optimization has
+been done while building the code. </li></ul><br><p>So the Debug version of the Boost.Regex library on Windows should be called: <b>boost_regex-vc90-mt-gd-1_35.dll</b> and it should be located under <b>%BOOST_BIN_ROOT%\boost\bin.v2\libs\regex\build\msvc-9.0\debug\threading-multi</b>.<br>The corresponding import library should be called <b>boost_regex-vc90-mt-gd-1_35.lib</b>.<br><br>On Linux, the Boost.Regex shared library should be called <b>libboost_regex-gcc-mt-d-1_35.so.1.35.0</b> and should be located under <b>$BOOST_BIN_ROOT/boost/bin.v2/libs/regex/build/gcc/debug/threading-multi</b>.<br><br>On Windows, the Release version of the Boost.Date_Time library should be called <b>boost_date_time-vc90-mt-1_35.dll </b>and it should be located under <b>%BOOST_BIN_ROOT%\boost\bin.v2\libs\date_time\build\msvc-9.0\release\threading-multi</b>. The corresponding import library should be called <b>boost_date_time-vc90-mt-1_35.lib</b>.<br><br>On Linux, the Boost.Date_Time shared library should be called <b>libboost_date_time-gcc-mt-1_35.so.1.35.0</b> and should be located under <b>$BOOST_BIN_ROOT/boost/bin.v2/libs/date_time/build/gcc/release/threading-multi</b>.</p><br><h3>4. <a href="javascript:void(0);" name="boostprog">Using the Boost Libraries</a></h3><wbr><br>This
+is a brief section which discusses the way you should set your
+development environment up to use the Boost headers and link to the
+libraries effectively. There are several issues that have to be handled
+- and primarily the fact that there are so many variants of these
+libraries often causes some confusion. Moreover, there are different
+issues on Windows and non-Windows systems, so we have separate sections
+below, addressing these issues.<br><br><h4>4.1. <a href="javascript:void(0);" name="winlink">Linking to Boost libraries on Windows</a></h4><br>On Windows, <i>auto-linking</i>
+is supported by most compilers, and by default Boost config headers
+arrange for Boost libraries to be linked automatically to your code.
+This is very convenient and you should not override it and try to do
+manual linking (which is possible but inordinately tedious). However,
+you still have to understand how your linker options affect which
+libraries actually get linked.<br><br>On all supported versions of Visual Studio (which is 7.0 onwards), we use <i>one</i> of the following switches to indicate the kind of linkage we want:<br><ul><br><li>/MD - Link dynamically with the multi-threaded C Runtime.</li><br><li>/MDd - Link dynamically with the debug version of the multi-threaded C Runtime.</li><br><li>/MT - Link statically with multi-threaded C Runtime.</li><br><li>/MTd - Link statically with the debug version of the multi-threaded C Runtime.</li><br></ul><br>Depending
+on which option from the above is chosen during compilation - a
+different version of a particular Boost library will be chosen for
+linking automatically. Let us take the example of Boost.Regex. If you
+check your installation directory, you will see the following DLLs/libs:<br><br>boost_regex-vc90-mt-1_35.dll<br>boost_regex-vc90-mt-1_35.lib<br>boost_regex-vc90-mt-gd-1_35.dll<br>boost_regex-vc90-mt-gd-1_35.lib<br><br>If you actually chose to build static variants of the Boost libraries (unlike what we did), you'd also see the following:<br><br>libboost_regex-vc90-mt-1_35.lib<br>libboost_regex-vc90-mt-gd-1_35.lib<br><br>Note
+that while the above are static libraries, they still link to the DLL
+versions of the MSVC Runtime libraries. Had they linked to the static
+versions, these would have been named:<br><br>libboost_regex-vc90-mt-s-1_35.lib<br>libboost_regex-vc90-mt-sgd-1_35.lib<br><br>These are static variants with static runtime-linking - yet another variant. We did not build these either.<br><br><h5>4.1.2. Static linking</h5><br>Now
+by default, all Boost libraries will link statically with your code. If
+you have built static libraries, that's fine. So by default, you'd end
+up linking to <b>libboost_regex-vc90-mt-gd-1_35.lib</b> in <i>Debug</i> builds and <b>libboost_regex-vc90-mt-1_35.lib</b> in <i>Release</i> builds.<br><br><h5>4.1.2. Dynamic linking</h5><br>But
+say, like we've done, you have chosen not to build any static linking
+variants of Boost. What do you do then? Simple - use a preprocessor
+define to indicate that you want to link dynamically to a particular
+library. In this case, you would define the symbol <b>BOOST_REGEX_DYN_LINK</b> using the construct:<br><br>/DBOOST_REGEX_DYN_LINK<br><br>on the command-line. If you want to use Dynamic linking exclusively, simple define <b>BOOST_ALL_DYN_LINK</b>
+instead. Beyond that, if you are linking to the Debug version of the VC
+Runtime, through the use of /MDd, you would link to
+boost_regex-vc90-mt-gd-1_35.dll via the Import Library
+boost_regex-vc90-mt-gd-1_35.lib. If you link to the Release / Retail
+vrsion of the VC Runtime, through the use of /MD, you would link to
+boost_regex-vc90-mt-1_35.dll via the Import Library
+boost_regex-vc90-mt-1_35.lib.<br><br>There is a notable exception to
+this rule - the Boost.Thread library. To link to the boost_thread DLL,
+define the preprocessor symbol <b>BOOST_THREAD_USE_DLL</b> on the command-line.<br><br>/DBOOST_THREAD_USE_DLL<br><br>To statically link, define the preprocessor symbol <b>BOOST_THREAD_USE_LIB</b> on the command-line.<br><br>/DBOOST_THREAD_USE_LIB<br><br><h5>4.1.2. Static linking plus statically-linked runtime</h5><br><br>If
+you use the /MT or /MTd switches, you are saying you want to link
+statically to the MSVC Runtime libraries. So in this case, you will by
+default link to libboost_regex-vc90-mt-sgd-1_35.dll (Debug) and
+libboost_regex-vc90-mt-s-1_35.dll (Release/Retail). Although not
+prohibited, linking dynamically to the Boost libraries under such
+circumstances is strictly discouraged. So <i>never</i> define BOOST_REGEX_DYN_LINK while using /MT or /MTd compiler directives.<br><br><span style="">[In
+pre-8.0 VC++, that is, upto Visual C++.NET 2003, the Microsoft C++
+compiler actually accepted a set of switches - /ML and /MLd - to
+indicate static linking with a single-threaded runtime environment. On
+such environments, if you try to link your code with /ML, Boost library
+would try to link your code to boost_regex-vc90-sgd-1_35.dll or
+boost_regex-vc90-s-1_35.dll as the case may be. As of Visual C++ 2005
+(version 8.0), these variants don't get built any longer.]</span><br><br><h4>4.2. <a href="javascript:void(0);" name="nixlink">Linking to Boost libraries on Unix-like systems</a></h4><wbr><br>On
+Unix, there is no auto-linking and there are no such high level
+distinctions as Debug and Release builds. The rough equivalent of a
+Debug build is a build with minimal to no compiler optimization, which
+includes debugging symbols in binaries. A rough equivalent of Release
+builds is a build with at least some compiler optimizations and no
+debugging symbols. Static linking with runtime is rarely used so the
+-s- and -sgd- variants of the Boost libraries are all but rarely useful.<br><br>An
+additional complexity to take into account is that on Windows, the
+Boost libraries silently link a lot of Windows standard libraries for
+you using Auto-linking. On Unices, you must link these manually and you
+have to know which ones to link. For all applications that use the
+multi-threaded variants of the Boost libraries, you have to link with
+libpthread. Similarly, if you are using Boost.Asio, you need to link
+with libsocket, (and on Sun Solaris, possibly libnsl, libresolv, etc).
+You will need to work these out and it's not difficult to do - at least
+after the first time you get a linker error. Also, unlike on Windows,
+the base name of a static and a shared library can be same on Unix,
+barring the extension (.a for static libraries and .so.* for shared
+libraries).<br><br>Based on the above facts and using gcc as a
+compiler, one could consider the following cases - once again using the
+regex library: <ul><br><li>Shared linking with Boost debug libraries:<br><br><pre>g++ -g regextest.cpp -o regextest -I<i>path_to_boost_includes</i> -L<i>path_to_boost_libraries</i> -lboost_regex-gcc41-mt-d -lpthread -licuuc -licudata -licui18n</pre></li><br><li>Shared linking with Boost release libraries:<br><br><pre>g++ -O2 regextest.cpp -o regextest -I<i>path_to_boost_includes</i> -L<i>path_to_boost_libraries</i> -lboost_regex-gcc41-mt -lpthread -licuuc -licudata -licui18n</pre></li><br><li>Static linking with Boost debug libraries:<br>Here
+you really have two options. You could choose to link to the static
+Boost Regex library with static runtime links in which case you can
+have no ICU support:<br><br><pre>g++ -g regextest.cpp -o regextest -I<i>path_to_boost_includes</i> -L<i>path_to_boost_libraries</i> -static -lboost_regex-gcc41-mt-sd -lpthread</pre><br>The above links libpthread statically - which is usually not what you want - so fix that, we have to do this:<br><br><pre>g++ -g regextest.cpp -o regextest -I<i>path_to_boost_includes</i> -L<i>path_to_boost_libraries</i> -Wl,-Bstatic -lboost_regex-gcc41-mt-sd -Wl,-Bdynamic -lpthread</pre><br>Or
+you could choose to link to the static Boost Regex library with dynamic
+runtime links - in which case you can have ICU support:<br><br><pre>g++ -g regextest.cpp -o regextest -I<i>path_to_boost_includes</i> -L<i>path_to_boost_libraries</i> -Wl,-Bstatic -lboost_regex-gcc41-mt-d -Wl,-Bdynamic -lpthread -licudata -licui18n -licuuc</pre></li><br><li>Static linking with Boost release libraries:<br><br><pre>g++ -O2 regextest.cpp -o regextest -I<i>path_to_boost_includes</i> -L<i>path_to_boost_libraries</i> -Wl,-Bstatic -lboost_regex-gcc41-mt -Wl,-Bdynamic -lpthread -licudata -licui18n -licuuc</pre></li></ul><br>If
+you notice above, the library names are not different between the
+shared and static linking cases. We do not need to define
+BOOST_REGEX_DYN_LINK or BOOST_ALL_DYN_LINK. The only differentiator is
+the <i>-static</i> directive. The specifics vary from one Unix to another, and even more between different compilers.</span>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+<span class="post-author vcard">
+Posted by
+<span class="fn">Arindam Mukherjee</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html" rel="bookmark" title="permanent link"><abbr class="published" title="2008-07-04T04:39:00+05:30">4:39 AM</abbr></a>
+</span>
+<span class="star-ratings">
+</span>
+<span class="post-comment-link">
+</span>
+<span class="post-backlinks post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-1564024623">
+<a href="http://www.blogger.com/post-edit.g?blogID=26653368&amp;postID=5632940848553059842" title="Edit Post">
+<img alt="" class="icon-action" src="Getting%20Started%20with%20Boost_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2">
+<span class="post-labels">
+Labels:
+<a href="http://shoddykid.blogspot.com/search/label/Boost%20libraries" rel="tag">Boost libraries</a>,
+<a href="http://shoddykid.blogspot.com/search/label/C%2B%2B" rel="tag">C++</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3"></div>
+</div>
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>
+9
+comments:
+        
+</h4>
+<dl id="comments-block">
+<dt class="comment-author blogger-comment-icon" id="c3624788802610486504">
+<a name="c3624788802610486504"></a>
+<a href="http://www.blogger.com/profile/01579475699215305478" rel="nofollow">chan</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>First, thanks a lot for your tutorial. But I got stuck at the very last step :<br>g++ -O2 regextest.cpp -o regextest -Ipath_to_boost_includes -Lpath_to_boost_lib<br>I don't understand what is actually "path_to_boost_includes"<br>and what is "path_to_boost_lib"<br>Could you give me one example ?<br>I tried those with my makefile look like this :<br>[quote]<br>CC = g++<br>CFLAGS = -Wall<br>PROG = r2<br><br>SRCS = ex3.cpp<br>LIBS
+= -I$BOOST_BIN_ROOT/boost_1_37_0/boost/bin.v2/libs
+-L$BOOST_BIN_ROOT/boost_1_37_0/boost/bin.v2/libs/regex/build/gcc-4.3.2/debug/threading-multi/libboost_regex-gcc43-mt-d-1_37.so.1.37.0<br><br>all: $(PROG)<br><br>$(PROG): $(SRCS)<br> $(CC) $(CFLAGS) -o $(PROG) $(SRCS) $(LIBS)<br><br>clean:<br> rm -f $(PROG)[/quote]<br>But
+it didn't work, a compiler gives me a ton of error message. I currently
+using Ubuntu 8.10 and the boost version that I installed is 1_37_0. <br>I wish you still here, and thanks in advance :D !</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1228468200000#c3624788802610486504" title="comment permalink">
+05-Dec-2008 14:40:00
+</a>
+<span class="item-control blog-admin pid-75719102">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=3624788802610486504" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c7285869183763165525">
+<a name="c7285869183763165525"></a>
+<a href="http://www.blogger.com/profile/05966433815221748351" rel="nofollow">Arindam Mukherjee</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>Greetings chan, and thanks for working through the article. It helps debug the information provided.<br><br>Now path_to_boost_includes would typically be:<br><br>&lt;boost_install_dir&gt;<br><br>So if you extracted and installed boost at say /opt/boost/boost_1_37, then your include path directive will be:<br><br>-I/opt/boost/boost_1_37<br><br>The real include files will be under /opt/boost/boost_1_37/boost:<br><br>e.g. /opt/boost/boost_1_37/boost/regex.hpp<br><br>But in our code, we tend to follow the convention of including the boost directory in the include file name:<br><br>#include &lt;boost/regex.hpp&gt;<br><br>So, specifying till /opt/boost/boost_1_37 as the include path works well.<br><br>It
+is not much different if you are using a Windows compiler, like
+Microsoft C++ 14.0 or 15.0. There instead of -I, it will be /I - but
+the basic idea remains same.<br><br>On more recent Linux distros, where
+Boost comes as an optional package, if you install it, the include
+files are usually found under:<br><br>/usr/include/boost/...<br><br>So you don't need to specify -I/usr/include. The prebuilts libraries typically go into /usr/lib.</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1228503480000#c7285869183763165525" title="comment permalink">
+06-Dec-2008 00:28:00
+</a>
+<span class="item-control blog-admin pid-1564024623">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=7285869183763165525" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c3683928843845832747">
+<a name="c3683928843845832747"></a>
+<a href="http://www.blogger.com/profile/05966433815221748351" rel="nofollow">Arindam Mukherjee</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>So Chan, you should do this:<br><br>CXX  = g++<br>LINK = g++<br>CXXFLAGS = -Wall -I$BOOST_BIN_ROOT/boost_1_37_0<br>LIBS = -L$BOOST_BIN_ROOT/boost_1_37_0/boost/bin.v2/libs/regex/build/gcc-4.3.2/debug/threading-multi<br><br>OBJS=$(SRCS:%.cpp=%.o)<br>$(OBJS)=$(SRCS)<br><br>SRCS = ex3.cpp<br><br>$(PROG): $(OBJS)<br>       $(LINK) -o $(@) $(^) $(LIBS)<br><br>Some
+of the syntax is only valid for GNU Make. If you are using some other
+make or are on a non-linux platform, use $(OBJS) instead of $(^_).</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1228503960000#c3683928843845832747" title="comment permalink">
+06-Dec-2008 00:36:00
+</a>
+<span class="item-control blog-admin pid-1564024623">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=3683928843845832747" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c3473898429327711741">
+<a name="c3473898429327711741"></a>
+<a href="http://www.blogger.com/profile/01579475699215305478" rel="nofollow">chan</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>- Thanks a lot. I really appreciate it. I'm pretty new to Linux,
+that's why I don't understand it quite well. By the way, I have a
+question, how could you figure out how to install boost&lt;&gt; ? What
+should I need to study in order to do this stuff. Would you mind
+recommending me some good books and subject so that I can learn. I
+really really love C/C++ and Linux. I was just like in heaven when I
+found this article, I'm honest. I'm been working on installing boost
+for 6 months. I did a lot of google search but the only thing I found
+is the tutorial on Windows using Visual C++. I asked several forums,
+but not a lot of people care about it. <br>I've been programming in
+C++ for 2 years. And some subjects that I currently follow : openGL,
+gtk+, GNU Make, boost&lt;&gt; and some Linux API( I actually haven't
+started on this yet ). And I've just found two pretty good things :
+automake and autoconf.<br>Do you think I'm greedy when I tried to learn
+to many things at the same times. I know that I am, but I don't know
+why I always have that thought. I really addicted to C++ and Linux, but
+I think I'm in the wrong direction. So I think as an expert and
+experienced programmer, could you give me some advices and how to
+become a good programmer. I'm still on College, I will transfer next
+year. Sorry for my poor English. If something not clear, I will try to
+explain it again. Thank you very much Arindam Mukherjee !</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1228551480000#c3473898429327711741" title="comment permalink">
+06-Dec-2008 13:48:00
+</a>
+<span class="item-control blog-admin pid-75719102">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=3473898429327711741" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c5181782474935083513">
+<a name="c5181782474935083513"></a>
+<a href="http://www.blogger.com/profile/01579475699215305478" rel="nofollow">chan</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>And I think I probably did wrong at some points. I check under
+usr/lib, but I only found libboost of version 1.35, which is the one
+that I installed using Synaptic Package Manager. The version that I
+want to install is version 1.37.0 ! :( So sad ! Further the make file
+that you give me got error, I think it's obviously the formate that I
+copied from this page, and makefile is sensitive to spaces. And I
+actually skipped 2 steps in your article :<br>#1. $ dox2unix install-sh runConfigureICU configure config.sub mkinstalldir \<br>config.guess config.status<br>My
+terminal always complain when I use dox2unix. And in version 1.37.0, I
+regconized in that folder doesn't have the file mkinstalldir( instead
+of mkinstalldirs ) and config.guess.<br>#2.  su -c "chown arindam:devuser /opt/boost"<br>I
+don't know whether these 2 steps would make my process failed or not.
+But when I see the prebuilt library in the folder( I put at my Desktop
+), I think it succeeded, but it might misses something.</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1228552740000#c5181782474935083513" title="comment permalink">
+06-Dec-2008 14:09:00
+</a>
+<span class="item-control blog-admin pid-75719102">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=5181782474935083513" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c204231491991370269">
+<a name="c204231491991370269"></a>
+<a href="http://www.blogger.com/profile/05966433815221748351" rel="nofollow">Arindam Mukherjee</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>Hello Chan, thanks for the kind words. The Boost website -
+http://boost.org, has everything - of course you need to search through
+it. Besides, the Boost documentation is quite elaborate.<br><br>Now for the specific questions - when you built Boost using bjam, did you specify the "install" target like the following:<br><br><b>bjam</b> threading=multi variant=release link=shared toolset=gcc --build-dir=$BOOST_BIN_ROOT <b>--prefix=/opt/boost</b> --without-python <i><b>--without-mpi install</b></i><br><br>If
+you specified the above highlighted portions, then after building, all
+your version 1.37 boost libraries should have been copied to
+/opt/boost/lib. You can choose any directory in place of /opt/boost -
+say /home/chan/boost. In that case, all your libraries would be
+installed under /home/chan/boost/lib. So check what command-line you
+used to build it and install it. Unless you specified:<br><br>--prefix=/usr<br><br>you won't find your 1.37 libraries under /usr/lib.<br><br>Make
+sure you understand each and every step that you carry out. Second, try
+to build the Boost libraries without the optional packages. You can
+hide all the details about optional packages in article. Try to do that
+- it will be simpler.</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1228674540000#c204231491991370269" title="comment permalink">
+07-Dec-2008 23:59:00
+</a>
+<span class="item-control blog-admin pid-1564024623">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=204231491991370269" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c3707397993715134683">
+<a name="c3707397993715134683"></a>
+<a href="http://www.blogger.com/profile/05966433815221748351" rel="nofollow">Arindam Mukherjee</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>One clarification - if BOOST_BIN_ROOT is an environment variable then, in the Makefile, you should write:<br><br>$$BOOST_BIN_ROOT<br><br>instead of $(BOOST_BIN_ROOT). However, if BOOST_BIN_ROOT is a Makefile variable, then $(BOOST_BIN_ROOT) works.</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1228677540000#c3707397993715134683" title="comment permalink">
+08-Dec-2008 00:49:00
+</a>
+<span class="item-control blog-admin pid-1564024623">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=3707397993715134683" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c7396245721317614812">
+<a name="c7396245721317614812"></a>
+<a href="http://www.blogger.com/profile/01281633315852428480" rel="nofollow">Asymptote</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>This is single-handedly the most awesome article I've read in a long
+time. So much care and dedication went into writing it - thank you!
+Everything is thought through, and it works in the end.<br><br>Like
+chan, although I can write a long, tedious "g++ ..." line to get a
+simple boost example to work, I'm having trouble creating a make file
+to make things easier. This is mainly because I've never really used
+make files.<br><br>Thanks again.</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1231029720000#c7396245721317614812" title="comment permalink">
+04-Jan-2009 06:12:00
+</a>
+<span class="item-control blog-admin pid-1368007881">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=7396245721317614812" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author blogger-comment-icon" id="c2651643199962321864">
+<a name="c2651643199962321864"></a>
+<a href="http://www.blogger.com/profile/14135704060533937655" rel="nofollow">Stefan</a>
+said...
+</dt>
+<dd class="comment-body">
+<p>great article !</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?showComment=1235491260000#c2651643199962321864" title="comment permalink">
+24-Feb-2009 21:31:00
+</a>
+<span class="item-control blog-admin pid-537748872">
+<a href="http://www.blogger.com/delete-comment.g?blogID=26653368&amp;postID=2651643199962321864" title="Delete Comment">
+<img src="Getting%20Started%20with%20Boost_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+</dl>
+<p class="comment-footer">
+<a href="https://www.blogger.com/comment.g?blogID=26653368&amp;postID=5632940848553059842" onclick="">Post a Comment</a>
+</p>
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container">
+</div>
+</div>
+</div>
+<!-- google_ad_section_end -->
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-newer-link">
+<a class="blog-pager-newer-link" href="http://shoddykid.blogspot.com/2008/07/book-mania.html" id="Blog1_blog-pager-newer-link" title="Newer Post">Newer Post</a>
+</span>
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://shoddykid.blogspot.com/2008/06/interesting-story-on-code-theft.html" id="Blog1_blog-pager-older-link" title="Older Post">Older Post</a>
+</span>
+<a class="home-link" href="http://shoddykid.blogspot.com/">Home</a>
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Subscribe to:
+<a class="feed-link" href="http://shoddykid.blogspot.com/feeds/5632940848553059842/comments/default" target="_blank" type="application/atom+xml">Post Comments (Atom)</a>
+</div>
+</div>
+</div></div>
+</div>
+<div id="sidebar-wrapper">
+<div class="sidebar section" id="sidebar">
+<div class="widget BlogArchive" id="BlogArchive1">
+<h2>Blog Archive</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul>
+<li class="archivedate expanded">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=close&amp;toggle=YEARLY-1230748200000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy toggle-open">▼ </span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/search?updated-min=2009-01-01T00%3A00%3A00%2B05%3A30&amp;updated-max=2010-01-01T00%3A00%3A00%2B05%3A30&amp;max-results=2">2009</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul>
+<li class="archivedate expanded">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=close&amp;toggle=MONTHLY-1233426600000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy toggle-open">▼ </span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/2009_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://shoddykid.blogspot.com/2009/02/jargon-time-l-values-r-values-and.html">Jargon Time: L-values, R-values and Temporaries</a></li>
+<li><a href="http://shoddykid.blogspot.com/2009/02/parlez-vous-le-c.html">Parlez vous le C++?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=YEARLY-1199125800000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/search?updated-min=2008-01-01T00%3A00%3A00%2B05%3A30&amp;updated-max=2009-01-01T00%3A00%3A00%2B05%3A30&amp;max-results=8">2008</a>
+<span class="post-count" dir="ltr">(8)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1217529000000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/2008_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://shoddykid.blogspot.com/2008/08/aliasing-pointers-using-weakness-to.html">Aliasing pointers: using "weakness" to strengthen ...</a></li>
+<li><a href="http://shoddykid.blogspot.com/2008/08/expression-templates-demystified-part-2.html">Expression Templates Demystified: Part 2</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1214850600000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/2008_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(5)</span>
+<ul class="posts">
+<li><a href="http://shoddykid.blogspot.com/2008/07/expression-templates-demystified.html">Expression Templates Demystified</a></li>
+<li><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost_12.html">Getting Started with Boost</a></li>
+<li><a href="http://shoddykid.blogspot.com/2008/07/c-challenge-of-month-july-2008.html">C++ Challenge of the Month: July 2008</a></li>
+<li><a href="http://shoddykid.blogspot.com/2008/07/book-mania.html">Book mania</a></li>
+<li><a href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html">Getting Started with Boost</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1212258600000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/2008_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://shoddykid.blogspot.com/2008/06/interesting-story-on-code-theft.html">Of Indian authorship: pseudo-intellectual pretenti...</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=YEARLY-1136053800000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/search?updated-min=2006-01-01T00%3A00%3A00%2B05%3A30&amp;updated-max=2007-01-01T00%3A00%3A00%2B05%3A30&amp;max-results=1">2006</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul>
+<li class="archivedate collapsed">
+<a class="toggle" href="http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=MONTHLY-1146421800000&amp;toggleopen=MONTHLY-1233426600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://shoddykid.blogspot.com/2006_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://shoddykid.blogspot.com/2006/05/shalom.html">Shalom !!!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=26653368&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target="configBlogArchive1" title="Edit">
+<img alt="" src="Getting%20Started%20with%20Boost_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget LinkList" id="LinkList1">
+<h2>Links</h2>
+<div class="widget-content">
+<ul>
+<li><a href="http://research.att.com/%7Ebs/C++.html">Bjarne Stroustrup's C++ Page</a></li>
+<li><a href="http://www.research.att.com/%7Ebs/bs_faq2.html">Bjarne Stroustrup's C++ FAQs</a></li>
+<li><a href="http://www.boost.org/">Boost C++ Libraries Homepage</a></li>
+<li><a href="http://www.cplusplus.com/">Online C++ Language and Standard Library Documentation</a></li>
+<li><a href="http://www.doc.ic.ac.uk/lab/cplus/c++.rules/">C++ Coding Style online guide</a></li>
+<li><a href="http://www.comeaucomputing.com/tryitout">The Comeau C/C++ Online compiler</a></li>
+<li><a href="http://groups.google.com/group/c-cpp-ug">C/C++ Users' Group</a></li>
+<li><a href="http://www.codeproject.com/KB/stl/introduction_spirit.aspx">Introduction to Spirit Parser Framework</a></li>
+<li><a href="http://sourcemaking.com/design_patterns">Examples of Design Patterns</a></li>
+<li><a href="http://www.antlr.org/wiki/display/ANTLR3/Quick+Starter+on+Parser+Grammars+-+No+Past+Experience+Required">EBNF Syntax</a></li>
+<li><a href="http://meditation-art.blogspot.com/2007/10/c-boost-lambda-internals.html">Lambda functions internals</a></li>
+<li><a href="http://think-async.blogspot.com/">Thinking Asynchronously in C++</a></li>
+<li><a href="http://www.trumphurst.com/cpplibs/cpplibs.php">C++ Libraries of all kinds</a></li>
+<li><a href="http://www.stlport.org/resources/StepanovUSA.html">Alex Stepanov's Interview</a></li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=26653368&amp;widgetType=LinkList&amp;widgetId=LinkList1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("LinkList1"));' target="configLinkList1" title="Edit">
+<img alt="" src="Getting%20Started%20with%20Boost_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget HTML" id="HTML1">
+<h2 class="title">A peek into my library</h2>
+<div class="widget-content">
+<script language="javascript" src="Getting%20Started%20with%20Boost_files/jswidget_002.js" type="text/javascript">
+</script><div class="LTwrapper" style="font-family: Verdana,Arial,sans-serif;"><div class="LTheader" style="font-weight: bold; margin-bottom: 5px;">Random books from <a href="http://www.librarything.com/catalog/arindam.mukherjee" target="_top">my library</a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0130810819/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0130810819.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0201432935/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0201432935.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0201433079/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0201433079.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0131019082/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0131019082.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/020189551X/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/020189551X.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/1861003110/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/1861003110.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/1884777791/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/1884777791.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0131774298/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0131774298.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTprovided" style="padding: 5px 0px; text-align: right; clear: right ! important; font-size: 9px;">powered by <a href="http://www.librarything.com/" target="_top">LibraryThing</a></div></div>
+<script language="javascript" src="Getting%20Started%20with%20Boost_files/jswidget.js" type="text/javascript">
+</script><div class="LTwrapper" style="font-family: Verdana,Arial,sans-serif;"><div class="LTheader" style="font-weight: bold; margin-bottom: 5px;">Random books from <a href="http://www.librarything.com/catalog/arindam.mukerjee" target="_top">my library</a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0446392251/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0446392251.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0385413726/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0385413726.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/8170580188/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/8170580188.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0446355569/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0446355569.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/006109174X/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/006109174X.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0553258478/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0553258478.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTodd" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0006388515/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0006388515.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTitem LTeven" style="clear: right; padding-top: 5px; display: inline;"><a href="http://www.amazon.com/exec/obidos/ASIN/0553248642/ref=nosim/librarythin08-20" target="_new"><img src="Getting%20Started%20with%20Boost_files/0553248642.jpg" style="margin: 2px;" border="0" height="142"></a></div><div class="LTprovided" style="padding: 5px 0px; text-align: right; clear: right ! important; font-size: 9px;">powered by <a href="http://www.librarything.com/" target="_top">LibraryThing</a></div></div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=26653368&amp;widgetType=HTML&amp;widgetId=HTML1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML1"));' target="configHTML1" title="Edit">
+<img alt="" src="Getting%20Started%20with%20Boost_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" id="HTML2">
+<h2 class="title">Search Engine Submission</h2>
+<div class="widget-content">
+<center>
+<a href="http://www.evrsoft.com/fastsubmit/"><img alt="Free Search Engine Submission" src="Getting%20Started%20with%20Boost_files/submitnow.gif" border="0" height="41" width="114"></a>
+
+<a href="http://www.evrsoft.com/fastsubmit/" target="_blank">Free Search Engine Submission</a>
+</center>
+<p align="center"></p>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=26653368&amp;widgetType=HTML&amp;widgetId=HTML2&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML2"));' target="configHTML2" title="Edit">
+<img alt="" src="Getting%20Started%20with%20Boost_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class="clear">&nbsp;</div>
+</div>
+<!-- end content-wrapper -->
+<div id="footer-wrapper">
+<div class="footer section" id="footer"></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript" src="Getting%20Started%20with%20Boost_files/1357051260-widgets.js"></script>
+<script type="text/javascript">
+_WidgetManager._Init('http://www.blogger.com/rearrange?blogID=26653368', 'http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html','26653368');
+_WidgetManager._SetPageActionUrl('http://www.blogger.com/display?blogID=26653368', 'eaOVb_fD139HOHxcwgRTGBTdL50:1247693458854');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'title': 'The C++ and Boost Code Shop', 'pageType': 'item', 'url': 'http://shoddykid.blogspot.com/2008/07/getting-started-with-boost.html', 'homepageUrl': 'http://shoddykid.blogspot.com/', 'searchLabel': '', 'searchQuery': '', 'pageName': 'Getting Started with Boost', 'pageTitle': 'The C++ and Boost Code Shop: Getting Started with Boost', 'encoding': 'UTF-8', 'locale': 'en-GB', 'isPrivate': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42The C++ and Boost Code Shop - Atom\42 href\75\42http://shoddykid.blogspot.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42The C++ and Boost Code Shop - RSS\42 href\75\42http://shoddykid.blogspot.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42The C++ and Boost Code Shop - Atom\42 href\75\42http://www.blogger.com/feeds/26653368/posts/default\42 /\76\n\74link rel\75\42EditURI\42 type\75\42application/rsd+xml\42 title\75\42RSD\42 href\75\42http://www.blogger.com/rsd.g?blogID\07526653368\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42The C++ and Boost Code Shop - Atom\42 href\75\42http://shoddykid.blogspot.com/feeds/5632940848553059842/comments/default\42 /\76\n', 'meTag': '', 'openIdOpTag': '', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var a\75window;function f(e){this.t\75{};this.tick\75function(d,b,c){var i\75c?c:(new Date).getTime();this.t[d]\75[i,b]};this.tick(\42start\42,null,e)}var g\75new f;a.jstiming\75{Timer:f,load:g};try{a.jstiming.pt\75a.external.pageT}catch(h){};a.tickAboveFold\75function(e){var d,b\75e,c\0750;if(b.offsetParent){do c+\75b.offsetTop;while(b\75b.offsetParent)}d\75c;d\74\075750\46\46a.jstiming.load.tick(\42aft\42)};var j\75false;function k(){if(!j){j\75true;a.jstiming.load.tick(\42firstScrollTime\42)}}a.addEventListener?a.addEventListener(\42scroll\42,k,false):a.attachEvent(\42onscroll\42,k); })();\74/script\076'}}]);
+_WidgetManager._SetSystemMarkup({'layout': {'varName': '', 'template': '\74div class\75\47widget-wrap1\47\76\n\74div class\75\47widget-wrap2\47\76\n\74div class\75\47widget-wrap3\47\76\n\74div class\75\47widget-content\47\76\n\74div class\75\47layout-title\47\76\74data:layout-title\76\74/data:layout-title\76\74/div\76\n\74a class\75\47editlink\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 target\75\47chooseWidget\47\76\74data:edit-link\76\74/data:edit-link\76\74/a\76\n\74/div\76\n\74/div\76\n\74/div\76\n\74/div\076'}, 'quickedit': {'varName': '', 'template': '\74div class\75\47clear\47\76\74/div\76\n\74span class\75\47widget-item-control\47\76\n\74span class\75\47item-control blog-admin\47\76\n\74a class\75\47quickedit\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 expr:target\75\47\46quot;config\46quot; + data:widget.instanceId\47 expr:title\75\47data:edit-link\47\76\n\74img alt\75\47\47 height\75\04718\47 src\75\47http://img1.blogblog.com/img/icon18_wrench_allbkg.png\47 width\75\04718\47/\76\n\74/a\76\n\74/span\76\n\74/span\76\n\74div class\75\47clear\47\76\74/div\076'}, 'all-head-content': {'varName': 'page', 'template': '\74data:blog.latencyHeadScript\76\74/data:blog.latencyHeadScript\76\n\74meta expr:content\75\47\46quot;text/html; charset\75\46quot; + data:page.encoding\47 http-equiv\75\47Content-Type\47/\76\n\74meta content\75\47true\47 name\75\47MSSmartTagsPreventParsing\47/\76\n\74meta content\75\47blogger\47 name\75\47generator\47/\76\n\74link href\75\47http://www.blogger.com/favicon.ico\47 rel\75\47icon\47 type\75\47image/vnd.microsoft.icon\47/\76\n\74link expr:href\75\47data:blog.url\47 rel\75\47canonical\47/\76\n\74data:blog.feedLinks\76\74/data:blog.feedLinks\76\n\74data:blog.meTag\76\74/data:blog.meTag\76\n\74data:blog.openIdOpTag\76\74/data:blog.openIdOpTag\76\n\74b:if cond\75\47data:page.isPrivate\47\76\n\74meta content\75\47NOINDEX,NOFOLLOW\47 name\75\47robots\47/\76\n\74/b:if\076'}});
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74div id\75\47ArchiveList\47\76\n\74div expr:id\75\47data:widget.instanceId + \46quot;_ArchiveList\46quot;\47\76\n\74b:if cond\75\47data:style \75\75 \46quot;HIERARCHY\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;FLAT\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47flat\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;MENU\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47menu\47\76\74/b:include\76\n\74/b:if\76\n\74/div\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}, 'flat': {'varName': 'data', 'template': '\74ul\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74li class\75\47archivedate\47\76\n\74a expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76 (\74data:i.post-count\76\74/data:i.post-count\76)\n      \74/li\76\n\74/b:loop\76\n\74/ul\076'}, 'menu': {'varName': 'data', 'template': '\74select expr:id\75\47data:widget.instanceId + \46quot;_ArchiveMenu\46quot;\47\76\n\74option value\75\47\47\76\74data:title\76\74/data:title\76\74/option\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74option expr:value\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76 (\74data:i.post-count\76\74/data:i.post-count\76)\74/option\76\n\74/b:loop\76\n\74/select\076'}, 'interval': {'varName': 'intervalData', 'template': '\74b:loop values\75\47data:intervalData\47 var\75\47i\47\76\n\74ul\76\n\74li expr:class\75\47\46quot;archivedate \46quot; + data:i.expclass\47\76\n\74b:include data\75\47i\47 name\75\47toggle\47\76\74/b:include\76\n\74a class\75\47post-count-link\47 expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76\n\74span class\75\47post-count\47 dir\75\47ltr\47\76(\74data:i.post-count\76\74/data:i.post-count\76)\74/span\76\n\74b:if cond\75\47data:i.data\47\76\n\74b:include data\75\47i.data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:i.posts\47\76\n\74b:include data\75\47i.posts\47 name\75\47posts\47\76\74/b:include\76\n\74/b:if\76\n\74/li\76\n\74/ul\76\n\74/b:loop\076'}, 'toggle': {'varName': 'interval', 'template': '\74b:if cond\75\47data:interval.toggleId\47\76\n\74b:if cond\75\47data:interval.expclass \75\75 \46quot;expanded\46quot;\47\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +       \46quot;\46amp;dir\75close\46amp;toggle\75\46quot; + data:interval.toggleId +       \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy toggle-open\47\76\46#9660; \74/span\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +         \46quot;\46amp;dir\75open\46amp;toggle\75\46quot; + data:interval.toggleId +         \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy\47\76\n\74b:if cond\75\47data:blog.languageDirection \75\75 \46quot;rtl\46quot;\47\76\n              \46#9668;\n            \74b:else\76\74/b:else\76\n              \46#9658;\n            \74/b:if\76\n\74/span\76\n\74/a\76\n\74/b:if\76\n\74/b:if\076'}, 'posts': {'varName': 'posts', 'template': '\74ul class\75\47posts\47\76\n\74b:loop values\75\47data:posts\47 var\75\47i\47\76\n\74li\76\74a expr:href\75\47data:i.url\47\76\74data:i.title\76\74/data:i.title\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\076'}}, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\74h2\76\74data:title\76\74/data:title\76\74/h2\76\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74ul\76\n\74b:loop values\75\47data:links\47 var\75\47link\47\76\n\74li\76\74a expr:href\75\47data:link.target\47\76\74data:link.name\76\74/data:link.name\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('LinkList1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML2', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main',{'main': {'varName': 'top', 'template': '\74div class\75\47blog-posts hfeed\47\76\n\74b:include data\75\47top\47 name\75\47status-message\47\76\74/b:include\76\n\74data:defaultAdStart\76\74/data:defaultAdStart\76\n\74b:loop values\75\47data:posts\47 var\75\47post\47\76\n\74b:if cond\75\47data:post.dateHeader\47\76\n\74h2 class\75\47date-header\47\76\74data:post.dateHeader\76\74/data:post.dateHeader\76\74/h2\76\n\74/b:if\76\n\74b:include data\75\47post\47 name\75\47post\47\76\74/b:include\76\n\74b:if cond\75\47data:blog.pageType \75\75 \46quot;static_page\46quot;\47\76\n\74b:include data\75\47post\47 name\75\47comments\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:blog.pageType \75\75 \46quot;item\46quot;\47\76\n\74b:include data\75\47post\47 name\75\47comments\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:post.includeAd\47\76\n\74b:if cond\75\47data:post.isFirstPost\47\76\n\74data:defaultAdEnd\76\74/data:defaultAdEnd\76\n\74b:else\76\74/b:else\76\n\74data:adEnd\76\74/data:adEnd\76\n\74/b:if\76\n\74data:adCode\76\74/data:adCode\76\n\74data:adStart\76\74/data:adStart\76\n\74/b:if\76\n\74b:if cond\75\47data:post.trackLatency\47\76\n\74data:post.latencyJs\76\74/data:post.latencyJs\76\n\74/b:if\76\n\74/b:loop\76\n\74data:adEnd\76\74/data:adEnd\76\n\74/div\76\n\74b:include name\75\47nextprev\47\76\74/b:include\76\n\74b:include name\75\47feedLinks\47\76\74/b:include\76\n\74b:if cond\75\47data:top.showStars\47\76\n\74script src\75\47http://www.google.com/jsapi\47 type\75\47text/javascript\47\76\74/script\76\n\74script type\75\47text/javascript\47\76\n      google.load(\46quot;annotations\46quot;, \46quot;1\46quot;, {\46quot;locale\46quot;: \46quot;\74data:top.languageCode\76\74/data:top.languageCode\76\46quot;});\n      function initialize() {\n        google.annotations.setApplicationId(\74data:top.blogspotReviews\76\74/data:top.blogspotReviews\76);\n        google.annotations.createAll();\n        google.annotations.fetch();\n      }\n      google.setOnLoadCallback(initialize);\n    \74/script\76\n\74/b:if\076'}, 'nextprev': {'varName': '', 'template': '\74div class\75\47blog-pager\47 id\75\47blog-pager\47\76\n\74b:if cond\75\47data:newerPageUrl\47\76\n\74span id\75\47blog-pager-newer-link\47\76\n\74a class\75\47blog-pager-newer-link\47 expr:href\75\47data:newerPageUrl\47 expr:id\75\47data:widget.instanceId + \46quot;_blog-pager-newer-link\46quot;\47 expr:title\75\47data:newerPageTitle\47\76\74data:newerPageTitle\76\74/data:newerPageTitle\76\74/a\76\n\74/span\76\n\74/b:if\76\n\74b:if cond\75\47data:olderPageUrl\47\76\n\74span id\75\47blog-pager-older-link\47\76\n\74a class\75\47blog-pager-older-link\47 expr:href\75\47data:olderPageUrl\47 expr:id\75\47data:widget.instanceId + \46quot;_blog-pager-older-link\46quot;\47 expr:title\75\47data:olderPageTitle\47\76\74data:olderPageTitle\76\74/data:olderPageTitle\76\74/a\76\n\74/span\76\n\74/b:if\76\n\74b:if cond\75\47data:blog.homepageUrl !\75 data:blog.url\47\76\n\74a class\75\47home-link\47 expr:href\75\47data:blog.homepageUrl\47\76\74data:homeMsg\76\74/data:homeMsg\76\74/a\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:newerPageUrl\47\76\n\74a class\75\47home-link\47 expr:href\75\47data:blog.homepageUrl\47\76\74data:homeMsg\76\74/data:homeMsg\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/div\76\n\74div class\75\47clear\47\76\74/div\076'}, 'post': {'varName': 'post', 'template': '\74div class\75\47post hentry uncustomized-post-template\47\76\n\74a expr:name\75\47data:post.id\47\76\74/a\76\n\74b:if cond\75\47data:post.title\47\76\n\74h3 class\75\47post-title entry-title\47\76\n\74b:if cond\75\47data:post.link\47\76\n\74a expr:href\75\47data:post.link\47\76\74data:post.title\76\74/data:post.title\76\74/a\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:post.url\47\76\n\74a expr:href\75\47data:post.url\47\76\74data:post.title\76\74/data:post.title\76\74/a\76\n\74b:else\76\74/b:else\76\n\74data:post.title\76\74/data:post.title\76\n\74/b:if\76\n\74/b:if\76\n\74/h3\76\n\74/b:if\76\n\74div class\75\47post-header-line-1\47\76\74/div\76\n\74div class\75\47post-body entry-content\47\76\n\74data:post.body\76\74/data:post.body\76\n\74b:if cond\75\47data:blog.pageType !\75 \46quot;item\46quot;\47\76\74br/\76\n\74a expr:href\75\47data:post.url\47\76Read more!\74/a\76\n\74/b:if\76\n\74div style\75\47clear: both;\47\76\74/div\76\n\74/div\76\n\74div class\75\47post-footer\47\76\n\74div class\75\47post-footer-line post-footer-line-1\47\76\n\74span class\75\47post-author vcard\47\76\n\74b:if cond\75\47data:top.showAuthor\47\76\n\74data:top.authorLabel\76\74/data:top.authorLabel\76\n\74span class\75\47fn\47\76\74data:post.author\76\74/data:post.author\76\74/span\76\n\74/b:if\76\n\74/span\76\n\74span class\75\47post-timestamp\47\76\n\74b:if cond\75\47data:top.showTimestamp\47\76\n\74data:top.timestampLabel\76\74/data:top.timestampLabel\76\n\74b:if cond\75\47data:post.url\47\76\n\74a class\75\47timestamp-link\47 expr:href\75\47data:post.url\47 rel\75\47bookmark\47 title\75\47permanent link\47\76\74abbr class\75\47published\47 expr:title\75\47data:post.timestampISO8601\47\76\74data:post.timestamp\76\74/data:post.timestamp\76\74/abbr\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/span\76\n\74span class\75\47star-ratings\47\76\n\74b:if cond\75\47data:top.showStars\47\76\n\74div expr:g:background-color\75\47data:backgroundColor\47 expr:g:text-color\75\47data:textColor\47 expr:g:url\75\47data:post.absoluteUrl\47 g:height\75\04742\47 g:type\75\47RatingPanel\47 g:width\75\047280\47\76\74/div\76\n\74/b:if\76\n\74/span\76\n\74span class\75\47post-comment-link\47\76\n\74b:if cond\75\47data:blog.pageType !\75 \46quot;item\46quot;\47\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74a class\75\47comment-link\47 expr:href\75\47data:post.addCommentUrl\47 expr:onclick\75\47data:post.addCommentOnclick\47\76\74b:if cond\75\47data:post.numComments \75\75 1\47\0761 \74data:top.commentLabel\76\74/data:top.commentLabel\76\74b:else\76\74/b:else\76\74data:post.numComments\76\74/data:post.numComments\76\n\74data:top.commentLabelPlural\76\74/data:top.commentLabelPlural\76\74/b:if\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/span\76\n\74span class\75\47post-backlinks post-comment-link\47\76\n\74b:if cond\75\47data:blog.pageType !\75 \46quot;item\46quot;\47\76\n\74b:if cond\75\47data:post.showBacklinks\47\76\n\74a class\75\47comment-link\47 expr:href\75\47data:post.url + \46quot;#links\46quot;\47\76\74data:top.backlinkLabel\76\74/data:top.backlinkLabel\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/span\76\n\74span class\75\47post-icons\47\76\n\74b:if cond\75\47data:post.emailPostUrl\47\76\n\74span class\75\47item-action\47\76\n\74a expr:href\75\47data:post.emailPostUrl\47 expr:title\75\47data:top.emailPostMsg\47\76\n\74img alt\75\47\47 class\75\47icon-action\47 src\75\47http://www.blogger.com/img/icon18_email.gif\47/\76\n\74/a\76\n\74/span\76\n\74/b:if\76\n\74b:include data\75\47post\47 name\75\47postQuickEdit\47\76\74/b:include\76\n\74/span\76\n\74/div\76\n\74div class\75\47post-footer-line post-footer-line-2\47\76\n\74span class\75\47post-labels\47\76\n\74b:if cond\75\47data:post.labels\47\76\n\74data:postLabelsLabel\76\74/data:postLabelsLabel\76\n\74b:loop values\75\47data:post.labels\47 var\75\47label\47\76\n\74a expr:href\75\47data:label.url\47 rel\75\47tag\47\76\74data:label.name\76\74/data:label.name\76\74/a\76\74b:if cond\75\47data:label.isLast !\75 \46quot;true\46quot;\47\76,\74/b:if\76\n\74/b:loop\76\n\74/b:if\76\n\74/span\76\n\74/div\76\n\74div class\75\47post-footer-line post-footer-line-3\47\76\74/div\76\n\74/div\76\n\74/div\076'}, 'postQuickEdit': {'varName': 'post', 'template': '\74b:if cond\75\47data:post.editUrl\47\76\n\74span expr:class\75\47\46quot;item-control \46quot; + data:post.adminClass\47\76\n\74a expr:href\75\47data:post.editUrl\47 expr:title\75\47data:top.editPostMsg\47\76\n\74img alt\75\47\47 class\75\47icon-action\47 height\75\04718\47 src\75\47http://www.blogger.com/img/icon18_edit_allbkg.gif\47 width\75\04718\47/\76\n\74/a\76\n\74/span\76\n\74/b:if\076'}, 'commentDeleteIcon': {'varName': 'comment', 'template': '\74span expr:class\75\47\46quot;item-control \46quot; + data:comment.adminClass\47\76\n\74a expr:href\75\47data:comment.deleteUrl\47 expr:title\75\47data:top.deleteCommentMsg\47\76\n\74img src\75\47http://www.blogger.com/img/icon_delete13.gif\47/\76\n\74/a\76\n\74/span\076'}, 'backlinkDeleteIcon': {'varName': 'backlink', 'template': '\74span expr:class\75\47\46quot;item-control \46quot; + data:backlink.adminClass\47\76\n\74a expr:href\75\47data:backlink.deleteUrl\47 expr:title\75\47data:top.deleteBacklinkMsg\47\76\n\74img src\75\47http://www.blogger.com/img/icon_delete13.gif\47/\76\n\74/a\76\n\74/span\076'}, 'comments': {'varName': 'post', 'template': '\74div class\75\47comments\47 id\75\47comments\47\76\n\74a name\75\47comments\47\76\74/a\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74h4\76\n\74b:if cond\75\47data:post.numComments \75\75 1\47\76\n          1 \74data:commentLabel\76\74/data:commentLabel\76:\n        \74b:else\76\74/b:else\76\n\74data:post.numComments\76\74/data:post.numComments\76\n\74data:commentLabelPlural\76\74/data:commentLabelPlural\76:\n        \74/b:if\76\n\74/h4\76\n\74b:if cond\75\47data:post.commentPagingRequired\47\76\n\74span class\75\47paging-control-container\47\76\n\74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.oldestLinkUrl\47\76\74data:post.oldestLinkText\76\74/data:post.oldestLinkText\76\74/a\76\n          \46#160;\n          \74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.olderLinkUrl\47\76\74data:post.olderLinkText\76\74/data:post.olderLinkText\76\74/a\76\n          \46#160;\n          \74data:post.commentRangeText\76\74/data:post.commentRangeText\76\n          \46#160;\n          \74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newerLinkUrl\47\76\74data:post.newerLinkText\76\74/data:post.newerLinkText\76\74/a\76\n          \46#160;\n          \74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newestLinkUrl\47\76\74data:post.newestLinkText\76\74/data:post.newestLinkText\76\74/a\76\n\74/span\76\n\74/b:if\76\n\74dl id\75\47comments-block\47\76\n\74b:loop values\75\47data:post.comments\47 var\75\47comment\47\76\n\74dt expr:class\75\47\46quot;comment-author \46quot; + data:comment.authorClass\47 expr:id\75\47data:comment.anchorName\47\76\n\74b:if cond\75\47data:comment.favicon\47\76\n\74img expr:src\75\47data:comment.favicon\47 height\75\04716px\47 style\75\47margin-bottom:-2px;\47 width\75\04716px\47/\76\n\74/b:if\76\n\74a expr:name\75\47data:comment.anchorName\47\76\74/a\76\n\74b:if cond\75\47data:comment.authorUrl\47\76\n\74a expr:href\75\47data:comment.authorUrl\47 rel\75\47nofollow\47\76\74data:comment.author\76\74/data:comment.author\76\74/a\76\n\74b:else\76\74/b:else\76\n\74data:comment.author\76\74/data:comment.author\76\n\74/b:if\76\n\74data:commentPostedByMsg\76\74/data:commentPostedByMsg\76\n\74/dt\76\n\74dd class\75\47comment-body\47\76\n\74b:if cond\75\47data:comment.isDeleted\47\76\n\74span class\75\47deleted-comment\47\76\74data:comment.body\76\74/data:comment.body\76\74/span\76\n\74b:else\76\74/b:else\76\n\74p\76\74data:comment.body\76\74/data:comment.body\76\74/p\76\n\74/b:if\76\n\74/dd\76\n\74dd class\75\47comment-footer\47\76\n\74span class\75\47comment-timestamp\47\76\n\74a expr:href\75\47data:comment.url\47 title\75\47comment permalink\47\76\n\74data:comment.timestamp\76\74/data:comment.timestamp\76\n\74/a\76\n\74b:include data\75\47comment\47 name\75\47commentDeleteIcon\47\76\74/b:include\76\n\74/span\76\n\74/dd\76\n\74/b:loop\76\n\74/dl\76\n\74b:if cond\75\47data:post.commentPagingRequired\47\76\n\74span class\75\47paging-control-container\47\76\n\74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.oldestLinkUrl\47\76\n\74data:post.oldestLinkText\76\74/data:post.oldestLinkText\76\n\74/a\76\n\74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.olderLinkUrl\47\76\n\74data:post.olderLinkText\76\74/data:post.olderLinkText\76\n\74/a\76\n          \46#160;\n          \74data:post.commentRangeText\76\74/data:post.commentRangeText\76\n          \46#160;\n          \74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newerLinkUrl\47\76\n\74data:post.newerLinkText\76\74/data:post.newerLinkText\76\n\74/a\76\n\74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newestLinkUrl\47\76\n\74data:post.newestLinkText\76\74/data:post.newestLinkText\76\n\74/a\76\n\74/span\76\n\74/b:if\76\n\74p class\75\47comment-footer\47\76\n\74b:if cond\75\47data:post.embedCommentForm\47\76\n\74b:if cond\75\47data:post.allowNewComments\47\76\n\74b:include data\75\47post\47 name\75\47comment-form\47\76\74/b:include\76\n\74b:else\76\74/b:else\76\n\74data:post.noNewCommentsText\76\74/data:post.noNewCommentsText\76\n\74/b:if\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74a expr:href\75\47data:post.addCommentUrl\47 expr:onclick\75\47data:post.addCommentOnclick\47\76\74data:postCommentMsg\76\74/data:postCommentMsg\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/p\76\n\74/b:if\76\n\74div id\75\47backlinks-container\47\76\n\74div expr:id\75\47data:widget.instanceId + \46quot;_backlinks-container\46quot;\47\76\n\74b:if cond\75\47data:post.showBacklinks\47\76\n\74b:include data\75\47post\47 name\75\47backlinks\47\76\74/b:include\76\n\74/b:if\76\n\74/div\76\n\74/div\76\n\74/div\076'}, 'comment-form': {'varName': 'post', 'template': '\74div class\75\47comment-form\47\76\n\74a name\75\47comment-form\47\76\74/a\76\n\74h3\76\74data:postCommentMsg\76\74/data:postCommentMsg\76\74/h3\76\n\74p\76\74data:blogCommentMessage\76\74/data:blogCommentMessage\76\74/p\76\n\74iframe allowtransparency\75\47true\47 expr:src\75\47data:post.commentFormIframeSrc\47 frameborder\75\0470\47 height\75\047275\47 id\75\47comment-editor\47 scrolling\75\47auto\47 width\75\047100%\47\76\74/iframe\76\n\74/div\076'}, 'backlinks': {'varName': 'post', 'template': '\74a name\75\47links\47\76\74/a\76\74h4\76\74data:post.backlinksLabel\76\74/data:post.backlinksLabel\76\74/h4\76\n\74b:if cond\75\47data:post.numBacklinks !\75 0\47\76\n\74dl class\75\47comments-block\47 id\75\47comments-block\47\76\n\74b:loop values\75\47data:post.backlinks\47 var\75\47backlink\47\76\n\74div class\75\47collapsed-backlink backlink-control\47\76\n\74dt class\75\47comment-title\47\76\n\74span class\75\47backlink-toggle-zippy\47\76\46#160;\74/span\76\n\74a expr:href\75\47data:backlink.url\47 rel\75\47nofollow\47\76\74data:backlink.title\76\74/data:backlink.title\76\74/a\76\n\74b:include data\75\47backlink\47 name\75\47backlinkDeleteIcon\47\76\74/b:include\76\n\74/dt\76\n\74dd class\75\47comment-body collapseable\47\76\n\74data:backlink.snippet\76\74/data:backlink.snippet\76\n\74/dd\76\n\74dd class\75\47comment-footer collapseable\47\76\n\74span class\75\47comment-author\47\76\74data:post.authorLabel\76\74/data:post.authorLabel\76\n\74data:backlink.author\76\74/data:backlink.author\76\74/span\76\n\74span class\75\47comment-timestamp\47\76\74data:post.timestampLabel\76\74/data:post.timestampLabel\76\n\74data:backlink.timestamp\76\74/data:backlink.timestamp\76\74/span\76\n\74/dd\76\n\74/div\76\n\74/b:loop\76\n\74/dl\76\n\74/b:if\76\n\74p class\75\47comment-footer\47\76\n\74a class\75\47comment-link\47 expr:href\75\47data:post.createLinkUrl\47 expr:id\75\47data:widget.instanceId + \46quot;_backlinks-create-link\46quot;\47 target\75\47_blank\47\76\74data:post.createLinkLabel\76\74/data:post.createLinkLabel\76\74/a\76\n\74/p\076'}, 'feedLinks': {'varName': '', 'template': '\74b:if cond\75\47data:blog.pageType !\75 \46quot;item\46quot;\47\76\n\74b:if cond\75\47data:feedLinks\47\76\n\74div class\75\47blog-feeds\47\76\n\74b:include data\75\47feedLinks\47 name\75\47feedLinksBody\47\76\74/b:include\76\n\74/div\76\n\74/b:if\76\n\74b:else\76\74/b:else\76\n\74div class\75\47post-feeds\47\76\n\74b:loop values\75\47data:posts\47 var\75\47post\47\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74b:if cond\75\47data:post.feedLinks\47\76\n\74b:include data\75\47post.feedLinks\47 name\75\47feedLinksBody\47\76\74/b:include\76\n\74/b:if\76\n\74/b:if\76\n\74/b:loop\76\n\74/div\76\n\74/b:if\076'}, 'feedLinksBody': {'varName': 'links', 'template': '\74div class\75\47feed-links\47\76\n\74data:feedLinksMsg\76\74/data:feedLinksMsg\76\n\74b:loop values\75\47data:links\47 var\75\47f\47\76\n\74a class\75\47feed-link\47 expr:href\75\47data:f.url\47 expr:type\75\47data:f.mimeType\47 target\75\47_blank\47\76\74data:f.name\76\74/data:f.name\76 (\74data:f.feedType\76\74/data:f.feedType\76)\74/a\76\n\74/b:loop\76\n\74/div\076'}, 'status-message': {'varName': '', 'template': '\74b:if cond\75\47data:navMessage\47\76\n\74div class\75\47status-msg-wrap\47\76\n\74div class\75\47status-msg-body\47\76\n\74data:navMessage\76\74/data:navMessage\76\n\74/div\76\n\74div class\75\47status-msg-border\47\76\n\74div class\75\47status-msg-bg\47\76\n\74div class\75\47status-msg-hidden\47\76\74data:navMessage\76\74/data:navMessage\76\74/div\76\n\74/div\76\n\74/div\76\n\74/div\76\n\74div style\75\47clear: both;\47\76\74/div\76\n\74/b:if\076'}}, document.getElementById('Blog1'), {}, 'displayModeFull'));
+</script>
+</body></html>

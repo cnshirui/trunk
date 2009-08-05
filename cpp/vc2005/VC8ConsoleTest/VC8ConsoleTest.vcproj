@@ -235,6 +235,10 @@
 				RelativePath=".\Win32ConsoleXML.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\wstring_sample.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"

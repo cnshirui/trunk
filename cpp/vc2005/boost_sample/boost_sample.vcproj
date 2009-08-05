@@ -39,6 +39,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MTd"
 				Optimization="0"
 				AdditionalIncludeDirectories="D:\dev\boost_1_39_0"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
@@ -182,6 +183,10 @@
 			</File>
 			<File
 				RelativePath=".\number_list.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\regexp_sample.cpp"
 				>
 			</File>
 			<File

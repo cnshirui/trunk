@@ -1,0 +1,162 @@
+/* CSS Document */
+body {
+	font-family: "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 9pt;
+	line-height: 12pt;
+}
+
+p {
+	  text-indent: 27px;
+	  line-height: 150%; 
+	  margin-top: 5; 
+	  margin-bottom: 10;
+   	  line-height: 12pt;
+}
+
+.p_compact {
+	  margin-top: 2; 
+	  margin-bottom: 4;
+}
+
+.p_sider {
+	text-indent: 5px;
+	line-height: 100%;
+	margin-top: 2;
+	margin-bottom: 4;
+}
+
+.p_psy {
+	font-family: "宋体";
+	font-size: 12px;
+	text-align: left;
+	text-indent: 24px;
+	line-height: 100%;
+	margin-top: 2;
+	margin-bottom: 0;
+	color: #6699FF;
+}
+
+
+h1 {
+	  text-align: center
+}
+
+h2 {
+	  text-indent: 27px;
+}
+
+h3 {
+	  text-indent: 27px;
+}
+
+h4 {
+	  text-indent: 27px;
+}
+
+td {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 12px;
+	line-height: 12pt;
+}
+
+th {
+	font-family: "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 9pt
+;
+}
+
+ul {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 9pt
+;
+	list-style-type: square;
+	list-style-position: outside;
+}
+
+li {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 9pt
+;
+}
+
+ol {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 9pt
+;
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+
+.jsprobox_row1 {
+	background: #dedede;
+}
+
+.jsprobox_row2 {
+	background: #ffffff;
+}
+
+.small {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 10px;
+}
+
+.big {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 18px;
+}
+
+form {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 14px
+;
+	}
+
+input {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 14px
+;
+}
+
+textarea {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 14px
+;
+}
+
+select {
+	font-family:  "宋体", "黑体", "Arial", "Microsoft Sans Serif";
+	font-size: 14px
+;
+}
+
+.codetd {
+	   border-style: solid;
+	   border-width: 1px;
+	 }
+
+.notebox {
+	padding: 1px;
+	border-width: 1px;
+	border-style: dashed;
+	border-color: #FF0000;
+}
+
+.addtionbox {
+	padding: 1px;
+	border-width: 1px;
+	border-style: dashed;
+	border-color: #00FF00;
+}
+
+.box2 {
+	padding: 3px;
+	border-width: thin;
+	border-style: solid;
+	border-color: #CCCCCC #666666 #666666 #CCCCCC;
+}
+.author {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	background-color: #EAEAEA;
+}

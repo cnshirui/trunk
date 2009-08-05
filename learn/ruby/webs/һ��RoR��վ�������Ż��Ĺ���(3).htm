@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+
+	<title>一个RoR的站点性能优化的故事(3) | ityum.net</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+	<link rel="stylesheet" href="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%283%29_files/style.css" type="text/css" media="screen" charset="utf-8">
+	<style type="text/css">
+		@import url(http://ityum.net/wp-content/themes/carrington-mobile/css/advanced.css);
+	</style>
+	<script type="text/javascript">
+	<!--
+	CFMOBI_IS_PAGE = false;	CFMOBI_PAGES_TAB = 'Pages';	CFMOBI_POSTS_TAB = 'Recent Posts';	var CFMOBI_TOUCH = ["iPhone","iPod","Android","BlackBerry9530","LG-TU915 Obigo","LGE VX","webOS"];
+	for (var i = 0; i < CFMOBI_TOUCH.length; i++) {
+		if (navigator.userAgent.indexOf(CFMOBI_TOUCH[i]) != -1) {
+			document.write('<link rel="stylesheet" href="http:\/\/ityum.net\/wp-content\/themes\/carrington-mobile\/css\/touch.css" type="text\/css" media="screen" charset="utf-8" \/>');
+			break;
+		}
+	}
+ 
+	document.write('<script type=\'text\/javascript\' src=\'http:\/\/ityum.net\/wp-includes\/js\/jquery\/jquery.js?ver=1.3.2\'><\/script><script type=\'text\/javascript\' src=\'http:\/\/ityum.net\/wp-content\/themes\/carrington-mobile\/js\/mobile.js?ver=1.0\'><\/script><script type=\'text\/javascript\'>\/* <![CDATA[ *\/var ie6w = {	url: "http:\/\/ityum.net\/wp-content\/plugins\/shockingly-big-ie6-warning",	test: "false",	jstest: "false",	t1: "WARNING",	t2: "You are using Internet Explorer version 6.0 or lower. Due to security issues and lack of support for Web Standards it is highly recommended that you upgrade to a modern browser.",	t3: "After the update you can acess this site normally.",	firefox: "true",	opera: "true",	chrome: "true",	safari: "false",	ie: "false",	firefoxu: "http:\/\/www.getfirefox.net\/",	operau: "http:\/\/www.opera.com\/",	chromeu: "http:\/\/www.google.com\/chrome\/",	safariu: "http:\/\/www.apple.com\/safari\/",	ieu: "http:\/\/www.microsoft.com\/windows\/ie\/"};\/* ]]> *\/<\/script><script type=\'text\/javascript\' src=\'http:\/\/ityum.net\/wp-content\/plugins\/shockingly-big-ie6-warning\/js\/ie6w_center.js?ver=2.8.2\'><\/script>');
+	//--></script><script type="text/javascript" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%283%29_files/jquery.js"></script><script type="text/javascript" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%283%29_files/mobile.js"></script><script type="text/javascript">/* <![CDATA[ */var ie6w = {	url: "http://ityum.net/wp-content/plugins/shockingly-big-ie6-warning",	test: "false",	jstest: "false",	t1: "WARNING",	t2: "You are using Internet Explorer version 6.0 or lower. Due to security issues and lack of support for Web Standards it is highly recommended that you upgrade to a modern browser.",	t3: "After the update you can acess this site normally.",	firefox: "true",	opera: "true",	chrome: "true",	safari: "false",	ie: "false",	firefoxu: "http://www.getfirefox.net/",	operau: "http://www.opera.com/",	chromeu: "http://www.google.com/chrome/",	safariu: "http://www.apple.com/safari/",	ieu: "http://www.microsoft.com/windows/ie/"};/* ]]> */</script><script type="text/javascript" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%283%29_files/ie6w_center.js"></script>
+</head><body>
+
+<h1 id="site-name"><a rel="home" href="http://ityum.net/">ityum.net</a></h1>
+
+<hr>
+
+<p id="navigation-top" class="navigation">
+	<a class="to-home" href="http://ityum.net/">Home</a> |
+<a href="#recent">Recent Posts</a> | <a href="#pages">Pages</a></p>
+
+<hr><p id="next-prev-top" class="pagination"><span>«</span> 
+<span class="next"><a href="http://ityum.net/2009/08/01/00/17/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b4.html">一个RoR的站点性能优化的故事(4)</a></span> 
+<span>|</span> 
+<span class="prev"><a href="http://ityum.net/2009/08/01/00/12/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b2.html">一个RoR的站点性能优化的故事(2)</a></span> 
+<span>»</span></p>
+
+<div id="content" class="group">
+<h1>一个RoR的站点性能优化的故事(3)</h1>
+
+<p>原文链接: http://poocs.net/articles/2006/03/27/the-adventures-of-scaling-stage-3</p>
+<p>中文链接: <span id="sample-permalink">http://ityum.net/2009/08/01/00/14/<span id="editable-post-name" title="Click to edit this part of the permalink">一个ror的站点性能优化的故事3</span>.html</span></p>
+<p><strong>第三篇 新年了</strong></p>
+<p>随着圣诞和新年的来临，我们准备从另外一个方面来改变和优化系统以提高网站的性能和响应速度。（从以往看来节日期间是我们流量比较小的时候，人们更愿意花时间跟家人团聚而非泡在社区里）</p>
+<p>×××，再次回到<strong>memcaced</strong>的优化上来了。通过debug发现了我们 <strong>memcache</strong>封装的问题（它是负责通过key来自动查找社区名和用户名，或者社区名或用户名），许多在<strong>memcached</strong>的查找都失败了。查找本身并 没有失败，而是从<strong>memcached</strong>中返回的对象实例有部分“失败”了。</p>
+<p>这句话什么意思？也就是说花费时间很长的计算结果被放到了缓存中，但是重新从缓存中获得它们的时候失败了。结果再次从新计算（这时<strong>memcache</strong>封装里面的一个回退机制）。因此没有达到我们认为的节省时间、降低负载的效果。</p>
+<p>然而，这个跟先于对象定义的Ruby声明的类没有关系，显然和返回的marshalled数据有关。在Google上面搜索了这个错误信息没发现任何明显犯同样错误的人，也没有任何解决办法。</p>
+<p><strong>（译者评：看看别人解决问题的过程比知道优化技巧这样的结果更加重要，比如作者也走过很多盲目的弯路，但这些弯路也是思考问题的方式</strong><strong>）</strong></p>
+<p>通过查看Debian的更新日志提到了一些 Ruby 1.8.4关于marshalling，并一次同时在<a href="http://rubyonrails.org/down">Rubyonrails.org’s download page</a> 看到了如下信息：</p>
+<blockquote><p>We recommend Ruby 1.8.4 for use with Rails. Ruby 1.8.2 is fine too, but version 1.8.3 is not.</p></blockquote>
+<p>因此升级了Ruby，我们从升级到了1.8.4，重新编译了所有C扩展的的包，比如Ruby-MySQL和RMagick，然后上线看看。</p>
+<p>结果是没有变化！</p>
+<p>接着在一月的第三个星期，<a href="http://www.robotcoop.com/">Robot Coop</a> 发布了他们的<a href="http://dev.robotcoop.com/Libraries/">memcache-client</a> 库，作为Ruby-Memcache的替代，现在后者的开发停止多时了。</p>
+<p>使用新的<strong>memcache-client</strong>库系统运行得非常流畅。它甚至做了我们自己封装的<strong>memcached</strong>包装器的大部分工作，请大家为Robot Coop的工作欢呼三次，太伟大了！</p>
+<p>由于有了如此好性能的<strong>memcahced</strong>我们冒险向前走了另外一步。我们将session的存储从 ActiveRecordStore（读Mysql表的存储）移到了<strong>memcached</strong>中。我们希望通过这样做也是为了减少前面所述的Master- Master模式中只有一个线程往另一个Master中写的压力。同时，这样也能将每次请求页面而需要到数据库的比例比11月份上线时减少了1/3。</p>
+<p>另外通过Robot Coop <strong>memcache</strong> 客户端我们可以有理由去跨多台机器做分布式缓存。<strong>memcached</strong>对于我们大部分的机器无论是在内存消耗上，还是CPU使用上都是非常不错的。<br>
+我们临时将所有机器都配置上<strong>memcache</strong>来应对它的连接数问题。为什么说是临时的？因为我们有个登录问题需要debug出来。有时侯我们不能去再次使用我们自己的机器。用户像是坐在一个很大的公司中，有太过敏感的防火墙和内容过滤器，以至于其它人不能再登录进来。<br>
+许多问题随之被发现了，他们甚至没有看见我们种的且将过期时间设置为2010年的cookies。为了让他们看见，我们甚至尝试换个cookie名字（这样做是为了想避免一个自己的胡乱猜测，什么以session命名的cookies会在浏览器关闭的时候就自动过期）<br>
+<strong>（译者评：笑可笑之人，有时候找不到问题，不就是根据自己一点点经验去胡乱尝试么？这也是技术的一部分）</strong></p>
+<p>多台机器分布式的<strong>memcached</strong>的配置和session的存储有过什么联系么？哦，天知道？最后没有人清楚的记得当用户登录正常时，是不是我们只是做了将用<strong>memcached</strong>做session存储这一件事让它的好的。（这一个改变对于我们系统减轻了许多压力）</p>
+<p>为 了简化调试（也为了减少潜在的隐患）我们又返回去用单台机器配置一个<strong>memcached</strong>和一个MySQL的做法。<strong>memcached</strong>放在一台（只做数据同 步和广告服务）比较空闲的数据库服务器上。顺便提一下<strong>memcached</strong>的配置非常简单。经常需要去变的参数是分配的内存大小，需要记住的是分配的内存可 以很大，但<strong>memcached</strong>也必须去调度这么大的内存空间。到了一定时候它将会到达它的极限。我们当前给<strong>memcache</strong>了1024M的内存空间，这个 对于文本信息绰绰有余。</p>
+<p>这是基于我们系统7周时间的<strong>memcached</strong>的统计数据。（不要问过关于二进制字节的读写比率，我认为这是颠倒的？？？）</p>
+<pre style="font-family: Consolas,Monaco,'Courier New',Courier,monospace; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: 18px; font-size-adjust: none; font-stretch: normal; -x-system-font: none;"><code>get_misses: 59,571,775
+
+get_hits: 235,552,563
+
+total_connections: 2,002,697
+
+bytes_read: 79,799,051,834
+
+bytes_written: 734,299,301,670
+
+curr_items: 1,421,982
+
+total_items: 76,452,455
+
+cmd_set: 76,453,343
+
+cmd_get: 295,124,338
+
+bytes: 717,612,826</code>登录的错误也在不久以后解决了，原因是当关闭浏览器的时候cookie就过期了。无论什么原因？这个问题的解决没有太多的逻辑推理。仅仅是找一种便于管理的
+
+折中办法才行。
+
+<strong>（译者评：对称是种美，与其将cache散落到各处，不如简单点让一台没有压力的机器单独来承担。不对称也是一种美，两台数据库服务器，只在一台上装了
+
+memcached）</strong>
+
+<strong>
+</strong></pre>
+<p><strong>出现新的访问速度变慢的问题</strong></p>
+<p>在一月份的前半个月我们一天就可以支撑110万的流量，此时的流量达到了95G。接着到了一月份的后半个月系统出现问题，几乎不能工作了。虽然以前我们所做的所有修改和调优（原本这些都非常好），但我们碰到了新问题，发现系统在变慢。</p>
+<p>是
+正常的变慢，还是糟糕的变慢？实际上是不好的变慢。到了一月份的最后一周变得跟去年11月份一样慢了。为什么会这样？哦，这是一个好问题。我们已经优化了
+系统的每一个部分（如果你读完了这一系列文章，你也应该清楚）。在过去的几周内，事情看上去都不错，但现在我们又回到了开始时那样。</p>
+<p>先还是把系统结构图图画出来吧，这样清楚些，不如从图中找问题。<strong><strong>（译者评：我就是在机器上傻看数据，退一步看看整个架构更容易发现问题）<br>
+</strong></strong>我
+们首先发现是整个系统全部变慢，甚至有时候不能访问，但所有的机器压力还是很小，应该说是太小了。调整lighttpd的fastcig。debug发现
+侦听虽被指定去处理连接，但是它坐在那里一动不动。当有一般的请求焊死在那里，这再明显不过是说它不能响应所有的请求。</p>
+<p>（对于这些似乎你很眼熟，我以前在poocs.net写过一篇文章叫“温柔地杀死我”）</p>
+<p>使
+用tpcdump来监控侦听端口的流量，什么也没有，没有一个字节通过管道。使用strace来看看那些忙一些的侦听在干什么，它们在wait，也没有做
+任何事情。郁闷的是，如果你重启lighttpd或者×××，最终和开始看到的一样。我的同事对防火墙做了各种配置，我开始调整应用服务器和 <strong>lighttpd</strong>代
+理服务器的/proc的参数，我猜测是到了某个参数的上限。用netstat也发现有几百个连接在那些管道中，状态都是
+TIME_WAIT和CLOSE_WAIT，很像遭受了synflooed攻击。但这是我们内部机器，不会被外面看到。下一步，根据公共可利用的资源来调
+整/proc中的参数，具体如下：</p>
+<pre style="font-family: Consolas,Monaco,'Courier New',Courier,monospace; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: 18px; font-size-adjust: none; font-stretch: normal; -x-system-font: none;"><code>
+
+echo "1024 65535" &gt; /proc/sys/net/ipv4/ip_local_port_range
+
+echo 1 &gt; /proc/sys/net/ipv4/tcp_tw_reuse
+
+echo 1 &gt; /proc/sys/net/ipv4/tcp_tw_recycle
+
+echo 1800000 &gt; /proc/sys/net/ipv4/tcp_max_tw_buckets
+
+echo 256000 &gt; /proc/sys/net/ipv4/tcp_max_syn_backlog
+
+echo 1024 &gt; /proc/sys/net/core/somaxconn
+
+echo "128000 200000 262144" &gt; /proc/sys/net/ipv4/tcp_mem
+
+echo 2097152 &gt; /proc/sys/fs/file-max
+
+echo 0 &gt; /proc/sys/net/ipv4/tcp_timestamps
+
+echo 0 &gt; /proc/sys/net/ipv4/tcp_window_scaling</code></pre>
+<pre style="font-family: Consolas,Monaco,'Courier New',Courier,monospace; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: 18px; font-size-adjust: none; font-stretch: normal; -x-system-font: none;">不要在家使用这些命令，因为它一点都没有帮到我们。请求始终停在那，网站的性能让人看上去恶心。另外一个人企图在每个应用服务器上都启动一个lighttp
+
+（这样来代替远程的fastcgi侦听），然后放一个lighttp的负载均衡的方向代理在前面。事实证明系统还是慢。
+
+剩下比较“土”的办法，我写了一个脚本来搜索所有的可用侦听，如果它们在一定周期内没有响应，就kill它。被kill的请求会有Rails的spinner/spawner很快的重新
+
+启动，lighttpd只是多花几秒钟来重新连接socket。虽然对于业务来说不能持续的来监控它们了。
+
+这个方法<code>虽然</code><code>看上去不漂亮，但它工作的很好，并且让我们熬过了一月来到了二月，配置如下：
+<img class="alignnone size-full wp-image-153" title="February" src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%283%29_files/February.png" alt="February" height="818" width="575"></code></pre>
+<p>剩下最后一篇是关于系统扩展性的问题，也总结一下，哪些有帮助，哪些没有，同时展望一下将来系统调优的计划。</p>
+
+
+<p>Related posts:</p><ol><li><a href="http://ityum.net/2009/08/01/00/02/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b.html" rel="bookmark" title="Permanent Link: 一个RoR的站点性能优化的故事(1)">一个RoR的站点性能优化的故事(1)</a></li><li><a href="http://ityum.net/2009/08/01/00/12/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b2.html" rel="bookmark" title="Permanent Link: 一个RoR的站点性能优化的故事(2)">一个RoR的站点性能优化的故事(2)</a></li><li><a href="http://ityum.net/2009/08/01/00/17/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b4.html" rel="bookmark" title="Permanent Link: 一个RoR的站点性能优化的故事(4)">一个RoR的站点性能优化的故事(4)</a></li></ol>
+<div class="clear"></div>
+
+<p class="byline small">Posted by <a href="http://ityum.net/author/admin/" title="Posts by Khan.Chan">Khan.Chan</a> on August 1, 2009.</p>
+
+<p class="tags small">Tags: <a href="http://ityum.net/tag/haproxy" rel="tag">haproxy</a>, <a href="http://ityum.net/tag/lighttpd" rel="tag">lighttpd</a>, <a href="http://ityum.net/tag/memcached" rel="tag">memcached</a></p>
+<p class="categories small">Categories: <a href="http://ityum.net/category/%e6%a1%88%e4%be%8b%e5%88%86%e6%9e%90" title="View all posts in 案例分析" rel="category tag">案例分析</a></p>
+<h2 id="comments" class="title-divider"><span>0 Responses</span></h2>
+
+
+<form id="respond" action="http://ityum.net/wp-comments-post.php" method="post">
+	<h3 class="title-divider"><span>Leave a Reply</span></h3>
+			<p>
+			<input name="author" id="author" size="22" type="text">
+			<label for="author"><small>Name (required)</small></label>
+		</p>
+		<p>
+			<input name="email" id="email" size="22" type="text">
+			<label for="email"><small>Email (required, but never shared)</small></label>
+		</p>
+		<p>
+			<input name="url" id="url" size="22" type="text">
+			<label title="Your website address" for="url"><small>Web</small></label>	
+		</p>
+		<p><textarea name="comment" id="comment" rows="8" cols="40"></textarea></p>
+	<p>
+		<input name="submit" id="submit" value="Submit comment" tabindex="5" type="submit">
+		<input name="comment_post_ID" value="152" type="hidden">
+	</p>
+	<script type="text/javascript">
+	<!--
+	refJS = escape( document[ 'referrer' ] );
+	document.write("<input type='hidden' name='refJS' value='"+refJS+"'>");
+	// -->
+	</script><input name="refJS" value="http%3A//ityum.net/2009/08/01/00/02/%25e4%25b8%2580%25e4%25b8%25aaror%25e7%259a%2584%25e7%25ab%2599%25e7%2582%25b9%25e6%2580%25a7%25e8%2583%25bd%25e4%25bc%2598%25e5%258c%2596%25e7%259a%2584%25e6%2595%2585%25e4%25ba%258b.html" type="hidden">
+	<p style="font-size: 9px; clear: both;">Spam Protection by <a href="http://www.hybrid6.com/webgeek/plugins/wp-spamfree" title="WP-SpamFree WordPress Anti-Spam Plugin">WP-SpamFree</a></p>
+</form>
+</div><!--#content-->
+
+<p id="next-prev-bottom" class="pagination"><span>«</span> 
+<span class="next"><a href="http://ityum.net/2009/08/01/00/17/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b4.html">一个RoR的站点性能优化的故事(4)</a></span> 
+<span>|</span> 
+<span class="prev"><a href="http://ityum.net/2009/08/01/00/12/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b2.html">一个RoR的站点性能优化的故事(2)</a></span> 
+<span>»</span></p>
+
+
+<hr>
+
+<div class="group">
+	<form id="search" action="http://ityum.net" method="get">
+		<div>
+			<input name="s" id="s" inputmode="predictOn" type="text">
+			<input name="submit_button" value="Search" type="submit">
+		</div>
+	</form>
+</div>
+<hr>
+
+<div class="tabbed"><ul class="tabs"><li class="active"><a href="#recent">Recent Posts</a></li><li class=""><a href="#pages">Pages</a></li></ul>
+	<div id="recent_tab">
+		<hr>
+		<h2 style="display: none;" class="table-title" id="recent">Recent Posts</h2>
+		<ul style="border-top: 0pt none; margin-top: 0pt;" class="disclosure table group">
+				<li><a href="http://ityum.net/2009/08/01/17/25/digg%e7%ab%99%e7%82%b9%e7%9a%84lamp%e6%9e%b6%e6%9e%84.html" title="Digg站点的LAMP架构">Digg站点的LAMP架构</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/17/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b4.html" title="一个RoR的站点性能优化的故事(4)">一个RoR的站点性能优化的故事(4)</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/14/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b3.html" title="一个RoR的站点性能优化的故事(3)">一个RoR的站点性能优化的故事(3)</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/12/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b2.html" title="一个RoR的站点性能优化的故事(2)">一个RoR的站点性能优化的故事(2)</a></li>
+	<li><a href="http://ityum.net/2009/08/01/00/02/%e4%b8%80%e4%b8%aaror%e7%9a%84%e7%ab%99%e7%82%b9%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%9a%84%e6%95%85%e4%ba%8b.html" title="一个RoR的站点性能优化的故事(1)">一个RoR的站点性能优化的故事(1)</a></li>
+	<li><a href="http://ityum.net/2009/07/29/13/10/%e7%bd%91%e7%bb%9c%e6%b5%81%e9%87%8f%e7%9b%91%e6%8e%a7%e8%bd%af%e4%bb%b6vnstat%e7%ae%80%e7%95%a5.html" title="网络流量监控软件vnStat简略">网络流量监控软件vnStat简略</a></li>
+	<li><a href="http://ityum.net/2009/07/29/01/34/myspace%e7%9a%84%e5%85%ad%e6%ac%a1%e9%87%8d%e6%9e%84.html" title="MySpace的六次重构">MySpace的六次重构</a></li>
+	<li><a href="http://ityum.net/2009/07/29/01/14/memcached-clientjava%e6%80%a7%e8%83%bd%e5%af%b9%e6%af%94.html" title="Memcached Client(Java)性能对比">Memcached Client(Java)性能对比</a></li>
+	<li><a href="http://ityum.net/2009/07/28/00/29/facebook-performance-caching.html" title="Facebook performance caching">Facebook performance caching</a></li>
+	<li><a href="http://ityum.net/2009/07/16/11/38/mod_gzip-vs-mod_deflate.html" title="mod_gzip vs mod_deflate">mod_gzip vs mod_deflate</a></li>
+		</ul>
+	</div>
+	<div style="display: none;" id="pages_tab">
+		<hr>
+		<h2 style="display: none;" class="table-title" id="pages">Pages</h2>
+		<ul style="border-top: 0pt none; margin-top: 0pt;" class="disclosure table group">
+			<li class="page_item page-item-2"><a href="http://ityum.net/about">About</a></li>
+<li class="page_item page-item-39"><a href="http://ityum.net/community">Community</a></li>
+<li class="page_item page-item-8"><a href="http://ityum.net/license">License</a></li>
+		</ul>
+	</div>
+</div>
+
+<hr>
+
+<p id="navigation-bottom" class="navigation">
+	<a class="to-home" href="http://ityum.net/">Home</a> |
+<a href="#recent">Recent Posts</a> | <a href="#pages">Pages</a></p>
+
+<hr>
+
+<div id="about" class="group">
+	<h3>About ityum.net</h3>
+ityum|IT技术云旨在为架构师，运维进阶者提供交流技术的空间
+
+
+No related posts.<a class="more" href="http://ityum.net/about">more →</a></div>
+<div id="footer">
+
+	<hr>
+
+	<p class="small">
+		Proudly powered by <a href="http://wordpress.org/"><strong>WordPress</strong></a> and <a href="http://carringtontheme.com/"><strong>Carrington</strong></a>. <a href="http://ityum.net/wp-login.php">Log in</a> | <a href="http://ityum.net/wp-login.php?action=register">Register</a> <a href="http://ityum.net/feed" title="Subscribe RSS"><img src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%283%29_files/feed.gif" alt="Subscribe RSS"><br>
+	</a></p>
+<a href="http://ityum.net/feed" title="Subscribe RSS">	</a><div class="clear"></div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="%E4%B8%80%E4%B8%AARoR%E7%9A%84%E7%AB%99%E7%82%B9%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%85%E4%BA%8B%283%29_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10039282-1");
+pageTracker._trackPageview();
+} catch(err) {}</script></body></html>

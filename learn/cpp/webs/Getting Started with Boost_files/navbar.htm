@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html dir="ltr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="navbar_data/2461938849-navbar1_bundle.css" rel="stylesheet" type="text/css">
+<!-- base --></head><body class="null lang_zh"><script type="text/javascript" src="navbar_data/3625575137-cookies.js"></script>
+<script type="text/javascript" src="navbar_data/4095335807-common.js"></script>
+<script type="text/javascript" src="navbar_data/107652916-dom.js"></script>
+<script type="text/javascript">
+        var ID = "26653368";
+        var FLAG_COOKIE_NAME = 'flaggedBlog';
+        var MAX_FLAGGED_BLOGS = 10;
+        var FLAG_BLOG_URL = "http://www.blogger.com" +
+                            "/flag-blog.g?nav=" +
+                            "1" +
+                            "&toFlag=" + ID;
+        var UNFLAG_BLOG_URL = "http://www.blogger.com" +
+                            "/unflag-blog.g?nav=" +
+                            "1" +
+                            "&toFlag=" + ID;
+
+        var ncHasFlagged = false;
+        var servletTarget = new Image();
+
+       
+       function hasFlagged() {
+         if (getCookie(FLAG_COOKIE_NAME)) {
+           var bloglist = getCookie(FLAG_COOKIE_NAME);
+           var blogarray = bloglist.split(",")
+           if (FindInArray(blogarray, ID) > 0) {
+             return true;
+           }
+         }
+         return ncHasFlagged;
+       }
+       
+
+       function toggleFlag() {
+         var date = new Date();
+         var flagBtn = document.getElementById('b-flag-this');
+
+         if (hasFlagged()) {
+           removeBlogFromFlagCookie();
+           servletTarget.src = UNFLAG_BLOG_URL + '&d=' + date.getTime();
+
+           RemoveClass(flagBtn, 'flagged');
+           ncHasFlagged = false;
+         } else {
+           setBloggerFlagCookie();
+           servletTarget.src = FLAG_BLOG_URL + '&d=' + date.getTime();
+
+           AddClass(flagBtn, 'flagged');
+           ncHasFlagged = true;
+         }
+
+         refreshDrop();
+       }
+
+       
+       function showDrop() {
+         var overlap = 5;
+         var dropdown_position =
+           GetPageOffsetRight(document.getElementById('b-flag-this')) - overlap + "px";
+
+         document.getElementById('unflagi').style.display = 'none';
+         document.getElementById('flagi').style.display = 'none';
+
+         if (!hasFlagged()) {
+           document.getElementById('flagi').style.display = 'inline';
+           document.getElementById('flagi').style.left = dropdown_position;
+           showElement(document.getElementById('flagi'));
+         } else {
+           document.getElementById('unflagi').style.display = 'inline';
+           document.getElementById('unflagi').style.left = dropdown_position;
+           showElement(document.getElementById('unflagi'));
+         }
+       }
+
+       
+       function hideDrop() {
+         hideElement(document.getElementById('flagi'));
+         hideElement(document.getElementById('unflagi'));
+       }
+
+       
+       function refreshDrop() {
+         hideDrop();
+         showDrop();
+       }
+
+       
+       function setBloggerFlagCookie() {
+         var bloglist = ""
+         if (getCookie(FLAG_COOKIE_NAME)) {
+           bloglist = getCookie(FLAG_COOKIE_NAME)
+           var blogarray = bloglist.split(",")
+           if (blogarray.length >= MAX_FLAGGED_BLOGS) {
+             blogarray.shift()
+           }
+           InsertArray(blogarray, ID)
+           bloglist = blogarray.toString();
+         } else {
+           bloglist = ID
+         }
+         setCookie(FLAG_COOKIE_NAME, bloglist, null, null, '/', null)
+       }
+
+       
+       function removeBlogFromFlagCookie(){
+         if (getCookie(FLAG_COOKIE_NAME)) {
+           var bloglist = getCookie(FLAG_COOKIE_NAME);
+           var blogarray = bloglist.split(",")
+           if (FindInArray(blogarray, ID) > 0) {
+             DeleteArrayElement(blogarray, ID)
+             bloglist = blogarray.toString();
+           }
+           setCookie(FLAG_COOKIE_NAME, bloglist, null, null, '/', null);
+         }
+       }
+
+      </script>
+<div id="flagi" style="position: absolute;" onmouseover="showDrop()" onmouseout="hideDrop();">通知 Blogger 该页上有 <a href="http://help.blogger.com/bin/answer.py?answer=42517" target="_blank">令人反感的内容</a>。</div>
+<div id="unflagi" style="position: absolute;" onmouseover="showDrop()" onmouseout="hideDrop()">您举报这个博客含有 <a href="http://help.blogger.com/bin/answer.py?answer=42517" target="_blank">令人反感的内容</a>。</div>
+<div id="b-navbar"><a href="http://www.blogger.com/" id="b-logo" tabindex="1" title="转到 Blogger.com"><div id="navbar-logo"><span>Blogger</span></div></a>
+<div id="b-sms" class="b-mobile"><a href="sms:?body=%E5%97%A8%EF%BC%8C%E8%AF%B7%E6%9F%A5%E7%9C%8B%20http%3A%2F%2Fshoddykid.blogspot.com%2F%20%E4%B8%8A%E7%9A%84%20The%20C%2B%2B%20and%20Boost%20Code%20Shop" tabindex="2">作为短信发送</a></div>
+<div id="b-search"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="navsearch" valign="middle" nowrap="nowrap"><form id="searchthis" action="http://shoddykid.blogspot.com/search" method="get" style="display: inline;"><table cellpadding="0" cellspacing="0"><tbody><tr><td valign="middle"><input id="b-query" name="q" tabindex="3" title="搜索博客" type="text"></td>
+<td class="navbutton" valign="middle"><noscript><input type="image"
+src="http://www.blogger.com/img/navbar/1/btn_search_this.png"
+id="b-searchbtn" tabindex="4" alt="搜索此博客" title="搜索此博客"></noscript>
+<script type="text/javascript">
+  document.write("\x3cdiv id\x3d\x22b-search-this\x22 class\x3d\x22btn\x22 onclick\x3d\x22document.getElementById(\x26#39;searchthis\x26#39;).submit()\x22 tabindex\x3d\x224\x22\x3e\x3cdiv\x3e\u641c\u7d22\u535a\u5ba2\x3c/div\x3e\x3c/div\x3e");
+</script><div id="b-search-this" class="btn" onclick="document.getElementById('searchthis').submit()" tabindex="4"><div>搜索博客</div></div></td>
+<td class="navbutton" valign="middle"><script type="text/javascript">
+  document.write("\x3cdiv id\x3d\x22b-flag-this\x22 class\x3d\x22btn\x22 onclick\x3d\x22toggleFlag();\x22 onmouseover\x3d\x22showDrop()\x22 onmouseout\x3d\x22hideDrop()\x22 tabindex\x3d\x225\x22\x3e\x3cdiv id\x3d\x22bt-flag-body\x22\x3e\x3cimg class\x3d\x22flag\x22 alt\x3d\x22\x22 src\x3d\x22/img/blank.gif\x22\x3e\n\x3cspan class\x3d\x22flag-text\x22\x3e\u4e3e\u62a5\u535a\u5ba2\x3c/span\x3e\x3c/div\x3e\n\x3cdiv id\x3d\x22bt-unflag-body\x22\x3e\x3cimg class\x3d\x22flag\x22 alt\x3d\x22\x22 src\x3d\x22/img/blank.gif\x22\x3e\n\x3cspan class\x3d\x22flag-text\x22\x3e\u64a4\u6d88\u4e3e\u62a5\u535a\u5ba2\x3c/span\x3e\x3c/div\x3e\x3c/div\x3e");
+</script><div id="b-flag-this" class="btn" onclick="toggleFlag();" onmouseover="showDrop()" onmouseout="hideDrop()" tabindex="5"><div id="bt-flag-body"><img class="flag" alt="" src="navbar_data/blank.gif">
+<span class="flag-text">举报博客</span></div>
+<div id="bt-unflag-body"><img class="flag" alt="" src="navbar_data/blank.gif">
+<span class="flag-text">撤消举报博客</span></div></div></td></tr></tbody></table></form></td>
+
+
+<td valign="middle" width="100%" nowrap="nowrap"><a href="http://www.blogger.com/next-blog?navBar=true" id="b-next" tabindex="6">下一个博客»</a></td>
+<td class="navbar-right" align="right" valign="middle" nowrap="nowrap">
+<a href="http://www.blogger.com/signup.g" id="b-getorpost" tabindex="7">创建博客</a>
+|
+<a href="http://www.blogger.com/" tabindex="8">登录</a></td></tr></tbody></table>
+<div id="b-search-img"></div></div></div>
+</body></html>
