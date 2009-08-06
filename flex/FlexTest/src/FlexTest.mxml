@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Simple example to demonstrate the List Control -->
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="onCreationComplete()">
 
     <mx:Script>
         <![CDATA[
@@ -8,17 +8,25 @@
             [Bindable]
             public var selectedItem:Object;
             
-            private function init():void
+            private function onCreationComplete():void
             {
+
+            }
+       ]]>
+    </mx:Script>
+    
+
+
+</mx:Application>    
+
+
+<!--
+
             	trace('ok');
             	var x:XML = <hello>
 					</hello>;
             	trace(x.toXMLString());
-            }
-       ]]>
-    </mx:Script>
-
-
+            	
     <mx:Model id="mystates">
       <states>
         <state label="Alabama" data="AL"/>
@@ -32,7 +40,7 @@
     </mx:Model>
         <mx:Label text="黑体" fontFamily="黑体" fontSize="20"/>
 
-<!--
+
     <mx:Panel title="List Control Example" height="75%" width="75%" 
         paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
 
@@ -46,5 +54,6 @@
         </mx:VBox>
 
     </mx:Panel>
-        -->
-</mx:Application>    
+        
+        
+-->

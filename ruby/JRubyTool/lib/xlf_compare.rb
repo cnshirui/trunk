@@ -16,14 +16,15 @@ import 'org.dom4j.io.XMLWriter'
 import 'org.dom4j.io.OutputFormat'
 import 'org.dom4j.io.SAXReader'
 
-compare_tool = "D:\\dev\\BC2\\BC2.exe"
+compare_tool = "D:\\dev\\WinMerge\\WinMergeU.exe"
+#"D:\\dev\\BC2\\BC2.exe"
 
 argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = 'D:\xcelsius\bugfix\import_excel_lost_binding'
-  files = ['base_delete_rebind.xlf', 'base_delete.xlf']
+  dir = 'D:\xcelsius\bugfix\slider_menu_lost_item'
+  files = ['slider_2_45_url_53.xlf', 'slider_2_45_url_53_add.xlf']
   dir = dir.gsub("\\", "/") if(dir.index("\\")!=-1)
   
   files.map! { |file| "#{dir}/#{file}" }
@@ -77,4 +78,4 @@ end
 
 # execute compare
 puts "#{compare_tool} '#{xmls[0]}'  '#{xmls[1]}'"
-exec("#{compare_tool} '#{xmls[0]}'  '#{xmls[1]}'")
+#exec("#{compare_tool} '#{xmls[0]}'  '#{xmls[1]}'")
