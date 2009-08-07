@@ -12,9 +12,9 @@ function init() {
     jsReady = true;
 
     // load spring graph
-    // "http://roamer.heroku.com/os/090328/"
+    // "http://roamer.heroku.com/os/090807/CampusRoamer.swf"
     // http://shirui.xicp.net/os/090807/CampusRoamer.swf
-    var swf_path = "http://shirui.xicp.net/os/090807/CampusRoamer.swf";
+    var swf_path = "http://roamer.heroku.com/os/090807/CampusRoamer.swf";
     opensocial.flash.embedFlash( swf_path, "flash_container", "9",
      {
         width: "790",
