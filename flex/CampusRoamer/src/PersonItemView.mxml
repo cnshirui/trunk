@@ -97,6 +97,7 @@
                 	 favoriteCreateRequest.send();
                 }
                 app.getFavorites();
+                app.setBusyCursor();
 	        }
 	        
 	        private function getProfilePage(id:String):String {
