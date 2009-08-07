@@ -1,4 +1,7 @@
 *.log
+<<<<<<< HEAD:.gitignore
 *.pyc
 index.yaml
 .git
+=======
+>>>>>>> d0f562119c93ad9a378e8ab4eb6257eeb57d1be0:.gitignore

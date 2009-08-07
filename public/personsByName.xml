@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+  <person>
+    <id>50836</id>
+    <name>时睿</name>
+    <thumbnail>http://hd11.xiaonei.com/photos/hd11/20071016/22/23/tiny_15952p177.jpg</thumbnail>
+    <friends>
+      <friend index="0">
+        <id>225326387</id>
+        <name>jingmouren</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090312/20/45/tiny_oCd9_25837p204235.jpg</thumbnail>
+      </friend>
+      <friend index="1">
+        <id>221555812</id>
+        <name>丁海波</name>
+        <thumbnail>http://hd54.xiaonei.com/photos/hd54/20081209/09/40/tiny_DpCZ_667b204215.jpg</thumbnail>
+      </friend>
+      <friend index="2">
+        <id>85960968</id>
+        <name>丁雨</name>
+        <thumbnail>http://hdn111.xnimg.cn/photos/hdn111/20090211/22/00/tiny_Jyjk_100431l204236.jpg</thumbnail>
+      </friend>
+      <friend index="3">
+        <id>267425326</id>
+        <name>万婕</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090224/10/05/tiny_7yOt_38196o204238.jpg</thumbnail>
+      </friend>
+      <friend index="4">
+        <id>126549917</id>
+        <name>丛倪鹏</name>
+        <thumbnail>http://hdn101.xnimg.cn/photos/hdn101/20090101/22/05/tiny_o9gc_34961f204215.jpg</thumbnail>
+      </friend>
+      <friend index="5">
+        <id>265607200</id>
+        <name>丛静静</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090204/21/50/tiny_N2CP_9808l204236.jpg</thumbnail>
+      </friend>
+      <friend index="6">
+        <id>255972643</id>
+        <name>乔宏</name>
+        <thumbnail>http://xnimg.cn/photos/0/0/women_tiny.gif</thumbnail>
+      </friend>
+      <friend index="7">
+        <id>227962122</id>
+        <name>二毛</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080826/14/23/tiny_R9am_2392c200150.jpg</thumbnail>
+      </friend>
+      <friend index="8">
+        <id>76314773</id>
+        <name>仇秋菊</name>
+        <thumbnail>http://hd43.xiaonei.com/photos/hd43/20080617/15/14/tiny_2647j107.jpg</thumbnail>
+      </friend>
+      <friend index="9">
+        <id>230205117</id>
+        <name>佳佳</name>
+        <thumbnail>http://hdn511.xnimg.cn/photos/hdn511/20090216/18/35/tiny_1JSj_55752k204237.jpg</thumbnail>
+      </friend>
+      <friend index="10">
+        <id>51530</id>
+        <name>侍良栋</name>
+        <thumbnail>http://xnimg.cn/photos/51/530/027358.jpg</thumbnail>
+      </friend>
+      <friend index="11">
+        <id>37162749</id>
+        <name>傅君</name>
+        <thumbnail>http://hd34.xiaonei.com/photos/hd34/20080414/10/39/tiny_794a107.jpg</thumbnail>
+      </friend>
+      <friend index="12">
+        <id>242307332</id>
+        <name>傅旷</name>
+        <thumbnail>http://hd34.xiaonei.com/photos/hd34/20080323/21/57/tiny_6854b150.jpg</thumbnail>
+      </friend>
+      <friend index="13">
+        <id>266113782</id>
+        <name>冯启明</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090316/18/30/tiny_EHud_94559n204236.jpg</thumbnail>
+      </friend>
+      <friend index="14">
+        <id>229447156</id>
+        <name>冯星杰</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080308/22/51/tiny_258i169.jpg</thumbnail>
+      </friend>
+      <friend index="15">
+        <id>225011345</id>
+        <name>冯春建</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080819/10/16/tiny_649g169.jpg</thumbnail>
+      </friend>
+      <friend index="16">
+        <id>223077705</id>
+        <name>冯浩</name>
+        <thumbnail>http://hd20.xiaonei.com/photos/hd20/20070702/13/28/tiny_2756o77.jpg</thumbnail>
+      </friend>
+      <friend index="17">
+        <id>224647526</id>
+        <name>刘 巍</name>
+        <thumbnail>http://xnimg.cn/photos/20070612/00/37/tiny621054.jpg</thumbnail>
+      </friend>
+      <friend index="18">
+        <id>228622929</id>
+        <name>刘刘</name>
+        <thumbnail>http://hd20.xiaonei.com/photos/hd20/20070718/17/52/tiny_5570c72.jpg</thumbnail>
+      </friend>
+      <friend index="19">
+        <id>56552096</id>
+        <name>刘刚</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081207/20/30/tiny_nTei_10184f204096.jpg</thumbnail>
+      </friend>
+      <friend index="20">
+        <id>224216841</id>
+        <name>刘华</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090311/11/05/tiny_uur8_1398o204234.jpg</thumbnail>
+      </friend>
+      <friend index="21">
+        <id>232686620</id>
+        <name>刘国军</name>
+        <thumbnail>http://hd45.xiaonei.com/photos/hd45/20080905/14/06/tiny_YfDN_2644e198107.jpg</thumbnail>
+      </friend>
+      <friend index="22">
+        <id>221587524</id>
+        <name>刘嵩</name>
+        <thumbnail>http://hd42.xiaonei.com/photos/hd42/20080403/22/37/tiny_1179f107.jpg</thumbnail>
+      </friend>
+      <friend index="23">
+        <id>1651174150</id>
+        <name>刘彦祖</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080301/10/35/tiny_1176p107.jpg</thumbnail>
+      </friend>
+      <friend index="24">
+        <id>227305861</id>
+        <name>刘振华</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080316/16/13/tiny_4194k169.jpg</thumbnail>
+      </friend>
+      <friend index="25">
+        <id>223964146</id>
+        <name>刘晓亮</name>
+        <thumbnail>http://hd51.xiaonei.com/photos/hd51/20080528/21/19/tiny_6145n150.jpg</thumbnail>
+      </friend>
+      <friend index="26">
+        <id>920240707</id>
+        <name>刘津玉</name>
+        <thumbnail>http://hd33.xiaonei.com/photos/hd33/20080219/13/49/tiny_2643h107.jpg</thumbnail>
+      </friend>
+    </friends>
+  </person>
+  <person>
+    <id>85960968</id>
+    <name>丁雨</name>
+    <thumbnail>http://hdn111.xnimg.cn/photos/hdn111/20090211/22/00/tiny_Jyjk_100431l204236.jpg</thumbnail>
+    <friends>
+      <friend index="0">
+        <id>248849635</id>
+        <name>♡缪童晶๑۩۞۩๑</name>
+        <thumbnail>http://hd36.xiaonei.com/photos/hd36/20080806/18/02/tiny_4723d169.jpg</thumbnail>
+      </friend>
+      <friend index="1">
+        <id>229800310</id>
+        <name>丁扬@nju</name>
+        <thumbnail>http://hdn201.xnimg.cn/photos/hdn201/20090113/23/30/tiny_YhpG_10880j198169.jpg</thumbnail>
+      </friend>
+      <friend index="2">
+        <id>45114074</id>
+        <name>丁海峰</name>
+        <thumbnail>http://xnimg.cn/photos/20060821/1100/tiny35388.jpg</thumbnail>
+      </friend>
+      <friend index="3">
+        <id>232857921</id>
+        <name>丁海红</name>
+        <thumbnail>http://hdn101.xnimg.cn/photos/hdn101/20081223/23/20/tiny_ENdx_71971b198169.jpg</thumbnail>
+      </friend>
+      <friend index="4">
+        <id>245896538</id>
+        <name>丁雨</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081211/11/13/tiny_LZf5_1416k198107.jpg</thumbnail>
+      </friend>
+      <friend index="5">
+        <id>233640145</id>
+        <name>丁雨</name>
+        <thumbnail>http://hdn301.xnimg.cn/photos/hdn301/20081227/17/50/tiny_1mXG_19100m200150.jpg</thumbnail>
+      </friend>
+      <friend index="6">
+        <id>1262754073</id>
+        <name>丁雨</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081204/08/21/tiny_ap4R_35d204215.jpg</thumbnail>
+      </friend>
+      <friend index="7">
+        <id>267425326</id>
+        <name>万婕</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090224/10/05/tiny_7yOt_38196o204238.jpg</thumbnail>
+      </friend>
+      <friend index="8">
+        <id>126549917</id>
+        <name>丛倪鹏</name>
+        <thumbnail>http://hdn101.xnimg.cn/photos/hdn101/20090101/22/05/tiny_o9gc_34961f204215.jpg</thumbnail>
+      </friend>
+      <friend index="9">
+        <id>227962122</id>
+        <name>二毛</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080826/14/23/tiny_R9am_2392c200150.jpg</thumbnail>
+      </friend>
+      <friend index="10">
+        <id>222850065</id>
+        <name>于建峰</name>
+        <thumbnail>http://hdn111.xnimg.cn/photos/hdn111/20090308/18/10/tiny_YlIh_7916l204236.jpg</thumbnail>
+      </friend>
+      <friend index="11">
+        <id>237137300</id>
+        <name>于欣洁</name>
+        <thumbnail>http://hd22.xiaonei.com/photos/hd22/20071211/11/03/tiny_10f169.jpg</thumbnail>
+      </friend>
+      <friend index="12">
+        <id>226160216</id>
+        <name>于阿朋</name>
+        <thumbnail>http://hd61.xiaonei.com/photos/hd61/20081022/09/59/tiny_Mo4v_709g204096.jpg</thumbnail>
+      </friend>
+      <friend index="13">
+        <id>76314773</id>
+        <name>仇秋菊</name>
+        <thumbnail>http://hd43.xiaonei.com/photos/hd43/20080617/15/14/tiny_2647j107.jpg</thumbnail>
+      </friend>
+      <friend index="14">
+        <id>232270190</id>
+        <name>依曦</name>
+        <thumbnail>http://hdn301.xnimg.cn/photos/hdn301/20090125/19/15/tiny_BHV5_149089c198169.jpg</thumbnail>
+      </friend>
+      <friend index="15">
+        <id>252954543</id>
+        <name>侯莹莹</name>
+        <thumbnail>http://hd17.xiaonei.com/photos/hd17/20080910/20/07/tiny_61DT_11005g200150.jpg</thumbnail>
+      </friend>
+      <friend index="16">
+        <id>233682870</id>
+        <name>傅海峰Joseph</name>
+        <thumbnail>http://hdn201.xnimg.cn/photos/hdn201/20090110/21/50/tiny_nt8x_14329h204096.jpg</thumbnail>
+      </friend>
+      <friend index="17">
+        <id>236638151</id>
+        <name>冯媛</name>
+        <thumbnail>http://hdn601.xnimg.cn/photos/hdn601/20090122/10/05/tiny_PdyA_68040h204096.jpg</thumbnail>
+      </friend>
+      <friend index="18">
+        <id>229447156</id>
+        <name>冯星杰</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080308/22/51/tiny_258i169.jpg</thumbnail>
+      </friend>
+      <friend index="19">
+        <id>232358358</id>
+        <name>刘允泽</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090228/18/55/tiny_HJVF_60020l204238.jpg</thumbnail>
+      </friend>
+      <friend index="20">
+        <id>56552096</id>
+        <name>刘刚</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081207/20/30/tiny_nTei_10184f204096.jpg</thumbnail>
+      </friend>
+      <friend index="21">
+        <id>59573489</id>
+        <name>刘培学</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090216/21/20/tiny_bD8E_58443d204235.jpg</thumbnail>
+      </friend>
+      <friend index="22">
+        <id>235652408</id>
+        <name>刘彧</name>
+        <thumbnail>http://hd201.xiaonei.com/photos/hd201/20081006/15/23/tiny_LDk6_4950e198169.jpg</thumbnail>
+      </friend>
+      <friend index="23">
+        <id>222810266</id>
+        <name>刘志超</name>
+        <thumbnail>http://xnimg.cn/photos/20070419/1710/tiny528914.jpg</thumbnail>
+      </friend>
+      <friend index="24">
+        <id>227305861</id>
+        <name>刘振华</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080316/16/13/tiny_4194k169.jpg</thumbnail>
+      </friend>
+      <friend index="25">
+        <id>221140750</id>
+        <name>刘晓勇</name>
+        <thumbnail>http://hdn511.xnimg.cn/photos/hdn511/20090213/09/25/tiny_vAkd_9546n204234.jpg</thumbnail>
+      </friend>
+      <friend index="26">
+        <id>241110376</id>
+        <name>刘晓明</name>
+        <thumbnail>http://hdn601.xnimg.cn/photos/hdn601/20090118/01/10/tiny_gL37_65300h204215.jpg</thumbnail>
+      </friend>
+      <friend index="27">
+        <id>43636481</id>
+        <name>刘权</name>
+        <thumbnail>http://hd29.xiaonei.com/photos/hd29/20080827/19/06/tiny_RAj7_7384a198169.jpg</thumbnail>
+      </friend>
+      <friend index="28">
+        <id>241889858</id>
+        <name>刘永江</name>
+        <thumbnail>http://hd61.xiaonei.com/photos/hd61/20081023/21/17/tiny_Um6y_8282h200150.jpg</thumbnail>
+      </friend>
+      <friend index="29">
+        <id>224695117</id>
+        <name>刘程</name>
+        <thumbnail>http://hd61.xiaonei.com/photos/hd61/20081102/21/29/tiny_z0yo_10149l198169.jpg</thumbnail>
+      </friend>
+      <friend index="30">
+        <id>230191045</id>
+        <name>单锋</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090313/11/50/tiny_Mh5K_32140g204235.jpg</thumbnail>
+      </friend>
+      <friend index="31">
+        <id>264973792</id>
+        <name>卞南茜</name>
+        <thumbnail>http://hdn301.xnimg.cn/photos/hdn301/20090125/03/20/tiny_YwEF_99604k204096.jpg</thumbnail>
+      </friend>
+      <friend index="32">
+        <id>52036918</id>
+        <name>叶鸿</name>
+        <thumbnail>http://hd54.xiaonei.com/photos/hd54/20081201/18/01/tiny_WEAc_5350h200150.jpg</thumbnail>
+      </friend>
+      <friend index="33">
+        <id>228228060</id>
+        <name>司马曜</name>
+        <thumbnail>http://hd20.xiaonei.com/photos/hd20/20070824/09/23/tiny_2559n77.jpg</thumbnail>
+      </friend>
+      <friend index="34">
+        <id>57402082</id>
+        <name>吉丽青</name>
+        <thumbnail>http://hd52.xiaonei.com/photos/hd52/20080728/09/45/tiny_551h169.jpg</thumbnail>
+      </friend>
+      <friend index="35">
+        <id>233454564</id>
+        <name>吴任榮</name>
+        <thumbnail>http://hdn201.xnimg.cn/photos/hdn201/20090201/21/30/tiny_t2SN_180n198169.jpg</thumbnail>
+      </friend>
+      <friend index="36">
+        <id>44577979</id>
+        <name>吴双胜</name>
+        <thumbnail>http://hdn201.xnimg.cn/photos/hdn201/20090112/23/25/tiny_tb1m_70399i204215.jpg</thumbnail>
+      </friend>
+      <friend index="37">
+        <id>48484315</id>
+        <name>吴双茂</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090314/13/40/tiny_l0ll_53667c204236.jpg</thumbnail>
+      </friend>
+      <friend index="38">
+        <id>34257572</id>
+        <name>吴娟</name>
+        <thumbnail>http://hd36.xiaonei.com/photos/hd36/20080912/16/14/tiny_zpp5_6688a198169.jpg</thumbnail>
+      </friend>
+      <friend index="39">
+        <id>1471210936</id>
+        <name>吴尚</name>
+        <thumbnail>http://hdn501.xnimg.cn/photos/hdn501/20090108/22/00/tiny_KWnO_26621k204215.jpg</thumbnail>
+      </friend>
+      <friend index="40">
+        <id>222176220</id>
+        <name>吴梅</name>
+        <thumbnail>http://hd15.xiaonei.com/photos/hd15/20080527/18/06/tiny_4173d107.jpg</thumbnail>
+      </friend>
+      <friend index="41">
+        <id>78018332</id>
+        <name>吴珍云lby</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081019/11/59/tiny_eXJU_2510h204096.jpg</thumbnail>
+      </friend>
+      <friend index="42">
+        <id>233351319</id>
+        <name>周南</name>
+        <thumbnail>http://hd21.xiaonei.com/photos/hd21/20071017/19/32/tiny_11933c177.jpg</thumbnail>
+      </friend>
+      <friend index="43">
+        <id>232813185</id>
+        <name>周峰</name>
+        <thumbnail>http://hd22.xiaonei.com/photos/hd22/20071119/22/44/tiny_4485m107.jpg</thumbnail>
+      </friend>
+      <friend index="44">
+        <id>1322891430</id>
+        <name>周桓</name>
+        <thumbnail>http://xnimg.cn/photos/20070525/1415/tiny411305.jpg</thumbnail>
+      </friend>
+      <friend index="45">
+        <id>180645980</id>
+        <name>周炳淑</name>
+        <thumbnail>http://hd25.xiaonei.com/photos/hd25/20080311/15/46/tiny_3819h169.jpg</thumbnail>
+      </friend>
+      <friend index="46">
+        <id>229709304</id>
+        <name>周玮</name>
+        <thumbnail>http://hd60.xiaonei.com/photos/hd60/20071126/12/48/tiny_1974o107.jpg</thumbnail>
+      </friend>
+      <friend index="47">
+        <id>57393626</id>
+        <name>周璐莹</name>
+        <thumbnail>http://hd61.xiaonei.com/photos/hd61/20080923/17/03/tiny_MF8B_4836n198169.jpg</thumbnail>
+      </friend>
+      <friend index="48">
+        <id>231747458</id>
+        <name>周蕴琦</name>
+        <thumbnail>http://hd15.xiaonei.com/photos/hd15/20080604/19/00/tiny_4835i150.jpg</thumbnail>
+      </friend>
+      <friend index="49">
+        <id>236480216</id>
+        <name>唐传凯</name>
+        <thumbnail>http://hd12.xiaonei.com/photos/hd12/20071212/15/22/tiny_4585i169.jpg</thumbnail>
+      </friend>
+      <friend index="50">
+        <id>61728</id>
+        <name>唐明晖</name>
+        <thumbnail>http://xnimg.cn/photos/0/0/men_tiny.gif</thumbnail>
+      </friend>
+      <friend index="51">
+        <id>237665202</id>
+        <name>夏清泉</name>
+        <thumbnail>http://hdn601.xnimg.cn/photos/hdn601/20090110/21/35/tiny_CZDn_46428j204215.jpg</thumbnail>
+      </friend>
+      <friend index="52">
+        <id>237476215</id>
+        <name>大山</name>
+        <thumbnail>http://hd201.xiaonei.com/photos/hd201/20081005/20/18/tiny_e1Li_12749g198169.jpg</thumbnail>
+      </friend>
+      <friend index="53">
+        <id>251748206</id>
+        <name>天堂之吻</name>
+        <thumbnail>http://hd17.xiaonei.com/photos/hd17/20080827/21/49/tiny_YEXJ_150f200150.jpg</thumbnail>
+      </friend>
+      <friend index="54">
+        <id>229863586</id>
+        <name>姚 K。F</name>
+        <thumbnail>http://hd29.xiaonei.com/photos/hd29/20080901/13/16/tiny_rKvc_3847i198107.jpg</thumbnail>
+      </friend>
+      <friend index="55">
+        <id>221313462</id>
+        <name>姚丹华</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081102/09/06/tiny_rxtm_503h204096.jpg</thumbnail>
+      </friend>
+      <friend index="56">
+        <id>160161268</id>
+        <name>姚亚琳</name>
+        <thumbnail>http://xnimg.cn/photos/20070402/1840/tiny486711.jpg</thumbnail>
+      </friend>
+      <friend index="57">
+        <id>256123915</id>
+        <name>姚远</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090214/20/50/tiny_U2Uw_32303p204237.jpg</thumbnail>
+      </friend>
+      <friend index="58">
+        <id>236115254</id>
+        <name>姜巍巍</name>
+        <thumbnail>http://hd23.xiaonei.com/photos/hd23/20071229/16/33/tiny_5758n107.jpg</thumbnail>
+      </friend>
+      <friend index="59">
+        <id>251470396</id>
+        <name>姜海波</name>
+        <thumbnail>http://hd17.xiaonei.com/photos/hd17/20080824/22/06/tiny_3275f169.jpg</thumbnail>
+      </friend>
+      <friend index="60">
+        <id>225357315</id>
+        <name>姜海鹏</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090218/18/15/tiny_kAUj_7536i204236.jpg</thumbnail>
+      </friend>
+      <friend index="61">
+        <id>237625787</id>
+        <name>孔景</name>
+        <thumbnail>http://hd12.xiaonei.com/photos/hd12/20071228/18/19/tiny_7067d169.jpg</thumbnail>
+      </friend>
+      <friend index="62">
+        <id>30759529</id>
+        <name>孙斌斌</name>
+        <thumbnail>http://hd30.xiaonei.com/photos/hd30/20071014/17/46/tiny_15124h170.jpg</thumbnail>
+      </friend>
+      <friend index="63">
+        <id>239735000</id>
+        <name>孙鹏斐</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080827/07/41/tiny_r0Ui_178p198107.jpg</thumbnail>
+      </friend>
+      <friend index="64">
+        <id>257837045</id>
+        <name>孟令森</name>
+        <thumbnail>http://hd37.xiaonei.com/photos/hd37/20081029/18/50/tiny_tkY4_6100h204096.jpg</thumbnail>
+      </friend>
+      <friend index="65">
+        <id>235225706</id>
+        <name>孟宪浩</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090318/12/15/tiny_7SxP_116634n204238.jpg</thumbnail>
+      </friend>
+      <friend index="66">
+        <id>226096117</id>
+        <name>季秋倩</name>
+        <thumbnail>http://hd36.xiaonei.com/photos/hd36/20080829/20/22/tiny_fUae_10792n198107.jpg</thumbnail>
+      </friend>
+      <friend index="67">
+        <id>56282506</id>
+        <name>宋云</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081129/02/50/tiny_6SZJ_10234g204096.jpg</thumbnail>
+      </friend>
+      <friend index="68">
+        <id>44754276</id>
+        <name>宋博雄 Mike</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090219/16/40/tiny_vRDr_18918o204238.jpg</thumbnail>
+      </friend>
+      <friend index="69">
+        <id>241317593</id>
+        <name>小不点沈超然</name>
+        <thumbnail>http://hd41.xiaonei.com/photos/hd41/20080307/06/39/tiny_77e169.jpg</thumbnail>
+      </friend>
+      <friend index="70">
+        <id>227800978</id>
+        <name>小雨</name>
+        <thumbnail>http://xnimg.cn/photos/0/0/men_tiny.gif</thumbnail>
+      </friend>
+      <friend index="71">
+        <id>252414085</id>
+        <name>屠博文</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090303/14/40/tiny_vAxi_97857a204238.jpg</thumbnail>
+      </friend>
+      <friend index="72">
+        <id>238075569</id>
+        <name>崔泽云</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090219/12/15/tiny_ODKc_8684n204235.jpg</thumbnail>
+      </friend>
+      <friend index="73">
+        <id>242391338</id>
+        <name>常姝研</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080326/10/21/tiny_637f169.jpg</thumbnail>
+      </friend>
+      <friend index="74">
+        <id>247289791</id>
+        <name>廖家隆</name>
+        <thumbnail>http://hd16.xiaonei.com/photos/hd16/20080623/00/11/tiny_7306k107.jpg</thumbnail>
+      </friend>
+      <friend index="75">
+        <id>221671375</id>
+        <name>张丽丽</name>
+        <thumbnail>http://hd36.xiaonei.com/photos/hd36/20081003/23/14/tiny_veKz_11n198169.jpg</thumbnail>
+      </friend>
+      <friend index="76">
+        <id>31817463</id>
+        <name>张丽荣</name>
+        <thumbnail>http://hdn301.xnimg.cn/photos/hdn301/20081218/11/15/tiny_TVYT_1540p204096.jpg</thumbnail>
+      </friend>
+      <friend index="77">
+        <id>230314684</id>
+        <name>张亮亮</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090313/22/45/tiny_WUa7_46041k204235.jpg</thumbnail>
+      </friend>
+      <friend index="78">
+        <id>221662287</id>
+        <name>张学敏</name>
+        <thumbnail>http://hd61.xiaonei.com/photos/hd61/20081015/11/26/tiny_B6tv_1373b200150.jpg</thumbnail>
+      </friend>
+      <friend index="79">
+        <id>240957693</id>
+        <name>张小辉</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081007/23/04/tiny_pnYF_12750b198107.jpg</thumbnail>
+      </friend>
+      <friend index="80">
+        <id>242780346</id>
+        <name>张帅</name>
+        <thumbnail>http://hdn601.xnimg.cn/photos/hdn601/20090131/23/55/tiny_E86l_1157j200150.jpg</thumbnail>
+      </friend>
+      <friend index="81">
+        <id>222986572</id>
+        <name>张帆</name>
+        <thumbnail>http://hd26.xiaonei.com/photos/hd26/20080411/23/53/tiny_1506c150.jpg</thumbnail>
+      </friend>
+      <friend index="82">
+        <id>197091534</id>
+        <name>张文国</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090317/21/45/tiny_mLlQ_110702h204238.jpg</thumbnail>
+      </friend>
+      <friend index="83">
+        <id>243894644</id>
+        <name>张文轩</name>
+        <thumbnail>http://hdn301.xnimg.cn/photos/hdn301/20090107/09/30/tiny_LvUe_9915b204096.jpg</thumbnail>
+      </friend>
+      <friend index="84">
+        <id>234124023</id>
+        <name>张晔</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090217/16/25/tiny_eLQL_67188c204234.jpg</thumbnail>
+      </friend>
+      <friend index="85">
+        <id>247876259</id>
+        <name>张涛</name>
+        <thumbnail>http://xnimg.cn/photos/0/0/men_tiny.gif</thumbnail>
+      </friend>
+      <friend index="86">
+        <id>220989007</id>
+        <name>张淑亮</name>
+        <thumbnail>http://hd45.xiaonei.com/photos/hd45/20080910/22/48/tiny_vfog_14467a198169.jpg</thumbnail>
+      </friend>
+      <friend index="87">
+        <id>259315117</id>
+        <name>张琦</name>
+        <thumbnail>http://hd201.xiaonei.com/photos/hd201/20081112/13/18/tiny_ycyY_2331p204215.jpg</thumbnail>
+      </friend>
+      <friend index="88">
+        <id>200678091</id>
+        <name>彭曲</name>
+        <thumbnail>http://xnimg.cn/photos/20070521/0035/tiny1359024.jpg</thumbnail>
+      </friend>
+      <friend index="89">
+        <id>239774855</id>
+        <name>彭立言</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080910/01/06/tiny_3tw5_14830k198169.jpg</thumbnail>
+      </friend>
+      <friend index="90">
+        <id>221989237</id>
+        <name>徐功建</name>
+        <thumbnail>http://xnimg.cn/photos/20070331/2125/tiny130458.jpg</thumbnail>
+      </friend>
+      <friend index="91">
+        <id>224475694</id>
+        <name>徐向红</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081205/12/20/tiny_4w6u_2239l198107.jpg</thumbnail>
+      </friend>
+      <friend index="92">
+        <id>222208153</id>
+        <name>徐守娟</name>
+        <thumbnail>http://hd50.xiaonei.com/photos/hd50/20071109/18/02/tiny_630o177.jpg</thumbnail>
+      </friend>
+      <friend index="93">
+        <id>248618948</id>
+        <name>徐小晶</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090315/09/50/tiny_pRbM_70779f204237.jpg</thumbnail>
+      </friend>
+      <friend index="94">
+        <id>48162</id>
+        <name>徐小磊</name>
+        <thumbnail>http://hd20.xiaonei.com/photos/hd20/20070801/15/14/tiny_5273b178.jpg</thumbnail>
+      </friend>
+      <friend index="95">
+        <id>232796229</id>
+        <name>徐鋆鹏</name>
+        <thumbnail>http://hd28.xiaonei.com/photos/hd28/20080624/00/36/tiny_6601j107.jpg</thumbnail>
+      </friend>
+      <friend index="96">
+        <id>231835889</id>
+        <name>戴海霞</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081208/19/10/tiny_lXvm_6728p198107.jpg</thumbnail>
+      </friend>
+      <friend index="97">
+        <id>229941778</id>
+        <name>於国峰</name>
+        <thumbnail>http://hd10.xiaonei.com/photos/hd10/20070816/23/19/tiny_13880b76.jpg</thumbnail>
+      </friend>
+      <friend index="98">
+        <id>54702363</id>
+        <name>施睿</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090311/09/25/tiny_hhgs_551n204236.jpg</thumbnail>
+      </friend>
+      <friend index="99">
+        <id>226113324</id>
+        <name>施香文</name>
+        <thumbnail>http://hd10.xiaonei.com/photos/hd10/20070816/04/38/tiny_16o76.jpg</thumbnail>
+      </friend>
+      <friend index="100">
+        <id>225431386</id>
+        <name>时毓</name>
+        <thumbnail>http://hdn201.xnimg.cn/photos/hdn201/20090103/10/50/tiny_kZTK_50773d200150.jpg</thumbnail>
+      </friend>
+      <friend index="101">
+        <id>50836</id>
+        <name>时睿</name>
+        <thumbnail>http://hd11.xiaonei.com/photos/hd11/20071016/22/23/tiny_15952p177.jpg</thumbnail>
+      </friend>
+      <friend index="102">
+        <id>229448047</id>
+        <name>晓薛sean</name>
+        <thumbnail>http://hd45.xiaonei.com/photos/hd45/20080903/03/56/tiny_TFeN_16343c198107.jpg</thumbnail>
+      </friend>
+      <friend index="103">
+        <id>240221043</id>
+        <name>曹瑜杰</name>
+        <thumbnail>http://hd45.xiaonei.com/photos/hd45/20080902/15/50/tiny_Rjsb_6170i198107.jpg</thumbnail>
+      </friend>
+      <friend index="104">
+        <id>220804908</id>
+        <name>曹璐</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081108/21/42/tiny_nLKW_5874a198169.jpg</thumbnail>
+      </friend>
+      <friend index="105">
+        <id>225087089</id>
+        <name>曹群</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090312/18/25/tiny_tK91_23027j204234.jpg</thumbnail>
+      </friend>
+      <friend index="106">
+        <id>224468939</id>
+        <name>朱荣</name>
+        <thumbnail>http://xnimg.cn/photos/20070625/13/39/tiny_3319m72.jpg</thumbnail>
+      </friend>
+      <friend index="107">
+        <id>228727478</id>
+        <name>李中华</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081128/23/22/tiny_F539_11943k198169.jpg</thumbnail>
+      </friend>
+      <friend index="108">
+        <id>49786815</id>
+        <name>李伟</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090306/18/50/tiny_fVIL_4876l204235.jpg</thumbnail>
+      </friend>
+      <friend index="109">
+        <id>38703818</id>
+        <name>李吉</name>
+        <thumbnail>http://hd15.xiaonei.com/photos/hd15/20080614/14/28/tiny_1905b169.jpg</thumbnail>
+      </friend>
+      <friend index="110">
+        <id>249487201</id>
+        <name>李向荣</name>
+        <thumbnail>http://hd61.xiaonei.com/photos/hd61/20081009/17/02/tiny_C7d8_3985j198121.jpg</thumbnail>
+      </friend>
+      <friend index="111">
+        <id>240566235</id>
+        <name>李媛</name>
+        <thumbnail>http://hd41.xiaonei.com/photos/hd41/20080220/17/35/tiny_5402d169.jpg</thumbnail>
+      </friend>
+      <friend index="112">
+        <id>220993133</id>
+        <name>李庆</name>
+        <thumbnail>http://hd33.xiaonei.com/photos/hd33/20080127/22/49/tiny_8096e169.jpg</thumbnail>
+      </friend>
+      <friend index="113">
+        <id>242222937</id>
+        <name>李志新</name>
+        <thumbnail>http://hd25.xiaonei.com/photos/hd25/20080401/11/44/tiny_1227m169.jpg</thumbnail>
+      </friend>
+      <friend index="114">
+        <id>237649555</id>
+        <name>李成龙</name>
+        <thumbnail>http://hdn201.xnimg.cn/photos/hdn201/20090115/13/55/tiny_4RxU_29054o198107.jpg</thumbnail>
+      </friend>
+      <friend index="115">
+        <id>261799375</id>
+        <name>李洪星</name>
+        <thumbnail>http://hdn511.xnimg.cn/photos/hdn511/20090228/12/00/tiny_KGrW_53398h204238.jpg</thumbnail>
+      </friend>
+      <friend index="116">
+        <id>223332358</id>
+        <name>李雯雯</name>
+        <thumbnail>http://hd23.xiaonei.com/photos/hd23/20080112/21/40/tiny_9185p169.jpg</thumbnail>
+      </friend>
+      <friend index="117">
+        <id>225156911</id>
+        <name>杜文中~浪子</name>
+        <thumbnail>http://hd50.xiaonei.com/photos/hd50/20071110/13/51/tiny_173e166.jpg</thumbnail>
+      </friend>
+      <friend index="118">
+        <id>223011544</id>
+        <name>杨凯平</name>
+        <thumbnail>http://xnimg.cn/photos/20070623/13/48/tiny_19364m76.jpg</thumbnail>
+      </friend>
+      <friend index="119">
+        <id>231841655</id>
+        <name>杨妤秋</name>
+        <thumbnail>http://hdn101.xnimg.cn/photos/hdn101/20081221/19/00/tiny_SQd7_48533c204215.jpg</thumbnail>
+      </friend>
+      <friend index="120">
+        <id>48235969</id>
+        <name>杨志勇</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090225/22/15/tiny_YCmf_21572l204238.jpg</thumbnail>
+      </friend>
+      <friend index="121">
+        <id>225968916</id>
+        <name>杨虎</name>
+        <thumbnail>http://hd16.xiaonei.com/photos/hd16/20080624/23/15/tiny_6384f107.jpg</thumbnail>
+      </friend>
+      <friend index="122">
+        <id>64424528</id>
+        <name>杨韬</name>
+        <thumbnail>http://hd36.xiaonei.com/photos/hd36/20080923/12/56/tiny_aLRr_727d198169.jpg</thumbnail>
+      </friend>
+      <friend index="123">
+        <id>225802105</id>
+        <name>林式微</name>
+        <thumbnail>http://hd30.xiaonei.com/photos/hd30/20070721/15/44/tiny_4694l178.jpg</thumbnail>
+      </friend>
+      <friend index="124">
+        <id>258600551</id>
+        <name>柯蓝</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081105/16/59/tiny_5SDe_5092b200150.jpg</thumbnail>
+      </friend>
+      <friend index="125">
+        <id>227035022</id>
+        <name>桑玲淋</name>
+        <thumbnail>http://hd16.xiaonei.com/photos/hd16/20080707/22/31/tiny_5719g107.jpg</thumbnail>
+      </friend>
+      <friend index="126">
+        <id>242591509</id>
+        <name>段存</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080331/09/19/tiny_317j150.jpg</thumbnail>
+      </friend>
+      <friend index="127">
+        <id>241640065</id>
+        <name>温涛</name>
+        <thumbnail>http://hdn511.xnimg.cn/photos/hdn511/20090213/21/55/tiny_EeMV_20160f204236.jpg</thumbnail>
+      </friend>
+      <friend index="128">
+        <id>227964367</id>
+        <name>潘星新</name>
+        <thumbnail>http://hd44.xiaonei.com/photos/hd44/20080706/11/50/tiny_1089o150.jpg</thumbnail>
+      </friend>
+      <friend index="129">
+        <id>228178057</id>
+        <name>焦晓鹏</name>
+        <thumbnail>http://hd43.xiaonei.com/photos/hd43/20080613/11/40/tiny_1294p169.jpg</thumbnail>
+      </friend>
+      <friend index="130">
+        <id>23046603</id>
+        <name>王国光</name>
+        <thumbnail>http://hd54.xiaonei.com/photos/hd54/20081117/20/00/tiny_3mVI_7202h198107.jpg</thumbnail>
+      </friend>
+      <friend index="131">
+        <id>259484360</id>
+        <name>王国良</name>
+        <thumbnail>http://hd54.xiaonei.com/photos/hd54/20081114/00/50/tiny_1QcA_10458n198107.jpg</thumbnail>
+      </friend>
+      <friend index="132">
+        <id>244185290</id>
+        <name>王媛</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080426/11/09/tiny_1579m169.jpg</thumbnail>
+      </friend>
+      <friend index="133">
+        <id>31128934</id>
+        <name>王安</name>
+        <thumbnail>http://hd24.xiaonei.com/photos/hd24/20080211/22/49/tiny_7253c107.jpg</thumbnail>
+      </friend>
+      <friend index="134">
+        <id>232952289</id>
+        <name>王小虎</name>
+        <thumbnail>http://hd45.xiaonei.com/photos/hd45/20080815/14/48/tiny_2955g169.jpg</thumbnail>
+      </friend>
+      <friend index="135">
+        <id>233735787</id>
+        <name>王彩霞</name>
+        <thumbnail>http://hdn301.xnimg.cn/photos/hdn301/20090114/10/35/tiny_lSTQ_13125l198169.jpg</thumbnail>
+      </friend>
+      <friend index="136">
+        <id>233041609</id>
+        <name>王攀</name>
+        <thumbnail>http://hd40.xiaonei.com/photos/hd40/20071014/10/47/tiny_3330m170.jpg</thumbnail>
+      </friend>
+      <friend index="137">
+        <id>232941712</id>
+        <name>王文卉</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081016/08/17/tiny_4zXV_203j198107.jpg</thumbnail>
+      </friend>
+      <friend index="138">
+        <id>221140983</id>
+        <name>王文杰</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20081003/20/08/tiny_AOWs_595a198169.jpg</thumbnail>
+      </friend>
+      <friend index="139">
+        <id>230696372</id>
+        <name>王晓伟</name>
+        <thumbnail>http://hd22.xiaonei.com/photos/hd22/20071125/22/40/tiny_1395b107.jpg</thumbnail>
+      </friend>
+      <friend index="140">
+        <id>221104074</id>
+        <name>王泳漪</name>
+        <thumbnail>http://hd20.xiaonei.com/photos/hd20/20070802/09/17/tiny_447l178.jpg</thumbnail>
+      </friend>
+      <friend index="141">
+        <id>228557210</id>
+        <name>王燕霞</name>
+        <thumbnail>http://hd43.xiaonei.com/photos/hd43/20080513/21/29/tiny_6235n150.jpg</thumbnail>
+      </friend>
+      <friend index="142">
+        <id>221144949</id>
+        <name>王磊</name>
+        <thumbnail>http://hd17.xiaonei.com/photos/hd17/20080823/22/49/tiny_6593l150.jpg</thumbnail>
+      </friend>
+      <friend index="143">
+        <id>239536936</id>
+        <name>王辰</name>
+        <thumbnail>http://hd34.xiaonei.com/photos/hd34/20080401/19/27/tiny_308i150.jpg</thumbnail>
+      </friend>
+      <friend index="144">
+        <id>231742973</id>
+        <name>王露露</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090315/23/10/tiny_oG4m_84971f204234.jpg</thumbnail>
+      </friend>
+      <friend index="145">
+        <id>229597296</id>
+        <name>王露露</name>
+        <thumbnail>http://xnimg.cn/photos/0/0/men_tiny.gif</thumbnail>
+      </friend>
+      <friend index="146">
+        <id>24661680</id>
+        <name>田巍</name>
+        <thumbnail>http://hdn111.xnimg.cn/photos/hdn111/20090222/12/30/tiny_cS60_13402l204234.jpg</thumbnail>
+      </friend>
+      <friend index="147">
+        <id>236952465</id>
+        <name>申建鹏</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080419/10/50/tiny_1627c150.jpg</thumbnail>
+      </friend>
+      <friend index="148">
+        <id>228794157</id>
+        <name>白 禹</name>
+        <thumbnail>http://hdn111.xnimg.cn/photos/hdn111/20090215/20/20/tiny_PrZ5_44985g204235.jpg</thumbnail>
+      </friend>
+      <friend index="149">
+        <id>236381869</id>
+        <name>盛敏敏9118</name>
+        <thumbnail>http://hd54.xiaonei.com/photos/hd54/20081005/16/03/tiny_E8Pt_5853o198107.jpg</thumbnail>
+      </friend>
+      <friend index="150">
+        <id>229709539</id>
+        <name>盛玲</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090316/03/10/tiny_uehv_87013p204235.jpg</thumbnail>
+      </friend>
+      <friend index="151">
+        <id>223185154</id>
+        <name>石笑峰</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081130/14/19/tiny_vi0r_2772c198107.jpg</thumbnail>
+      </friend>
+      <friend index="152">
+        <id>221131389</id>
+        <name>禹尧</name>
+        <thumbnail>http://xnimg.cn/photos/0/0/men_tiny.gif</thumbnail>
+      </friend>
+      <friend index="153">
+        <id>231239523</id>
+        <name>章健</name>
+        <thumbnail>http://xnimg.cn/photos/0/0/men_tiny.gif</thumbnail>
+      </friend>
+      <friend index="154">
+        <id>227920229</id>
+        <name>章荣清</name>
+        <thumbnail>http://hd51.xiaonei.com/photos/hd51/20080609/10/22/tiny_1032i169.jpg</thumbnail>
+      </friend>
+      <friend index="155">
+        <id>143526162</id>
+        <name>管鹏程</name>
+        <thumbnail>http://hdn511.xnimg.cn/photos/hdn511/20090212/20/25/tiny_CWgC_4739m204234.jpg</thumbnail>
+      </friend>
+      <friend index="156">
+        <id>235819681</id>
+        <name>缪丽琴</name>
+        <thumbnail>http://hd37.xiaonei.com/photos/hd37/20081027/09/07/tiny_miZV_374a200150.jpg</thumbnail>
+      </friend>
+      <friend index="157">
+        <id>65873</id>
+        <name>缪五兵</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080920/15/14/tiny_Jx2b_563l198169.jpg</thumbnail>
+      </friend>
+      <friend index="158">
+        <id>222001317</id>
+        <name>缪冬建</name>
+        <thumbnail>http://hd52.xiaonei.com/photos/hd52/20080731/18/26/tiny_4972b150.jpg</thumbnail>
+      </friend>
+      <friend index="159">
+        <id>237222489</id>
+        <name>缪勰</name>
+        <thumbnail>http://hdn401.xnimg.cn/photos/hdn401/20081227/18/20/tiny_1ve0_19494o198169.jpg</thumbnail>
+      </friend>
+      <friend index="160">
+        <id>223769918</id>
+        <name>缪小明</name>
+        <thumbnail>http://hd61.xiaonei.com/photos/hd61/20081009/20/59/tiny_CBdO_7386h204215.jpg</thumbnail>
+      </friend>
+      <friend index="161">
+        <id>223754310</id>
+        <name>缪强强</name>
+        <thumbnail>http://hd27.xiaonei.com/photos/hd27/20080529/17/56/tiny_4397e150.jpg</thumbnail>
+      </friend>
+      <friend index="162">
+        <id>223731210</id>
+        <name>缪德银</name>
+        <thumbnail>http://xnimg.cn/photos/20070516/1330/tiny307216.jpg</thumbnail>
+      </friend>
+      <friend index="163">
+        <id>237315383</id>
+        <name>缪晓峰</name>
+        <thumbnail>http://hd201.xiaonei.com/photos/hd201/20081106/17/25/tiny_omDU_4520i204096.jpg</thumbnail>
+      </friend>
+      <friend index="164">
+        <id>226201612</id>
+        <name>缪晓林</name>
+        <thumbnail>http://hd28.xiaonei.com/photos/hd28/20080731/20/38/tiny_6168l150.jpg</thumbnail>
+      </friend>
+      <friend index="165">
+        <id>245491889</id>
+        <name>缪鉴</name>
+        <thumbnail>http://hd51.xiaonei.com/photos/hd51/20080521/11/55/tiny_1416c150.jpg</thumbnail>
+      </friend>
+      <friend index="166">
+        <id>221403187</id>
+        <name>缪顾进</name>
+        <thumbnail>http://hd11.xiaonei.com/photos/hd11/20070910/21/31/tiny_30556p177.jpg</thumbnail>
+      </friend>
+      <friend index="167">
+        <id>226159622</id>
+        <name>缪鹏</name>
+        <thumbnail>http://hdn101.xnimg.cn/photos/hdn101/20081227/22/10/tiny_4eBt_22937k198107.jpg</thumbnail>
+      </friend>
+      <friend index="168">
+        <id>236938892</id>
+        <name>肖玉芳</name>
+        <thumbnail>http://hd28.xiaonei.com/photos/hd28/20080705/14/23/tiny_2179h107.jpg</thumbnail>
+      </friend>
+      <friend index="169">
+        <id>244568032</id>
+        <name>胡东泉</name>
+        <thumbnail>http://hd201.xiaonei.com/photos/hd201/20081118/12/26/tiny_DaZf_2024a204096.jpg</thumbnail>
+      </friend>
+      <friend index="170">
+        <id>239598469</id>
+        <name>胡洋</name>
+        <thumbnail>http://hd35.xiaonei.com/photos/hd35/20080716/18/13/tiny_3305b150.jpg</thumbnail>
+      </friend>
+      <friend index="171">
+        <id>54021</id>
+        <name>苑少飞</name>
+        <thumbnail>http://hd70.xiaonei.com/photos/hd70/20071130/19/52/tiny_627f107.jpg</thumbnail>
+      </friend>
+      <friend index="172">
+        <id>224580531</id>
+        <name>范亚东</name>
+        <thumbnail>http://hd10.xiaonei.com/photos/hd10/20070809/07/26/tiny_151j178.jpg</thumbnail>
+      </friend>
+      <friend index="173">
+        <id>223136013</id>
+        <name>莉娜</name>
+        <thumbnail>http://hd42.xiaonei.com/photos/hd42/20080408/22/36/tiny_7960d107.jpg</thumbnail>
+      </friend>
+      <friend index="174">
+        <id>230941912</id>
+        <name>董俊梅</name>
+        <thumbnail>http://hd45.xiaonei.com/photos/hd45/20081001/20/02/tiny_0i0c_6961k198107.jpg</thumbnail>
+      </friend>
+      <friend index="175">
+        <id>234024159</id>
+        <name>董婷</name>
+        <thumbnail>http://hd37.xiaonei.com/photos/hd37/20081112/22/10/tiny_QVku_8964o200150.jpg</thumbnail>
+      </friend>
+      <friend index="176">
+        <id>242995706</id>
+        <name>董田启</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080406/09/45/tiny_775d150.jpg</thumbnail>
+      </friend>
+      <friend index="177">
+        <id>229891008</id>
+        <name>董韦晶</name>
+        <thumbnail>http://hd25.xiaonei.com/photos/hd25/20080327/19/48/tiny_5007h169.jpg</thumbnail>
+      </friend>
+      <friend index="178">
+        <id>34081346</id>
+        <name>蒲美名</name>
+        <thumbnail>http://hdn111.xnimg.cn/photos/hdn111/20090303/15/10/tiny_eT4q_98216b204237.jpg</thumbnail>
+      </friend>
+      <friend index="179">
+        <id>225057635</id>
+        <name>蓉蓉</name>
+        <thumbnail>http://hd37.xiaonei.com/photos/hd37/20081118/12/13/tiny_71HO_1810i204215.jpg</thumbnail>
+      </friend>
+      <friend index="180">
+        <id>221698634</id>
+        <name>蓬蓬</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090314/00/25/tiny_67RJ_47585e204234.jpg</thumbnail>
+      </friend>
+      <friend index="181">
+        <id>227802784</id>
+        <name>蔡妍</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081025/18/19/tiny_Dsx1_8071g204096.jpg</thumbnail>
+      </friend>
+      <friend index="182">
+        <id>227433399</id>
+        <name>蔡艳</name>
+        <thumbnail>http://hdn111.xnimg.cn/photos/hdn111/20090209/12/30/tiny_5EiO_66442h204236.jpg</thumbnail>
+      </friend>
+      <friend index="183">
+        <id>254439266</id>
+        <name>薛晶</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080927/14/53/tiny_TXCL_4269f198169.jpg</thumbnail>
+      </friend>
+      <friend index="184">
+        <id>200043562</id>
+        <name>薛爱红</name>
+        <thumbnail>http://hd40.xiaonei.com/photos/hd40/20070901/21/34/tiny_8803m77.jpg</thumbnail>
+      </friend>
+      <friend index="185">
+        <id>1564762057</id>
+        <name>褚智慧</name>
+        <thumbnail>http://hd35.xiaonei.com/photos/hd35/20080725/14/44/tiny_2838c107.jpg</thumbnail>
+      </friend>
+      <friend index="186">
+        <id>237298306</id>
+        <name>许小军</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090215/17/05/tiny_vdJz_42012f204235.jpg</thumbnail>
+      </friend>
+      <friend index="187">
+        <id>224441982</id>
+        <name>许西干</name>
+        <thumbnail>http://hd15.xiaonei.com/photos/hd15/20080601/15/18/tiny_4550f169.jpg</thumbnail>
+      </friend>
+      <friend index="188">
+        <id>1924954231</id>
+        <name>许鹏飞</name>
+        <thumbnail>http://hd11.xiaonei.com/photos/hd11/20070914/13/45/tiny_2058c172.jpg</thumbnail>
+      </friend>
+      <friend index="189">
+        <id>268519179</id>
+        <name>费云</name>
+        <thumbnail>http://hdn411.xnimg.cn/photos/hdn411/20090308/16/35/tiny_MPOS_6375k204237.jpg</thumbnail>
+      </friend>
+      <friend index="190">
+        <id>161826509</id>
+        <name>赵清华</name>
+        <thumbnail>http://xnimg.cn/photos/20070528/1910/tiny823055.jpg</thumbnail>
+      </friend>
+      <friend index="191">
+        <id>256075720</id>
+        <name>赵良</name>
+        <thumbnail>http://hd46.xiaonei.com/photos/hd46/20081015/09/46/tiny_eRF6_603n198107.jpg</thumbnail>
+      </friend>
+      <friend index="192">
+        <id>241572230</id>
+        <name>邱冰然</name>
+        <thumbnail>http://hd41.xiaonei.com/photos/hd41/20080315/17/20/tiny_6876g169.jpg</thumbnail>
+      </friend>
+      <friend index="193">
+        <id>229617545</id>
+        <name>邵鹏飞</name>
+        <thumbnail>http://hd44.xiaonei.com/photos/hd44/20080720/12/58/tiny_1641g150.jpg</thumbnail>
+      </friend>
+      <friend index="194">
+        <id>43016022</id>
+        <name>邹春江</name>
+        <thumbnail>http://hd11.xiaonei.com/photos/hd11/20070918/09/45/tiny_563j169.jpg</thumbnail>
+      </friend>
+      <friend index="195">
+        <id>239846377</id>
+        <name>郑非</name>
+        <thumbnail>http://hdn511.xnimg.cn/photos/hdn511/20090220/11/55/tiny_YZmZ_28281l204234.jpg</thumbnail>
+      </friend>
+      <friend index="196">
+        <id>222909135</id>
+        <name>郭子龙</name>
+        <thumbnail>http://hd40.xiaonei.com/photos/hd40/20071011/14/46/tiny_714e172.jpg</thumbnail>
+      </friend>
+      <friend index="197">
+        <id>22687305</id>
+        <name>郭相奇</name>
+        <thumbnail>http://hd10.xiaonei.com/photos/hd10/20070825/17/59/tiny_10889k177.jpg</thumbnail>
+      </friend>
+      <friend index="198">
+        <id>244105925</id>
+        <name>郭维成</name>
+        <thumbnail>http://hd201.xiaonei.com/photos/hd201/20081107/17/02/tiny_q2xY_5721j204215.jpg</thumbnail>
+      </friend>
+      <friend index="199">
+        <id>223107552</id>
+        <name>钱程程</name>
+        <thumbnail>http://xnimg.cn/photos/20070619/06/11/tiny_166o.jpg</thumbnail>
+      </friend>
+      <friend index="200">
+        <id>86541251</id>
+        <name>闫兵</name>
+        <thumbnail>http://hdn501.xnimg.cn/photos/hdn501/20090113/22/55/tiny_ewkJ_10370j198169.jpg</thumbnail>
+      </friend>
+      <friend index="201">
+        <id>246929409</id>
+        <name>陆玉红</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080924/13/00/tiny_LV1l_2689f200150.jpg</thumbnail>
+      </friend>
+      <friend index="202">
+        <id>229654157</id>
+        <name>陈伟伟</name>
+        <thumbnail>http://hd25.xiaonei.com/photos/hd25/20080309/19/18/tiny_9091n107.jpg</thumbnail>
+      </friend>
+      <friend index="203">
+        <id>222449883</id>
+        <name>陈伟薇</name>
+        <thumbnail>http://hd18.xiaonei.com/photos/hd18/20081124/14/18/tiny_EVTa_1159j200150.jpg</thumbnail>
+      </friend>
+      <friend index="204">
+        <id>91597065</id>
+        <name>陈兴国</name>
+        <thumbnail>http://hd11.xiaonei.com/photos/hd11/20070916/22/03/tiny_1303d169.jpg</thumbnail>
+      </friend>
+      <friend index="205">
+        <id>193682583</id>
+        <name>陈冉升</name>
+        <thumbnail>http://hdn311.xnimg.cn/photos/hdn311/20090213/15/25/tiny_OOSW_13793g204234.jpg</thumbnail>
+      </friend>
+      <friend index="206">
+        <id>239237869</id>
+        <name>陈宇</name>
+        <thumbnail>http://hd14.xiaonei.com/photos/hd14/20080303/17/26/tiny_4311d169.jpg</thumbnail>
+      </friend>
+      <friend index="207">
+        <id>222437082</id>
+        <name>陈家煜</name>
+        <thumbnail>http://xnimg.cn/photos/20070410/1350/tiny264094.jpg</thumbnail>
+      </friend>
+      <friend index="208">
+        <id>1170929844</id>
+        <name>陈岭啸</name>
+        <thumbnail>http://hdn511.xnimg.cn/photos/hdn511/20090303/21/10/tiny_Lrh7_103213c204238.jpg</thumbnail>
+      </friend>
+      <friend index="209">
+        <id>223469764</id>
+        <name>陈康建</name>
+        <thumbnail>http://hd30.xiaonei.com/photos/hd30/20070804/16/08/tiny_5082g72.jpg</thumbnail>
+      </friend>
+      <friend index="210">
+        <id>230855475</id>
+        <name>陈明</name>
+        <thumbnail>http://hd22.xiaonei.com/photos/hd22/20071211/15/32/tiny_161b169.jpg</thumbnail>
+      </friend>
+      <friend index="211">
+        <id>241330278</id>
+        <name>陈梅燕</name>
+        <thumbnail>http://hd54.xiaonei.com/photos/hd54/20081115/10/28/tiny_LBt8_1235e200150.jpg</thumbnail>
+      </friend>
+      <friend index="212">
+        <id>245262383</id>
+        <name>陈那</name>
+        <thumbnail>http://hd43.xiaonei.com/photos/hd43/20080516/20/58/tiny_6175i150.jpg</thumbnail>
+      </friend>
+      <friend index="213">
+        <id>30889006</id>
+        <name>陈键</name>
+        <thumbnail>http://hd31.xiaonei.com/photos/hd31/20071113/21/24/tiny_12233a171.jpg</thumbnail>
+      </friend>
+      <friend index="214">
+        <id>260138727</id>
+        <name>陈骏</name>
+        <thumbnail>http://hd54.xiaonei.com/photos/hd54/20081119/23/07/tiny_JYd9_9699o198169.jpg</thumbnail>
+      </friend>
+      <friend index="215">
+        <id>1812112944</id>
+        <name>雷如雄</name>
+        <thumbnail>http://xnimg.cn/photos/20070416/1545/tiny442635.jpg</thumbnail>
+      </friend>
+      <friend index="216">
+        <id>43349</id>
+        <name>靳国栋</name>
+        <thumbnail>http://hdn301.xnimg.cn/photos/hdn301/20090117/16/50/tiny_ZgEd_58248k198169.jpg</thumbnail>
+      </friend>
+      <friend index="217">
+        <id>231695407</id>
+        <name>韩凝</name>
+        <thumbnail>http://hdn211.xnimg.cn/photos/hdn211/20090204/22/15/tiny_Pvkc_10198p204237.jpg</thumbnail>
+      </friend>
+      <friend index="218">
+        <id>240456168</id>
+        <name>韩轩</name>
+        <thumbnail>http://hd24.xiaonei.com/photos/hd24/20080215/22/59/tiny_8988b107.jpg</thumbnail>
+      </friend>
+      <friend index="219">
+        <id>231146262</id>
+        <name>顾培锋Burney</name>
+        <thumbnail>http://hd36.xiaonei.com/photos/hd36/20080913/12/24/tiny_aZ2M_4302g200150.jpg</thumbnail>
+      </friend>
+      <friend index="220">
+        <id>227107288</id>
+        <name>顾明明</name>
+        <thumbnail>http://hd32.xiaonei.com/photos/hd32/20071116/16/41/tiny_380c169.jpg</thumbnail>
+      </friend>
+      <friend index="221">
+        <id>56865130</id>
+        <name>顾璐璐</name>
+        <thumbnail>http://hd16.xiaonei.com/photos/hd16/20080801/13/56/tiny_2590p107.jpg</thumbnail>
+      </friend>
+      <friend index="222">
+        <id>224136958</id>
+        <name>顾邱</name>
+        <thumbnail>http://xnimg.cn/photos/20070515/2220/tiny841342.jpg</thumbnail>
+      </friend>
+      <friend index="223">
+        <id>232626218</id>
+        <name>高嘉</name>
+        <thumbnail>http://hd53.xiaonei.com/photos/hd53/20080930/16/35/tiny_h8NV_3005j204215.jpg</thumbnail>
+      </friend>
+      <friend index="224">
+        <id>50525223</id>
+        <name>高波</name>
+        <thumbnail>http://hd27.xiaonei.com/photos/hd27/20080507/12/04/tiny_1418p150.jpg</thumbnail>
+      </friend>
+      <friend index="225">
+        <id>70171025</id>
+        <name>高鹏</name>
+        <thumbnail>http://hd27.xiaonei.com/photos/hd27/20080519/11/10/tiny_1010g169.jpg</thumbnail>
+      </friend>
+      <friend index="226">
+        <id>233117023</id>
+        <name>鲍烨华</name>
+        <thumbnail>http://hd30.xiaonei.com/photos/hd30/20071015/13/22/tiny_4074c169.jpg</thumbnail>
+      </friend>
+    </friends>
+  </person>
+</persons>
