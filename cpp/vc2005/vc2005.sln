@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boost_sample", "boost_sampl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "programming", "programming\programming.vcproj", "{6F62FD8A-8C9E-477F-A740-EBE6E665E5E3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VC8ConsoleTest", "VC8ConsoleTest\VC8ConsoleTest.vcproj", "{25F6864D-8B9C-41AA-8E83-23B49DC28C73}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vc8_console", "vc8_console\vc8_console.vcproj", "{25F6864D-8B9C-41AA-8E83-23B49DC28C73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
