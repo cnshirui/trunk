@@ -1,10 +1,12 @@
+#include "stdafx.h"
+
 #include <iostream>
 #include <string>
 #include <boost/regex.hpp>
 using namespace std;
 using namespace boost;
 
-int main() 
+int main_sample() 
 {
     string s = "This is my simple sample text, really.";
     regex re(",|:|-|\s+");

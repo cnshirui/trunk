@@ -5,7 +5,7 @@
 #include <string>
 
 
-int main()
+int main_reg()
 {
     std::string line = "shirui is good!";
     boost::regex pat( "shirui" );
@@ -14,4 +14,6 @@ int main()
 	if (boost::regex_match(line, matches, pat)) {
         std::cout << matches[2] << std::endl;
 	}
+
+	return 0;
 }
