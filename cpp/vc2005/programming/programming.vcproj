@@ -175,7 +175,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\programming.cpp"
+				RelativePath=".\judge_is_two_exp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\print_with_one_line.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ProgrammingBeauty.cpp"
 				>
 			</File>
 			<File
@@ -205,7 +213,31 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\HDOJ_1427.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PointsGame.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PointsGame2.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\stdlib_stl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\struct_ansnode.h"
+				>
+			</File>
+			<File
+				RelativePath=".\struct_node.h"
 				>
 			</File>
 		</Filter>
