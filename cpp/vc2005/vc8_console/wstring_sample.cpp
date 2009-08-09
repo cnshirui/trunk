@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void main() {
+void main_wstring() {
 	std::wstring range = _T("'Top Customers'!$D$44:$O$44");
 	//_T("Top Customers!$D$44:$O$44");
 	// _T("'Top Customers'!$D$44:$O$44");
