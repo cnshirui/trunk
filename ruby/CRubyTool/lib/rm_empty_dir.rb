@@ -19,10 +19,10 @@ def rm_empty_dir(path)
 	# do delete
 	#puts "#{'---'*$level_count}-> #{path}"
   if(Dir["*"].length == 0)
-      puts "FileUtils.rm_rf '#{Dir.pwd}'"
+      puts Dir.pwd
       FileUtils.chmod 0777, Dir.pwd
-      #Dir.rmdir(Dir.pwd)
-      FileUtils.rm_rf(Dir.pwd)
+      Dir.rmdir(Dir.pwd)
+      #FileUtils.rm_rf(Dir.pwd)
   end
 
   Dir.chdir("..")
