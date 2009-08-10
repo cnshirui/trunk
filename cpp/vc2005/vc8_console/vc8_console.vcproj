@@ -188,6 +188,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\mxxml_pretty_print.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 			</File>

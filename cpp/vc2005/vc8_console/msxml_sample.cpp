@@ -10,7 +10,7 @@ using namespace MSXML2;
 void dump_com_error(_com_error &e);
 
 
-int main(int argc, char* argv[])
+int main_msxml(int argc, char* argv[])
 {
 	CoInitialize(NULL);
 	try{

@@ -24,7 +24,7 @@ if(argc == 2)
   puts $*.inspect
 else
   dir = 'D:\xcelsius\bugfix\migrate_radio_background'
-  files = ['trans_45_53.xlf', 'trans_45_53_c.xlf']
+  files = ['radio_45_53_3.xlf', 'radio_45_53_3_t.xlf']
   dir = dir.gsub("\\", "/") if(dir.index("\\")!=-1)
   
   files.map! { |file| "#{dir}/#{file}" }
