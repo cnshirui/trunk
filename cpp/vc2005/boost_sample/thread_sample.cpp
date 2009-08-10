@@ -26,7 +26,7 @@ void func()
         cout << "race condition counts is " << cnt << " of " << n << endl;
         cout << "race condition ratio is " << 100.0 * cnt / n << '%' << endl;
 }
-int main()
+int main_thread()
 {
         progress_timer pt;			//程序退出是显示消耗多少时间
         thread thrd1(&func);

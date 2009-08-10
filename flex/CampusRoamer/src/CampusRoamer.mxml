@@ -47,7 +47,7 @@
 			// http://www.adobe.com/2006/fc/SpringGraph.swc
 			import com.adobe.flex.extras.controls.springgraph.Graph;
 
-			private var _test:Boolean = true;
+			private var _test:Boolean = false;
 			private var _autoClose:Boolean = false;
 
 			[Bindable]

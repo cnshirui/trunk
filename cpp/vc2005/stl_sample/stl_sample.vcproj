@@ -44,7 +44,7 @@
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="4"
@@ -175,6 +175,14 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\std_vector_dereferencable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\std_vector_quicksort.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -196,6 +204,10 @@
 			</File>
 			<File
 				RelativePath=".\stl_sample.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\vector_vs_list.cpp"
 				>
 			</File>
 		</Filter>

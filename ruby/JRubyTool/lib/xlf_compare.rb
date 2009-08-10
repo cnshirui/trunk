@@ -23,8 +23,8 @@ argc = $*.length
 if(argc == 2)
   puts $*.inspect
 else
-  dir = 'D:\xcelsius\bugfix\slider_menu_lost_item'
-  files = ['slider_2_45_url_53.xlf', 'slider_2_45_url_53_add.xlf']
+  dir = 'D:\xcelsius\bugfix\migrate_radio_background'
+  files = ['trans_45_53.xlf', 'trans_45_53_c.xlf']
   dir = dir.gsub("\\", "/") if(dir.index("\\")!=-1)
   
   files.map! { |file| "#{dir}/#{file}" }

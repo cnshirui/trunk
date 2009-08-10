@@ -1,6 +1,8 @@
-*.log
 *.pyc
+*.log
 index.yaml
-.git
-cpp/*/*/Debug
-*/*/debug
+*/*/bin/*
+*/*/debug/*
+*/*/bin-debug/*
+*/*/bin-release/*
+cpp/*/*/Debug/*

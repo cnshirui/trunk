@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root foo="microsoft.com">
+<PARTS>
+   <PART foo="microsoft.com"  foo2="microsoft.com">
+	<PARTNO>12345</PARTNO>
+	<DESCRIPTION>VIP - Very Important Part</DESCRIPTION>
+   </PART>
+   <PART>
+	<PARTNO>5678</PARTNO>
+	<DESCRIPTION>LIP - Less Important Part</DESCRIPTION>
+   </PART>
+</PARTS>
+</root>
