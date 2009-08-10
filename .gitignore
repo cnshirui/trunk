@@ -3,6 +3,7 @@
 index.yaml
 */*/bin/*
 */*/debug/*
+*/*/Debug/*
 */*/bin-debug/*
 */*/bin-release/*
 cpp/*/*/Debug/*
