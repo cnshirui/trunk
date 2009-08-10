@@ -1,0 +1,938 @@
+<html><head><!--STATUS OK-->
+<meta http-equiv="content-type" content="text/html; charset=GB2312"><title>Boost库通用编译配置使用指南_海洋C++乐园      </title>
+<style type="text/css">
+.error{color:#FF0000;font-size:12px}
+
+
+	
+
+
+</style>
+<script type="text/javascript" src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/global.js"></script>
+<script language="javascript" src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/popup.js"></script>
+<script type="text/javascript" src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/BdEditor-mined.js"></script>
+<script language="JavaScript" src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/g_spjs.js"></script>
+<script language="javascript">
+<!--
+
+(function(){var A=109;function C(D){var F="nslog__"+(new Date()).getTime();var E=window[F]=new Image();E.onload=(E.onerror=function(){window[F]=null});E.src="http://nsclick.baidu.com/v.gif?pid="+A+"&url="+encodeURIComponent(D)+"&type=0&_t="+Math.random();E=null}function B(F){F=F||event;var E=F.srcElement||F.target;if(E.nodeType!=1){E=E.parentNode}while(E&&E.tagName&&E.tagName.toUpperCase()!="A"){E=E.parentNode}if(E&&E.tagName&&E.tagName.toUpperCase()=="A"){if(!/^([\w-]+\.)*?baidu\.com/i.test(E.host)){var D=E.href;setTimeout(function(){C(D)},1)}}E=null}if(document.attachEvent){document.attachEvent("onmousedown",B);window.attachEvent("onunload",function(){document.detachEvent("onmousedown",B)})}else{document.addEventListener("mousedown",B,false);window.addEventListener("unload",function(){document.removeEventListener("mousedown",B,false)},false)}})();
+
+
+var allkey="";
+var i=0;
+var flag=0;
+function setpv(allnum)
+{
+	var num = allnum.split('_');
+	document.getElementById("result").innerHTML=num[0];
+}
+
+function checkMail(s)
+{
+  	var pattern=/\w+@\w+\.[a-z]+/;
+  	if(pattern.test(s))
+    {
+       return true;
+    }
+  	else
+   {
+      return false;
+   }
+}
+
+
+function checkeandu(eanduid)
+{
+	var eanduvalue=G(eanduid).value;
+	var len=bytes(eanduvalue);
+	if(len>128)
+	{
+		showErr(2,"您输入的网址或邮箱太长，请保持在128字节以内。");
+		return false;
+	}
+	else
+	{
+		 return true;
+	}
+
+}
+
+function cmtdel(str)
+{
+	var pop=new Popup({ contentType:3,isReloadOnClose:false,width:340,height:80});
+	pop.setContent("title","删除评论");
+	pop.setContent("confirmCon","您确定要彻底删除这条评论吗？");
+	pop.setContent("callBack",delCallback2);
+	pop.setContent("parameter",{fid:str,popup:pop});
+	pop.build();
+	pop.show();
+	return false;
+}
+function delCallback2(para)
+{
+	var o_pop=para["popup"];
+	o_pop.config.contentType=1;
+	o_pop.setContent("contentUrl","");
+	o_pop.reBuild();
+	G(para["fid"]).target=o_pop.iframeIdName;
+	eval("document."+para["fid"]).submit();
+}
+
+String.prototype.byteLength = function() {
+    return this.replace(/[^\u0000-\u007f]/g,"\u0061\u0061").length;
+}
+
+function checkname(strid)
+{
+	var ele=document.getElementById(strid);
+	var len=bytes(ele.value);
+	if(len>49)
+	{
+		showErr(1,"您输入的姓名太长，请保持在49字节以内。");
+		return false;
+	}
+	else
+	{
+		if(len==0)
+		{
+			document.getElementById(strid).value="匿名网友";
+		}
+		 return true;
+	}
+
+}
+
+function checktext(textid)
+{
+        var tempStr='';
+        var isLightFont=false;
+		if(editor&&textid=="spBlogCmtText"){
+			//document.getElementById("spBlogCmtText").value=editor.getHtml();
+			tempStr=editor.getHtml();
+			tempStr=tempStr.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,'');
+			tempStr=tempStr.replace(/<\/span>/ig,'');
+			document.getElementById("spBlogCmtText").value=tempStr;
+            isLightFont=!(tempStr==editor.getHtml());
+        }
+		document.getElementById(textid).value=trimlr(textid);
+		var str=trimrn(textid);
+		len=str.length;
+		if(len==0 || ((/^[\s,　]+$/gi).test(str)) )
+		{
+			showErr(3,"您必须输入评论内容，请检查。");
+			return false;
+		}
+		else
+        {
+                len=str.byteLength();
+                var maxLength=isLightFont?916:1000;
+				if(len > maxLength)
+				{
+					showErr(3,"您输入的评论内容太长，请保持在500字以内。");
+					return false;
+				}
+				if(editor&&textid=="spBlogCmtText"){
+					document.getElementById("spBlogCmtText").value=editor.getHtml();
+					document.getElementById(textid).value=trimlr(textid);
+				}
+
+			return true;
+		}
+}
+
+function showErr(index,str)
+{
+	G(index+"_err").style.display="";
+	G(index+"_err_con").innerHTML=str;
+}
+function hidErr(index)
+{
+	G(index+"_err").style.display="none";
+	G(index+"_err_con").innerHTML="";
+}
+
+function alertPop(tit,con)
+{
+	var pop=new Popup({ contentType:4,isReloadOnClose:false,width:340,height:80});
+	pop.setContent("title",tit);
+	pop.setContent("alertCon",con);
+	pop.build();
+	pop.show();
+}
+
+function cmtfull()
+{
+	var cnum=0;
+	if(cnum>=50000)
+	{
+		alertPop("发表评论","单篇日志评论数最多为50000条.");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function checkcmtform()
+{
+	if(checkname("spBlogCmtor")&&checkeandu("spBlogCmtURL")&&checktext("spBlogCmtText")&&cmtfull())
+	{
+		submitForm();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+var g_pop=null;
+function submitForm()
+{
+	g_pop=new Popup({ contentType:1,isReloadOnClose:false,width:340,height:80});
+	g_pop.setContent("title","添加评论");
+	g_pop.setContent("contentUrl","");
+	g_pop.setContent("someDisabledBtn","btn_ok");
+	g_pop.build();
+	G("popFormSubmit").target=g_pop.iframeIdName;
+	g_pop.show();
+}
+
+function g_close_pop()
+{
+	g_pop.close();
+}
+
+function formatonlinpic()
+{
+var picobj=document.getElementsByName("onlinepic");
+var picnum=picobj.length;
+
+	for(var i=0;i<picnum;i++)
+	{
+		if(picobj[i].width>200)
+		{
+			picobj[i].width=200;
+		}
+		if(picobj[i].height>200)
+		{
+			picobj[i].height=200;
+		}
+	}
+    try{document.getElementById("btn_ok").disabled = "";}catch(e){}
+}
+
+function addToFavor(){
+var blogTitle='Boost库通用编译配置使用指南'.replace(/&#39;/g,'\'');
+window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(blogTitle+'_百度空间')+'&iu='+encodeURIComponent(location.href)+'&fr=sp#nw=1','_s','scrollbars=no,width=600,height=450,right=75,top=20,status=no,resizable=yes');
+return false;
+}
+
+var isIE = /*@cc_on!@*/false;
+function tracker(did,a){
+	return function(){
+		var t=new Date().getTime();
+		var href=a.href;
+        if(isIE){
+            var r = /href\s*=\s*("|')?([^\s]*)\1/gi;
+            if(r.test(a.outerHTML))
+                href = RegExp.$2;
+        }
+        new Image().src = "http://hi.baidu.com/sys/statlog/1.gif?m=" + did + "&v=" + encodeURIComponent(href) + "&c=" + encodeURIComponent(location.href) + "&t="+t;
+	}
+}
+
+function tracker_init(did){
+	var _s=document.getElementById(did);
+	var as = _s.getElementsByTagName('A');
+	for(var i = 0, j = as.length; i < j; i ++){
+		var a = as[i];
+		if(isIE){
+			a.attachEvent("onclick", tracker(did,a));
+		}else{
+			a.addEventListener("click", tracker(did,a), false);
+		}
+	}
+}
+
+
+/* some functions for cmt-reply */
+		function cmtreply(cmtName,cmtPorID)
+		{
+			cmtName=cmtName.replace(/<|>/g,"");
+			window.location.hash="#send";
+			var cmtForm=document.form1;
+			cmtForm.cm.value="3";
+			if(!cmtForm.spReferTarget)
+			{
+				var ipt=document.createElement("input");
+				ipt.type="hidden";
+				ipt.name="spReferTarget";
+				ipt.value=cmtPorID;
+				cmtForm.appendChild(ipt);
+			}else cmtForm.spReferTarget.value=cmtPorID;
+
+
+			 //G("reTitle").innerHTML="回复"+cmtName+"：";
+			 G("cancleReLink").style.display="";
+			 cmtForm.btn_ok.value="回复评论";
+
+
+			 try{
+				editor.window.focus();
+                editor.window.document.body.innerHTML="回复"+cmtName+"：";
+
+                var w = editor.window;
+				if(w.getSelection){
+					var d = w.document;
+					var s = w.getSelection();
+					var r = d.createRange();
+					r.setStartAfter(d.body.firstChild);
+					r.setEndAfter(d.body.lastChild);
+					s.removeAllRanges();
+					s.addRange(r);
+				}
+			}catch(e){
+			 		try{
+				 		cmtForm.getElementsByTagName("textarea")[0].focus();
+				 		cmtForm.getElementsByTagName("textarea")[0].value="回复"+cmtName+"：";
+				 	}catch(e){}
+			}
+		}
+
+		function canclereply()
+		{
+			var cmtForm=document.form1;
+			cmtForm.cm.value="1";
+			try{cmtForm.removeChild(cmtForm.spReferTarget);}catch(e){}
+			/*
+			try{
+					var cmt=cmtForm.getElementsByTagName("textarea")[0]
+					cmt.value="";
+					cmt.focus();
+			}catch(e){}
+			*/
+
+			try{
+					var ed=editor.window.document.body;
+					ed.innerHTML="";
+					editor.window.focus();
+				}catch(e){
+					var cmt=cmtForm.getElementsByTagName("textarea")[0];
+					cmt.value="";
+					cmt.focus();
+			}
+
+			G("cancleReLink").style.display="none";
+			cmtForm.btn_ok.value="发表评论";
+		}
+
+		function gotoreply()
+		{//to checking whether reply cmt
+			if( window.location.hash.indexOf("&re=1")<0) return;
+			var cmtID=window.location.hash.split("&")[0].replace("#","");
+			var cmtlinks=document.getElementsByTagName("a");
+			for(var i=0,n=cmtlinks.length;i<n;i++)
+			{
+				if(cmtlinks[i].name==cmtID){ var rename=cmtlinks[i].getAttribute("rename");  repid=cmtlinks[i].getAttribute("repid"); break;}
+			}
+			if(typeof(rename)!="undefined"){
+				cmtreply(rename, repid);
+			}
+		}
+
+//-->
+</script>
+
+
+</head><body onload="formatonlinpic();"><iframe name="_BdPopupLayer_mbnfsy580atu5eolostwbiwt" style="position: absolute; z-index: 65001; display: none;" id="_BdPopupLayer_mbnfsy580atu5eolostwbiwt" frameborder="0" scrolling="no"></iframe><iframe name="_BdPopupLayer_psydjvejrz7q89jbyd9mikco" style="position: absolute; z-index: 65001; display: none;" id="_BdPopupLayer_psydjvejrz7q89jbyd9mikco" frameborder="0" scrolling="no"></iframe><link rel="Stylesheet" type="text/css" href="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/bdeditor.css">
+<center>
+<script type="text/javascript">
+/*<![CDATA[*/
+if(top.location != self.location){
+	top.location = self.location;
+}
+var myref = encodeURIComponent("http://hi.baidu.com/vcprogrammer/blog/item/2f3db1b11502575d09230299%2Ehtml");
+/*]]>*/
+</script>
+<link rel="stylesheet" type="text/css" href="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/mods.css">
+
+<link rel="stylesheet" type="text/css" href="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/ab5676ed3717dfd4b21cb123.css">
+
+<link rel="stylesheet" type="text/css" href="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/space.css">
+<style type="text/css">
+/*<![CDATA[*/
+
+#usrbar{padding:4px 10px 3px 0;font-size:12px;height:19px;line-height:19px;color:#000000;font-family:Arial;text-align:right;background:#ffffff;filter:alpha(opacity=65);-moz-opacity:0.5;width:auto !important;width:100%;letter-spacing:normal}
+#usrbar a,#usrbar a:link,#usrbar a:visited{color:#0000CC;text-decoration:underline}
+#ft{clear:both;height:20px;line-height:20px;color:#666666;font-size:12px;font-family:Arial;text-align:center}
+#ft a,#ft a:link,#ft a:visited{color:#7777CC;text-decoration:underline}
+#usrbar,#usrbar a,#usrbar a:link,#usrbar a:visited,#ft,#ft a,#ft a:link,#ft a:visited{letter-spacing:normal}
+/*]]>*/
+</style>
+
+
+
+<div id="usrbar"><nobr>
+
+			<a id="hi_index" href="http://hi.baidu.com/" target="_blank">百度空间</a>&nbsp;|&nbsp;<a href="http://www.baidu.com/" target="_blank">百度首页</a>&nbsp;<script type="text/javascript">
+		document.write('| <a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u=http://hi.baidu.com' + encodeURIComponent('/vcprogrammer/blog/item/2f3db1b11502575d09230299%2Ehtml') + '">登录</a>');
+		</script>| <a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http://hi.baidu.com%2Fvcprogrammer%2Fblog%2Fitem%2F2f3db1b11502575d09230299%252Ehtml">登录</a>
+		
+</nobr></div>
+
+
+
+		<div id="newUserTip" style="text-align: right; width: 225px; height: 130px; position: absolute; top: 26px; right: 0pt; float: right; z-index: 30000;">
+	<a id="newUserTipShadow" onclick="newUserRegLog()" href="http://hi.baidu.com/st/reg.html" target="_blank" style="background: transparent none repeat scroll 0% 0% ! important; overflow: hidden; color: rgb(66, 66, 249) ! important; -moz-background-clip: border ! important; -moz-background-origin: padding ! important; -moz-background-inline-policy: continuous ! important; text-decoration: none ! important; font-size: 14px; width: 55px; height: 14px; position: absolute; top: 108px; right: 14px; z-index: 30001; display: block;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	<embed id="newUserTipSwf" allowscriptacess="always" style="width: 225px; height: 130px;" src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/guide.swf" wmode="transparent">
+	</div>
+	<script language="javascript">
+	<!--
+		function newUserTipShow(f)
+		{
+			if(f=="0"){//close
+				G("newUserTipSwf").style.width="40px";
+				G("newUserTip").style.width="40px";
+				G("newUserTipShadow").style.display="none";
+			}else{//show
+				G("newUserTip").style.width="225px";
+				G("newUserTipSwf").style.width="225px";
+				G("newUserTipShadow").style.display="block";
+
+			}
+		}
+
+		function newUserRegLog(){
+			var now=new Date();
+			now.setTime(now.getTime()+5*60*1000);
+			document.cookie="BDSP_REGFLAG=1;expires="+now.toGMTString()+";path=/";
+			new Image().src="http://hi.baidu.com/sys/statlog/1.gif?m=blog_newer_pro2_click&v=/vcprogrammer&t="+Math.random();
+		}
+	//-->
+	</script>
+	
+
+
+
+<script type="text/javascript">
+
+function set_cookie_4_bdtip(index/* start from one */, value){
+	var bdtip = document.cookie.match(/(^| )BDTIP=([^;]*)(;|$)/);
+	if(!bdtip){
+		bdtip=new Array(index);
+		for(var i=0,n=bdtip.length;i<n;i++)
+		{
+			if(bdtip[i]=="" || bdtip[i]==null)  bdtip[i]=0;
+			if(i == index - 1){
+				bdtip[i] = value;
+			}
+		}
+	}else{
+	bdtip = bdtip[2].split('-');
+	if(index > bdtip.length)  bdtip.length= index;
+	for(var i = 0, j = bdtip.length; i < j; i ++){
+		if(bdtip[i]=="" || bdtip[i]==null) bdtip[i]=0;
+		if(i == index - 1){
+			bdtip[i] = value;
+		}
+	}
+	}
+	bdtip = bdtip.join('-');
+	document.cookie = "BDTIP=" + bdtip+ ";expires=Wed, 28-Nov-37 01:45:46 GMT;path=/;";
+}
+</script>
+<div id="main" align="left">
+<!--[if IE]>
+<script>
+var objmain = document.getElementById("main");
+function updatesize(){ var bodyw = window.document.body.offsetWidth; if(bodyw <= 790) objmain.style.width="772px"; else if(bodyw >= 1016) objmain.style.width="996px"; else objmain.style.width="100%"; }
+updatesize(); window.onresize = updatesize;
+</script>
+<![endif]-->
+	<div id="header">
+	<div class="lc"><div class="rc"></div></div>
+<div class="tit"><a href="http://hi.baidu.com/vcprogrammer" class="titlink" title="vcprogrammer的空间 http://hi.baidu.com/vcprogrammer">海洋C++乐园</a></div>
+<div class="desc">让我们共同创造C++的神话</div>
+<div id="tabline">&nbsp;</div>
+	<div id="tab"><a href="http://hi.baidu.com/vcprogrammer">主页</a><a href="http://hi.baidu.com/vcprogrammer/blog" class="on">博客</a><a href="http://hi.baidu.com/vcprogrammer/album">相册</a><span>|</span><a href="http://hi.baidu.com/vcprogrammer/profile">个人档案</a>
+	<span>|</span><a href="http://hi.baidu.com/vcprogrammer/friends">好友</a>
+
+
+
+	</div>
+</div>
+
+<div class="stage">
+<div class="stagepad">
+<div style="width: 100%;">
+
+
+	
+
+	<table class="modth" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr><td class="modtl" width="7">&nbsp;</td>
+	<td class="modtc" nowrap="nowrap"><div class="modhead"><span class="modtit">查看文章</span></div></td>
+	<td class="modtc" align="right" nowrap="nowrap"></td>
+	<td class="modtr" width="7">&nbsp;</td>
+	</tr></tbody></table>
+
+<div id="m_blog" class="modbox" style="overflow-x: hidden;">
+<div class="tit">Boost库通用编译配置使用指南</div>
+<div class="date">2009-06-24  13:04</div>
+<table style="table-layout: fixed; width: 100%;"><tbody><tr><td><div id="blog_text" class="cnt"><p>理论上，本文适用于boost的各个版本，尤其是最新版本1.39.0；适用于各种C++编译器，如VC6.0，VS2003，VS2005，VS2008，gcc，C++ Builder等。<br>
+一、下载<br>
+首先从boost官方主页<a href="http://www.boost.org/">http://www.boost.org</a>下
+载最新版boost安装包（目前最新版是1.39.0）。因为boost一部分类是需要编译成库才能使用的，所以我们还需要准备好boost专用的编译辅
+助工具bjam。网上很多人都提倡直接使用boost安装包中附带的bjam源码来编译出bjam，但是之前需要修改若干配置脚本才能编译成功。个人认为
+真没什么必要，费这劲毫无意义。boost官方网站在提供boost安装包下载链接的同时也提供与该版本安装包对应的bjam的下载，只有200多KB，
+可以一同下载下来。<br>
+二、安装<br>
+将boost安装包解压至本地目录，如：E:\SDK\boost_1_39_0，然后将bjam.exe拷贝到该目录下（bjam必须与boost-build.jam在同级目录）。<br>
+三、编译<br>
+接下来就是最重要的编译步骤了。需要打开命令提示符（cmd.exe）窗口并执行bjam，可以使用--help参数来查看命令帮助。这里详细讲解一下
+bjam的命令行参数，因为它非常重要。首先，它涉及到编程环境的搭建，你需要根据自己今后具体的使用环境来选择合适的命令行参数；其次，它影响到你的硬
+盘空间，完全编译的话据说在3G以上，如果你同时拥有2个以上的IDE（如VC6和VC9共存）而且都要用到boost，那么占用多少硬盘就自己算吧……
+虽说如今大家的硬盘空间都不成问题，但就像本人一样崇尚合理利用资源不习惯铺张浪费提倡节俭的童子应该大有人在。综合以上两点因素，本人使用的bjam命
+令如下：</p>
+<p><br>
+bjam stage --toolset=msvc-9.0 --without-python
+--stagedir="E:\SDK\boost_1_39_0\vc9" link=shared runtime-link=shared
+threading=multi debug release<br>
+下面详细解释一下每个参数的含义，请务必仔细看完：<br>
+stage/install：stage表示只生成库（dll和lib），install还会生成包含头文件的include目录。本人推荐使用
+stage，因为install生成的这个include目录实际就是boost安装包解压缩后的boost目录（E:\SDK
+\boost_1_39_0\boost，只比include目录多几个非hpp文件，都很小），所以可以直接使用，而且不同的IDE都可以使用同一套头
+文件，这样既节省编译时间，也节省硬盘空间。</p>
+<p><br>
+toolset：指定编译器，可选的如borland、gcc、msvc（VC6）、msvc-9.0（VS2008）等。</p>
+<p><br>
+without/with：选择不编译/编译哪些库。本人不需要编译python库，所以排除之，可以根据各人需要选择，默认是全部编译。但是需要注意，如果选择编译python的话，是需要python语言支持的，应该到python官方主页<a href="http://www.python.org/">http://www.python.org</a>下载安装。</p>
+<p><br>
+stagedir/prefix：stage时使用stagedir，install时使用prefix，表示编译生成文件的路径。推荐给不同的IDE指
+定不同的目录，如VS2008对应的是E:\SDK\boost_1_39_0\vc9\lib，VC6对应的是E:\SDK\boost_1_39_0
+\vc6\lib，否则都生成到一个目录下面，难以管理。如果使用了install参数，那么还将生成头文件目录，vc9对应的就是E:\SDK
+\boost_1_39_0\vc9\include\boost-1_39\boost,vc6类似（光这路径都这样累赘，还是使用stage好）。</p>
+<p><br>
+build-dir：编译生成的中间文件的路径。这个本人这里没用到，默认就在根目录（E:\SDK\boost_1_39_0）下，目录名为bin.v2，等编译完成后可将这个目录全部删除（没用了），所以不需要去设置。</p>
+<p><br>
+link：生成动态链接库/静态链接库。生成动态链接库需使用shared方式，生成静态链接库需使用static方式。这里需要注意的是，static
+方式下，最终生成的很多静态链接库大小都在几兆、几十兆，甚至接近百兆。这么大的库我们一般是不会采用静态链接方式的，所以这些库不推荐以static方
+式编译（without掉）；如果已经编译了赶快删，肯定没用，否则将占用近1G的硬盘空间。以下是巨型库黑名单：wave、graph、math、
+regex、test、program_options、serialization、signals。</p>
+<p><br>
+runtime-link：动态/静态链接C/C++运行时库。同样有shared和static两种方式，这样runtime-link和link一共
+可以产生4种组合方式。虽然它和link属性没有直接关系，但我们习惯上，一个工程如果用动态链接那么所有库都用动态链接，如果用静态链接那么所有库都用
+静态链接。所以这样其实只需要编译2种组合即可，即link=shared runtime-link=shared和link=static
+runtime-link=static。</p>
+<p><br>
+threading：单/多线程编译。一般都写多线程程序，当然要指定multi方式了；如果需要编写单线程程序，那么还需要编译单线程库，可以使用single方式。</p>
+<p><br>
+debug/release：编译debug/release版本。一般都是程序的debug版本对应库的debug版本，所以两个都编译。</p>
+<p><br>
+本人按以上方式分别编译了静态链接和动态链接两个版本后，整个E:\SDK\boost_1_39_0目录（包括安装包解压缩文件和编译生成的库文件）只
+有250MB。事实上编译完成后安装包解压缩文件除了boost目录之外其他目录和文件已经可以删除了，这样还可以腾出150MB的空间来。不过我又研究
+了一下，其实libs这个目录也很有用，它提供了所有Boost类的使用范例，平时可以作为参考；另外doc目录是一个完整的boost使用帮助文档，当
+然最好也不要删了。这样剩下的几个目录和文件加起来也就十多兆，索性都给它们留一条生路吧。</p>
+<p><br>
+呵呵，一个完整而又完美的boost目录就此诞生了。</p>
+<p><br>
+如果图省事，不想了解这么多，那么有简单的方法，可以使用命令：</p>
+<p><br>
+bjam --toolset=msvc-9.0 --build-type=complete</p>
+<p><br>
+直接指定编译器以完全模式编译即可，这样可以满足今后的一切使用场合，但同时带来的后果是：<br>
+1、占用3G以上的硬盘空间<br>
+2、占用若干小时的编译时间<br>
+3、头文件和库文件存放于C:\Boost（个人非常反感）</p>
+<p>4、生成的很多文件可以永远也用不上<br>
+四、配置<br>
+include目录：E:\SDK\boost_1_39_0<br>
+library目录：E:\SDK\boost_1_39_0\vc9\lib<br>
+添加到IDE相应的路径下面即可。</p>
+<p><br>
+-- 本文来源于创世软件团队博客, 原文地址: <a href="http://www.cnblogs.com/wondering/archive/2009/05/21/boost_setup.html">http://www.cnblogs.com/wondering/archive/2009/05/21/boost_setup.html</a></p></div></td></tr></tbody></table>
+<br>
+<div class="opt">
+<a href="http://hi.baidu.com/vcprogrammer/blog/category/Boost" title="查看该分类中所有文章">类别：Boost</a>
+
+	
+	| <a title="将此文章添加到百度搜藏" href="http://cang.baidu.com/do/add" onclick="return addToFavor();" target="_blank">添加到搜藏</a>
+	
+	| 浏览(<span id="result">96</span>)
+	| <a href="#send">评论</a>&nbsp;(0)
+
+<script language="javascript">
+/*<![CDATA[*/
+var pre = [true,'代码注入的三种方法（一）', '代码注入的三种方法（一）','/vcprogrammer/blog/item/642c0ad36302b7093bf3cf43.html'];
+var post = [true,'vc操作excel文件','vc操作excel文件', '/vcprogrammer/blog/item/6bae6d0f97e78a236159f36e.html'];
+if(pre[0] || post[0]){
+	document.write('<div style="height:5px;line-height:5px;">&nbsp;</div><div id="in_nav">');
+	if(pre[0]){
+		document.write('上一篇：<a href="' + pre[3] + '" title="' + pre[1] + '">' +  pre[2] + '</a>&nbsp;&nbsp;&nbsp;&nbsp;');
+	}
+	if(post[0]){
+		document.write('下一篇：<a href="' + post[3] + '" title="' + post[1] + '">' +  post[2] + '</a>');
+	}
+	document.write('</div>');
+}
+/*]]>*/
+</script><div style="height: 5px; line-height: 5px;">&nbsp;</div><div id="in_nav">上一篇：<a href="http://hi.baidu.com/vcprogrammer/blog/item/642c0ad36302b7093bf3cf43.html" title="代码注入的三种方法（一）">代码注入的三种方法（一）</a>&nbsp;&nbsp;&nbsp;&nbsp;下一篇：<a href="http://hi.baidu.com/vcprogrammer/blog/item/6bae6d0f97e78a236159f36e.html" title="vc操作excel文件">vc操作excel文件</a></div>
+
+</div>
+<div class="line">&nbsp;</div>
+
+
+
+
+
+
+
+<div id="in_reader">
+<div class="tit">最近读者：</div>
+
+<script>
+
+	var g_spAnnony=true;
+
+
+var g_read=[
+
+["jiarui","95664a6572727977696e1300","Jerrywin"],
+
+["yibansha0","a73f796962616e736861307406","yibansha0"],
+
+["flying%5Fall","59d3666c79696e675f616c6ca202","flying_all"],
+
+{}
+];
+g_read.length=g_read.length-1;
+
+var _rh1="";
+var _rh2="";
+
+function wrreader(){
+	_rh1 += '<table width="100%" ><tr>';
+	_rh2+='<tr>';
+	if(g_spAnnony){
+		_rh1+='<td align="center" width="10%" ><img border="0" width="55" height="55" src="http://img.baidu.com/hi/img/portraitn.jpg"></td>';
+		_rh2+='<td>&nbsp;</td>';
+		if(g_read.length>0){
+			_rh1+='<td align="left" width="12%">';
+		}else{
+			_rh1+='<td align="left" width="100%">';
+		}
+		_rh1+='<a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u='+myref+'" target="_self">登录</a>后，您就出现在这里。</td>';
+		_rh2+='<td>&nbsp;</td>'
+	}
+	if(g_read.length==0){
+		if(!g_spAnnony){
+			_rh1+='<td align=left width="100%">最近还没有登录用户看过这篇文章……</td>';
+			_rh2+='<td>&nbsp;</td>';
+		}
+	}else{
+		for(i=0,len=g_read.length;i<len;i++){
+			_rh1+='<td align="center" valign="bottom" width="10%" class="user"><a href="/'+g_read[i][0]+'" target="_blank"><img border="0" src="http://himg.baidu.com/sys/portraitn/item/'+g_read[i][1]+'.jpg"></a></td>';
+			_rh2+='<td align="center" valign="top" class="user"><a href="/'+g_read[i][0]+'" target="_blank">'+g_read[i][2]+'</a></td>';
+		}
+	}
+	_rh1+='<td width="100%"></td></tr>';
+	_rh2+='<td></td></tr></table>';
+	document.write(_rh1+_rh2);
+}
+
+wrreader();
+</script><table width="100%"><tbody><tr><td align="center" width="10%"><img src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/portraitn.jpg" border="0" height="55" width="55"></td><td align="left" width="12%"><a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http%3A%2F%2Fhi.baidu.com%2Fvcprogrammer%2Fblog%2Fitem%2F2f3db1b11502575d09230299%252Ehtml" target="_self">登录</a>后，您就出现在这里。</td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/jiarui" target="_blank"><img src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/95664a6572727977696e1300.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/yibansha0" target="_blank"><img src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/a73f796962616e736861307406.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/flying%5Fall" target="_blank"><img src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/59d3666c79696e675f616c6ca202.jpg" border="0"></a></td><td width="100%"></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/jiarui" target="_blank">Jerrywin</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/yibansha0" target="_blank">yibansha0</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/flying%5Fall" target="_blank">flying_all</a></td><td></td></tr></tbody></table>
+
+
+
+
+
+	</div>
+
+<div class="line">&nbsp;</div>
+
+
+
+<script language="JavaScript">
+allkey=allkey+"a81beb2a11bb192dd52af1a1_2f3db1b11502575d09230299_";
+</script>
+
+<div id="in_comment">
+<a name="comment"></a>
+<div class="tit">网友评论：</div>
+<script>
+function writecmt(type,id,cmtname,cmturl,portraitId){
+	var html1="";
+	cmturl=cmturl.replace("https://","http://");
+	if(type==1){
+			html1="<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'><img  border='0' src='http://himg.baidu.com/sys/portraitn/item/"+portraitId+".jpg'><br>"+cmtname+"</a>";
+	}else{
+		if(cmtname=="" || cmtname=="匿名网友"){
+			if(cmturl==""){
+				html1="<a>匿名网友</a>";
+			}else{
+				html1="<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a>";
+			}
+		}else{
+			if(cmturl==""){
+				html1="<div class='f14' style='display:inline'>网友:<a>"+cmtname+"</a></div>";
+			}else{
+				html1="<div class='f14' style='display:inline'>网友:<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a></div>";
+			}
+		}
+	}
+	document.write(html1);
+}
+function filterCmtContent(n){
+	if(!BdBrowser.isIE){
+		var defaultfilter1='<span style="filter:glow(color=#000000,strength=2);height:0px;color:#000000">';
+		var defaultfilter2='<span style="height: 0px; color: rgb(0, 0, 0);">';
+		var commentDiv=document.getElementById(n);
+		var divs=commentDiv.getElementsByTagName('div');
+		var d,tmp;
+		for( var i=0,len=divs.length;i<len;i++){
+			d=divs[i];
+			if(d.getAttribute('name')=='cmtcontent'){
+				tmp=d.innerHTML;
+				tmp=tmp.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,defaultfilter1);
+				tmp=tmp.replace('<span style="height: 0px; color: rgb(255, 255, 255);">',defaultfilter2);
+				d.innerHTML=tmp;
+			}
+		}
+	}
+}
+
+</script>
+
+
+
+
+
+<div id="page"></div>
+
+</div>
+<script>filterCmtContent('in_comment');</script>
+
+
+<div id="in_send">
+<a name="send"></a>
+<form name="form1" id="popFormSubmit" action="/vcprogrammer/commit" method="post" onsubmit="return checkcmtform()">
+<input name="bdstoken" value="70c09c75c7fb954420a5c7e0b24119fa" type="hidden">
+<input name="ct" value="8" type="hidden">
+<input name="cm" value="1" type="hidden">
+<input name="spBlogID" value="2f3db1b11502575d09230299" type="hidden">
+<input value="http://hi.baidu.com/vcprogrammer/blog/item/2f3db1b11502575d09230299.html" name="spRefURL" id="spRefURL" type="hidden">
+<script>
+    document.getElementById("spRefURL").value = window.location.href;
+</script>
+<div class="tit">发表评论：</div>
+<table border="0" cellpadding="0" cellspacing="5" width="620">
+<tbody><tr>
+
+<td class="f14">姓　名：</td>
+<td><input name="spBlogCmtor" id="spBlogCmtor" style="width: 220px;" onchange="checkname('spBlogCmtor')" maxlength="49" onfocus="hidErr(1);" type="text">
+<script>
+document.write(" &nbsp;&nbsp; <a href='http://hi.baidu.com/st/reg.html' target='_blank'>注册</a>");
+document.write(' | <a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u='+myref+'">登录</a>');
+
+</script> &nbsp;&nbsp; <a href="http://hi.baidu.com/st/reg.html" target="_blank">注册</a> | <a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http%3A%2F%2Fhi.baidu.com%2Fvcprogrammer%2Fblog%2Fitem%2F2f3db1b11502575d09230299%252Ehtml">登录</a>
+
+<div style="display: none;" id="nmerror">*姓名最长为50字节</div></td>
+</tr>
+
+<tr id="1_err" style="display: none;">
+<td>&nbsp;</td>
+<td><div class="error" id="1_err_con"></div></td>
+</tr>
+
+<tr>
+<td class="f14">网址或邮箱：</td>
+<td><input name="spBlogCmtURL" id="spBlogCmtURL" style="width: 360px;" maxlength="128" onchange="checkeandu('spBlogCmtURL')" onfocus="hidErr(2);" type="text"> (选填)</td>
+<script>
+G("spBlogCmtor").value="";
+G("spBlogCmtURL").value="";
+</script>
+
+</tr>
+
+<tr id="2_err" style="display: none;">
+<td>&nbsp;</td>
+<td><div class="error" id="2_err_con"></div></td>
+</tr>
+
+<tr>
+<td class="f14" id="reTitle" valign="top">内　容：</td>
+<td>        <div id="bdeditor_container_24vmar60ok31d53sphgeldbd">            <table border="0" cellpadding="0" cellspacing="0" height="155px" width="100%">                <tbody><tr>                    <td id="editor_toolbar_24vmar60ok31d53sphgeldbd" class="ToolbarContainer"><div class="ToolbarStrip"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap"><div class="ToolbarItem" title="插入表情" id="ToolbarItem_uuz8vb7guyqqmit66xs3x7f" onclick="_Instance['uuz8vb7guyqqmit66xs3x7f'].clickHandler(this)" onmouseup="_Instance['uuz8vb7guyqqmit66xs3x7f'].mouseUpHandler(this)" onmousedown="_Instance['uuz8vb7guyqqmit66xs3x7f'].mouseDownHandler(this)" onmouseout="_Instance['uuz8vb7guyqqmit66xs3x7f'].mouseOutHandler(this)" onmouseover="_Instance['uuz8vb7guyqqmit66xs3x7f'].mouseOverHandler(this)"><div class="img Smiley" alt="插入表情"><font style="font-size: 12px;">插入表情</font></div></div></td></tr></tbody></table></div></td>                </tr>                <tr>                    <td id="editor_area_24vmar60ok31d53sphgeldbd" class="EditorContainer"><iframe src="javascript:void(0)" frameborder="0" height="155px" width="100%"></iframe></td>                </tr>            </tbody></table>        </div>    <textarea name="spBlogCmtText" id="spBlogCmtText" style="width: 520px; height: 155px; display: none;" onfocus="hidErr(3);"></textarea>
+<script>
+	var editor=null;
+	try{
+		editor=new BdEditor("spBlogCmtText",{width:"100%",height:"155px"});
+		editor.onfocus = function(){hidErr(3);}
+		editor.render();
+	}catch(e){
+		var spBlogCmtText = document.getElementById("spBlogCmtText");
+		var p = spBlogCmtText.previousSibling;
+		while(p && p.nodeType != 1) p = p.previousSibling;
+		if(p && /bdeditor_container/.test(p.id)){
+			p.parentNode.removeChild(p);
+		}
+		spBlogCmtText.style.display = '';
+		editor=null;
+	}
+</script>
+
+<script>
+G("spBlogCmtor").value=G("spBlogCmtor").defaultValue;
+G("spBlogCmtText").value="";
+</script>
+</td>
+</tr>
+<tr id="3_err" style="display: none;">
+<td>&nbsp;</td>
+<td><div class="error" id="3_err_con"></div></td>
+</tr>
+
+<tr id="vercode">
+<td class="f14" valign="top">验证码：</td>
+<td valign="top"><input name="spVcode" value="" type="hidden">
+<input onfocus="f_focus()" id="spVerifyKey" name="spVerifyKey" size="6" maxlength="4" autocomplete="off" tabindex="4" type="text">  请点击后输入四位验证码，字母不区分大小写<br>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+function f_focus(){
+	getVcode();
+}
+function getVcode(){
+	var url="http://hi.baidu.com/sys/file/getvcode?echoback=getVcodeDone&t="+(new Date().getTime());
+	BdAjax.loadJS(url)
+}
+
+function getVcodeDone(vcode){
+	document.form1.spVcode.value=vcode;
+	var imgsrc="http://hiup.baidu.com/cgi-bin/genimg?"+vcode;
+	G('verifypic').src=imgsrc;
+	G('yanzheng').style.display="block";
+}
+function newverifypic(){
+	getVcode();
+	return false;
+}
+/*]]>*/
+</script>
+<div id="yanzheng" style="display: none;">
+<img id="verifypic" height="40" width="120"><wbr><a onfocus="this.blur();" href="#" onclick="return newverifypic();" title="看不清左边的字符">看不清?</a>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td class="f14" valign="top">&nbsp;</td>
+<td class="f14" valign="top"><input id="btn_ok" name="btn_ok" value="发表评论" tabindex="5" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="cancleReLink" onclick="canclereply(); return false;" style="display: none; font-size: 12px; color: rgb(102, 102, 102);">取消回复</a></td>
+</tr>
+</tbody></table>
+</form>
+</div>
+
+
+
+
+<br>
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" height="8" width="100%">
+<tbody><tr><td class="modbl" width="7">&nbsp;</td>
+<td class="modbc">&nbsp;</td>
+<td class="modbr" width="7">&nbsp;</td>
+</tr></tbody></table>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+</div>
+<script language="javascript">
+
+//fck layout rework
+</script>
+<script src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/bgmusic.js" language="javascript"></script>
+<script language="javascript">
+function initBlogTextForFCK(){
+	//fck layout resize
+    /*
+    var fckLayoutArr=document.getElementById('blog_text').getElementsByTagName('table');
+	for(var i=0,n=fckLayoutArr.length;i<n;i++){
+		if(fckLayoutArr[i].className.indexOf('FCKLAYOUT')>-1){
+			fckLayoutArr[i].width="100%";
+			fckLayoutArr[i].style.width="100%";
+			fckLayoutArr[i].style.height="100%";
+		}
+	}
+    */
+
+	//fck init music
+	if(window.Node){Node.prototype.replaceNode=function(Node){this.parentNode.replaceChild(Node,this);}}
+	var imgBox=document.getElementsByName('musicName');
+	var isAutoPlay=true;
+	for(var i=0,n=imgBox.length;i<n;i++){
+		var img=imgBox[i];
+		if(img.getAttribute('rel')){
+			var musicSrc=img.getAttribute('rel');
+			var musicDiv = document.createElement("SPAN");
+			var tmp=musicSrc.substr (musicSrc.indexOf('#')+1, 1);
+			var tmpAutoPlay=(tmp=='1');
+			if(isAutoPlay&&tmpAutoPlay){
+				isAutoPlay=false;
+				tmpAutoPlay=true;
+			}else{
+				tmpAutoPlay=false;
+			}
+			var shtml=creatbgmusic(musicSrc.substr(0,musicSrc.indexOf('#')),1,true,false,tmpAutoPlay,tmpAutoPlay,'FckMusicHelper');
+			shtml=shtml.replace('width=100%','width=200').replace('width="100%"','width=200 height=45');			img.replaceNode(musicDiv);
+			musicDiv.innerHTML=shtml;
+			i--;n--;
+		}
+	}
+	//document.getElementById('blog_text').style.display='';
+}
+initBlogTextForFCK();
+</script>
+<script language="javascript">
+<!--
+var hstr="/vcprogrammer/brwstat?key1=1";
+document.write("<script src='"+hstr+"&key2="+allkey+"'><\/script>");
+//-->
+</script><script src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/brwstat.htm"></script>
+<br><center><div id="ft">&#169;2009 Baidu</div></center>
+
+<script>
+if(document.getElementById("m_blog"))
+{
+	var imgarray = document.getElementById("m_blog").getElementsByTagName('img');
+	var imgw = document.getElementById("m_blog").offsetWidth;
+	imgw =imgw-40;
+    for(var i=0; i<imgarray.length; i++){
+    	if(imgarray[i].className=="blogimg" && imgarray[i].width>=imgw) {
+	    	imgarray[i].width=imgw;
+        }
+    }
+}
+
+// Fix ff bugs
+var blog_text = document.getElementById('blog_text');
+blog_text.innerHTML = blog_text.innerHTML.replace(/href\s*=\s*("|')?(\.\.\/\.\.\/)/gi,"href=$1../$2");
+
+gotoreply();
+</script>
+</center>
+
+
+<img src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/c.htm" style="display: none;">
+<iframe id="submitiframe" name="submitiframe" src="Boost%E5%BA%931.39.0%E9%80%9A%E7%94%A8%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97_files/blank.htm" style="display: none;"></iframe>
+</body></html>

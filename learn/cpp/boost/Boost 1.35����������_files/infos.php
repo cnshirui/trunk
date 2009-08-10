@@ -1,0 +1,1 @@
+var veryuser="";var veryemail="";var veryblog="http%3A%2F%2F";add_verycode("da1129f6c66f6bcb5aff1acac56bee18");document.cookie="very-code=" +("da1129f6c66f6bcb5aff1acac56bee18")+";path=/;expires="+(new Date((new Date()).getTime()+1800000)).toGMTString();

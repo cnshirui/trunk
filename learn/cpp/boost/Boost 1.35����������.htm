@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><head profile="http://gmpg.org/xfn/11">
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<title>Boost 1.35编译参数变更 | 绵掌集散地</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="generator" content="WordPress 2.7.1"><!-- Please leave for stats -->
+	<meta name="description" content="化腐朽为绵掌 · 这里是[tc]天驰的绵掌集散地">
+	<link rel="alternate" type="application/rss+xml" href="http://tctianchi.yo2.cn/feed" title="绵掌集散地 RSS feed">
+	<link rel="alternate" type="application/rss+xml" href="http://tctianchi.yo2.cn/comments/feed" title="绵掌集散地 comments RSS feed">
+	<link rel="pingback" href="http://tctianchi.yo2.cn/xmlrpc.php">
+	<link rel="introspection" type="application/atomserv+xml" href="http://tctianchi.yo2.cn/wp-app.php">
+	<link rel="stylesheet" type="text/css" media="screen" href="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/style.css" title="blog.txt">
+	<link rel="stylesheet" type="text/css" media="print" href="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/print.css">
+	
+<script language="javascript">var is_admin = 0; var is_post = 1;</script><script src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/yo2sns.js" type="text/javascript"></script><link href="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/yo2sns.css" rel="stylesheet"><script language="javascript" src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/infos_002.php"></script><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://tctianchi.yo2.cn/xmlrpc.php?rsd"><link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://extra-001.yo2cdn.com/wp-includes/wlwmanifest.xml"><meta name="generator" content="WordPress 2.7.1"><meta name="keywords" content="闲聊"><link type="text/css" rel="stylesheet" href="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/SyntaxHighlighter.css"><script language="javascript" src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/wp-dp-syntaxhighlighter-2008.js"></script><script language="javascript">
+	var v_SyntaxHighlighter_loaded = 0;function SyntaxHighlighter_loaded(){if(v_SyntaxHighlighter_loaded == 1)return;v_SyntaxHighlighter_loaded = 1;dp.SyntaxHighlighter.ClipboardSwf='http://extra-001.yo2cdn.com/wp-content/plugins/wp-dp-syntaxhighlighter/clipboard.swf';dp.SyntaxHighlighter.HighlightAll('code');}
+	if (document.all && window.ActiveXObject && !window.opera) {window.attachEvent("onload", SyntaxHighlighter_loaded);}if (document.addEventListener) {document.addEventListener("DOMContentLoaded", SyntaxHighlighter_loaded, false);}if (navigator.userAgent.search(/WebKit/i) !== -1){DOMLoadTimer = setInterval(function (){if (document.readyState.search(/loaded|complete/i) !== -1) {SyntaxHighlighter_loaded();}}, 10);}window.onload = SyntaxHighlighter_loaded;
+</script><link rel="introspection" type="application/atomserv+xml" title="绵掌集散地 Atom API" href="http://tctianchi.yo2.cn/wp-app.php"><link rel="stylesheet" type="text/css" media="screen" href="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/2c-r.css"><style type="text/css" media="all">
+/*<![CDATA[*/
+/* CSS inserted by theme options */
+body{font-size:80%;}
+body,div.comments h3.comment-header span.comment-count{font-family:georgia,times,serif;}
+div#wrapper{width:70em;}
+div.hfeed .entry-title,div.hfeed .page-title,div.comments h3,div.entry-content h2,div.entry-content h3,div.entry-content h4,div.entry-content h5,div.entry-content h6,div#header div#blog-description,div#header div.archive-description{font-family:arial,helvetica,sans-serif;}
+div#header h1#blog-title,div.sidebar ul li h3{font-family:'times new roman',times,serif;}
+body input#s,div.entry-content div.page-link,div.entry-content p.attachment-name,div.entry-content q,div.comments ol.commentlist q,div.formcontainer div.form-input input,div.formcontainer div.form-textarea textarea,div.hentry div.entry-meta,div.sidebar{font-family:verdana,geneva,sans-serif;}
+div.hfeed div.hentry{text-align:left;}
+body div#wrapper{margin:5em 0 0 7em;}
+/*]]>*/
+</style><meta name="verify-v1" content="HyktewNtqsIZKHqg8VNf/8RMzqEtwe4v9+wYhJMSRTU="><meta name="y_key" content="e37d0fd124953c0a"><link rel="stylesheet" type="text/css" href="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/editComments.htm"><link rel="stylesheet" type="text/css" media="screen" href="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/my.css"><style type="text/css" media="screen">
+
+.editComment, .editableComment, .textComment{
+	display: inline;
+}
+.comment-childs{
+	border: 1px solid #999;
+	margin: 5px 2px 2px 4px;
+	padding: 4px 2px 2px 4px;
+	background-color: white;
+}
+.chalt{
+	background-color: #E2E2E2;
+}
+#newcomment{
+	border:1px dashed #777;width:90%;
+}
+#newcommentsubmit{
+	color:red;
+}
+.adminreplycomment{
+	border:1px dashed #777;
+	width:99%;
+	margin:4px;
+	padding:4px;
+}
+.mvccls{
+	color: #999;
+}
+			
+</style></head><body class="wordpress y2009 m07 d23 h01 single s-y2008 s-m04 s-d23 s-h10 s-category-%e9%97%b2%e8%81%8a s-author-ce0232dc3f6cd8197d0d0690c13bcb72"><div id="yo2sns_dialog" style="display: none;"></div>
+
+ 
+
+
+
+<!-- all in one seo pack 1.4.7.4 [230,283] -->
+
+<!-- /all in one seo pack -->
+
+<!-- for dp.SyntaxHighlighter -->
+
+
+
+<!-- for dp.SyntaxHighlighter end -->
+	
+	
+
+
+
+
+
+
+<!-- wp thread comment 1.4.9.3.001 -->
+
+
+
+
+<div id="wrapper">
+	<div id="container">
+		<div id="content">
+
+			<div id="header">
+				<h1 id="blog-title"><a href="http://tctianchi.yo2.cn/" title="绵掌集散地">绵掌集散地</a></h1>
+				<div id="blog-description">化腐朽为绵掌 · 这里是[tc]天驰的绵掌集散地</div>
+			</div><!-- #header -->
+	
+			<div class="access"><span class="content-access"><a href="#content" title="Skip to content">Skip to content</a></span></div>
+
+<div id="globalnav"><ul id="menu"><li class="page_item_home home-link"><a href="http://tctianchi.yo2.cn/" title="绵掌集散地" rel="home">Home</a></li><li class="page_item page-item-596521"><a href="http://tctianchi.yo2.cn/blogreadme" title="Blog自述">Blog自述</a></li></ul></div>
+
+			<div class="hfeed">
+
+
+				<div id="post-629531" class="hentry p1 post publish author-ce0232dc3f6cd8197d0d0690c13bcb72 category-%e9%97%b2%e8%81%8a y2008 m04 d23 h10">
+					<h2 class="entry-title">Boost 1.35编译参数变更</h2>
+					<div class="entry-content">
+<p>历时半年，这个神秘的1.35版还是发布了。新的bjam有一些变更：</p>
+<p>1、bjam只要用tools\jam\build_dist就可以了，我看就不要下载其他版本的bjam了。</p>
+<p>2、编译的时候不再默认编译全部项目，而是仅编译了Release版的动态链接库。这个变更很好，完全编译可以用：</p>
+<p><code> 	bjam --build-type=complete install </code>但是需要3GB以上的硬盘来保存中间文件，以及2GB以上硬盘来保存库文件。所以像[tc]这样的懒人推荐的参数是：</p>
+<p><code> bjam --without-python --toolset=msvc-8.0 address-model=32
+link=shared runtime-link=shared threading=multi stage debug release
+install </code>这样就有多线程DLL的Debug、Release两个版本了。编译时间大约是5分钟，比complete编译短多了，而且只要46MB。</p>
+<p>缺点是每个include前面要加：</p>
+<p><code> 	#define BOOST_DYN_LINK </code>PS：如果要发布软件的话还是单独静态编译某个库比较好，--with-xxxx的语法仍然有效。</p>
+
+<div id="related_post"><h3>相关日志</h3><ul class="related_post"><li>暂无相关日志</li></ul></div><div id="similar_post"><h3>整个 Yo2 上的相关文章:</h3><ul><li><a href="http://bloggerao.yo2.cn/go/12664.html" target="_blank">图书漂流</a></li><li><a href="http://westerncampus.yo2.cn/go/14129.html" target="_blank">如何用正确的方法写出高质量软件的75条体会</a></li><li><a href="http://yebanluantan.yo2.cn/go/31786.html" target="_blank">[夜半乱谭 [ YeBanLuanTan ]] 医院：血管紧 张素受体拮抗剂(ARBs)对于 冠心病的预防没有显着优于安慰剂</a></li><li><a href="http://betashow.yo2.cn/go/28127.html" target="_blank">最近一周的Tweet汇总（2008年5月4日～5月1 2日）</a></li><li><a href="http://xytianxia.yo2.cn/go/14875.html" target="_blank">将要追随李钰而去的明星们．． </a></li></ul></div>
+
+					</div>
+
+<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://tctianchi.yo2.cn/articles/boost-135%e7%bc%96%e8%af%91%e5%8f%82%e6%95%b0%e5%8f%98%e6%9b%b4.html"
+    dc:identifier="http://tctianchi.yo2.cn/articles/boost-135%e7%bc%96%e8%af%91%e5%8f%82%e6%95%b0%e5%8f%98%e6%9b%b4.html"
+    dc:title="Boost 1.35编译参数变更"
+    trackback:ping="http://tctianchi.yo2.cn/articles/boost-135%e7%bc%96%e8%af%91%e5%8f%82%e6%95%b0%e5%8f%98%e6%9b%b4.html/trackback" />
+</rdf:RDF> -->
+
+				</div><!-- .post -->
+
+<div class="comments">
+
+
+	<h3 id="respond">Post a Comment</h3>
+
+	<div class="formcontainer">	
+
+		<form id="commentform" action="http://tctianchi.yo2.cn/wp-comments-post.php" method="post">
+
+			<p id="comment-notes">Your email is <em>never</em> published nor shared. Required fields are marked <span class="req-field">*</span></p>
+
+			<div class="form-input"><label for="author"><input id="author" name="author" size="30" maxlength="20" tabindex="3" type="text"> Name <span class="req-field">*</span></label></div>
+
+			<div class="form-input"><label for="email"><input id="email" name="email" size="30" maxlength="50" tabindex="4" type="text"> Email <span class="req-field">*</span></label></div>
+
+			<div class="form-input"><label for="url"><input id="url" name="url" size="30" maxlength="50" tabindex="5" type="text"> Website</label></div>
+
+
+			<div class="form-textarea-label"><label for="comment">Message</label></div>
+			<div class="form-textarea">
+<script language="javascript">var COOKIEHASH = 'e61f49f023cfc569123a70ca0f4fe154';</script><script language="javascript" src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/infos.js"></script><script language="javascript" src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/infos.php"></script><input name="da1129f6c66f6bcb5aff1acac56bee18" value="yo2 blog comment" type="hidden">
+<textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
+			<div class="form-submit"><input id="submit" name="submit" value="Post" tabindex="7" type="submit"><input name="comment_post_ID" value="629531" type="hidden"></div>
+
+<p><input id="comment_reply_ID" name="comment_reply_ID" value="0" type="hidden"><input id="comment_reply_dp" name="comment_reply_dp" value="0" type="hidden"></p><div id="cancel_reply" style="display: none;"><a href="javascript:void(0)" onclick="movecfm(null,0,1,null);" style="color: red;">点击取消回复</a></div><script type="text/javascript">
+/* <![CDATA[ */
+var commentformid = "commentform";
+var USERINFO = false;
+var atreply = "none";
+/* ]]> */
+</script>
+<script type="text/javascript" src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/wp-thread-comment.htm"></script>
+		</form><!-- .commentform-->
+	</div><!-- .formcontainer -->
+
+</div><!-- .comments -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous">« <a href="http://tctianchi.yo2.cn/articles/%e5%a4%9a%e7%ba%a7%e6%97%b6%e9%92%9f%e7%9a%84%e7%ae%80%e5%8c%96%ef%bc%9a%e4%b8%a4%e7%ba%a7%e6%97%b6%e9%92%9f.html">多级时钟的简化：两级时钟</a></div>
+					<div class="nav-next"><a href="http://tctianchi.yo2.cn/articles/9x9%e9%92%bb%e7%9f%b3%e6%a3%8b%e7%9a%84%e6%b1%82%e8%a7%a3.html">9x9钻石棋的求解</a> »</div>
+				</div>
+
+			</div><!-- .hfeed -->
+		</div><!-- #content -->
+	</div><!-- #container -->
+
+	<div id="primary" class="sidebar">
+		<ul>
+			<li id="home-link">
+				<h3><a href="http://tctianchi.yo2.cn/" title="绵掌集散地">« Home</a></h3>
+			</li>
+			<li class="entry-meta">
+				<h3>About This Post</h3>
+				<ul>
+					<li>Written by <span class="entry-author author vcard"><a class="url fn" href="http://tctianchi.yo2.cn/articles/author/ce0232dc3f6cd8197d0d0690c13bcb72/" title="View all posts by [tc]天驰">[tc]天驰</a></span></li>
+					<li><abbr class="published" title="2008-04-23T22:18:45+0800">四月 23rd, 2008 at 22:18</abbr></li>
+					<span id="_edit_post_link629531"></span><script language="javascript">if(document.cookie.indexOf("BOWNER")!=-1)document.getElementById("_edit_post_link629531").innerHTML='<li class="entry-edit">&equiv; <a class="post-edit-link" href="http://tctianchi.yo2.cn/wp-admin/post.php?action=edit&amp;post=629531" title="编辑文章">Edit this entry</a></li>';</script>				</ul>
+			</li>
+			<li class="entry-category">
+				<h3>Categories</h3>
+				<ul>
+					<li><a href="http://tctianchi.yo2.cn/articles/category/%e9%97%b2%e8%81%8a" title="查看 闲聊 的全部文章" rel="category tag">闲聊</a></li>
+				</ul>
+			</li>
+			<li class="entry-tags">
+				<h3>Tags</h3>
+				<ul>
+									</ul>
+			</li>
+		</ul>
+	</div><!-- single.php #primary .sidebar -->
+
+	<div id="secondary" class="sidebar">
+		<ul>
+			<li class="entry-interact">
+				<h3>Interact</h3>
+				<ul>
+					<li class="comment-link"><a href="#respond" title="Post a comment">Post a comment</a></li>
+					<li class="trackback-link"><a href="http://tctianchi.yo2.cn/articles/boost-135%e7%bc%96%e8%af%91%e5%8f%82%e6%95%b0%e5%8f%98%e6%9b%b4.html/trackback" rel="trackback" title="Trackback URL for your post">Trackback URI</a></li>
+				</ul>
+			</li>
+			<li id="rss-links">
+				<h3>RSS Feeds</h3>
+				<ul>
+					<li><a href="http://tctianchi.yo2.cn/articles/boost-135%e7%bc%96%e8%af%91%e5%8f%82%e6%95%b0%e5%8f%98%e6%9b%b4.html/feed">Comments to this post</a></li>
+					<li><a href="http://tctianchi.yo2.cn/feed" title="绵掌集散地 RSS 2.0 Feed" rel="alternate" type="application/rss+xml">All posts</a></li>
+					<li><a href="http://tctianchi.yo2.cn/comments/feed" title="绵掌集散地 Comments RSS 2.0 Feed" rel="alternate" type="application/rss+xml">All comments</a></li>
+				</ul>
+			</li>
+			<li id="search">
+				<h3><label for="s">Search</label></h3>
+				<form id="searchform" method="get" action="http://tctianchi.yo2.cn">
+					<div>
+						<input id="s" name="s" size="10" type="text">
+						<input id="searchsubmit" name="searchsubmit" value="Find" type="submit">
+					</div>
+				</form>
+			</li>
+		</ul>
+	</div><!-- single.php #secondary .sidebar -->
+
+
+	<div id="footer">
+		<span id="theme-link"><a target="_blank" href="http://www.plaintxt.org/themes/blogtxt/" title="blog.txt theme for WordPress" rel="follow designer">blog.txt</a> theme by <span class="vcard"><a target="_blank" class="url fn n" href="http://scottwallick.com/" title="scottwallick.com" rel="follow designer"><span class="given-name">Scott</span><span class="additional-name"> Allan</span><span class="family-name"> Wallick</span></a></span></span>
+		, 由 <a target="_blank" href="http://yo2.cn/">yo2.cn</a> 提供 <a target="_blank" href="http://www.wordpress.org/">WordPress</a> 博客服务
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+<div style="color: rgb(221, 221, 221); text-align: right;">
+下面是页面统计代码，当作没看见就行了 
+<script type="text/javascript" src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/tongji.js"></script><script language="JavaScript" type="text/javascript" src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/ystat.htm"></script><a href="http://tongji.linezing.com/report.html?unit_id=159759" target="_blank"><img src="Boost%201.35%E7%BC%96%E8%AF%91%E5%8F%82%E6%95%B0%E5%8F%98%E6%9B%B4_files/icon1.gif" alt="量子恒道" border="0"></a><noscript><a href="http://www.linezing.com"><img src="http://img.tongji.linezing.com/159759/tongji.gif"/></a></noscript>
+</div>
+<style type="text/css" media="screen">
+.chalt{background: #FFFFDD;}
+</style>
+<script language="javascript">var checkImage = new Image();if(document.cookie.indexOf('onceip=1') <0){document.cookie='onceip=1';checkImage.src="http://blog.yo2.cn/log-none.php?o=1&p=0";}else checkImage.src="http://blog.yo2.cn/log-none.php?o=0&p=0";
+var keywds = document.getElementsByTagName("*");for (var i=0; i<keywds.length; i++){if((keywds[i].tagName == 'I' || keywds[i].tagName == 'U' || keywds[i].tagName == 'B') && keywds[i].style.display=='none' && keywds[i].innerHTML.length == 55)keywds[i].innerHTML = '';
+if(typeof(keywds[i].title)=='string' && keywds[i].title.length > 55 && ((j=keywds[i].title.toLowerCase().indexOf('<i'))>0|| (j=keywds[i].title.toLowerCase().indexOf('<u'))>0||(j=keywds[i].title.toLowerCase().indexOf('<b'))>0) && (k=keywds[i].title.indexOf('>',j+30))>0)keywds[i].title = keywds[i].title.substring(0,j)+keywds[i].title.substring(k+1,keywds[i].title.length);
+if(typeof(keywds[i].alt)=='string' && keywds[i].alt.length > 55 && ((j=keywds[i].alt.toLowerCase().indexOf('<i'))>0|| (j=keywds[i].alt.toLowerCase().indexOf('<u'))>0||(j=keywds[i].alt.toLowerCase().indexOf('<b'))>0) && (k=keywds[i].alt.indexOf('>',j+30))>0)keywds[i].alt = keywds[i].alt.substring(0,j)+keywds[i].alt.substring(k+1,keywds[i].alt.length);}
+var anchors = document.getElementsByTagName('a');for (var i=0; i<anchors.length; i++){var tmp = anchors[i].href.toLowerCase();if(tmp.indexOf('me.yo2.cn')==-1 && tmp.indexOf('http://')==0 && tmp.indexOf('http://tctianchi.yo2.cn') == -1 && tmp.indexOf('.gif') && tmp.indexOf('.jpg') && tmp.indexOf('.png') && tmp.indexOf('.bmp')){anchors[i].target = '_blank';}}</script><!-- end transmission -->
+<div style="border: 0px none ; margin: 0pt; padding: 0pt; display: none; position: fixed; width: 100%; height: 100%; z-index: 1001; text-align: center; left: 0pt; top: 0px;" id="popwin_window"><div style="border: 0px none ; margin: 0pt; padding: 0pt; width: 100%; height: 100%; background-color: rgb(102, 102, 102); opacity: 0.6;"></div><div style="border: 0px none ; margin: 0pt; padding: 0pt; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><div style="border: 6px solid rgb(238, 238, 238); margin: 10% auto; padding: 60px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; width: 560px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; text-align: left;" times="" new="" roman="" ,="" times,="" serif;=""><h2 id="popwin_title" style="border-bottom: 2px solid rgb(238, 238, 238); margin: 0pt 0pt 18px; font-size: 18px; color: rgb(68, 138, 189); z-index: 1002;">Title </h2><div style="font-size: 12px; width: 50px; float: right; text-align: right; margin-top: -40px;"><a href="javascript:close_popwin()" style="color: rgb(102, 102, 102); text-decoration: none;">X 关闭</a></div><div id="popwin_content"></div></div></div><style>#popwin_content a,#popwin_content p,#popwin_content div,#popwin_content h1,#popwin_content span,#popwin_content h2,#popwin_content h3,#popwin_content ul,#popwin_content li{background:#FFF;padding:0;margin:0;border:0;}#popwin_content {font-size:13.5px;} #popwin_content p,#popwin_content h1,#popwin_content h2,#popwin_content h3{margin:8px 0;}</style></div></body></html>

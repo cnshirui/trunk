@@ -1,0 +1,28 @@
+Folder PATH listing for volume Data
+Volume serial number is 0000D7A0 26D2:6EA9
+D:.
+    libboost_date_time-vc80-mt-gd-1_39.lib
+    libboost_filesystem-vc80-mt-gd-1_39.lib
+    libboost_graph-vc80-mt-gd-1_39.lib
+    libboost_iostreams-vc80-mt-gd-1_39.lib
+    libboost_math_c99-vc80-mt-gd-1_39.lib
+    libboost_math_c99f-vc80-mt-gd-1_39.lib
+    libboost_math_c99l-vc80-mt-gd-1_39.lib
+    libboost_math_tr1-vc80-mt-gd-1_39.lib
+    libboost_math_tr1f-vc80-mt-gd-1_39.lib
+    libboost_math_tr1l-vc80-mt-gd-1_39.lib
+    libboost_prg_exec_monitor-vc80-mt-gd-1_39.lib
+    libboost_program_options-vc80-mt-gd-1_39.lib
+    libboost_regex-vc80-mt-gd-1_39.lib
+    libboost_serialization-vc80-mt-gd-1_39.lib
+    libboost_signals-vc80-mt-gd-1_39.lib
+    libboost_system-vc80-mt-gd-1_39.lib
+    libboost_test_exec_monitor-vc80-mt-gd-1_39.lib
+    libboost_thread-vc80-mt-gd-1_39.lib
+    libboost_unit_test_framework-vc80-mt-gd-1_39.lib
+    libboost_wave-vc80-mt-gd-1_39.lib
+    libboost_wserialization-vc80-mt-gd-1_39.lib
+    stage_lib.txt
+    
+No subfolders exist 
+

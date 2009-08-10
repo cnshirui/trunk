@@ -1,0 +1,6 @@
+/* User Css Styles */
+div#header h1#blog-title{font-weight:normal;font-size:2.5em;}
+code{background-color: #EEE; display: block;}
+body img{max-width: none;}
+blockquote{margin: 0; padding: 4px;}
+.entry-content{margin-top: 16px;}

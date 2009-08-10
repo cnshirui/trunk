@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	Boost编译方法 - 黄建新的专栏 - CSDN博客
+</title>
+	<script src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/jquery-1.js" type="text/javascript"></script>
+	<script src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/jquery.js" type="text/javascript"></script>
+	<script src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/highlighter.js" type="text/javascript"></script>
+	<script src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/common.js" type="text/javascript"></script>
+	<link href="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/Cogitation_1.css" type="text/css" rel="stylesheet" media="all"><link href="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/csdn_favbykimi.css" type="text/css" rel="stylesheet" media="all"><link rel="Shortcut Icon" href="http://profile.csdn.net/huangjack_1/picture/1.ico"><link href="http://feeds.feedsky.com/csdn.net/huangjack_1" title="RSS" type="application/rss+xml" rel="alternate"></head><body id="defaultuser">
+	<div id="csdnblog_allwrap">
+	    <div id="csdnblog_midwrap">
+		    
+<div id="csdnblog_header">
+    <h1><a href="http://blog.csdn.net/huangjack_1">黄建新的专栏</a></h1><h2></h2>
+    <ul id="personalnav">
+		<li style=""><a id="a_login" href="http://passport.csdn.net/UserLogin.aspx?from=http%3A%2F%2Fblog.csdn.net%2Fhuangjack_1%2Farchive%2F2008%2F10%2F14%2F3073575.aspx">登录</a></li>
+		<li style=""><a id="a_register" href="http://passport.csdn.net/CSDNUserRegister.aspx">注册</a></li>
+		<li style="display: none;"><a id="a_welcome" href="http://hi.csdn.net/" target="_blank">欢迎</a></li>
+		<li style="display: none;"><a id="a_exit" href="http://writeblog.csdn.net/Signout.aspx">退出</a></li>
+		<li style="display: none;"><a id="a_myblog" href="http://blog.csdn.net/">我的博客</a></li>
+		<li style="display: none;"><a id="a_configure" href="http://writeblog.csdn.net/configure.aspx" target="_blank">配置</a></li>
+		<li style="display: none;"><a id="a_postedit" href="http://writeblog.csdn.net/PostEditPlain.aspx" target="_blank">写文章</a></li>
+		<li style="display: none;"><a id="a_postlist" href="http://writeblog.csdn.net/PostList.aspx" target="_blank">文章管理</a></li>
+		<li style="display: none;"><a id="a_bloghome" href="http://blog.csdn.net/" target="_blank">博客首页</a></li>
+	</ul>
+    <ul id="blogsearchsty">
+		<li><input id="inputSearch" class="bolgsearch" type="text"></li>
+		<li class="selectsty">
+			<select name="Search:ddlSearchScope" id="Search_ddlSearchScope">
+				<option selected="selected" value="all">全站</option>
+				<option value="huangjack_1">当前博客</option>
+			</select>
+		</li>
+		<li><input id="buttonSearch" value="搜索" class="bolggobtn" type="button"></li>
+	</ul>
+    <ul id="menu">
+		<li><a href="http://hi.csdn.net/huangjack_1">空间</a></li>
+		<li><a href="http://blog.csdn.net/huangjack_1" class="on">博客</a></li>
+		<li><a href="http://hi.csdn.net/huangjack_1/profile/contactlist/1.html">好友</a></li>
+		<li><a href="http://album.hi.csdn.net/views/albums/huangjack_1" target="_blank">相册</a></li>
+		<li><a href="http://hi.csdn.net/huangjack_1/profile/notebook/1.html" class="last">留言</a></li>
+	</ul>
+</div>
+
+		    
+<div id="csdnblog_sidebar">
+	<div class="gutter">
+		<div class="aboutauthor">
+			<dl>
+				<dt style="text-align: left;">用户操作</dt>
+				<dd class="middle">
+					<a href="http://hi.csdn.net/Admin/WriteMessage.aspx?Receiver=huangjack_1" target="_blank">[发私信]</a>&nbsp;
+					<a href="http://webim.csdn.net/AddFriends/huangjack_1.ashx" target="_blank">[加为好友]</a>&nbsp;
+				</dd>
+				<dt style="text-align: left;">    <a href="http://hi.csdn.net/huangjack_1">黄建新</a><span>ID：<a href="http://hi.csdn.net/huangjack_1">huangjack_1</a></span></dt><dd class="middle">    <a href="http://hi.csdn.net/huangjack_1"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/1_huangjack_1.jpg" alt=""></a></dd><dd class="middle">    <a href="http://profile.csdn.net/8/E4/edit.html"></a></dd><dd style="text-align: left;">    共<em>4440</em>次访问，排名<em>2万外</em>，<a href="http://hi.csdn.net/huangjack_1/profile/contactlist/1.html">好友</a><em>2</em>人，<a href="http://hi.csdn.net/huangjack_1/profile/concernedlist/1.html">关注者</a><em>2</em>人。<br></dd><dd style="text-align: left;">    </dd><dt style="text-align: left;">huangjack_1的文章</dt><dd style="text-align: left;">原创 23 篇</dd><dd style="text-align: left;">翻译 0 篇</dd><dd style="text-align: left;">转载 22 篇</dd><dd style="text-align: left;">评论 0 篇</dd> 
+				<span id="SubscriptionList">
+					<dt style="text-align: left;">订阅我的博客</dt>
+					<dd style="text-align: left;">
+						<a href="http://feeds.feedsky.com/csdn.net/huangjack_1">
+							<img alt="XML聚合" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/gif.gif" border="0">
+						</a>&nbsp;&nbsp;
+						<a href="http://feeds.feedsky.com/csdn.net/huangjack_1" target="_blank">
+							<img alt="FeedSky" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/feedsky.gif" border="0">
+						</a>
+					</dd>
+					<dd style="text-align: left;">
+						<a href="http://www.xianguo.com/subscribe.php?url=http://feeds.feedsky.com/csdn.net/huangjack_1" target="_blank">
+							<img alt="订阅到鲜果" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss_xianguo.jpg" border="0">
+						</a>
+					</dd>
+					<dd style="text-align: left;">
+						<a href="http://fusion.google.com/add?feedurl=http://feeds.feedsky.com/csdn.net/huangjack_1" target="_blank">
+							<img alt="订阅到Google" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss_google.gif" border="0">
+						</a>
+					</dd>
+					<dd style="text-align: left;">
+						<a href="http://www.zhuaxia.com/add_channel.php?url=http://feeds.feedsky.com/csdn.net/huangjack_1" target="_blank">
+							<img alt="订阅到抓虾" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss_zhuaxia.gif" border="0">
+						</a>
+					</dd>
+				</span>
+				<dt style="text-align: left;">
+					huangjack_1的公告
+				</dt>
+				<dd style="text-align: left;"></dd>
+				<dt style="text-align: left;">文章分类</dt>
+				<dd style="text-align: left;">
+					<div class="publiclist_sidebar">
+						<ul><li><a href="http://blog.csdn.net/huangjack_1/category/472211.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472211.aspx">3d引擎</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472416.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472416.aspx" title="it治理理论和实践研究。">it治理</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472203.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472203.aspx" title="it咨询理论与实践">it咨询</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472168.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472168.aspx" title="地理信息系统理论和实践研究">地理信息系统</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472167.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472167.aspx" title="电子政务理论、咨询、实践研究">电子政务</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472209.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472209.aspx" title="开源理论与实践">开源</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472166.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472166.aspx" title="软件工程理论和实践研究">软件工程</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472165.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472165.aspx" title="软件过程改进理论和实践研究">软件过程改进</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472212.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472212.aspx" title="数据库理论与实践">数据库</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472206.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472206.aspx" title="信息安全理论与实践">信息安全</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472164.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472164.aspx" title="信息系统工程监理理论和实践研究">信息系统工程监理</a></li><li><a href="http://blog.csdn.net/huangjack_1/category/472213.aspx/rss"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/huangjack_1/category/472213.aspx" title="中间件理论与实践">中间件</a></li></ul>
+					</div>
+				</dd>
+				
+				
+				<dt style="text-align: left;">存档</dt>
+				<dd style="text-align: left;">
+					<div class="publiclist_sidebar">
+						<ul><li><a href="http://blog.csdn.net/huangjack_1/archive/2008/10.aspx">2008年10月(45)</a></li></ul>
+					</div>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+		    
+<div id="csdnblog_content">
+	<div class="gutter">
+		<div class="default_contents">
+			<div class="user_article">
+				<script type="text/javascript" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/LoadFeedbackCount.js"></script>
+				<h1 class="title_txt">
+					<img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/authorship.gif" alt="原创" border="0" height="16" width="15">&nbsp;
+					Boost编译方法
+					<cite class="fav_csdnstylebykimi">
+						<a href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(saveit=window.open('http://wz.csdn.net/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'saveit','scrollbars=no,width=590,height=300,left=75,top=20,status=no,resizable=yes'));saveit.focus();" class="fav_csdnstylebykimi" title="收藏到我的网摘中，并分享给我的朋友">收藏</a>
+					</cite>
+				</h1>
+				<div class="blogstory">
+					<script type="text/javascript">
+						document.body.oncopy = function() {
+							if (window.clipboardData) {
+								setTimeout(function() {
+									var text = clipboardData.getData("text"); 
+									if (text && text.length>300) {
+										text = text + "\r\n\n本文来自CSDN博客，转载请标明出处：" + location.href;
+										clipboardData.setData("text", text); 
+									}
+								}, 100);
+							}
+						}
+					</script>
+					<script class="blogstory">function StorePage(){d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(keyit=window.open('http://www.365key.com/storeit.aspx?t='+escape(d.title)+'&u='+escape(d.location.href)+'&c='+escape(t),'keyit','scrollbars=no,width=475,height=575,left=75,top=20,status=no,resizable=yes'));keyit.focus();}</script>
+					<p><font face="宋体">方法一：</font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><font size="3"><font color="#000000"><span style="font-family: 宋体;">经历了将近半年多的时间</span><font face="宋体"><span lang="EN-US">boost</span><span style="font-family: 宋体;">终于发布了</span><span lang="EN-US">1.35.0</span><span style="font-family: 宋体;">版本（前版本</span><span lang="EN-US">1.34.1</span><span style="font-family: 宋体;">发布于</span><span lang="EN-US">2007/7</span><span style="font-family: 宋体;">），</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">其编译方法和原来的编译方法基本上是一致的，主要改变包括</span><font face="宋体"><span lang="EN-US">1.34.0</span><span style="font-family: 宋体;">以来</span><span lang="EN-US">bjam</span><span style="font-family: 宋体;">的</span><span lang="EN-US">toolset</span><span style="font-family: 宋体;">所</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">提供的参数名称的改变（具体参见《</span><font face="宋体"><span lang="EN-US">boost1.34.0</span><span style="font-family: 宋体;">编译日志》）外，还包括</span><span lang="EN-US">bjam</span><span style="font-family: 宋体;">的编译默认</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">选项的变化，在</span><font face="宋体"><span lang="EN-US">1.35.0</span><span style="font-family: 宋体;">之前的版本默认编译时会自动编译各种版本的库，包括静态库、</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">动态库、</span><font face="宋体"><span lang="EN-US">debug</span><span style="font-family: 宋体;">库和</span><span lang="EN-US">release</span><span style="font-family: 宋体;">库等全部的版本，但是到了</span><span lang="EN-US">1.35.0</span><span style="font-family: 宋体;">时默认的选择仅仅编译</span></font></font></font><font size="3"><font color="#000000"><font face="宋体"><span lang="EN-US">release<br></span><span style="font-family: 宋体;">版本的库，这样一来在开发的时候就不能进行必要的调试了，为了能够使其编译全部的版本</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">需要在</span><font face="宋体"><span lang="EN-US">bjam</span><span style="font-family: 宋体;">的命令行参数中添加一个</span><span lang="EN-US">--build-type=complete</span><span style="font-family: 宋体;">类型的参数来指明需要编译全</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">部的版本，所需要编译同时为了使得</span><font face="宋体"><span lang="EN-US">regex</span><span style="font-family: 宋体;">库能够通过</span><span lang="EN-US">ICU</span><span style="font-family: 宋体;">库支持</span><span lang="EN-US">Unicode</span><span style="font-family: 宋体;">，在编译上需要有</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">一些特殊的选择。我在</span><font face="宋体"><span lang="EN-US">Visual Studio 2005 Pro + SP1</span><span style="font-family: 宋体;">环境下编译了该库，为了避免走弯路</span></font></font></font><span lang="EN-US"><br></span><span style="font-family: 宋体;"><font color="#000000" size="3">所以将其编译的方法进行说明，以方便大家编译。</font></span><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp; </font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">由于</span><font face="宋体"><span lang="EN-US">boost</span><span style="font-family: 宋体;">是采用其自己的</span><span lang="EN-US">bjam</span><span style="font-family: 宋体;">工具通过命令行进行编译的，所以必须在</span><span lang="EN-US">Windows</span><span style="font-family: 宋体;">下开启</span><span lang="EN-US">console</span><span style="font-family: 宋体;">窗口，同时必须将</span><span lang="EN-US">Visual Studio</span><span style="font-family: 宋体;">中</span><span lang="EN-US">C++</span><span style="font-family: 宋体;">目录下的环境</span><span lang="EN-US">vcvarsall.bat</span><span style="font-family: 宋体;">配置脚本运行一遍，以设置好</span><span lang="EN-US">VC</span><span style="font-family: 宋体;">的编译器环境变量。</span></font></font></font><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp; 1. </font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">编译不带</span><font face="宋体"><span lang="EN-US">ICU</span><span style="font-family: 宋体;">支持的</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库</span></font></font></font><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">此种情况下的</span><font face="宋体"><span lang="EN-US">boost</span><span style="font-family: 宋体;">库编译起来比较的简单，在准备好的</span><span lang="EN-US">console</span><span style="font-family: 宋体;">窗口中输入：</span></font></font></font><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bjam --without-python --toolset=msvc-8.0 --build-type=complete stage<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="font-family: 宋体;"><font color="#000000" size="3">就可以了，如果要安装的话则输入：</font></span><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bjam --without-python --toolset=msvc-8.0 --build-type=complete install<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; 2. </font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">编译具有</span><font face="宋体"><span lang="EN-US">ICU</span><span style="font-family: 宋体;">支持的</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库</span></font></font></font><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">首先我们必须编译</span><font face="宋体"><span lang="EN-US">ICU</span><span style="font-family: 宋体;">库才能够编译</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库，在准备好的</span><span lang="EN-US">console</span><span style="font-family: 宋体;">窗口中输入：</span></font></font></font><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bjam -sICU_PATH=d:\ICU --without-python --toolset=msvc-8.0
+--build-type=complete stage<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="font-family: 宋体;"><font color="#000000" size="3">就可以了，如果要安装的话则输入：</font></span><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+bjam -sICU_PATH=d:\ICU --without-python --toolset=msvc-8.0
+--build-type=complete install<br>&nbsp;&nbsp;&nbsp; </font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">通过上面的方法可以很正常完成</span><font face="宋体"><span lang="EN-US">boost</span><span style="font-family: 宋体;">各种需要版本的关系。</span></font></font></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><o:p><font color="#000000" face="宋体" size="3">&nbsp;</font></o:p></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><font size="3"><font color="#000000"><span style="font-family: 宋体;">每次用</span><font face="宋体"><span lang="EN-US">bjam</span><span style="font-family: 宋体;">编译</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">总是要查看帮助文件才行。</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">虽然现在的</span><font face="宋体"><span lang="EN-US">bjam</span><span style="font-family: 宋体;">编译命令只有两三个参数，可是不小心还是会错。</span></font></font></font><span lang="EN-US"><br><br><font color="#000000" face="宋体" size="3">1. toolset</font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">参数中，试图用</span><font face="宋体"><span lang="EN-US">vc</span><span style="font-family: 宋体;">，正确的应该是</span><span lang="EN-US">msvc</span><span style="font-family: 宋体;">。</span></font></font></font><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">vc</font></span><span style="font-family: 宋体;"><font color="#000000" size="3">用于库文件的命名后缀中。两个名字能统一就好了。</font></span><span lang="EN-US"><br><br><font color="#000000" face="宋体" size="3">2. </font></span><span style="font-family: 宋体;"><font color="#000000" size="3">编译工具的版本号应该用点号分隔，并且总是应该指定该版本号。</font></span><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">如</span><font face="宋体"><span lang="EN-US">msvc-71</span><span style="font-family: 宋体;">是错误的，应该用</span><span lang="EN-US">msvc-7.1</span><span style="font-family: 宋体;">。</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">小版本号不能省，如</span><font face="宋体"><span lang="EN-US">msvc-6.0</span><span style="font-family: 宋体;">不能写成</span><span lang="EN-US">msvc-6</span><span style="font-family: 宋体;">。</span></font></font></font><span lang="EN-US"><br></span><span style="font-family: 宋体;"><font color="#000000" size="3">版本号指定错误，可能也能编译，但是生成库的名字是错的。</font></span><span lang="EN-US"><br><br><font color="#000000" face="宋体" size="3">3. </font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">使用</span><font face="宋体"><span lang="EN-US">stlport</span><span style="font-family: 宋体;">。</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">要在</span><font face="宋体"><span lang="EN-US">user-config.jam</span><span style="font-family: 宋体;">中配置</span><span lang="EN-US">stlport</span><span style="font-family: 宋体;">，</span></font></font></font><span lang="EN-US"><br></span><span style="font-family: 宋体;"><font color="#000000" size="3">例如：</font></span><font size="3"><font color="#000000"><font face="宋体"><span lang="EN-US">using stlport : : F:\STLport-<st1:chsdate w:st="on" year="1899" month="12" day="30" islunardate="False" isrocdate="False">5.1.0</st1:chsdate>\stlport F:\STLport-5.1.0\lib ;<br></span><span style="font-family: 宋体;">并且别忘了在参数中加上参数：</span><span lang="EN-US">--stdlib=stlport</span><span style="font-family: 宋体;">。</span></font></font></font><span lang="EN-US"><br><font color="#000000" face="宋体" size="3">user-config.jam</font></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">中的</span><font face="宋体"><span lang="EN-US">stlport</span><span style="font-family: 宋体;">配置可以一直保持开启，</span></font></font></font><span lang="EN-US"><br></span><font size="3"><font color="#000000"><span style="font-family: 宋体;">因为最终是由</span><font face="宋体"><span lang="EN-US">stdlib</span><span style="font-family: 宋体;">参数决定是否使用</span><span lang="EN-US">stlport</span><span style="font-family: 宋体;">。</span></font></font></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><font size="3"><font color="#000000" face="宋体"><span style="font-family: 宋体;"></span></font></font>&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><font size="3"><font color="#000000"><span style="font-family: 宋体;">方法二：</span></font></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><font size="3"><font color="#000000"><span style="font-family: 宋体;"><font face="宋体"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">1.</span><span style="font-size: 10.5pt; font-family: 宋体;">点击</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';"> </span><span style="font-size: 10.5pt; font-family: 宋体;">开始</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">-&gt;</span><span style="font-size: 10.5pt; font-family: 宋体;">程序</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">-&gt;Microsoft Visual Studio 2005-&gt;Visual Studio Tools-&gt;Visual Studio 2005 </span><span style="font-size: 10.5pt; font-family: 宋体;">命令提示</span></font><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US"><br><font face="宋体">2.cd D:\Libs\boost_1_35_0\tools\jam\src<br>3.build.bat<br>&nbsp;</font></span><span style="font-size: 10.5pt; font-family: 宋体;">此时在</span><font face="宋体"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">src\bin.ntx86\</span><span style="font-size: 10.5pt; font-family: 宋体;">目录下产生了</span></font><font face="宋体"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">bjam.exe<br>4.</span><span style="font-size: 10.5pt; font-family: 宋体;">将</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">bjam.exe</span><span style="font-size: 10.5pt; font-family: 宋体;">拷贝到</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">boost</span><span style="font-size: 10.5pt; font-family: 宋体;">的根目录</span></font><font face="宋体"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">D:\Libs\boost_1_35_0<br>5.cd D:\Libs\boost_1_35_0<br>6.bjam.exe --build-dir=build --toolset=msvc stage<br>&nbsp;<br>&nbsp;</span><span style="font-size: 10.5pt; font-family: 宋体;">编译完成后，产生了</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">2</span><span style="font-size: 10.5pt; font-family: 宋体;">个目录</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">build</span><span style="font-size: 10.5pt; font-family: 宋体;">和</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">stage</span><span style="font-size: 10.5pt; font-family: 宋体;">，但同时也发现一个奇怪问题：</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">stage</span><span style="font-size: 10.5pt; font-family: 宋体;">里面的文件，竟然有很多相同的</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">lib</span><span style="font-size: 10.5pt; font-family: 宋体;">，比如</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">boost_date_time-vc80-mt-1_35.lib</span><span style="font-size: 10.5pt; font-family: 宋体;">和</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">boost_date_time-vc80-mt.lib</span><span style="font-size: 10.5pt; font-family: 宋体;">，</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">boost_filesystem-vc80-mt-1_35.lib</span><span style="font-size: 10.5pt; font-family: 宋体;">和</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">boost_filesystem-vc80-mt.lib</span><span style="font-size: 10.5pt; font-family: 宋体;">他们文件的大小一样，只是文件名稍微不同，一个带有版本号，另一个没有。编译的问题，还是</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">boost</span><span style="font-size: 10.5pt; font-family: 宋体;">本身有</span></font><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US"><br style=""><br style=""></span></span></font></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><font size="3"><font color="#000000" face="宋体"><span style="font-family: 宋体;"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">方法三：</span></span></font></font></p><font size="3"><font color="#000000"><span style="font-family: 宋体;"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　一、下载安装：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　下载</span><font face="宋体"><span lang="EN-US">boost 1.31</span><span style="font-family: 宋体;">，解压缩至一个文件夹，本文以</span><span lang="EN-US">[boost-path]</span><span style="font-family: 宋体;">来引用这个路径。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　二、编译准备工作：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　首先是编译</span><font face="宋体"><span lang="EN-US">jam</span><span style="font-family: 宋体;">，在</span><span lang="EN-US">&lt; boost-path &gt;\tools\build\v1</span><span style="font-family: 宋体;">下，把</span><span lang="EN-US">vc7.1-tools.jam</span><span style="font-family: 宋体;">文件复制一份，改名为</span><span lang="EN-US">vc80-tools.jam</span><span style="font-family: 宋体;">，我暂时未测试</span><span lang="EN-US">stl-port</span><span style="font-family: 宋体;">。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　修改文件内容里的路径，这个根据你的安装路径来改。去掉几个</span><font face="宋体"><span lang="EN-US">flag</span><span style="font-family: 宋体;">行，以后编译时就少一些警告。修改以后内容如下：</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">extends-toolset msvc ;</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体"># singleton variables...<br>set-as-singleton VC80_ROOT ;</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">if ! $(MSVCDir)<br>{<br>ProgramFiles ?= $(PROGRAMFILES) ;<br>VC80_ROOT ?= $(ProgramFiles:J=" ")\\Microsoft Visual Studio 8\\VC" ;<br>VC_TOOL_PATH = "$(VC80_ROOT)\\bin\\ ;<br>VC_SETUP = "CALL \"$(VC_TOOL_PATH)VCVARS32.BAT\" &gt;nul" ;<br>}<br>VC_PDB_NAME = vc80 ;<br>flags vc<st1:chmetcnv w:st="on" unitname="C" sourcevalue="80" hasspace="True" negative="False" numbertype="1" tcsc="0">80 C</st1:chmetcnv>++FLAGS on : /Zc:wchar_t ;</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　然后打开</span><font face="宋体"><span lang="EN-US">VC2005</span><span style="font-family: 宋体;">程序组里面的</span><span lang="EN-US">Visual Studio Command Prompt</span><span style="font-family: 宋体;">，这能确保已加载环境变量，减少后面一些操作过程。在</span><span lang="EN-US">[boost-path]\tools\build\jam-src</span><span style="font-family: 宋体;">目录下运行：</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">build -sTOOLS=vc80 </font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　编译会通过的，最后链接时会报错，之后想到的方法如下：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">.\bootstrap.vc7\jam0 -f build.jam --toolset=vc7 "--toolset-root=C:\Program Files\Microsoft Visual Studio 8\VC"</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　注：这个选项不能直接附加在</span><font face="宋体"><span lang="EN-US">build</span><span style="font-family: 宋体;">批处理后面，所以要这样调用。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　好了，</span><font face="宋体"><span lang="EN-US">bjam</span><span style="font-family: 宋体;">编译完成。下面编译</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">，有</span><span lang="EN-US">2</span><span style="font-family: 宋体;">个文件需要改一下：</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　</span><font face="宋体"><span lang="EN-US">[boost-path]\boost\config\auto_link.hpp</span><span style="font-family: 宋体;">在第</span><span lang="EN-US">118</span><span style="font-family: 宋体;">行附近改为：</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">#elif defined(BOOST_MSVC) &amp;&amp; (BOOST_MSVC == 1310)</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">// vc71:<br># define BOOST_LIB_TOOLSET "vc71"</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">#elif defined(BOOST_MSVC) &amp;&amp; (BOOST_MSVC &gt;= 1400)</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">// vc80:<br># define BOOST_LIB_TOOLSET "vc80"</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　注：如果你不修改这里，那么后面测试时无法链接到正确的</span><font face="宋体"><span lang="EN-US">lib</span><span style="font-family: 宋体;">，因为前面我们已经使用了</span><span lang="EN-US">“VC.NET <st1:chmetcnv w:st="on" unitname="”" sourcevalue="2005" hasspace="False" negative="False" numbertype="1" tcsc="0">2005”</st1:chmetcnv></span><span style="font-family: 宋体;">，生成的</span><span lang="EN-US">lib</span><span style="font-family: 宋体;">全是</span><span lang="EN-US">VC.NET 2005</span><span style="font-family: 宋体;">的。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　</span><font face="宋体"><span lang="EN-US">[boost-path]\boost\config\compile\visualc.hpp</span><span style="font-family: 宋体;">最后面的</span><span lang="EN-US">&gt;1310</span><span style="font-family: 宋体;">改为</span><span lang="EN-US">1400</span><span style="font-family: 宋体;">，如下：</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">#if (_MSC_VER?&gt; 1400)</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　注：如果不修改这个，无法正确生成所需要的</span><font face="宋体"><span lang="EN-US">lib</span><span style="font-family: 宋体;">。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　这些文件修改就完成了。如果你需要</span><font face="宋体"><span lang="EN-US">boost-python</span><span style="font-family: 宋体;">，那么还需设置几个环境变量，注意路径替换为你自己的，版本号只留前</span><span lang="EN-US">2</span><span style="font-family: 宋体;">位，比如</span><st1:chsdate w:st="on" year="1899" month="12" day="30" islunardate="False" isrocdate="False"><span lang="EN-US">2.3.4</span></st1:chsdate><span style="font-family: 宋体;">，则只需要写上</span><span lang="EN-US">2.3</span><span style="font-family: 宋体;">。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">SET PYTHON_ROOT=c:\soft\python24<br>SET PYTHON_VERSION=2.4<br>SET PYTHON_LIB_PATH=c:\soft\python24\libs</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　三、编译：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　以上过程都完毕了，现在转到</span><font face="宋体"><span lang="EN-US">[boost-path]</span><span style="font-family: 宋体;">目录下，运行如下命令：</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><font face="宋体">tools\build\jam_src\bin.ntx86\bjam -sTOOLS=vc80 "-sBUILD=debug release static/dynamic single/multi"</font></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　编译完成以后，设置</span><font face="宋体"><span lang="EN-US">VC2005</span><span style="font-family: 宋体;">的</span><span lang="EN-US">include</span><span style="font-family: 宋体;">和</span><span lang="EN-US">lib</span><span style="font-family: 宋体;">路径，最好搜索一下</span><span lang="EN-US">*.lib</span><span style="font-family: 宋体;">，拷到一个文件夹下，接下来就可以测试了。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　四、测试：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　写了一段测试正则表达式的代码，编译、链接，结果是报错。原来是要链接多线程版本！在</span><font face="宋体"><span lang="EN-US">VC2005</span><span style="font-family: 宋体;">里找了一下，发现只有多线程选项，单线程竟然没有列进来。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　这中间我走了一点弯路，试图编译一个多线程版本的</span><font face="宋体"><span lang="EN-US">boost</span><span style="font-family: 宋体;">，结果发现不行，编译出来还是单线程的，就线程库是多线程版本。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　最后用了个蠢办法：在</span><font face="宋体"><span lang="EN-US">#include &lt; stdafx.h &gt;</span><span style="font-family: 宋体;">后面加上一句：</span><span lang="EN-US">#undef _MT</span><span style="font-family: 宋体;">，终于可以运行起来了。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">　　五、补充说明：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 10.5pt; font-family: 宋体;">　　如果系统中有</span><font face="宋体"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">MSVCDir </span><span style="font-size: 10.5pt; font-family: 宋体;">这个环境变量</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">,VC80_ROOT</span><span style="font-size: 10.5pt; font-family: 宋体;">这个变量将会被忽略掉。由于</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">vc2005</span><span style="font-size: 10.5pt; font-family: 宋体;">对</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">C++</span><span style="font-size: 10.5pt; font-family: 宋体;">的标准库增加了更严格的安全性检测，所以在</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">VC2005</span><span style="font-size: 10.5pt; font-family: 宋体;">里使用</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">boost</span><span style="font-size: 10.5pt; font-family: 宋体;">会得到很多假的警告</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">,</span><span style="font-size: 10.5pt; font-family: 宋体;">可以通过定义</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US"> _SCL_SECURE_NO_DEPRECATE </span><span style="font-size: 10.5pt; font-family: 宋体;">或者加入</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">#pragma warning(disable:4996)</span><span style="font-size: 10.5pt; font-family: 宋体;">来处理掉，另外一些是因为某些老的</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">C</span><span style="font-size: 10.5pt; font-family: 宋体;">库函数被</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">VC2005</span><span style="font-size: 10.5pt; font-family: 宋体;">声明为</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">deprecated</span><span style="font-size: 10.5pt; font-family: 宋体;">（不赞成使用的），例如</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">fopen, str*</span><span style="font-size: 10.5pt; font-family: 宋体;">字符串函数等。</span></font></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 10.5pt; font-family: 宋体;"><font face="宋体"></font></span>&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 10.5pt; font-family: 宋体;"><font face="宋体"></font></span>&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 10.5pt; font-family: 宋体;">方法四：</span></p><span style="font-size: 10.5pt; font-family: 宋体;">
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">boost</span><span style="font-family: 宋体;">库是一个跨平台的</span><span lang="EN-US">C++</span><span style="font-family: 宋体;">库，因此它的安装多少有些麻烦</span><span lang="EN-US">——</span><span style="font-family: 宋体;">如果你需要使用那些必须编译的库的时候。在</span><span lang="EN-US">windows</span><span style="font-family: 宋体;">平台上（使用</span><span lang="EN-US">VS2003</span><span style="font-family: 宋体;">和</span><span lang="EN-US">VS2005</span><span style="font-family: 宋体;">）最简单的办法就是从</span> <span lang="EN-US"><a href="http://www.boost-consulting.com/download/windows"><u><font color="#0000ff">http://www.boost-consulting.com/download/windows</font></u></a>?</span><span style="font-family: 宋体;">下载</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库的</span><span lang="EN-US">installer</span><span style="font-family: 宋体;">，使用它可以指定安装基于哪个开发环境的库，每个库安装那些版本，非常方便，免去了配置编译之苦。</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">编译了一个使用正则表达式库</span><span lang="EN-US">regex</span><span style="font-family: 宋体;">的控制台应用程序，设定好包含目录和库目录后，发现最后链接失败，提示：</span><span lang="EN-US">LINK : fatal error LNK1104: </span><span style="font-family: 宋体;">无法打开文件</span><span lang="EN-US">“libboost_regex-vc80-mt-gd-1_34_1.lib”</span><span style="font-family: 宋体;">。使用</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库不需要在工程设置中显式的指定库名字，而是由</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">自身来完成这个设定的。由于</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库跨平台并且支持多个编译环境，因此这个被链接库文件的文件名是根据当前编译的配置动态生成的。</span><span lang="EN-US">boost_regex</span><span style="font-family: 宋体;">是库的基本名称，</span><span lang="EN-US">vc80</span><span style="font-family: 宋体;">是编译环境，</span><span lang="EN-US">mt</span><span style="font-family: 宋体;">表示这是一个多线程库，</span><span lang="EN-US">gd</span><span style="font-family: 宋体;">表示包含调试信息，最后的</span><span lang="EN-US">1_34_1</span><span style="font-family: 宋体;">是版本号。检查安装后的库文件，发现有的是</span><span lang="EN-US">boost_regex-vc80-mt-gd-1_34_1.lib</span><span style="font-family: 宋体;">，所以很明显，在库名生成的过程中出现了问题，多了一个</span><span lang="EN-US">“lib”</span><span style="font-family: 宋体;">前缀。</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">打开</span><span lang="EN-US">boost/regex.hpp</span><span style="font-family: 宋体;">，继续打开</span><span lang="EN-US">boost/regex/config.hpp</span><span style="font-family: 宋体;">文件，最终可以发现动态链接配置的功能是由</span><span lang="EN-US">boost/config/auto_link.hpp</span><span style="font-family: 宋体;">统一实现的。在这个文件开头的注释里详细说明了使用方式，相信这种方式对我们自己的库开发也很有裨益。这里提到了名称的构造公式：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">BOOST_LIB_PREFIX<br>&nbsp; &nbsp;+ BOOST_LIB_NAME<br>&nbsp;&nbsp; + "_"<br>&nbsp; &nbsp;+ BOOST_LIB_TOOLSET<br>&nbsp; &nbsp;+ BOOST_LIB_THREAD_OPT<br>&nbsp; &nbsp;+ BOOST_LIB_RT_OPT<br>&nbsp; &nbsp;"-"<br>&nbsp; &nbsp;+ BOOST_LIB_VERSION</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">根据我们的错误，我们应该检查</span><span lang="EN-US">BOOST_LIB_PREFIX</span><span style="font-family: 宋体;">的值为什么是</span><span lang="EN-US">“lib”</span><span style="font-family: 宋体;">而不是空的。通过搜索，发现</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">#if (defined(_DLL) || defined(_RTLDLL)) &amp;&amp; defined(BOOST_DYN_LINK)<br>#? define BOOST_LIB_PREFIX<br>#elif defined(BOOST_DYN_LINK)<br>#? error "Mixing a dll boost library with a static runtime is a really bad idea..."<br>#else<br>#? define BOOST_LIB_PREFIX "lib"<br>#endif</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">现在终于清楚了，我们应该在工程设置中加入</span><span lang="EN-US">_DLL</span><span style="font-family: 宋体;">定义或者</span><span lang="EN-US">_RTLDLL</span><span style="font-family: 宋体;">定义，并且指定</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库采用动态连接，定义</span><span lang="EN-US">BOOST_DYN_LINK</span><span style="font-family: 宋体;">。在工程设置中加入</span><span lang="EN-US">_DLL;BOOST_DYN_LINK</span><span style="font-family: 宋体;">，链接就通过了。</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;"></span>&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">方法五：</span></p><span style="font-family: 宋体;">
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">这几天写代码需要序列化自定义类，类的定义可以抽象为</span><span lang="EN-US">vector&lt;vector&lt;T&gt; &gt;</span><span style="font-family: 宋体;">。我本想通过重载</span><span lang="EN-US">operator&lt;&lt;</span><span style="font-family: 宋体;">和</span><span lang="EN-US">operator&gt;&gt; </span><span style="font-family: 宋体;">来实现序列化。但是写入是写入了，读就读不出来了。在读完第一个对象之后</span><span lang="EN-US">istream</span><span style="font-family: 宋体;">的</span><span lang="EN-US">tellg()</span><span style="font-family: 宋体;">返回了</span><span lang="EN-US">-1</span><span style="font-family: 宋体;">，导致后续的对象无法读取。后来我使用</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">很方便的就完成了序列化的工作。但是我使用的编译环境是</span><span lang="EN-US">VC9</span><span style="font-family: 宋体;">，</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">还没有针对</span><span lang="EN-US">vc9</span><span style="font-family: 宋体;">的编译设置，所以编译安装还是花了点时间。</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">针对</span><span lang="EN-US">VC9</span><span style="font-family: 宋体;">，下载的</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">需做如下修改：（</span><span lang="EN-US">+</span><span style="font-family: 宋体;">为需增加的行，）</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">文件</span><span lang="EN-US"> msvc.jam</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">@@ -231,6 +231,10 @@ local rule configure-really (<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# Even if version is not explicitly specified, try to detect the version<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # from the path.<br>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if [ MATCH "(Microsoft Visual Studio 9.0)" : $(command) ]<br>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version = 9.0 ;<br>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if [ MATCH "(Microsoft Visual Studio 8)" : $(command) ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version = 8.0 ;<br>@@ -913,13 +916,14 @@ actions compile.mc</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">&nbsp;.ProgramFiles = [ path.make [ common.get-program-files-dir ] ] ;</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">-.known-versions = 8.0 8.0express 7.1 7.1toolkit 7.0 6.0 ;<br>+.known-versions = 9.0 9.0express 8.0 8.0express 7.1 7.1toolkit 7.0 6.0 ;</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">&nbsp;# Version aliases<br>&nbsp;.version-alias-6 = 6.0 ;<br>&nbsp;.version-alias-6.5 = 6.0 ;<br>&nbsp;.version-alias-7 = 7.0 ;<br>&nbsp;.version-alias-8 = 8.0 ;<br>+.version-alias-9 = 9.0 ;</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">&nbsp;# Name of the registry key that contains Visual C++ installation path<br>&nbsp;#&nbsp;&nbsp; (relative to "HKEY_LOCAL_MACHINE\SOFTWARE\\Microsoft"<br>@@ -928,6 +932,8 @@ actions compile.mc<br>&nbsp;.version-7.1-reg = "VisualStudio\\7.1\\Setup\\VC" ;<br>&nbsp;.version-8.0-reg = "VisualStudio\\8.0\\Setup\\VC" ;<br>&nbsp;.version-8.0express-reg = "VCExpress\\8.0\\Setup\\VC" ;<br>+.version-9.0-reg = "VisualStudio\\9.0\\Setup\\VC" ;<br>+.version-9.0express-reg = "VCExpress\\9.0\\Setup\\VC" ;</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">&nbsp;# Visual C++ Toolkit 2003 do not store its installation path in the registry.<br>&nbsp;# The environment variable 'VCToolkitInstallDir' and the default installation </span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"></span>&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">文件</span><span lang="EN-US"> auto_link.hpp </span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">line133</span><span style="font-family: 宋体;">开始改成：</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"></span>&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">#elif defined(BOOST_MSVC) &amp;&amp; (BOOST_MSVC == 1400) <br>&nbsp;<br>&nbsp;// vc80: <br>#&nbsp; define BOOST_LIB_TOOLSET "vc80" <br>&nbsp;<br>#elif defined(BOOST_MSVC) &amp;&amp; (BOOST_MSVC &gt;= 1500) <br>&nbsp;<br>&nbsp;// vc90: <br>#&nbsp; define BOOST_LIB_TOOLSET "vc90" </span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">#elif defined(__BORLANDC__)</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"></span>&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-family: 宋体;">文件</span><span lang="EN-US"> visualc.hpp</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US">#error "Compiler not supported or configured - please reconfigure"<br>&nbsp;#endif<br>&nbsp;//<br>-// last known and checked version is 1400 (VC8):<br>-#if (_MSC_VER &gt; 1400)<br>+// last known and checked version is 1500 (VC9):<br>+#if (_MSC_VER &gt; 1500)<br>&nbsp;#&nbsp; if defined(BOOST_ASSERT_CONFIG)<br>&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp; error "Unknown compiler version - please run the configure tests and report the results"<br>&nbsp;#&nbsp; else</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><br></span><span style="font-family: 宋体;">然后就可以编译了，但是在编译过程中会有很多的</span><span lang="EN-US">warning C4819: The file contains a character that cannot be represented in the current code page (936). </span><span style="font-family: 宋体;">原因是</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">源代码的注释中有很多非</span><span lang="EN-US">low ASCII</span><span style="font-family: 宋体;">的字符，都是人名和版权注释。在编译</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">库时可以不管，但是在编译包含了</span><span lang="EN-US">boost</span><span style="font-family: 宋体;">的头文件的项目时却很烦人。可以在</span><span lang="EN-US">project properties,&nbsp;&nbsp; C/C++,&nbsp;&nbsp;&nbsp; Advanced,&nbsp;&nbsp; Disable Specific warnings</span><span style="font-family: 宋体;">中填入</span><span lang="EN-US">4819</span><span style="font-family: 宋体;">关闭这个警告。</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><font face="宋体"><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US">VS2005</span><span style="font-size: 10.5pt; font-family: 宋体;">中</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US"> &nbsp; &nbsp; error &nbsp; &nbsp; &nbsp; LNK2019: &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10.5pt; font-family: 宋体;">无法解析的外部符号</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US"> &nbsp; &nbsp; &nbsp; _WinMain@16 &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10.5pt; font-family: 宋体;">，该符号在函数</span><span style="font-size: 10.5pt; font-family: 'Times New Roman';" lang="EN-US"> &nbsp; &nbsp; &nbsp; _WinMainCRTStartup &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10.5pt; font-family: 宋体;">中被引用。</span></font></p></span></span>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt;"><span style="font-size: 10.5pt; font-family: 宋体;"><font face="宋体"></font></span>&nbsp;</p></span></span></font></font>
+<p><font face="宋体"></font>&nbsp;</p>
+					<p class="right articalinfo">
+						发表于 @ 2008年10月14日　13:52:00&nbsp;|
+						<a id="a_comment" href="#FeedBack" title="评论">
+							评论(
+							<span id="FeedbackCount_3073575">0</span>
+							<script type="text/javascript">
+								AddFeedbackCountStack("3073575")
+							</script>)
+						</a>|
+						<span style="display: none;"><a id="a_postedit" href="http://writeblog.csdn.net/PostEdit.aspx?entryId=3073575" title="编辑">编辑</a>|</span>
+						<a href="mailto:yuexn@csdn.net?subject=Article%20Report%21%21%21&amp;body=Author:huangjack_1%0D%0AURL:http://blog.csdn.net/ArticleContent.aspx?UserName=huangjack_1&amp;Entryid=3073575">举报</a>|
+						<cite class="fav_csdnstylebykimi">
+							<a href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(saveit=window.open('http://wz.csdn.net/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'saveit','scrollbars=no,width=590,height=300,left=75,top=20,status=no,resizable=yes'));saveit.focus();" class="fav_csdnstylebykimi" title="收藏到我的网摘中，并分享给我的朋友">收藏</a>
+						</cite>
+					</p>
+					<span id="Post.ascx_ViewPost_PreviousAndNextEntriesDown"><h3 class="pagego"><a href="http://blog.csdn.net/huangjack_1/archive/2008/10/14/3073090.aspx">旧一篇:3D Engine 的设计架构</a>&nbsp;|&nbsp;<a href="http://blog.csdn.net/huangjack_1/archive/2008/10/14/3073626.aspx">新一篇:Ogg介绍</a></h3></span>
+				</div>
+			</div>
+			<div class="commentslist">
+				<script type="text/javascript">
+					var CurrentEntryId = '3073575';
+					var CurrentUserName = 'huangjack_1';
+				</script>
+				<script type="text/javascript" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/feedback.js"></script>
+				<div id="commentslist"></div>
+			</div>
+			<div class="spacecommment"><fieldset><legend>给huangjack_1的留言<dfn>只有注册用户才能发表评论！<a href="http://passport.csdn.net/member/UserLogin.aspx?from=http://blog.csdn.net/huangjack_1/archive/2008/10/14/3073575.aspx">登录</a><a href="http://passport.csdn.net/CSDNUserRegister.aspx">注册</a></dfn></legend><em><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/blog_commentnotice.gif" alt="" title=""></em><ul><li>姓&nbsp;&nbsp;&nbsp;名：<input size="25" type="text"></li><li>校验码：<input size="25" type="text"></li></ul><textarea cols="50" rows="8"></textarea><input value="提交留言" class="submitbtn" type="button"></fieldset></div>
+			<script type="text/javascript">
+			LoadFeedbackCount();
+			document.write("<img src='http://counter.csdn.net/pv.aspx?id=24' border=0 width=0 height=0>");
+			</script><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/pv.xml" border="0" height="0" width="0">
+		</div>
+	</div>
+</div>
+		    
+<div id="pubfooter">
+<dl>
+	<dt></dt>
+	<dd>Csdn Blog version 3.1a</dd>
+	<dd>Copyright © huangjack_1</dd>
+</dl>
+</div>
+
+<script type="text/javascript" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/counter.js"></script><script type="text/javascript" charset="UTF-8" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/msg.js"></script><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/visitlog.htm" alt="" border="0" height="1" width="1"><iframe id="myframe" name="myframe" border="0" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/dd333.htm" frameborder="no" height="0" scrolling="no" width="0"></iframe>
+<script type="text/javascript" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/ga.js"></script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-2688088-9");
+	pageTracker._trackPageview();
+} catch (err) { }
+</script>
+
+
+	    </div>
+    </div>
+    <img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/count.htm" height="0px" width="0px">
+<link type="text/css" rel="stylesheet" href="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/message2.css"><div id="_popup_msg_container" style="display: block;"><!--2009-07-09-->
+
+<div style="display: none; height: 4px;" wistate="max" id="im_popupWindow_miniMsg" class="im_popupWindow">
+	<h6 class="wi_draggable"><a href="http://www.rzhh.com.cn/Default.html" target=" _blank" style="color: rgb(0, 0, 0); display: block; text-align: left; width: 200px; font-size: 12px; font-family: '微软雅黑','宋体',Arial;">[荐].Net学院真课体验</a>           
+	<a onclick="_message_tips_pop('down');return false;" href="#"><img alt="colse" class="founctionpic3" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/csdnim080507verpic3.gif">    </a></h6>
+    <div id="im_popupWindow_miniMsgContent" class="wi_content">
+      <div class="kuai">
+<table style="height: 210px;" border="1" width="280">
+<tbody>
+<tr>
+<td colspan="2" align="left" height="48"><font size="-1"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/csdnindex_pic35.gif" border="0" height="15" width="17"></font> <a href="http://www.rzhh.com.cn/DotNetAdvanced.html"><font color="#cc0000" size="-1"><b>项目实战就业班 8月17日开班 hot</b></font></a><br>
+      <img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/csdnindex_pic36.gif" align="middle" border="0" height="15" width="17"> <a href="http://www.rzhh.com.cn/FreeTraining.html"><font size="-1">9天免费真课体验 3天理论＋6天项目演练</font></a></td>
+    </tr>
+    <tr>
+      <td align="center" height="146" width="84"><a href="http://www.rzhh.com.cn/Default.html"><img src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/80-120.gif" border="0" height="120" width="81"></a></td>
+      <td height="146" width="180"><font size="-1"><a href="http://www.rzhh.com.cn/Default.html"><span style="font-family: 微软雅黑;"><strong><span style="color: rgb(153, 153, 0);"><font size="+1">.NET学院：</font></span><br>
+      </strong></span></a></font>　　<a href="http://www.rzhh.com.cn/Default.html"><span style="color: rgb(153, 153, 0);"><b><font size="-1">－－CSDN旗下实训基地</font></b></span></a><span style="font-family: 微软雅黑;"><a href="http://www.rzhh.com.cn/Default.html"><strong><span style="color: rgb(153, 153, 0);"><font size="-1"><span style="font-family: 微软雅黑;"></span></font></span></strong></a></span><br>
+      <br>
+      <a href="http://www.rzhh.com.cn/Default.html"><font size="-1">·真实项目实战训练<br>
+      ·大量当前主流.NET技术<br>
+      ·注重学员动脑动手能力</font><br>
+      <font size="-1">·掌握软件开发的标准模式</font></a><br>
+      <a href="http://www.rzhh.com.cn/" target="_blank"><font color="#0000ff" size="-1">官网查询：www.rzhh.com.cn</font></a></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div></div><img style="display: none;" src="Boost%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95_files/count_new.htm"></body></html>

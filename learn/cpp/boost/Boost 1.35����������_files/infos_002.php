@@ -1,0 +1,1 @@
+yo2userlogin = false;document.cookie="yo2userlogin=false;path=/";

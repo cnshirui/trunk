@@ -1,0 +1,30 @@
+a.avatar_88x88 , a.avatar_32x32 ,a.avatar_88x88 img, a.avatar_32x32 img,a.avatar_32x32,a.avatar_88x88,.post .entry a.avatar_32x32,.post .entry a.avatar_88x88{padding:0px 0px;border-color:#FFF;background:#FFF;font-size:12px;line-height:14px;}
+a.avatar_32x32 a, a.avatar_88x88 a,.post .entry a.avatar_32x32 a,.post .entry a.avatar_88x88 a {padding:0px 0px;border-color:#FFF;background:#FFF;font-size:12px;line-height:14px;border:0px;}
+
+a.avatar_88x88 { display:block;float:left;width:52px;height:52px;overflow: hidden;border:2px solid #FFF;z-index: 1000;background:#FFF;}
+a.avatar_88x88 img,.post .entry a.avatar_88x88 img,div a.avatar_88x88 img{margin:-17px 0 0 -18px;border:0;padding:0;max-width:200%;}
+a.avatar_88x88:hover {margin:-21px -22px -43px -22px;width:88px;height:108px;z-index: 6;position: relative;border:6px solid #FFF;}
+a.avatar_88x88:hover img{margin:0px;border:0;}
+
+a.avatar_88x88 #buttons a,a.avatar_32x32 #buttons a {padding:0;margin:0;border:0;background:#FFF;}
+a.avatar_32x32 { display:block;float:left;width:16px;height:16px;overflow: hidden;border:1px solid #FFF;z-index: 1000;background:#FFF;margin-right:3px;}
+a.avatar_32x32 img,.post .entry a.avatar_32x32 img,div a.avatar_32x32 img{margin:-8px 0 0 -8px;border:0;padding:0;max-width:200%;}
+a.avatar_32x32:hover {margin:-9px -6px -28px -9px;width:32px;height:50px;z-index: 6;position: relative;border:2px solid #FFF;}
+a.avatar_32x32:hover img,.post .entry a.avatar_32x32:hover img{margin:0px;border:0;}
+
+a.avatar_88x88 #buttons ,a.avatar_32x32 #buttons {border-top:2px solid #FFF;padding:0;margin:0;}
+a.avatar_88x88 #buttons {width:88px} a.awavatar_32x32 #buttons {width:36px}
+a.avatar_88x88 #buttons ,a.avatar_88x88 #buttons a {border:0;padding:0;margin:0;}
+
+a.avatar_88x88 #buttons  img, a.avatar_32x32 #buttons  img {cursor: pointer;*cursor: hand;}
+a.avatar_88x88:hover #buttons, a.avatar_32x32:hover #buttons {border-top:2px solid #FFF;vertical-align:middle;}
+
+#yo2sns_dialog span {padding:2px 2px 1px 2px;cursor: pointer;*cursor: hand;}
+#yo2sns_dialog input {height:18px;font-size:12px}#yo2sns_dialog {font-size:12px}
+
+
+.yo2album {height:160px;}
+.yo2album a { padding:0px;margin:0px; display:block;float:left;width:52px;height:52px;overflow: hidden;border:2px solid #FFF;z-index: 1000;background:#FFF;}
+.yo2album a img{padding:0px;margin:0px; margin:-17px 0 0 -18px;border:0;}
+.yo2album a:hover {margin:-21px -22px -23px -22px;width:88px;height:88px;z-index: 6;position: relative;border:6px solid #FFF;}
+.yo2album a:hover img{margin:0px;border:0;}
