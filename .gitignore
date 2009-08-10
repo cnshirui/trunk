@@ -2,3 +2,5 @@
 *.pyc
 index.yaml
 .git
+cpp/*/*/Debug
+*/*/debug
