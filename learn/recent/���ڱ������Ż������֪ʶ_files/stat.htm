@@ -1,0 +1,32 @@
+document.body.stat = function(message, script) {
+	message = !message ? '' : message;
+	script = !script ? '' : script;
+	var scriptNode = document.createElement('script');
+	scriptNode.type = 'text/javascript';
+	scriptNode.src = 'api/stat.php?action=send&message=' + message + '&query=' + escape(document.location.search.substr(1)) + '&referer=' + escape(document.referrer) + '&script=' + escape(script) + '&random=' + Math.random();
+	document.body.appendChild(scriptNode);
+}
+
+clickstat = function(e) {
+	if(typeof event == 'undefined'){
+		obj = e.target;
+	} else {
+	 	obj = event.srcElement;
+	 	e = event;
+	}
+	if(obj.tagName == 'A' && (href = obj.getAttribute('href')) && href.substr(0, 1) != '#' && href.toUpperCase().substr(0, 11) != 'JAVASCRIPT:') {
+		var scrollTop = document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop;
+		xr = parseInt(e.clientX / document.body.scrollWidth * 10000) / 100;
+		yr = parseInt((e.clientY + scrollTop) / document.body.scrollHeight * 10000) / 100;
+		if(typeof setcookie == 'function') {
+			setcookie('_statclick_1_', xr + '|' + yr, 300);
+			setcookie('_statclick_2_', location.href, 300);
+		}
+	}
+}
+
+if(document.attachEvent) {
+	document.attachEvent('onclick', clickstat);
+} else {
+	document.addEventListener('click', clickstat, false);
+}

@@ -1,0 +1,14 @@
+var data=new Array();data[0]=new Array();data[0][0]='Visual Studio 2008新特性';data[0][1]='http://kb.cnblogs.com/page/42592/';data[1]=new Array();data[1][0]='配置Visual Studio 以调试.net framework的源代码';data[1][1]='http://kb.cnblogs.com/page/42181/';data[2]=new Array();data[2][0]='编译调试CSLA .NET Framework v1.5';data[2][1]='http://www.cnblogs.com/rickie/archive/2005/04/11/135461.html';data[3]=new Array();data[3][0]='对aspx等页面进行预编译以进行编译期检查';data[3][1]='http://www.cnblogs.com/jeffreyzhao/archive/2009/01/08/compile-aspx-file.html';data[4]=new Array();data[4][0]='关于C++/CLI的困惑';data[4][1]='http://space.cnblogs.com/question/4933/';data[5]=new Array();data[5][0]='在C、C++中调用Matlab';data[5][1]='http://space.cnblogs.com/question/6799/';data[6]=new Array();data[6][0]='是该到了为Visual C++开发技术做个盘点的时候了！';data[6][1]='http://space.cnblogs.com/group/topic/29584/';data[7]=new Array();data[7][0]='新书预告——Visual C++音频/视频处理技术及工程实践';data[7][1]='http://space.cnblogs.com/group/topic/7805/';
+if(data.length > 0)
+{
+    for(var i = 0; i < data.length; i++)
+    {
+        if (i > 0)
+            document.write("<br>");
+        document.write("<a href='");
+        document.write(data[i][1]);
+        document.write("' target='_blank'>");
+        document.write(data[i][0]);
+        document.write("</a>");
+    }
+}

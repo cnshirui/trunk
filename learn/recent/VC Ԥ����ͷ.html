@@ -1,0 +1,1024 @@
+<html><head><!--STATUS OK-->
+<meta http-equiv="content-type" content="text/html; charset=GB2312"><title>VC 预编译头_quant master      </title>
+<style type="text/css">
+.error{color:#FF0000;font-size:12px}
+
+
+	
+
+
+</style>
+<script type="text/javascript" src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/global.js"></script>
+<script language="javascript" src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/popup.js"></script>
+<script type="text/javascript" src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/BdEditor-mined.js"></script>
+<script language="JavaScript" src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/g_spjs.js"></script>
+<script language="javascript">
+<!--
+
+(function(){var A=109;function C(D){var F="nslog__"+(new Date()).getTime();var E=window[F]=new Image();E.onload=(E.onerror=function(){window[F]=null});E.src="http://nsclick.baidu.com/v.gif?pid="+A+"&url="+encodeURIComponent(D)+"&type=0&_t="+Math.random();E=null}function B(F){F=F||event;var E=F.srcElement||F.target;if(E.nodeType!=1){E=E.parentNode}while(E&&E.tagName&&E.tagName.toUpperCase()!="A"){E=E.parentNode}if(E&&E.tagName&&E.tagName.toUpperCase()=="A"){if(!/^([\w-]+\.)*?baidu\.com/i.test(E.host)){var D=E.href;setTimeout(function(){C(D)},1)}}E=null}if(document.attachEvent){document.attachEvent("onmousedown",B);window.attachEvent("onunload",function(){document.detachEvent("onmousedown",B)})}else{document.addEventListener("mousedown",B,false);window.addEventListener("unload",function(){document.removeEventListener("mousedown",B,false)},false)}})();
+
+
+var allkey="";
+var i=0;
+var flag=0;
+function setpv(allnum)
+{
+	var num = allnum.split('_');
+	document.getElementById("result").innerHTML=num[0];
+}
+
+function checkMail(s)
+{
+  	var pattern=/\w+@\w+\.[a-z]+/;
+  	if(pattern.test(s))
+    {
+       return true;
+    }
+  	else
+   {
+      return false;
+   }
+}
+
+
+function checkeandu(eanduid)
+{
+	var eanduvalue=G(eanduid).value;
+	var len=bytes(eanduvalue);
+	if(len>128)
+	{
+		showErr(2,"您输入的网址或邮箱太长，请保持在128字节以内。");
+		return false;
+	}
+	else
+	{
+		 return true;
+	}
+
+}
+
+function cmtdel(str)
+{
+	var pop=new Popup({ contentType:3,isReloadOnClose:false,width:340,height:80});
+	pop.setContent("title","删除评论");
+	pop.setContent("confirmCon","您确定要彻底删除这条评论吗？");
+	pop.setContent("callBack",delCallback2);
+	pop.setContent("parameter",{fid:str,popup:pop});
+	pop.build();
+	pop.show();
+	return false;
+}
+function delCallback2(para)
+{
+	var o_pop=para["popup"];
+	o_pop.config.contentType=1;
+	o_pop.setContent("contentUrl","");
+	o_pop.reBuild();
+	G(para["fid"]).target=o_pop.iframeIdName;
+	eval("document."+para["fid"]).submit();
+}
+
+String.prototype.byteLength = function() {
+    return this.replace(/[^\u0000-\u007f]/g,"\u0061\u0061").length;
+}
+
+function checkname(strid)
+{
+	var ele=document.getElementById(strid);
+	var len=bytes(ele.value);
+	if(len>49)
+	{
+		showErr(1,"您输入的姓名太长，请保持在49字节以内。");
+		return false;
+	}
+	else
+	{
+		if(len==0)
+		{
+			document.getElementById(strid).value="匿名网友";
+		}
+		 return true;
+	}
+
+}
+
+function checktext(textid)
+{
+        var tempStr='';
+        var isLightFont=false;
+		if(editor&&textid=="spBlogCmtText"){
+			//document.getElementById("spBlogCmtText").value=editor.getHtml();
+			tempStr=editor.getHtml();
+			tempStr=tempStr.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,'');
+			tempStr=tempStr.replace(/<\/span>/ig,'');
+			document.getElementById("spBlogCmtText").value=tempStr;
+            isLightFont=!(tempStr==editor.getHtml());
+        }
+		document.getElementById(textid).value=trimlr(textid);
+		var str=trimrn(textid);
+		len=str.length;
+		if(len==0 || ((/^[\s,　]+$/gi).test(str)) )
+		{
+			showErr(3,"您必须输入评论内容，请检查。");
+			return false;
+		}
+		else
+        {
+                len=str.byteLength();
+                var maxLength=isLightFont?916:1000;
+				if(len > maxLength)
+				{
+					showErr(3,"您输入的评论内容太长，请保持在500字以内。");
+					return false;
+				}
+				if(editor&&textid=="spBlogCmtText"){
+					document.getElementById("spBlogCmtText").value=editor.getHtml();
+					document.getElementById(textid).value=trimlr(textid);
+				}
+
+			return true;
+		}
+}
+
+function showErr(index,str)
+{
+	G(index+"_err").style.display="";
+	G(index+"_err_con").innerHTML=str;
+}
+function hidErr(index)
+{
+	G(index+"_err").style.display="none";
+	G(index+"_err_con").innerHTML="";
+}
+
+function alertPop(tit,con)
+{
+	var pop=new Popup({ contentType:4,isReloadOnClose:false,width:340,height:80});
+	pop.setContent("title",tit);
+	pop.setContent("alertCon",con);
+	pop.build();
+	pop.show();
+}
+
+function cmtfull()
+{
+	var cnum=0;
+	if(cnum>=50000)
+	{
+		alertPop("发表评论","单篇日志评论数最多为50000条.");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function checkcmtform()
+{
+	if(checkname("spBlogCmtor")&&checkeandu("spBlogCmtURL")&&checktext("spBlogCmtText")&&cmtfull())
+	{
+		submitForm();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+var g_pop=null;
+function submitForm()
+{
+	g_pop=new Popup({ contentType:1,isReloadOnClose:false,width:340,height:80});
+	g_pop.setContent("title","添加评论");
+	g_pop.setContent("contentUrl","");
+	g_pop.setContent("someDisabledBtn","btn_ok");
+	g_pop.build();
+	G("popFormSubmit").target=g_pop.iframeIdName;
+	g_pop.show();
+}
+
+function g_close_pop()
+{
+	g_pop.close();
+}
+
+function formatonlinpic()
+{
+var picobj=document.getElementsByName("onlinepic");
+var picnum=picobj.length;
+
+	for(var i=0;i<picnum;i++)
+	{
+		if(picobj[i].width>200)
+		{
+			picobj[i].width=200;
+		}
+		if(picobj[i].height>200)
+		{
+			picobj[i].height=200;
+		}
+	}
+    try{document.getElementById("btn_ok").disabled = "";}catch(e){}
+}
+
+function addToFavor(){
+var blogTitle='VC 预编译头'.replace(/&#39;/g,'\'');
+window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(blogTitle+'_百度空间')+'&iu='+encodeURIComponent(location.href)+'&fr=sp#nw=1','_s','scrollbars=no,width=600,height=450,right=75,top=20,status=no,resizable=yes');
+return false;
+}
+
+var isIE = /*@cc_on!@*/false;
+function tracker(did,a){
+	return function(){
+		var t=new Date().getTime();
+		var href=a.href;
+        if(isIE){
+            var r = /href\s*=\s*("|')?([^\s]*)\1/gi;
+            if(r.test(a.outerHTML))
+                href = RegExp.$2;
+        }
+        new Image().src = "http://hi.baidu.com/sys/statlog/1.gif?m=" + did + "&v=" + encodeURIComponent(href) + "&c=" + encodeURIComponent(location.href) + "&t="+t;
+	}
+}
+
+function tracker_init(did){
+	var _s=document.getElementById(did);
+	var as = _s.getElementsByTagName('A');
+	for(var i = 0, j = as.length; i < j; i ++){
+		var a = as[i];
+		if(isIE){
+			a.attachEvent("onclick", tracker(did,a));
+		}else{
+			a.addEventListener("click", tracker(did,a), false);
+		}
+	}
+}
+
+
+/* some functions for cmt-reply */
+		function cmtreply(cmtName,cmtPorID)
+		{
+			cmtName=cmtName.replace(/<|>/g,"");
+			window.location.hash="#send";
+			var cmtForm=document.form1;
+			cmtForm.cm.value="3";
+			if(!cmtForm.spReferTarget)
+			{
+				var ipt=document.createElement("input");
+				ipt.type="hidden";
+				ipt.name="spReferTarget";
+				ipt.value=cmtPorID;
+				cmtForm.appendChild(ipt);
+			}else cmtForm.spReferTarget.value=cmtPorID;
+
+
+			 //G("reTitle").innerHTML="回复"+cmtName+"：";
+			 G("cancleReLink").style.display="";
+			 cmtForm.btn_ok.value="回复评论";
+
+
+			 try{
+				editor.window.focus();
+                editor.window.document.body.innerHTML="回复"+cmtName+"：";
+
+                var w = editor.window;
+				if(w.getSelection){
+					var d = w.document;
+					var s = w.getSelection();
+					var r = d.createRange();
+					r.setStartAfter(d.body.firstChild);
+					r.setEndAfter(d.body.lastChild);
+					s.removeAllRanges();
+					s.addRange(r);
+				}
+			}catch(e){
+			 		try{
+				 		cmtForm.getElementsByTagName("textarea")[0].focus();
+				 		cmtForm.getElementsByTagName("textarea")[0].value="回复"+cmtName+"：";
+				 	}catch(e){}
+			}
+		}
+
+		function canclereply()
+		{
+			var cmtForm=document.form1;
+			cmtForm.cm.value="1";
+			try{cmtForm.removeChild(cmtForm.spReferTarget);}catch(e){}
+			/*
+			try{
+					var cmt=cmtForm.getElementsByTagName("textarea")[0]
+					cmt.value="";
+					cmt.focus();
+			}catch(e){}
+			*/
+
+			try{
+					var ed=editor.window.document.body;
+					ed.innerHTML="";
+					editor.window.focus();
+				}catch(e){
+					var cmt=cmtForm.getElementsByTagName("textarea")[0];
+					cmt.value="";
+					cmt.focus();
+			}
+
+			G("cancleReLink").style.display="none";
+			cmtForm.btn_ok.value="发表评论";
+		}
+
+		function gotoreply()
+		{//to checking whether reply cmt
+			if( window.location.hash.indexOf("&re=1")<0) return;
+			var cmtID=window.location.hash.split("&")[0].replace("#","");
+			var cmtlinks=document.getElementsByTagName("a");
+			for(var i=0,n=cmtlinks.length;i<n;i++)
+			{
+				if(cmtlinks[i].name==cmtID){ var rename=cmtlinks[i].getAttribute("rename");  repid=cmtlinks[i].getAttribute("repid"); break;}
+			}
+			if(typeof(rename)!="undefined"){
+				cmtreply(rename, repid);
+			}
+		}
+
+//-->
+</script>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+
+window.onerror=function(){return true;}
+
+var RelatedDocData = null, GetAndEval = false;
+(function(){
+	var xhr = BdAjax.getXHR();
+	if(xhr == null){
+		RelatedDocData = -1;
+		return;
+	}
+
+	xhr.open("GET", "/sys/search?type=8&word=VC%20%D4%A4%B1%E0%D2%EB%CD%B7&item=4297f5fb7f8bca234e4aea6f&t=" + new Date().getTime(), true);
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 0 || xhr.status == 200){
+				if(GetAndEval){
+					eval(xhr.responseText);
+				}else{
+					RelatedDocData = xhr.responseText;
+				}
+			}
+		}
+	}
+	xhr.send(null);
+})();
+/*]]>*/
+</script>
+
+</head><body onload="formatonlinpic();"><iframe name="_BdPopupLayer_b70gu4-benyr2iu02i-a6dch4" style="position: absolute; z-index: 65001; display: none;" id="_BdPopupLayer_b70gu4-benyr2iu02i-a6dch4" scrolling="no" frameborder="0"></iframe><iframe name="_BdPopupLayer_389f37-h45gbworkm44-pp2dz6" style="position: absolute; z-index: 65001; display: none;" id="_BdPopupLayer_389f37-h45gbworkm44-pp2dz6" scrolling="no" frameborder="0"></iframe><link rel="Stylesheet" type="text/css" href="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/bdeditor.css">
+<center>
+<script type="text/javascript">
+/*<![CDATA[*/
+if(top.location != self.location){
+	top.location = self.location;
+}
+var myref = encodeURIComponent("http://hi.baidu.com/quant%5Fmaster/blog/item/4297f5fb7f8bca234e4aea6f%2Ehtml");
+/*]]>*/
+</script>
+<link rel="stylesheet" type="text/css" href="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/mods.css">
+
+<link rel="stylesheet" type="text/css" href="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/3f58739b023b5bb5c9eaf408.css">
+
+<link rel="stylesheet" type="text/css" href="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/space.css">
+<style type="text/css">
+/*<![CDATA[*/
+
+#usrbar{padding:4px 10px 3px 0;font-size:12px;height:19px;line-height:19px;color:#000000;font-family:Arial;text-align:right;background:#ffffff;filter:alpha(opacity=65);-moz-opacity:0.5;width:auto !important;width:100%;letter-spacing:normal}
+#usrbar a,#usrbar a:link,#usrbar a:visited{color:#0000CC;text-decoration:underline}
+#ft{clear:both;height:20px;line-height:20px;color:#666666;font-size:12px;font-family:Arial;text-align:center}
+#ft a,#ft a:link,#ft a:visited{color:#7777CC;text-decoration:underline}
+#usrbar,#usrbar a,#usrbar a:link,#usrbar a:visited,#ft,#ft a,#ft a:link,#ft a:visited{letter-spacing:normal}
+/*]]>*/
+</style>
+
+
+
+<div id="usrbar"><nobr>
+
+			<a id="hi_index" href="http://hi.baidu.com/" target="_blank">百度空间</a>&nbsp;|&nbsp;<a href="http://www.baidu.com/" target="_blank">百度首页</a>&nbsp;<script type="text/javascript">
+		document.write('| <a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u=http://hi.baidu.com' + encodeURIComponent('/quant%5Fmaster/blog/item/4297f5fb7f8bca234e4aea6f%2Ehtml') + '">登录</a>');
+		</script>| <a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http://hi.baidu.com%2Fquant%255Fmaster%2Fblog%2Fitem%2F4297f5fb7f8bca234e4aea6f%252Ehtml">登录</a>
+		
+</nobr></div>
+
+
+
+		<div id="newUserTip" style="text-align: right; width: 225px; height: 130px; position: absolute; top: 26px; right: 0pt; float: right; z-index: 30000;">
+	<a id="newUserTipShadow" onclick="newUserRegLog()" href="http://hi.baidu.com/st/reg.html" target="_blank" style="background: transparent none repeat scroll 0% 0% ! important; overflow: hidden; color: rgb(66, 66, 249) ! important; -moz-background-clip: border ! important; -moz-background-origin: padding ! important; -moz-background-inline-policy: continuous ! important; text-decoration: none ! important; font-size: 14px; width: 55px; height: 14px; position: absolute; top: 108px; right: 14px; z-index: 30001; display: block;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	<embed id="newUserTipSwf" allowscriptacess="always" style="width: 225px; height: 130px;" src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/guide.swf" wmode="transparent">
+	</div>
+	<script language="javascript">
+	<!--
+		function newUserTipShow(f)
+		{
+			if(f=="0"){//close
+				G("newUserTipSwf").style.width="40px";
+				G("newUserTip").style.width="40px";
+				G("newUserTipShadow").style.display="none";
+			}else{//show
+				G("newUserTip").style.width="225px";
+				G("newUserTipSwf").style.width="225px";
+				G("newUserTipShadow").style.display="block";
+
+			}
+		}
+
+		function newUserRegLog(){
+			var now=new Date();
+			now.setTime(now.getTime()+5*60*1000);
+			document.cookie="BDSP_REGFLAG=1;expires="+now.toGMTString()+";path=/";
+			new Image().src="http://hi.baidu.com/sys/statlog/1.gif?m=blog_newer_pro2_click&v=/quant%5Fmaster&t="+Math.random();
+		}
+	//-->
+	</script>
+	
+
+
+
+<script type="text/javascript">
+
+function set_cookie_4_bdtip(index/* start from one */, value){
+	var bdtip = document.cookie.match(/(^| )BDTIP=([^;]*)(;|$)/);
+	if(!bdtip){
+		bdtip=new Array(index);
+		for(var i=0,n=bdtip.length;i<n;i++)
+		{
+			if(bdtip[i]=="" || bdtip[i]==null)  bdtip[i]=0;
+			if(i == index - 1){
+				bdtip[i] = value;
+			}
+		}
+	}else{
+	bdtip = bdtip[2].split('-');
+	if(index > bdtip.length)  bdtip.length= index;
+	for(var i = 0, j = bdtip.length; i < j; i ++){
+		if(bdtip[i]=="" || bdtip[i]==null) bdtip[i]=0;
+		if(i == index - 1){
+			bdtip[i] = value;
+		}
+	}
+	}
+	bdtip = bdtip.join('-');
+	document.cookie = "BDTIP=" + bdtip+ ";expires=Wed, 28-Nov-37 01:45:46 GMT;path=/;";
+}
+</script>
+<div id="main" align="left">
+<!--[if IE]>
+<script>
+var objmain = document.getElementById("main");
+function updatesize(){ var bodyw = window.document.body.offsetWidth; if(bodyw <= 790) objmain.style.width="772px"; else if(bodyw >= 1016) objmain.style.width="996px"; else objmain.style.width="100%"; }
+updatesize(); window.onresize = updatesize;
+</script>
+<![endif]-->
+	<div id="header">
+	<div class="lc"><div class="rc"></div></div>
+<div class="tit"><a href="http://hi.baidu.com/quant%5Fmaster" class="titlink" title="quant_master的空间 http://hi.baidu.com/quant_master">quant master</a></div>
+<div class="desc">quant programmers</div>
+<div id="tabline">&nbsp;</div>
+	<div id="tab"><a href="http://hi.baidu.com/quant%5Fmaster">主页</a><a href="http://hi.baidu.com/quant%5Fmaster/blog" class="on">博客</a><a href="http://hi.baidu.com/quant%5Fmaster/album">相册</a><span>|</span><a href="http://hi.baidu.com/quant%5Fmaster/profile">个人档案</a>
+	<span>|</span><a href="http://hi.baidu.com/quant%5Fmaster/friends">好友</a>
+
+
+
+	</div>
+</div>
+
+<div class="stage">
+<div class="stagepad">
+<div style="width: 100%;">
+
+
+	
+
+	<table class="modth" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr><td class="modtl" width="7">&nbsp;</td>
+	<td class="modtc" nowrap="nowrap"><div class="modhead"><span class="modtit">查看文章</span></div></td>
+	<td class="modtc" align="right" nowrap="nowrap"></td>
+	<td class="modtr" width="7">&nbsp;</td>
+	</tr></tbody></table>
+
+<div id="m_blog" class="modbox" style="overflow-x: hidden;">
+<div class="tit">VC 预编译头</div>
+<div class="date">2007-05-17  15:42</div>
+<table style="table-layout: fixed; width: 100%;"><tbody><tr><td><div id="blog_text" class="cnt"><p style="margin: 0cm 0cm 0pt;"><span style=""><font size="3"><strong>预编译头的概念：</strong></font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><font size="3"><span style="">在很多程序中，每个源文件都存在一些相同的部分。比如要包括相同的一些头文件，而且这些头文件可能很长，例如</span><span><font face="Times New Roman">window.h</font></span><span style="">。如果用普通的方法编译这些源文件，对这些头文件在每个源文件中的出现都要重新编译，作了很多重复工作。如果能将这些头文件专门进行编译，并且把结果存储起来。然后在编译包含这些头文件的源文件时，使用上述结果替代头文件在源文件中的出现，就可以大大减少工作量。</span><span><font face="Times New Roman">Microsoft Visual C++</font></span><span style="">提供的“预编译头文件”机制就支持这一功能。</span></font><span><br>
+<br>
+</span><font size="3"><span style="">所谓的预编译头就是把一个工程中的那一部分代码</span><span><font face="Times New Roman">,</font></span><span style="">预先编译好放在一个文件里</span><span><font face="Times New Roman">(</font></span><span style="">通常是以</span><span><font face="Times New Roman">.pch</font></span><span style="">为扩展名的</span><span><font face="Times New Roman">)</font></span><span style="">，这个文件就称为预编译头文件这些预先编译好的代码可以是任何的</span><span><font face="Times New Roman">C/C++</font></span><span style="">代码</span><span><font face="Times New Roman">--------</font></span><span style="">甚至是</span><span><font face="Times New Roman">inline</font></span><span style="">的函数，但是必须是稳定的，在工程开发的过程中不会被经常改变。如果这些代码被修改，则需要重新编译生成预编译头文件。注意生成预编译头文件是很耗时间的。同时你得注意预编译头文件通常很大，通常有</span><span><font face="Times New Roman">6-7M</font></span><span style="">大。注意及时清理那些没有用的预编译头文件。</span></font><span><br>
+<br>
+</span><font size="3"><span style="">也许你会问：现在的编译器都有</span><span><font face="Times New Roman">Time stamp</font></span><span style="">的
+功能，编译器在编译整个工程的时候，它只会编译那些经过修改的文件，而不会去编译那些从上次编译过，到现在没有被修改过的文件。那么为什么还要预编译头文
+件呢？答案在这里，我们知道编译器是以文件为单位编译的，一个文件经过修改后，会重新编译整个文件，当然在这个文件里包含的所有头文件中的东西（</span><span><font face="Times New Roman">.eg Macro, Preprocesser </font></span><span style="">）都要重新处理一遍。</span><span><font face="Times New Roman">VC</font></span><span style="">的预编译头文件保存的正是这部分信息。以避免每次都要重新处理这些头文件。</span></font><span><br>
+<br>
+</span><span style=""><font size="3"><strong>预编译头的使用：</strong></font></span><span><br>
+<br>
+</span><span style=""><font size="3">方法一：手动方法</font></span><span><br>
+<br>
+</span><font size="3"><span style="">要使用预编译头，我们必须指定一个头文件，这个头文件包含我们不会经常改变的代码和其他的头文件，然后我们用这个头文件来生成一个预编译头文件（</span><span><font face="Times New Roman">.pch</font></span><span style="">文件）</span></font><span><br>
+<br>
+</span><font size="3"><span style="">想必大家都知道</span><span><font face="Times New Roman"> StdAfx.h</font></span><span style="">这个文件。很多人都认为这是</span><span><font face="Times New Roman">VC</font></span><span style="">提供的一个</span><span><font face="Times New Roman">“</font></span><span style="">系统级别</span><span><font face="Times New Roman">”</font></span><span style="">的，编译器带的一个头文件。其实不是的，这个文件可以是任何名字的。我们来考察一个典型的由</span><span><font face="Times New Roman">AppWizard</font></span><span style="">生成的</span><span><font face="Times New Roman">MFC Dialog Based</font></span><span style="">　程序的预编译头文件。（因为</span><span><font face="Times New Roman">AppWizard</font></span><span style="">会为我们指定好如何使用预编译头文件，默认的是</span><span><font face="Times New Roman">StdAfx.h</font></span><span style="">，这是</span><span><font face="Times New Roman">VC</font></span><span style="">起的名字）。我们会发现这个头文件里包含了以下的头文件：</span></font><span><br>
+<br>
+<font size="3" face="Times New Roman">#include &lt;afxwin.h&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // MFC core and standard components<br>
+<br>
+#include &lt;afxext.h&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // MFC extensions<br>
+<br>
+#include &lt;afxdisp.h&gt;&nbsp;&nbsp;&nbsp; // MFC Automation classes<br>
+<br>
+#include &lt;afxdtctl.h&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // MFC support for Internet Explorer 4 Common Controls<br>
+<br>
+#include &lt;afxcmn.h&gt;&nbsp;&nbsp;&nbsp;<br>
+<br>
+</font></span><font size="3"><span style="">这些正是使用</span><span><font face="Times New Roman">MFC</font></span><span style="">的必须包含的头文件，当然我们不太可能在我们的工程中修改这些头文件的，所以说他们是稳定的。</span></font><span><br>
+<br>
+</span><font size="3"><span style="">那么我们如何指定它来生成预编译头文件。我们知道一个头文件是不能编译的。所以我们还需要一个</span><span><font face="Times New Roman">cpp</font></span><span style="">文件来生成</span><span><font face="Times New Roman">.pch </font></span><span style="">文件。这个文件默认的就是</span><span><font face="Times New Roman">StdAfx.cpp</font></span><span style="">。在这个文件里只有一句代码就是：</span><span><font face="Times New Roman">#include “Stdafx.h”</font></span><span style="">。原因是理所当然的，我们仅仅是要它能够编译而已</span><span><font face="Times New Roman">―――</font></span><span style="">也就是说，要的只是它的</span><span><font face="Times New Roman">.cpp</font></span><span style="">的扩展名。我们可以用</span><span><font face="Times New Roman">/Yc</font></span><span style="">编译开关来指定</span><span><font face="Times New Roman">StdAfx.cpp</font></span><span style="">来生成一个</span><span><font face="Times New Roman">.pch</font></span><span style="">文件，通过</span><span><font face="Times New Roman">/Fp</font></span><span style="">编译开关来指定生成的</span><span><font face="Times New Roman">pch</font></span><span style="">文件的名字。打开</span><span><font face="Times New Roman">project -&gt;Setting-&gt;C/C++ </font></span><span style="">对话框。把</span><span><font face="Times New Roman">Category</font></span><span style="">指向</span><span><font face="Times New Roman">Precompiled Header</font></span><span style="">。</span></font><span><br>
+<br>
+</span><font size="3"><span style="">在</span><span><font face="Times New Roman">Project Options(</font></span><span style="">右下角的那个白的地方</span><span><font face="Times New Roman">)</font></span><span style="">可以看到</span><span><font face="Times New Roman"> /Fp “debug/PCH.pch”</font></span><span style="">，这就是指定生成的</span><span><font face="Times New Roman">.pch</font></span><span style="">文件的名字，默认的通常是　</span><span><font face="Times New Roman">&lt;</font></span><span style="">工程名</span><span><font face="Times New Roman">&gt;.pch</font></span><span style="">（我的示例工程名就是</span><span><font face="Times New Roman">PCH</font></span><span style="">）。</span></font><span><br>
+<br>
+</span><font size="3"><span style="">这时原来的</span><span><font face="Times New Roman">Project Option</font></span><span style="">变成了</span><span><font face="Times New Roman"> Source File Option</font></span><span style="">（原来是工程，现在是一个文件，当然变了）。在这里我们可以看到</span><span><font face="Times New Roman"> /Yc</font></span><span style="">开关，</span><span><font face="Times New Roman">/Yc</font></span><span style="">的作用就是指定这个文件来创建一个</span><span><font face="Times New Roman">Pch</font></span><span style="">文件。</span><span><font face="Times New Roman">/Yc</font></span><span style="">后面的文件名是那个包含了稳定代码的头文件，一个工程里只能有一个文件的可以有</span><span><font face="Times New Roman">YC</font></span><span style="">开关。</span><span><font face="Times New Roman">VC</font></span><span style="">就根据这个选项把</span><span><font face="Times New Roman"> StdAfx.cpp</font></span><span style="">编译成一个</span><span><font face="Times New Roman">Obj</font></span><span style="">文件和一个</span><span><font face="Times New Roman">PCH</font></span><span style="">文件。</span></font><span><br>
+<br>
+</span><font size="3"><span style="">在这里，</span><span><font face="Times New Roman">Precomplier </font></span><span style="">选择了</span><span><font face="Times New Roman"> Use ………</font></span><span style="">一项，头文件是我们指定创建</span><span><font face="Times New Roman">PCH </font></span><span style="">文件的</span><span><font face="Times New Roman">stdafx.h</font></span><span style="">文件。事实上，这里是使用工程里的设置，</span><span><font face="Times New Roman">/Yu”stdafx.h”</font></span><span style="">。</span></font><span><br>
+<br>
+</span><span style=""><font size="3">这样，我们就设置好了预编译头文件。也就是说，我们可以使用预编译头功能了。以下是注意事项：</font></span><span><br>
+<br>
+<font size="3" face="Times New Roman">1):</font></span><font size="3"><span style="">如果使用了</span><span><font face="Times New Roman">/Yu</font></span><span style="">，就是说使用了预编译，我们在每个</span><span><font face="Times New Roman">.cpp</font></span><span style="">文件的最开头，我强调一遍是最开头，包含</span><font face="Times New Roman"> </font><span style="">你指定产生</span><span><font face="Times New Roman">pch</font></span><span style="">文件的</span><span><font face="Times New Roman">.h</font></span><span style="">文件（默认是</span><span><font face="Times New Roman">stdafx.h</font></span><span style="">）不然就会有问题。如果你没有包含这个文件，就告诉你</span><span><font face="Times New Roman">Unexpected file end. </font></span><span style="">如果你不是在最开头包含的，你自己试以下就知道了，绝对有很惊人的效果</span></font><font size="3"><span><font face="Times New Roman">…..<br>
+<br>
+2</font></span><span style="">）如果你把</span><span><font face="Times New Roman">pch</font></span><span style="">文件不小心丢了，根据以上的分析，你只要让编译器生成一个</span><span><font face="Times New Roman">pch</font></span><span style="">文件就可以了。也就是说把</span><span><font face="Times New Roman"> stdafx.cpp</font></span><span style="">（即指定</span><span><font face="Times New Roman">/Yc</font></span><span style="">的那个</span><span><font face="Times New Roman">cpp</font></span><span style="">文件）从新编译一遍就可以了。当然你可以傻傻的</span><span><font face="Times New Roman"> Rebuild all</font></span><span style="">。简单一点就是选择那个</span><span><font face="Times New Roman">cpp</font></span><span style="">文件，按一下</span><span><font face="Times New Roman">Ctrl + F7</font></span><span style="">就可以了。</span></font><span><br>
+<br>
+</span><span style=""><font size="3">方法二：自动使用</font></span><span><br>
+<br>
+</span><font size="3"><span style="">很简单只要指定</span><span><font face="Times New Roman">/YX</font></span><span style="">就可以了。或者在上图中选择</span><span><font face="Times New Roman">Automatic………</font></span><span style="">就可以了。注意的事情是如果你指定了</span><span><font face="Times New Roman">/Yc /Yu</font></span><span style="">的话，</span><span><font face="Times New Roman">/Yx</font></span><span style="">是会被忽略的。前者的优先级别高一些</span><span><font face="Times New Roman">.</font></span></font></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman"> </font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><span style=""><font size="3"><strong>下面从另一个角度再看一下：</strong></font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><font size="3"><span style="">假设每个源文件的相同部分都出现在文件的开始部分。这一假设是很现实的。那么相同部分的结尾如何定位呢？由两种方法，一是由程序员在源文件中用</span><span><font face="Times New Roman">#pragma hdrstop</font></span><span style="">标记；二是指定对某个头文件的包含指示符（</span><span><font face="Times New Roman">#include directive</font></span><span style="">）作为结束标志。这个头文件被称为</span><span><font face="Times New Roman">through header file</font></span><span style="">，在</span><span><font face="Times New Roman">/Yc</font></span><span style="">或者</span><span><font face="Times New Roman">/Yu</font></span><span style="">命令参数中指明。</span></font></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman"> </font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><font size="3"><span style="">在编译第一个源文件时，将从文件头到预编译部分结束处的编译结果存储到一个预编译头文件中，扩展名通常是</span><span><font face="Times New Roman">pch</font></span><span style="">。这个过程称为预编译头文件的生成。这一步工作需要指定</span><span><font face="Times New Roman">/Yc</font></span><span style="">参数。在对其他源文件进行编译时，使用这个预编译头文件，此时用</span><span><font face="Times New Roman">/Yu</font></span><span style="">参数。生成的预编译头文件的名字通过</span><span><font face="Times New Roman">/Fp</font></span><span style="">参数指定。</span></font></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman"> </font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><font size="3"><span style="">下面举一个例子。假设</span><span><font face="Times New Roman">Project</font></span><span style="">中共用的宏定义，常量定义，头文件引用都放在</span><span><font face="Times New Roman">prechdr.h</font></span><span style="">中。我编辑一个</span><span><font face="Times New Roman">prechdr.cpp</font></span><span style="">来</span><span><font face="Times New Roman">#include “prechdr.h”</font></span><span style="">。对</span><span><font face="Times New Roman">prechdr.cpp</font></span><span style="">编译时就可以生成包含</span><span><font face="Times New Roman">prechdr.h</font></span><span style="">中内容的预编译头文件：</span></font></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman"> </font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman">cl /Ycprechdr.h /Fp.\Debug\prechdr.pch prechdr.cpp</font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman"> </font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><font size="3"><span style="">这样，就创建了</span><span><font face="Times New Roman">prechdr.pch</font></span><span style="">。在编译其他源文件时，使用</span><span><font face="Times New Roman">prechdr.pch</font></span><span style="">：</span></font></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman"> </font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman">cl /Yuprechdr.h /Fp.\Debug\prechdr.pch others.cpp</font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><span><font size="3" face="Times New Roman"> </font></span></p>
+<p style="margin: 0cm 0cm 0pt;"><font size="3"><span style="">在</span><span><font face="Times New Roman">IDE</font></span><span style="">中，可以将</span><span><font face="Times New Roman">Project Settings</font></span><span style="">设置成</span><span><font face="Times New Roman">/Yuprechdr.h /Fp.\Debug\prechdr.pch</font></span><span style="">。然后将</span><span><font face="Times New Roman">prechdr.cpp</font></span><span style="">的</span><span><font face="Times New Roman">C++ tab</font></span><span style="">中</span><span><font face="Times New Roman">Precompile</font></span><span style="">类别设置成</span><span><font face="Times New Roman">Use precompiled header</font></span><span style="">，即在使用</span><span><font face="Times New Roman">Project Settings</font></span><span style="">的基础上增加了</span><span><font face="Times New Roman">/Yc</font></span><span style="">参数。当</span><span><font face="Times New Roman">/Yc</font></span><span style="">和</span><span><font face="Times New Roman">/Yu</font></span><span style="">共存时，只有</span><span><font face="Times New Roman">/Yc</font></span><span style="">起作用。</span><span><font face="Times New Roman">IDE</font></span><span style="">在</span><span><font face="Times New Roman">build Project</font></span><span style="">时会最先编译</span><span><font face="Times New Roman">prechdr.cpp</font></span><span style="">以创建预编译头文件供其他源文件使用。</span></font></p>
+<br></div></td></tr></tbody></table>
+<br>
+<div class="opt">
+<a href="http://hi.baidu.com/quant%5Fmaster/blog/category/%C4%AC%C8%CF%B7%D6%C0%E0" title="查看该分类中所有文章">类别：默认分类</a>
+
+	
+	| <a title="将此文章添加到百度搜藏" href="http://cang.baidu.com/do/add" onclick="return addToFavor();" target="_blank">添加到搜藏</a>
+	
+	| 浏览(<span id="result">213</span>)
+	| <a href="#send">评论</a>&nbsp;(0)
+
+<script language="javascript">
+/*<![CDATA[*/
+var pre = [true,'减少编译时间', '减少编译时间','/quant%5Fmaster/blog/item/c255f1005ba69d86e950cda7.html'];
+var post = [true,'Mortgage Prepayment model change','Mortgage Prepayment model chan...', '/quant%5Fmaster/blog/item/b4a03bd9e1aebbe838012f48.html'];
+if(pre[0] || post[0]){
+	document.write('<div style="height:5px;line-height:5px;">&nbsp;</div><div id="in_nav">');
+	if(pre[0]){
+		document.write('上一篇：<a href="' + pre[3] + '" title="' + pre[1] + '">' +  pre[2] + '</a>&nbsp;&nbsp;&nbsp;&nbsp;');
+	}
+	if(post[0]){
+		document.write('下一篇：<a href="' + post[3] + '" title="' + post[1] + '">' +  post[2] + '</a>');
+	}
+	document.write('</div>');
+}
+/*]]>*/
+</script><div style="height: 5px; line-height: 5px;">&nbsp;</div><div id="in_nav">上一篇：<a href="http://hi.baidu.com/quant%5Fmaster/blog/item/c255f1005ba69d86e950cda7.html" title="减少编译时间">减少编译时间</a>&nbsp;&nbsp;&nbsp;&nbsp;下一篇：<a href="http://hi.baidu.com/quant%5Fmaster/blog/item/b4a03bd9e1aebbe838012f48.html" title="Mortgage Prepayment model change">Mortgage Prepayment model chan...</a></div>
+
+</div>
+<div class="line">&nbsp;</div>
+
+
+
+    <style type="text/css">
+/*<![CDATA[*/
+#in_related_doc a { text-decoration:none; }
+/*]]>*/
+</style>
+<div id="in_related_doc"><div class="tit">相关文章：</div><table border="0" cellpadding="0" cellspacing="3"><tbody><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/weistone/blog/item/e3e5538b5042d5799f2fb4e5.html" target="_blank" title="VC 预编译头的使用">VC 预编译头的使用</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/muzar33/blog/item/4fe260bf8359fb0f18d81ffd.html" target="_blank" title="VC中的预编译头">VC中的预编译头</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/winnyang/blog/item/c43221ef0a6d061ffcfa3c11.html" target="_blank" title="在VC中编译,运行程序的小知识点">在VC中编译,运行程序的小知识点</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/rwsomix/blog/item/5777a68fe7abe8e7f11f36d6.html" target="_blank" title="用vc 2008编译php扩展">用vc 2008编译php扩展</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/liugang585570/blog/item/fc62020139a5b918728b65a9.html" target="_blank" title="vc 的命令行调试和编译(现在看不明白,留作学习用)">vc 的命令行调试和编译(现在看不...</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/lihao102/blog/item/822c76a71f21a49cd1435840.html" target="_blank" title="VC 2005 下如何编译安装并开发 QT 4.4.3">VC 2005 下如何编译安装并开发 Q...</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/%C7%C6%C0%B4%C7%C3%C8%A5/blog/item/37bb761a57a6a2108718bfc8.html" target="_blank" title="如何在命令行下编译VC程序">如何在命令行下编译VC程序</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/jjzhang166/blog/item/f8da9ecbe03af5f452664f8f.html" target="_blank" title="新手学习VC,CArray&lt;CPoint,CPoint&gt; m_PointArray,编译有问题,不知道如何解决">新手学习VC,CArray&lt;CPoint,CPoin...</a></td></tr><tr><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/lihao102/blog/item/0a09958bcc0b34769e2fb48b.html" target="_blank" title="VC编译 去掉error C2220: warning treated as error 类错误">VC编译 去掉error C2220: warnin...</a>　　　　　　　　　</td><td width="15px"><a style="font-size: 25px;">&#8226;</a></td><td><a href="http://hi.baidu.com/gilbertjuly/blog/item/da8968b523503c7a8ad4b2d8.html" target="_blank" title="VC|MFC学习笔记七: 几个小知识(II)--防止重定义,编译和链接等">VC|MFC学习笔记七: 几个小知识(I...</a></td></tr><tr><td colspan="4"><a target="_blank" href="http://hi.baidu.com/sys/search?pageno=1&amp;type=7&amp;sort=1&amp;word=VC%20%D4%A4%B1%E0%D2%EB%CD%B7&amp;item=4297f5fb7f8bca234e4aea6f">更多&gt;&gt;</a></td></tr></tbody></table></div><div class="line">&nbsp;</div>
+<script language="javascript" type="text/javascript">
+/*<![CDATA[*/
+function HI_MOD_IN_RELATED_DOC_CALLBACK(arg){
+    if(arg.length <= 1) return false;
+    var hasMore = arg[0];
+    var D=function(A,B){A[A.length]=B;}
+    if(arg.length % 2 == 0) D(arg, ["","","",""]);
+
+    var html = ['<div id="in_related_doc"><div class="tit">相关文章：</div>'];
+    D(html, '<table cellpadding="0" cellspacing="3" border="0">');
+    for(var i = 1, j = arg.length; i < j; i += 2){
+        D(html, '<tr>');
+        D(html, '<td width="15px"><a style="font-size:25px" >&#8226;</a></td><td><a href="http://hi.baidu.com/' + arg[i][3] + '/blog/item/' + arg[i][2] + '.html" target="_blank" title="' + arg[i][0] + '">' + arg[i][1] + '</a>');
+        D(html, new Array(10).join('\u3000'));
+        D(html, '</td>');
+        if(arg[i + 1][0] != "")
+            D(html, '<td width="15px"><a style="font-size:25px" >&#8226;</a></td><td><a href="http://hi.baidu.com/' + arg[i + 1][3] + '/blog/item/' + arg[i + 1][2] + '.html" target="_blank" title="' + arg[i + 1][0] + '">' + arg[i + 1][1] + '</a></td>');
+        else
+            D(html, '<td>&nbsp;</td><td>&nbsp;</td>');
+        D(html, '</tr>');
+    }
+    if(hasMore) D(html, '<tr><td colspan="4"><a target="_blank" href="/sys/search?pageno=1&type=7&sort=1&word=VC%20%D4%A4%B1%E0%D2%EB%CD%B7&item=4297f5fb7f8bca234e4aea6f">更多&gt;&gt;</a></td></tr>');
+    D(html, '</table></div><div class="line">&nbsp;</div>');
+
+    var div = document.getElementById('in_related_tmp');
+    if(div){
+        div.innerHTML = html.join('');
+        while(div.firstChild){
+            div.parentNode.insertBefore(div.firstChild, div);
+        }
+        div.parentNode.removeChild(div);
+    }
+	window.setTimeout("tracker_init('in_related_doc')",100);
+}
+
+if(RelatedDocData == -1){	// not supported xhr
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '/sys/search?type=8&word=VC%20%D4%A4%B1%E0%D2%EB%CD%B7&item=4297f5fb7f8bca234e4aea6f&t=' + new Date().getTime();
+    document.getElementsByTagName('HEAD')[0].appendChild(script);
+}else if(RelatedDocData == null){
+	GetAndEval = true;
+}else{
+	eval(RelatedDocData);
+}
+
+/*]]>*/
+</script>
+    
+
+
+
+
+
+
+<div id="in_reader">
+<div class="tit">最近读者：</div>
+
+<script>
+
+	var g_spAnnony=true;
+
+
+var g_read=[
+
+["pengjj0807","be4a70656e676a6a30383037cb03","pengjj0807"],
+
+["338966141","b1023333383936363134313200","338966141"],
+
+["%B6%E9%C2%E4%B5%C4%C9%F1%C7%FA","52576d656e74616c64656173652904","mentaldease"],
+
+["wxiabing","1f447778696162696e67d401","wxiabing"],
+
+["joelyoung","9ef74a6f656c596f756e675d00","JoelYoung"],
+
+["shaolove2009","7f447368616f6c6f766532303039a805","shaolove2009"],
+
+["jenghau","36db4a656e676861756200","Jenghau"],
+
+["zhjunqin","51837a686a756e71696e0301","zhjunqin"],
+
+{}
+];
+g_read.length=g_read.length-1;
+
+var _rh1="";
+var _rh2="";
+
+function wrreader(){
+	_rh1 += '<table width="100%" ><tr>';
+	_rh2+='<tr>';
+	if(g_spAnnony){
+		_rh1+='<td align="center" width="10%" ><img border="0" width="55" height="55" src="http://img.baidu.com/hi/img/portraitn.jpg"></td>';
+		_rh2+='<td>&nbsp;</td>';
+		if(g_read.length>0){
+			_rh1+='<td align="left" width="12%">';
+		}else{
+			_rh1+='<td align="left" width="100%">';
+		}
+		_rh1+='<a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u='+myref+'" target="_self">登录</a>后，您就出现在这里。</td>';
+		_rh2+='<td>&nbsp;</td>'
+	}
+	if(g_read.length==0){
+		if(!g_spAnnony){
+			_rh1+='<td align=left width="100%">最近还没有登录用户看过这篇文章……</td>';
+			_rh2+='<td>&nbsp;</td>';
+		}
+	}else{
+		for(i=0,len=g_read.length;i<len;i++){
+			_rh1+='<td align="center" valign="bottom" width="10%" class="user"><a href="/'+g_read[i][0]+'" target="_blank"><img border="0" src="http://himg.baidu.com/sys/portraitn/item/'+g_read[i][1]+'.jpg"></a></td>';
+			_rh2+='<td align="center" valign="top" class="user"><a href="/'+g_read[i][0]+'" target="_blank">'+g_read[i][2]+'</a></td>';
+		}
+	}
+	_rh1+='<td width="100%"></td></tr>';
+	_rh2+='<td></td></tr></table>';
+	document.write(_rh1+_rh2);
+}
+
+wrreader();
+</script><table width="100%"><tbody><tr><td align="center" width="10%"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/portraitn.jpg" border="0" height="55" width="55"></td><td align="left" width="12%"><a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http%3A%2F%2Fhi.baidu.com%2Fquant%255Fmaster%2Fblog%2Fitem%2F4297f5fb7f8bca234e4aea6f%252Ehtml" target="_self">登录</a>后，您就出现在这里。</td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/pengjj0807" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/be4a70656e676a6a30383037cb03.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/338966141" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/b1023333383936363134313200.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/%B6%E9%C2%E4%B5%C4%C9%F1%C7%FA" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/52576d656e74616c64656173652904.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/wxiabing" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/1f447778696162696e67d401.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/joelyoung" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/9ef74a6f656c596f756e675d00.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/shaolove2009" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/7f447368616f6c6f766532303039a805.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/jenghau" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/36db4a656e676861756200.jpg" border="0"></a></td><td class="user" align="center" valign="bottom" width="10%"><a href="http://hi.baidu.com/zhjunqin" target="_blank"><img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/51837a686a756e71696e0301.jpg" border="0"></a></td><td width="100%"></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/pengjj0807" target="_blank">pengjj0807</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/338966141" target="_blank">338966141</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/%B6%E9%C2%E4%B5%C4%C9%F1%C7%FA" target="_blank">mentaldease</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/wxiabing" target="_blank">wxiabing</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/joelyoung" target="_blank">JoelYoung</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/shaolove2009" target="_blank">shaolove2009</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/jenghau" target="_blank">Jenghau</a></td><td class="user" align="center" valign="top"><a href="http://hi.baidu.com/zhjunqin" target="_blank">zhjunqin</a></td><td></td></tr></tbody></table>
+
+
+
+
+
+	</div>
+
+<div class="line">&nbsp;</div>
+
+
+
+<script language="JavaScript">
+allkey=allkey+"95e7e11ebfbfba1f413417bc_4297f5fb7f8bca234e4aea6f_";
+</script>
+
+<div id="in_comment">
+<a name="comment"></a>
+<div class="tit">网友评论：</div>
+<script>
+function writecmt(type,id,cmtname,cmturl,portraitId){
+	var html1="";
+	cmturl=cmturl.replace("https://","http://");
+	if(type==1){
+			html1="<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'><img  border='0' src='http://himg.baidu.com/sys/portraitn/item/"+portraitId+".jpg'><br>"+cmtname+"</a>";
+	}else{
+		if(cmtname=="" || cmtname=="匿名网友"){
+			if(cmturl==""){
+				html1="<a>匿名网友</a>";
+			}else{
+				html1="<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a>";
+			}
+		}else{
+			if(cmturl==""){
+				html1="<div class='f14' style='display:inline'>网友:<a>"+cmtname+"</a></div>";
+			}else{
+				html1="<div class='f14' style='display:inline'>网友:<a href='"+cmturl+"' target='_blank' title='"+cmturl+"'>"+cmtname+"</a></div>";
+			}
+		}
+	}
+	document.write(html1);
+}
+function filterCmtContent(n){
+	if(!BdBrowser.isIE){
+		var defaultfilter1='<span style="filter:glow(color=#000000,strength=2);height:0px;color:#000000">';
+		var defaultfilter2='<span style="height: 0px; color: rgb(0, 0, 0);">';
+		var commentDiv=document.getElementById(n);
+		var divs=commentDiv.getElementsByTagName('div');
+		var d,tmp;
+		for( var i=0,len=divs.length;i<len;i++){
+			d=divs[i];
+			if(d.getAttribute('name')=='cmtcontent'){
+				tmp=d.innerHTML;
+				tmp=tmp.replace(/<span style="filter:glow\(color=#([0-9a-z]{3,6}),strength=2\);height:0px;color:#([0-9a-z]{3,6})">/ig,defaultfilter1);
+				tmp=tmp.replace('<span style="height: 0px; color: rgb(255, 255, 255);">',defaultfilter2);
+				d.innerHTML=tmp;
+			}
+		}
+	}
+}
+
+</script>
+
+
+
+
+
+<div id="page"></div>
+
+</div>
+<script>filterCmtContent('in_comment');</script>
+
+
+<div id="in_send">
+<a name="send"></a>
+<form name="form1" id="popFormSubmit" action="/quant%5Fmaster/commit" method="post" onsubmit="return checkcmtform()">
+<input name="bdstoken" value="70c09c75c7fb954420a5c7e0b24119fa" type="hidden">
+<input name="ct" value="8" type="hidden">
+<input name="cm" value="1" type="hidden">
+<input name="spBlogID" value="4297f5fb7f8bca234e4aea6f" type="hidden">
+<input value="http://hi.baidu.com/quant_master/blog/item/4297f5fb7f8bca234e4aea6f.html" name="spRefURL" id="spRefURL" type="hidden">
+<script>
+    document.getElementById("spRefURL").value = window.location.href;
+</script>
+<div class="tit">发表评论：</div>
+<table border="0" cellpadding="0" cellspacing="5" width="620">
+<tbody><tr>
+
+<td class="f14">姓　名：</td>
+<td><input name="spBlogCmtor" id="spBlogCmtor" style="width: 220px;" onchange="checkname('spBlogCmtor')" maxlength="49" onfocus="hidErr(1);" type="text">
+<script>
+document.write(" &nbsp;&nbsp; <a href='http://hi.baidu.com/st/reg.html' target='_blank'>注册</a>");
+document.write(' | <a href="https://passport.baidu.com/?login&tpl=sp&tpl_reg=sp&u='+myref+'">登录</a>');
+
+</script> &nbsp;&nbsp; <a href="http://hi.baidu.com/st/reg.html" target="_blank">注册</a> | <a href="https://passport.baidu.com/?login&amp;tpl=sp&amp;tpl_reg=sp&amp;u=http%3A%2F%2Fhi.baidu.com%2Fquant%255Fmaster%2Fblog%2Fitem%2F4297f5fb7f8bca234e4aea6f%252Ehtml">登录</a>
+
+<div style="display: none;" id="nmerror">*姓名最长为50字节</div></td>
+</tr>
+
+<tr id="1_err" style="display: none;">
+<td>&nbsp;</td>
+<td><div class="error" id="1_err_con"></div></td>
+</tr>
+
+<tr>
+<td class="f14">网址或邮箱：</td>
+<td><input name="spBlogCmtURL" id="spBlogCmtURL" style="width: 360px;" maxlength="128" onchange="checkeandu('spBlogCmtURL')" onfocus="hidErr(2);" type="text"> (选填)</td>
+<script>
+G("spBlogCmtor").value="";
+G("spBlogCmtURL").value="";
+</script>
+
+</tr>
+
+<tr id="2_err" style="display: none;">
+<td>&nbsp;</td>
+<td><div class="error" id="2_err_con"></div></td>
+</tr>
+
+<tr>
+<td class="f14" id="reTitle" valign="top">内　容：</td>
+<td>        <div id="bdeditor_container_ke9d81-kdgnhnv2zxhj-hq3ptv">            <table border="0" cellpadding="0" cellspacing="0" height="155px" width="100%">                <tbody><tr>                    <td id="editor_toolbar_ke9d81-kdgnhnv2zxhj-hq3ptv" class="ToolbarContainer"><div class="ToolbarStrip"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap"><div class="ToolbarItem" title="插入表情" id="ToolbarItem_bibozf-s5dfh0obcnsj-dzb54f" onclick="_Instance['bibozf-s5dfh0obcnsj-dzb54f'].clickHandler(this)" onmouseup="_Instance['bibozf-s5dfh0obcnsj-dzb54f'].mouseUpHandler(this)" onmousedown="_Instance['bibozf-s5dfh0obcnsj-dzb54f'].mouseDownHandler(this)" onmouseout="_Instance['bibozf-s5dfh0obcnsj-dzb54f'].mouseOutHandler(this)" onmouseover="_Instance['bibozf-s5dfh0obcnsj-dzb54f'].mouseOverHandler(this)"><div class="img Smiley" alt="插入表情"><font style="font-size: 12px;">插入表情</font></div></div></td></tr></tbody></table></div></td>                </tr>                <tr>                    <td id="editor_area_ke9d81-kdgnhnv2zxhj-hq3ptv" class="EditorContainer"><iframe src="javascript:void(0)" frameborder="0" height="155px" width="100%"></iframe></td>                </tr>            </tbody></table>        </div>    <textarea name="spBlogCmtText" id="spBlogCmtText" style="width: 520px; height: 155px; display: none;" onfocus="hidErr(3);"></textarea>
+<script>
+	var editor=null;
+	try{
+		editor=new BdEditor("spBlogCmtText",{width:"100%",height:"155px"});
+		editor.onfocus = function(){hidErr(3);}
+		editor.render();
+	}catch(e){
+		var spBlogCmtText = document.getElementById("spBlogCmtText");
+		var p = spBlogCmtText.previousSibling;
+		while(p && p.nodeType != 1) p = p.previousSibling;
+		if(p && /bdeditor_container/.test(p.id)){
+			p.parentNode.removeChild(p);
+		}
+		spBlogCmtText.style.display = '';
+		editor=null;
+	}
+</script>
+
+<script>
+G("spBlogCmtor").value=G("spBlogCmtor").defaultValue;
+G("spBlogCmtText").value="";
+</script>
+</td>
+</tr>
+<tr id="3_err" style="display: none;">
+<td>&nbsp;</td>
+<td><div class="error" id="3_err_con"></div></td>
+</tr>
+
+<tr id="vercode">
+<td class="f14" valign="top">验证码：</td>
+<td valign="top"><input name="spVcode" value="" type="hidden">
+<input onfocus="f_focus()" id="spVerifyKey" name="spVerifyKey" size="6" maxlength="4" autocomplete="off" tabindex="4" type="text">  请点击后输入四位验证码，字母不区分大小写<br>
+<script type="text/javascript">
+/*<![CDATA[*/
+
+function f_focus(){
+	getVcode();
+}
+function getVcode(){
+	var url="http://hi.baidu.com/sys/file/getvcode?echoback=getVcodeDone&t="+(new Date().getTime());
+	BdAjax.loadJS(url)
+}
+
+function getVcodeDone(vcode){
+	document.form1.spVcode.value=vcode;
+	var imgsrc="http://hiup.baidu.com/cgi-bin/genimg?"+vcode;
+	G('verifypic').src=imgsrc;
+	G('yanzheng').style.display="block";
+}
+function newverifypic(){
+	getVcode();
+	return false;
+}
+/*]]>*/
+</script>
+<div id="yanzheng" style="display: none;">
+<img id="verifypic" height="40" width="120"><wbr><a onfocus="this.blur();" href="#" onclick="return newverifypic();" title="看不清左边的字符">看不清?</a>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td class="f14" valign="top">&nbsp;</td>
+<td class="f14" valign="top"><input id="btn_ok" name="btn_ok" value="发表评论" tabindex="5" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="cancleReLink" onclick="canclereply(); return false;" style="display: none; font-size: 12px; color: rgb(102, 102, 102);">取消回复</a></td>
+</tr>
+</tbody></table>
+</form>
+</div>
+
+
+
+
+<br>
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" height="8" width="100%">
+<tbody><tr><td class="modbl" width="7">&nbsp;</td>
+<td class="modbc">&nbsp;</td>
+<td class="modbr" width="7">&nbsp;</td>
+</tr></tbody></table>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+</div>
+<script language="javascript">
+
+//fck layout rework
+</script>
+<script src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/bgmusic.js" language="javascript"></script>
+<script language="javascript">
+function initBlogTextForFCK(){
+	//fck layout resize
+    /*
+    var fckLayoutArr=document.getElementById('blog_text').getElementsByTagName('table');
+	for(var i=0,n=fckLayoutArr.length;i<n;i++){
+		if(fckLayoutArr[i].className.indexOf('FCKLAYOUT')>-1){
+			fckLayoutArr[i].width="100%";
+			fckLayoutArr[i].style.width="100%";
+			fckLayoutArr[i].style.height="100%";
+		}
+	}
+    */
+
+	//fck init music
+	if(window.Node){Node.prototype.replaceNode=function(Node){this.parentNode.replaceChild(Node,this);}}
+	var imgBox=document.getElementsByName('musicName');
+	var isAutoPlay=true;
+	for(var i=0,n=imgBox.length;i<n;i++){
+		var img=imgBox[i];
+		if(img.getAttribute('rel')){
+			var musicSrc=img.getAttribute('rel');
+			var musicDiv = document.createElement("SPAN");
+			var tmp=musicSrc.substr (musicSrc.indexOf('#')+1, 1);
+			var tmpAutoPlay=(tmp=='1');
+			if(isAutoPlay&&tmpAutoPlay){
+				isAutoPlay=false;
+				tmpAutoPlay=true;
+			}else{
+				tmpAutoPlay=false;
+			}
+			var shtml=creatbgmusic(musicSrc.substr(0,musicSrc.indexOf('#')),1,true,false,tmpAutoPlay,tmpAutoPlay,'FckMusicHelper');
+			shtml=shtml.replace('width=100%','width=200').replace('width="100%"','width=200 height=45');			img.replaceNode(musicDiv);
+			musicDiv.innerHTML=shtml;
+			i--;n--;
+		}
+	}
+	//document.getElementById('blog_text').style.display='';
+}
+initBlogTextForFCK();
+</script>
+<script language="javascript">
+<!--
+var hstr="/quant%5Fmaster/brwstat?key1=1";
+document.write("<script src='"+hstr+"&key2="+allkey+"'><\/script>");
+//-->
+</script><script src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/brwstat.htm"></script>
+<br><center><div id="ft">&#169;2009 Baidu</div></center>
+
+<script>
+if(document.getElementById("m_blog"))
+{
+	var imgarray = document.getElementById("m_blog").getElementsByTagName('img');
+	var imgw = document.getElementById("m_blog").offsetWidth;
+	imgw =imgw-40;
+    for(var i=0; i<imgarray.length; i++){
+    	if(imgarray[i].className=="blogimg" && imgarray[i].width>=imgw) {
+	    	imgarray[i].width=imgw;
+        }
+    }
+}
+
+// Fix ff bugs
+var blog_text = document.getElementById('blog_text');
+blog_text.innerHTML = blog_text.innerHTML.replace(/href\s*=\s*("|')?(\.\.\/\.\.\/)/gi,"href=$1../$2");
+
+gotoreply();
+</script>
+</center>
+
+
+<img src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/c.htm" style="display: none;">
+<iframe id="submitiframe" name="submitiframe" src="VC%20%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4_files/blank.htm" style="display: none;"></iframe>
+</body></html>

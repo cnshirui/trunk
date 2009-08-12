@@ -1,0 +1,535 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head>
+
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>用 ANTLR 做一个四则运算器 - 点睛工作室 - JavaEye技术网站</title>
+    <meta name="description" content="　　开始把 D 的语法转换为 EBNF，发现 D 还支持中文变量名，也就是所谓的 UniversalAlpha，查看了一下 dmd front end 的源代码，检查字符是否 UniversalAlpha 的函数是这样的：&nbsp;int isUniAlpha(unsigned u) {     static unsigned short table[][2] =     {  { 0x00AA, 0x00 ...">
+    <meta name="keywords" content=" Hibernate 用 ANTLR 做一个四则运算器">
+    <link rel="shortcut icon" href="http://llf.javaeye.com/images/favicon.ico" type="image/x-icon">
+    <link href="http://llf.javaeye.com/rss" rel="alternate" title="点睛工作室" type="application/rss+xml">
+    <link href="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/blog.css" media="screen" rel="stylesheet" type="text/css">
+<link href="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/blue.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/application.js" type="text/javascript"></script>
+      <link href="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/hotkey.js" type="text/javascript"></script>
+  <style>
+    div#main {background-color: transparent; border: 0; padding: 0px; width: 740px;}
+  </style>
+  <style type="text/css">.dp-c .vars { color: #d00; }</style><style type="text/css">.dp-c .vars { color: #d00; }</style><style type="text/css">.dp-c .vars { color: #d00; }</style></head><body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.javaeye.com/" class="homepage">首页</a>
+  <a href="http://www.javaeye.com/news">新闻</a>
+  <a href="http://www.javaeye.com/forums">论坛</a>
+  <a href="http://www.javaeye.com/blogs">博客</a>
+  <a href="http://www.javaeye.com/job">招聘</a>
+  <a href="#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display: none;">
+    <a href="http://www.javaeye.com/ask">问答</a>
+    <a href="http://www.javaeye.com/wiki">知识库</a>
+    <a href="http://www.javaeye.com/groups">圈子</a>
+    <a href="http://www.javaeye.com/search">搜索</a>
+  </div>
+</div>
+      <div id="user_nav">
+      <a href="http://cnshirui.javaeye.com/" title="查看我的博客首页" class="welcome">欢迎cnshirui</a>
+    
+      <a href="http://app.javaeye.com/messages" title="发送站内短信">收件箱</a>
+    
+    
+      <a href="http://app.javaeye.com/" title="我的应用首页">我的应用</a>
+    
+    <div class="quick_menu" style="display: none;">
+      <a href="http://app.javaeye.com/feed" title="我订阅的好友动态消息">我的订阅</a>
+      <a href="http://app.javaeye.com/feed/my" title="我参与的话题更新的消息">我的参与</a>
+      <a href="http://app.javaeye.com/chat" title="用闲聊发表简短的话题">我的闲聊</a>
+      <a href="http://app.javaeye.com/mygroup" title="我加入的圈子最新话题">我的圈子</a>
+      <a href="http://app.javaeye.com/links" title="我收藏的网络资源链接">我的收藏</a>
+      <a href="http://app.javaeye.com/myresume" title="我的个人简历">我的简历</a>
+    </div>
+        <a href="http://cnshirui.javaeye.com/admin" title="管理我的博客">我的博客</a>
+    <a href="http://app.javaeye.com/profile" title="修改我的个人设置">设置</a>
+    <a href="http://llf.javaeye.com/logout" class="nobg" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'put'); f.appendChild(m);f.submit();return false;">退出</a>
+  </div>
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name"><h1><a href="http://llf.javaeye.com/">点睛工作室</a></h1></div>
+        <div id="blog_preview"></div>
+        <div id="blog_domain">永久域名 <a href="http://llf.javaeye.com/">http://llf.javaeye.com</a></div>
+      </div>
+      
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+          
+
+
+<div class="blog_main"> 
+  <div id="blog_nav">
+    <div class="digg" id="d156170"><h3><a href="#" onclick='digg("blogs", 156170, false);return false;' class="digg">1顶</a><br><a href="#" onclick='digg("blogs", 156170, true);return false;' class="bury">0踩</a></h3></div>
+    <div id="pre_next">
+      <a href="http://llf.javaeye.com/blog/157507" class="next" title="D 语言的子集的 Z 编译器">D 语言的子集的 Z 编译器</a>
+      |
+      <a href="http://llf.javaeye.com/blog/155151" class="pre" title="D Parser 之前（三）：Z 语言编译器">D Parser 之前（三）：Z 语言编译器</a>
+    </div>
+  </div>
+  <div class="blog_title">
+    <div class="date"><span class="year">2008</span><span class="sep_year">-</span><span class="month">01</span><span class="sep_month">-</span><span class="day">15</span></div>
+    <h3 class="" title=""><a href="http://llf.javaeye.com/blog/156170">用 ANTLR 做一个四则运算器</a></h3>
+                
+  </div>
+
+  <div class="blog_content">
+    <p>　　开始把 D 的语法转换为 EBNF，发现 D 还支持中文变量名，也就是所谓的 UniversalAlpha，查看了一下 dmd front end 的源代码，检查字符是否 UniversalAlpha 的函数是这样的：</p><p>&nbsp;</p><div class="dp-highlighter"><div class="bar"><div class="tools">Csharp代码 <embed src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/clipboard_new.swf" flashvars="clipboard=int%20isUniAlpha(unsigned%20u)%0A%7B%0A%20%20%20%20static%20unsigned%20short%20table%5B%5D%5B2%5D%20%3D%0A%20%20%20%20%7B%0A%20%7B%200x00AA%2C%200x00AA%20%7D%2C%0A%20%7B%200x00B5%2C%200x00B5%20%7D%2C%0A%20%7B%200x00B7%2C%200x00B7%20%7D%2C%0A%20......%0A%20......%0A%20......%0A%20%7B%200x3105%2C%200x312C%20%7D%2C%0A%20%7B%200x4E00%2C%200x9FA5%20%7D%2C%0A%20%7B%200xAC00%2C%200xD7A3%20%7D%2C%0A%20%20%20%20%7D%3B%0A%20%20%20%20if%20(u%20%3E%200xD7A3)%0A%20goto%20Lisnot%3B%0A%0A%20%20%20%2F%2F%20Binary%20search%0A%20%20%20%20int%20mid%3B%0A%20%20%20%20int%20low%3B%0A%20%20%20%20int%20high%3B%0A%0A%20%20low%20%3D%200%3B%0A%20%20%20%20high%20%3D%20sizeof(table)%20%2F%20sizeof(table%5B0%5D)%20-%201%3B%0A%20%20%20%20while%20(low%20%3C%3D%20high)%0A%20%20%20%20%7B%0A%20mid%20%3D%20(low%20%2B%20high)%20%3E%3E%201%3B%0A%20if%20(u%20%3C%20table%5Bmid%5D%5B0%5D)%0A%20%20%20%20%20high%20%3D%20mid%20-%201%3B%0A%20else%20if%20(u%20%3E%20table%5Bmid%5D%5B1%5D)%0A%20%20%20%20%20low%20%3D%20mid%20%2B%201%3B%0A%20else%0A%20%20%20%20%20goto%20Lis%3B%0A%20%20%20%20%7D%0A%0ALisnot%3A%0A%20%20%20%20return%200%3B%0A%0ALis%3A%0A%20%20%20%20return%201%3B%0A%7D%0A%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-c" start="1"><li><span><span class="keyword">int</span><span>&nbsp;isUniAlpha(unsigned&nbsp;u)&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;unsigned&nbsp;</span><span class="keyword">short</span><span>&nbsp;table[][2]&nbsp;=&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;{&nbsp;0x00AA,&nbsp;0x00AA&nbsp;},&nbsp;&nbsp;</span></li><li><span>&nbsp;{&nbsp;0x00B5,&nbsp;0x00B5&nbsp;},&nbsp;&nbsp;</span></li><li><span>&nbsp;{&nbsp;0x00B7,&nbsp;0x00B7&nbsp;},&nbsp;&nbsp;</span></li><li><span>&nbsp;......&nbsp;&nbsp;</span></li><li><span>&nbsp;......&nbsp;&nbsp;</span></li><li><span>&nbsp;......&nbsp;&nbsp;</span></li><li><span>&nbsp;{&nbsp;0x3105,&nbsp;0x312C&nbsp;},&nbsp;&nbsp;</span></li><li><span>&nbsp;{&nbsp;0x4E00,&nbsp;0x9FA5&nbsp;},&nbsp;&nbsp;</span></li><li><span>&nbsp;{&nbsp;0xAC00,&nbsp;0xD7A3&nbsp;},&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;};&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(u&nbsp;&gt;&nbsp;0xD7A3)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;<span class="keyword">goto</span><span>&nbsp;Lisnot;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Binary&nbsp;search</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span><span>&nbsp;mid;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span><span>&nbsp;low;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span><span>&nbsp;high;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;low&nbsp;=&nbsp;0;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;high&nbsp;=&nbsp;<span class="keyword">sizeof</span><span>(table)&nbsp;/&nbsp;</span><span class="keyword">sizeof</span><span>(table[0])&nbsp;-&nbsp;1;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">while</span><span>&nbsp;(low&nbsp;&lt;=&nbsp;high)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;mid&nbsp;=&nbsp;(low&nbsp;+&nbsp;high)&nbsp;&gt;&gt;&nbsp;1;&nbsp;&nbsp;</span></li><li><span>&nbsp;<span class="keyword">if</span><span>&nbsp;(u&nbsp;&lt;&nbsp;table[mid][0])&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;high&nbsp;=&nbsp;mid&nbsp;-&nbsp;1;&nbsp;&nbsp;</span></li><li><span>&nbsp;<span class="keyword">else</span><span>&nbsp;</span><span class="keyword">if</span><span>&nbsp;(u&nbsp;&gt;&nbsp;table[mid][1])&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;low&nbsp;=&nbsp;mid&nbsp;+&nbsp;1;&nbsp;&nbsp;</span></li><li><span>&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">goto</span><span>&nbsp;Lis;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>Lisnot:&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;0;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>Lis:&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;1;&nbsp;&nbsp;</span></span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="csharp">int isUniAlpha(unsigned u)
+{
+    static unsigned short table[][2] =
+    {
+ { 0x00AA, 0x00AA },
+ { 0x00B5, 0x00B5 },
+ { 0x00B7, 0x00B7 },
+ ......
+ ......
+ ......
+ { 0x3105, 0x312C },
+ { 0x4E00, 0x9FA5 },
+ { 0xAC00, 0xD7A3 },
+    };
+    if (u &gt; 0xD7A3)
+ goto Lisnot;
+
+   // Binary search
+    int mid;
+    int low;
+    int high;
+
+  low = 0;
+    high = sizeof(table) / sizeof(table[0]) - 1;
+    while (low &lt;= high)
+    {
+ mid = (low + high) &gt;&gt; 1;
+ if (u &lt; table[mid][0])
+     high = mid - 1;
+ else if (u &gt; table[mid][1])
+     low = mid + 1;
+ else
+     goto Lis;
+    }
+
+Lisnot:
+    return 0;
+
+Lis:
+    return 1;
+}
+
+</pre><p>&nbsp;&nbsp;</p><p>&nbsp;</p><p>　　但是，怎么让 Grammatica 在分析过程中调用类似的函数，却是一点儿头绪也没有。虽然，理论上来说，用正则表达式，也可以表示上面的逻辑，不过，200多行的数据，要都转成正则表达式，不止运行速度慢，就只是转换的工作量，也让人不可接受。</p><p>&nbsp;</p><p>　　而后，对于 D 中 string interger 和 float 的转换，再次发现 Grammatica 这种只用正则表达式的方式的严重不足，终于决定放弃 Grammatica。</p><p>&nbsp;</p><p>　　本来，最好的办法其实是使用 dmd 的前端的源代码来解析，不过，几乎 1.6M 的代码，没有任何文档，都读过一遍的话，黄花菜都凉了。</p><p>&nbsp;</p><p>　
+　一直不想用 ANTLR 的原因，是语法文件和嵌入的代码混编，看起来杂乱无章，但是 ANTLR
+的强大和社区的活跃确实是很吸引人的。于是，决定用 ANTLR 来写 D Parser。（看到还有一个叫 coco/r 的生成器，据说比
+ANTLR 清晰，不过也有语法能力不如 ANTLR 的问题，所以暂时也不考虑了。）</p><p>&nbsp;</p><p>　　同样的，四则运算是一个比较好的例子，从 ANTLR 的主页的“五分钟教程”中，找到一个四则运算的语法文件，看了一下，不嵌入代码的话，还挺清晰的。既然用 ANTLR，就要体验一下它自动建立抽象语法树的能力，把那个语法文件做了一些修改，成为这个样子：</p><p>&nbsp;</p><div class="dp-highlighter"><div class="bar"><div class="tools">Csharp代码 <embed src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/clipboard_new.swf" flashvars="clipboard=grammar%20SimpleCalc%3B%0A%0Aoptions%20%7B%0A%20%20%20%20language%3DCSharp%3B%0A%20%20%20%20output%3DAST%3B%0A%20%20%20%20ASTLabelType%3DCommonTree%3B%0A%7D%0A%0Atokens%20%7B%0A%20%20%20%20PLUS%20%20%20%20%20%3D%20'%2B'%20%3B%0A%20%20%20%20MINUS%20%20%20%20%3D%20'-'%20%3B%0A%20%20%20%20MULT%20%20%20%20%20%3D%20'*'%20%3B%0A%20%20%20%20DIV%20%20%20%20%20%20%3D%20'%2F'%20%3B%0A%7D%0A%0A%40members%20%7B%0A%7D%0A%0A%2F*------------------------------------------------------------------%0A%20*%20PARSER%20RULES%0A%20*------------------------------------------------------------------*%2F%0A%0Aexpr%20%20%20%20%3A%20term%20(%20(%20PLUS%5E%20%7C%20MINUS%5E%20)%20%20term%20)*%20%3B%0Aterm%20%20%20%20%3A%20factor%20(%20(%20MULT%5E%20%7C%20DIV%5E%20)%20factor%20)*%20%3B%0Afactor%20%20%3A%20NUMBER%20%7C%20'('%20expr%20')'%20-%3E%20expr%20%3B%0A%0A%2F*------------------------------------------------------------------%0A%20*%20LEXER%20RULES%0A%20*------------------------------------------------------------------*%2F%0A%0ANUMBER%20%20%20%20%20%3A%20(DIGIT)%2B%20%3B%0AWHITESPACE%20%3A%20(%20'%5Ct'%20%7C%20'%20'%20%7C%20'%5Cr'%20%7C%20'%5Cn'%7C%20'%5Cu000C'%20)%2B%20%20%20%20%20%7B%20%24channel%20%3D%20HIDDEN%3B%20%7D%20%3B%0Afragment%20DIGIT%20%20%20%20%3A%20'0'..'9'%20%3B%0A%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-c" start="1"><li><span><span>grammar&nbsp;SimpleCalc;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>options&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;language=CSharp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;output=AST;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ASTLabelType=CommonTree;&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>tokens&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;PLUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">'+'</span><span>&nbsp;;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;MINUS&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">'-'</span><span>&nbsp;;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;MULT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">'*'</span><span>&nbsp;;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;DIV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;<span class="string">'/'</span><span>&nbsp;;&nbsp;&nbsp;</span></span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>@members&nbsp;{&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="comment">/*------------------------------------------------------------------</span>&nbsp;</span></li><li><span><span class="comment">&nbsp;*&nbsp;PARSER&nbsp;RULES</span>&nbsp;</span></li><li><span><span class="comment">&nbsp;*------------------------------------------------------------------*/</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>expr&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;term&nbsp;(&nbsp;(&nbsp;PLUS^&nbsp;|&nbsp;MINUS^&nbsp;)&nbsp;&nbsp;term&nbsp;)*&nbsp;;&nbsp;&nbsp;</span></li><li><span>term&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;factor&nbsp;(&nbsp;(&nbsp;MULT^&nbsp;|&nbsp;DIV^&nbsp;)&nbsp;factor&nbsp;)*&nbsp;;&nbsp;&nbsp;</span></li><li><span>factor&nbsp;&nbsp;:&nbsp;NUMBER&nbsp;|&nbsp;<span class="string">'('</span><span>&nbsp;expr&nbsp;</span><span class="string">')'</span><span>&nbsp;-&gt;&nbsp;expr&nbsp;;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="comment">/*------------------------------------------------------------------</span>&nbsp;</span></li><li><span><span class="comment">&nbsp;*&nbsp;LEXER&nbsp;RULES</span>&nbsp;</span></li><li><span><span class="comment">&nbsp;*------------------------------------------------------------------*/</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>NUMBER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;(DIGIT)+&nbsp;;&nbsp;&nbsp;</span></li><li><span>WHITESPACE&nbsp;:&nbsp;(&nbsp;<span class="string">'\t'</span><span>&nbsp;|&nbsp;</span><span class="string">'&nbsp;'</span><span>&nbsp;|&nbsp;</span><span class="string">'\r'</span><span>&nbsp;|&nbsp;</span><span class="string">'\n'</span><span>|&nbsp;</span><span class="string">'\u000C'</span><span>&nbsp;)+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;$channel&nbsp;=&nbsp;HIDDEN;&nbsp;}&nbsp;;&nbsp;&nbsp;</span></span></li><li><span>fragment&nbsp;DIGIT&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<span class="string">'0'</span><span>..</span><span class="string">'9'</span><span>&nbsp;;&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="csharp">grammar SimpleCalc;
+
+options {
+    language=CSharp;
+    output=AST;
+    ASTLabelType=CommonTree;
+}
+
+tokens {
+    PLUS     = '+' ;
+    MINUS    = '-' ;
+    MULT     = '*' ;
+    DIV      = '/' ;
+}
+
+@members {
+}
+
+/*------------------------------------------------------------------
+ * PARSER RULES
+ *------------------------------------------------------------------*/
+
+expr    : term ( ( PLUS^ | MINUS^ )  term )* ;
+term    : factor ( ( MULT^ | DIV^ ) factor )* ;
+factor  : NUMBER | '(' expr ')' -&gt; expr ;
+
+/*------------------------------------------------------------------
+ * LEXER RULES
+ *------------------------------------------------------------------*/
+
+NUMBER     : (DIGIT)+ ;
+WHITESPACE : ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+     { $channel = HIDDEN; } ;
+fragment DIGIT    : '0'..'9' ;
+
+</pre><p>&nbsp;&nbsp;</p><p>&nbsp;</p><p>　　做了修改的地方是，1.让它输出 AST，2.把运算符提取为根，3.支持括号。</p><p>&nbsp;</p><p>　　生成文件后，在 Program 文件中加入创建分析器的代码，再加入深度优先的语法树访问函数，以及运算部分如下：</p><p>&nbsp;</p><div class="dp-highlighter"><div class="bar"><div class="tools">Csharp代码 <embed src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/clipboard_new.swf" flashvars="clipboard=using%20System%3B%0Ausing%20System.Collections.Generic%3B%0Ausing%20System.Text%3B%0Ausing%20Antlr.Runtime%3B%0Ausing%20Antlr.Runtime.Tree%3B%0A%0Anamespace%20Expr%0A%7B%0A%20%20%20%20class%20Program%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20private%20static%20Stack%3Cint%3E%20numbers%20%3D%20new%20Stack%3Cint%3E()%3B%0A%0A%20%20%20%20%20%20%20static%20void%20Main(string%5B%5D%20args)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20SimpleCalcLexer%20lex%20%3D%20new%20SimpleCalcLexer(new%20ANTLRFileStream(args%5B0%5D))%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20CommonTokenStream%20tokens%20%3D%20new%20CommonTokenStream(lex)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20SimpleCalcParser%20parser%20%3D%20new%20SimpleCalcParser(tokens)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20try%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20CommonTree%20ct%20%3D%20(CommonTree)parser.expr().Tree%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20VisitTree(ct)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Console.WriteLine(%22The%20result%20is%3A%20%7B0%7D%22%2C%20numbers.Pop())%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Console.Read()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20catch%20(RecognitionException%20e)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Console.Error.WriteLine(e.StackTrace)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20static%20void%20VisitTree(ITree%20it)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20(int%20i%20%3D%200%3B%20i%20%3C%20it.ChildCount%3B%20i%2B%2B)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ITree%20c%20%3D%20it.GetChild(i)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20VisitTree(c)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20switch%20(it.Type)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20SimpleCalcLexer.PLUS%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20SimpleCalcLexer.MINUS%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20SimpleCalcLexer.MULT%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20SimpleCalcLexer.DIV%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Operation(it.Text%2C%20numbers.Pop()%2C%20numbers.Pop())%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20SimpleCalcLexer.NUMBER%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20numbers.Push(int.Parse(it.Text))%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20static%20void%20Operation(string%20opCode%2C%20int%20v2%2C%20int%20v1)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20int%20result%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20switch%20(opCode)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20%22%2B%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20result%20%3D%20v1%20%2B%20v2%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20%22-%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20result%20%3D%20v1%20-%20v2%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20%22*%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20result%20%3D%20v1%20*%20v2%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20case%20%22%2F%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20result%20%3D%20v1%20%2F%20v2%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20throw%20new%20Exception()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20Console.WriteLine(%22%7B1%7D%20%7B0%7D%20%7B2%7D%20%3D%20%7B3%7D%22%2C%20opCode%2C%20v1%2C%20v2%2C%20result)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20numbers.Push(result)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%7D%0A%0A" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-c" start="1"><li><span><span class="keyword">using</span><span>&nbsp;System;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;System.Collections.Generic;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;System.Text;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;Antlr.Runtime;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;Antlr.Runtime.Tree;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">namespace</span><span>&nbsp;Expr&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">class</span><span>&nbsp;Program&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;Stack&lt;</span><span class="keyword">int</span><span>&gt;&nbsp;numbers&nbsp;=&nbsp;</span><span class="keyword">new</span><span>&nbsp;Stack&lt;</span><span class="keyword">int</span><span>&gt;();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;Main(</span><span class="keyword">string</span><span>[]&nbsp;args)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimpleCalcLexer&nbsp;lex&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;SimpleCalcLexer(</span><span class="keyword">new</span><span>&nbsp;ANTLRFileStream(args[0]));&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTokenStream&nbsp;tokens&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;CommonTokenStream(lex);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimpleCalcParser&nbsp;parser&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;SimpleCalcParser(tokens);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">try</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTree&nbsp;ct&nbsp;=&nbsp;(CommonTree)parser.expr().Tree;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisitTree(ct);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="string">"The&nbsp;result&nbsp;is:&nbsp;{0}"</span><span>,&nbsp;numbers.Pop());&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.Read();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">catch</span><span>&nbsp;(RecognitionException&nbsp;e)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.Error.WriteLine(e.StackTrace);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;VisitTree(ITree&nbsp;it)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;(</span><span class="keyword">int</span><span>&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;it.ChildCount;&nbsp;i++)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ITree&nbsp;c&nbsp;=&nbsp;it.GetChild(i);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisitTree(c);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">switch</span><span>&nbsp;(it.Type)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;SimpleCalcLexer.PLUS:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;SimpleCalcLexer.MINUS:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;SimpleCalcLexer.MULT:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;SimpleCalcLexer.DIV:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operation(it.Text,&nbsp;numbers.Pop(),&nbsp;numbers.Pop());&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;SimpleCalcLexer.NUMBER:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numbers.Push(<span class="keyword">int</span><span>.Parse(it.Text));&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;Operation(</span><span class="keyword">string</span><span>&nbsp;opCode,&nbsp;</span><span class="keyword">int</span><span>&nbsp;v2,&nbsp;</span><span class="keyword">int</span><span>&nbsp;v1)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span><span>&nbsp;result;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">switch</span><span>&nbsp;(opCode)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;</span><span class="string">"+"</span><span>:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;v1&nbsp;+&nbsp;v2;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;</span><span class="string">"-"</span><span>:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;v1&nbsp;-&nbsp;v2;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;</span><span class="string">"*"</span><span>:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;v1&nbsp;*&nbsp;v2;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;</span><span class="string">"/"</span><span>:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;v1&nbsp;/&nbsp;v2;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">default</span><span>:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throw</span><span>&nbsp;</span><span class="keyword">new</span><span>&nbsp;Exception();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="string">"{1}&nbsp;{0}&nbsp;{2}&nbsp;=&nbsp;{3}"</span><span>,&nbsp;opCode,&nbsp;v1,&nbsp;v2,&nbsp;result);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numbers.Push(result);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="csharp">using System;
+using System.Collections.Generic;
+using System.Text;
+using Antlr.Runtime;
+using Antlr.Runtime.Tree;
+
+namespace Expr
+{
+    class Program
+    {
+        private static Stack&lt;int&gt; numbers = new Stack&lt;int&gt;();
+
+       static void Main(string[] args)
+        {
+            SimpleCalcLexer lex = new SimpleCalcLexer(new ANTLRFileStream(args[0]));
+            CommonTokenStream tokens = new CommonTokenStream(lex);
+            SimpleCalcParser parser = new SimpleCalcParser(tokens);
+
+           try
+            {
+                CommonTree ct = (CommonTree)parser.expr().Tree;
+                VisitTree(ct);
+                Console.WriteLine("The result is: {0}", numbers.Pop());
+                Console.Read();
+            }
+            catch (RecognitionException e)
+            {
+                Console.Error.WriteLine(e.StackTrace);
+            }
+        }
+
+       static void VisitTree(ITree it)
+        {
+            for (int i = 0; i &lt; it.ChildCount; i++)
+            {
+                ITree c = it.GetChild(i);
+                VisitTree(c);
+            }
+            switch (it.Type)
+            {
+                case SimpleCalcLexer.PLUS:
+                case SimpleCalcLexer.MINUS:
+                case SimpleCalcLexer.MULT:
+                case SimpleCalcLexer.DIV:
+                    Operation(it.Text, numbers.Pop(), numbers.Pop());
+                    break;
+                case SimpleCalcLexer.NUMBER:
+                    numbers.Push(int.Parse(it.Text));
+                    break;
+            }
+        }
+
+    static void Operation(string opCode, int v2, int v1)
+        {
+            int result;
+            switch (opCode)
+            {
+                case "+":
+                    result = v1 + v2;
+                    break;
+                case "-":
+                    result = v1 - v2;
+                    break;
+                case "*":
+                    result = v1 * v2;
+                    break;
+                case "/":
+                    result = v1 / v2;
+                    break;
+                default:
+                    throw new Exception();
+            }
+            Console.WriteLine("{1} {0} {2} = {3}", opCode, v1, v2, result);
+            numbers.Push(result);
+        }
+    }
+}
+
+</pre><p>&nbsp;</p><p>&nbsp;</p><p>　　上面的代码，除了运算之外，还会把每一个计算步骤打印出来，在输入文件中输入“5-(3-2)+6*7”，编译运行程序，得到结果：</p><p>&nbsp;</p><div class="quote_div">3 - 2 = 1 <br>5 - 1 = 4 <br>6 * 7 = 42 <br>4 + 42 = 46 <br>The result is: 46</div><p>&nbsp;</p><p>　　ANTLR 帮助建立 AST 的功能确实很舒服，而且例子也多，嗯，以后就用它了。<img title="smile" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/icon_smile.gif" alt="smile" border="0"></p>
+  </div>
+
+  <div>
+<script type="text/javascript">
+google_ad_client = "pub-9971846879634397";
+google_ad_slot = "8644581328";
+google_ad_width = 468;
+google_ad_height = 60;
+</script>
+<script type="text/javascript" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/show_ads.js">
+</script><script src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/expansion_embed.js"></script><script src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 60px; position: relative; visibility: visible; width: 468px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 60px; position: relative; visibility: visible; width: 468px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/ads.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="60" width="468"></iframe></ins></ins>
+</div>
+
+  <div id="digg_bottom" class="clearfix"><a href="#" onclick='digg("blogs", 156170, false);return false;'><div><strong>1</strong> <br>顶</div></a><a href="#" onclick='digg("blogs", 156170, true);return false;'><div><strong>0</strong> <br>踩</div></a></div>
+  
+  
+  
+    
+  <div class="blog_bottom">
+    <ul>
+      <li>17:48</li>
+      <li>浏览 (1386)</li>
+            <li><a href="#comments">评论</a> (2)</li>
+      
+      <li>发布在 <a href="http://dlang.group.javaeye.com/"> D语言</a> 圈子
+      
+        </li><li><a href="http://app.javaeye.com/links?user_favorite%5Btitle%5D=%E7%94%A8+ANTLR+%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8&amp;user_favorite%5Burl%5D=http%3A%2F%2Fllf.javaeye.com%2Fblog%2F156170" target="_blank" class="favorite">收藏</a></li>
+        
+      
+      
+      <li class="last"><a href="http://www.javaeye.com/wiki/topic/156170" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    <div id="bc448929">
+  <div class="comment_title">
+    2 楼
+    <a href="http://llf.javaeye.com/" target="_blank">梁利锋</a>
+    2008-01-15&nbsp;&nbsp;
+    <a href="#" onclick="quote_comment(448929);return false;">引用</a>
+    
+  </div>
+  <div class="comment_content">也是。不过 C# 圈子好像没什么人气&nbsp;<img src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/icon_wink.gif"> </div>
+</div>
+<div id="bc448913">
+  <div class="comment_title">
+    1 楼
+    <a href="http://oldrev.javaeye.com/" target="_blank">oldrev</a>
+    2008-01-15&nbsp;&nbsp;
+    <a href="#" onclick="quote_comment(448913);return false;">引用</a>
+    
+  </div>
+  <div class="comment_content">呵呵，老实说这4篇post其实应该发到 C# 圈子里</div>
+</div>
+
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+          
+      
+        <a href="http://llf.javaeye.com/index/forum_certify" target="_blank">完成论坛规则小测验以后，您才能在论坛发帖和回复。</a>
+      
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'Post'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);}
+    });
+  }
+</script>
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+            <div id="blog_owner_logo"><a href="http://llf.javaeye.com/"><img alt="梁利锋的博客" class="logo" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/d920e68b-2fee-35d1-80e3-52cc1bcdb371.png" title="梁利锋的博客: 点睛工作室"></a></div>
+            <div id="blog_owner_name">梁利锋</div>
+          </div>
+          
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 24319 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/icon_minigender_1.gif" title="男"></li>
+              <li>来自: 北京</li>
+              <li><img src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/offline.gif"></li>
+              <li>
+                <a href="http://llf.javaeye.com/blog/profile" class="profile">详细资料</a>
+                <a href="http://llf.javaeye.com/blog/guest_book" class="guest_book">留言簿</a>
+              </li>
+              
+                <li>
+                  <a href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=%E6%A2%81%E5%88%A9%E9%94%8B" class="message" title="发送站内短信">发短消息</a>
+                  
+                    <a href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=%E6%A2%81%E5%88%A9%E9%94%8B" class="subscription" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;">订阅</a>
+                  
+                </li>
+              
+            </ul>
+            <h5>搜索本博客</h5>
+            <form action="/blog/search" method="get">              <input class="text" id="query" name="query" style="margin-left: 10px; width: 110px;" type="text">
+              <input class="submit" value="搜索" type="submit">
+            </form>          </div>
+          
+            <div id="user_visits" class="clearfix">
+              <h5>最近访客 <span style="font-weight: normal; font-size: 12px; padding-left: 30px;"><a href="http://llf.javaeye.com/blog/user_visits">&gt;&gt;更多访客</a></span></h5>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://cnshirui.javaeye.com/" target="_blank"><img alt="cnshirui的博客" class="logo" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/user-logo-thumb.gif" title="cnshirui的博客: "></a></div>
+                  <div class="left"><a href="http://cnshirui.javaeye.com/" target="_blank">cnshirui</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://kaiwei-chen9988-126-com.javaeye.com/" target="_blank"><img alt="感恩的心的博客" class="logo" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/f554ab2f-f3df-3542-92c5-df956b0d62b1-thumb.jpg" title="感恩的心的博客: "></a></div>
+                  <div class="left"><a href="http://kaiwei-chen9988-126-com.javaeye.com/" target="_blank">感恩的心</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://wangyu.javaeye.com/" target="_blank"><img alt="wangyu的博客" class="logo" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/ab53bb5b-811b-3768-8d30-26bdc00091f3-thumb.jpg" title="wangyu的博客: 用心做事，诚信做人！"></a></div>
+                  <div class="left"><a href="http://wangyu.javaeye.com/" target="_blank">wangyu</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://daisky.javaeye.com/" target="_blank"><img alt="daisky的博客" class="logo" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/user-logo-thumb.gif" title="daisky的博客: daisky"></a></div>
+                  <div class="left"><a href="http://daisky.javaeye.com/" target="_blank">daisky</a></div>
+                </div>
+              
+            </div>
+          
+                      <div id="blog_menu">
+              <h5>博客分类</h5>
+              <ul>
+                <li><a href="http://llf.javaeye.com/">全部博客 (32)</a></li>
+                
+              </ul>
+            </div>
+            
+            
+            <div id="blog_others">
+              <h5>其他分类</h5>
+              <ul>
+                <li><a href="http://llf.javaeye.com/blog/favorite">我的收藏</a> (0)</li>
+                                                <li><a href="http://llf.javaeye.com/blog/forum">我的论坛帖子</a> (1)</li>
+                <li><a href="http://llf.javaeye.com/blog/article">我的精华良好贴</a> (0)</li>
+                              </ul>
+            </div>
+            
+            <div id="recent_groups">
+              <h5>最近加入圈子</h5>
+              <ul>
+                
+                  <li><a href="http://seam.group.javaeye.com/">JBoss SEAM</a></li>
+                
+                  <li><a href="http://wfp.group.javaeye.com/">函数式编程の道</a></li>
+                
+                  <li><a href="http://hzjavaeyer.group.javaeye.com/">javascript研究小组</a></li>
+                
+                  <li><a href="http://ubuntu.group.javaeye.com/">Ubuntu For Fun</a></li>
+                
+                  <li><a href="http://dlang.group.javaeye.com/"> D语言</a></li>
+                
+              </ul>
+            </div>
+            
+              <div id="user_links">
+                <h5>链接</h5>
+                <ul>
+                  
+                    <li><a href="http://llf.hanzify.org/" target="_blank">主页</a></li>
+                  
+                    <li><a href="http://www.codeplex.com/DbEntry" target="_blank">DbEntry.Net</a></li>
+                  
+                    <li><a href="http://libudi.javaeye.com/" target="_blank">libudi</a></li>
+                  
+                </ul>
+              </div>
+            
+            
+                          <div id="month_blogs">
+                <h5>存档</h5>
+                <ul>
+                  
+                    <li><a href="http://llf.javaeye.com/blog/monthblog/2009-08">2009-08</a> (1)</li>
+                  
+                    <li><a href="http://llf.javaeye.com/blog/monthblog/2008-12">2008-12</a> (2)</li>
+                  
+                    <li><a href="http://llf.javaeye.com/blog/monthblog/2008-11">2008-11</a> (1)</li>
+                  
+                  <li><a href="http://llf.javaeye.com/blog/monthblog_more">更多存档...</a></li>
+                </ul>
+              </div>
+                        <div id="recent_comments">
+              <h5>最新评论</h5>
+              <ul>
+                
+                  <li>
+                    <a href="http://llf.javaeye.com/blog/157507#comments" title="D 语言的子集的 Z 编译器">D 语言的子集的 Z 编译器</a><br>
+                    之前是使用 Grammatica <br>
+                    -- by <a href="http://llf.javaeye.com/" target="_blank">梁利锋</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://llf.javaeye.com/blog/157507#comments" title="D 语言的子集的 Z 编译器">D 语言的子集的 Z 编译器</a><br>
+                    之前是使用什么编译器工具？ANTLR的确是很爽啊<br>
+                    -- by <a href="http://jintan.javaeye.com/" target="_blank">jintan</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://llf.javaeye.com/blog/218421#comments" title="DbEntry.Net 3.5">DbEntry.Net 3.5</a><br>
+                    刚刚开始尝试使用DbEntry.net,确实是简单实用的工具。没想到在java看到 ...<br>
+                    -- by <a href="http://mshijie.javaeye.com/" target="_blank">mshijie</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://llf.javaeye.com/blog/123999#comments" title="玩了一会儿 SQL Server Compact 3.5">玩了一会儿 SQL Server Co ...</a><br>
+                    我刚才也发现了，搜到了你的文章，真是败笔呀。<br>
+                    -- by <a href="http://yukaizhao.javaeye.com/" target="_blank">yukaizhao</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://llf.javaeye.com/blog/210724#comments" title="Visual Studio 2008 的缺省文件代码页">Visual Studio 2008 的缺 ...</a><br>
+                    看了几个自己写的项目，发现cs文件的代码页都是utf-8带签名的，不知道我看到代码 ...<br>
+                    -- by <a href="http://llf.javaeye.com/" target="_blank">梁利锋</a>
+                  </li>
+                
+              </ul>
+            </div>
+            <div id="comments_top">
+              <h5>评论排行榜</h5>
+              <ul>
+                
+                  <li><a href="http://llf.javaeye.com/blog/301090" title="portable cygwin 和 portable ssh">portable cygwin 和 portable ssh</a></li>
+                
+                  <li><a href="http://llf.javaeye.com/blog/291116" title="扩展方法中的一个小技巧">扩展方法中的一个小技巧</a></li>
+                
+                  <li><a href="http://llf.javaeye.com/blog/267902" title="C# 4.0 可选参数 一想">C# 4.0 可选参数 一想</a></li>
+                
+                  <li><a href="http://llf.javaeye.com/blog/438220" title="WM今日插件开发手记">WM今日插件开发手记</a></li>
+                
+              </ul>
+            </div>
+            <div id="rss">
+              <ul>
+                <li><a href="http://llf.javaeye.com/rss" target="_blank"><img alt="Rss" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/rss.png"></a></li>
+                <li><a href="http://fusion.google.com/add?feedurl=http://llf.javaeye.com/rss" target="_blank"><img alt="Rss_google" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/rss_google.gif"></a></li>
+                <li><a href="http://www.zhuaxia.com/add_channel.php?url=http://llf.javaeye.com/rss" target="_blank"><img alt="Rss_zhuaxia" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/rss_zhuaxia.gif"></a></li>
+                <li><a href="http://www.xianguo.com/subscribe.php?url=http://llf.javaeye.com/rss" target="_blank"><img alt="Rss_xianguo" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/rss_xianguo.jpg"></a></li>
+                <li><a href="http://www.google.com/search?hl=zh-CN&amp;q=RSS">[什么是RSS?]</a></li>
+              </ul>
+            </div>
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr>
+          声明：JavaEye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br>
+          © 2003-2009 JavaEye.com.   All rights reserved. 上海炯耐计算机软件有限公司 [ 沪ICP备05023328号 ]
+        </div>
+      </div>
+    </div>
+    
+  <div id="chat_input" style="display: none;">
+    <iframe id="chat_iframe" marginwidth="0" marginheight="0" allowtransparency="true" scrolling="no" frameborder="0"></iframe>
+  </div>
+  <div id="chat_button"><a href="#" style="text-decoration: none; color: black;" onclick="$('chat_input').show();$('chat_iframe').src='/chat/widget';return false;">说点啥吧 <img alt="Chat" src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/chat.gif"></a></div>
+
+<script type="text/javascript">
+  document.write("<img src='http://stat.javaeye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&logged_in=yes" + "' width='0' height='0' />");
+</script><img src="%E7%94%A8%20ANTLR%20%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97%E5%99%A8_files/a.gif" height="0" width="0">
+    
+  </body></html>

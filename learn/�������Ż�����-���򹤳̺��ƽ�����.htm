@@ -1,0 +1,464 @@
+<html><head>
+
+<title>编译器优化分析-逆向工程和破解适用</title>
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<link rel="stylesheet" href="%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90-%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%92%8C%E7%A0%B4%E8%A7%A3%E9%80%82%E7%94%A8_files/css.css" type="text/css">
+<meta name="keywords" content="看雪技术论坛(www.pediy.com)">
+</head><body background="%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90-%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%92%8C%E7%A0%B4%E8%A7%A3%E9%80%82%E7%94%A8_files/back.gif" bgcolor="#ffffff" text="#000000">
+<p><font color="blue"><span class="pediy">标 题:</span></font><span class="pediy"><span class="pediy"><span class="pediy"> 
+  编译器优化分析-逆向工程和破解适用<br>
+  <font color="blue">作 者: </font>foxabu<br>
+  <font color="blue">时 间: </font><font color="#666686">2006-07-09 17:17 
+  </font><br><font color="blue">链 接: </font><font color="#999999"><a href="http://bbs.pediy.com/showthread.php?threadid=28717"><font color="#666686">http://bbs.pediy.com/showthread.php?threadid=28717</font></a></font>
+  <br>
+  <font color="blue">详细信息:</font> </span></span></span></p>
+<blockquote> 
+  <p class="pediy">DFCGVC<font color="#008000">编译器优化分析-逆向工程和破解适用。[color]<br>
+    EVE[color=#008000]跃迁。。5个跳跃，，趁这个时间我写点东西。</font><br>
+    <font color="#008000">希望能够对编程不是很熟悉的逆向工程者一些帮助</font><br>
+    <font color="#008000">一样以VC8编译器为例，有可能穿插一点&nbsp;Inter编译器。</font><br>
+    Release<font color="#008000">为主。&nbsp;Debug版本基本都看得懂而且，一般也不会用Debug版本发布软件。</font><br>
+    1.&nbsp;&nbsp;<font color="#008000">先从函数框架说起走</font><br>
+    <font color="#008000">代码这样子：</font><br>
+    <br>
+    #include&nbsp;<font color="#808080">"stdafx.h"</font><br>
+    #include&nbsp;&lt;stdlib.h&gt;<br>
+    void&nbsp;study1()<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;char&nbsp;<font color="#0000d0">str</font>[10]<font color="#008000">;</font><br>
+    &nbsp;&nbsp;gets(<font color="#0000d0">str</font>)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;printf(<font color="#808080">"你输入的内容是\n%s"</font>,<font color="#0000d0">str</font>)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3&nbsp;&nbsp;}<br>
+    <font color="#0000d0">int</font>&nbsp;_tmain(<font color="#0000d0">int</font>&nbsp;argc,&nbsp;_TCHAR*&nbsp;argv[])<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;study1()<font color="#008000">;</font><br>
+    &nbsp;&nbsp;system(<font color="#808080">"PAUSE"</font>)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;return&nbsp;0<font color="#008000">;</font><br>
+    &nbsp;&nbsp;}<br>
+    <br>
+    <font color="#008000">默认情况Release编译吧。以两个__ASM&nbsp;int&nbsp;3之间为代码</font><br>
+    <font color="#008000">汇编代码：</font><br>
+    #include&nbsp;<font color="#808080">"stdafx.h"</font><br>
+    #include&nbsp;&lt;stdlib.h&gt;<br>
+    void&nbsp;study1()<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;char&nbsp;<font color="#0000d0">str</font>[10]<font color="#008000">;</font><br>
+    &nbsp;&nbsp;gets(<font color="#0000d0">str</font>)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;printf(<font color="#808080">"你输入的内容是\n%s"</font>,<font color="#0000d0">str</font>)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;}<br>
+    <font color="#0000d0">int</font>&nbsp;_tmain(<font color="#0000d0">int</font>&nbsp;argc,&nbsp;_TCHAR*&nbsp;argv[])<br>
+    &nbsp;&nbsp;{<br>
+    00401000&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,10h&nbsp;<br>
+    00401003&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[___security_cookie&nbsp;(403000h)]&nbsp;<br>
+    00401008&nbsp;&nbsp;<font color="#0000d0">xor</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">esp</font>&nbsp;<br>
+    0040100A&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">esp</font>+0Ch],<font color="#ff0000">eax</font>&nbsp;<br>
+    &nbsp;&nbsp;study1()<font color="#008000">;</font><br>
+    0040100E&nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    0040100F&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,[<font color="#ff0000">esp</font>]&nbsp;<br>
+    00401012&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;<br>
+    00401013&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[__imp__gets&nbsp;(4020A4h)]&nbsp;<br>
+    00401019&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>,[<font color="#ff0000">esp</font>+4]&nbsp;<br>
+    0040101D&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>&nbsp;&nbsp;<br>
+    0040101E&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">offset</font>&nbsp;string&nbsp;<font color="#808080">"\xc4\xe3\xca\xe4\xc8\xebbbbbbbbbbbb"</font>&nbsp;(4020F4h)&nbsp;<br>
+    00401023&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[__imp__printf&nbsp;(40209Ch)]&nbsp;<br>
+    00401029&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,0Ch&nbsp;<br>
+    0040102C&nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    &nbsp;&nbsp;system(<font color="#808080">"PAUSE"</font>)<font color="#008000">;</font><br>
+    0040102D&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">offset</font>&nbsp;string&nbsp;<font color="#808080">"PAUSE"</font>&nbsp;(402108h)&nbsp;<br>
+    00401032&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[__imp__system&nbsp;(402098h)]&nbsp;<br>
+    &nbsp;&nbsp;return&nbsp;0<font color="#008000">;</font><br>
+    &nbsp;&nbsp;}<br>
+    00401038&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">esp</font>+10h]&nbsp;<br>
+    0040103C&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,4&nbsp;<br>
+    0040103F&nbsp;&nbsp;<font color="#0000d0">xor</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">esp</font>&nbsp;<br>
+    00401041&nbsp;&nbsp;<font color="#0000d0">xor</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">eax</font>&nbsp;<br>
+    00401043&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__security_check_cookie&nbsp;(40104Ch)&nbsp;<br>
+    00401048&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,10h&nbsp;<br>
+    0040104B&nbsp;&nbsp;<font color="#0000d0">ret</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    <font color="#008000">我们用默认选项都可以看得出函数已经被内联了。</font><br>
+    00401000&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,10h&nbsp;<br>
+    <font color="#008000">分配16字节。&nbsp;这里注意一下，一般的其他语言可能也多半是会用函数框架也就是push&nbsp;esp</font><br>
+    <font color="#0000d0">Mov</font>&nbsp;<font color="#ff0000">ebp</font>,<font color="#ff0000">esp</font><br>
+    <font color="#008000">然后靠ebp来引用局部变量，这一点在VC中是没有的。</font><br>
+    <font color="#008000">你一定会觉得很奇怪明明分配的10字节怎么会变成了16字节。</font><br>
+    <font color="#008000">答案是这样的。</font><br>
+    00401003&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[___security_cookie&nbsp;(403000h)]&nbsp;<br>
+    00401008&nbsp;&nbsp;<font color="#0000d0">xor</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">esp</font>&nbsp;<br>
+    0040100A&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">esp</font>+0Ch],<font color="#ff0000">eax</font><br>
+    <font color="#008000">保存esp函数指针防止堆溢出。主要是在VC中靠esp引用局部变量所以千万错不得。。</font><br>
+    <font color="#008000">但是还有两字节呢？&nbsp;是这样的。VC中要进行指针对其&nbsp;也就是说一般情况下会使4的倍数。</font><br>
+    <font color="#008000">试验一下：</font><br>
+    <font color="#008000">改为：</font><br>
+    &nbsp;&nbsp;char&nbsp;<font color="#0000d0">str</font>[12]<font color="#008000">;</font><br>
+    &nbsp;&nbsp;gets(<font color="#0000d0">str</font>)<font color="#008000">;</font><br>
+    <font color="#008000">代码依然是</font><br>
+    00401000&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,10h&nbsp;<br>
+    00401003&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[___security_cookie&nbsp;(403000h)]&nbsp;<br>
+    00401008&nbsp;&nbsp;<font color="#0000d0">xor</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">esp</font>&nbsp;<br>
+    0040100A&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">esp</font>+0Ch],<font color="#ff0000">eax</font><br>
+    <br>
+    <font color="#008000">下面再来说说：</font><br>
+    2.&nbsp;&nbsp;<font color="#008000">关于ecx指针。在VC中虽然可以指定链接方式也就是C样式还是标准API样式或者是&nbsp;Fastcall</font><br>
+    <font color="#008000">不过一般而言是C样式&nbsp;Fastcall相对用的较少。另外还有thiscall方式。也就是类指针。我们来看看MSDN</font><br>
+    The&nbsp;__thiscall&nbsp;calling&nbsp;convention&nbsp;is&nbsp;used&nbsp;on&nbsp;member&nbsp;functions&nbsp;<font color="#0000d0">and</font>&nbsp;is&nbsp;the&nbsp;default&nbsp;calling&nbsp;convention&nbsp;used&nbsp;by&nbsp;C++&nbsp;member&nbsp;functions&nbsp;that&nbsp;do&nbsp;<font color="#0000d0">not</font>&nbsp;use&nbsp;variable&nbsp;arguments.&nbsp;Under&nbsp;__thiscall,&nbsp;the&nbsp;callee&nbsp;cleans&nbsp;the&nbsp;stack,&nbsp;which&nbsp;is&nbsp;impossible&nbsp;for&nbsp;<font color="#b000b0">vararg</font>&nbsp;functions.&nbsp;Arguments&nbsp;are&nbsp;pushed&nbsp;on&nbsp;the&nbsp;stack&nbsp;from&nbsp;right&nbsp;to&nbsp;left,&nbsp;with&nbsp;the&nbsp;this&nbsp;pointer&nbsp;being&nbsp;passed&nbsp;via&nbsp;register&nbsp;<font color="#ff0000">ECX</font>,&nbsp;<font color="#0000d0">and</font>&nbsp;<font color="#0000d0">not</font>&nbsp;on&nbsp;the&nbsp;stack,&nbsp;on&nbsp;the&nbsp;x86&nbsp;architecture.<br>
+    ThisCall<font color="#008000">的定义如上所示</font><br>
+    <font color="#008000">我们可以看到考ecx传递指针，参数有调用者恢复，以至于可以传递参数不定的函数。</font><br>
+    <font color="#008000">还是来看段代码</font><br>
+    void&nbsp;study2()<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;CString&nbsp;MyStr<font color="#008000">;</font><br>
+    &nbsp;&nbsp;MyStr=<font color="#808080">"PeDiy&nbsp;By&nbsp;Fox"</font><font color="#008000">;</font><br>
+    &nbsp;&nbsp;puts(MyStr)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;}<br>
+    <font color="#008000">为了方便研究我们去掉了esp检查和C++异常</font><br>
+    <font color="#0000d0">int</font>&nbsp;_tmain(<font color="#0000d0">int</font>&nbsp;argc,&nbsp;_TCHAR*&nbsp;argv[])<br>
+    &nbsp;&nbsp;{<br>
+    00401040&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>&nbsp;&nbsp;<br>
+    00401041&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esi</font>&nbsp;&nbsp;<br>
+    00401042&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edi</font>&nbsp;&nbsp;<font color="#008000">保护寄存器就不说了</font><br>
+    &nbsp;&nbsp;//study1()<font color="#008000">;</font><br>
+    &nbsp;&nbsp;study2()<font color="#008000">;</font><br>
+    00401043&nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    00401044&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[ATL::g_strmgr&nbsp;(403380h)]&nbsp;<br>
+    00401049&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">eax</font>+0Ch]&nbsp;<br>
+    0040104C&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">offset</font>&nbsp;ATL::g_strmgr&nbsp;(403380h)&nbsp;<br>
+    00401051&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;<br>
+    00401053&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,10h&nbsp;<br>
+    00401056&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">esp</font>+8],<font color="#ff0000">eax</font>&nbsp;<br>
+    0040105A&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edi</font>,0Ch&nbsp;<br>
+    0040105F&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,[<font color="#ff0000">esp</font>+8]&nbsp;<br>
+    00401063&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ATL::CSimpleStringT&lt;char,0&gt;::SetString&nbsp;(4010B0h)&nbsp;<br>
+    00401068&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esi</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">esp</font>+8]&nbsp;<br>
+    0040106C&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esi</font>&nbsp;&nbsp;<br>
+    0040106D&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[__imp__puts&nbsp;(4020C8h)]&nbsp;<br>
+    00401073&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,4&nbsp;<br>
+    00401076&nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    00401077&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,[<font color="#ff0000">esi</font>-10h]&nbsp;<br>
+    0040107A&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>,[<font color="#ff0000">eax</font>+0Ch]&nbsp;<br>
+    0040107D&nbsp;&nbsp;<font color="#0000d0">or</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>,0FFFFFFFFh&nbsp;<br>
+    00401080&nbsp;&nbsp;<font color="#0000d0">lock</font>&nbsp;<font color="#0000d0">xadd</font>&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">ecx</font>],<font color="#ff0000">edx</font>&nbsp;<br>
+    00401084&nbsp;&nbsp;<font color="#0000d0">dec</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;<br>
+    00401085&nbsp;&nbsp;<font color="#0000d0">test</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">edx</font>&nbsp;<br>
+    00401087&nbsp;&nbsp;<font color="#0000d0">pop</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edi</font>&nbsp;&nbsp;<br>
+    00401088&nbsp;&nbsp;<font color="#0000d0">pop</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esi</font>&nbsp;&nbsp;<br>
+    00401089&nbsp;&nbsp;<font color="#0000d0">jg</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main+55h&nbsp;(401095h)&nbsp;<br>
+    0040108B&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">eax</font>]&nbsp;<br>
+    0040108D&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">ecx</font>]&nbsp;<br>
+    0040108F&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;<br>
+    00401090&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">edx</font>+4]&nbsp;<br>
+    00401093&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;<br>
+    &nbsp;&nbsp;system(<font color="#808080">"PAUSE"</font>)<font color="#008000">;</font><br>
+    00401095&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">offset</font>&nbsp;string&nbsp;<font color="#808080">"PAUSE"</font>&nbsp;(402160h)&nbsp;<br>
+    0040109A&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[__imp__system&nbsp;(4020C4h)]&nbsp;<br>
+    &nbsp;&nbsp;return&nbsp;0<font color="#008000">;</font><br>
+    004010A0&nbsp;&nbsp;<font color="#0000d0">xor</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">eax</font>&nbsp;<br>
+    &nbsp;&nbsp;}<br>
+    004010A2&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">esp</font>,8&nbsp;<br>
+    004010A5&nbsp;&nbsp;<font color="#0000d0">ret</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    <font color="#008000">注意，这里不是什么类型的CALL而是为了减小体积而来的代码内联，不存在保护寄存器之类的问题。</font><br>
+    <br>
+    00401044&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[ATL::g_strmgr&nbsp;(403380h)]&nbsp;<br>
+    00401049&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;[<font color="#ff0000">eax</font>+0Ch]&nbsp;<br>
+    0040104C&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">offset</font>&nbsp;ATL::g_strmgr&nbsp;(403380h)&nbsp;<br>
+    00401051&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;<br>
+    <font color="#008000">后面的就不详细分析。我要说的是。最后一句004010A2&nbsp;&nbsp;add&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;esp,8&nbsp;</font><br>
+    <font color="#008000">并不代表局部变量为2个DWORD而是只有一个。</font><br>
+    <font color="#008000">原因是这样的，由于才用ESP传递指针，所以任何push&nbsp;pop操作都会影响指针。</font><br>
+    <font color="#008000">而最前面就有三个PUSH&nbsp;最后面对应的寄存器却只有两个。POP&nbsp;</font><br>
+    <font color="#008000">那
+么实际上就只有一个变量而本身
+call&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dword&nbsp;ptr&nbsp;
+[__imp__system&nbsp;(4020C4h)]就要恢复&nbsp;add&nbsp;esp,4&nbsp;&nbsp;再加上一个指
+针变量&nbsp;就刚好是&nbsp;add&nbsp;esp,8，可见编译器的高度优化。把保护寄存器和分配局部变量合并了、。令人佩服。</font><br>
+    <font color="#008000">不怎么好读得懂。。。：（&nbsp;</font><br>
+    <font color="#008000">再说一下</font><br>
+    3<font color="#008000">：结构和数组。</font><br>
+    struct&nbsp;<font color="#0000d0">test</font><br>
+    {<br>
+    <font color="#0000d0">int</font>&nbsp;a<font color="#008000">;</font><br>
+    char&nbsp;b<font color="#008000">;</font><br>
+    }<font color="#008000">;</font><br>
+    void&nbsp;study3()<br>
+    &nbsp;&nbsp;{<br>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#b000b0">DWORD</font>&nbsp;MyStr[]={<font color="#808080">'PeDi'</font>,<font color="#808080">'Y\0'</font>}<font color="#008000">;</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">test</font>&nbsp;MyTest<font color="#008000">;</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;MyTest.a=<font color="#808080">'LOVE'</font><font color="#008000">;</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;MyTest.b=<font color="#808080">'\0'</font><font color="#008000">;</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;puts((char&nbsp;*)&amp;MyTest)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;puts((char&nbsp;*)MyStr)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+&nbsp;&nbsp;}00401020&nbsp;&nbsp;&nbsp;/$&nbsp;&nbsp;83EC&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;<font color="#ff0000">esp</font>,10<br>
+00401023&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;56&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">esi</font><br>
+00401024&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int3<br>
+    00401025&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B35&nbsp;C4204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">esi</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.puts&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;&nbsp;MSVCR80.puts</font><br>
+    0040102B&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D4424&nbsp;04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+4]<br>
+0040102F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/s</font><br>
+    00401030&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C74424&nbsp;10&nbsp;69446550&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10],50654469&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    00401038&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C74424&nbsp;14&nbsp;00590000&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+14],5900&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    00401040&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C74424&nbsp;08&nbsp;45564F4C&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+8],4C4F5645&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    00401048&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C64424&nbsp;0C&nbsp;00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">byte</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C],0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+0040104D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FFD6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#ff0000">esi</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\puts</font><br>
+    0040104F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D4C24&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10]<br>
+00401053&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">ecx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/s</font><br>
+00401054&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FFD6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#ff0000">esi</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\puts</font><br>
+00401056&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;83C4&nbsp;08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">esp</font>,8<br>
+00401059&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int3<br>
+    0040105A&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;68&nbsp;50214000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#008000">编
+译器
+学.00402150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;/command&nbsp;=&nbsp;"PAUSE"</font><br>
+    0040105F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FF15&nbsp;C0204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.system&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\system</font><br>
+00401065&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;83C4&nbsp;04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">esp</font>,4<br>
+00401068&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;33C0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">xor</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">eax</font><br>
+0040106A&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;5E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">pop</font>&nbsp;<font color="#ff0000">esi</font><br>
+0040106B&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;83C4&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">esp</font>,10<br>
+0040106E&nbsp;&nbsp;&nbsp;\.&nbsp;&nbsp;C3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">retn</font><br>
+    <font color="#008000">分配10个字节，&nbsp;后面就是对堆操作.&nbsp;但值得注意的是</font><br>
+    0040102B&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D4424&nbsp;04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+4]<br>
+0040102F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/s</font><br>
+    00401030&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C74424&nbsp;10&nbsp;50654469&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10],69446550&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    00401038&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C74424&nbsp;14&nbsp;59000000&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+14],59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    00401040&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C74424&nbsp;08&nbsp;4C4F5645&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+8],45564F4C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    00401048&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C64424&nbsp;0C&nbsp;00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#b000b0">byte</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C],0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    <font color="#008000">第一句没有错，但为什么后面没有对[esp+4]操作了。。push&nbsp;eax。。这个。&nbsp;因此相应的就应该是</font><br>
+    <font color="#008000">从esp+8开始</font><br>
+    <font color="#008000">以及对其。即使是CHAR也是一个INT所以在WINDOWS编程中应当尽量就行4字节操作（64位为8字节）</font><br>
+    <font color="#008000">今天就讲到这么里</font><br>
+    <font color="#008000">以后我会介绍&nbsp;算数运算的编译器优化，以及条件语句。</font> </p>
+</blockquote>
+<p><font color="blue"><span class="pediy">标 题:</span></font><span class="pediy"><span class="pediy"><span class="pediy"> 
+  编译器优化分析-2<br>
+  <font color="blue">作 者: </font>foxabu<br>
+  <font color="blue">时 间: </font><font color="#666686">2006-07-10 22:11 </font><br>
+  <font color="blue">链 接: </font><font color="#999999"><a href="http://bbs.pediy.com/showthread.php?threadid=28798"><font color="#666686">http://bbs.pediy.com/showthread.php?threadid=28798</font></a></font> 
+  <br>
+  <font color="blue">详细信息:</font> </span></span></span></p>
+<blockquote> 
+  <p class="pediy">DFCGVC<font color="#008000">编译器优化分析-2</font><br>
+    <font color="#008000">今天讲讲常见的算术运算的优化：</font><br>
+    1.&nbsp;&nbsp;<font color="#008000">先来看看加减法运算</font><br>
+    __asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;a,b<font color="#008000">;</font><br>
+    &nbsp;&nbsp;scanf(<font color="#808080">"%d&nbsp;%d"</font>,&amp;a,&amp;b)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;c<font color="#008000">;</font><br>
+    &nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;d<font color="#008000">;</font><br>
+    &nbsp;&nbsp;c=a+b<font color="#008000">;</font><br>
+    &nbsp;&nbsp;d=a-b<font color="#008000">;</font><br>
+    &nbsp;&nbsp;printf(<font color="#808080">"\n%d&nbsp;%d"</font>,c,d)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    <font color="#008000">汇编代码如下</font><br>
+    00401020&nbsp;&nbsp;&nbsp;/$&nbsp;&nbsp;83EC&nbsp;08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;<font color="#ff0000">esp</font>,8<br>
+00401023&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int3<br>
+    00401024&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D4424&nbsp;04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+4]<br>
+00401028&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">eax</font><br>
+    00401029&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D4C24&nbsp;04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+4]<br>
+0040102D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">ecx</font><br>
+    0040102E&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;68&nbsp;50214000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#008000">编
+译器
+学.00402150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;/format&nbsp;=&nbsp;"%d&nbsp;%d"</font><br>
+    00401033&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FF15&nbsp;C4204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.scanf&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\scanf</font><br>
+    00401039&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4424&nbsp;0C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C]<br>
+    0040103D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4C24&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10]<br>
+00401041&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8BD0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">eax</font><br>
+00401043&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;2BD1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">ecx</font><br>
+00401045&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/&lt;%d&gt;</font><br>
+00401046&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;03C1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">ecx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+00401048&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|&lt;%d&gt;</font><br>
+    00401049&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;68&nbsp;58214000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#008000">编
+译器
+学.00402158&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;|format&nbsp;=&nbsp;"</font><br>
+    %d&nbsp;%d<font color="#808080">"</font><br>
+    0040104E&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FF15&nbsp;C8204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.printf&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\printf</font><br>
+    00401054&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;83C4&nbsp;18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">esp</font>,18<br>
+00401057&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int3<br>
+    <br>
+    <font color="#008000">虽然我们声明了4个变量。但编译器会认为这等价于</font><br>
+    printf(<font color="#808080">"\n%d&nbsp;%d"</font>,a+b,c+d)<font color="#008000">;</font><br>
+    <font color="#008000">因此也只给我们分配了两个变量。</font><br>
+    <font color="#008000">其实这也告诉编程序的人，没有必要写成printf("\n%d&nbsp;%d",a+b,c+d);</font><br>
+    <font color="#008000">形式，这种形式显然更难维护和阅读。</font><br>
+    00401039&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4424&nbsp;0C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C]<br>
+    0040103D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4C24&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10]<br>
+00401041&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8BD0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">eax</font><br>
+00401043&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;2BD1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">ecx</font><br>
+00401045&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/&lt;%d&gt;</font><br>
+00401046&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;03C1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">ecx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    <font color="#008000">这里比较巧妙由于涉及到两次运算，因此将两个变量统一读到两个寄存器中，而不象有些编译器会使用内存相加。</font><br>
+    <font color="#008000">加减法没有什么好说的。主要说乘除法：</font><br>
+    2.&nbsp;&nbsp;<font color="#008000">乘除法</font><br>
+    <font color="#008000">先来看乘法运算：</font><br>
+    <font color="#008000">首先是有符号运算。</font><br>
+    void&nbsp;study5()<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;a,b<font color="#008000">;</font><br>
+    &nbsp;&nbsp;scanf(<font color="#808080">"%d&nbsp;%d"</font>,&amp;a,&amp;b)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;c,d,e<font color="#008000">;</font><br>
+    &nbsp;&nbsp;c=a*2<font color="#008000">;</font><br>
+    &nbsp;&nbsp;d=a*b<font color="#008000">;</font><br>
+    &nbsp;&nbsp;e=a*7<font color="#008000">;</font><br>
+    &nbsp;&nbsp;printf(<font color="#808080">"\n%d&nbsp;%d"</font>,c,d,e)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3&nbsp;&nbsp;<br>
+    }<br>
+00401023&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int3<br>
+    00401024&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D4424&nbsp;04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+4]<br>
+00401028&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">eax</font><br>
+    00401029&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D4C24&nbsp;04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+4]<br>
+0040102D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">ecx</font><br>
+    0040102E&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;68&nbsp;50214000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#008000">编
+译器
+学.00402150&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;/format&nbsp;=&nbsp;"%d&nbsp;%d"</font><br>
+    00401033&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FF15&nbsp;C4204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.scanf&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\scanf</font><br>
+    00401039&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4424&nbsp;0C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C]<br>
+0040103D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8BC8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">eax</font><br>
+    0040103F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;0FAF4C24&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">imul</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10]<br>
+    00401044&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D14C5&nbsp;00000000&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[<font color="#ff0000">eax</font>*8]<br>
+0040104B&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;2BD0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">eax</font><br>
+0040104D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">edx</font><br>
+0040104E&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">ecx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/&lt;%d&gt;</font><br>
+    0040104F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D1400&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[<font color="#ff0000">eax</font>+<font color="#ff0000">eax</font>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+00401052&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|&lt;%d&gt;</font><br>
+    00401053&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;68&nbsp;58214000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#008000">编
+译器
+学.00402158&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;|format&nbsp;=&nbsp;"</font><br>
+    %d&nbsp;%d<font color="#808080">"</font><br>
+    00401058&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FF15&nbsp;C8204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.printf&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\printf</font><br>
+    0040105E&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;83C4&nbsp;1C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">esp</font>,1C<br>
+00401061&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int3<br>
+    <br>
+    0040103F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;0FAF4C24&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">imul</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10]<br>
+    <font color="#008000">没有什么说的，整数乘法</font><br>
+    00401044&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D14C5&nbsp;00000000&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[<font color="#ff0000">eax</font>*8]<br>
+0040104B&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;2BD0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">eax</font><br>
+    <font color="#008000">呵呵。看到这里是否想到我们小学的时候得简便运算。我们是乘以7</font><br>
+    <font color="#008000">但是编译器给我们编程了乘以8在减掉被乘数。神奇吧。</font><br>
+    <font color="#008000">同样的道理</font><br>
+    0040104F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D1400&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[<font color="#ff0000">eax</font>+<font color="#ff0000">eax</font>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    <font color="#008000">乘以二就是两个这个数相加。。想象力丰富吧。</font><br>
+    <font color="#008000">总结一下载VC中乘法如果在已知被除数的情况下用</font><br>
+    <font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[<font color="#ff0000">eax</font>*x]<font color="#008000">的形式，</font><br>
+    <font color="#008000">否则采用IMUL&nbsp;指令。</font><br>
+    <font color="#008000">现在我们把代码变成这样</font><br>
+    c=a*-2<font color="#008000">;</font><br>
+    &nbsp;&nbsp;d=a*-4<font color="#008000">;</font><br>
+    &nbsp;&nbsp;e=a*-7<font color="#008000">;</font><br>
+    <font color="#008000">测试一下有符号运算。</font><br>
+    00401033&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FF15&nbsp;C4204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.scanf&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\scanf</font><br>
+    00401039&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4424&nbsp;0C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C]<br>
+    0040103D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8D14C5&nbsp;00000000&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[<font color="#ff0000">eax</font>*8]<br>
+00401044&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8BC8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">eax</font><br>
+00401046&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;2BD0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">sub</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">eax</font><br>
+00401048&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;F7D9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">neg</font>&nbsp;<font color="#ff0000">ecx</font><br>
+0040104A&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;F7DA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">neg</font>&nbsp;<font color="#ff0000">edx</font><br>
+0040104C&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">edx</font><br>
+0040104D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;03C9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">ecx</font><br>
+0040104F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;03C9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">ecx</font><br>
+00401051&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;F7D8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">neg</font>&nbsp;<font color="#ff0000">eax</font><br>
+00401053&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;51&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">ecx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/&lt;%d&gt;</font><br>
+00401054&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;03C0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#ff0000">eax</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+00401056&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|&lt;%d&gt;</font><br>
+    00401057&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;68&nbsp;58214000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#008000">编
+译器
+学.00402158&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;|format&nbsp;=&nbsp;"</font><br>
+    %d&nbsp;%d<font color="#808080">"</font><br>
+    0040105C&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;FF15&nbsp;C8204000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">call</font>&nbsp;<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[&lt;&amp;MSVCR80.printf&gt;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;\printf</font><br>
+    <br>
+    <font color="#008000">代码有些变化&nbsp;除了用了NEG指令以外。还有</font><br>
+    <font color="#008000">原来的</font><br>
+    <font color="#0000d0">lea</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ds</font>:[<font color="#ff0000">eax</font>+<font color="#ff0000">eax</font>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    <font color="#008000">变成了</font><br>
+0040104D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;03C9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">ecx</font><br>
+0040104F&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;03C9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">add</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">ecx</font><br>
+    <br>
+    <font color="#008000">不过大体上没有什么好说的。</font><br>
+    <font color="#008000">乘法总的来说都比较好识别</font><br>
+    <font color="#008000">代码在改一改&nbsp;改为</font><br>
+    &nbsp;&nbsp;d=short(a*b)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;c=c*c*c<font color="#008000">;</font><br>
+    &nbsp;&nbsp;e=a*100<font color="#008000">;</font><br>
+    <font color="#008000">我们来看看类型转换的问题</font><br>
+    <font color="#008000">其他的都差不多主要说一下</font><br>
+    0040104E&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;0FBFD1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">movsx</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#ff0000">cx</font><br>
+00401051&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8BC8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">eax</font><br>
+    00401053&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;0FAFC8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">imul</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">eax</font><br>
+    00401056&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;0FAFC8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">imul</font>&nbsp;<font color="#ff0000">ecx</font>,<font color="#ff0000">eax</font><br>
+    <font color="#008000">如果是short&nbsp;那么就会用movsx符号取得低位</font><br>
+    c=c*c*c---<font color="#008000">〉imul&nbsp;ecx,eax；imul&nbsp;ecx,eax</font><br>
+    <font color="#008000">乘法总的来说都比较容易识别也比较简单。</font><br>
+    <font color="#008000">除法就不一样了，无符号有符号完全不同，另外以及不同编译器的处理也很不一样</font><br>
+    <font color="#008000">且涉及到求模运算和除法运算两种。</font><br>
+    <font color="#008000">由于CPU中只有加法器和乘法器&nbsp;所以一般而言除法会转变为乘法运算。</font><br>
+    <font color="#008000">我们先来看两组最简单的。</font><br>
+    <font color="#008000">先讲无符号的明天再说有符号的</font><br>
+    <font color="#008000">代码：</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    &nbsp;&nbsp;unsigned&nbsp;&nbsp;<font color="#0000d0">int</font>&nbsp;a,b<font color="#008000">;</font><br>
+    &nbsp;&nbsp;scanf(<font color="#808080">"%d&nbsp;%d"</font>,&amp;a,&amp;b)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;unsigned&nbsp;<font color="#0000d0">int</font>&nbsp;c,d,e<font color="#008000">;</font><br>
+    &nbsp;&nbsp;d=a/2<font color="#008000">;</font><br>
+    &nbsp;&nbsp;c=b/4<font color="#008000">;</font><br>
+    &nbsp;&nbsp;printf(<font color="#808080">"\n%d&nbsp;%d"</font>,c,d)<font color="#008000">;</font><br>
+    &nbsp;&nbsp;__asm&nbsp;<font color="#0000d0">int</font>&nbsp;3<br>
+    <font color="#008000">生成代码（部分）</font><br>
+00401039&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B5424&nbsp;0C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C]<br>
+0040103D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4424&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10]<br>
+00401041&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;D1EA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">shr</font>&nbsp;<font color="#ff0000">edx</font>,1<br>
+00401043&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/&lt;%d&gt;</font><br>
+00401044&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;C1E8&nbsp;02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">shr</font>&nbsp;<font color="#ff0000">eax</font>,2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+    <font color="#008000">当乘以2的n次方的时候可以采用位移的方式。</font><br>
+    <font color="#0000d0">Shr</font>&nbsp;<font color="#008000">向右移</font><br>
+    <font color="#008000">其实就是一个乘方关系不是很难理解，但是要大家注意，不要看着shr就想着用&nbsp;〉〉指令可读性肯定没有用/??好</font><br>
+    <font color="#008000">但是如果是求模式不同的</font><br>
+    <font color="#008000">看代码：</font><br>
+    d=a%2<font color="#008000">;</font><br>
+    &nbsp;&nbsp;c=b%4<font color="#008000">;</font><br>
+    <font color="#008000">会变为</font><br>
+00401039&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B5424&nbsp;0C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">edx</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+C]<br>
+0040103D&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;8B4424&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">mov</font>&nbsp;<font color="#ff0000">eax</font>,<font color="#b000b0">dword</font>&nbsp;<font color="#b000b0">ptr</font>&nbsp;<font color="#ff0000">ss</font>:[<font color="#ff0000">esp</font>+10]<br>
+00401041&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;83E2&nbsp;01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">and</font>&nbsp;<font color="#ff0000">edx</font>,1<br>
+00401044&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;52&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">edx</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;/&lt;%d&gt;</font><br>
+00401045&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;83E0&nbsp;03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">and</font>&nbsp;<font color="#ff0000">eax</font>,3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|</font><br>
+00401048&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;50&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#ff0000">eax</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">;&nbsp;|&lt;%d&gt;</font><br>
+    00401049&nbsp;&nbsp;&nbsp;|.&nbsp;&nbsp;68&nbsp;58214000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000d0">push</font>&nbsp;<font color="#008000">编
+译器
+学.00402158&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;|format&nbsp;=&nbsp;"</font><br>
+    %d&nbsp;%d<font color="#808080">"</font><br>
+    <font color="#008000">即为AND运算。其实也比较好理解</font><br>
+    <font color="#008000">我们随便举个例子：</font><br>
+    <font color="#008000">比如17的二进制代码为&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10001</font><br>
+    <font color="#008000">如果是除以2那么就是AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00001</font><br>
+    <font color="#008000">留下最后一位，</font><br>
+    <font color="#008000">如果是除以4那么就是AND&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00011</font><br>
+    <font color="#008000">余下最后两位。其实我们想象成10进制就好理解了</font><br>
+    <font color="#008000">比如12345&nbsp;mod&nbsp;10&nbsp;肯定就是5&nbsp;也就是保留个位</font><br>
+    12345&nbsp;mod&nbsp;100&nbsp;<font color="#008000">肯定就是45&nbsp;保留十位</font><br>
+    <font color="#008000">二进制是同样一个道理当是2的N次方的时候就和10的N&nbsp;次方的时候是一样的</font><br>
+    <font color="#008000">也就是去掉&nbsp;N位的前面所有位就是余数</font><br>
+    <font color="#008000">这一点希望大家注意&nbsp;。很多时候为什么我们在写注册机的时候往往会出现很多位操作原因就是我们对这些理解不是很到位。而且位操作也不便于反退注册过程。</font><br>
+    <font color="#008000">今天就讲到这里</font><br>
+    <br>
+    <font color="#008000">除法部分比较复杂。</font><br>
+    <br>
+    <font color="#008000">谢&nbsp;谢</font><br>
+    &nbsp;&nbsp;&nbsp;By&nbsp;Fox</p>
+</blockquote>
+<div class="pediy" align="LEFT"><!-- #BeginLibraryItem "/Library/copyright.lbi" CLASS="p9z" --><style type="text/css">
+<!--
+-->
+</style> 
+<table align="center" border="0" cellpadding="0" cellspacing="0" height="62" width="96%"> 
+<tbody><tr> <td height="15"> <hr noshade="noshade" size="1" color="#b2b2b2" width="99%"> </td></tr> 
+<tr> <td height="47"> <table border="0" cellpadding="0" cellspacing="0"> <tbody><tr><td bgcolor="#cccccc" width="2"></td><td width="3"></td>
+          <td class="p9" height="30" valign="middle"> <font class="en" color="#333333"> 
+            &#169;2000-2007 <a href="http://www.pediy.com/"><b><font color="#000000">PE</font><font color="#ff6000">diy</font><font color="#000000">.com</font></b></a> 
+            All rights reserved. <br>
+            By <font color="#318aef" face="Verdana">PEDIY </font></font></td>
+        </tr> 
+</tbody></table></td></tr> </tbody></table><!-- #EndLibraryItem --></div>
+</body></html>

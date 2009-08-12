@@ -179,6 +179,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\one_count_in_number.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\print_with_one_line.cpp"
 				>
 			</File>

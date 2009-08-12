@@ -1,0 +1,1122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head>
+
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>一个简单的语言的语法（三）：做些小调整，并将生成目标换到CSharp2 - Script Ahead, Code Behind - JavaEye技术网站</title>
+    <meta name="description" content="系列链接： 一个简单的语言的语法（一）：用ANTLR描述语法 一个简单的语言的语法（二）：ANTLR的重写规则 一个简单的语言的语法（三）：做些小调整，并将生成目标换到CSharp2 为了后面的tree grammar更简洁，本篇对上一篇的树重写规则和一些语法细节做了些调整。并且，将生成的lexer和parser的源码目标换到了CSharp2，以便后面能使用一些.NET的库。 要使用CSharp2的 ...">
+    <meta name="keywords" content="  一个简单的语言的语法（三）：做些小调整，并将生成目标换到CSharp2">
+    <link rel="shortcut icon" href="http://rednaxelafx.javaeye.com/images/favicon.ico" type="image/x-icon">
+    <link href="http://rednaxelafx.javaeye.com/rss" rel="alternate" title="Script Ahead, Code Behind" type="application/rss+xml">
+    <link href="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/blog.css" media="screen" rel="stylesheet" type="text/css">
+<link href="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/purple.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/application.js" type="text/javascript"></script>
+      <link href="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/hotkey.js" type="text/javascript"></script>
+  <style>
+    div#main {background-color: transparent; border: 0; padding: 0px; width: 740px;}
+  </style>
+  <style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-rb .symbol { color: #a70; }.dp-rb .variable { color: #a70; font-weight: bold; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-c .vars { color: #d00; }</style><style type="text/css">.dp-c .vars { color: #d00; }</style><style type="text/css">.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style></head><body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.javaeye.com/" class="homepage">首页</a>
+  <a href="http://www.javaeye.com/news">新闻</a>
+  <a href="http://www.javaeye.com/forums">论坛</a>
+  <a href="http://www.javaeye.com/blogs">博客</a>
+  <a href="http://www.javaeye.com/job">招聘</a>
+  <a href="#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display: none;">
+    <a href="http://www.javaeye.com/ask">问答</a>
+    <a href="http://www.javaeye.com/wiki">知识库</a>
+    <a href="http://www.javaeye.com/groups">圈子</a>
+    <a href="http://www.javaeye.com/search">搜索</a>
+  </div>
+</div>
+      <div id="user_nav">
+      <a href="http://cnshirui.javaeye.com/" title="查看我的博客首页" class="welcome">欢迎cnshirui</a>
+    
+      <a href="http://app.javaeye.com/messages" title="发送站内短信">收件箱</a>
+    
+    
+      <a href="http://app.javaeye.com/" title="我的应用首页">我的应用</a>
+    
+    <div class="quick_menu" style="display: none;">
+      <a href="http://app.javaeye.com/feed" title="我订阅的好友动态消息">我的订阅</a>
+      <a href="http://app.javaeye.com/feed/my" title="我参与的话题更新的消息">我的参与</a>
+      <a href="http://app.javaeye.com/chat" title="用闲聊发表简短的话题">我的闲聊</a>
+      <a href="http://app.javaeye.com/mygroup" title="我加入的圈子最新话题">我的圈子</a>
+      <a href="http://app.javaeye.com/links" title="我收藏的网络资源链接">我的收藏</a>
+      <a href="http://app.javaeye.com/myresume" title="我的个人简历">我的简历</a>
+    </div>
+        <a href="http://cnshirui.javaeye.com/admin" title="管理我的博客">我的博客</a>
+    <a href="http://app.javaeye.com/profile" title="修改我的个人设置">设置</a>
+    <a href="http://rednaxelafx.javaeye.com/logout" class="nobg" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'put'); f.appendChild(m);f.submit();return false;">退出</a>
+  </div>
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name"><h1><a href="http://rednaxelafx.javaeye.com/">Script Ahead, Code Behind</a></h1></div>
+        <div id="blog_preview"></div>
+        <div id="blog_domain">永久域名 <a href="http://rednaxelafx.javaeye.com/">http://rednaxelafx.javaeye.com</a></div>
+      </div>
+      
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+          
+
+
+<div class="blog_main"> 
+  <div id="blog_nav">
+    <div class="digg" id="d315807"><h3><a href="#" onclick='digg("blogs", 315807, false);return false;' class="digg">2顶</a><br><a href="#" onclick='digg("blogs", 315807, true);return false;' class="bury">0踩</a></h3></div>
+    <div id="pre_next">
+      <a href="http://rednaxelafx.javaeye.com/blog/317038" class="next" title="数组……Geez，我总是弄混">数组……Geez，我总是弄混</a>
+      |
+      <a href="http://rednaxelafx.javaeye.com/blog/314532" class="pre" title="MRI 1.8.6的irb里一个小诡异的地方（以为是IronRuby rev183的bug）">MRI 1.8.6的irb里一个小诡异的地方（以为 ...</a>
+    </div>
+  </div>
+  <div class="blog_title">
+    <div class="date"><span class="year">2009</span><span class="sep_year">-</span><span class="month">01</span><span class="sep_month">-</span><span class="day">13</span></div>
+    <h3 class="type_original" title="原创"><a href="http://rednaxelafx.javaeye.com/blog/315807">一个简单的语言的语法（三）：做些小调整，并将生成目标换到CSharp2</a></h3>
+                
+  </div>
+
+  <div class="blog_content">
+    系列链接：
+<br><a href="http://rednaxelafx.javaeye.com/blog/313143" target="_blank">一个简单的语言的语法（一）：用ANTLR描述语法</a>
+<br><a href="http://rednaxelafx.javaeye.com/blog/314507" target="_blank">一个简单的语言的语法（二）：ANTLR的重写规则</a>
+<br>一个简单的语言的语法（三）：做些小调整，并将生成目标换到CSharp2
+<br>
+<br>为了后面的tree grammar更简洁，本篇对<a href="http://rednaxelafx.javaeye.com/blog/314507" target="_blank">上一篇</a>的树重写规则和一些语法细节做了些调整。并且，将生成的lexer和parser的源码目标换到了CSharp2，以便后面能使用一些.NET的库。
+<br>要使用CSharp2的目标，需要从官网下载相应的运行时库。当前的最新版是3.1.1，可以从<a href="http://antlr.org/download/CSharp" target="_blank">这里</a>获取。CSharp/CSharp2目标的详细情况，可以查阅<a href="http://www.antlr.org/wiki/display/ANTLR3/Antlr+3+CSharp+Target" target="_blank">官网上的文档</a>。以<a href="http://rednaxelafx.javaeye.com/blog/314507" target="_blank">上一篇</a>的
+语法为基础，要换到CSharp2目标只要把几个嵌入动作里的System.out.println换成Console.WriteLine，把
+toStringTree换成ToStringTree，把clear换成Clear就可以了。编译的时候至少需要引用
+Antlr3.Runtime.dll。
+<br>
+<br>那么除去更换生成目标带来的影响，这次做了些怎样的修改呢？
+<br>
+<br>首先，语法做了些细微的调整。例如说，program规则从原本允许没有语句到现在要求至少有一条语句；blockStatement为空
+block写了条专门的分支；expressionStatement也添加了一个EXPR_STMT的虚构token为根节点，等等。
+<br>变化最大的还是variableDeclaration及相关规则。上一篇里这条规则的重写规则并不区分有初始化与无初始化、简单类型与数组类
+型的区别；本篇里则将这两个区别都明确的写在了重写规则里，以不同的虚构token来作为生成的树的根节点。这样，到写后面的tree
+grammar的时候，需要的lookahead数就可以减少。
+<br>ANTLR所生成的AST，以深度优先的方式遍历，可以看做一个一维的流：每一层父子关系都可以表示为：
+<br><span style="color: darkred;">root -&gt; "down" -&gt; element1 -&gt; element2 -&gt; ... -&gt; elementN -&gt; "up" -&gt; ...</span>
+<br>其中"down"和"up"是ANTLR插入的虚构token，用于指定树的层次。
+<br>这样，后面使用tree
+grammar来遍历AST时，实际上遍历的就是这样一个一维的流（CommonTreeNodeStream）。所以我们也可以把tree
+grammar看做是隐含了"down"和"up"虚构token的普通parser grammar。那么，tree
+grammar中需要的lookahead个数的分析，也就跟parser grammar的一样。
+<br>看看下面的例子。对于上一篇variableDeclaration的重写规则中出现的变量声明的类型，可以用这样的tree grammar来匹配：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=type%0A%20%20%3A%20%5E(%20SIMPLE_TYPE%20INT%20)%0A%20%20%7C%20%5E(%20SIMPLE_TYPE%20REAL%20)%0A%20%20%7C%20%5E(%20ARRAY_TYPE%20INT%20Integer%2B%20)%0A%20%20%7C%20%5E(%20ARRAY_TYPE%20REAL%20Integer%2B%20)%0A%20%20%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span>type&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;:&nbsp;^(&nbsp;SIMPLE_TYPE&nbsp;INT&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;|&nbsp;^(&nbsp;SIMPLE_TYPE&nbsp;REAL&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;|&nbsp;^(&nbsp;ARRAY_TYPE&nbsp;INT&nbsp;Integer+&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;|&nbsp;^(&nbsp;ARRAY_TYPE&nbsp;REAL&nbsp;Integer+&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">type
+  : ^( SIMPLE_TYPE INT )
+  | ^( SIMPLE_TYPE REAL )
+  | ^( ARRAY_TYPE INT Integer+ )
+  | ^( ARRAY_TYPE REAL Integer+ )
+  ;</pre>
+<br>树语法的^( ... )就隐含了"down"和"up"这两个虚构token。实际上这条规则匹配的是：
+<br><img src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/bad6cb15-1ef8-392b-8628-ce85395c13f0.jpg">
+<br>可以很清楚的看到"down"和"up"在规则中的位置。
+<br>在进入这条规则之后，需要多少个lookahead才足以判断应该选择哪条分支呢？
+<br>向前看一位：只能排除掉两个分支，还有两个，不够；
+<br>向前看两位：第二位是什么呢？四个分支里第二位都是"down"节点，对判断分支没帮助，还是不够用；
+<br>向前看三位：SIMPLE和ARRAY、INT和REAL都能分开了，足够。
+<br>那么对这条规则而言，需要3个lookahead。阅读ANTLR生成的源码，可以看到input.LA(3)这样的调用，表示向前看第三位的token。每多一个lookahead，生成的代码就得多以层嵌套的if-else，很是麻烦。
+<br>如果能调整一下parser这边生成的AST的结构，让tree grammar那边能写成：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=simpleType%0A%20%20%3A%20INT%0A%20%20%7C%20REAL%0A%20%20%3B%0A%0AarrayType%0A%20%20%3A%20%5E(%20INT%20Integer%2B%20)%0A%20%20%7C%20%5E(%20REAL%20Integer%2B%20)%0A%20%20%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span>simpleType&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;:&nbsp;INT&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;|&nbsp;REAL&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>arrayType&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;:&nbsp;^(&nbsp;INT&nbsp;Integer+&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;|&nbsp;^(&nbsp;REAL&nbsp;Integer+&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">simpleType
+  : INT
+  | REAL
+  ;
+
+arrayType
+  : ^( INT Integer+ )
+  | ^( REAL Integer+ )
+  ;</pre>
+<br>那么这两条规则都只需要1个lookahead就足以判断分支了，比原本的写法要简单，也会稍微快一些。写了个Ruby脚本来检查生成的源码里用的lookahead的个数（*）：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Ruby代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=def%20check_lookaheads(file)%0A%20%20lookaheads%20%3D%20open%20file%2C%20'r'%20do%20%7Cf%7C%0A%20%20%20%20ret%20%3D%20%5B%5D%0A%20%20%20%20f.readlines.grep(%2F%5E%5Cs%2B(.%2B%5C.la%5C((%5Cd%2B)%5C).%2B)%24%2Fi)%20do%0A%20%20%20%20%20%20ret%20%3C%3C%20%22%23%7B%242%7D%3A%20%23%7B%241%7D%22%0A%20%20%20%20end%0A%20%20%20%20ret%0A%20%20end%0Aend%0A%0Aif%20__FILE__%20%3D%3D%20%240%0A%20%20la%20%3D%20check_lookaheads%20ARGV%5B0%5D%20%7C%7C%20'JerryParser.cs'%0A%20%20puts%20'Lookaheads%3A'%2C%20la%2C%20''%0A%20%20puts%20%22Non-LL(1)'s%3A%22%2C%20la.select%20%7B%20%7Cl%7C%20%3F1%20!%3D%20l%5B0%5D%20%7D%0Aend" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-rb" start="1"><li><span><span class="keyword">def</span><span>&nbsp;check_lookaheads(file)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;lookaheads&nbsp;=&nbsp;open&nbsp;file,&nbsp;<span class="string">'r'</span><span>&nbsp;</span><span class="keyword">do</span><span>&nbsp;|f|&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ret&nbsp;=&nbsp;[]&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;f.readlines.grep(/^\s+(.+\.la\((\d+)\).+)$/i)&nbsp;<span class="keyword">do</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret&nbsp;&lt;&lt;&nbsp;<span class="string">"#{$2}:&nbsp;#{$1}"</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ret&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;<span class="keyword">end</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">end</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">if</span><span>&nbsp;__FILE__&nbsp;==&nbsp;</span><span class="variable">$0</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;la&nbsp;=&nbsp;check_lookaheads&nbsp;ARGV[0]&nbsp;||&nbsp;<span class="string">'JerryParser.cs'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;puts&nbsp;<span class="string">'Lookaheads:'</span><span>,&nbsp;la,&nbsp;</span><span class="string">''</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;puts&nbsp;<span class="string">"Non-LL(1)'s:"</span><span>,&nbsp;la.select&nbsp;{&nbsp;|l|&nbsp;?1&nbsp;!=&nbsp;l[0]&nbsp;}&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">end</span><span>&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="ruby">def check_lookaheads(file)
+  lookaheads = open file, 'r' do |f|
+    ret = []
+    f.readlines.grep(/^\s+(.+\.la\((\d+)\).+)$/i) do
+      ret &lt;&lt; "#{$2}: #{$1}"
+    end
+    ret
+  end
+end
+
+if __FILE__ == $0
+  la = check_lookaheads ARGV[0] || 'JerryParser.cs'
+  puts 'Lookaheads:', la, ''
+  puts "Non-LL(1)'s:", la.select { |l| ?1 != l[0] }
+end</pre>
+<br>明白了这个道理，就应该尽量将重写规则中的各个根节点设计成能直接区分的。
+<br>实际上不只是树的语法，在编程语言的源码的语法设计上也是一样：最容易解析的语法是每条规则都以特殊的token开头的语法，例如说声明变量就以<span style="color: blue;">var</span>关键字开头，声明函数就以<span style="color: blue;">function</span>关键字开头等。这样能保证语法只需要1个lookahead。而类似C的语法对解析器来说实在算不上友善……|||
+<br>（*：ANTLR在遇到比较复杂的判断条件时不会直接在规则对应的方法里调用input.LA(n)，而是会生成一个DFA类来计算应该走的分支。上面的Ruby脚本不检查这个状况。）
+<br>
+<br>其次，所有虚构token都添加了一些信息在后面。例如说原本一元负号的规则是：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=MINUS%20primaryExpression%0A%20%20-%3E%20%5E(%20UNARY_MINUS%20primaryExpression%20)" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span>MINUS&nbsp;primaryExpression&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;UNARY_MINUS&nbsp;primaryExpression&nbsp;)&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">MINUS primaryExpression
+  -&gt; ^( UNARY_MINUS primaryExpression )</pre>
+<br>则UNARY_MINUS这个虚构token将不包含任何文字、位置信息。因为MINUS原本携带的位置信息已经丢失了，所以如果后续处理中需要知道这个表达式的位置就没办法得到。
+<br>改写为这样：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=MINUS%20primaryExpression%0A%20%20-%3E%20%5E(%20UNARY_MINUS%5B%24MINUS%5D%20primaryExpression%20)" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span>MINUS&nbsp;primaryExpression&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;UNARY_MINUS[$MINUS]&nbsp;primaryExpression&nbsp;)&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">MINUS primaryExpression
+  -&gt; ^( UNARY_MINUS[$MINUS] primaryExpression )</pre>
+<br>则使得UNARY_MINUS继承MINUS匹配时的文字、位置等属性，解决了前面的问题。
+<br>
+<br>除此之外，原本写在program规则里的嵌入动作也去掉了。之前写在那里主要是为了在parser内输出AST的字符串表示，只是演示用。
+<br>
+<br>修改后的完整语法如下：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">C#代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=grammar%20Jerry%3B%0A%0Aoptions%20%7B%0A%09language%20%3D%20CSharp2%3B%0A%09output%20%3D%20AST%3B%0A%09ASTLabelType%20%3D%20CommonTree%3B%0A%7D%0A%0Atokens%20%7B%0A%09%2F%2F%20imaginary%20tokens%0A%09SIMPLE_VAR_DECL%3B%0A%09SIMPLE_VAR_DECL_INIT%3B%0A%09ARRAY_VAR_DECL%3B%0A%09ARRAY_VAR_DECL_INIT%3B%0A%09ARRAY_LITERAL%3B%0A%09SIMPLE_VAR_ACCESS%3B%0A%09ARRAY_VAR_ACCESS%3B%0A%09UNARY_MINUS%3B%0A%09BLOCK%3B%0A%09EMPTY_BLOCK%3B%0A%09EXPR_STMT%3B%0A%7D%0A%0A%2F%2F%20parser%20rules%0A%0Aprogram%09%3A%09statement%2B%20EOF!%0A%09%3B%0A%0Astatement%0A%09%3A%09expressionStatement%0A%09%7C%09variableDeclaration%0A%09%7C%09blockStatement%0A%09%7C%09ifStatement%0A%09%7C%09whileStatement%0A%09%7C%09breakStatement%0A%09%7C%09readStatement%0A%09%7C%09writeStatement%0A%09%3B%0A%0AexpressionStatement%0A%09%3A%09expression%20SEMICOLON%0A%09%09%09-%3E%20%5E(%20EXPR_STMT%5B%24expression.start%2C%20%22ExprStmt%22%5D%20expression%20)%0A%09%3B%0A%0AvariableDeclaration%0A%09%3A%09typeSpecifier%0A%09%09%09(%20id1%3DIdentifier%0A%09%09%09%09(%20(%09-%3E%20%5E(%20SIMPLE_VAR_DECL%5B%24id1%2C%20%22VarDecl%22%5D%20%5E(%20typeSpecifier%20)%20%24id1%20)%20)%0A%09%09%09%09%7C%20(%20EQ%20expression%0A%09%09%09%09%09-%3E%20%5E(%20SIMPLE_VAR_DECL_INIT%5B%24id1%2C%20%22VarDeclInit%22%5D%20%5E(%20typeSpecifier%20)%20%24id1%20expression%20)%20)%0A%09%09%09%09%7C%20(%20(%20LBRACK%20Integer%20RBRACK%20)%2B%0A%09%09%09%09%09-%3E%20%5E(%20ARRAY_VAR_DECL%5B%24id1%2C%20%22VarDecl%22%5D%20%5E(%20typeSpecifier%20Integer%2B%20)%20%24id1%20)%20)%0A%09%09%09%09%7C%20(%20(%20LBRACK%20Integer%20RBRACK%20)%2B%20EQ%20arrayLiteral%0A%09%09%09%09%09-%3E%20%5E(%20ARRAY_VAR_DECL_INIT%5B%24id1%2C%20%22VarDeclInit%22%5D%20%5E(%20typeSpecifier%20Integer%2B%20)%20%24id1%20arrayLiteral%20)%20)%0A%09%09%09%09)%0A%09%09%09)%0A%09%09%09(%20COMMA%20id2%3DIdentifier%0A%09%09%09%09(%20(%09-%3E%20%24variableDeclaration%20%5E(%20SIMPLE_VAR_DECL%5B%24id2%2C%20%22VarDecl%22%5D%20%5E(%20typeSpecifier)%20%24id2%20)%20)%0A%09%09%09%09%7C%20(%20EQ%20exp%3Dexpression%0A%09%09%09%09%09-%3E%20%24variableDeclaration%20%5E(%20SIMPLE_VAR_DECL_INIT%5B%24id2%2C%20%22VarDeclInit%22%5D%20%5E(%20typeSpecifier%20)%20%24id2%20%24exp%20)%20)%0A%09%09%09%09%7C%20(%20(%20LBRACK%20dim1%2B%3DInteger%20RBRACK%20)%2B%0A%09%09%09%09%09-%3E%20%24variableDeclaration%20%5E(%20ARRAY_VAR_DECL%5B%24id2%2C%20%22VarDecl%22%5D%20%5E(%20typeSpecifier%20%24dim1%2B%20)%20%24id2%20)%20)%0A%09%09%09%09%7C%20(%20(%20LBRACK%20dim2%2B%3DInteger%20RBRACK%20)%2B%20EQ%20al%3DarrayLiteral%0A%09%09%09%09%09-%3E%20%24variableDeclaration%20%5E(%20ARRAY_VAR_DECL_INIT%5B%24id2%2C%20%22VarDeclInit%22%5D%20%5E(%20typeSpecifier%20%24dim2%2B%20)%20%24id2%20%24al%20)%20)%0A%09%09%09%09)%0A%09%09%09%09%7B%20if%20(null%20!%3D%20%24dim1)%20%24dim1.Clear()%3B%20if%20(null%20!%3D%20%24dim2)%20%24dim2.Clear()%3B%20%7D%0A%09%09%09)*%0A%09%09SEMICOLON%0A%09%3B%0A%0AtypeSpecifier%0A%09%3A%09INT%20%7C%20REAL%0A%09%3B%0A%0AarrayLiteral%0A%09%3A%09LBRACE%0A%09%09%09arrayLiteralElement%20(%20COMMA%20arrayLiteralElement%20)*%0A%09%09RBRACE%0A%09%09%09-%3E%20%5E(%20ARRAY_LITERAL%5B%24LBRACE%2C%20%22Array%22%5D%20arrayLiteralElement%2B%20)%0A%09%3B%0A%0AarrayLiteralElement%0A%09%3A%09expression%0A%09%7C%09arrayLiteral%0A%09%3B%0A%0AblockStatement%0A%09%3A%09LBRACE%20statement%2B%20RBRACE%0A%09%09%09-%3E%20%5E(%20BLOCK%5B%24LBRACE%2C%20%22Block%22%5D%20statement%2B%20)%0A%09%7C%09LBRACE%20RBRACE%20%2F%2F%20empty%20block%0A%09%09%09-%3E%20EMPTY_BLOCK%5B%24LBRACE%2C%20%22EmptyBlock%22%5D%0A%09%3B%0A%0AifStatement%0A%09%3A%09IF%5E%20LPAREN!%20expression%20RPAREN!%20statement%20(%20ELSE!%20statement%20)%3F%0A%09%3B%0A%0AwhileStatement%0A%09%3A%09WHILE%5E%20LPAREN!%20expression%20RPAREN!%20statement%0A%09%3B%0A%0AbreakStatement%0A%09%3A%09BREAK%20SEMICOLON!%0A%09%3B%0A%0AreadStatement%0A%09%3A%09READ%5E%20variableAccess%20SEMICOLON!%0A%09%3B%0A%0AwriteStatement%0A%09%3A%09WRITE%5E%20expression%20SEMICOLON!%0A%09%3B%0A%0AvariableAccess%0A%09%3A%09Identifier%0A%09%09(%09-%3E%20%5E(%20SIMPLE_VAR_ACCESS%5B%24Identifier%2C%20%22VarAccess%22%5D%20Identifier%20)%0A%09%09%7C%20(%20LBRACK%20Integer%20RBRACK%20)%2B%0A%09%09%09-%3E%20%5E(%20ARRAY_VAR_ACCESS%5B%24Identifier%2C%20%22VarAccess%22%5D%20Identifier%20Integer%2B%20)%0A%09%09)%0A%09%3B%0A%0Aexpression%0A%09%3A%09assignmentExpression%0A%09%7C%09logicalOrExpression%0A%09%3B%0A%0AassignmentExpression%0A%09%3A%09variableAccess%20EQ%5E%20expression%0A%09%3B%0A%0AlogicalOrExpression%0A%09%3A%09logicalAndExpression%20(%20OROR%5E%20logicalAndExpression%20)*%0A%09%3B%0A%0AlogicalAndExpression%0A%09%3A%09relationalExpression%20(%20ANDAND%5E%20relationalExpression%20)*%0A%09%3B%0A%0ArelationalExpression%0A%09%3A%09additiveExpression%20(%20relationalOperator%5E%20additiveExpression%20)%3F%0A%09%7C%09BANG%5E%20relationalExpression%0A%09%3B%0A%0AadditiveExpression%0A%09%3A%09multiplicativeExpression%20(%20additiveOperator%5E%20multiplicativeExpression%20)*%0A%09%3B%0A%20%20%0AmultiplicativeExpression%0A%09%3A%09primaryExpression%20(%20multiplicativeOperator%5E%20primaryExpression%20)*%0A%09%3B%0A%0AprimaryExpression%0A%09%3A%09variableAccess%0A%09%7C%09Integer%0A%09%7C%09RealNumber%0A%09%7C%09LPAREN!%20expression%20RPAREN!%0A%09%7C%09MINUS%20primaryExpression%0A%09%09%09-%3E%20%5E(%20UNARY_MINUS%5B%24MINUS%5D%20primaryExpression%20)%0A%09%3B%0A%0ArelationalOperator%20%20%20%0A%09%3A%09LT%20%7C%20GT%20%7C%20EQEQ%20%7C%20LE%20%7C%20GE%20%7C%20NE%0A%09%3B%0A%0AadditiveOperator%0A%09%3A%09PLUS%20%7C%20MINUS%0A%09%3B%0A%0AmultiplicativeOperator%0A%09%3A%09MUL%20%7C%20DIV%0A%09%3B%0A%0A%2F%2F%20lexer%20rules%0A%0ALPAREN%09%3A%09'('%0A%09%3B%0A%0ARPAREN%09%3A%09')'%0A%09%3B%0A%0ALBRACK%09%3A%09'%5B'%0A%09%3B%0A%0ARBRACK%09%3A%09'%5D'%0A%09%3B%0A%0ALBRACE%09%3A%09'%7B'%0A%09%3B%0A%0ARBRACE%09%3A%09'%7D'%0A%09%3B%0A%0ACOMMA%09%3A%09'%2C'%0A%09%3B%0A%0ASEMICOLON%0A%09%3A%09'%3B'%0A%09%3B%0A%0APLUS%09%3A%09'%2B'%0A%09%3B%0A%0AMINUS%09%3A%09'-'%0A%09%3B%0A%0AMUL%09%3A%09'*'%0A%09%3B%0A%0ADIV%09%3A%09'%2F'%0A%09%3B%0A%0AEQEQ%09%3A%09'%3D%3D'%0A%09%3B%0A%0ANE%09%3A%09'!%3D'%0A%09%3B%0A%0ALT%09%3A%09'%3C'%0A%09%3B%0A%0ALE%09%3A%09'%3C%3D'%0A%09%3B%0A%0AGT%09%3A%09'%3E'%0A%09%3B%0A%0AGE%09%3A%09'%3E%3D'%0A%09%3B%0A%0ABANG%09%3A%09'!'%0A%09%3B%0A%0AANDAND%09%3A%09'%26%26'%0A%09%3B%0A%0AOROR%09%3A%09'%7C%7C'%0A%09%3B%0A%0AEQ%09%3A%09'%3D'%0A%09%3B%0A%0AIF%09%3A%09'if'%0A%09%3B%0A%0AELSE%09%3A%09'else'%0A%09%3B%0A%0AWHILE%09%3A%09'while'%0A%09%3B%0A%0ABREAK%09%3A%09'break'%0A%09%3B%0A%0AREAD%09%3A%09'read'%0A%09%3B%0A%0AWRITE%09%3A%09'write'%0A%09%3B%0A%0AINT%09%3A%09'int'%0A%09%3B%0A%0AREAL%09%3A%09'real'%0A%09%3B%0A%0AIdentifier%0A%09%3A%09LetterOrUnderscore%20(%20LetterOrUnderscore%20%7C%20Digit%20)*%0A%09%3B%0A%0AInteger%09%3A%09Digit%2B%0A%09%3B%0A%0ARealNumber%0A%09%3A%09Digit%2B%20'.'%20Digit%2B%0A%09%3B%0A%0Afragment%0ADigit%09%3A%09'0'..'9'%0A%09%3B%0A%0Afragment%0ALetterOrUnderscore%0A%09%3A%09Letter%20%7C%20'_'%0A%09%3B%0A%0Afragment%0ALetter%09%3A%09(%20'a'..'z'%20%7C%20'A'..'Z'%20)%0A%09%3B%0A%0AWS%09%3A%09(%20'%20'%20%7C%20'%5Ct'%20%7C%20'%5Cr'%20%7C%20'%5Cn'%20)%2B%20%7B%20%24channel%20%3D%20HIDDEN%3B%20%7D%20%20%20%0A%09%3B%0A%0AComment%0A%09%3A%09'%2F*'%20(%20options%20%7B%20greedy%20%3D%20false%3B%20%7D%20%3A%20.%20)*%20'*%2F'%20%7B%20%24channel%20%3D%20HIDDEN%3B%20%7D%0A%09%3B%0A%0ALineComment%0A%09%3A%09'%2F%2F'%20~('%5Cn'%7C'%5Cr')*%20'%5Cr'%3F%20'%5Cn'%20%7B%20%24channel%20%3D%20HIDDEN%3B%20%7D%0A%09%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-c" start="1"><li><span><span>grammar&nbsp;Jerry;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>options&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;language&nbsp;=&nbsp;CSharp2;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;output&nbsp;=&nbsp;AST;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ASTLabelType&nbsp;=&nbsp;CommonTree;&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>tokens&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;imaginary&nbsp;tokens</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;SIMPLE_VAR_DECL;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;SIMPLE_VAR_DECL_INIT;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ARRAY_VAR_DECL;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ARRAY_VAR_DECL_INIT;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ARRAY_LITERAL;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;SIMPLE_VAR_ACCESS;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;ARRAY_VAR_ACCESS;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;UNARY_MINUS;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;BLOCK;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;EMPTY_BLOCK;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;EXPR_STMT;&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="comment">//&nbsp;parser&nbsp;rules</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>program&nbsp;:&nbsp;&nbsp;&nbsp;statement+&nbsp;EOF!&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>statement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;expressionStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;variableDeclaration&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;blockStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;ifStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;whileStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;breakStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;readStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;writeStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>expressionStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;expression&nbsp;SEMICOLON&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;EXPR_STMT[$expression.start,&nbsp;<span class="string">"ExprStmt"</span><span>]&nbsp;expression&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>variableDeclaration&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;typeSpecifier&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;id1=Identifier&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;(&nbsp;-&gt;&nbsp;^(&nbsp;SIMPLE_VAR_DECL[$id1,&nbsp;<span class="string">"VarDecl"</span><span>]&nbsp;^(&nbsp;typeSpecifier&nbsp;)&nbsp;$id1&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;(&nbsp;EQ&nbsp;expression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;SIMPLE_VAR_DECL_INIT[$id1,&nbsp;<span class="string">"VarDeclInit"</span><span>]&nbsp;^(&nbsp;typeSpecifier&nbsp;)&nbsp;$id1&nbsp;expression&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;(&nbsp;(&nbsp;LBRACK&nbsp;Integer&nbsp;RBRACK&nbsp;)+&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;ARRAY_VAR_DECL[$id1,&nbsp;<span class="string">"VarDecl"</span><span>]&nbsp;^(&nbsp;typeSpecifier&nbsp;Integer+&nbsp;)&nbsp;$id1&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;(&nbsp;(&nbsp;LBRACK&nbsp;Integer&nbsp;RBRACK&nbsp;)+&nbsp;EQ&nbsp;arrayLiteral&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;ARRAY_VAR_DECL_INIT[$id1,&nbsp;<span class="string">"VarDeclInit"</span><span>]&nbsp;^(&nbsp;typeSpecifier&nbsp;Integer+&nbsp;)&nbsp;$id1&nbsp;arrayLiteral&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;COMMA&nbsp;id2=Identifier&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;(&nbsp;-&gt;&nbsp;$variableDeclaration&nbsp;^(&nbsp;SIMPLE_VAR_DECL[$id2,&nbsp;<span class="string">"VarDecl"</span><span>]&nbsp;^(&nbsp;typeSpecifier)&nbsp;$id2&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;(&nbsp;EQ&nbsp;exp=expression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;$variableDeclaration&nbsp;^(&nbsp;SIMPLE_VAR_DECL_INIT[$id2,&nbsp;<span class="string">"VarDeclInit"</span><span>]&nbsp;^(&nbsp;typeSpecifier&nbsp;)&nbsp;$id2&nbsp;$exp&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;(&nbsp;(&nbsp;LBRACK&nbsp;dim1+=Integer&nbsp;RBRACK&nbsp;)+&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;$variableDeclaration&nbsp;^(&nbsp;ARRAY_VAR_DECL[$id2,&nbsp;<span class="string">"VarDecl"</span><span>]&nbsp;^(&nbsp;typeSpecifier&nbsp;$dim1+&nbsp;)&nbsp;$id2&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;(&nbsp;(&nbsp;LBRACK&nbsp;dim2+=Integer&nbsp;RBRACK&nbsp;)+&nbsp;EQ&nbsp;al=arrayLiteral&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;$variableDeclaration&nbsp;^(&nbsp;ARRAY_VAR_DECL_INIT[$id2,&nbsp;<span class="string">"VarDeclInit"</span><span>]&nbsp;^(&nbsp;typeSpecifier&nbsp;$dim2+&nbsp;)&nbsp;$id2&nbsp;$al&nbsp;)&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<span class="keyword">if</span><span>&nbsp;(</span><span class="keyword">null</span><span>&nbsp;!=&nbsp;$dim1)&nbsp;$dim1.Clear();&nbsp;</span><span class="keyword">if</span><span>&nbsp;(</span><span class="keyword">null</span><span>&nbsp;!=&nbsp;$dim2)&nbsp;$dim2.Clear();&nbsp;}&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)*&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEMICOLON&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>typeSpecifier&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;INT&nbsp;|&nbsp;REAL&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>arrayLiteral&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;LBRACE&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrayLiteralElement&nbsp;(&nbsp;COMMA&nbsp;arrayLiteralElement&nbsp;)*&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RBRACE&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;ARRAY_LITERAL[$LBRACE,&nbsp;<span class="string">"Array"</span><span>]&nbsp;arrayLiteralElement+&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>arrayLiteralElement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;expression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;arrayLiteral&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>blockStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;LBRACE&nbsp;statement+&nbsp;RBRACE&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;BLOCK[$LBRACE,&nbsp;<span class="string">"Block"</span><span>]&nbsp;statement+&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;LBRACE&nbsp;RBRACE&nbsp;<span class="comment">//&nbsp;empty&nbsp;block</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;EMPTY_BLOCK[$LBRACE,&nbsp;<span class="string">"EmptyBlock"</span><span>]&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>ifStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;IF^&nbsp;LPAREN!&nbsp;expression&nbsp;RPAREN!&nbsp;statement&nbsp;(&nbsp;ELSE!&nbsp;statement&nbsp;)?&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>whileStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;WHILE^&nbsp;LPAREN!&nbsp;expression&nbsp;RPAREN!&nbsp;statement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>breakStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;BREAK&nbsp;SEMICOLON!&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>readStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;READ^&nbsp;variableAccess&nbsp;SEMICOLON!&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>writeStatement&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;WRITE^&nbsp;expression&nbsp;SEMICOLON!&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>variableAccess&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;Identifier&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;SIMPLE_VAR_ACCESS[$Identifier,&nbsp;<span class="string">"VarAccess"</span><span>]&nbsp;Identifier&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;(&nbsp;LBRACK&nbsp;Integer&nbsp;RBRACK&nbsp;)+&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;ARRAY_VAR_ACCESS[$Identifier,&nbsp;<span class="string">"VarAccess"</span><span>]&nbsp;Identifier&nbsp;Integer+&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>expression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;assignmentExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;logicalOrExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>assignmentExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;variableAccess&nbsp;EQ^&nbsp;expression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>logicalOrExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;logicalAndExpression&nbsp;(&nbsp;OROR^&nbsp;logicalAndExpression&nbsp;)*&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>logicalAndExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;relationalExpression&nbsp;(&nbsp;ANDAND^&nbsp;relationalExpression&nbsp;)*&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>relationalExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;additiveExpression&nbsp;(&nbsp;relationalOperator^&nbsp;additiveExpression&nbsp;)?&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;BANG^&nbsp;relationalExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>additiveExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;multiplicativeExpression&nbsp;(&nbsp;additiveOperator^&nbsp;multiplicativeExpression&nbsp;)*&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>multiplicativeExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;primaryExpression&nbsp;(&nbsp;multiplicativeOperator^&nbsp;primaryExpression&nbsp;)*&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>primaryExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;variableAccess&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Integer&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;RealNumber&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;LPAREN!&nbsp;expression&nbsp;RPAREN!&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;MINUS&nbsp;primaryExpression&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;^(&nbsp;UNARY_MINUS[$MINUS]&nbsp;primaryExpression&nbsp;)&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>relationalOperator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;LT&nbsp;|&nbsp;GT&nbsp;|&nbsp;EQEQ&nbsp;|&nbsp;LE&nbsp;|&nbsp;GE&nbsp;|&nbsp;NE&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>additiveOperator&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;PLUS&nbsp;|&nbsp;MINUS&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>multiplicativeOperator&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;MUL&nbsp;|&nbsp;DIV&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="comment">//&nbsp;lexer&nbsp;rules</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>LPAREN&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'('</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>RPAREN&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">')'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>LBRACK&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'['</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>RBRACK&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">']'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>LBRACE&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'{'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>RBRACE&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'}'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>COMMA&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">','</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>SEMICOLON&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">';'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>PLUS&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'+'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>MINUS&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'-'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>MUL&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'*'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>DIV&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'/'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>EQEQ&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'=='</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>NE&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'!='</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>LT&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'&lt;'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>LE&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'&lt;='</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>GT&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'&gt;'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>GE&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'&gt;='</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>BANG&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'!'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>ANDAND&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'&amp;&amp;'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>OROR&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'||'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>EQ&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'='</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>IF&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'if'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>ELSE&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'else'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>WHILE&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'while'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>BREAK&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'break'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>READ&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'read'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>WRITE&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'write'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>INT&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'int'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>REAL&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'real'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>Identifier&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;LetterOrUnderscore&nbsp;(&nbsp;LetterOrUnderscore&nbsp;|&nbsp;Digit&nbsp;)*&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>Integer&nbsp;:&nbsp;&nbsp;&nbsp;Digit+&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>RealNumber&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;Digit+&nbsp;<span class="string">'.'</span><span>&nbsp;Digit+&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>fragment&nbsp;&nbsp;</span></li><li><span>Digit&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'0'</span><span>..</span><span class="string">'9'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>fragment&nbsp;&nbsp;</span></li><li><span>LetterOrUnderscore&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;Letter&nbsp;|&nbsp;<span class="string">'_'</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>fragment&nbsp;&nbsp;</span></li><li><span>Letter&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;(&nbsp;<span class="string">'a'</span><span>..</span><span class="string">'z'</span><span>&nbsp;|&nbsp;</span><span class="string">'A'</span><span>..</span><span class="string">'Z'</span><span>&nbsp;)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>WS&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;(&nbsp;<span class="string">'&nbsp;'</span><span>&nbsp;|&nbsp;</span><span class="string">'\t'</span><span>&nbsp;|&nbsp;</span><span class="string">'\r'</span><span>&nbsp;|&nbsp;</span><span class="string">'\n'</span><span>&nbsp;)+&nbsp;{&nbsp;$channel&nbsp;=&nbsp;HIDDEN;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>Comment&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'/*'</span><span>&nbsp;(&nbsp;options&nbsp;{&nbsp;greedy&nbsp;=&nbsp;</span><span class="keyword">false</span><span>;&nbsp;}&nbsp;:&nbsp;.&nbsp;)*&nbsp;</span><span class="string">'*/'</span><span>&nbsp;{&nbsp;$channel&nbsp;=&nbsp;HIDDEN;&nbsp;}&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>LineComment&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span class="string">'//'</span><span>&nbsp;~(</span><span class="string">'\n'</span><span>|</span><span class="string">'\r'</span><span>)*&nbsp;</span><span class="string">'\r'</span><span>?&nbsp;</span><span class="string">'\n'</span><span>&nbsp;{&nbsp;$channel&nbsp;=&nbsp;HIDDEN;&nbsp;}&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="c#">grammar Jerry;
+
+options {
+	language = CSharp2;
+	output = AST;
+	ASTLabelType = CommonTree;
+}
+
+tokens {
+	// imaginary tokens
+	SIMPLE_VAR_DECL;
+	SIMPLE_VAR_DECL_INIT;
+	ARRAY_VAR_DECL;
+	ARRAY_VAR_DECL_INIT;
+	ARRAY_LITERAL;
+	SIMPLE_VAR_ACCESS;
+	ARRAY_VAR_ACCESS;
+	UNARY_MINUS;
+	BLOCK;
+	EMPTY_BLOCK;
+	EXPR_STMT;
+}
+
+// parser rules
+
+program	:	statement+ EOF!
+	;
+
+statement
+	:	expressionStatement
+	|	variableDeclaration
+	|	blockStatement
+	|	ifStatement
+	|	whileStatement
+	|	breakStatement
+	|	readStatement
+	|	writeStatement
+	;
+
+expressionStatement
+	:	expression SEMICOLON
+			-&gt; ^( EXPR_STMT[$expression.start, "ExprStmt"] expression )
+	;
+
+variableDeclaration
+	:	typeSpecifier
+			( id1=Identifier
+				( (	-&gt; ^( SIMPLE_VAR_DECL[$id1, "VarDecl"] ^( typeSpecifier ) $id1 ) )
+				| ( EQ expression
+					-&gt; ^( SIMPLE_VAR_DECL_INIT[$id1, "VarDeclInit"] ^( typeSpecifier ) $id1 expression ) )
+				| ( ( LBRACK Integer RBRACK )+
+					-&gt; ^( ARRAY_VAR_DECL[$id1, "VarDecl"] ^( typeSpecifier Integer+ ) $id1 ) )
+				| ( ( LBRACK Integer RBRACK )+ EQ arrayLiteral
+					-&gt; ^( ARRAY_VAR_DECL_INIT[$id1, "VarDeclInit"] ^( typeSpecifier Integer+ ) $id1 arrayLiteral ) )
+				)
+			)
+			( COMMA id2=Identifier
+				( (	-&gt; $variableDeclaration ^( SIMPLE_VAR_DECL[$id2, "VarDecl"] ^( typeSpecifier) $id2 ) )
+				| ( EQ exp=expression
+					-&gt; $variableDeclaration ^( SIMPLE_VAR_DECL_INIT[$id2, "VarDeclInit"] ^( typeSpecifier ) $id2 $exp ) )
+				| ( ( LBRACK dim1+=Integer RBRACK )+
+					-&gt; $variableDeclaration ^( ARRAY_VAR_DECL[$id2, "VarDecl"] ^( typeSpecifier $dim1+ ) $id2 ) )
+				| ( ( LBRACK dim2+=Integer RBRACK )+ EQ al=arrayLiteral
+					-&gt; $variableDeclaration ^( ARRAY_VAR_DECL_INIT[$id2, "VarDeclInit"] ^( typeSpecifier $dim2+ ) $id2 $al ) )
+				)
+				{ if (null != $dim1) $dim1.Clear(); if (null != $dim2) $dim2.Clear(); }
+			)*
+		SEMICOLON
+	;
+
+typeSpecifier
+	:	INT | REAL
+	;
+
+arrayLiteral
+	:	LBRACE
+			arrayLiteralElement ( COMMA arrayLiteralElement )*
+		RBRACE
+			-&gt; ^( ARRAY_LITERAL[$LBRACE, "Array"] arrayLiteralElement+ )
+	;
+
+arrayLiteralElement
+	:	expression
+	|	arrayLiteral
+	;
+
+blockStatement
+	:	LBRACE statement+ RBRACE
+			-&gt; ^( BLOCK[$LBRACE, "Block"] statement+ )
+	|	LBRACE RBRACE // empty block
+			-&gt; EMPTY_BLOCK[$LBRACE, "EmptyBlock"]
+	;
+
+ifStatement
+	:	IF^ LPAREN! expression RPAREN! statement ( ELSE! statement )?
+	;
+
+whileStatement
+	:	WHILE^ LPAREN! expression RPAREN! statement
+	;
+
+breakStatement
+	:	BREAK SEMICOLON!
+	;
+
+readStatement
+	:	READ^ variableAccess SEMICOLON!
+	;
+
+writeStatement
+	:	WRITE^ expression SEMICOLON!
+	;
+
+variableAccess
+	:	Identifier
+		(	-&gt; ^( SIMPLE_VAR_ACCESS[$Identifier, "VarAccess"] Identifier )
+		| ( LBRACK Integer RBRACK )+
+			-&gt; ^( ARRAY_VAR_ACCESS[$Identifier, "VarAccess"] Identifier Integer+ )
+		)
+	;
+
+expression
+	:	assignmentExpression
+	|	logicalOrExpression
+	;
+
+assignmentExpression
+	:	variableAccess EQ^ expression
+	;
+
+logicalOrExpression
+	:	logicalAndExpression ( OROR^ logicalAndExpression )*
+	;
+
+logicalAndExpression
+	:	relationalExpression ( ANDAND^ relationalExpression )*
+	;
+
+relationalExpression
+	:	additiveExpression ( relationalOperator^ additiveExpression )?
+	|	BANG^ relationalExpression
+	;
+
+additiveExpression
+	:	multiplicativeExpression ( additiveOperator^ multiplicativeExpression )*
+	;
+  
+multiplicativeExpression
+	:	primaryExpression ( multiplicativeOperator^ primaryExpression )*
+	;
+
+primaryExpression
+	:	variableAccess
+	|	Integer
+	|	RealNumber
+	|	LPAREN! expression RPAREN!
+	|	MINUS primaryExpression
+			-&gt; ^( UNARY_MINUS[$MINUS] primaryExpression )
+	;
+
+relationalOperator   
+	:	LT | GT | EQEQ | LE | GE | NE
+	;
+
+additiveOperator
+	:	PLUS | MINUS
+	;
+
+multiplicativeOperator
+	:	MUL | DIV
+	;
+
+// lexer rules
+
+LPAREN	:	'('
+	;
+
+RPAREN	:	')'
+	;
+
+LBRACK	:	'['
+	;
+
+RBRACK	:	']'
+	;
+
+LBRACE	:	'{'
+	;
+
+RBRACE	:	'}'
+	;
+
+COMMA	:	','
+	;
+
+SEMICOLON
+	:	';'
+	;
+
+PLUS	:	'+'
+	;
+
+MINUS	:	'-'
+	;
+
+MUL	:	'*'
+	;
+
+DIV	:	'/'
+	;
+
+EQEQ	:	'=='
+	;
+
+NE	:	'!='
+	;
+
+LT	:	'&lt;'
+	;
+
+LE	:	'&lt;='
+	;
+
+GT	:	'&gt;'
+	;
+
+GE	:	'&gt;='
+	;
+
+BANG	:	'!'
+	;
+
+ANDAND	:	'&amp;&amp;'
+	;
+
+OROR	:	'||'
+	;
+
+EQ	:	'='
+	;
+
+IF	:	'if'
+	;
+
+ELSE	:	'else'
+	;
+
+WHILE	:	'while'
+	;
+
+BREAK	:	'break'
+	;
+
+READ	:	'read'
+	;
+
+WRITE	:	'write'
+	;
+
+INT	:	'int'
+	;
+
+REAL	:	'real'
+	;
+
+Identifier
+	:	LetterOrUnderscore ( LetterOrUnderscore | Digit )*
+	;
+
+Integer	:	Digit+
+	;
+
+RealNumber
+	:	Digit+ '.' Digit+
+	;
+
+fragment
+Digit	:	'0'..'9'
+	;
+
+fragment
+LetterOrUnderscore
+	:	Letter | '_'
+	;
+
+fragment
+Letter	:	( 'a'..'z' | 'A'..'Z' )
+	;
+
+WS	:	( ' ' | '\t' | '\r' | '\n' )+ { $channel = HIDDEN; }   
+	;
+
+Comment
+	:	'/*' ( options { greedy = false; } : . )* '*/' { $channel = HIDDEN; }
+	;
+
+LineComment
+	:	'//' ~('\n'|'\r')* '\r'? '\n' { $channel = HIDDEN; }
+	;</pre>
+<br>
+<br>同上一篇一样，也写一个启动lexer和parser的程序。这次是用C#来写：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">C#代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=using%20System%3B%0Ausing%20System.IO%3B%0Ausing%20Antlr.Runtime%3B%20%20%20%20%20%20%2F%2F%20Antlr3.Runtime.dll%0Ausing%20Antlr.Runtime.Tree%3B%0Ausing%20Antlr.Utility.Tree%3B%20%2F%2F%20Antlr3.Utility.dll%0A%0Asealed%20class%20TestJerryAst%20%7B%0A%20%20%20%20static%20void%20PrintUsage(%20)%20%7B%0A%20%20%20%20%20%20%20%20Console.WriteLine(%20%22Usage%3A%20TestJerryAst%20%5B-dot%5D%20%3Csource%20file%3E%22%20)%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20static%20void%20Main(%20string%5B%5D%20args%20)%20%7B%0A%20%20%20%20%20%20%20%20bool%20generateDot%20%3D%20false%3B%0A%20%20%20%20%20%20%20%20string%20srcFile%3B%0A%20%20%20%20%20%20%20%20switch%20(%20args.Length%20)%20%7B%0A%20%20%20%20%20%20%20%20case%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20PrintUsage(%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(%20!File.Exists(%20args%5B%200%20%5D%20)%20)%20goto%20case%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20srcFile%20%3D%20args%5B%200%20%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(%20%22-dot%22%20%3D%3D%20args%5B%200%20%5D%20)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generateDot%20%3D%20true%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(%20!File.Exists(%20args%5B%201%20%5D%20)%20)%20goto%20case%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20srcFile%20%3D%20args%5B%201%20%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20goto%20case%201%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20var%20input%20%3D%20new%20ANTLRReaderStream(%20File.OpenText(%20srcFile%20)%20)%3B%0A%20%20%20%20%20%20%20%20var%20lexer%20%3D%20new%20JerryLexer(%20input%20)%3B%0A%20%20%20%20%20%20%20%20var%20tokens%20%3D%20new%20CommonTokenStream(%20lexer%20)%3B%0A%20%20%20%20%20%20%20%20var%20parser%20%3D%20new%20JerryParser(%20tokens%20)%3B%0A%0A%20%20%20%20%20%20%20%20var%20programReturn%20%3D%20parser.program()%3B%0A%20%20%20%20%20%20%20%20var%20ast%20%3D%20(%20CommonTree%20)%20programReturn.Tree%3B%0A%0A%20%20%20%20%20%20%20%20%2F%2F%20Generate%20DOT%20diagram%20if%20-dot%20option%20is%20given%0A%20%20%20%20%20%20%20%20if%20(%20generateDot%20)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20dotgen%20%3D%20new%20DOTTreeGenerator(%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20astDot%20%3D%20dotgen.ToDOT(%20ast%20)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20Console.WriteLine(%20astDot%20)%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20Console.WriteLine(%20ast.ToStringTree(%20)%20)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-c" start="1"><li><span><span class="keyword">using</span><span>&nbsp;System;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;System.IO;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;Antlr.Runtime;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">//&nbsp;Antlr3.Runtime.dll</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;Antlr.Runtime.Tree;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">using</span><span>&nbsp;Antlr.Utility.Tree;&nbsp;</span><span class="comment">//&nbsp;Antlr3.Utility.dll</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">sealed</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;TestJerryAst&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;PrintUsage(&nbsp;)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&nbsp;<span class="string">"Usage:&nbsp;TestJerryAst&nbsp;[-dot]&nbsp;&lt;source&nbsp;file&gt;"</span><span>&nbsp;);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;Main(&nbsp;</span><span class="keyword">string</span><span>[]&nbsp;args&nbsp;)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">bool</span><span>&nbsp;generateDot&nbsp;=&nbsp;</span><span class="keyword">false</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">string</span><span>&nbsp;srcFile;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">switch</span><span>&nbsp;(&nbsp;args.Length&nbsp;)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;0:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintUsage(&nbsp;);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span><span>&nbsp;1:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;!File.Exists(&nbsp;args[&nbsp;0&nbsp;]&nbsp;)&nbsp;)&nbsp;</span><span class="keyword">goto</span><span>&nbsp;</span><span class="keyword">case</span><span>&nbsp;0;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;srcFile&nbsp;=&nbsp;args[&nbsp;0&nbsp;];&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">default</span><span>:&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;</span><span class="string">"-dot"</span><span>&nbsp;==&nbsp;args[&nbsp;0&nbsp;]&nbsp;)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generateDot&nbsp;=&nbsp;<span class="keyword">true</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;!File.Exists(&nbsp;args[&nbsp;1&nbsp;]&nbsp;)&nbsp;)&nbsp;</span><span class="keyword">goto</span><span>&nbsp;</span><span class="keyword">case</span><span>&nbsp;0;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;srcFile&nbsp;=&nbsp;args[&nbsp;1&nbsp;];&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">goto</span><span>&nbsp;</span><span class="keyword">case</span><span>&nbsp;1;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;input&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;ANTLRReaderStream(&nbsp;File.OpenText(&nbsp;srcFile&nbsp;)&nbsp;);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;lexer&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;JerryLexer(&nbsp;input&nbsp;);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;tokens&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;CommonTokenStream(&nbsp;lexer&nbsp;);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;parser&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;JerryParser(&nbsp;tokens&nbsp;);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;programReturn&nbsp;=&nbsp;parser.program();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;ast&nbsp;=&nbsp;(&nbsp;CommonTree&nbsp;)&nbsp;programReturn.Tree;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;Generate&nbsp;DOT&nbsp;diagram&nbsp;if&nbsp;-dot&nbsp;option&nbsp;is&nbsp;given</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;generateDot&nbsp;)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;dotgen&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;DOTTreeGenerator(&nbsp;);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;astDot&nbsp;=&nbsp;dotgen.ToDOT(&nbsp;ast&nbsp;);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&nbsp;astDot&nbsp;);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(&nbsp;ast.ToStringTree(&nbsp;)&nbsp;);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="c#">using System;
+using System.IO;
+using Antlr.Runtime;      // Antlr3.Runtime.dll
+using Antlr.Runtime.Tree;
+using Antlr.Utility.Tree; // Antlr3.Utility.dll
+
+sealed class TestJerryAst {
+    static void PrintUsage( ) {
+        Console.WriteLine( "Usage: TestJerryAst [-dot] &lt;source file&gt;" );
+    }
+
+    static void Main( string[] args ) {
+        bool generateDot = false;
+        string srcFile;
+        switch ( args.Length ) {
+        case 0:
+            PrintUsage( );
+            return;
+        case 1:
+            if ( !File.Exists( args[ 0 ] ) ) goto case 0;
+            srcFile = args[ 0 ];
+            break;
+        default:
+            if ( "-dot" == args[ 0 ] ) {
+                generateDot = true;
+                if ( !File.Exists( args[ 1 ] ) ) goto case 0;
+                srcFile = args[ 1 ];
+            } else {
+                goto case 1;
+            }
+            break;
+        }
+        
+        var input = new ANTLRReaderStream( File.OpenText( srcFile ) );
+        var lexer = new JerryLexer( input );
+        var tokens = new CommonTokenStream( lexer );
+        var parser = new JerryParser( tokens );
+
+        var programReturn = parser.program();
+        var ast = ( CommonTree ) programReturn.Tree;
+
+        // Generate DOT diagram if -dot option is given
+        if ( generateDot ) {
+            var dotgen = new DOTTreeGenerator( );
+            var astDot = dotgen.ToDOT( ast );
+            Console.WriteLine( astDot );
+        } else {
+            Console.WriteLine( ast.ToStringTree( ) );
+        }
+    }
+}</pre>
+<br>因为使用了DOTTreeGenerator，编译时记得在引用Antlr3.Runtime.dll之外，还需要引用Antlr3.Utility.dll与StringTemplate.dll。
+<br>
+<br>继续使用前两篇用过的Jerry代码为例子：
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">C代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=%2F%2F%20line%20comment%0A%2F%2F%20declare%20variables%20with%2Fwithout%20initializers%0Aint%20i%20%3D%201%2C%20j%3B%0Aint%20x%20%3D%20i%20%2B%202%20*%203%20-%204%20%2F%20(%206%20-%20-%207%20)%3B%0Aint%20array%5B2%5D%5B3%5D%20%3D%20%7B%0A%20%20%7B%200%2C%201%2C%202%20%7D%2C%0A%20%20%7B%203%2C%204%2C%206%20%7D%0A%7D%3B%0A%0A%2F*%0A%20%20block%20comment%0A*%2F%0A%0Awhile%20(i%20%3C%2010)%20i%20%3D%20i%20%2B%201%3B%0Awhile%20(!x%20%3E%200%20%26%26%20i%20%3C%2010)%20%7B%0A%20%20x%20%3D%20x%20-%201%3B%0A%20%20if%20(i%20%3C%205)%20break%3B%0A%20%20else%20read%20i%3B%0A%7D%0A%0Awrite%20x%20-%20j%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-cpp" start="1"><li><span><span class="comment">//&nbsp;line&nbsp;comment</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="comment">//&nbsp;declare&nbsp;variables&nbsp;with/without&nbsp;initializers</span><span>&nbsp;&nbsp;</span></span></li><li><span><span class="datatypes">int</span><span>&nbsp;i&nbsp;=&nbsp;1,&nbsp;j;&nbsp;&nbsp;</span></span></li><li><span><span class="datatypes">int</span><span>&nbsp;x&nbsp;=&nbsp;i&nbsp;+&nbsp;2&nbsp;*&nbsp;3&nbsp;-&nbsp;4&nbsp;/&nbsp;(&nbsp;6&nbsp;-&nbsp;-&nbsp;7&nbsp;);&nbsp;&nbsp;</span></span></li><li><span><span class="datatypes">int</span><span>&nbsp;array[2][3]&nbsp;=&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;{&nbsp;0,&nbsp;1,&nbsp;2&nbsp;},&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;{&nbsp;3,&nbsp;4,&nbsp;6&nbsp;}&nbsp;&nbsp;</span></li><li><span>};&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="comment">/*</span>&nbsp;</span></li><li><span><span class="comment">&nbsp;&nbsp;block&nbsp;comment</span>&nbsp;</span></li><li><span><span class="comment">*/</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">while</span><span>&nbsp;(i&nbsp;&lt;&nbsp;10)&nbsp;i&nbsp;=&nbsp;i&nbsp;+&nbsp;1;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">while</span><span>&nbsp;(!x&nbsp;&gt;&nbsp;0&nbsp;&amp;&amp;&nbsp;i&nbsp;&lt;&nbsp;10)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;x&nbsp;=&nbsp;x&nbsp;-&nbsp;1;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(i&nbsp;&lt;&nbsp;5)&nbsp;</span><span class="keyword">break</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;<span class="keyword">else</span><span>&nbsp;read&nbsp;i;&nbsp;&nbsp;</span></span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>write&nbsp;x&nbsp;-&nbsp;j;&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="c">// line comment
+// declare variables with/without initializers
+int i = 1, j;
+int x = i + 2 * 3 - 4 / ( 6 - - 7 );
+int array[2][3] = {
+  { 0, 1, 2 },
+  { 3, 4, 6 }
+};
+
+/*
+  block comment
+*/
+
+while (i &lt; 10) i = i + 1;
+while (!x &gt; 0 &amp;&amp; i &lt; 10) {
+  x = x - 1;
+  if (i &lt; 5) break;
+  else read i;
+}
+
+write x - j;</pre>
+<br>
+<br>通过上面的程序，可以得到这样的AST：
+<br><img class="magplus" title="点击查看原始大小图片" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/7e7e3f7c-ef72-36ac-83fb-a72f4e730acb.gif" height="133" width="700">
+<br>（点击放大）
+<br>上面的程序生成的是.dot文件（输出到标准输出流上）。使用Graphviz的dot，将这个文件以
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/clipboard_new.swf" flashvars="clipboard=dot%20JerrySample.dot%20-Tpng%20-o%20JerrySample.png" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span>dot&nbsp;JerrySample.dot&nbsp;-Tpng&nbsp;-o&nbsp;JerrySample.png&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="java">dot JerrySample.dot -Tpng -o JerrySample.png</pre>
+<br>这样的命令来转换，就能得到PNG图像。
+<br>
+<br>本篇就到这里。下一篇看看遍历AST用的基本tree grammar。
+  </div>
+
+  <div>
+<script type="text/javascript">
+google_ad_client = "pub-9971846879634397";
+google_ad_slot = "8644581328";
+google_ad_width = 468;
+google_ad_height = 60;
+</script>
+<script type="text/javascript" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/show_ads.js">
+</script><script src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/expansion_embed.js"></script><script src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 60px; position: relative; visibility: visible; width: 468px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 60px; position: relative; visibility: visible; width: 468px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/ads.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="60" width="468"></iframe></ins></ins>
+</div>
+
+  <div id="digg_bottom" class="clearfix"><a href="#" onclick='digg("blogs", 315807, false);return false;'><div><strong>2</strong> <br>顶</div></a><a href="#" onclick='digg("blogs", 315807, true);return false;'><div><strong>0</strong> <br>踩</div></a></div>
+  
+  
+  
+    
+  <div class="blog_bottom">
+    <ul>
+      <li>17:44</li>
+      <li>浏览 (240)</li>
+            <li><a href="#comments">评论</a> (0)</li>
+      <li>分类: <a href="http://rednaxelafx.javaeye.com/category/29010">Compiler</a></li>
+      
+      
+        <li><a href="http://app.javaeye.com/links?user_favorite%5Btitle%5D=%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2&amp;user_favorite%5Burl%5D=http%3A%2F%2Frednaxelafx.javaeye.com%2Fblog%2F315807" target="_blank" class="favorite">收藏</a></li>
+        
+      
+      
+      <li class="last"><a href="http://www.javaeye.com/wiki/topic/315807" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+          
+      
+        <a href="http://rednaxelafx.javaeye.com/index/forum_certify" target="_blank">完成论坛规则小测验以后，您才能在论坛发帖和回复。</a>
+      
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'Post'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);}
+    });
+  }
+</script>
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+            <div id="blog_owner_logo"><a href="http://rednaxelafx.javaeye.com/"><img alt="RednaxelaFX的博客" class="logo" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/426915a9-3884-39df-b1d4-20a8c5b00908.png" title="RednaxelaFX的博客: Script Ahead, Code Behind"></a></div>
+            <div id="blog_owner_name">RednaxelaFX</div>
+          </div>
+          
+            <div id="twitter_decorate">&nbsp;</div>
+            <div id="twitter" class="twitter clearfix">
+              
+@<a href="http://night-stalker.javaeye.com/" target="_blank">night_stalker</a> 让我想起这篇：<a href="http://blogs.msdn.com/oldnewthing/archive/2009/07/24/9846948.aspx">http://blogs.msdn.com/oldnewthing/archive/2009/07/24/9846948.aspx</a> &lt;&lt; Raymond说嫌某种语言缺乏某种设施的话，自己写个预处理器就能解决了 = = snippet同理
+<br><em><a href="http://rednaxelafx.javaeye.com/blog/chat/37749">2009-08-03</a>
+ 通过网页
+ 
+</em>
+       <a href="http://app.javaeye.com/chat?twitter%5Bbody%5D=%40RednaxelaFX+&amp;twitter%5Breply_to_id%5D=37749" title="回复这个闲聊"><img alt="Reply_twitter" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/reply_twitter.gif"></a>
+              <div class="right"><a href="http://rednaxelafx.javaeye.com/blog/chat">&gt;&gt;更多闲聊</a></div>
+            </div>
+          
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 144784 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/icon_minigender_1.gif" title="男"></li>
+              <li>来自: 广州</li>
+              <li><img src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/offline.gif"></li>
+              <li>
+                <a href="http://rednaxelafx.javaeye.com/blog/profile" class="profile">详细资料</a>
+                <a href="http://rednaxelafx.javaeye.com/blog/guest_book" class="guest_book">留言簿</a>
+              </li>
+              
+                <li>
+                  <a href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=RednaxelaFX" class="message" title="发送站内短信">发短消息</a>
+                  
+                    <a href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=RednaxelaFX" class="subscription" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;">订阅</a>
+                  
+                </li>
+              
+            </ul>
+            <h5>搜索本博客</h5>
+            <form action="/blog/search" method="get">              <input class="text" id="query" name="query" style="margin-left: 10px; width: 110px;" type="text">
+              <input class="submit" value="搜索" type="submit">
+            </form>          </div>
+          
+            <div id="user_visits" class="clearfix">
+              <h5>最近访客 <span style="font-weight: normal; font-size: 12px; padding-left: 30px;"><a href="http://rednaxelafx.javaeye.com/blog/user_visits">&gt;&gt;更多访客</a></span></h5>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://cnshirui.javaeye.com/" target="_blank"><img alt="cnshirui的博客" class="logo" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/user-logo-thumb.gif" title="cnshirui的博客: "></a></div>
+                  <div class="left"><a href="http://cnshirui.javaeye.com/" target="_blank">cnshirui</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://eolanda.javaeye.com/" target="_blank"><img alt="eolanda的博客" class="logo" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/user-logo-thumb.gif" title="eolanda的博客: "></a></div>
+                  <div class="left"><a href="http://eolanda.javaeye.com/" target="_blank">eolanda</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://abruzzi.javaeye.com/" target="_blank"><img alt="abruzzi的博客" class="logo" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/42d7e92e-d844-325c-8898-23bcf85c3b24-thumb.jpg" title="abruzzi的博客: 横行青海夜带刀"></a></div>
+                  <div class="left"><a href="http://abruzzi.javaeye.com/" target="_blank">abruzzi</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://bukkake.javaeye.com/" target="_blank"><img alt="bukkake的博客" class="logo" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/user-logo-thumb.gif" title="bukkake的博客: "></a></div>
+                  <div class="left"><a href="http://bukkake.javaeye.com/" target="_blank">bukkake</a></div>
+                </div>
+              
+            </div>
+          
+                      <div id="blog_menu">
+              <h5>博客分类</h5>
+              <ul>
+                <li><a href="http://rednaxelafx.javaeye.com/">全部博客 (295)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/21342">Programming Languages (17)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/29044">Ruby (20)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/21339">C# (30)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/31968">DLR (19)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/51666">F# (3)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/43041">Python (4)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/27795">Scheme (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/58920">Haskell (0)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/28215">Regular Expression (4)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/29010">Compiler (11)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/26952">ECMAScript (2)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/22618">JavaScript (14)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/22068">ActionScript (7)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/27153">Squirrel (2)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/36305">C (4)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/22307">C++ (8)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/21340">D (2)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/61298">Virtual Machine (5)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/66462">.NET (6)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/33627">SSCLI Rotor (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/22617">Java (11)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/60345">Harmony (0)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/27144">Data Structure and Algorithm (2)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/21352">Optimization (5)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/34556">Books (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/52245">WPF (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/24366">Game Engines (7)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/22003">吉里吉里 (11)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/23065">UML (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/22696">NSIS (4)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/24338">Reverse Engineering (9)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/24088">Utilities (2)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/29744">Design Patterns (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/25057">Visual Studio (8)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/54389">Windows 7 (3)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/25305">School Assignment / Test (6)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/22830">Android (2)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/73928">x86 Assembler (0)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/24349">Anti-virus (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/27193">REST (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/28651">Profiling (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/23669">misc (26)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/23661">NetOA (12)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/27815">rant (3)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/65667">anime (1)</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/category/28622">Links (11)</a></li>
+                
+              </ul>
+            </div>
+            
+              <div id="blog_album">
+                <h5>我的相册</h5>
+                <div class="picture_thumb" style="float: none;">
+                  <div><span class="thumb_box"><a href="http://rednaxelafx.javaeye.com/album"><img alt="A8df83e2-c911-3d18-aef6-a58412fbefe2-thumb" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/a8df83e2-c911-3d18-aef6-a58412fbefe2-thumb.jpg"></a></span></div>
+                  <span>YARV2005.JPG<br> <a href="http://rednaxelafx.javaeye.com/album">共 90 张</a></span>
+                </div>
+              </div>
+            
+            
+              <div id="guest_books">
+                <h5>我的留言簿 <span style="font-weight: normal; font-size: 12px; padding-left: 20px;"><a href="http://rednaxelafx.javaeye.com/blog/guest_book">&gt;&gt;更多留言</a></span></h5>
+                <ul>
+                  
+                    <li>
+                      我来看萌萌的头像拉<br>
+                      -- by <a href="http://rednaxelafx.javaeye.com/blog/guest_book#7607">iaimstar</a>
+                    </li>
+                  
+                    <li>
+                      &nbsp;&nbsp;  你好，我的那个循环计数器的问题，你的方法我没试过，但觉得可行，而且符合我的 ...<br>
+                      -- by <a href="http://rednaxelafx.javaeye.com/blog/guest_book#7284">zyl小星星</a>
+                    </li>
+                  
+                    <li>
+                       你好阳光阿<br>
+                      -- by <a href="http://rednaxelafx.javaeye.com/blog/guest_book#7173">wellee</a>
+                    </li>
+                  
+                </ul>
+              </div>
+            
+            <div id="blog_others">
+              <h5>其他分类</h5>
+              <ul>
+                <li><a href="http://rednaxelafx.javaeye.com/blog/favorite">我的收藏</a> (495)</li>
+                                                <li><a href="http://rednaxelafx.javaeye.com/blog/forum">我的论坛帖子</a> (237)</li>
+                <li><a href="http://rednaxelafx.javaeye.com/blog/article">我的精华良好贴</a> (2)</li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/blog/solution">我解决的问题</a> (120) </li>
+                              </ul>
+            </div>
+            
+            <div id="recent_groups">
+              <h5>最近加入圈子</h5>
+              <ul>
+                
+                  <li><a href="http://mars.group.javaeye.com/">火星常驻JE办事处</a></li>
+                
+                  <li><a href="http://android.group.javaeye.com/">Android</a></li>
+                
+                  <li><a href="http://sevenofnine.group.javaeye.com/">7/9</a></li>
+                
+                  <li><a href="http://fsharp.group.javaeye.com/">F#语言</a></li>
+                
+                  <li><a href="http://thinkinginruby.group.javaeye.com/">Thinking In Ruby</a></li>
+                
+              </ul>
+            </div>
+            
+              <div id="user_links">
+                <h5>链接</h5>
+                <ul>
+                  
+                    <li><a href="http://flashgameu.com/" target="_blank">Flash Game University</a></li>
+                  
+                    <li><a href="http://digitalmars.com/d/index.html" target="_blank">Digital Mars D</a></li>
+                  
+                    <li><a href="http://ruriko.denpa.org/" target="_blank">[電波とどいた？]</a></li>
+                  
+                    <li><a href="http://kikyou.info/tvp/" target="_blank">吉里吉里</a></li>
+                  
+                    <li><a href="http://www.nscripter.com/" target="_blank">NScripter</a></li>
+                  
+                    <li><a href="http://www.retouch.info/retouch/index.html" target="_blank">retouch tools</a></li>
+                  
+                    <li><a href="http://yanesdkdotnet.sourceforge.jp/" target="_blank">YaneuraoGameSDK.NET</a></li>
+                  
+                    <li><a href="http://yu-ris.net/" target="_blank">YU-RIS</a></li>
+                  
+                    <li><a href="http://dead-code.org/" target="_blank">Wintermute Engine</a></li>
+                  
+                    <li><a href="http://page.freett.com/yuukiex/yuukinovel.html" target="_blank">Yuuki! Novel</a></li>
+                  
+                    <li><a href="http://www.iwebthereforeiam.com/projects/NullScript.asp" target="_blank">NullScript</a></li>
+                  
+                    <li><a href="http://blogs.msdn.com/ericlippert/archive/tags/SimpleScript/default.aspx" target="_blank">SimpleScript</a></li>
+                  
+                    <li><a href="http://www.codeplex.com/scriptdotnet" target="_blank">Script.NET</a></li>
+                  
+                    <li><a href="http://www.livemaker.net/" target="_blank">LiveMaker</a></li>
+                  
+                    <li><a href="http://luna.sumomo.ne.jp/" target="_blank">Luna for DirectX 9.0c</a></li>
+                  
+                    <li><a href="http://www.greenwood.co.jp/%7Ek-aki/" target="_blank">ロジカルめがね</a></li>
+                  
+                    <li><a href="http://x10.sourceforge.net/x10home.shtml" target="_blank">The X10 Programming Language</a></li>
+                  
+                    <li><a href="http://www.iolanguage.com/" target="_blank">io</a></li>
+                  
+                    <li><a href="http://www.sfml-dev.org/" target="_blank">SFML</a></li>
+                  
+                    <li><a href="http://research.sun.com/projects/lively/" target="_blank">Sun Labs Lively Kernel</a></li>
+                  
+                    <li><a href="http://research.microsoft.com/Phoenix/" target="_blank">Phoenix</a></li>
+                  
+                    <li><a href="http://blogs.tedneward.com/" target="_blank">The Blog Ride</a></li>
+                  
+                    <li><a href="http://blog.livedoor.jp/kushie/" target="_blank">でふぉると 第４版</a></li>
+                  
+                    <li><a href="http://msdn.microsoft.com/en-us/magazine/default.aspx" target="_blank">MSDN Magazine</a></li>
+                  
+                    <li><a href="http://www.gnu.org/software/gnash/" target="_blank">Gnash</a></li>
+                  
+                    <li><a href="http://boo.codehaus.org/" target="_blank">Boo</a></li>
+                  
+                    <li><a href="http://www.smallscript.org/" target="_blank">S#.AOS</a></li>
+                  
+                    <li><a href="http://blogs.msdn.com/ericlippert/default.aspx" target="_blank">Fabulous Adventures In Coding</a></li>
+                  
+                    <li><a href="http://www.strongtalk.org/" target="_blank">Strongtalk</a></li>
+                  
+                    <li><a href="http://ruby-dbi.rubyforge.org/" target="_blank">Ruby/DBI</a></li>
+                  
+                    <li><a href="http://www.menees.com/SharpScript.htm" target="_blank">SharpScript</a></li>
+                  
+                    <li><a href="http://code.google.com/p/ironclad/" target="_blank">IronClad</a></li>
+                  
+                    <li><a href="http://msdn.microsoft.com/en-gb/fsharp/default.aspx" target="_blank">F# Developer Center</a></li>
+                  
+                    <li><a href="http://www.albahari.com/nutshell/linqkit.html" target="_blank">LINQKit</a></li>
+                  
+                    <li><a href="http://research.microsoft.com/%7Embarnett/ILMerge.aspx" target="_blank">ILMerge</a></li>
+                  
+                    <li><a href="http://code.google.com/chromium/" target="_blank">Chromium</a></li>
+                  
+                    <li><a href="http://code.google.com/p/v8/" target="_blank">V8</a></li>
+                  
+                    <li><a href="http://code.google.com/p/babelobfuscator/" target="_blank">Babel</a></li>
+                  
+                    <li><a href="http://www.parallelcsharp.com/" target="_blank">Parallel C#</a></li>
+                  
+                    <li><a href="http://www.convertico.com/" target="_blank">ConvertICO</a></li>
+                  
+                    <li><a href="http://ayende.com/projects/rhino-mocks.aspx" target="_blank">Rhino.Mocks</a></li>
+                  
+                    <li><a href="http://stackoverflow.com/" target="_blank">Stack OVerflow</a></li>
+                  
+                    <li><a href="http://www.mathway.com/" target="_blank">Mathway</a></li>
+                  
+                    <li><a href="http://www.reverberate.org/gazelle/" target="_blank">Gazelle</a></li>
+                  
+                    <li><a href="http://sourceforge.net/projects/brahma-fx" target="_blank">Brahma</a></li>
+                  
+                    <li><a href="http://sharpsvn.open.collab.net/" target="_blank">SharpSVN</a></li>
+                  
+                    <li><a href="http://codeplex.com/dynamicgeometry" target="_blank">Live Geometry</a></li>
+                  
+                    <li><a href="http://cobra-language.com/" target="_blank">The Cobra Programming Language</a></li>
+                  
+                    <li><a href="http://www.seven-g.com/" target="_blank">Seven-G</a></li>
+                  
+                    <li><a href="http://www.flightgear.org/" target="_blank">FlightGear</a></li>
+                  
+                    <li><a href="http://code.google.com/p/silvershell/" target="_blank">silvershell</a></li>
+                  
+                    <li><a href="http://www.janetdev.org/" target="_blank">Ja.NET</a></li>
+                  
+                    <li><a href="http://www.softwarepreservation.org/" target="_blank">Software Presentation Group</a></li>
+                  
+                    <li><a href="http://mvel.codehaus.org/" target="_blank">MVEL</a></li>
+                  
+                    <li><a href="http://plugins.jquery.com/project/jLINQ" target="_blank">jLINQ</a></li>
+                  
+                    <li><a href="http://www.codeplex.com/jsinq" target="_blank">JSINQ</a></li>
+                  
+                    <li><a href="http://calculist.blogspot.com/" target="_blank">The Little Calculist</a></li>
+                  
+                    <li><a href="http://www.ocaml-tutorial.org/" target="_blank">OCaml tutorial</a></li>
+                  
+                    <li><a href="http://www.bestechvideos.com/" target="_blank">Best Tech Videos</a></li>
+                  
+                    <li><a href="http://ps2pdf.com/convert.cgi" target="_blank">PS2PDF</a></li>
+                  
+                    <li><a href="http://the-free-meme.blogspot.com/" target="_blank">Programming and Debugging (in my Underhøøsen) </a></li>
+                  
+                    <li><a href="http://ioke.org/" target="_blank">Ioke</a></li>
+                  
+                    <li><a href="http://www.opendylan.org/" target="_blank">Dylan</a></li>
+                  
+                    <li><a href="http://projects.nikhilk.net/ScriptSharp" target="_blank">Script#</a></li>
+                  
+                    <li><a href="http://factorcode.org/" target="_blank">Factor</a></li>
+                  
+                    <li><a href="http://www.cogmation.com/" target="_blank">Cogmation Robotics</a></li>
+                  
+                    <li><a href="http://pygments.org/" target="_blank">Pygments</a></li>
+                  
+                    <li><a href="http://nestedvm.ibex.org/" target="_blank">NestedVM</a></li>
+                  
+                    <li><a href="http://blogs.msdn.com/hermanventer/" target="_blank">Herman Venter, programming language enthusiast</a></li>
+                  
+                    <li><a href="http://nekovm.org/" target="_blank">Neko/NekoVM</a></li>
+                  
+                    <li><a href="http://rubyquiz.com/" target="_blank">Ruby Quiz</a></li>
+                  
+                    <li><a href="http://www.ccs.neu.edu/home/samth/typed-scheme/" target="_blank">Typed Scheme</a></li>
+                  
+                    <li><a href="http://www.delorie.com/djgpp/compile/" target="_blank">DJGPP Public Access Cross-Compiler</a></li>
+                  
+                    <li><a href="http://monoruntime.wordpress.com/" target="_blank">Mono Runtime Notes</a></li>
+                  
+                    <li><a href="http://www.pythonchallenge.com/" target="_blank">Python Challenge</a></li>
+                  
+                    <li><a href="http://channel9.msdn.com/pdc2008/" target="_blank">PDC 2008 | Channel 9</a></li>
+                  
+                    <li><a href="http://www.starruby.info/ja/" target="_blank">Star Ruby</a></li>
+                  
+                    <li><a href="http://www.chrisseaton.com/katahdin/" target="_blank">Katahdin</a></li>
+                  
+                    <li><a href="http://newspeaklanguage.org/" target="_blank">Newspeak</a></li>
+                  
+                    <li><a href="http://bling.codeplex.com/" target="_blank">Bling DSL for C#/WPF</a></li>
+                  
+                    <li><a href="http://www.memorymanagement.org/" target="_blank">The Memory Management Reference</a></li>
+                  
+                    <li><a href="http://www.openjit.org/" target="_blank">OpenJIT</a></li>
+                  
+                </ul>
+              </div>
+            
+            
+                          <div id="month_blogs">
+                <h5>存档</h5>
+                <ul>
+                  
+                    <li><a href="http://rednaxelafx.javaeye.com/blog/monthblog/2009-08">2009-08</a> (1)</li>
+                  
+                    <li><a href="http://rednaxelafx.javaeye.com/blog/monthblog/2009-07">2009-07</a> (9)</li>
+                  
+                    <li><a href="http://rednaxelafx.javaeye.com/blog/monthblog/2009-06">2009-06</a> (7)</li>
+                  
+                  <li><a href="http://rednaxelafx.javaeye.com/blog/monthblog_more">更多存档...</a></li>
+                </ul>
+              </div>
+                        <div id="recent_comments">
+              <h5>最新评论</h5>
+              <ul>
+                
+                  <li>
+                    <a href="http://rednaxelafx.javaeye.com/blog/437720#comments" title="基情约会……">基情约会……</a><br>
+                    glacjay 写道吹水用纸反白太历害。
+语言实现你有实现了什么东西没，可否拿出来 ...<br>
+                    -- by <a href="http://rednaxelafx.javaeye.com/" target="_blank">RednaxelaFX</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://rednaxelafx.javaeye.com/blog/437720#comments" title="基情约会……">基情约会……</a><br>
+                    吹水用纸反白太历害。语言实现你有实现了什么东西没，可否拿出来供俺们瞻仰瞻仰？另，J ...<br>
+                    -- by <a href="http://glacjay.javaeye.com/" target="_blank">glacjay</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://rednaxelafx.javaeye.com/blog/437720#comments" title="基情约会……">基情约会……</a><br>
+                    量产型人型自走炮 写道那啥..晚上又被同学拖去打保龄到现在..鹿过一下
+呃呵呵，深 ...<br>
+                    -- by <a href="http://rednaxelafx.javaeye.com/" target="_blank">RednaxelaFX</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://rednaxelafx.javaeye.com/blog/437720#comments" title="基情约会……">基情约会……</a><br>
+                    那啥..晚上又被同学拖去打保龄到现在..鹿过一下<br>
+                    -- by <a href="http://imoutocon.javaeye.com/" target="_blank">量产型人型自走炮</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://rednaxelafx.javaeye.com/blog/437720#comments" title="基情约会……">基情约会……</a><br>
+                    我基本上是坚持不卖书的……不过这次从学校搬东西回家还是顶不住重负卖掉了一些模型杂志 ...<br>
+                    -- by <a href="http://rednaxelafx.javaeye.com/" target="_blank">RednaxelaFX</a>
+                  </li>
+                
+              </ul>
+            </div>
+            <div id="comments_top">
+              <h5>评论排行榜</h5>
+              <ul>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/blog/391598" title="Visual Studio 2010 Beta 1的安装和初试（截图×20）">Visual Studio 2010 Beta 1的安装和初试（ ...</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/blog/344763" title="YARV和JIT，还有JRuby……">YARV和JIT，还有JRuby……</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/blog/388294" title="用Iron-*语言来探索.NET">用Iron-*语言来探索.NET</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/blog/428278" title="去Sun开发者技术日2009逛了">去Sun开发者技术日2009逛了</a></li>
+                
+                  <li><a href="http://rednaxelafx.javaeye.com/blog/396268" title="一个新的电子小说制作引擎，「らのべえ」">一个新的电子小说制作引擎，「らのべえ」</a></li>
+                
+              </ul>
+            </div>
+            <div id="rss">
+              <ul>
+                <li><a href="http://rednaxelafx.javaeye.com/rss" target="_blank"><img alt="Rss" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/rss.png"></a></li>
+                <li><a href="http://fusion.google.com/add?feedurl=http://rednaxelafx.javaeye.com/rss" target="_blank"><img alt="Rss_google" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/rss_google.gif"></a></li>
+                <li><a href="http://www.zhuaxia.com/add_channel.php?url=http://rednaxelafx.javaeye.com/rss" target="_blank"><img alt="Rss_zhuaxia" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/rss_zhuaxia.gif"></a></li>
+                <li><a href="http://www.xianguo.com/subscribe.php?url=http://rednaxelafx.javaeye.com/rss" target="_blank"><img alt="Rss_xianguo" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/rss_xianguo.jpg"></a></li>
+                <li><a href="http://www.google.com/search?hl=zh-CN&amp;q=RSS">[什么是RSS?]</a></li>
+              </ul>
+            </div>
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr>
+          声明：JavaEye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br>
+          © 2003-2009 JavaEye.com.   All rights reserved. 上海炯耐计算机软件有限公司 [ 沪ICP备05023328号 ]
+        </div>
+      </div>
+    </div>
+    
+  <div id="chat_input" style="display: none;">
+    <iframe id="chat_iframe" marginwidth="0" marginheight="0" allowtransparency="true" scrolling="no" frameborder="0"></iframe>
+  </div>
+  <div id="chat_button"><a href="#" style="text-decoration: none; color: black;" onclick="$('chat_input').show();$('chat_iframe').src='/chat/widget';return false;">说点啥吧 <img alt="Chat" src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/chat.gif"></a></div>
+
+<script type="text/javascript">
+  document.write("<img src='http://stat.javaeye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&logged_in=yes" + "' width='0' height='0' />");
+</script><img src="%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E8%A8%80%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E5%81%9A%E4%BA%9B%E5%B0%8F%E8%B0%83%E6%95%B4%EF%BC%8C%E5%B9%B6%E5%B0%86%E7%94%9F%E6%88%90%E7%9B%AE%E6%A0%87%E6%8D%A2%E5%88%B0CSharp2_files/a.gif" height="0" width="0">
+    
+  </body></html>

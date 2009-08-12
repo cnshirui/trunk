@@ -1,0 +1,788 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head>
+
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>决战 ANTLR3 - 白开水 - JavaEye技术网站</title>
+    <meta name="description" content="　　前不久写完了一个工具软件Nova Studio用来开发自己编写的Java Web 框架Nova，其中有SQL编辑框，虽然通过Java正则表达式实现了现在流行的代码自动提示功能，但感觉过于硬编码，于是想通过语法分析的方法重新实现一下。 　　网上搜了搜，找到了语法生成器antlr，去官方网站下载了antlr3，找了相应的例子和文章熟悉了了一下，开始实践Calculator小例子，中间出过不少错误，主 ...">
+    <meta name="keywords" content="  决战 ANTLR3">
+    <link rel="shortcut icon" href="http://gb-lu.javaeye.com/images/favicon.ico" type="image/x-icon">
+    <link href="http://gb-lu.javaeye.com/rss" rel="alternate" title="白开水" type="application/rss+xml">
+    <link href="%E5%86%B3%E6%88%98%20ANTLR3_files/blog.css" media="screen" rel="stylesheet" type="text/css">
+<link href="%E5%86%B3%E6%88%98%20ANTLR3_files/blue.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="%E5%86%B3%E6%88%98%20ANTLR3_files/application.js" type="text/javascript"></script>
+      <link href="%E5%86%B3%E6%88%98%20ANTLR3_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="%E5%86%B3%E6%88%98%20ANTLR3_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="%E5%86%B3%E6%88%98%20ANTLR3_files/hotkey.js" type="text/javascript"></script>
+  <style>
+    div#main {background-color: transparent; border: 0; padding: 0px; width: 740px;}
+  </style>
+  <style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style><style type="text/css">.dp-j .annotation { color: #646464; }.dp-j .number { color: #C00000; }</style></head><body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.javaeye.com/" class="homepage">首页</a>
+  <a href="http://www.javaeye.com/news">新闻</a>
+  <a href="http://www.javaeye.com/forums">论坛</a>
+  <a href="http://www.javaeye.com/blogs">博客</a>
+  <a href="http://www.javaeye.com/job">招聘</a>
+  <a href="#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display: none;">
+    <a href="http://www.javaeye.com/ask">问答</a>
+    <a href="http://www.javaeye.com/wiki">知识库</a>
+    <a href="http://www.javaeye.com/groups">圈子</a>
+    <a href="http://www.javaeye.com/search">搜索</a>
+  </div>
+</div>
+      <div id="user_nav">
+      <a href="http://cnshirui.javaeye.com/" title="查看我的博客首页" class="welcome">欢迎cnshirui</a>
+    
+      <a href="http://app.javaeye.com/messages" title="发送站内短信">收件箱</a>
+    
+    
+      <a href="http://app.javaeye.com/" title="我的应用首页">我的应用</a>
+    
+    <div class="quick_menu" style="display: none;">
+      <a href="http://app.javaeye.com/feed" title="我订阅的好友动态消息">我的订阅</a>
+      <a href="http://app.javaeye.com/feed/my" title="我参与的话题更新的消息">我的参与</a>
+      <a href="http://app.javaeye.com/chat" title="用闲聊发表简短的话题">我的闲聊</a>
+      <a href="http://app.javaeye.com/mygroup" title="我加入的圈子最新话题">我的圈子</a>
+      <a href="http://app.javaeye.com/links" title="我收藏的网络资源链接">我的收藏</a>
+      <a href="http://app.javaeye.com/myresume" title="我的个人简历">我的简历</a>
+    </div>
+        <a href="http://cnshirui.javaeye.com/admin" title="管理我的博客">我的博客</a>
+    <a href="http://app.javaeye.com/profile" title="修改我的个人设置">设置</a>
+    <a href="http://gb-lu.javaeye.com/logout" class="nobg" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'put'); f.appendChild(m);f.submit();return false;">退出</a>
+  </div>
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name"><h1><a href="http://gb-lu.javaeye.com/">白开水</a></h1></div>
+        <div id="blog_preview"></div>
+        <div id="blog_domain">永久域名 <a href="http://gb-lu.javaeye.com/">http://gb-lu.javaeye.com</a></div>
+      </div>
+      
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+          
+
+
+<div class="blog_main"> 
+  <div id="blog_nav">
+    <div class="digg" id="d161299"><h3><a href="#" onclick='digg("blogs", 161299, false);return false;' class="digg">2顶</a><br><a href="#" onclick='digg("blogs", 161299, true);return false;' class="bury">0踩</a></h3></div>
+    <div id="pre_next">
+      
+      
+      
+    </div>
+  </div>
+  <div class="blog_title">
+    <div class="date"><span class="year">2008</span><span class="sep_year">-</span><span class="month">02</span><span class="sep_month">-</span><span class="day">03</span></div>
+    <h3 class="" title=""><a href="http://gb-lu.javaeye.com/blog/161299">决战 ANTLR3</a></h3>
+                
+  </div>
+
+  <div class="blog_content">
+    　　前不久写完了一个工具软件Nova Studio用来开发自己编写的Java Web 框架Nova，其中有SQL编辑框，虽然通过Java正则表达式实现了现在流行的代码自动提示功能，但感觉过于硬编码，于是想通过语法分析的方法重新实现一下。
+<br>　　网上搜了搜，找到了语法生成器antlr，去官方网站下载了antlr3，找了相应的例子和文章熟悉了了一下，开始实践Calculator小例子，中间出过不少错误，主要是antlr3和antlr2有些地方不太一样，总算最后都一一解决了。
+<br>　　实践结果有点让人泄气，antlr3只能分析输入的文本是否语法正确，却不能告诉我后续应该跟随操作数还是运算符，另外即使语法正确时它也不
+能像antlr2那样给我一棵嵌套的语法树，它返回的是所有的叶节点数组，是一维的，这样我就没法通过遍历嵌套树实现不同语义不同的显示风格，如：SQL
+保留字黑体，表名红色等。
+<br>　　难道几天研究实践的努力白费了，实在是心有不甘，研究了一下antlr3生成的语法分析类CalculatorParser，发现它在向后匹配时会调用这个方法：
+<br>&nbsp; 
+<br>&nbsp;&nbsp;&nbsp; <div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=match(input%2COR%2CFOLLOW_OR_in_logic_expr111)%3B" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span>match(input,OR,FOLLOW_OR_in_logic_expr111);&nbsp;&nbsp;</span></span></li></ol></div><pre style="display: none;" name="code" class="java">match(input,OR,FOLLOW_OR_in_logic_expr111);</pre>
+<br>　　FOLLOW_OR_in_logic_expr111这个follow参数正是'or' 逻辑或操作符后面可以跟随的各种标记(Token)，灵机一动，如果重载这个方法把这个follow保存起来，那么捕获到语法错后就能知道正确的后续标记了。行动！
+<br>　　CalculatorParser 是继承org.antlr.runtime.Parser类的，于是首先写一个自己的扩展类 MyAntlrParser：
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%20%20%20%20public%20class%20NovaAntlrParser%20extends%20MyAntlrParser%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20BitSet%20follow%20%3D%20null%3B%0A%20%20%20%20%20%20%20%20public%20int%20ttype%3B%20%2F%2F%20%E5%BD%93%E5%89%8D%E5%A4%84%E7%90%86%E7%9A%84token%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20MyAntlrParser(TokenStream%20input)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20super(input)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20void%20match(IntStream%20input%2C%20int%20ttype%2C%20BitSet%20follow)%0A%20%20%20%20%20%20%20%20throws%20RecognitionException%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20this.ttype%20%3D%20ttype%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20this.follow%20%3D%20follow%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20super.match(input%2C%20ttype%2C%20follow)%3B%0A%20%20%20%20%20%20%20%20%7D%09%09%0A%20%20%20%20%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;NovaAntlrParser&nbsp;</span><span class="keyword">extends</span><span>&nbsp;MyAntlrParser&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;BitSet&nbsp;follow&nbsp;=&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;ttype;&nbsp;</span><span class="comment">//&nbsp;当前处理的token的数组下标</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;MyAntlrParser(TokenStream&nbsp;input)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span><span>(input);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;match(IntStream&nbsp;input,&nbsp;</span><span class="keyword">int</span><span>&nbsp;ttype,&nbsp;BitSet&nbsp;follow)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throws</span><span>&nbsp;RecognitionException&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.ttype&nbsp;=&nbsp;ttype;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.follow&nbsp;=&nbsp;follow;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span><span>.match(input,&nbsp;ttype,&nbsp;follow);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">    public class NovaAntlrParser extends MyAntlrParser
+    {
+        public BitSet follow = null;
+        public int ttype; // 当前处理的token的数组下标
+        
+        public MyAntlrParser(TokenStream input)
+        {
+            super(input);
+        }
+        
+        public void match(IntStream input, int ttype, BitSet follow)
+        throws RecognitionException
+        {
+            this.ttype = ttype;
+            this.follow = follow;
+
+            super.match(input, ttype, follow);
+        }		
+    }</pre>
+<br>　　CalculatorParser类改成继承 MyAntlrParser类，在测试类Main中捕获异常进行处理，代码如下：
+<br>
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%20%20%20%20import%20java.io.IOException%3B%0A%20%20%20%20import%20java.io.StringReader%3B%0A%0A%20%20%20%20import%20org.antlr.runtime.ANTLRReaderStream%3B%0A%20%20%20%20import%20org.antlr.runtime.CommonTokenStream%3B%0A%20%20%20%20import%20org.antlr.runtime.MismatchedSetException%3B%0A%20%20%20%20import%20org.antlr.runtime.MismatchedTokenException%3B%0A%20%20%20%20import%20org.antlr.runtime.RecognitionException%3B%0A%0A%20%20%20%20public%20class%20Main%20%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20throws%20IOException%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20String%20content%20%3D%20%22isprogrammer%20or%20%22%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20ANTLRReaderStream%20input%20%3D%20new%20ANTLRReaderStream(new%20StringReader(content))%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20CalculatorLexer%20lexer%20%3D%20new%20CalculatorLexer(input)%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20CommonTokenStream%20tokens%20%3D%20new%20CommonTokenStream(lexer)%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20CalculatorParser%20parser%20%3D%20new%20CalculatorParser(tokens)%3B%20%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%E5%8F%AF%E8%83%BD%E7%9A%84%E5%90%8E%E7%BB%AD%E5%8C%B9%E9%85%8D%E6%A0%87%E8%AE%B0%E5%90%8D%0A%20%20%20%20%20%20%20%20%20%20%20%20String%5B%5D%20expecting%20%3D%20null%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20try%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20CommonTree%20tree%20%3D%20parser.expr().getTree()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20%E5%A4%84%E7%90%86tree%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20......%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20catch%20(RecognitionException%20e)%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20expecting%20%3D%20expecting(parser%2C%20e)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20%20%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20static%20ExpectInfo%20expecting(MyAntlrParser%20parser%2C%20RecognitionException%20e)%0A%20%20%20%20%20%20%20%20%7B%09%09%09%09%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(e%20instanceof%20MismatchedTokenException)%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20String%20expecting%20%3D%20%20parser.getTokenNames()%5Bparser.ttype%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20new%20String%5B%5D%7Bexpecting)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20if%20(e%20instanceof%20MismatchedSetException%20%7C%7C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20e%20instanceof%20NoViableAltException)%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20String%5B%5D%20expecting%20%3D%20CollectionUtil.getElements(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20parser.getTokenNames()%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20parser.follow.toArray())%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20toExpectInfo(e%2C%20expecting)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20getRule(e)%2C%20null%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20private%20static%20String%20getRule(Exception%20e)%20%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20e.getStackTrace()%5B0%5D.getMethodName()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span class="keyword">import</span><span>&nbsp;java.io.IOException;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;java.io.StringReader;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.ANTLRReaderStream;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.CommonTokenStream;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.MismatchedSetException;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.MismatchedTokenException;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.RecognitionException;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;Main&nbsp;&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;main(String[]&nbsp;args)&nbsp;</span><span class="keyword">throws</span><span>&nbsp;IOException&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;content&nbsp;=&nbsp;<span class="string">"isprogrammer&nbsp;or&nbsp;"</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANTLRReaderStream&nbsp;input&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;ANTLRReaderStream(</span><span class="keyword">new</span><span>&nbsp;StringReader(content));&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CalculatorLexer&nbsp;lexer&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;CalculatorLexer(input);&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTokenStream&nbsp;tokens&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;CommonTokenStream(lexer);&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CalculatorParser&nbsp;parser&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;CalculatorParser(tokens);&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;可能的后续匹配标记名</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;expecting&nbsp;=&nbsp;<span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">try</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTree&nbsp;tree&nbsp;=&nbsp;parser.expr().getTree();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//&nbsp;处理tree</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">catch</span><span>&nbsp;(RecognitionException&nbsp;e)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expecting&nbsp;=&nbsp;expecting(parser,&nbsp;e);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;ExpectInfo&nbsp;expecting(MyAntlrParser&nbsp;parser,&nbsp;RecognitionException&nbsp;e)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(e&nbsp;</span><span class="keyword">instanceof</span><span>&nbsp;MismatchedTokenException)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;expecting&nbsp;=&nbsp;&nbsp;parser.getTokenNames()[parser.ttype];&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">new</span><span>&nbsp;String[]{expecting);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;</span><span class="keyword">if</span><span>&nbsp;(e&nbsp;</span><span class="keyword">instanceof</span><span>&nbsp;MismatchedSetException&nbsp;||&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;<span class="keyword">instanceof</span><span>&nbsp;NoViableAltException)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;expecting&nbsp;=&nbsp;CollectionUtil.getElements(&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.getTokenNames(),&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.follow.toArray());&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;toExpectInfo(e,&nbsp;expecting);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span class="keyword">else</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;getRule(e),&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;String&nbsp;getRule(Exception&nbsp;e)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;e.getStackTrace()[</span><span class="number">0</span><span>].getMethodName();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">    import java.io.IOException;
+    import java.io.StringReader;
+
+    import org.antlr.runtime.ANTLRReaderStream;
+    import org.antlr.runtime.CommonTokenStream;
+    import org.antlr.runtime.MismatchedSetException;
+    import org.antlr.runtime.MismatchedTokenException;
+    import org.antlr.runtime.RecognitionException;
+
+    public class Main 
+    {
+        public static void main(String[] args) throws IOException
+        {
+            String content = "isprogrammer or ";
+            ANTLRReaderStream input = new ANTLRReaderStream(new StringReader(content)); 
+            CalculatorLexer lexer = new CalculatorLexer(input); 
+            CommonTokenStream tokens = new CommonTokenStream(lexer); 
+            CalculatorParser parser = new CalculatorParser(tokens); 
+
+            // 可能的后续匹配标记名
+            String[] expecting = null;
+
+            try 
+            { 
+                CommonTree tree = parser.expr().getTree();
+                // 处理tree
+                ......
+            }
+            catch (RecognitionException e) 
+            {
+                expecting = expecting(parser, e);
+            }         
+
+        }
+
+        public static ExpectInfo expecting(MyAntlrParser parser, RecognitionException e)
+        {				
+            if (e instanceof MismatchedTokenException) 
+            { 
+                String expecting =  parser.getTokenNames()[parser.ttype];
+                return new String[]{expecting);
+            } else if (e instanceof MismatchedSetException ||
+                        e instanceof NoViableAltException) 
+            { 
+                String[] expecting = CollectionUtil.getElements(
+                        parser.getTokenNames(), 
+                        parser.follow.toArray());
+                return toExpectInfo(e, expecting);
+            } else
+            {
+                return getRule(e), null;
+            }
+        }
+
+        private static String getRule(Exception e) 
+        {
+            return e.getStackTrace()[0].getMethodName();
+        }
+
+    }</pre>
+<br>　　语法文件Calculator.g如下：
+<br>
+<br>　　　　grammar Calculator;
+<br>　　　　options 
+<br>　　　　{ 
+<br>　　　　　　backtrack=true; 
+<br>　　　　　　memoize=true;
+<br>　　　　　　k = 10;
+<br>　　　　　　output=AST;
+<br>　　　　　　ASTLabelType=CommonTree;
+<br>　　　　} 
+<br>
+<br>　　　　expr : basic_expr | logic_expr ;
+<br>　　　　basic_expr : operator WS? PLUS WS? operator ; 
+<br>　　　　logic_expr : operator ( WS OR WS operator ) + ;
+<br>　　　　operator : (VAR | INT) ;
+<br>
+<br>　　　　PLUS&nbsp; : '+' ;
+<br>　　　　OR : 'or' ;
+<br>　　　　INT&nbsp;&nbsp; : ('0'..'9')+ ;
+<br>　　　　VAR&nbsp; : 'a'..'z' ('a'..'z'|'0'..'9'|'_'|'$'|'#')* ;
+<br>　　　　WS : ( ' ' | '\t' | '\r' | '\n' )+ ;
+<br>
+<br>　　进行测试，发现expecting返回的基本上是我所希望的，第一步算成功了。但还有两个
+<br>问题。第一个，抛出异常时得不到tree。第二个，即使语法正确不抛异常得到了tree，但
+<br>这个tree是扁平的，只能得到PLUS, OR, INT, VAR, WS 这些标记名，不能知道是basic_expr
+<br>还是logic_expr。
+<br>　　那么能不能再次祭起重载利器解决这个难题呢？再次分析CalculatorParser.java代码，发现它都是通过一个
+CommonTreeAdaptor对象来生成树、添加子树等操作，如果我把自己的Adaptor强制赋给它不就有希望在自己的Adaptor类中生成自
+己定义的语法树了吗？
+<br>　　另外通过其它的例子发现可以在定义语法规则时定义对应的代码片断，Antlr3会把它插入到该规则对应的方法中（方法名和规则名相同），这样就有可能让规则方法调用我的代码向自己生成的语法树插入规则名。再次动手！
+<br>　　首先写一个树结构类 NovaAntlrTree 保存我所希望的标记信息：
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%20%20%20%20import%20java.util.ArrayList%3B%0A%20%20%20%20import%20java.util.List%3B%0A%0A%20%20%20%20import%20org.antlr.runtime.tree.Tree%3B%0A%0A%20%20%20%20public%20class%20NovaAntlrTree%20%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20private%20NovaAntlrTree%20parent%20%3D%20null%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20private%20String%20rule%20%3D%20null%3B%0A%20%20%20%20%20%20%20%20private%20String%20text%20%3D%20null%3B%0A%20%20%20%20%20%20%20%20private%20int%20type%3B%0A%20%20%20%20%20%20%20%20private%20int%20line%3B%0A%20%20%20%20%20%20%20%20private%20int%20positionInLine%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20private%20List%20children%20%3D%20null%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20NovaAntlrTree(Tree%20node%2C%20String%20rule)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20this.rule%20%3D%20rule%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20text%20%3D%20node.getText()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20type%20%3D%20node.getType()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20line%20%3D%20node.getLine()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20positionInLine%20%3D%20node.getCharPositionInLine()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20NovaAntlrTree%20getChild(int%20i)%20%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(%20children%3D%3Dnull%20%7C%7C%20i%3E%3Dchildren.size()%20)%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20null%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20(NovaAntlrTree)children.get(i)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20int%20getChildCount()%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(%20children%3D%3Dnull%20)%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20children.size()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20void%20addChild(NovaAntlrTree%20t)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(%20t%3D%3Dnull%20)%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%3B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20t.setParent(this)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(%20children%3D%3Dnull%20)%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20children%20%3D%20new%20ArrayList()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20children.add(t)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20String%20getFinalRule(NovaAntlrParser%20parser)%20%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20String%20realRule%20%3D%20rule%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(realRule%20%3D%3D%20null%20%26%26%20type%20%3E%200)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20realRule%20%3D%20parser.getTokenNames()%5Btype%5D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20realRule%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20NovaAntlrTree%20getStartTree()%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(line%20%3E%200)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20this%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20getChild(0).getStartTree()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20NovaAntlrTree%20getEndTree()%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(line%20%3E%200)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return%20this%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20getChild(getChildCount()-1).getEndTree()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20int%20getLine()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20line%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20int%20getPositionInLine()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20positionInLine%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20String%20getRule()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20rule%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20void%20setRule(String%20rule)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20this.rule%20%3D%20rule%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20String%20getText()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20text%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20int%20getType()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20type%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20NovaAntlrTree%20getParent()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20parent%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20void%20setParent(NovaAntlrTree%20parent)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20this.parent%20%3D%20parent%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span class="keyword">import</span><span>&nbsp;java.util.ArrayList;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;java.util.List;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.tree.Tree;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;NovaAntlrTree&nbsp;&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;NovaAntlrTree&nbsp;parent&nbsp;=&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;rule&nbsp;=&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;String&nbsp;text&nbsp;=&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;type;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;line;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;positionInLine;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;List&nbsp;children&nbsp;=&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;NovaAntlrTree(Tree&nbsp;node,&nbsp;String&nbsp;rule)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.rule&nbsp;=&nbsp;rule;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;node.getText();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;node.getType();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;=&nbsp;node.getLine();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;positionInLine&nbsp;=&nbsp;node.getCharPositionInLine();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;NovaAntlrTree&nbsp;getChild(</span><span class="keyword">int</span><span>&nbsp;i)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;children==</span><span class="keyword">null</span><span>&nbsp;||&nbsp;i&gt;=children.size()&nbsp;)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;(NovaAntlrTree)children.get(i);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;getChildCount()&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;children==</span><span class="keyword">null</span><span>&nbsp;)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="number">0</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;children.size();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;addChild(NovaAntlrTree&nbsp;t)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;t==</span><span class="keyword">null</span><span>&nbsp;)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.setParent(<span class="keyword">this</span><span>);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;children==</span><span class="keyword">null</span><span>&nbsp;)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;ArrayList();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children.add(t);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getFinalRule(NovaAntlrParser&nbsp;parser)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;realRule&nbsp;=&nbsp;rule;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(realRule&nbsp;==&nbsp;</span><span class="keyword">null</span><span>&nbsp;&amp;&amp;&nbsp;type&nbsp;&gt;&nbsp;</span><span class="number">0</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;realRule&nbsp;=&nbsp;parser.getTokenNames()[type];&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;realRule;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;NovaAntlrTree&nbsp;getStartTree()&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(line&nbsp;&gt;&nbsp;</span><span class="number">0</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">this</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;getChild(</span><span class="number">0</span><span>).getStartTree();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;NovaAntlrTree&nbsp;getEndTree()&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(line&nbsp;&gt;&nbsp;</span><span class="number">0</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">this</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;getChild(getChildCount()-</span><span class="number">1</span><span>).getEndTree();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;getLine()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;line;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;getPositionInLine()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;positionInLine;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getRule()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;rule;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setRule(String&nbsp;rule)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.rule&nbsp;=&nbsp;rule;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;String&nbsp;getText()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;text;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;getType()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;type;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;NovaAntlrTree&nbsp;getParent()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;parent;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setParent(NovaAntlrTree&nbsp;parent)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span><span>.parent&nbsp;=&nbsp;parent;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">    import java.util.ArrayList;
+    import java.util.List;
+
+    import org.antlr.runtime.tree.Tree;
+
+    public class NovaAntlrTree 
+    {
+        private NovaAntlrTree parent = null;
+        
+        private String rule = null;
+        private String text = null;
+        private int type;
+        private int line;
+        private int positionInLine;
+        
+        private List children = null;
+        
+        public NovaAntlrTree(Tree node, String rule)
+        {
+            this.rule = rule;
+            
+            text = node.getText();
+            type = node.getType();
+            line = node.getLine();
+            positionInLine = node.getCharPositionInLine();
+        }
+        
+        public NovaAntlrTree getChild(int i) 
+        {
+            if ( children==null || i&gt;=children.size() ) 
+            {
+                return null;
+            }
+            return (NovaAntlrTree)children.get(i);
+        }
+
+        public int getChildCount()
+        {
+            if ( children==null ) 
+            {
+                return 0;
+            }
+            return children.size();
+        }
+
+        public void addChild(NovaAntlrTree t)
+        {
+            if ( t==null ) 
+            {
+                return; 
+            }
+            
+            t.setParent(this);
+            
+            if ( children==null ) 
+            {
+                children = new ArrayList();
+            }
+            children.add(t);
+        }
+
+        public String getFinalRule(NovaAntlrParser parser) 
+        {
+            String realRule = rule;
+            if (realRule == null &amp;&amp; type &gt; 0)
+                realRule = parser.getTokenNames()[type];
+            
+            return realRule;
+        }
+        
+        public NovaAntlrTree getStartTree()
+        {
+            if (line &gt; 0)
+                return this;
+            
+            return getChild(0).getStartTree();
+        }
+        
+        public NovaAntlrTree getEndTree()
+        {
+            if (line &gt; 0)
+                return this;
+            
+            return getChild(getChildCount()-1).getEndTree();
+        }
+        
+        public int getLine() {
+            return line;
+        }
+
+        public int getPositionInLine() {
+            return positionInLine;
+        }
+
+        public String getRule() {
+            return rule;
+        }
+
+        public void setRule(String rule)
+        {
+            this.rule = rule;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public NovaAntlrTree getParent() {
+            return parent;
+        }
+
+        public void setParent(NovaAntlrTree parent) {
+            this.parent = parent;
+        }
+
+    }</pre>
+<br>
+<br>　　语法文件 Calculator.g略作修改：
+<br>
+<br>　　......
+<br>　　basic_expr : ( operator WS? PLUS WS? operator ) { setRule("basic_expr"); } ; 
+<br>　　logic_expr : ( operator ( WS OR WS operator ) + ) { setRule("logic_expr"); } ;
+<br>　　operator : (VAR | INT)&nbsp; { setRule("operator"); };
+<br>　　......
+<br>
+<br>
+<br>　　现在来写自己的Adator类，它继承 CommonTreeAdaptor
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%20%20%20%20import%20java.util.HashSet%3B%0A%0A%20%20%20%20import%20org.antlr.runtime.Token%3B%0A%20%20%20%20import%20org.antlr.runtime.tree.CommonTree%3B%0A%20%20%20%20import%20org.antlr.runtime.tree.CommonTreeAdaptor%3B%0A%20%20%20%20import%20org.antlr.runtime.tree.Tree%3B%0A%0A%20%20%20%20public%20class%20NovaTreeAdaptor%20extends%20CommonTreeAdaptor%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20private%20NovaAntlrTree%20root%20%3D%20null%3B%0A%20%20%20%20%20%20%20%20private%20NovaAntlrTree%20current%20%3D%20null%3B%0A%0A%20%20%20%20%20%20%20%20private%20HashSet%20addedTokenIndices%20%3D%20new%20HashSet()%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20NovaTreeAdaptor()%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20super()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20void%20addChild(Object%20t%2C%20Object%20child)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20super.addChild(t%2C%20child)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20CommonTree%20ct%20%3D%20(CommonTree)%20child%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20Token%20token%20%3D%20ct.getToken()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(token%20!%3D%20null)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Integer%20index%20%3D%20new%20Integer(token.getTokenIndex())%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20(!addedTokenIndices.contains(index))%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current.addChild(createTree(child))%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20addedTokenIndices.add(index)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20Object%20nil()%20%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20Object%20o%20%3D%20super.nil()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20NovaAntlrTree%20t%20%3D%20createTree(o)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(current%20!%3D%20null)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current.addChild(t)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20t%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(root%20%3D%3D%20null)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20root%20%3D%20current%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%2F%2FSystem.out.println(%22rule%3A%22%2Bparser.getRule()%2B%22%2C%20nil%20object%20%22%2Bo)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20o%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20private%20NovaAntlrTree%20createTree(Object%20o)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20NovaAntlrTree%20t%20%3D%20new%20NovaAntlrTree((Tree)%20o%2C%20null)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20t%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20NovaAntlrTree%20getTree()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20root%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20public%20void%20setRule(String%20rule)%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(current%20!%3D%20null)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current.setRule(rule)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current.getParent()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20public%20Object%20rulePostProcessing(Object%20root)%20%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20super.rulePostProcessing(root)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span class="keyword">import</span><span>&nbsp;java.util.HashSet;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.Token;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.tree.CommonTree;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.tree.CommonTreeAdaptor;&nbsp;&nbsp;</span></span></li><li><span><span class="keyword">import</span><span>&nbsp;org.antlr.runtime.tree.Tree;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;NovaTreeAdaptor&nbsp;</span><span class="keyword">extends</span><span>&nbsp;CommonTreeAdaptor&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;NovaAntlrTree&nbsp;root&nbsp;=&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;NovaAntlrTree&nbsp;current&nbsp;=&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;HashSet&nbsp;addedTokenIndices&nbsp;=&nbsp;</span><span class="keyword">new</span><span>&nbsp;HashSet();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;NovaTreeAdaptor()&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span><span>();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;addChild(Object&nbsp;t,&nbsp;Object&nbsp;child)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">super</span><span>.addChild(t,&nbsp;child);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTree&nbsp;ct&nbsp;=&nbsp;(CommonTree)&nbsp;child;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Token&nbsp;token&nbsp;=&nbsp;ct.getToken();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(token&nbsp;!=&nbsp;</span><span class="keyword">null</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;index&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;Integer(token.getTokenIndex());&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(!addedTokenIndices.contains(index))&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.addChild(createTree(child));&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addedTokenIndices.add(index);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;Object&nbsp;nil()&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;o&nbsp;=&nbsp;<span class="keyword">super</span><span>.nil();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NovaAntlrTree&nbsp;t&nbsp;=&nbsp;createTree(o);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(current&nbsp;!=&nbsp;</span><span class="keyword">null</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.addChild(t);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;=&nbsp;t;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(root&nbsp;==&nbsp;</span><span class="keyword">null</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;current;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">//System.out.println("rule:"+parser.getRule()+",&nbsp;nil&nbsp;object&nbsp;"+o);</span><span>&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;o;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">private</span><span>&nbsp;NovaAntlrTree&nbsp;createTree(Object&nbsp;o)&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NovaAntlrTree&nbsp;t&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;NovaAntlrTree((Tree)&nbsp;o,&nbsp;</span><span class="keyword">null</span><span>);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;t;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;NovaAntlrTree&nbsp;getTree()&nbsp;{&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;root;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setRule(String&nbsp;rule)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(current&nbsp;!=&nbsp;</span><span class="keyword">null</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.setRule(rule);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;=&nbsp;current.getParent();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;Object&nbsp;rulePostProcessing(Object&nbsp;root)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">super</span><span>.rulePostProcessing(root);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">    import java.util.HashSet;
+
+    import org.antlr.runtime.Token;
+    import org.antlr.runtime.tree.CommonTree;
+    import org.antlr.runtime.tree.CommonTreeAdaptor;
+    import org.antlr.runtime.tree.Tree;
+
+    public class NovaTreeAdaptor extends CommonTreeAdaptor
+    {
+        private NovaAntlrTree root = null;
+        private NovaAntlrTree current = null;
+
+        private HashSet addedTokenIndices = new HashSet();
+        
+        public NovaTreeAdaptor()
+        {
+            super();
+        }
+        
+        public void addChild(Object t, Object child)
+        {
+            super.addChild(t, child);
+            
+            CommonTree ct = (CommonTree) child;
+            Token token = ct.getToken();
+            if (token != null)
+            {
+                Integer index = new Integer(token.getTokenIndex());
+                if (!addedTokenIndices.contains(index))
+                {
+                    current.addChild(createTree(child));
+                    addedTokenIndices.add(index);
+                }
+            }
+        }
+
+        public Object nil() 
+        {
+            Object o = super.nil();
+            
+            NovaAntlrTree t = createTree(o);
+            if (current != null)
+                current.addChild(t);
+            current = t;
+            if (root == null)
+                root = current;
+            //System.out.println("rule:"+parser.getRule()+", nil object "+o);
+            
+            return o;
+        }
+
+        private NovaAntlrTree createTree(Object o) {
+            NovaAntlrTree t = new NovaAntlrTree((Tree) o, null);
+            return t;
+        }
+
+        public NovaAntlrTree getTree() {
+            return root;
+        }
+
+        public void setRule(String rule)
+        {
+            if (current != null)
+            {
+                current.setRule(rule);
+                current = current.getParent();
+            }
+            
+        }
+        
+        public Object rulePostProcessing(Object root) 
+        {
+            return super.rulePostProcessing(root);
+        }
+    }</pre>
+<br>
+<br>　　下面我们来增强MyAntlrParser类，先重载三个异常处理方法，目的一是减少修改CalculatorParser.java
+<br>的工作量，毕竟语法文件可能经常会作修改，每次重新生成CalculatorParser.java文件后对它进行比较多的替换
+<br>动作总是烦人的，二是希望它能直接抛出异常，三是不想看到它烦人的异常信息输出：
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%09public%20void%20recover(IntStream%20input%2C%20RecognitionException%20re)%0A%09%7B%0A%09%7D%0A%09%09%0A%09public%20void%20reportError(RecognitionException%20e)%20%0A%09%7B%09%09%0A%09%7D%0A%09%0A%09public%20void%20recoverFromMismatchedToken(IntStream%20input%2C%0A%09%09%09%20%20%20RecognitionException%20e%2C%0A%09%09%09%20%20%20int%20ttype%2C%0A%09%09%09%20%20%20BitSet%20follow)%0A%09throws%20RecognitionException%0A%09%7B%0A%09%09if%20(%20input.LA(2)%3D%3Dttype%20)%20%0A%09%09%7B%0A%09%09%09beginResync()%3B%0A%09%09%09input.consume()%3B%20%0A%09%09%09endResync()%3B%0A%09%09%09input.consume()%3B%20%0A%09%09%09return%3B%0A%09%09%7D%0A%09%09if%20(%20!recoverFromMismatchedElement(input%2Ce%2Cfollow)%20)%20%0A%09%09%7B%0A%09%09%09throw%20e%3B%0A%09%09%7D%0A%09%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;recover(IntStream&nbsp;input,&nbsp;RecognitionException&nbsp;re)&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;reportError(RecognitionException&nbsp;e)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;recoverFromMismatchedToken(IntStream&nbsp;input,&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RecognitionException&nbsp;e,&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span><span>&nbsp;ttype,&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BitSet&nbsp;follow)&nbsp;&nbsp;</span></li><li><span><span class="keyword">throws</span><span>&nbsp;RecognitionException&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;input.LA(</span><span class="number">2</span><span>)==ttype&nbsp;)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beginResync();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input.consume();&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endResync();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input.consume();&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(&nbsp;!recoverFromMismatchedElement(input,e,follow)&nbsp;)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">throw</span><span>&nbsp;e;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">	public void recover(IntStream input, RecognitionException re)
+	{
+	}
+		
+	public void reportError(RecognitionException e) 
+	{		
+	}
+	
+	public void recoverFromMismatchedToken(IntStream input,
+			   RecognitionException e,
+			   int ttype,
+			   BitSet follow)
+	throws RecognitionException
+	{
+		if ( input.LA(2)==ttype ) 
+		{
+			beginResync();
+			input.consume(); 
+			endResync();
+			input.consume(); 
+			return;
+		}
+		if ( !recoverFromMismatchedElement(input,e,follow) ) 
+		{
+			throw e;
+		}
+	}</pre>
+<br>
+<br>　　然后重载两个和Adaptor相关的方法：
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%09public%20TreeAdaptor%20getTreeAdaptor()%0A%09%7B%0A%09%09return%20null%3B%0A%09%7D%0A%09public%20void%20setTreeAdaptor(TreeAdaptor%20adaptor)%0A%09%7B%0A%20%20%20%20%7D%0A%0A%09public%20NovaTreeAdaptor%20getNovaTreeAdaptor()%0A%09%7B%0A%09%09return%20(NovaTreeAdaptor)%20getTreeAdaptor()%3B%0A%09%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span class="keyword">public</span><span>&nbsp;TreeAdaptor&nbsp;getTreeAdaptor()&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;</span><span class="keyword">null</span><span>;&nbsp;&nbsp;</span></span></li><li><span>}&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setTreeAdaptor(TreeAdaptor&nbsp;adaptor)&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">public</span><span>&nbsp;NovaTreeAdaptor&nbsp;getNovaTreeAdaptor()&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;(NovaTreeAdaptor)&nbsp;getTreeAdaptor();&nbsp;&nbsp;</span></span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">	public TreeAdaptor getTreeAdaptor()
+	{
+		return null;
+	}
+	public void setTreeAdaptor(TreeAdaptor adaptor)
+	{
+    }
+
+	public NovaTreeAdaptor getNovaTreeAdaptor()
+	{
+		return (NovaTreeAdaptor) getTreeAdaptor();
+	}</pre>
+<br>&nbsp;&nbsp;&nbsp; 然后实现在语法文件中增加的代码中的setRule方法：
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%09public%20void%20setRule(String%20rule)%0A%20%20%20%20%7B%0A%09%09getNovaTreeAdaptor().setRule(rule)%3B%0A%09%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;setRule(String&nbsp;rule)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;getNovaTreeAdaptor().setRule(rule);&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">	public void setRule(String rule)
+    {
+		getNovaTreeAdaptor().setRule(rule);
+	}</pre>
+<br>
+<br>　　最后通过命令行 java org.antlr.Tool Calculator.g重新生成Calculator.java文件，并作以下两个替换动作（以后每次修改语法后都要做这个动作即可）：
+<br>　　把父类Parser替换成MyAntlrParser
+<br>　　把所有的reportError(RecognitionException e); 这一行替换为throw e;
+<br>
+<br>　　好了，来编写新的测试代码测试我们自己生成的语法树有没有达到预期效果：
+<br>
+<br><div class="dp-highlighter"><div class="bar"><div class="tools">Java代码 <embed src="%E5%86%B3%E6%88%98%20ANTLR3_files/clipboard_new.swf" flashvars="clipboard=%20%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20throws%20IOException%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20.....%0A%0A%20%20%20%20%20%20%20%20try%20%0A%20%20%20%20%20%20%20%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20parser.setTreeAdaptor(new%20NovaTreeAdaptor(parser))%3B%0A%20%20%20%20%20%20%20%20%09parser.expr()%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20catch%20(RecognitionException%20e)%20%0A%20%20%20%20%20%20%20%20%7B%20%20%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20iterate(parser.getNovaTreeAdaptor().getTree()%2C%200)%3B%0A%20%20%20%20%7D%0A%0A%09private%20static%20void%20iterate(NovaAntlrTree%20t%2C%20int%20depth)%0A%09%7B%0A%09%09if%20(t%20%3D%3D%20null)%0A%09%09%09return%3B%0A%09%09%09%09%0A%09%09System.out.print(createSpace(depth*4))%3B%0A%09%09System.out.println(%22rule%3A%22%2Bt.getRule()%2B%22%5B%22%2Bt.getText()%2B%22%5D%22)%3B%0A%09%09depth%2B%2B%3B%0A%0A%09%09for%20(int%20i%3D0%3B%20i%3Ct.getChildCount()%3B%20i%2B%2B)%0A%09%09%7B%0A%09%09%09iterate(t.getChild(i)%2C%20depth)%3B%0A%09%09%7D%0A%0A%09%7D%0A%20%20%20%20%0A%20%20%20%20public%20static%20String%20createSpace(int%20count)%0A%20%20%20%20%7B%0A%20%20%20%20%09StringBuffer%20sb%20%3D%20new%20StringBuffer(count)%3B%0A%20%20%20%20%09for%20(int%20i%3D0%3B%20i%3Ccount%3B%20i%2B%2B)%0A%20%20%20%20%09%09sb.append('%20')%3B%0A%20%20%20%20%09return%20sb.toString()%3B%0A%20%20%20%20%7D" quality="high" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="15" width="14"></div></div><ol class="dp-j" start="1"><li><span><span>&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;main(String[]&nbsp;args)&nbsp;</span><span class="keyword">throws</span><span>&nbsp;IOException&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.....&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">try</span><span>&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.setTreeAdaptor(<span class="keyword">new</span><span>&nbsp;NovaTreeAdaptor(parser));&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.expr();&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">catch</span><span>&nbsp;(RecognitionException&nbsp;e)&nbsp;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterate(parser.getNovaTreeAdaptor().getTree(),&nbsp;<span class="number">0</span><span>);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span><span class="keyword">private</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;</span><span class="keyword">void</span><span>&nbsp;iterate(NovaAntlrTree&nbsp;t,&nbsp;</span><span class="keyword">int</span><span>&nbsp;depth)&nbsp;&nbsp;</span></span></li><li><span>{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span><span>&nbsp;(t&nbsp;==&nbsp;</span><span class="keyword">null</span><span>)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>;&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(createSpace(depth*<span class="number">4</span><span>));&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span class="string">"rule:"</span><span>+t.getRule()+</span><span class="string">"["</span><span>+t.getText()+</span><span class="string">"]"</span><span>);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;depth++;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;(</span><span class="keyword">int</span><span>&nbsp;i=</span><span class="number">0</span><span>;&nbsp;i&lt;t.getChildCount();&nbsp;i++)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterate(t.getChild(i),&nbsp;depth);&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;</span></li><li><span>}&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;<span class="keyword">public</span><span>&nbsp;</span><span class="keyword">static</span><span>&nbsp;String&nbsp;createSpace(</span><span class="keyword">int</span><span>&nbsp;count)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer&nbsp;sb&nbsp;=&nbsp;<span class="keyword">new</span><span>&nbsp;StringBuffer(count);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span><span>&nbsp;(</span><span class="keyword">int</span><span>&nbsp;i=</span><span class="number">0</span><span>;&nbsp;i&lt;count;&nbsp;i++)&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sb.append(<span class="string">'&nbsp;'</span><span>);&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span><span>&nbsp;sb.toString();&nbsp;&nbsp;</span></span></li><li><span>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</span></li></ol></div><pre style="display: none;" name="code" class="java">    public static void main(String[] args) throws IOException
+    {
+        .....
+
+        try 
+        { 
+            parser.setTreeAdaptor(new NovaTreeAdaptor(parser));
+        	parser.expr();
+        }
+        catch (RecognitionException e) 
+        {  
+        } 
+        iterate(parser.getNovaTreeAdaptor().getTree(), 0);
+    }
+
+	private static void iterate(NovaAntlrTree t, int depth)
+	{
+		if (t == null)
+			return;
+				
+		System.out.print(createSpace(depth*4));
+		System.out.println("rule:"+t.getRule()+"["+t.getText()+"]");
+		depth++;
+
+		for (int i=0; i&lt;t.getChildCount(); i++)
+		{
+			iterate(t.getChild(i), depth);
+		}
+
+	}
+    
+    public static String createSpace(int count)
+    {
+    	StringBuffer sb = new StringBuffer(count);
+    	for (int i=0; i&lt;count; i++)
+    		sb.append(' ');
+    	return sb.toString();
+    }</pre>
+<br>
+<br>　　运行结果如下：
+<br>
+<br>　　rule:null[null]
+<br>　　　　rule:logic_expr[null]
+<br>　　　　　　rule:operator[null]
+<br>　　　　　　　　rule:null[isprogrammer]
+<br>　　　　　　rule:null[ ]
+<br>　　　　　　rule:null[or]
+<br>　　　　　　rule:null[ ]
+<br>　　　　　　rule:operator[null]
+<br>　　　　　　　　rule:null[3]
+<br>　　　　　　rule:null[ ]
+<br>　　　　　　rule:null[or]
+<br>　　　　　　rule:null[ ]
+<br>　　　　　　rule:operator[null]
+<br>　　　　　　　　rule:null[isantlr]
+<br>
+<br>
+<br>　　测试成功后把类移植到我的SQL编辑器中，增加显示不同Style功能后，大功告成，这是效果图：
+<br><img class="magplus" title="点击查看原始大小图片" src="%E5%86%B3%E6%88%98%20ANTLR3_files/7b355b40-4697-3068-8fcc-7a30a845a8ec.jpg" height="525" width="700">
+<br>
+<br>
+  </div>
+
+  <div>
+<script type="text/javascript">
+google_ad_client = "pub-9971846879634397";
+google_ad_slot = "8644581328";
+google_ad_width = 468;
+google_ad_height = 60;
+</script>
+<script type="text/javascript" src="%E5%86%B3%E6%88%98%20ANTLR3_files/show_ads.js">
+</script><script src="%E5%86%B3%E6%88%98%20ANTLR3_files/expansion_embed.js"></script><script src="%E5%86%B3%E6%88%98%20ANTLR3_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 60px; position: relative; visibility: visible; width: 468px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 60px; position: relative; visibility: visible; width: 468px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="%E5%86%B3%E6%88%98%20ANTLR3_files/ads.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="60" width="468"></iframe></ins></ins>
+</div>
+
+  <div id="digg_bottom" class="clearfix"><a href="#" onclick='digg("blogs", 161299, false);return false;'></a><div><a href="#" onclick='digg("blogs", 161299, false);return false;'><strong>2</strong> <br>顶</a></div><a href="#" onclick='digg("blogs", 161299, true);return false;'><div><strong>0</strong> <br>踩</div></a></div>
+  
+  
+  
+    
+  <div class="blog_bottom">
+    <ul>
+      <li>14:31</li>
+      <li>浏览 (1008)</li>
+            <li><a href="#comments">评论</a> (2)</li>
+      <li>分类: <a href="http://gb-lu.javaeye.com/category/26527">JAVA</a></li>
+      
+      
+        <li><a href="http://app.javaeye.com/links?user_favorite%5Btitle%5D=%E5%86%B3%E6%88%98+ANTLR3&amp;user_favorite%5Burl%5D=http%3A%2F%2Fgb-lu.javaeye.com%2Fblog%2F161299" target="_blank" class="favorite">收藏</a></li>
+        
+      
+      
+      <li class="last"><a href="http://www.javaeye.com/wiki/topic/161299" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    <div id="bc662609">
+  <div class="comment_title">
+    2 楼
+    <a href="http://jiaqing.javaeye.com/" target="_blank">jiaqing</a>
+    2008-09-11&nbsp;&nbsp;
+    <a href="#" onclick="quote_comment(662609);return false;">引用</a>
+    
+  </div>
+  <div class="comment_content">高手，能看看你的语法文件吗？谢谢，让我也学点。我的QQ：664723267.</div>
+</div>
+<div id="bc557508">
+  <div class="comment_title">
+    1 楼
+    <a href="http://y263542662.javaeye.com/" target="_blank">y263542662</a>
+    2008-05-26&nbsp;&nbsp;
+    <a href="#" onclick="quote_comment(557508);return false;">引用</a>
+    
+  </div>
+  <div class="comment_content">白开水.的破2</div>
+</div>
+
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+          
+      
+        <a href="http://gb-lu.javaeye.com/index/forum_certify" target="_blank">完成论坛规则小测验以后，您才能在论坛发帖和回复。</a>
+      
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  fix_image_size($$('div.blog_content img'), 700);
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'Post'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);}
+    });
+  }
+</script>
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+            <div id="blog_owner_logo"><a href="http://gb-lu.javaeye.com/"><img alt="白开水的博客" class="logo" src="%E5%86%B3%E6%88%98%20ANTLR3_files/user-logo.gif" title="白开水的博客: 白开水"></a></div>
+            <div id="blog_owner_name">白开水</div>
+          </div>
+          
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 1008 次</li>
+              <li>性别: <img alt="Icon_minigender_1" src="%E5%86%B3%E6%88%98%20ANTLR3_files/icon_minigender_1.gif" title="男"></li>
+              <li>来自: 上海</li>
+              <li><img src="%E5%86%B3%E6%88%98%20ANTLR3_files/offline.gif"></li>
+              <li>
+                <a href="http://gb-lu.javaeye.com/blog/profile" class="profile">详细资料</a>
+                <a href="http://gb-lu.javaeye.com/blog/guest_book" class="guest_book">留言簿</a>
+              </li>
+              
+                <li>
+                  <a href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=%E7%99%BD%E5%BC%80%E6%B0%B4" class="message" title="发送站内短信">发短消息</a>
+                  
+                    <a href="http://app.javaeye.com/feed?subscription%5Bsubscribed_user_name%5D=%E7%99%BD%E5%BC%80%E6%B0%B4" class="subscription" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;">订阅</a>
+                  
+                </li>
+              
+            </ul>
+            <h5>搜索本博客</h5>
+            <form action="/blog/search" method="get">              <input class="text" id="query" name="query" style="margin-left: 10px; width: 110px;" type="text">
+              <input class="submit" value="搜索" type="submit">
+            </form>          </div>
+          
+            <div id="user_visits" class="clearfix">
+              <h5>最近访客 <span style="font-weight: normal; font-size: 12px; padding-left: 30px;"><a href="http://gb-lu.javaeye.com/blog/user_visits">&gt;&gt;更多访客</a></span></h5>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://cnshirui.javaeye.com/" target="_blank"><img alt="cnshirui的博客" class="logo" src="%E5%86%B3%E6%88%98%20ANTLR3_files/user-logo-thumb.gif" title="cnshirui的博客: "></a></div>
+                  <div class="left"><a href="http://cnshirui.javaeye.com/" target="_blank">cnshirui</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://luckyhxw-163-com.javaeye.com/" target="_blank"><img alt="越前龙马的博客" class="logo" src="%E5%86%B3%E6%88%98%20ANTLR3_files/user-logo-thumb.gif" title="越前龙马的博客: "></a></div>
+                  <div class="left"><a href="http://luckyhxw-163-com.javaeye.com/" target="_blank">越前龙马</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://cwocwo.javaeye.com/" target="_blank"><img alt="cwocwo的博客" class="logo" src="%E5%86%B3%E6%88%98%20ANTLR3_files/user-logo-thumb.gif" title="cwocwo的博客: cwocwo"></a></div>
+                  <div class="left"><a href="http://cwocwo.javaeye.com/" target="_blank">cwocwo</a></div>
+                </div>
+              
+                <div class="user_visit">
+                  <div class="logo"><a href="http://iamxjlz.javaeye.com/" target="_blank"><img alt="iamxjlz的博客" class="logo" src="%E5%86%B3%E6%88%98%20ANTLR3_files/user-logo-thumb.gif" title="iamxjlz的博客: "></a></div>
+                  <div class="left"><a href="http://iamxjlz.javaeye.com/" target="_blank">iamxjlz</a></div>
+                </div>
+              
+            </div>
+          
+                      <div id="blog_menu">
+              <h5>博客分类</h5>
+              <ul>
+                <li><a href="http://gb-lu.javaeye.com/">全部博客 (1)</a></li>
+                
+                  <li><a href="http://gb-lu.javaeye.com/category/26527">JAVA (1)</a></li>
+                
+              </ul>
+            </div>
+            
+              <div id="blog_album">
+                <h5>我的相册</h5>
+                <div class="picture_thumb" style="float: none;">
+                  <div><span class="thumb_box"><a href="http://gb-lu.javaeye.com/album"><img alt="7b355b40-4697-3068-8fcc-7a30a845a8ec-thumb" src="%E5%86%B3%E6%88%98%20ANTLR3_files/7b355b40-4697-3068-8fcc-7a30a845a8ec-thumb.jpg"></a></span></div>
+                  <span>antlr3-nql<br> <a href="http://gb-lu.javaeye.com/album">共 1 张</a></span>
+                </div>
+              </div>
+            
+            
+            <div id="blog_others">
+              <h5>其他分类</h5>
+              <ul>
+                <li><a href="http://gb-lu.javaeye.com/blog/favorite">我的收藏</a> (0)</li>
+                                                <li><a href="http://gb-lu.javaeye.com/blog/forum">我的论坛帖子</a> (5)</li>
+                <li><a href="http://gb-lu.javaeye.com/blog/article">我的精华良好贴</a> (0)</li>
+                              </ul>
+            </div>
+            
+            <div id="recent_groups">
+              <h5>最近加入圈子</h5>
+              <ul>
+                
+              </ul>
+            </div>
+            
+            
+                          <div id="month_blogs">
+                <h5>存档</h5>
+                <ul>
+                  
+                    <li><a href="http://gb-lu.javaeye.com/blog/monthblog/2008-02">2008-02</a> (1)</li>
+                  
+                  <li><a href="http://gb-lu.javaeye.com/blog/monthblog_more">更多存档...</a></li>
+                </ul>
+              </div>
+                        <div id="recent_comments">
+              <h5>最新评论</h5>
+              <ul>
+                
+                  <li>
+                    <a href="http://gb-lu.javaeye.com/blog/161299#comments" title="决战 ANTLR3">决战 ANTLR3</a><br>
+                    高手，能看看你的语法文件吗？谢谢，让我也学点。我的QQ：664723267.<br>
+                    -- by <a href="http://jiaqing.javaeye.com/" target="_blank">jiaqing</a>
+                  </li>
+                
+                  <li>
+                    <a href="http://gb-lu.javaeye.com/blog/161299#comments" title="决战 ANTLR3">决战 ANTLR3</a><br>
+                    白开水.的破2<br>
+                    -- by <a href="http://y263542662.javaeye.com/" target="_blank">y263542662</a>
+                  </li>
+                
+              </ul>
+            </div>
+            <div id="comments_top">
+              <h5>评论排行榜</h5>
+              <ul>
+                
+              </ul>
+            </div>
+            <div id="rss">
+              <ul>
+                <li><a href="http://gb-lu.javaeye.com/rss" target="_blank"><img alt="Rss" src="%E5%86%B3%E6%88%98%20ANTLR3_files/rss.png"></a></li>
+                <li><a href="http://fusion.google.com/add?feedurl=http://gb-lu.javaeye.com/rss" target="_blank"><img alt="Rss_google" src="%E5%86%B3%E6%88%98%20ANTLR3_files/rss_google.gif"></a></li>
+                <li><a href="http://www.zhuaxia.com/add_channel.php?url=http://gb-lu.javaeye.com/rss" target="_blank"><img alt="Rss_zhuaxia" src="%E5%86%B3%E6%88%98%20ANTLR3_files/rss_zhuaxia.gif"></a></li>
+                <li><a href="http://www.xianguo.com/subscribe.php?url=http://gb-lu.javaeye.com/rss" target="_blank"><img alt="Rss_xianguo" src="%E5%86%B3%E6%88%98%20ANTLR3_files/rss_xianguo.jpg"></a></li>
+                <li><a href="http://www.google.com/search?hl=zh-CN&amp;q=RSS">[什么是RSS?]</a></li>
+              </ul>
+            </div>
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr>
+          声明：JavaEye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br>
+          © 2003-2009 JavaEye.com.   All rights reserved. 上海炯耐计算机软件有限公司 [ 沪ICP备05023328号 ]
+        </div>
+      </div>
+    </div>
+    
+  <div id="chat_input" style="display: none;">
+    <iframe id="chat_iframe" marginwidth="0" marginheight="0" allowtransparency="true" scrolling="no" frameborder="0"></iframe>
+  </div>
+  <div id="chat_button"><a href="#" style="text-decoration: none; color: black;" onclick="$('chat_input').show();$('chat_iframe').src='/chat/widget';return false;">说点啥吧 <img alt="Chat" src="%E5%86%B3%E6%88%98%20ANTLR3_files/chat.gif"></a></div>
+
+<script type="text/javascript">
+  document.write("<img src='http://stat.javaeye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&logged_in=yes" + "' width='0' height='0' />");
+</script><img src="%E5%86%B3%E6%88%98%20ANTLR3_files/a.gif" height="0" width="0">
+    
+  </body></html>

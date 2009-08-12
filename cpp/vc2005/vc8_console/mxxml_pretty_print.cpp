@@ -60,10 +60,10 @@ int main(int argc, char* argv[])
 		// put properties
 		CComVariant var;
 		var = (LPUNKNOWN)pWriter;
-		hr = pReader->putProperty(("http://xml.org/sax/properties/declaration-handler"), var);
-		_ASSERT(SUCCEEDED(hr));
-		hr = pReader->putProperty(("http://xml.org/sax/properties/lexical-handler"), var);
-		_ASSERT(SUCCEEDED(hr));
+		//hr = pReader->putProperty(("http://xml.org/sax/properties/declaration-handler"), var);
+		//_ASSERT(SUCCEEDED(hr));
+		//hr = pReader->putProperty(("http://xml.org/sax/properties/lexical-handler"), var);
+		//_ASSERT(SUCCEEDED(hr));
 
 		// set parameters, clean the scene
 		//m_wndEvents.SetWindowText(_T(""));

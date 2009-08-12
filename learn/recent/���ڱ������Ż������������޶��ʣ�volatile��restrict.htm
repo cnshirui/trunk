@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	关于编译器优化的两个类型限定词：volatile和restrict - 王德军的专栏 - CSDN博客
+</title>
+	<script src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/jquery-1.js" type="text/javascript"></script>
+	<script src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/jquery.js" type="text/javascript"></script>
+	<script src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/highlighter.js" type="text/javascript"></script>
+	<script src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/common.js" type="text/javascript"></script>
+	<link href="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/Cogitation_1.css" type="text/css" rel="stylesheet" media="all"><link href="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/csdn_favbykimi.css" type="text/css" rel="stylesheet" media="all"><link rel="Shortcut Icon" href="http://profile.csdn.net/wangdejun/picture/1.ico"><link href="http://feeds.feedsky.com/csdn.net/wangdejun" title="RSS" type="application/rss+xml" rel="alternate"></head><body id="defaultuser">
+	<div id="csdnblog_allwrap">
+	    <div id="csdnblog_midwrap">
+		    
+<div id="csdnblog_header">
+    <h1><a href="http://blog.csdn.net/wangdejun">王德军的专栏</a></h1><h2></h2>
+    <ul id="personalnav">
+		<li style=""><a id="a_login" href="http://passport.csdn.net/UserLogin.aspx?from=http%3A%2F%2Fblog.csdn.net%2Fwangdejun%2Farchive%2F2008%2F03%2F28%2F2226422.aspx">登录</a></li>
+		<li style=""><a id="a_register" href="http://passport.csdn.net/CSDNUserRegister.aspx">注册</a></li>
+		<li style="display: none;"><a id="a_welcome" href="http://hi.csdn.net/" target="_blank">欢迎</a></li>
+		<li style="display: none;"><a id="a_exit" href="http://writeblog.csdn.net/Signout.aspx">退出</a></li>
+		<li style="display: none;"><a id="a_myblog" href="http://blog.csdn.net/">我的博客</a></li>
+		<li style="display: none;"><a id="a_configure" href="http://writeblog.csdn.net/configure.aspx" target="_blank">配置</a></li>
+		<li style="display: none;"><a id="a_postedit" href="http://writeblog.csdn.net/PostEditPlain.aspx" target="_blank">写文章</a></li>
+		<li style="display: none;"><a id="a_postlist" href="http://writeblog.csdn.net/PostList.aspx" target="_blank">文章管理</a></li>
+		<li style="display: none;"><a id="a_bloghome" href="http://blog.csdn.net/" target="_blank">博客首页</a></li>
+	</ul>
+    <ul id="blogsearchsty">
+		<li><input id="inputSearch" class="bolgsearch" type="text"></li>
+		<li class="selectsty">
+			<select name="Search:ddlSearchScope" id="Search_ddlSearchScope">
+				<option selected="selected" value="all">全站</option>
+				<option value="wangdejun">当前博客</option>
+			</select>
+		</li>
+		<li><input id="buttonSearch" value="搜索" class="bolggobtn" type="button"></li>
+	</ul>
+    <ul id="menu">
+		<li><a href="http://hi.csdn.net/wangdejun">空间</a></li>
+		<li><a href="http://blog.csdn.net/wangdejun" class="on">博客</a></li>
+		<li><a href="http://hi.csdn.net/wangdejun/profile/contactlist/1.html">好友</a></li>
+		<li><a href="http://album.hi.csdn.net/views/albums/wangdejun" target="_blank">相册</a></li>
+		<li><a href="http://hi.csdn.net/wangdejun/profile/notebook/1.html" class="last">留言</a></li>
+	</ul>
+</div>
+
+		    
+<div id="csdnblog_sidebar">
+	<div class="gutter">
+		<div class="aboutauthor">
+			<dl>
+				<dt style="text-align: left;">用户操作</dt>
+				<dd class="middle">
+					<a href="http://hi.csdn.net/Admin/WriteMessage.aspx?Receiver=wangdejun" target="_blank">[发私信]</a>&nbsp;
+					<a href="http://webim.csdn.net/AddFriends/wangdejun.ashx" target="_blank">[加为好友]</a>&nbsp;
+				</dd>
+				<dt style="text-align: left;">    <a href="http://hi.csdn.net/wangdejun">王德军</a><span>ID：<a href="http://hi.csdn.net/wangdejun">wangdejun</a></span></dt><dd class="middle">    <a href="http://hi.csdn.net/wangdejun"><img src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/1_wangdejun.jpg" alt=""></a></dd><dd class="middle">    <a href="http://profile.csdn.net/8/E4/edit.html"></a></dd><dd style="text-align: left;">    共<em>133</em>次访问，排名<em>2万外</em>，<a href="http://hi.csdn.net/wangdejun/profile/contactlist/1.html">好友</a><em>0</em>人，<a href="http://hi.csdn.net/wangdejun/profile/concernedlist/1.html">关注者</a><em>1</em>人。<br></dd><dd style="text-align: left;">    </dd><dt style="text-align: left;">wangdejun的文章</dt><dd style="text-align: left;">原创 2 篇</dd><dd style="text-align: left;">翻译 0 篇</dd><dd style="text-align: left;">转载 0 篇</dd><dd style="text-align: left;">评论 0 篇</dd> 
+				<span id="SubscriptionList">
+					<dt style="text-align: left;">订阅我的博客</dt>
+					<dd style="text-align: left;">
+						<a href="http://feeds.feedsky.com/csdn.net/wangdejun">
+							<img alt="XML聚合" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/gif.gif" border="0">
+						</a>&nbsp;&nbsp;
+						<a href="http://feeds.feedsky.com/csdn.net/wangdejun" target="_blank">
+							<img alt="FeedSky" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/feedsky.gif" border="0">
+						</a>
+					</dd>
+					<dd style="text-align: left;">
+						<a href="http://www.xianguo.com/subscribe.php?url=http://feeds.feedsky.com/csdn.net/wangdejun" target="_blank">
+							<img alt="订阅到鲜果" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/rss_xianguo.jpg" border="0">
+						</a>
+					</dd>
+					<dd style="text-align: left;">
+						<a href="http://fusion.google.com/add?feedurl=http://feeds.feedsky.com/csdn.net/wangdejun" target="_blank">
+							<img alt="订阅到Google" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/rss_google.gif" border="0">
+						</a>
+					</dd>
+					<dd style="text-align: left;">
+						<a href="http://www.zhuaxia.com/add_channel.php?url=http://feeds.feedsky.com/csdn.net/wangdejun" target="_blank">
+							<img alt="订阅到抓虾" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/rss_zhuaxia.gif" border="0">
+						</a>
+					</dd>
+				</span>
+				<dt style="text-align: left;">
+					wangdejun的公告
+				</dt>
+				<dd style="text-align: left;"></dd>
+				<dt style="text-align: left;">文章分类</dt>
+				<dd style="text-align: left;">
+					<div class="publiclist_sidebar">
+						<ul><li><a href="http://blog.csdn.net/wangdejun/category/374679.aspx/rss"><img src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/rss.gif" alt="(RSS)"></a><a href="http://blog.csdn.net/wangdejun/category/374679.aspx">C的学习记录</a></li></ul>
+					</div>
+				</dd>
+				
+				
+				<dt style="text-align: left;">存档</dt>
+				<dd style="text-align: left;">
+					<div class="publiclist_sidebar">
+						<ul><li><a href="http://blog.csdn.net/wangdejun/archive/2008/03.aspx">2008年03月(2)</a></li></ul>
+					</div>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+		    
+<div id="csdnblog_content">
+	<div class="gutter">
+		<div class="default_contents">
+			<div class="user_article">
+				<script type="text/javascript" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/LoadFeedbackCount.js"></script>
+				<h1 class="title_txt">
+					<img src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/authorship.gif" alt="原创" border="0" height="16" width="15">&nbsp;
+					关于编译器优化的两个类型限定词：volatile和restrict
+					<cite class="fav_csdnstylebykimi">
+						<a href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(saveit=window.open('http://wz.csdn.net/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'saveit','scrollbars=no,width=590,height=300,left=75,top=20,status=no,resizable=yes'));saveit.focus();" class="fav_csdnstylebykimi" title="收藏到我的网摘中，并分享给我的朋友">收藏</a>
+					</cite>
+				</h1>
+				<div class="blogstory">
+					<script type="text/javascript">
+						document.body.oncopy = function() {
+							if (window.clipboardData) {
+								setTimeout(function() {
+									var text = clipboardData.getData("text"); 
+									if (text && text.length>300) {
+										text = text + "\r\n\n本文来自CSDN博客，转载请标明出处：" + location.href;
+										clipboardData.setData("text", text); 
+									}
+								}, 100);
+							}
+						}
+					</script>
+					<script class="blogstory">function StorePage(){d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(keyit=window.open('http://www.365key.com/storeit.aspx?t='+escape(d.title)+'&u='+escape(d.location.href)+'&c='+escape(t),'keyit','scrollbars=no,width=475,height=575,left=75,top=20,status=no,resizable=yes'));keyit.focus();}</script>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+最近开始学习C语言，想把学习过程中的一些心得记录下来，权当自己学习经历中的笔记吧。如果你无意中看到这些文章，能帮我指出其中一些理解不正确的地方，
+在这里小弟将万分感谢。呵呵。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+volatile和restrict这两个类型限定词的运用与编译器的优化存在着一定的关系。volatile这个关键字用在变量类型定义上，指明这个变
+量的值存在不确定因素。也就是说这个变量不光会被我们编写的程序改变值，也可能会被某个外部代理改变（比如：某个硬件中断、外部程序等）。这样就不能保证
+如果程序没有改变这个变量值，而又存在多次调用后进入寄存器中的值就一定正确。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 从编译器的优化角度，举个例子：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x=5;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int a, b;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a = x;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b = x;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+由于程序没有更改X的值，但又存在多次调用，编译器为了优化运行速度，会给a赋值后，把X的值5从内存放入到寄存器中。当给b赋值时，不是再次读取X内存
+地址中的值，而是直接把寄存器中的5赋给b。这一优化对于普通变量没有问题。但如果定义成 volatile int
+x;则表明x可以被程序代码外的其他代理改变值。如果编译器也采用这样的优化，很可能在给b赋值时，x的值已经被程序外部的某个硬件中断改变了。这样从寄
+存器获取到的值肯定是不正确的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此当给变量加上
+volatile关键字，除了表示这一变量可以被其他代理改变值，也明确说明编译器不能为此变量进行上面那种方式的优化：每次调用这一变量，都从变量的地
+址中获取值，而不是寄存器（此变量使用的硬件内存地址是与其他并行运行的程序共享数据的，因此不管是程序自身改变变量值，还是其他代理改变变量值，都是改
+变内存地址中的数据）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看个有趣的例子：<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;int square(volatile int *a)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(*a * *a);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 函数的目的本来是计算平方根，但由于a指针用了volatile关键字，两次获取a指针地址中的值不能完全保证一样，所以计算出来的结果也未必就是我们需要的。考虑修改成这样：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int square(volatile int *a)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int temp = *a;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(temp * temp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; restrict关键字只能用来修饰指针，表示被定义的指针是访问指针中数据的唯一途径。这一目的是告诉编译器可以进行一些优化。看个例子：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x = 2;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int *a = (int *) malloc(sizeof(int));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*a = 2;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int *b = &amp;x;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *a += 2;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *b += 2;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x *= 3;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *a&nbsp;+= 3;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*b += 3;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;
+编译器进行优化时可以用一条语句代替：*a += 5;这对于a来说是正确的，但如果用*b +=
+5来优化b是不正确的。因为其他变量影响了结果。因此，当编译器不确定某些因素时，会放弃寻找某个途径进行优化。如果在变量前加上restrict关键
+字。则告诉编译器可以“放心大胆”的进行优化。但编译器并不会验证你定义为restrict的指针，是否真正是某个数据的唯一访问途径；就像数组的下标越
+界一样，如果你不遵守规则，编译器并不会指出错误，但后果由你自己负责：）<br>&nbsp;&nbsp;&nbsp;&nbsp; 同样看个有趣的类子：<br>&nbsp;&nbsp;&nbsp; void&nbsp;change_array(restrict int *array, const restrict int *value,const int size)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int i=0;i&lt;size;i++)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; array[i] += *value;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }</p>
+<p>&nbsp;&nbsp;&nbsp; int main(void)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;*array[SIZE]&nbsp; =&nbsp;{1,2,3};<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; change_array(array,&amp;array[0],SIZE);<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for(int i=0;i&lt;SIZE;i++)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("%d \n",array[i]);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;
+如果编译器支持优化，运行后的结果是：2&nbsp;&nbsp; 3&nbsp;&nbsp; 4&nbsp;&nbsp;
+而不是实际正确的结果：2&nbsp;&nbsp; 4&nbsp;&nbsp; 5
+。这是在定义函数时，指明两个指针为restrict，因此编译器进行优化了：在程序调用函数时，将value指针的变量值在寄存器中生成了一个副本。后
+面的执行都是获取寄存器上的value值。同时可以看出，当你没有遵守restrict定义的指针指向的变量只能通过该指针修改的规则时（函数中
+value指针指向的数据，在main调用时，array指针也进行了修改），编译器不会检查。<br>&nbsp;&nbsp;&nbsp;
+对于优化来说，volatile是强制性，而restrict是建议性。也就是加了volatile则强制不进行优化，而加入restrict编译器也不
+一定肯定优化。大部分情况下restrict和什么都不加编译结果相同，restrict只是告诉编译器可以自由地做一些相关优化的假定。同时也告诉调用
+者仅使用满足restrict定义条件的参数，如果你不遵守，嘿嘿。。。<br><br>&nbsp;&nbsp;&nbsp;&nbsp; restrict这个关键字是C99标准加入，在C++中不支持，因此我在VC++中加入restrict关键字编译不了：（<br>&nbsp;&nbsp;&nbsp;&nbsp; 关于restrict的加入，在网上还找到一段小故事：<br>&nbsp;&nbsp;&nbsp;&nbsp;
+为了提高 Cray机器上的效率, ANSI C委员会提出过一种称为noalias的机制来解决这个问题，用它来说明某个C指针可以认为是没有别名,
+只是这种机制不成熟，这件事激怒了Dennis
+Ritchie，拿他对C的标准化过程做了唯一的一次干预。他写了一封公开信说“noalias必须靠边站，这一点是不能协商
+的。”&nbsp;&nbsp;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 后来Cray的Mike
+Holly又抓起了这个难题，向数值C语言扩充工作组和C++委员会提出了一种改进的反别名建议。所建议的想法是允许程序员说明一个指针可以认为是没有别
+名的，采用的方式是将它说明为restrict。&nbsp;&nbsp;这个建议C99采纳了，但标准C++拒绝了。<br></p>
+					<p class="right articalinfo">
+						发表于 @ 2008年03月28日　17:04:00&nbsp;|
+						<a id="a_comment" href="#FeedBack" title="评论">
+							评论(
+							<span id="FeedbackCount_2226422">0</span>
+							<script type="text/javascript">
+								AddFeedbackCountStack("2226422")
+							</script>)
+						</a>|
+						<span style="display: none;"><a id="a_postedit" href="http://writeblog.csdn.net/PostEdit.aspx?entryId=2226422" title="编辑">编辑</a>|</span>
+						<a href="mailto:yuexn@csdn.net?subject=Article%20Report%21%21%21&amp;body=Author:wangdejun%0D%0AURL:http://blog.csdn.net/ArticleContent.aspx?UserName=wangdejun&amp;Entryid=2226422">举报</a>|
+						<cite class="fav_csdnstylebykimi">
+							<a href="javascript:d=document;t=d.selection?(d.selection.type!='None'?d.selection.createRange().text:''):(d.getSelection?d.getSelection():'');void(saveit=window.open('http://wz.csdn.net/storeit.aspx?t='+escape(d.title)+'&amp;u='+escape(d.location.href)+'&amp;c='+escape(t),'saveit','scrollbars=no,width=590,height=300,left=75,top=20,status=no,resizable=yes'));saveit.focus();" class="fav_csdnstylebykimi" title="收藏到我的网摘中，并分享给我的朋友">收藏</a>
+						</cite>
+					</p>
+					<span id="Post.ascx_ViewPost_PreviousAndNextEntriesDown"><h3 class="pagego"><a href="http://blog.csdn.net/wangdejun/archive/2008/03/29/2228719.aspx">新一篇:利用二进制I/O存取机制，设计地图编辑器的一些简单想法</a></h3></span>
+				</div>
+			</div>
+			<div class="commentslist">
+				<script type="text/javascript">
+					var CurrentEntryId = '2226422';
+					var CurrentUserName = 'wangdejun';
+				</script>
+				<script type="text/javascript" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/feedback.js"></script>
+				<div id="commentslist"></div>
+			</div>
+			<div class="spacecommment"><fieldset><legend>给wangdejun的留言<dfn>只有注册用户才能发表评论！<a href="http://passport.csdn.net/member/UserLogin.aspx?from=http://blog.csdn.net/wangdejun/archive/2008/03/28/2226422.aspx">登录</a><a href="http://passport.csdn.net/CSDNUserRegister.aspx">注册</a></dfn></legend><em><img src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/blog_commentnotice.gif" alt="" title=""></em><ul><li>姓&nbsp;&nbsp;&nbsp;名：<input size="25" type="text"></li><li>校验码：<input size="25" type="text"></li></ul><textarea cols="50" rows="8"></textarea><input value="提交留言" class="submitbtn" type="button"></fieldset></div>
+			<script type="text/javascript">
+			LoadFeedbackCount();
+			document.write("<img src='http://counter.csdn.net/pv.aspx?id=24' border=0 width=0 height=0>");
+			</script><img src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/pv.xml" border="0" height="0" width="0">
+		</div>
+	</div>
+</div>
+		    
+<div id="pubfooter">
+<dl>
+	<dt></dt>
+	<dd>Csdn Blog version 3.1a</dd>
+	<dd>Copyright © wangdejun</dd>
+</dl>
+</div>
+
+<script type="text/javascript" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/counter.js"></script><script type="text/javascript" charset="UTF-8" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/msg.js"></script><img src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/visitlog.htm" alt="" border="0" height="1" width="1"><iframe id="myframe" name="myframe" border="0" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/dd333.htm" scrolling="no" frameborder="no" height="0" width="0"></iframe>
+<script type="text/javascript" src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/ga.js"></script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-2688088-9");
+	pageTracker._trackPageview();
+} catch (err) { }
+</script>
+
+
+	    </div>
+    </div>
+    <img src="%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%9E%8B%E9%99%90%E5%AE%9A%E8%AF%8D%EF%BC%9Avolatile%E5%92%8Crestrict_files/count.htm" height="0px" width="0px">
+</body></html>

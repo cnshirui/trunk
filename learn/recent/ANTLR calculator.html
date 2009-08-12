@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+	<title>Expression Evaluator Tutorial</title>
+<meta name="keywords" content="language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate">
+<meta name="description" content="ANTLR: ANother Tool for Language Recognition, (formerly PCCTS) is a language tool that provides a framework for constructing recognizers, compilers, and translators from grammatical descriptions containing Java, C#, C++, or Python actions.">
+<meta name="description" content="StringTemplate: a Java template engine used for any application generating text such as language translators and dynamic web sites; available in C# and Python as well.">
+
+</head><body link="#333366" text="#000000" vlink="#666699">
+<script src="ANTLR%20calculator_files/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1024344-1";
+urchinTracker();
+</script>
+
+<!--
+Keywords: language translation, languages, tree parser, parsing, parser generator, template, engine, template engine, code instrumentation, Java, Python, C Sharp, C#, C++, Terence Parr, ANTLR, translation, code generation, templates, model-view-controller, MVC, strict separation, function language, StringTemplate
+
+Description: StringTemplate is a template engine used for any application generating text such as language translators and dynamic web sites.
+-->
+
+<!-- Terence Parr -->
+
+<!-- University of San Francisco -->
+
+<!-- parser generator -->
+
+<!-- tree parser -->
+
+<!-- tree walker -->
+
+<!-- java template engine -->
+
+<!-- python template engine -->
+
+<!-- C# template engine -->
+
+<!-- code generation -->
+
+<!-- language translation -->
+
+<!-- C++, C#, Java, Python, C -->
+
+<div align="center">
+<!-- BEGIN NAVIGATION -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td align="right">
+<font size="2" face="arial,helvetica"><strong><a href="http://www.antlr.org/">Home</a></strong> |
+<strong><a href="http://www.antlr.org/download.html">Download</a></strong> |
+<strong><a href="http://www.antlr.org/works">ANTLRWorks</a></strong> |
+<strong><a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+3+Wiki+Home">Wiki</a></strong> |
+<strong><a href="http://www.antlr.org/about.html">About ANTLR</a></strong> |
+<strong><a href="http://www.antlr.org/misc/feedback">Feedback</a></strong> |
+<strong><a href="http://www.antlr.org/support.html">Support</a></strong> |
+<strong><a href="http://www.antlr.org/jira/browse/ANTLR">Bugs</a></strong> |
+<strong><a href="http://www.antlr2.org/">v2</a></strong>
+</font><br>
+<img src="ANTLR%20calculator_files/shim.gif" alt="" border="0" height="5" width="780"><br>
+</td>
+</tr>
+</tbody></table>
+<!-- END NAVIGATION -->
+
+<div align="center"><img src="ANTLR%20calculator_files/shim.gif" alt="" border="0" height="6" width="780"></div>
+
+<!-- BEGIN BANNER -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td align="left" width="499">
+<a href="http://www.antlr.org/"><img src="ANTLR%20calculator_files/logo-head.gif" alt="" border="0" height="48" width="499"></a>
+</td>
+<td align="left" background="ANTLR%20calculator_files/head-shim.gif" bgcolor="#336699" width="100%"><img src="ANTLR%20calculator_files/logo-head.gif" alt="" border="0" height="1" width="1">
+<font size="2" color="black" face="arial,helvetica"><b>Join us for <a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+Conference+2009">ANTLR 2009 workshop</a></b></font></td>
+
+<td align="right" background="ANTLR%20calculator_files/head-shim.gif" bgcolor="#336699" valign="top" width="150"><img src="ANTLR%20calculator_files/shim.gif" alt="" border="0" height="8" width="150"><br>
+<font size="2" face="arial,helvetica"><strong>Latest version is <font color="#ffffff">3.1.3</font><br>
+Download now! »</strong></font><br></td>
+
+
+<td align="right" background="ANTLR%20calculator_files/head-shim.gif" bgcolor="#336699" valign="middle" width="128">
+<a href="http://www.antlr.org/download.html"><img src="ANTLR%20calculator_files/button-download.gif" alt="Download" align="right" border="0" height="29" width="122"></a></td>
+</tr>
+</tbody></table>
+<!-- END BANNER -->
+
+<div align="center"><img src="ANTLR%20calculator_files/shim.gif" alt="" border="0" height="1" width="780"></div>
+
+<table border="0" cellpadding="1" cellspacing="0" width="100%">
+<tbody><tr>
+<td bgcolor="#ffffff" valign="top" width="175">
+<!-- left column -->
+
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font> <a href="http://www.antlr.org/">Home</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+	<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font> <a href="http://www.antlr.org/download.html">Download</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+    <table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font> <a href="http://www.antlr.org/works">ANTLRWorks</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+    <table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font> <a href="http://www.antlr.org/news/list">News</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+	<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td colspan="2" bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font>Using ANTLR</b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+v3+documentation">Documentation</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/wiki/display/ANTLR3/ANTLR+v3+FAQ">FAQ</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/article/list">Articles</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/grammar/list">Grammars</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/share/list">File Sharing</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/api/index.html">Runtime API</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/support.html">Tech Support</a></b><br>
+	</font>
+	</td>
+	</tr>
+
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/jira/browse/ANTLR">Bug Tracking</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	</tbody></table>
+	
+	
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td colspan="2" bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font>About ANTLR</b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/about.html">What is ANTLR</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/why.html">Why use ANTLR</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/showcase/list">Showcase</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/testimonial/list">Testimonials</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/wiki/display/ANTLR3/FAQ+-+Getting+Started">Getting Started</a></b><br>
+	</font>
+	</td>
+	</tr>
+	
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/license.html">Software License</a></b><br>
+	</font>
+	</td>
+	</tr>
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/blog/index.tml">ANTLR WebLogs</a></b><br>
+	</font>
+	</td>
+	</tr>
+	<tr>
+	<td bgcolor="#ffffff"></td>
+	<td bgcolor="#ffffff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#ffffff">»</font> <a href="http://www.antlr.org/workshop/index.tml">ANTLR Workshops</a></b><br>
+	</font>
+	</td>
+	</tr>
+
+	</tbody></table>
+
+	<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font><a href="http://www.stringtemplate.org/">StringTemplate</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+	<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font><a href="http://www.antlr2.org/">ANTLR v2</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+	<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font><a href="http://www.antlr.org/misc/feedback">Feedback</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+	<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font><a href="http://www.antlr.org/credits.html">Credits</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+	<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tbody><tr>
+	<td bgcolor="#9dc3ff">
+	<font size="2" face="arial,helvetica">
+	<b><font color="#9dc3ff">»</font><a href="http://www.antlr.org/misc/contact">Contact</a></b><br>
+	</font>
+	</td>
+	</tr>
+	</tbody></table>
+
+<br>
+<br>
+<img src="ANTLR%20calculator_files/shim.gif" alt="" border="0" height="1" width="173">
+
+<center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input name="cmd" value="_s-xclick" type="hidden">
+<input src="ANTLR%20calculator_files/x-click-butcc-donate.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" border="0" type="image">
+<img alt="" src="ANTLR%20calculator_files/pixel.gif" border="0" height="1" width="1">
+<input name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+" type="hidden">
+</form>
+</center>
+<font size="2" face="arial,helvetica">
+Support StringTemplate, ANTLR Project by making a donation! Terence
+often pays for things like the antlr.org server, conference travel, and
+this site design (that alone cost US$1000). Buy him a beer and pizza
+remotely ;)
+</font>
+
+</td>
+<td bgcolor="#ffffff" valign="top" width="100%">
+<!-- main column -->
+
+<!-- BEGIN SEARCH -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<form method="GET" action="http://www.google.com/search"></form>
+<tbody><tr>
+	<td align="middle" bgcolor="#4679ac" valign="middle" width="88"><img src="ANTLR%20calculator_files/shim.gif" alt="" border="0" height="1" width="88"><br><img src="ANTLR%20calculator_files/search.gif" alt="Search" border="0" height="9" width="68"></td>
+	<td bgcolor="#4679ac" valign="top" width="100%"><img src="ANTLR%20calculator_files/shim.gif" alt="" border="0" height="3" width="1"><br><input name="query" size="30" style="width: 100%; font-family: geneva,arial; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-size: 10pt;" type="text"><br>
+	</td>
+	<td bgcolor="#4679ac" valign="middle" width="61">
+	<input name="q" value="site:antlr.org" type="hidden">
+	</td>
+	</tr>
+
+</tbody></table>
+<!-- END SEARCH -->
+
+<font size="2" face="arial,helvetica">
+<br><font size="4"><strong>Expression Evaluator Tutorial</strong></font><br><br>
+
+<!-- BEGIN BODY -->
+
+		</font><h1><font size="2" face="arial,helvetica"><strong>Introduction</strong></font></h1>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica">This
+tutorial describes how to use ANTLRWorks to create and run a simple
+"expression evaluator" grammar. This tutorial is under construction so
+come back later for more information.</font></p>
+<font size="2" face="arial,helvetica">		</font><h2><font size="2" face="arial,helvetica"><strong>Useful links</strong></font></h2>
+<font size="2" face="arial,helvetica">		</font><ul>
+<font size="2" face="arial,helvetica">			<li><a href="http://www.antlr.org/wiki/">ANTLR 3 wiki</a></li>
+			<li><a href="http://www.antlr.org/wiki/display/ANTLR3/Expression+evaluator">Description of the expression evaluator grammar</a></li>
+		</font></ul>
+<font size="2" face="arial,helvetica">		</font><h1><font size="2" face="arial,helvetica"><strong>Editor</strong></font></h1>
+<font size="2" face="arial,helvetica">			Enter the following grammar in the AW editor (or download it <a title="Expression evaluator grammar" href="http://www.antlr.org/works/help/tutorial/content/Expr.g">here</a>):
+		
+		</font><pre><font size="2" face="arial,helvetica"><font size="-1">grammar Expr;
+
+@header {
+package test;
+import java.util.HashMap;
+}
+
+@lexer::header {package test;}
+
+@members {
+/** Map variable name to Integer object holding value */
+HashMap memory = new HashMap();
+}
+
+prog:   stat+ ;
+                
+stat:   expr NEWLINE {System.out.println($expr.value);}
+    |   ID '=' expr NEWLINE
+        {memory.put($ID.text, new Integer($expr.value));}
+    |   NEWLINE
+    ;
+
+expr returns [int value]
+    :   e=multExpr {$value = $e.value;}
+        (   '+' e=multExpr {$value += $e.value;}
+        |   '-' e=multExpr {$value -= $e.value;}
+        )*
+    ;
+
+multExpr returns [int value]
+    :   e=atom {$value = $e.value;} ('*' e=atom {$value *= $e.value;})*
+    ; 
+
+atom returns [int value]
+    :   INT {$value = Integer.parseInt($INT.text);}
+    |   ID
+        {
+        Integer v = (Integer)memory.get($ID.text);
+        if ( v!=null ) $value = v.intValue();
+        else System.err.println("undefined variable "+$ID.text);
+        }
+    |   '(' e=expr ')' {$value = $e.value;}
+    ;
+
+ID  :   ('a'..'z'|'A'..'Z')+ ;
+INT :   '0'..'9'+ ;
+NEWLINE:'\r'? '\n' ;
+WS  :   (' '|'\t')+ {skip();} ;
+</font></font></pre>
+<font size="2" face="arial,helvetica">		</font><p></p>
+<font size="2" face="arial,helvetica">		</font><h1><font size="2" face="arial,helvetica"><strong>Interpreter</strong></font></h1>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica">The
+interpreter allows to quickly test the grammar with a sample input. For
+example, enter the input "2+3*4" (and return), make sure the rule
+"prog" is selected in the pop-up menu and click the button <img src="ANTLR%20calculator_files/stepforward.png" alt="" border="0" height="16" width="17"> to run the interpreter. The interpreter shows the parse tree, similar to this one:</font></p>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica"><img src="ANTLR%20calculator_files/interpreter.png" alt="" border="0" height="711" width="946"></font></p>
+<font size="2" face="arial,helvetica">		</font><h1><font size="2" face="arial,helvetica"><strong>Debugger</strong></font></h1>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica">Now
+let's use the debugger to single step through the parse. Invoke the
+debugger (CTRL-D) and enter the same input text as with the interpreter
+"2+3*4" followed by return (note that the input text must be entered in
+the debugger input dialog that is displayed after invoking the <strong>Debugger &gt; Debug</strong>
+command - the Input Panel of the debugger is used to display the input
+tokens later on, while debugging). Make sure that the start rule is
+"prog". Run the debugger. Single step using the button <img src="ANTLR%20calculator_files/stepforward.png" alt="" border="0" height="16" width="17">.</font></p>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica">Note:
+it is possible that ANTLRWorks displays a message saying that the
+debugger cannot be launched because of a time-out waiting to connect to
+the remote parser. Most of the time this problem can be solved by doing
+the following:</font></p>
+<font size="2" face="arial,helvetica">		</font><ul>
+<font size="2" face="arial,helvetica">			<li>Either make sure the port used by the debugger is opened on your machine (by default, it is port 49153).</li>
+			<li>Or change the port used by the debugger in <strong>Preferences &gt; Debugger</strong>.</li>
+		</font></ul>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica"><img src="ANTLR%20calculator_files/debug_1.png" alt="" border="0" height="711" width="946"></font></p>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica">When you reach the end of the parse (either manually or by using the button <img src="ANTLR%20calculator_files/gotoend.png" alt="" border="0" height="16" width="18">), notice that the output panel contains the resulting value, 14.</font></p>
+<font size="2" face="arial,helvetica">		</font><p><font size="2" face="arial,helvetica"><img src="ANTLR%20calculator_files/debug_2.png" alt="" border="0" height="711" width="946"></font></p>
+<font size="2" face="arial,helvetica">		</font><p></p>
+<font size="2" face="arial,helvetica">	
+<!-- END BODY -->
+
+</font>
+
+</td>
+</tr>
+</tbody></table>
+</div>
+
+</body></html>

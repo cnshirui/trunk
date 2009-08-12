@@ -7,7 +7,7 @@
 #include <cmath>
 using namespace std;
 
-#include "PointsGame2.h"
+//#include "PointsGame2.h"
 //#include "HDOJ_1427.h"
 //#include "stdlib_stl.h"
 

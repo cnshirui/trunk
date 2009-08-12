@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=x-gbk">
+<title>JRubyµÄÐÔÄÜÓÅ»¯ - JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§  JAVAÉçÇø,JAVA²©¿Í,JAVA×ÊÑ¶,JAVA×ÊÁÏ,JAVAÉÌÆ·</title>
+<meta name="keywords" content="JRuby,java,ÐÔÄÜ,±àÒë,Ä£Ê½,ÎÄ¼þ,¼¼Êõ,¶ÔÏó,Ïß³Ì,Java,ÐéÄâ JAVAÉçÇø,JAVA²©¿Í,JAVA×ÊÑ¶,JAVA×ÊÁÏ,JAVAÉÌÆ·">
+<meta name="description" content="Ô½À´Ô½¾õµÄJRubyÊÇ¸öºÜÓÐÇ°Í¾µÄÏîÄ¿£¬½áºÏRubyµÄÐÔ¸ÐÓï·¨ºÍjava¼«Æä·á¸»µÄÀà¿â£¬¿öÇÒÓÐÍÅ¶Ó³ÖÐø²»¶ÏµØÐÞÕýbug¡¢¸Ä½øÐÔÄÜ£¬ÕâÑùµÄÍæÒâÍêÈ«ÓÐ³ÉÎª¡°ÉÙÄÐÉ±ÊÖ¡±µÄÇ±ÖÊ¡£JRuby wikiÉÏÁÐ³öÁËÐÔÄÜÓÅ»¯µÄËÄÌõ½¨Òé£º1¡¢µ÷. JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§ÍøÕ¾,Ìá¹©ÈçÏÂÐÅÏ¢:JAVAÉçÇø,JAVA²©¿Í,JAVA×ÊÑ¶,JAVA×ÊÁÏ,JAVAÉÌÆ·">
+<link rel="stylesheet" type="text/css" href="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/style.css">
+<script type="text/javascript">
+var siteUrl = "http://www.java-cn.com/club";
+</script>
+<script src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/ajax.js" type="text/javascript" language="javascript"></script>
+<script src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/common.js" type="text/javascript" language="javascript"></script>
+<link href="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/wc_style.css" type="text/css" rel="stylesheet"></head><body>
+<div id="wrap">
+<!-- HeaderÒ³Ê× -->
+<div id="header">
+
+<!--ÏµÍ³²Ëµ¥ begin-->
+<table id="headertab" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td id="logo">
+<a href="http://www.java-cn.com/"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/logo.gif" alt="JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§" style="border: medium none ;"></a>
+</td>
+<td id="topmenu">
+<ul>
+<li><a href="http://www.java-cn.com/club/">Ê×Ò³</a></li>
+<li><a href="http://www.java-cn.com/idc/vhost.htm">JSP¿Õ¼ä</a></li>
+<li><a href="http://www.java-cn.com/club/m.php?name=hr">ÕÐÆ¸</a></li>
+<li><a href="http://www.java-cn.com/club/html/link.html">ÊéÇ©</a></li>
+<li><a href="http://www.java-cn.com/club/html/bbs.html">ÂÛÌ³</a></li>
+<li><a href="http://www.java-cn.com/club/html/group.html">È¦×Ó</a></li>
+<li><a href="http://www.java-cn.com/club/html/image.html">Ïà²á</a></li>
+<li><a href="http://www.java-cn.com/club/html/blog.html">²©¿Í</a></li>
+<li><a href="http://www.java-cn.com/club/html/news.html">ÎÄ¼¯</a></li>
+<li><a href="http://www.java-cn.com/">×ÊÔ´</a></li>
+<li><a href="http://www.java-cn.com/club/batch.search.php">ËÑË÷</a></li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<!--ÈÕÖ¾¸ù·ÖÀàµ¼º½²Ëµ¥--><div id="menu">
+<ul>
+<li><a href="http://www.java-cn.com/club/html/90/category-catid-90.html">±à³Ì»ù´¡</a></li>
+<li><a href="http://www.java-cn.com/club/html/1/category-catid-1.html">Òµ½ç¶¯Ì¬</a></li>
+<li><a href="http://www.java-cn.com/club/html/9/category-catid-9.html">»·¾³ÅäÖÃ</a></li>
+<li><a href="http://www.java-cn.com/club/html/91/category-catid-91.html">¹¤¾ßÊ¹ÓÃ</a></li>
+<li><a href="http://www.java-cn.com/club/html/7/category-catid-7.html">´úÂëÑÐ¾¿</a></li>
+<li><a href="http://www.java-cn.com/club/html/92/category-catid-92.html">ÈÏÖ¤¿¼ÊÔ</a></li>
+<li><a href="http://www.java-cn.com/club/html/93/category-catid-93.html">¿ò¼ÜÄ£Ê½</a></li>
+<li><a href="http://www.java-cn.com/club/html/2/category-catid-2.html">Êµ¼ùÓ¦ÓÃ</a></li>
+<li><a href="http://www.java-cn.com/club/html/94/category-catid-94.html">ÎÞÏßÇ¶Èë</a></li>
+<li><a href="http://www.java-cn.com/club/html/95/category-catid-95.html">ÍøÂç¿ª·¢</a></li>
+<li><a href="http://www.java-cn.com/club/html/14/category-catid-114.html">¾­ÑéÏë·¨</a></li>
+</ul>
+</div>
+<div id="navigation">
+<form id="searchform" action="http://www.java-cn.com/club/batch.search.php" method="post">
+<input id="searchkey" name="searchkey" type="text">
+<select name="type" id="type">
+<option selected="selected" value="">È«²¿</option>
+<option value="link">ÊéÇ©</option>
+<option value="image">Ïà²á</option>
+<option value="blog">²©¿Í</option>
+<option value="news">ÎÄ¼¯</option>
+</select>
+<button type="submit" value="true" name="subjectsearch">ËÑË÷</button>
+</form>
+<p>ÄúµÄÎ»ÖÃ£º
+<a href="http://www.java-cn.com/club/">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§</a>
+&gt;&gt; <a href="http://www.java-cn.com/club/html/news.html">ÎÄ¼¯</a>
+&gt;&gt; <a href="http://www.java-cn.com/club/html/2/category-catid-2.html">Êµ¼ùÓ¦ÓÃ</a>
+&gt;&gt; <a href="#">²é¿´×ÊÑ¶</a>
+</p>
+</div>
+</div>
+<!-- /HeaderÒ³Ê× --><!-- ContentÄÚÈÝ -->
+<div class="contentR">
+<div class="sideR">
+
+<!--×îÐÂ¸üÐÂÖ÷Ìâ--><div class="block topblock">
+<h3>×îÐÂ¸üÐÂ</h3>
+<ul class="msgtitlelist">
+<li><a href="http://www.java-cn.com/club/html/21/n-5421.html">JDK5.0À¬»øÊÕ¼¯ÓÅ»¯Ö®--Don't Pause(Í¼)</a></li>
+<li><a href="http://www.java-cn.com/club/html/19/n-5419.html">Jacob ³öÏÖ UnsatisfiedLinkError ´íÎóµÄ½â¾ö·½·¨</a></li>
+<li><a href="http://www.java-cn.com/club/html/69/n-5369.html">jspµÄÂÒÂë½â¾ö</a></li>
+<li><a href="http://www.java-cn.com/club/html/68/n-5368.html">MySQL5.0ÖÐÎÄÎÊÌâ¼°ºº×Ö±àÂëÎÊÌâ½â¾ö·½·¨×Ü½á</a></li>
+<li><a href="http://www.java-cn.com/club/html/67/n-5367.html">Ò»¸ö¼òµ¥µÄÒôÆµ²¥·ÅÆ÷</a></li>
+<li><a href="http://www.java-cn.com/club/html/23/n-5223.html">²¶»ñÒôÆµ¼°Êä³öÒôÆµ</a></li>
+<li><a href="http://www.java-cn.com/club/html/14/n-5214.html">¶àÏß³Ì³ÌÐòÉè¼Æ</a></li>
+<li><a href="http://www.java-cn.com/club/html/10/n-5210.html">jspÖÐ¹ØÓÚhtmlµÄ×ª»»</a></li>
+<li><a href="http://www.java-cn.com/club/html/03/n-5203.html">JAVAµÄÉùÒô´¦Àí</a></li>
+<li><a href="http://www.java-cn.com/club/html/98/n-5198.html">Acme°üÖÐµÄÒÔPost·½Ê½·¢ËÍÊý¾ÝµÄÀý×Ó</a></li>
+</ul>
+</div>
+<!--ÔÂ¶È¹Ø×¢ÈÈµã--><!--Ïà¹Ø×ÊÑ¶-->
+<div class="block">
+<h3>Ïà¹ØÔÄ¶Á</h3>
+<ul class="msgtitlelist">
+<li><a href="http://www.java-cn.com/club/html/15/n-515.html" target="_blank" title="¸ßËÙ»º´æºÍÁ¬½Ó³Ø¶Ô·ÃÎÊÊý¾Ý¿âÐÔÄÜÓ°Ïì">¸ßËÙ»º´æºÍÁ¬½Ó³Ø¶Ô·ÃÎÊÊý¾Ý¿âÐÔÄÜÓ°Ïì</a></li>
+</ul>
+</div>
+
+<div class="block">
+<h3>ÍøÂçÍÆ¼ö</h3>
+<div style="padding: 0.5em; text-align: center;"><script type="text/javascript"> 
+cpro_client='javabar_cpr';
+cpro_at='text_image'; 
+cpro_161=4; 
+cpro_flush=4; 
+cpro_w=120; 
+cpro_h=600; 
+cpro_template='text_default_120_600'; 
+cpro_cbd='#A2BE43'; 
+cpro_cbg='#EEFCFF'; 
+cpro_ctitle='#17273E'; 
+cpro_cdesc='#444444'; 
+cpro_curl='#2D4383'; 
+cpro_cflush='#e10900'; 
+cpro_uap=1;
+cpro_cad=1;
+</script>
+<script language="JavaScript" type="text/javascript" src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/cp.js"></script><div style="display: none;">-</div><iframe marginwidth="0" marginheight="0" allowtransparency="" src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/uijs.htm" align="center,center" scrolling="no" frameborder="0" height="600" width="120"></iframe></div>
+</div>
+</div>
+<div class="mainarea">
+
+<div id="articledetail" class="block topblock">
+<h3 style="font-weight: normal;">
+<a href="javascript:;" onclick="showajaxdiv('http://www.java-cn.com/club/batch.common.php?action=emailfriend&amp;itemid=532', 400);" class="more">ÍÆ¼ö¸øºÃÓÑ</a>
+<a href="http://www.java-cn.com/club/batch.common.php?action=viewnews&amp;op=up&amp;itemid=532&amp;catid=2" class="viewnewsup">ÉÏÒ»Æª</a> |
+<a href="http://www.java-cn.com/club/batch.common.php?action=viewnews&amp;op=down&amp;itemid=532&amp;catid=2" class="viewnewsdown">ÏÂÒ»Æª</a>
+</h3>
+<h1 class="articletitle" style="">JRubyµÄÐÔÄÜÓÅ»¯</h1>
+<p class="articleinfo">
+<span class="articlectrl">
+×ÖºÅ:&nbsp;
+<a href="javascript:doZoom('12');">Ð¡</a>&nbsp;
+<a href="javascript:doZoom('14');">ÖÐ</a>&nbsp;
+<a href="javascript:doZoom('16');">´ó</a>&nbsp; |
+<a href="javascript:doPrint();" class="btnprint">´òÓ¡</a>
+</span>
+<span class="smalltxt">·¢²¼: 2008-2-02 21:54 &nbsp;&nbsp; ×÷Õß: ÍøÂç×ªÔØ &nbsp;&nbsp; À´Ô´: 
+ÍøÂç×ªÔØ &nbsp;&nbsp; ²é¿´: 34´Î</span>
+</p>
+<br>
+<div id="custominfo">
+<h5>ÉùÃ÷</h5>
+<ul>
+<li><strong>ÉùÃ÷: </strong>1¡¢ÈÎºÎÍøÕ¾×ªÔØ±¾Õ¾µãÄÚÈÝÊ±Ðè×¢Ã÷À´×ÔJAVA-CN.COM£¬·ñÔòÎÒÃÇÓÐÈ¨½«¸ù¾Ý¡¶»¥ÁªÍøÖø×÷È¨ÐÐÕþ±£»¤°ì·¨¡·×·¾¿ÆäÏàÓ¦·¨ÂÉÔðÈÎ; 2¡¢JAVAÖÐÎÄÕ¾ÉçÇø¿¯µÇ´ËÎÄÖ»Îª´«µÝÐÅÏ¢£¬²¢²»±íÊ¾ÔÞÍ¬»òÕß·´¶Ô.</li>
+</ul>
+</div>
+<div id="articlebody">
+
+<div class="newscon">Ô½À´Ô½¾õµÄJRubyÊÇ¸öºÜÓÐÇ°Í¾µÄÏîÄ¿£¬½áºÏRubyµÄÐÔ¸ÐÓï·¨ºÍjava¼«Æä·á¸»µÄÀà¿â£¬¿öÇÒÓÐÍÅ¶Ó³ÖÐø²»¶ÏµØÐÞÕýbug¡¢¸Ä½øÐÔÄÜ£¬ÕâÑùµÄÍæÒâÍêÈ«ÓÐ³ÉÎª¡°ÉÙÄÐÉ±ÊÖ¡±µÄÇ±ÖÊ¡£JRuby wikiÉÏÁÐ³öÁËÐÔÄÜÓÅ»¯µÄËÄÌõ½¨Òé£º<br><span style="display: none;">S2cvKz_9E?"I</span>1¡¢µ÷ÓÅ±àÒëÆ÷£¬JRubyÔç¾ÍÆú°µÍ¶Ã÷¸úËæXRuby×ßÉÏÁË±àÒëÕâÌõÅ£BµÄµÀÂ·£¬½«Ruby Script±àÒë³É×Ö½ÚÂë£¬Òò´ËÕâ¸ö»·½ÚÊÇ¶Ï¶Ï²»ÄÜºöÂÔµÄ¡£<span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§i#AVq4K:h	\0IZ	c</span><br>Á½ÖÖ±àÒë·½Ê½£º<br><span style="display: none;">X"X5[4FN_;[</span>AOTÄ£Ê½£ºÖ±½ÓÉú³ÉclassÎÄ¼þ£¬ÍÑÁËRubyÕâ²ãÆ¤£¬ÔÛ¾ÍÊÇÈË¼ûÈË¡°°®¡±µÄjavaÁË¡£<br><span style="display: none;">9u2G(tJ'hB)~</span>JITÄ£Ê½£º³ä·ÖÀûÓÃ³ÉÊìµÄjit¼¼Êõ£¬ÔÛ²»È«ÍÑ£¬ëüëÊÃÀ²ÅÊÇÕæµÄÃÀ¡£Ä¬ÈÏ´Ó0.9.9°æ±¾¿ªÊ¼¾ÍÊÇ¿ªÆôµÄ£¬¹Ø±ÕµÄ»°£¨ÒªÎÒËµ»¹²»ÈçÈ«ÍÑ£©<br><span style="display: none;">-JIwu9|@)X
+n N\Hh</span>jruby -J-Djruby.jit.enabled=false<br><span style="display: none;">\_AUx$Z
+sn!n</span><span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§,k7[$u
+Q ?1v J</span><br>2¡¢¹Ø±ÕObjectSpace<span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§qV7b`|'t'pBh</span><br>ObjectSpaceÊÇRubyÓÃÀ´²Ù×÷ËùÓÐÔËÐÐÊ±¶ÔÏóµÄÄ£¿é£¬Õâ¸ö¹¦ÄÜÏàµ±Å£x¡£Õâ¸öµÄÊµÏÖÔÚc rubyÀïÊÇ±È½ÏÈÝÒ×µÄ£¬µ«ÊÇ¶ÔÓÚJRuby´ú¼Û¾Í±È½Ï°º¹óÁË£¬ÆäÊµ¾Í´ó²¿·ÖÇé¿öÏÂÄã»ù±¾ÓÃ²»µ½Õâ¸ö¶«¶«£¬ÄÇÃ´×îºÃ¾ÍÊÇ¹Ø±ÕËü£¬JRubyÌá¹©ÁË<span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§.LO$y
+b|!R"~"G6aAQ</span><br>jruby -J-Djruby.objectspace.enabled=falseÑ¡ÏîÀ´¹Ø±ÕËü¡£<span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§UWbdr</span><br><br><span style="display: none;">8L	TF%]4oJ9o
+g_</span>3¡¢¿ªÆôÏß³Ì³Ø<br><span style="display: none;">)L4e
+C.B7K</span>ÎÒ
+ÃÇÖªµÀ£¬ÔÚc
+rubyÖÐµÄÏß³ÌÊÇÂÌÉ«µÄÇáÁ¿¼¶Ïß³Ì£¬Òò´ËÔËÐÐÊ±¾Í¶¯²»¶¯¿ª¸ö°ÙÀ´Ê®¸ö¡°Ïß³Ì¡±ÅÜÒ»ÅÜ³äÏÂ¿îÒ¯£»È»¶øÔÚJRubyÖÐ£¬Ïß³ÌµÄÊµÏÖÄÇ¿ÉÊÇÊµ´òÊµµÄ±¾µØÏß³Ì
+£¨Ò²¾ÍÊÇRubyÏß³ÌÓëjavaÏß³ÌÒ»±ÈÒ»£©£¬ÄãÕâÃ´¶¯²»¶¯ÉÏ°Ù¸öÏß³ÌÄÇ²»Âý²Å¹ÖÁË¡£Òò´ËJRubyÌá¹©ÁËÏß³Ì³ØÑ¡Ïî£¬ÔËÐÐÊ±¾¡¿ÉÄÜµØÂú×ãÄãµÄÒªÇó¿ªÏß
+³Ì£¬µ«ÊÇµ±¶ÌÃüµÄRubyÏß³ÌÖØ¸´´´½¨µÄÊ±ºò£¬ÕâÐ©Ïß³Ì½«±»¸´ÓÃ£¬ÕâÔÚ´ó¶àÊýÇé¿öÏÂÄÜÌá¸ßÐÔÄÜ±íÏÖ£¬ÌØ±ðÊÇÔÚÃ¿´Îµ÷ÓÃ¶¼Æô¶¯Ò»¸öÏß³ÌµÄÇé¿öÏÂ¡£²»¹ý¾ßÌåÐ§
+¹û»¹ÊÇÒª²âÊÔµÄÊµ¼ÊÊý¾ÝËµ»°¡£<span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§8};@CC	N\</span><br>jruby -J-Djruby.thread.pooling=true <span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§o3fm!qCm(iZTP</span><br><br><span style="display: none;">2r%Q^3sf/l_</span><br><span style="display: none;">
+]kZ+}$z:SD0R/g&amp;X'Vj</span>4¡¢Ê¹ÓÃJava "server"Ä£Ê½ÐéÄâ»ú£¬µØÇòÒù¶¼ÖªµÀ<span style="display: none;">JAVAÖÐÎÄÕ¾ÉçÇøÃÅ»§B~%Z"m6?7ePF</span><br>jruby -J-server myscript.rb</div>
+<br>
+<br><strong>TAG:</strong> 
+<a href="http://www.java-cn.com/club/?action-tag-tagname-%D0%D4%C4%DC" target="_blank">ÐÔÄÜ</a>
+<a href="http://www.java-cn.com/club/?action-tag-tagname-JRuby" target="_blank">JRuby</a>
+</div>
+</div>
+<div id="xspace-rates" class="block">
+<div id="xspace-rates-bg">
+<div id="xspace-rates-star" class="xspace-rates0">&nbsp;</div>
+<div id="xspace-rates-a">
+<a href="javascript:;" onmouseover="rateHover(-5);" onmouseout="rateOut();" onclick="setRateXML('-5', '532');">-5</a>
+<a href="javascript:;" onmouseover="rateHover(-3);" onmouseout="rateOut();" onclick="setRateXML('-3', '532');">-3</a>
+<a href="javascript:;" onmouseover="rateHover(-1);" onmouseout="rateOut();" onclick="setRateXML('-1', '532');">-1</a>
+<a href="javascript:;" onmouseover="rateHover(0);" onmouseout="rateOut();" onclick="setRateXML('0', '532');">-</a>
+<a href="javascript:;" onmouseover="rateHover(1);" onmouseout="rateOut();" onclick="setRateXML('1', '532');">+1</a>
+<a href="javascript:;" onmouseover="rateHover(3);" onmouseout="rateOut();" onclick="setRateXML('3', '532');">+3</a>
+<a href="javascript:;" onmouseover="rateHover(5);" onmouseout="rateOut();" onclick="setRateXML('5', '532');">+5</a>
+</div>
+<input id="xspace-rates-value" name="rates" value="0" type="hidden">
+</div>
+<p>ÆÀ·Ö£º<span id="xspace-rates-tip">0</span></p>
+</div>
+
+<div id="comment" class="block cleanblock">
+<h3>ÎÒÀ´ËµÁ½¾ä</h3>
+<form id="postcomm" action="http://www.java-cn.com/club/index.php?action-viewcomment-itemid-532-php-1" method="post">
+<p><label for="message">ÄÚÈÝ:</label><textarea id="message" name="message" onfocus="showcode()"></textarea></p>
+<p id="seccodeline" class="seccodeline"><label for="seccode">ÑéÖ¤:</label><input id="seccode" name="seccode" size="20" type="text"> <img id="xspace-imgseccode" src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/batch.bmp" onclick="javascript:newseccode(this);" alt="seccode" title="¿´²»Çå£¿µã»÷»»Ò»¸ö"></p>
+<p><button type="submit" id="submitcomm" name="submitcomm" value="submit" style="padding: 0pt 30px; margin-left: 2.8em; line-height: 35px; height: 35px; color: rgb(0, 153, 0);">·¢±íÆÀÂÛ</button></p>
+<input id="itemid" name="itemid" value="532" type="hidden">
+</form>
+</div>
+
+</div>
+</div>
+<!-- /Content -->
+
+<script language="javascript" type="text/javascript">
+<!--
+addMediaAction('articlebody');
+addImgLink("articlebody");
+//-->
+</script>
+<!-- Footer -->
+<div id="footer">
+<div class="banner">
+<script language="javascript" type="text/javascript" src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/1576309.js"></script><a href="http://www.51.la/?001576309" target="_blank"><img alt="51.la ×¨Òµ¡¢Ãâ·Ñ¡¢Ç¿½¡µÄ·ÃÎÊÍ³¼Æ" src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/icon_0.gif" style="border: medium none ;"></a>
+<img style="width: 0px; height: 0px;" src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/go.htm">
+<noscript><a href="http://www.51.la/?1576309" target="_blank"><img
+alt="ÎÒÒªÀ²Ãâ·ÑÍ³¼Æ" src="http://img.users.51.la/1576309.asp"
+style="border:none" /></a></noscript>
+<script src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/stable.js" type="text/javascript"></script></div>
+<p>
+<a href="http://www.java-cn.com/club/?action/site/type/panel">¿ì½ÝÃæ°å</a> | 
+<a href="http://www.java-cn.com/club/?action/site/type/map">Õ¾µãµØÍ¼</a> | 
+<a href="http://www.java-cn.com/club/?action/site/type/link">ÓÑÇéÁ´½Ó</a> | 
+<a href="http://www.java-cn.com/club/?action/spaces">¿Õ¼äÁÐ±í</a> | 
+<a href="http://www.java-cn.com/club/archiver/">Õ¾µã´æµµ</a> | 
+<a href="http://www.java-cn.com/contact.html">ÁªÏµÎÒÃÇ</a>
+</p>
+<p id="copyright">
+Powered by <a href="http://www.supesite.com/" target="_blank"><strong>Supe<span>Site</span></strong></a>
+&#169; 2001-2009 <a href="http://www.java-cn.com/" target="_blank"><strong><span>JAVA-CN.COM</span></strong></a>
+<br><a href="http://www.miibeian.gov.cn/" target="_blank">ÕãICP±¸05021409ºÅ</a><br></p>
+</div>
+<!-- /Footer -->
+</div>
+<script language="javascript">
+			<!--
+			var Modified = new Date(document.lastModified);
+			var copyright = document.getElementById("xspace-copyright");
+			if(copyright) {
+				copyright.innerHTML += "Last update: <a href=\"http://www.java-cn.com/club/index.php?action/viewnews/itemid/532/page/1/php/1\" title=\"µã»÷¿ÉÒÔÁ¢¼´¸üÐÂ±¾Ò³Ãæ\">"+(Modified.getYear()<200?(Modified.getYear()+1900):Modified.getYear())+"-"+(Modified.getMonth()+1)+"-"+Modified.getDate()+" "+Modified.getHours()+":"+Modified.getMinutes()+":"+Modified.getSeconds() + "</a><br>";
+			}
+			document.write('<script src="http://www.java-cn.com/club/batch.html.php?code=http%253A%252F%252Fwww.java-cn.com%252Fclub%252Findex.php%253Faction%252Fviewnews%252Fitemid%252F532%252Fpage%252F1%2F1248874362%2F21600%2F0%2F532%2Fviewnews&amp;lastmodified=' + Modified.getTime() + '" type="text\/javascript" language="javascript"><\/script>');
+			//-->
+			</script><script src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/batch.htm" type="text/javascript" language="javascript"></script><div class="S_WC_SBar" style="position: fixed; z-index: 99; left: 1063px; top: 527px;"><div class="mbody"><div class="bartext"><span class="weltxt">ÓëÍ¬Ê±·ÃÎÊ´ËÒ³ÃæµÄÍøÓÑÁÄÌì</span></div><div class="infobar"><span class="barlogoblk"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/barlogo.gif" align="absmiddle"></span><span class="ctrlimg"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/barresume.gif" title="ÏÔÊ¾ÁÄÌì´°¿Ú" alt="ÏÔÊ¾ÁÄÌì´°¿Ú" align="absmiddle"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/barclose.gif" title="¹Ø±Õ" alt="¹Ø±Õ" align="absmiddle"></span><span class="olusr"> </span></div></div></div><div class="S_WC_ChatBox" style="left: 0px; top: 0px; width: 380px; position: fixed; z-index: 100; display: none;"><div class="Hnd"><div><div class="Title"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/boxlogo.gif" align="absmiddle"> JRubyµÄÐÔÄÜÓÅ»¯..</div></div><div class="Ctrl"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/boxmin.gif" alt="×îÐ¡»¯" title="×îÐ¡»¯" height="36" width="14"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/boxmax.gif" alt="×î´ó»¯" title="×î´ó»¯" height="36" width="14"><img src="JRuby%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96_files/boxclose.gif" alt="¹Ø±Õ" title="¹Ø±Õ" height="36" width="16"></div></div><div style="height: 326px;" class="my_content"><div style="width: 380px; height: 326px;" id="S_WC_FLA_BOX" class="Fla"></div></div><div class="Bottom"><div class="Resize"></div></div></div></body></html>

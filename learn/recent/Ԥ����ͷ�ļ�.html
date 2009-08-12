@@ -1,0 +1,1689 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>预编译头文件 - sunrack - 博客园</title>
+<meta name="keywords" content="Visual,2005,预编译头文件">
+<link type="text/css" rel="stylesheet" href="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/style.css">
+<link type="text/css" rel="stylesheet" href="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/common2.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/sunrack/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/sunrack/rsd.xml"> 
+<script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/jquery_002.js" type="text/javascript"></script>  
+<script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/common.js" type="text/javascript"></script>
+<script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/jquery.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/shCore.css">
+<link type="text/css" rel="stylesheet" href="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/shThemeDefault.css">
+</head><body>
+    <form name="Form1" method="post" action="595175.html" id="Form1">
+<div>
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="" type="hidden">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+        
+<table class="Framework" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td colspan="3">
+			
+<div id="top">
+<table cellpadding="10" cellspacing="0">
+	<tbody><tr>
+		<td nowrap="nowrap">
+			<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/sunrack/">sunrack</a></h1>
+			
+		</td>
+	</tr>
+</tbody></table>
+</div>
+<div id="sub">
+	<div id="sub-right">
+<div class="BlogStats">posts - 0, comments - 174, trackbacks - 6, articles - 320</div></div>
+	
+&nbsp;
+<a id="Header1_MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</a>&nbsp;::
+<a id="Header1_MyLinks1_MyHomeLink" href="http://www.cnblogs.com/sunrack/">首页</a>&nbsp;::
+&nbsp;::
+<a id="Header1_MyLinks1_ContactLink" accesskey="9" href="http://www.cnblogs.com/sunrack/contact.aspx?id=1">联系</a>&nbsp;::
+
+&nbsp;::
+<a id="Header1_MyLinks1_Admin" href="http://www.cnblogs.com/sunrack/admin/EditPosts.aspx">管理</a>
+
+</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="LeftCell">
+			<div id="leftmenu">
+	
+		
+		
+	
+	
+<script type="text/javascript">
+function zzk_go()
+{
+	var blogapp = 'sunrack';
+	var keystr = encodeURIComponent("blog:"+blogapp+" "+document.getElementById('q').value);
+    window.location = "http://zzk.cnblogs.com/s?w="+keystr;
+}
+function zzk_go_enter(event)
+{
+	if(event.keyCode == 13)
+	{
+	    zzk_go();
+	    return false;
+	}
+}
+</script>
+<div id="cell">
+<img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/icon-group.jpg" align="left" hspace="5" vspace="2">
+<h3 class="catListTitle">搜索</h3>
+<div class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+</div>
+
+		<div id="cell">
+		<img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/icon-group.jpg" align="left" hspace="5" vspace="2"><h3>文章分类<span style="font-size: 11px; font-weight: normal;">(330)</span></h3>
+		
+				<ul>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to ASP.Net(54)" href="http://www.cnblogs.com/sunrack/category/74529.html/rss"><img title="Subscribe to ASP.Net(54)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl01_Link" href="http://www.cnblogs.com/sunrack/category/74529.html">ASP.Net(54)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to Bluetooth(3)" href="http://www.cnblogs.com/sunrack/category/90345.html/rss"><img title="Subscribe to Bluetooth(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl02_Link" href="http://www.cnblogs.com/sunrack/category/90345.html">Bluetooth(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to C# 2008(47)" href="http://www.cnblogs.com/sunrack/category/123361.html/rss"><img title="Subscribe to C# 2008(47)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl03_Link" href="http://www.cnblogs.com/sunrack/category/123361.html">C# 2008(47)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to CVS(1)" href="http://www.cnblogs.com/sunrack/category/103270.html/rss"><img title="Subscribe to CVS(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl04_Link" href="http://www.cnblogs.com/sunrack/category/103270.html">CVS(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to DataBase Design(4)" href="http://www.cnblogs.com/sunrack/category/40509.html/rss"><img title="Subscribe to DataBase Design(4)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl05_Link" href="http://www.cnblogs.com/sunrack/category/40509.html">DataBase Design(4)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to Design Pattern(1)" href="http://www.cnblogs.com/sunrack/category/40766.html/rss"><img title="Subscribe to Design Pattern(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl06_Link" href="http://www.cnblogs.com/sunrack/category/40766.html">Design Pattern(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to DotNet(102)" href="http://www.cnblogs.com/sunrack/category/40493.html/rss"><img title="Subscribe to DotNet(102)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl07_Link" href="http://www.cnblogs.com/sunrack/category/40493.html">DotNet(102)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to English(1)" href="http://www.cnblogs.com/sunrack/category/78707.html/rss"><img title="Subscribe to English(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl08_Link" href="http://www.cnblogs.com/sunrack/category/78707.html">English(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl09_RssLink" title="Subscribe to Flash(3)" href="http://www.cnblogs.com/sunrack/category/75600.html/rss"><img title="Subscribe to Flash(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl09_Link" href="http://www.cnblogs.com/sunrack/category/75600.html">Flash(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl10_RssLink" title="Subscribe to J2ME(1)" href="http://www.cnblogs.com/sunrack/category/90716.html/rss"><img title="Subscribe to J2ME(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl10_Link" href="http://www.cnblogs.com/sunrack/category/90716.html">J2ME(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl11_RssLink" title="Subscribe to Java script(7)" href="http://www.cnblogs.com/sunrack/category/139947.html/rss"><img title="Subscribe to Java script(7)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl11_Link" href="http://www.cnblogs.com/sunrack/category/139947.html">Java script(7)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl12_RssLink" title="Subscribe to LINQ(8)" href="http://www.cnblogs.com/sunrack/category/120358.html/rss"><img title="Subscribe to LINQ(8)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl12_Link" href="http://www.cnblogs.com/sunrack/category/120358.html">LINQ(8)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl13_RssLink" title="Subscribe to Math(1)" href="http://www.cnblogs.com/sunrack/category/101313.html/rss"><img title="Subscribe to Math(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl13_Link" href="http://www.cnblogs.com/sunrack/category/101313.html">Math(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl14_RssLink" title="Subscribe to NetWork(1)" href="http://www.cnblogs.com/sunrack/category/40497.html/rss"><img title="Subscribe to NetWork(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl14_Link" href="http://www.cnblogs.com/sunrack/category/40497.html">NetWork(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl15_RssLink" title="Subscribe to NHibernet(1)" href="http://www.cnblogs.com/sunrack/category/100984.html/rss"><img title="Subscribe to NHibernet(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl15_Link" href="http://www.cnblogs.com/sunrack/category/100984.html">NHibernet(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl16_RssLink" title="Subscribe to Oracle(3)" href="http://www.cnblogs.com/sunrack/category/40504.html/rss"><img title="Subscribe to Oracle(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl16_Link" href="http://www.cnblogs.com/sunrack/category/40504.html">Oracle(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl17_RssLink" title="Subscribe to Others(10)" href="http://www.cnblogs.com/sunrack/category/40789.html/rss"><img title="Subscribe to Others(10)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl17_Link" href="http://www.cnblogs.com/sunrack/category/40789.html">Others(10)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl18_RssLink" title="Subscribe to PowerDesigner(2)" href="http://www.cnblogs.com/sunrack/category/40503.html/rss"><img title="Subscribe to PowerDesigner(2)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl18_Link" href="http://www.cnblogs.com/sunrack/category/40503.html">PowerDesigner(2)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl19_RssLink" title="Subscribe to UML(3)" href="http://www.cnblogs.com/sunrack/category/143920.html/rss"><img title="Subscribe to UML(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl19_Link" href="http://www.cnblogs.com/sunrack/category/143920.html">UML(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl20_RssLink" title="Subscribe to Video Conference(25)" href="http://www.cnblogs.com/sunrack/category/40994.html/rss"><img title="Subscribe to Video Conference(25)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl20_Link" href="http://www.cnblogs.com/sunrack/category/40994.html">Video Conference(25)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl21_RssLink" title="Subscribe to Visual C++ 2005(41)" href="http://www.cnblogs.com/sunrack/category/77953.html/rss"><img title="Subscribe to Visual C++ 2005(41)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl21_Link" href="http://www.cnblogs.com/sunrack/category/77953.html">Visual C++ 2005(41)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl22_RssLink" title="Subscribe to VSTO(7)" href="http://www.cnblogs.com/sunrack/category/100553.html/rss"><img title="Subscribe to VSTO(7)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl22_Link" href="http://www.cnblogs.com/sunrack/category/100553.html">VSTO(7)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl23_RssLink" title="Subscribe to 认证(4)" href="http://www.cnblogs.com/sunrack/category/57397.html/rss"><img title="Subscribe to 认证(4)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl23_Link" href="http://www.cnblogs.com/sunrack/category/57397.html">认证(4)</a>
+				</li>
+			
+				</ul>
+			</div>
+	
+
+<div id="cell">
+<img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/icon-group.jpg" align="left" hspace="5" vspace="2"><h3>最新评论
+	<a id="Singlecolumn2__27eaab9e26f3_RSSHyperlink1" href="http://www.cnblogs.com/sunrack/CommentsRSS.aspx"><img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xml.gif" style="border-width: 0px;"></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl01_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/889838.html#1584819">1.&nbsp;Re:使用PowerDesigner 建立企业知识库</a>
+			</li>
+			<li style="">
+				Good!
+专门从事PKM研究，
+此文观点新颖啊，学习了。
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--个人知识管理</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl02_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/837828.html#1577226">2.&nbsp;Re:Standard deviation</a>
+			</li>
+			<li style="">
+				英文太差看不懂,不过还是顶.
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--JUAN-小安</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl03_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/837828.html#1577224">3.&nbsp;Re:Standard deviation</a>
+			</li>
+			<li style="">
+				英文不是很好,所以看不懂!不过还是顶!
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--JUAN-小安</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl04_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1322460.html#1577004">4.&nbsp;Re:VS2008 调试 javascript 设置断点</a>
+			</li>
+			<li style="">
+				似乎不用这么麻烦，可直接debug.
+
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--魔方网</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl05_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1306057.html#1562325">5.&nbsp;re: CSS DIV 列自动高度的方法</a>
+			</li>
+			<li style="">
+				这种方法很烂！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--按时的撒</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl06_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1081714.html#1553307">6.&nbsp;re: C# 2008 学习笔记 - LINQ to XML</a>
+			</li>
+			<li style="">
+				1、linq to xml 生成xml文件 
+ DataClasses1DataContext data = new DataClasses1DataContext();
+            XE...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--nywh2008</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl07_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1142085.html#1549989">7.&nbsp;re: DataGridView绑定List时无法进行添加删除操作的解决方法</a>
+			</li>
+			<li style="">
+				我也碰到这个问题,或者也不用转换,直接用BindingList&lt;T&gt;就行了.
+我就觉得PetShop奇怪,PetShop的BLL层返回的都是IList&lt;T&gt;类型,既然有这个问题...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Hsjtai</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl08_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1369905.html#1536152">8.&nbsp;re: Loaderlock was detected </a>
+			</li>
+			<li style="">
+				還是說的不明不白
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Trypsin</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl09_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/912003.html#1524251">9.&nbsp;re: log4net面面观之工作原理 </a>
+			</li>
+			<li style="">
+				学习了.
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--而且</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl10_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1402033.html#1518671">10.&nbsp;re: C#生成安装文件后自动附加数据库的思路跟算法 </a>
+			</li>
+			<li style="">
+				最新版本的C#生成安装文件后自动附加数据库的思路跟算法 
+ 
+
+/// &lt;summary&gt; 
+/// 对数据库操作的类，包括附加、还原、备份、分离、压缩、创建、修改等常见操作 
+/// 版...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--adminzjc</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl11_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/588206.html#1500626">11.&nbsp;re: CNN当天新闻下载方法</a>
+			</li>
+			<li style="">
+				那个网站不好打开啊 !!
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--313</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl12_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/869443.html#1491570">12.&nbsp;re: SQL SERVER 2005 EXPRESS 不能远程连接的问题</a>
+			</li>
+			<li style="">
+				谢谢共享！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--往往</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl13_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/893073.html#1479067">13.&nbsp;re: C#中使用byte[]数据，生成Bitmap（256色 灰度 BMP位图）源代码</a>
+			</li>
+			<li style="">
+				直接用BitmapData类进行内存复制就可以了，没必要用MemoryStream做中转的，这样性能损失很大
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--SpadeQ</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl14_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/852448.html#1472688">14.&nbsp;re: 在c#中调用并调试C++的DLL </a>
+			</li>
+			<li style="">
+				多谢
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--___大魔王</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl15_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1466594">15.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				谢谢了！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--yzl</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl16_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1462875">16.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				wuxia1802@yahoo.cn,我的地址一直未验证，请发给验证信息，否则修改不了名称！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--吴瑕</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl17_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1456178">17.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				电子邮件地址如何验证
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--hujia0917@esample.com </li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl18_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1119765.html#1455852">18.&nbsp;re: Visual Studio 2008 安装部署项目 程序升级,windows服务安装以及User Setting的深入研究</a>
+			</li>
+			<li style="">
+				Google了下，可以按如下方式进行“在程序第一次运行时调用”：
+<br><a href="" target="_new" rel="nofollow"></a>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--renQX</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl19_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1119765.html#1455824">19.&nbsp;re: Visual Studio 2008 安装部署项目 程序升级,windows服务安装以及User Setting的深入研究</a>
+			</li>
+			<li style="">
+				"在程序第一次运行时调用",,,是不是在程序安装完成后的第一次运行？还是在每次程序启动后运行一次？
+<br>
+<br>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--renQX</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl20_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1448661">20.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				写的太好了，谢谢了！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--独行的天秤</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl21_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1448223">21.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				请帮忙验证MSN的邮件地址，谢谢！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--IVYDONG</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl22_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1074999.html#1434998">22.&nbsp;re: C# 2008 学习笔记 - 自动属性</a>
+			</li>
+			<li style="">
+				nice
+<br>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--math--</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl23_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1423873">23.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				lsk0824@126.com需要验证这个邮箱，谢谢
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--李绍堃</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl24_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1422296">24.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				我得电子邮件需要验证：esun3@126.com谢谢
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张奕尚</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl25_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/285321.html#1418994">25.&nbsp;re: 在Windows VS.NET 2003 下编译 OpenH323 总结 </a>
+			</li>
+			<li style="">
+				这里有预编译的OpenH323-1.19 和 PTLib1.12 的库（包含头文件和lib）以及CallGen323程序。 
+<br><a href="" target="_new"></a>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--mslk</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl26_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/607543.html#1416621">26.&nbsp;re: Visual C++ 如何：在各种字符串类型之间进行转换</a>
+			</li>
+			<li style="">
+				版主，又是我，呵呵，字体这么小，我怎么看清呢？有什么方法没有。
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Alexander</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl27_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1414361">27.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				我的提示是未将对象设置引用到实例
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张禹</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl28_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1413599">28.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				请教个问题:
+我在xp下制作的web安装包在2003 server环境下安装时没有任何提示的退出，请问是什么原因？
+xp开发环境：vs2008+.net 3.5 + sql server 2000
+2...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--guest</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl29_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1244043.html#1413130">29.&nbsp;re: C#通过TCP传送结构体</a>
+			</li>
+			<li style="">
+				谢谢，学习
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--stg609</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl30_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/821435.html#1411656">30.&nbsp;re: 南京护照办理功略</a>
+			</li>
+			<li style="">
+				蛮详细的,可是为何没有公安局的地址呢??
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--wpl</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl31_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/798540.html#1408335">31.&nbsp;re: C# 2.0 写的串口程序</a>
+			</li>
+			<li style="">
+				我第一次进来，想尝试一下
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--梁宝安</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl32_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1407141">32.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				QQ：314067971  E-Mail：zhang1986love@163.com  我还有好多不懂的地方，请多多指教！！！！！！！！！！waiting for you！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张禹</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl33_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1407137">33.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				请一定与我联系 我的QQ
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张禹</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl34_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/588110.html#1391516">34.&nbsp;re: VS2005运行提示：没有找到 MSVCR80.dll</a>
+			</li>
+			<li style="">
+				哥们，你太牛了
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--翁志容</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl35_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/833943.html#1388438">35.&nbsp;re: 转:LINQ to SQL(LINQ2SQL) vs. ADO.NET Entity Framework(ADOEF)-ccBoy版</a>
+			</li>
+			<li style="">
+				多谢lz了，正在入门阶段，建议真的很好的说
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--蒋正</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl36_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1387191">36.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				我的登了几次怎么不行啊
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张冬</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl37_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1091805.html#1386819">37.&nbsp;re: Building Multi-Tier Web Application in .NET 3.5 Framework Using LINQ to SQL</a>
+			</li>
+			<li style="">
+				Could you please upload the images
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Could you please upload the images</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl38_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/595175.html#1385732">38.&nbsp;re: 预编译头文件</a>
+			</li>
+			<li style="">
+				感谢楼主，讲的十分透彻。
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--John Rambo</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl39_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1238624.html#1376933">39.&nbsp;re: 介绍两个UML工具</a>
+			</li>
+			<li style="">
+				哈哈，各有各的口味，我以前用ROSE,后来偶然发现一个国产UML工具－trufun plato，中文界面，感觉比较适合中国人，用起来也很顺手！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--cjyg</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl40_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/277725.html#1376672">40.&nbsp;re: 自制PC遥控器</a>
+			</li>
+			<li style="">
+				EDN网站上有个资料下载：
+
+串口型电脑红外遥控器自制资料，内含原理图、装配图、相关软件链接。
+电路简单、特别适合自制；单材料成本10元不到。
+
+不需要写程序。
+
+...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--jeffshi</li>
+		
+			</ul>
+		
+</div>
+</div>
+
+</div>
+		</td>
+		<td class="MainCell">
+			<div id="main">
+				
+					<a name="#top">
+	</a><div class="post">
+<a name="#top">		</a><div class="posthead">
+<a name="#top">			</a><h2>
+<a name="#top">				</a><a id="ctl03_TitleUrl" class="singleposttitle" href="http://www.cnblogs.com/sunrack/articles/595175.html">预编译头文件</a>
+			</h2>
+ 			Posted on 2006-12-18 01:00 <a href="http://www.cnblogs.com/sunrack/">sunrack</a> 阅读(629) <a href="#commentform">评论(2)</a> &nbsp;<a href="http://www.cnblogs.com/sunrack/admin/EditArticles.aspx?postid=595175">编辑</a> <a href="http://www.cnblogs.com/sunrack/AddToFavorite.aspx?id=595175">收藏</a> <a href="#" onclick="PutInWz();return false;">网摘</a>  所属分类: <a href="http://www.cnblogs.com/sunrack/category/77953.html">Visual C++ 2005</a>
+			<img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/595175.jpg" height="1" width="1">
+			
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+rdf:about="http://www.cnblogs.com/sunrack/articles/595175.html"
+dc:identifier="http://www.cnblogs.com/sunrack/articles/595175.html"
+dc:title=""
+trackback:ping="http://www.cnblogs.com/sunrack/services/trackbacks/595175.aspx" />
+</rdf:RDF>
+-->
+
+		</div>
+		<div class="postbody"><div class="vcerParagraph">
+<p>今天在改一个很大的程序，慢慢看，慢慢改。突然发现一个.c文件，里面什么也没有， </p>
+<p>就几个头文件，我一看，我靠，这不是把简单的问题搞复杂了吗，随手删掉那个c文件。 </p>
+<p>结果不能编译了，我靠： </p>
+<p>fatal error C1083: Cannot open precompiled header file: \'Debug/v13_3.pch\': </p>
+<p>No such file or directory </p>
+<p>怎么rebuild all都不行。 </p>
+<p>上网查了一下，才搞懂了： </p>
+<p>－－－－－－－－－－－－－－－－总结－－－－－－ </p>
+<p>如果工程很大，头文件很多，而有几个头文件又是经常要用的，那么 </p>
+<p>1。把这些头文件全部写到一个头文件里面去，比如写到preh.h </p>
+<p>2。写一个preh.c，里面只一句话：#include "preh.h" </p>
+<p>3。对于preh.c，在project setting里面设置creat precompiled headers，对于其他 </p>
+<p>.c文件，设置use precompiled header file </p>
+<p>// </p>
+<p>哈哈 </p>
+<p>我试了一下，效果很明显，不用precompiled header，编译一次我可以去上个厕所，用 </p>
+<p>precompiled header，编译的时候，我可以站起来伸个懒腰，活动活动就差不多啦 </p>
+<p>－－－－－－－－－转载的文章－－－－－－－－－－ </p>
+<p>预编译头的概念： </p>
+<p>所谓的预编译头就是把一个工程中的那一部分代码,预先编译好放在一个文件里(通常是 </p>
+<p>以.pch为扩展名的)，这个文件就称为预编译头文件这些预先编译好的代码可以是任何的 </p>
+<p>C/C++代码--------甚至是inline的函数，但是必须是稳定的，在工程开发的过程中不会 </p>
+<p>被经常改变。如果这些代码被修改，则需要重新编译生成预编译头文件。注意生成预编 </p>
+<p>译头文件是很耗时间的。同时你得注意预编译头文件通常很大，通常有6-7M大。注意及 </p>
+<p>时清理那些没有用的预编译头文件。 </p>
+<p>也许你会问：现在的编译器都有Time stamp的功能，编译器在编译整个工程的时候，它 </p>
+<p>只会编译那些经过修改的文件，而不会去编译那些从上次编译过，到现在没有被修改过 </p>
+<p>的文件。那么为什么还要预编译头文件呢？答案在这里，我们知道编译器是以文件为单 </p>
+<p>位编译的，一个文件经过修改后，会重新编译整个文件，当然在这个文件里包含的所有 </p>
+<p>头文件中的东西（.eg Macro, Preprocesser ）都要重新处理一遍。VC的预编译头文件 </p>
+<p>保存的正是这部分信息。以避免每次都要重新处理这些头文件。 </p>
+<p>预编译头的作用： </p>
+<p>根据上文介绍，预编译头文件的作用当然就是提高便宜速度了，有了它你没有必要每次 </p>
+<p>都编译那些不需要经常改变的代码。编译性能当然就提高了。 </p>
+<p>预编译头的使用： </p>
+<p>要使用预编译头，我们必须指定一个头文件，这个头文件包含我们不会经常改变的 </p>
+<p>代码和其他的头文件，然后我们用这个头文件来生成一个预编译头文件（.pch文件） </p>
+<p>想必大家都知道 StdAfx.h这个文件。很多人都认为这是VC提供的一个“系统级别”的 </p>
+<p>，编译器带的一个头文件。其实不是的，这个文件可以是任何名字的。我们来考察一个 </p>
+<p>典型的由AppWizard生成的MFC Dialog Based　程序的预编译头文件。（因为AppWizard </p>
+<p>会为我们指定好如何使用预编译头文件，默认的是StdAfx.h，这是VC起的名字）。我们 </p>
+<p>会发现这个头文件里包含了以下的头文件： </p>
+<p>#include &lt;afxwin.h&gt; // MFC core and standard components </p>
+<p>#include &lt;afxext.h&gt; // MFC extensions </p>
+<p>#include &lt;afxdisp.h&gt; // MFC Automation classes </p>
+<p>#include &lt;afxdtctl.h&gt; // MFC support for Internet Explorer 4 </p>
+<p>Common Controls </p>
+<p>#include &lt;afxcmn.h&gt; </p>
+<p>这些正是使用MFC的必须包含的头文件，当然我们不太可能在我们的工程中修改这些头文 </p>
+<p>件的，所以说他们是稳定的。 </p>
+<p>那么我们如何指定它来生成预编译头文件。我们知道一个头文件是不能编译的。所以我 </p>
+<p>们还需要一个cpp文件来生成.pch 文件。这个文件默认的就是StdAfx.cpp。在这个文件 </p>
+<p>里只有一句代码就是：#include “Stdafx.h”。原因是理所当然的，我们仅仅是要它能 </p>
+<p>够编译而已?D?D?D也就是说，要的只是它的.cpp的扩展名。我们可以用/Yc编译开关来指 </p>
+<p>定StdAfx.cpp来生成一个.pch文件，通过/Fp编译开关来指定生成的pch文件的名字。打 </p>
+<p>开project -&gt;Setting-&gt;C/C++ 对话框。把Category指向Precompiled Header。在左边的 </p>
+<p>树形视图里选择整个工程　 </p>
+<p>Project Options(右下角的那个白的地方)可以看到 /Fp “debug/PCH.pch”，这就是指 </p>
+<p>定生成的.pch文件的名字，默认的通常是　&lt;工程名&gt;.pch（我的示例工程名就是PCH）。 </p>
+<p>然后，在左边的树形视图里选择StdAfx.cpp.//这时只能选一个cpp文件！ </p>
+<p>这时原来的Project Option变成了 Source File Option（原来是工程，现在是一个文件 </p>
+<p>，当然变了）。在这里我们可以看到 /Yc开关，/Yc的作用就是指定这个文件来创建一个 </p>
+<p>Pch文件。/Yc后面的文件名是那个包含了稳定代码的头文件，一个工程里只能有一个文 </p>
+<p>件的可以有YC开关。VC就根据这个选项把 StdAfx.cpp编译成一个Obj文件和一个PCH文件 </p>
+<p>。 </p>
+<p>然后我们再选择一个其它的文件来看看，//其他cpp文件 </p>
+<p>在这里，Precomplier 选择了 Use ⋯⋯⋯一项，头文件是我们指定创建PCH 文件的stda </p>
+<p>fx.h </p>
+<p>文件。事实上，这里是使用工程里的设置，（如图1）/Yu”stdafx.h”。 </p>
+<p>这样，我们就设置好了预编译头文件。也就是说，我们可以使用预编译头功能了。以 </p>
+<p>下是注意事项： </p>
+<p>1):如果使用了/Yu，就是说使用了预编译，我们在每个.cpp文件的最开头，我强调一遍 </p>
+<p>是最开头，包含 你指定产生pch文件的.h文件（默认是stdafx.h）不然就会有问题。如 </p>
+<p>果你没有包含这个文件，就告诉你Unexpected file end. 如果你不是在最开头包含的， </p>
+<p>你自己试以下就知道了，绝对有很惊人的效果⋯.. </p>
+<p>fatal error C1010: unexpected end of file while looking for precompiled </p>
+<p>header directive </p>
+<p>Generating Code... </p>
+<p>2）如果你把pch文件不小心丢了，编译的时候就会产生很多的不正常的行为。根据以上 </p>
+<p>的分析，你只要让编译器生成一个pch文件。也就是说把 stdafx.cpp（即指定/Yc的那个 </p>
+<p>cpp文件）从新编译一遍。当然你可以傻傻的 Rebuild All。简单一点就是选择那个cpp </p>
+<p>文件，按一下Ctrl + F7就可以了。不然可是很浪费时间的哦。 </p>
+<p>// </p>
+<p>呵呵，如果你居然耐着性子看到了这里，那么再回到帖子最开始看看我的总结吧！
+</p><p>&nbsp;</p>
+</div>
+
+<div id="div_digg">										
+	<div class="diggit" onclick="DiggIt(595175,15093,1)"> 
+		<span class="diggnum" id="digg_count_595175">0</span>
+	</div>
+	<div class="buryit" onclick="DiggIt(595175,15093,2)"> 
+		<span class="burynum" id="bury_count_595175">0</span>
+	</div>
+	<div class="clear"></div>
+	<span style="display: none;" id="span_isdigged_595175">0</span>	
+	<div class="diggword" id="digg_word_595175">(请您对文章做出评价)</div>	
+</div>
+<div class="clear"></div>
+
+
+</div>
+	</div><a name="pagedcomment"></a>
+<h3>Feedback</h3>
+	
+			<div class="post">
+				<div class="posthead">
+					<h2>
+						<a href="#1241901">#1楼</a><a name="1241901" id="comment_anchor_1241901"></a>
+						&nbsp;&nbsp;<a onclick='ReplyComment("hanyang",1241901,"")' href="http://www.cnblogs.com/sunrack/articles/595175.html#commentform">回复</a>&nbsp;&nbsp;<a onclick='QuoteComment(1241901,"")' href="http://www.cnblogs.com/sunrack/articles/595175.html#commentform">引用</a>&nbsp;&nbsp;<a id="Comments1_CommentList_ctl00_DeleteLink" href="javascript:__doPostBack('Comments1$CommentList$ctl00$DeleteLink','')"></a>&nbsp;&nbsp;<a id="Comments1_CommentList_ctl00_EditLink"></a>
+					</h2>
+					2008-07-02 09:36 by <a id="Comments1_CommentList_ctl00_NameLink" target="_blank">hanyang[未注册用户]</a>
+				</div>
+				<div class="postbody"><span id="comment_body_1241901">谢谢博主！！<br><br>我在网上找了一大圈的文章，都是抄来抄去，再不就是三言两语，直到看到您的解释，这才恍然大悟，真是太感谢了。</span></div>
+			</div>
+		
+			<div class="post">
+				<div class="posthead">
+					<h2>
+						<a href="#1385732">#2楼</a><a name="1385732" id="comment_anchor_1385732"></a><a name="Post"></a>
+						&nbsp;&nbsp;<a onclick='ReplyComment("John Rambo",1385732,"OPZlt1Jj7X6EYp03UKThrW8x6Jx+fo/Mm9dOlo2sN6BNk2trHWrHOA==")' href="http://www.cnblogs.com/sunrack/articles/595175.html#commentform">回复</a>&nbsp;&nbsp;<a onclick='QuoteComment(1385732,"OPZlt1Jj7X6EYp03UKThrW8x6Jx+fo/Mm9dOlo2sN6BNk2trHWrHOA==")' href="http://www.cnblogs.com/sunrack/articles/595175.html#commentform">引用</a>&nbsp;&nbsp;<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=John+Rambo" target="_blank">查看</a>&nbsp;&nbsp;<a id="Comments1_CommentList_ctl01_DeleteLink" href="javascript:__doPostBack('Comments1$CommentList$ctl01$DeleteLink','')"></a>&nbsp;&nbsp;<a id="Comments1_CommentList_ctl01_EditLink"></a>
+					</h2>
+					2008-11-29 00:41 by <a id="Comments1_CommentList_ctl01_NameLink" href="http://www.cnblogs.com/zhy2002/" target="_blank">John Rambo</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/John+Rambo" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				</div>
+				<div class="postbody"><span id="comment_body_1385732">感谢楼主，讲的十分透彻。</span></div>
+			</div>
+		
+
+<script type="text/javascript">
+    var commentAuthorHasChecked = false;
+    var commentAuthorIsValid = false;
+    var commentUrlIsValid = true;
+    var commentEmailIsValid = true;
+    var authenCodeHasChecked = false;
+    var authenCodeIsValid = true;
+    
+    function PostComment() {    
+        
+        var isValid = true;
+        
+        if($("#wrapAuthenCode").css("display")=="none"){
+            ShowAuthenCode();
+            $("#tip_AuthenCode").css("color","red");
+            $("#tip_AuthenCode").html("请输入验证码！");
+            isValid = false;
+        }
+        
+        if(!commentAuthorHasChecked){
+            CheckAuthor();        
+        }                
+        if(!commentAuthorIsValid){
+            isValid = false;
+        }
+                       
+        if(!authenCodeHasChecked){
+            CheckAuthenCode();            
+        }
+        if(!authenCodeIsValid){
+            isValid = false;
+        }
+        
+        if(!commentUrlIsValid){            
+            isValid = false;
+        }        
+        if(!commentEmailIsValid){            
+            isValid = false;
+        }        
+        if(!CheckCommentContent()){
+            isValid = false;
+        }    
+        if(!isValid){
+            return;
+        }
+
+        var content = $("#tbCommentBody").val();
+        if(content.length>2000){
+            alert("评论内容过长！不允许发布！");
+            return;
+        }        
+        
+       if ($("#span_comment_posted").html()!='' && $("#span_comment_posted").html()==content){
+            alert("该评论已发表过!");
+            return;
+        }
+        
+        $("#tip_comment").html("评论提交中...");
+        $("#span_comment_posted").html(content);
+        //content = content.replace("'", "\\'");
+        var email = $("#tbCommentEmail").val();
+        var authenNum = $("#tbAuthenCode").val();
+        var authenId = $("#span_comment_test").html();
+        var comment = {};
+        comment.authenNum = authenNum;
+        comment.authenId= authenId;
+        comment.parentId = 595175;
+        comment.blogId = 15093;
+        comment.sourceUrl = 'http://www.cnblogs.com/sunrack/articles/595175.html';
+        comment.author = $("#tbCommentAuthor").val();
+        comment.url = $("#tbCommentAuthorUrl").val();
+        comment.authenCode = $("#tbAuthenCode").val();
+        comment.email = email;
+        comment.title = '预编译头文件';
+        comment.content = content;
+        comment.parentCommentId = $("#span_parentcomment_id").html();
+        $.ajax({
+            url: '/ws/CommentService.asmx/AddAnonymousComment',
+            data: $.toJSON(comment),
+            type: "post",
+            dataType: "json",
+            contentType: "application/json; charset=utf8",
+            success: function(data) {
+               if (data.d["IsSuccess"]) {
+                    ShowCommentMsg("感谢您的回复:)");
+                    //RereshComments2(comment.parentId);
+                    $("#tbCommentBody").val('');
+                    //$("#divCommentShow").html(data.d["ReturnData"]+content.replace(/\n/g,"<br/>")+"<br/><br/>");
+                    $("#divCommentShow").html($("#divCommentShow").html()+data.d["ReturnData"]); 
+                    $("#tip_AuthenCode").html('');
+                    RefreshAuthenCode();
+                    $("#tbAuthenCode").val("");                    
+                    CommentNotify(data.d["CommentID"]);
+                }
+                else {
+                    ShowCommentMsg(data.d["ReturnData"]);//"抱歉！评论提交失败！请与管理员联系。");
+                    $("#span_comment_posted").html(''); 
+                }
+            },
+            error: function(xhr) {
+                ShowCommentMsg("抱歉！评论提交失败！请与管理员联系。");
+                $("#span_comment_posted").html('');  
+                //alert(xhr.responseText);
+            }
+        }
+        );
+    }
+    
+    function RefreshAuthenCode(){
+        AjaxPost("/ws/CommentService.asmx/RefreshAuthenCode","{}",RefreshImg); 
+        $("#lnkRereshAuthenCode").html("<span style='color:red'>刷新中...</span>");
+        return false;
+    }
+    
+    function RefreshImg(response){
+       $("#imgAuthenCode").attr("src","/Modules/CaptchaImage/ValidCodeImage.aspx?id="+encodeURIComponent(response));
+       $("#span_comment_test").html(response);
+       $("#lnkRereshAuthenCode").html("看不清，换一个");
+    }
+    
+    function ShowAuthenCode(){
+        //if($("#wrapAuthenCode").css("display")=="none"){    
+        //    AjaxPost("/ws/CommentService.asmx/RefreshAuthenCode","{}",ShowAuthenCodeOk);
+        //}
+        $("#wrapAuthenCode").show();      
+    }
+    
+    function ShowAuthenCodeOk(response){
+         UpdateAuthenCode();
+         $("#tbAuthenCode").val("");
+         $("#wrapAuthenCode").show();
+         $("#tip_AuthenCode").html('');
+    }  
+ 
+    
+    function CheckAuthor(isOnblur){
+        commentAuthorHasChecked = true;
+        var maxLength = 30;
+        if($("#tbCommentAuthor").val().length == 0){
+            $("#tip_author").html("请输入您的昵称！");
+            commentAuthorIsValid = false;
+            return false;
+        }     
+        else if($("#tbCommentAuthor").val().length > maxLength){
+            $("#tip_author").html("昵称不允许超过" + maxLength + "个字符！");
+            commentAuthorIsValid = false;
+            return false;
+        }
+        else{
+            //if(isOnblur){
+                AjaxPost("/ws/CommentService.asmx/IsAuthorExist","{author:'"+$("#tbCommentAuthor").val()+"'}" ,OnCheckAuthorExist);
+            //}
+            //else{
+            //    $("#tip_author").html("");
+            //    commentAuthorIsValid = true;
+            //}
+            return true;
+        }
+   }
+   
+    function OnCheckAuthorExist(response){        
+        if(!response){
+            $("#tip_author").html("");
+            commentAuthorIsValid = true;
+        }
+        else{
+            $("#tip_author").html("该昵称已被使用，请更换昵称");
+            commentAuthorIsValid = false;
+        }
+   }
+   
+    function CheckUrl(){
+        var maxLength = 50;
+        var url = $("#tbCommentAuthorUrl").val();
+        
+        if(url.length == 0){
+            commentUrlIsValid = true;
+            return true;
+        }
+        else if(url.length > maxLength){
+            $("#tip_url").html("主页地址不允许超过" + maxLength + "个字符！");
+            commentUrlIsValid = false;
+            return false;
+        }
+        else if(url.indexOf("http://")!=0 || url.indexOf(".") < 0){
+            $("#tip_url").html("主页地址要以“http://”开头");
+            commentUrlIsValid = false;
+            return false;
+        }
+        else{
+            $("#tip_url").html("");
+            commentUrlIsValid = true;
+            return true;
+        }
+   }
+   
+   function CheckEmail(){
+        var email = $("#tbCommentEmail").val();
+        if(email.length>0){
+            var regExp = new RegExp("\\w+@((\\w|\-)+\\.)+[a-z]{2,3}");
+            if(!regExp.test(email)){
+                $("#tip_email").html("请输入正确的邮件地址!");
+                commentEmailIsValid = false;
+            }
+            else{
+                commentEmailIsValid = true;
+                 $("#tip_email").html("");
+            }
+        }
+        else{
+            commentEmailIsValid = true;
+            $("#tip_email").html("");  
+        }
+   }
+   
+   function CheckAuthenCode(){
+        authenCodeHasChecked = true;
+        var num = $("#tbAuthenCode").val();
+        var id = $("#span_comment_test").html();
+        $("#tip_AuthenCode").css("color","red");
+        if(num.length==0){
+             authenCodeIsValid = false;
+             $("#tip_AuthenCode").html("请输入验证码！");
+             return;
+        }
+        else if(num.length!=4){
+            authenCodeIsValid = false;
+            $("#tip_AuthenCode").html("请输入四位数字！");
+             return;
+        }
+        else if(new RegExp("(\d+)").test(num)){
+            authenCodeIsValid = false;
+            $("#tip_AuthenCode").html("请输入四位数字！");
+             return;
+        }
+        else{
+            AjaxPost("/ws/CommentService.asmx/CheckAuthenCode","{number:"+num+",id:'"+id+"'}", OnCheckAuthenCode);
+        }
+   }
+   
+   function OnCheckAuthenCode(response){
+        if(response){
+            $("#tip_AuthenCode").css("color","green");
+            $("#tip_AuthenCode").html("验证码输入正确！");
+            authenCodeIsValid = true;            
+        }
+        else{
+            $("#tip_AuthenCode").css("color","red");
+            $("#tip_AuthenCode").html("验证码输错啦！");
+            RefreshAuthenCode();
+            authenCodeIsValid = false;           
+        }
+   }
+   
+   function CheckCommentContent(){
+    if($("#tbCommentBody").val().length==0){
+        alert("请输入评论内容！");
+        return false;
+    }
+    return true;
+   }
+    
+</script>
+<script type="text/javascript" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/google_service.js">
+</script>
+<script type="text/javascript">
+    try {
+        GS_googleAddAdSenseService("ca-pub-4210569241504288");
+        GS_googleEnableAllServices();
+    }
+    catch (e) { }
+</script><script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/test_gam_domain.js"></script><script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/google_ads.js"></script>
+<script type="text/javascript">
+    try {
+        GA_googleAddSlot("ca-pub-4210569241504288", "cnblogs_commentbox_up");
+        GA_googleAddSlot("ca-pub-4210569241504288", "cnblogs_blogpost_bottom");
+    }
+    catch (e) { }
+</script>
+<script type="text/javascript">
+    try {
+        GA_googleFetchAds();
+    } catch (e) { }
+</script>
+<div id="ctl04_comment_form" class="commentform">
+
+<br>
+<script type="text/javascript">
+    try {
+        GA_googleFillSlot("cnblogs_commentbox_up");
+    }
+    catch (e) { }
+</script><script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/ads_002"></script><div id="google_ads_div_cnblogs_commentbox_up">
+<iframe style="border: 0pt none ;" marginheight="0" marginwidth="0" name="google_ads_iframe_cnblogs_commentbox_up" id="google_ads_iframe_cnblogs_commentbox_up" scrolling="no" frameborder="0" height="60" width="468"></iframe></div>
+<script>GA_googleCreateDomIframe('google_ads_div_cnblogs_commentbox_up' ,'cnblogs_commentbox_up');</script>
+<br>
+<br>
+
+
+
+<div id="ctl04_divCommentPannel">
+<div id="divCommentShow"></div>
+<div id="comment_nav" style="text-align: right;"><span id="span_refresh_tips"></span><a href="###" onclick="return RefreshCommentList(595175);" name="commentform" id="lnk_RefreshComments">刷新评论列表</a>&nbsp; <a href="###" onclick="return RefreshPage();">刷新页面</a>&nbsp; <a href="#top">返回页首</a></div>
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input id="tbCommentAuthor" class="author" onfocus="ShowAuthenCode()" onblur="CheckAuthor()" type="text"> <span id="tip_author" style="color: red;"></span><a href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http%3a%2f%2fwww.cnblogs.com%2fsunrack%2farticles%2f595175.html%3flogin%3d1%23commentform">[登录]</a>
+<a href="http://passport.cnblogs.com/register.aspx?ReturnUrl=http%3a%2f%2fwww.cnblogs.com%2fsunrack%2farticles%2f595175.html%23Top">[注册]</a>
+</p>
+<p>
+主页：<input id="tbCommentAuthorUrl" class="url" onfocus="ShowAuthenCode()" onblur="CheckUrl()" type="text"> <span id="tip_url" style="color: red;"></span>
+</p>
+<p>
+邮箱：<input id="tbCommentEmail" class="email" onfocus="ShowAuthenCode()" onblur="CheckEmail()" type="text">(仅博主可见) <span id="tip_email" style="color: red;"></span>
+</p>
+<p id="wrapAuthenCode" style="display: none;">
+验证码：<input id="tbAuthenCode" onblur="CheckAuthenCode()" type="text"> <span id="tip_AuthenCode"></span><img id="imgAuthenCode" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/ValidCodeImage.jpg" alt="验证码" align="absmiddle"> <a href="###" onclick="return RefreshAuthenCode();" id="lnkRereshAuthenCode">看不清，换一个</a>
+</p>
+<p>
+评论内容：<span id="tip_comment_content" style="color: Red;"></span><br>
+<textarea id="tbCommentBody" class="comment_textarea" onkeydown="return clt_enter(event)" onfocus="ShowAuthenCode()"></textarea>
+<!--
+<br /><input id="cbRememberMe" type="checkbox" />记住我的昵称和主页
+-->
+</p>
+<p>
+<input id="btn_comment_submit" class="comment_btn" value="提交" onclick="PostComment();return false;" type="button">
+&nbsp;&nbsp;<a href="http://passport.cnblogs.com/login.aspx?ReturnUrl=http%3a%2f%2fwww.cnblogs.com%2fsunrack%2farticles%2f595175.html%3flogin%3d1%23commentform">登录</a>&nbsp;&nbsp;<a href="http://passport.cnblogs.com/register.aspx?ReturnUrl=http%3a%2f%2fwww.cnblogs.com%2fsunrack%2farticles%2f595175.html%23Bottom">注册</a>
+</p>
+<p>
+[使用Ctrl+Enter键快速提交评论]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id">0</span>
+<span id="span_parent_id">595175</span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+<span id="span_comment_test">R8CU7nDdCJs=</span>
+</div>
+</div>
+
+
+<a href="http://tshirt.cnblogs.com/2009/" target="_blank" class="site_hot">2009博客园纪念T恤</a><br>
+<a href="http://job.cnblogs.com/offer/1311/" target="_blank">沪江网诚聘.NET开发工程师</a><br>
+<a href="http://job.cnblogs.com/offer/1310/" target="_blank">安人测评诚聘.NET程序员</a><br>
+<br>
+<a href="http://www.tarena.net/blue.asp" target="_blank">IT高技能高薪酬的必由之路</a><br>
+<a href="http://www.tarena.net/" target="_blank">好工作不差钱-起薪3000实训</a><br>
+<a href="http://www.syitedu.org/CPA/computer.html" target="_blank">来思远学软件，笔记本电脑送给你</a><br>
+
+
+<br>
+<script type="text/javascript">
+    try {
+        GA_googleFillSlot("cnblogs_blogpost_bottom");
+    }
+    catch (e) { }
+</script><script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/ads"></script><div id="google_ads_div_cnblogs_blogpost_bottom">
+<iframe style="border: 0pt none ;" marginheight="0" marginwidth="0" name="google_ads_iframe_cnblogs_blogpost_bottom" id="google_ads_iframe_cnblogs_blogpost_bottom" scrolling="no" frameborder="0" height="250" width="300"></iframe></div>
+<script>GA_googleCreateDomIframe('google_ads_div_cnblogs_blogpost_bottom' ,'cnblogs_blogpost_bottom');</script>
+<br>
+<div id="div_ad2">
+<a href="http://a4.yeshj.com/rd/30179/" target="_blank"><img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/YU-D-S1P-30179_85.gif" border="0px;"></a>                   
+<br>
+<a href="http://www.china-pub.com/itbook/" target="_blank">China-pub 计算机图书网上专卖店！6.5万品种
+    2-8折！</a><br>
+<a href="http://www.china-pub.com/static07/0901/zh_jueba_090121.asp" target="_blank">China-Pub 计算机绝版图书按需印刷服务</a><br>
+</div>
+
+<div id="div_commentbox_nav">
+链接：<a href="http://www.cnblogs.com/sunrack/articles/595175.html?switchskin=1#skinlist">切换模板</a><br>
+导航：<a href="http://www.cnblogs.com/" target="_blank">网站首页</a> <a href="http://home.cnblogs.com/" target="_blank">个人主页</a> <a href="http://space.cnblogs.com/" target="_blank">社区</a>  <a href="http://news.cnblogs.com/" target="_blank">新闻</a> 
+        <a href="http://space.cnblogs.com/q/" target="_blank">博问</a> <a href="http://space.cnblogs.com/ing/" target="_blank">闪存</a> <a href="http://wz.cnblogs.com/" target="_blank">网摘</a> <a href="http://job.cnblogs.com/" target="_blank">招聘</a>
+        <a href="http://zzk.cnblogs.com/" target="_blank">找找看</a> <a href="http://www.cnblogs.com/search.aspx" target="_blank">Google搜索</a>  
+</div>
+<br><div id="relative_posts"><b>相关文章:</b><br><script language="javascript" type="text/javascript" charset="utf-8" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/RCS.htm"></script><a href="http://kb.cnblogs.com/page/42592/" target="_blank">Visual Studio 2008新特性</a><br><a href="http://kb.cnblogs.com/page/42181/" target="_blank">配置Visual Studio 以调试.net framework的源代码</a><br><a href="http://www.cnblogs.com/rickie/archive/2005/04/11/135461.html" target="_blank">编译调试CSLA .NET Framework v1.5</a><br><a href="http://www.cnblogs.com/jeffreyzhao/archive/2009/01/08/compile-aspx-file.html" target="_blank">对aspx等页面进行预编译以进行编译期检查</a><br><a href="http://space.cnblogs.com/question/4933/" target="_blank">关于C++/CLI的困惑</a><br><a href="http://space.cnblogs.com/question/6799/" target="_blank">在C、C++中调用Matlab</a><br><a href="http://space.cnblogs.com/group/topic/29584/" target="_blank">是该到了为Visual C++开发技术做个盘点的时候了！</a><br><a href="http://space.cnblogs.com/group/topic/7805/" target="_blank">新书预告——Visual C++音频/视频处理技术及工程实践</a><br><br><b>相关搜索:</b><br> <a href="http://zzk.cnblogs.com/s?w=" target="_blank"></a> <a href="http://zzk.cnblogs.com/s?w=Visual+C%2b%2b+2005" target="_blank">Visual C++ 2005</a> </div>
+
+
+<div class="itnews" id="itnews">
+<br><b>最新IT新闻:</b><br>
+
+            <a href="http://news.cnblogs.com/n/48477/" target="_blank">8月编程语言榜：.Net前景如何？</a><br>
+	
+            <a href="http://news.cnblogs.com/n/48476/" target="_blank">联想Android系统手机OPhone下月上市</a><br>
+	
+            <a href="http://news.cnblogs.com/n/48474/" target="_blank">Windows 7 Code Pack开发代码包1.0正式版发布</a><br>
+	
+            <a href="http://news.cnblogs.com/n/48473/" target="_blank">雅虎CEO巴茨：我们从来不是一家搜索公司</a><br>
+	
+            <a href="http://news.cnblogs.com/n/48472/" target="_blank">微软Windows XP-不灭的传说</a><br>
+	
+</div>
+<br>
+<div id="div_a4_ads">    
+    <b>相关链接:</b>
+    <script type="text/javascript">
+        var title = document.title;
+        document.write("<div id=\"a4_ads_output\">");
+        document.write("<script type='text/javascript' src='http://a4.yeshj.com/adwords/EN017?num=7&title=" + encodeURIComponent(title) + "&tag=" + encodeURIComponent(GetMeta("keywords")) + "'></scri" + "pt>");
+        document.write("</div>");
+    </script><div id="a4_ads_output"><script type="text/javascript" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/EN017.htm"></script><a href="http://a4.yeshj.com/rd?aid=16859&amp;zid=0&amp;url=http%3a%2f%2fkb.cnblogs.com%2fzt%2fbeginner%2flist%2f42031%2f" target="_blank">视频教程: Visual Studio2005 入门</a><br><a href="http://a4.yeshj.com/rd?aid=20364&amp;zid=0&amp;url=http%3a%2f%2fbooksubject.cnblogs.com%2fCompilers%2f" target="_blank">《编译原理》图书专题</a><br><a href="http://a4.yeshj.com/rd?aid=17053&amp;zid=0&amp;url=http%3a%2f%2fspace.cnblogs.com%2fvote.aspx%3fid%3d1" target="_blank">欢迎参加博客园用户调查</a><br><a href="http://a4.yeshj.com/rd?aid=16634&amp;zid=0&amp;url=http%3a%2f%2fwww.hjbook.net%2fproduct%2f2771%2f" target="_blank">无法上传大文件怎么办</a><br><a href="http://a4.yeshj.com/rd?aid=17183&amp;zid=0&amp;url=http%3a%2f%2fwww.hjbook.net%2fproduct%2f2801" target="_blank">博客园推荐:软件调试</a><br><a href="http://a4.yeshj.com/rd?aid=16232&amp;zid=0&amp;url=http%3a%2f%2fspace.cnblogs.com%2fgroup%2fPGgirl%2f" target="_blank">想知道博客园有多少美女程序员吗？</a><br><a href="http://a4.yeshj.com/rd?aid=29070&amp;zid=0&amp;url=http%3a%2f%2fwww.hjenglish.com%2fpage%2f75615" target="_blank">"附带文件"怎么说？</a><br></div>
+</div>
+
+
+
+
+
+</div>
+
+
+				
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="FooterCell">
+			
+<p id="footer">
+	Powered by: 
+	<br>
+	
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family: Verdana; font-size: 12px;">博客园</a>
+	<br>
+	Copyright © sunrack
+</p>
+
+		</td>
+	</tr>
+</tbody></table>
+<div id="lefttemp" style="display: none;">
+	
+		
+		
+	
+	
+<script type="text/javascript">
+function zzk_go()
+{
+	var blogapp = 'sunrack';
+	var keystr = encodeURIComponent("blog:"+blogapp+" "+document.getElementById('q').value);
+    window.location = "http://zzk.cnblogs.com/s?w="+keystr;
+}
+function zzk_go_enter(event)
+{
+	if(event.keyCode == 13)
+	{
+	    zzk_go();
+	    return false;
+	}
+}
+</script>
+<div id="cell">
+<img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/icon-group.jpg" align="left" hspace="5" vspace="2">
+<h3 class="catListTitle">搜索</h3>
+<div class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+</div>
+
+		<div id="cell">
+		<img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/icon-group.jpg" align="left" hspace="5" vspace="2"><h3>文章分类<span style="font-size: 11px; font-weight: normal;">(330)</span></h3>
+		
+				<ul>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl01_RssLink" title="Subscribe to ASP.Net(54)" href="http://www.cnblogs.com/sunrack/category/74529.html/rss"><img title="Subscribe to ASP.Net(54)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl01_Link" href="http://www.cnblogs.com/sunrack/category/74529.html">ASP.Net(54)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl02_RssLink" title="Subscribe to Bluetooth(3)" href="http://www.cnblogs.com/sunrack/category/90345.html/rss"><img title="Subscribe to Bluetooth(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl02_Link" href="http://www.cnblogs.com/sunrack/category/90345.html">Bluetooth(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl03_RssLink" title="Subscribe to C# 2008(47)" href="http://www.cnblogs.com/sunrack/category/123361.html/rss"><img title="Subscribe to C# 2008(47)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl03_Link" href="http://www.cnblogs.com/sunrack/category/123361.html">C# 2008(47)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl04_RssLink" title="Subscribe to CVS(1)" href="http://www.cnblogs.com/sunrack/category/103270.html/rss"><img title="Subscribe to CVS(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl04_Link" href="http://www.cnblogs.com/sunrack/category/103270.html">CVS(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl05_RssLink" title="Subscribe to DataBase Design(4)" href="http://www.cnblogs.com/sunrack/category/40509.html/rss"><img title="Subscribe to DataBase Design(4)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl05_Link" href="http://www.cnblogs.com/sunrack/category/40509.html">DataBase Design(4)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl06_RssLink" title="Subscribe to Design Pattern(1)" href="http://www.cnblogs.com/sunrack/category/40766.html/rss"><img title="Subscribe to Design Pattern(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl06_Link" href="http://www.cnblogs.com/sunrack/category/40766.html">Design Pattern(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl07_RssLink" title="Subscribe to DotNet(102)" href="http://www.cnblogs.com/sunrack/category/40493.html/rss"><img title="Subscribe to DotNet(102)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl07_Link" href="http://www.cnblogs.com/sunrack/category/40493.html">DotNet(102)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl08_RssLink" title="Subscribe to English(1)" href="http://www.cnblogs.com/sunrack/category/78707.html/rss"><img title="Subscribe to English(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl08_Link" href="http://www.cnblogs.com/sunrack/category/78707.html">English(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl09_RssLink" title="Subscribe to Flash(3)" href="http://www.cnblogs.com/sunrack/category/75600.html/rss"><img title="Subscribe to Flash(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl09_Link" href="http://www.cnblogs.com/sunrack/category/75600.html">Flash(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl10_RssLink" title="Subscribe to J2ME(1)" href="http://www.cnblogs.com/sunrack/category/90716.html/rss"><img title="Subscribe to J2ME(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl10_Link" href="http://www.cnblogs.com/sunrack/category/90716.html">J2ME(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl11_RssLink" title="Subscribe to Java script(7)" href="http://www.cnblogs.com/sunrack/category/139947.html/rss"><img title="Subscribe to Java script(7)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl11_Link" href="http://www.cnblogs.com/sunrack/category/139947.html">Java script(7)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl12_RssLink" title="Subscribe to LINQ(8)" href="http://www.cnblogs.com/sunrack/category/120358.html/rss"><img title="Subscribe to LINQ(8)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl12_Link" href="http://www.cnblogs.com/sunrack/category/120358.html">LINQ(8)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl13_RssLink" title="Subscribe to Math(1)" href="http://www.cnblogs.com/sunrack/category/101313.html/rss"><img title="Subscribe to Math(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl13_Link" href="http://www.cnblogs.com/sunrack/category/101313.html">Math(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl14_RssLink" title="Subscribe to NetWork(1)" href="http://www.cnblogs.com/sunrack/category/40497.html/rss"><img title="Subscribe to NetWork(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl14_Link" href="http://www.cnblogs.com/sunrack/category/40497.html">NetWork(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl15_RssLink" title="Subscribe to NHibernet(1)" href="http://www.cnblogs.com/sunrack/category/100984.html/rss"><img title="Subscribe to NHibernet(1)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl15_Link" href="http://www.cnblogs.com/sunrack/category/100984.html">NHibernet(1)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl16_RssLink" title="Subscribe to Oracle(3)" href="http://www.cnblogs.com/sunrack/category/40504.html/rss"><img title="Subscribe to Oracle(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl16_Link" href="http://www.cnblogs.com/sunrack/category/40504.html">Oracle(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl17_RssLink" title="Subscribe to Others(10)" href="http://www.cnblogs.com/sunrack/category/40789.html/rss"><img title="Subscribe to Others(10)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl17_Link" href="http://www.cnblogs.com/sunrack/category/40789.html">Others(10)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl18_RssLink" title="Subscribe to PowerDesigner(2)" href="http://www.cnblogs.com/sunrack/category/40503.html/rss"><img title="Subscribe to PowerDesigner(2)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl18_Link" href="http://www.cnblogs.com/sunrack/category/40503.html">PowerDesigner(2)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl19_RssLink" title="Subscribe to UML(3)" href="http://www.cnblogs.com/sunrack/category/143920.html/rss"><img title="Subscribe to UML(3)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl19_Link" href="http://www.cnblogs.com/sunrack/category/143920.html">UML(3)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl20_RssLink" title="Subscribe to Video Conference(25)" href="http://www.cnblogs.com/sunrack/category/40994.html/rss"><img title="Subscribe to Video Conference(25)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl20_Link" href="http://www.cnblogs.com/sunrack/category/40994.html">Video Conference(25)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl21_RssLink" title="Subscribe to Visual C++ 2005(41)" href="http://www.cnblogs.com/sunrack/category/77953.html/rss"><img title="Subscribe to Visual C++ 2005(41)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl21_Link" href="http://www.cnblogs.com/sunrack/category/77953.html">Visual C++ 2005(41)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl22_RssLink" title="Subscribe to VSTO(7)" href="http://www.cnblogs.com/sunrack/category/100553.html/rss"><img title="Subscribe to VSTO(7)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl22_Link" href="http://www.cnblogs.com/sunrack/category/100553.html">VSTO(7)</a>
+				</li>
+			
+				<li><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl23_RssLink" title="Subscribe to 认证(4)" href="http://www.cnblogs.com/sunrack/category/57397.html/rss"><img title="Subscribe to 认证(4)" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xmlsmall.gif" style="border-width: 0px;"></a><a id="Singlecolumn2_Categories_CatList_ctl00_LinkList_ctl23_Link" href="http://www.cnblogs.com/sunrack/category/57397.html">认证(4)</a>
+				</li>
+			
+				</ul>
+			</div>
+	
+
+<div id="cell">
+<img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/icon-group.jpg" align="left" hspace="5" vspace="2"><h3>最新评论
+	<a id="Singlecolumn2__27eaab9e26f3_RSSHyperlink1" href="http://www.cnblogs.com/sunrack/CommentsRSS.aspx"><img src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/xml.gif" style="border-width: 0px;"></a></h3>
+<div class="RecentComment">
+	
+			<ul>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl01_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/889838.html#1584819">1.&nbsp;Re:使用PowerDesigner 建立企业知识库</a>
+			</li>
+			<li style="">
+				Good!
+专门从事PKM研究，
+此文观点新颖啊，学习了。
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--个人知识管理</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl02_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/837828.html#1577226">2.&nbsp;Re:Standard deviation</a>
+			</li>
+			<li style="">
+				英文太差看不懂,不过还是顶.
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--JUAN-小安</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl03_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/837828.html#1577224">3.&nbsp;Re:Standard deviation</a>
+			</li>
+			<li style="">
+				英文不是很好,所以看不懂!不过还是顶!
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--JUAN-小安</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl04_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1322460.html#1577004">4.&nbsp;Re:VS2008 调试 javascript 设置断点</a>
+			</li>
+			<li style="">
+				似乎不用这么麻烦，可直接debug.
+
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--魔方网</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl05_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1306057.html#1562325">5.&nbsp;re: CSS DIV 列自动高度的方法</a>
+			</li>
+			<li style="">
+				这种方法很烂！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--按时的撒</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl06_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1081714.html#1553307">6.&nbsp;re: C# 2008 学习笔记 - LINQ to XML</a>
+			</li>
+			<li style="">
+				1、linq to xml 生成xml文件 
+ DataClasses1DataContext data = new DataClasses1DataContext();
+            XE...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--nywh2008</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl07_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1142085.html#1549989">7.&nbsp;re: DataGridView绑定List时无法进行添加删除操作的解决方法</a>
+			</li>
+			<li style="">
+				我也碰到这个问题,或者也不用转换,直接用BindingList&lt;T&gt;就行了.
+我就觉得PetShop奇怪,PetShop的BLL层返回的都是IList&lt;T&gt;类型,既然有这个问题...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Hsjtai</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl08_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1369905.html#1536152">8.&nbsp;re: Loaderlock was detected </a>
+			</li>
+			<li style="">
+				還是說的不明不白
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Trypsin</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl09_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/912003.html#1524251">9.&nbsp;re: log4net面面观之工作原理 </a>
+			</li>
+			<li style="">
+				学习了.
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--而且</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl10_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1402033.html#1518671">10.&nbsp;re: C#生成安装文件后自动附加数据库的思路跟算法 </a>
+			</li>
+			<li style="">
+				最新版本的C#生成安装文件后自动附加数据库的思路跟算法 
+ 
+
+/// &lt;summary&gt; 
+/// 对数据库操作的类，包括附加、还原、备份、分离、压缩、创建、修改等常见操作 
+/// 版...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--adminzjc</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl11_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/588206.html#1500626">11.&nbsp;re: CNN当天新闻下载方法</a>
+			</li>
+			<li style="">
+				那个网站不好打开啊 !!
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--313</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl12_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/869443.html#1491570">12.&nbsp;re: SQL SERVER 2005 EXPRESS 不能远程连接的问题</a>
+			</li>
+			<li style="">
+				谢谢共享！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--往往</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl13_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/893073.html#1479067">13.&nbsp;re: C#中使用byte[]数据，生成Bitmap（256色 灰度 BMP位图）源代码</a>
+			</li>
+			<li style="">
+				直接用BitmapData类进行内存复制就可以了，没必要用MemoryStream做中转的，这样性能损失很大
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--SpadeQ</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl14_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/852448.html#1472688">14.&nbsp;re: 在c#中调用并调试C++的DLL </a>
+			</li>
+			<li style="">
+				多谢
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--___大魔王</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl15_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1466594">15.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				谢谢了！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--yzl</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl16_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1462875">16.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				wuxia1802@yahoo.cn,我的地址一直未验证，请发给验证信息，否则修改不了名称！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--吴瑕</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl17_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1456178">17.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				电子邮件地址如何验证
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--hujia0917@esample.com </li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl18_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1119765.html#1455852">18.&nbsp;re: Visual Studio 2008 安装部署项目 程序升级,windows服务安装以及User Setting的深入研究</a>
+			</li>
+			<li style="">
+				Google了下，可以按如下方式进行“在程序第一次运行时调用”：
+<br><a href="" target="_new" rel="nofollow"></a>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--renQX</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl19_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1119765.html#1455824">19.&nbsp;re: Visual Studio 2008 安装部署项目 程序升级,windows服务安装以及User Setting的深入研究</a>
+			</li>
+			<li style="">
+				"在程序第一次运行时调用",,,是不是在程序安装完成后的第一次运行？还是在每次程序启动后运行一次？
+<br>
+<br>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--renQX</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl20_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1448661">20.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				写的太好了，谢谢了！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--独行的天秤</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl21_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1448223">21.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				请帮忙验证MSN的邮件地址，谢谢！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--IVYDONG</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl22_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1074999.html#1434998">22.&nbsp;re: C# 2008 学习笔记 - 自动属性</a>
+			</li>
+			<li style="">
+				nice
+<br>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--math--</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl23_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1423873">23.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				lsk0824@126.com需要验证这个邮箱，谢谢
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--李绍堃</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl24_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1422296">24.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				我得电子邮件需要验证：esun3@126.com谢谢
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张奕尚</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl25_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/285321.html#1418994">25.&nbsp;re: 在Windows VS.NET 2003 下编译 OpenH323 总结 </a>
+			</li>
+			<li style="">
+				这里有预编译的OpenH323-1.19 和 PTLib1.12 的库（包含头文件和lib）以及CallGen323程序。 
+<br><a href="" target="_new"></a>
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--mslk</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl26_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/607543.html#1416621">26.&nbsp;re: Visual C++ 如何：在各种字符串类型之间进行转换</a>
+			</li>
+			<li style="">
+				版主，又是我，呵呵，字体这么小，我怎么看清呢？有什么方法没有。
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Alexander</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl27_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1414361">27.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				我的提示是未将对象设置引用到实例
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张禹</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl28_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1413599">28.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				请教个问题:
+我在xp下制作的web安装包在2003 server环境下安装时没有任何提示的退出，请问是什么原因？
+xp开发环境：vs2008+.net 3.5 + sql server 2000
+2...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--guest</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl29_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1244043.html#1413130">29.&nbsp;re: C#通过TCP传送结构体</a>
+			</li>
+			<li style="">
+				谢谢，学习
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--stg609</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl30_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/821435.html#1411656">30.&nbsp;re: 南京护照办理功略</a>
+			</li>
+			<li style="">
+				蛮详细的,可是为何没有公安局的地址呢??
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--wpl</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl31_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/798540.html#1408335">31.&nbsp;re: C# 2.0 写的串口程序</a>
+			</li>
+			<li style="">
+				我第一次进来，想尝试一下
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--梁宝安</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl32_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1407141">32.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				QQ：314067971  E-Mail：zhang1986love@163.com  我还有好多不懂的地方，请多多指教！！！！！！！！！！waiting for you！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张禹</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl33_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/944153.html#1407137">33.&nbsp;re:  一次.NET Web应用程序安装包的制作经历:Sql数据库安装的3种方式</a>
+			</li>
+			<li style="">
+				请一定与我联系 我的QQ
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张禹</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl34_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/588110.html#1391516">34.&nbsp;re: VS2005运行提示：没有找到 MSVCR80.dll</a>
+			</li>
+			<li style="">
+				哥们，你太牛了
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--翁志容</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl35_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/833943.html#1388438">35.&nbsp;re: 转:LINQ to SQL(LINQ2SQL) vs. ADO.NET Entity Framework(ADOEF)-ccBoy版</a>
+			</li>
+			<li style="">
+				多谢lz了，正在入门阶段，建议真的很好的说
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--蒋正</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl36_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/531069.html#1387191">36.&nbsp;re: MSN电子邮件地址验证</a>
+			</li>
+			<li style="">
+				我的登了几次怎么不行啊
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--张冬</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl37_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1091805.html#1386819">37.&nbsp;re: Building Multi-Tier Web Application in .NET 3.5 Framework Using LINQ to SQL</a>
+			</li>
+			<li style="">
+				Could you please upload the images
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--Could you please upload the images</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl38_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/595175.html#1385732">38.&nbsp;re: 预编译头文件</a>
+			</li>
+			<li style="">
+				感谢楼主，讲的十分透彻。
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--John Rambo</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl39_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/1238624.html#1376933">39.&nbsp;re: 介绍两个UML工具</a>
+			</li>
+			<li style="">
+				哈哈，各有各的口味，我以前用ROSE,后来偶然发现一个国产UML工具－trufun plato，中文界面，感觉比较适合中国人，用起来也很顺手！
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--cjyg</li>
+		
+			<li style="">
+				<a id="Singlecolumn2__27eaab9e26f3_CommentList_ctl40_Hyperlink1" href="http://www.cnblogs.com/sunrack/articles/277725.html#1376672">40.&nbsp;re: 自制PC遥控器</a>
+			</li>
+			<li style="">
+				EDN网站上有个资料下载：
+
+串口型电脑红外遥控器自制资料，内含原理图、装配图、相关软件链接。
+电路简单、特别适合自制；单材料成本10元不到。
+
+不需要写程序。
+
+...
+			</li>
+			<li style="text-align: right; margin-right: 4px;">
+				--jeffshi</li>
+		
+			</ul>
+		
+</div>
+</div>
+
+</div>
+
+    </form>
+	<script type="text/javascript" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/shCore.js"></script>
+	<script type="text/javascript" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/shLanguage.js"></script>
+    <script type="text/javascript">
+        try {
+            SyntaxHighlighter.all();
+        } catch (e) { }
+    </script>  
+    <script type="text/javascript" src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/ShowHidden.js"></script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="%E9%A2%84%E7%BC%96%E8%AF%91%E5%A4%B4%E6%96%87%E4%BB%B6_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-476124-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body></html>

@@ -1,0 +1,124 @@
+/*$Id: wc_style.css,v 1.1 2006/06/22 06:29:29 yangguang4 Exp $*/
+.S_WC_ChatBox {
+	border:1px solid #777777;
+	background-color:#BCBEC0;
+	margin: 0px;
+	padding : 0px;
+}
+.S_WC_ChatBox span{ font-size:12px; 
+  float:none; 
+  margin-right:0px;
+}
+.S_WC_ChatBox .Title{
+	float : left;
+	width : auto;
+	font-size : 12px;
+	font-weight : bold;
+	color : #000000;
+}
+.S_WC_ChatBox .Ctrl{
+	float : right;
+	width : 52px;
+	cursor: pointer;
+	padding-right:2px;
+}
+.S_WC_ChatBox .Ctrl img{
+	margin:0px 2px 0px 0px;
+}
+.S_WC_ChatBox .Hnd{
+	width: auto;
+	height: 36px;
+	cursor: move;
+	background-image: url(boxtitlebg.gif);
+}
+.S_WC_ChatBox .content{
+	margin: 0px;
+	padding : 0px;
+}
+.S_WC_ChatBox .logobox img{
+	margin: 0px;
+	padding : 0px;	
+}
+.S_WC_ChatBox .logobox{
+	text-align: center; 
+}
+
+.S_WC_ChatBox .Fla{
+	float: left;
+	margin: 0px;
+	padding : 0px;
+}
+
+.S_WC_ChatBox .ExtPanel{
+	float: right;
+	margin: 0px;
+	padding : 0px;
+}
+.S_WC_ChatBox .Resize{
+		width: 14px;
+		height:14px;
+		margin: 0px;
+		padding: 0px;
+		cursor: se-resize;
+		float: right;
+		background-image: url(resize.gif);
+}
+.S_WC_ChatBox .Bottom{
+		width: 100%;
+		height: 14px;
+		margin: 0px;
+		padding: 0px;
+		background-color: #BCBEC0;
+		font-size: 10px;
+		line-height: 12px;
+}
+
+
+.S_WC_SBar {
+	margin: 0px;
+	padding: 0px;
+	width: 191px;
+	height: 59px;
+	font-size: 12px;
+	border: 1px solid #777777;
+}
+
+
+.S_WC_SBar .mbody{
+
+}
+.S_WC_SBar .infobar{
+	background-image: url(barbg.gif);
+	height : 25px;
+}
+.S_WC_SBar .bartext{
+	text-align : center;
+	line-height : 34px;
+	/*color : #38598E;*/
+	color : #01329B;
+	cursor: pointer;
+	background-image: url(bartextbg.gif);
+}
+.S_WC_SBar span{
+	font-size : 12px;
+	line-height : 34px;
+  float:none; 
+  margin-right:0px;	
+}
+.S_WC_SBar .olusr{
+	float : right;
+	line-height : 25px;
+	padding-right : 3px;
+	/*color: #7792BF;*/
+}
+.S_WC_SBar .ctrlimg{
+	float : right;
+	padding-right : 7px;
+	cursor: pointer;
+}
+.S_WC_SBar .barlogoblk{
+	float : left;
+}
+.S_WC_SBar .weltxt{
+	text-decoration: underline;
+}
