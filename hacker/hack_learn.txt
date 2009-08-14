@@ -1,0 +1,18 @@
+-- lesson 1
+1. set dev env: download libs, unzip to the same folder, set path
+	binutils-2.17.50-20060824-1.tar.gz
+	gcc-core-3.4.5-20060117-1.tar.gz  
+	gcc-g++-3.4.5-20060117-1.tar.gz  
+	w32api-3.9.tar.gz
+	mingw-runtime-3.12.tar.gz
+	mingw32-make-3.81-1.tar.gz
+	- I download all the latest version, but crash as "cc1.exe has stopped working". So I change to CodeBlocks default installation.
+2. hello world:	cd d:\perforce\git\trunk\hacker\src
+	compile:	gcc -c hello.c -o hello.o
+	link:		gcc hello.o -o hello.exe
+3. hello world hacker version
+	compile:	gcc -c helloH.c -o helloH.o
+	link:		gcc helloH.o -o helloH.exe -lws2_32
+	run server: helloH.exe (check status: netstat -an)
+	run client:	nc -vv 127.0.0.1 1234
+	- I check out %Systemroot%\System32\ has no nc.exe, so I download it with src from http://www.securityfocus.com/data/tools/nc11nt.zip.

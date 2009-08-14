@@ -1,0 +1,80 @@
+ 黑客防线C/C++黑客编程.1.1.开发环境简介+helloworld
+                        ShellEx
+
+本节前置知识要求:
+1.基本的C语言语法的掌握
+2.对socket编程的原理有一定的基础
+3.对Windows数据结构有一定的基础
+4.有一定的自我学习能力.
+
+本节课的主要内容:
+1.配置开发环境
+2.编写hello world
+
+
+1.开发环境简介:
+	gcc简介:
+	一个GNU编译器集合,包括了很多语言的前端程序,比如C, C++, Objective-C, Fortran, Java, Ada...	
+	Windows上的gcc移植版:
+	*Mingw
+	*Cygwin
+
+	在Windows上配置gcc:
+	*下载Mingw
+		需要包:
+		 binutils-2.17.50-20060824-1.tar.gz
+		 gcc-core-3.4.5-20060117-1.tar.gz  
+	 	 gcc-g++-3.4.5-20060117-1.tar.gz  
+	 	 w32api-3.9.tar.gz
+		 mingw-runtime-3.12.tar.gz
+		 mingw32-make-3.81-1.tar.gz
+	*注册环境变量:
+
+	基本的gcc编译参数:
+	*-o参数, 指定输出文件
+        -o <输出文件名>
+	*-c参数, 编译
+        -c <源文件名>
+	
+	编辑器:
+	*gvim
+	*Emacs
+	*Notepad++
+	*或者其他你喜欢的编辑器,如果你愿意,记事本也是可以的
+
+	使用gcc编译程序的例子:
+	hello world
+
+	辅助工具:
+	*MSDN:
+	*Win32API手册
+
+2.C语言语法:
+	请参考相关教材, 在此不在做任何对C语言的介绍.
+
+3.hello world(hacker edition):
+	原理: Windows操作系统上对Socket系列函数以及网络协议的实现.
+
+	程序流程:
+	netcat(客户端): 	发出连接请求 -->接收数据 并且显示 -->关闭连接
+	我们的程序(服务端):	监听 -->接受请求 -->发送数据 -->关闭连接
+
+	代码说明: 
+	
+    struct sockaddr {
+        unsigned short sa_family; //协议族，诸如是AF_XXXX或者PF_XXXX这样的常量
+
+        char sa_data[14]; // 14 bytes的协议地址
+    };
+    此数据结构用做bind, connect等函数的参数，指明地址信息。
+    但一般编程中并不直接针对此数据结构操作，而是使用另一个与sockaddr等价的
+    数据结构sockaddr_in：
+    struct sockaddr_in {
+        short int sin_family;           // 协议族，诸如是AF_XXXX或者PF_XXXX这样的常量
+        unsigned short int sin_port;    // 端口
+        struct in_addr sin_addr;        // Internet 地址
+        unsigned char sin_zero[8];      // 为了保持和 struct sockaddr大小一致,充填用
+    };
+    
+    
+

@@ -7,3 +7,5 @@ index.yaml
 */*/bin-debug/*
 */*/bin-release/*
 cpp/*/*/Debug/*
+hacker/*/*.o
+hacker/*/*.exe
