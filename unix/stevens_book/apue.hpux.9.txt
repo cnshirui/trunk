@@ -1,0 +1,11 @@
+These are hints sent to me by a reader who successfully compiled
+the library under HP-UX 9.04.
+
+In addition to the things mentioned in the README file:
+     
+1) Start with the base of lib.svr4/.
+     
+2) Additional compiler options (-Ae -D_HPUX_SOURCE):
+	cc -O -Ae -D_HPUX_SOURCE <file>.c
+     
+3) All code that needs stropts.h or poll.h should be omitted.

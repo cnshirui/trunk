@@ -1,0 +1,418 @@
+------------------------------------------------------------------------
+Typos and errors found in "Advanced Programming in the UNIX Environment"
+(Last updated May 26, 1999)
+
+Note: If you fetched this file using anonymous ftp from ftp.uu.net,
+      be aware that a more current copy can probably be found at
+      the home page http://www.kohala.com/~rstevens.
+
+-------------------------------------------------------------------------
+
+The following errors are corrected in the 19th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 370: 7th line from top of page: "For example, if we set a read lock ...".
+	  Delete that entire sentence: you cannot obtain the write lock on
+	  bytes 0-49 if there exists a read lock on bytes 0-99.
+
+-------------------------------------------------------------------------
+
+The following errors are corrected in the 18th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 470: 7th line under "Example--Anonymous Memory Mapping": change
+	  item (a) to be "remove the open of /dev/zero and the close
+	  of fd,".
+
+The following errors are corrected in the 17th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 252: Indented paragraph 2/3rds of the way down the page: the "ps"
+	  command for 4.3+BSD should be "ps -xj -otpgid" (the uppercase
+	  "O" should be a lowercase "o").
+
+- p. 357: Figure 11.11: In the call to err_sys() following the call to
+	  tty_cbreak(), about halfway down the page, the comment should
+	  be "tty_cbreak error" and not "tty_raw error".
+
+The following error is corrected in the 16th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 217: Figure: 8.8: All four occurrences of "unpriviliged" should be
+	  "unprivileged".
+
+The following errors are corrected in the 14th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 308: There is a solution to the problem described on the bottom of
+	  the page that avoids losing signals.  Use a pipe and have the
+	  signal handler send notification of the signal by writing to the
+	  pipe, instead of setting global variable.  Then select on the pipe
+	  for readability too.  (This is a comment for readers, and not a
+	  typo to be corrected.)
+
+- p. 371: A better name for the two macros defined following Figure. 12.3
+	  would be "is_read_lockable" and "is_write_lockable", since these
+	  two macros do not determine if a read lock or a write lock exists,
+	  but whether the caller can get that type of lock.
+
+- p. 419: Figure 13.1: the syslogd program does not send e-mail.  Its
+	  messages can be "written to a file or to logged in users or sent
+	  to another host".
+
+- p. 420: Item 6, last sentence: "writes log messages ..." should be
+	  "writes log messages to a specified file (the console is a file)
+	  or to logged-in users, or sends the message to the syslog daemon
+	  on another host."
+
+- p. 421: Figure 13.2: Same comment as above for Figure 13.1 on p. 419.
+
+- p. 421: last two lines on page: "to the system administrator via e-mail and
+	  printed on the console ..." should be "to the system administrators
+	  (if logged in) and printed on the console, while warnings may be
+	  logged to a file."
+
+- p. 728: Change "is_readlock" and "is_writelock" to "is_read_lockable"
+	  and "is_write_lockable".
+
+The following errors are corrected in the 13th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. xviii: Change the author's home page address to
+	    http://www.kohala.com/~rstevens.
+
+- p. 185: Exercise 7.5: "typdef" should be "typedef".
+
+The following errors are corrected in the 12th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p.  57: Figure 3.1: the #loops column for BUFFSIZEs of 64 and 128 should be
+	  22951 and 11476, respectively.
+
+- p. 215: Halfway down page: "Let's look at what happens ... while its running"
+	  should be "... while it is running".
+
+- p. 297: 12th line from top: "its blocked" should be "it is blocked".
+
+- p. 412: The call to err_sys following the second call to open() should
+	  print argv[2], not argv[1].
+
+The following errors are corrected in the 11th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 171: Ninth line from top, last word "that" should be "than".
+
+- p. 369: First and second lines at top of page: L_RDLCK and L_WRLCK should
+	  be F_RDLCK and F_WRLCK, respectively.
+
+- p. 640: Section 19.3.2, 2nd paragraph: "these two function calls need to
+	  placed" should be "these two function calls need to be placed".
+
+- p. 730: Delete index entries for L_RDLCK and L_WRLCK.
+
+The following errors are corrected in the 10th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. xviii: Move the author's email address from the last line of the Preface
+	    to beneath his name, and add the author's home page address
+	    beneath his email address: http://www.noao.edu/~rstevens.
+
+- p. 410: Around middle of page: SC_PAGESIZE should be _SC_PAGESIZE.
+
+- p. 736: Change the index entry for SC_PAGESIZE to _SC_PAGESIZE.
+
+The following errors are corrected in the 9th printing and later (check
+the last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p.  40: Figure 2.7: the minimum values for INT_MIN, LONG_MIN, and SHRT_MIN
+	  should be -32,767, -2,147,483,647, and -32,767 respectively.  (The
+	  minimum values shown in Figure 2.2 on p. 32 are correct.)
+
+- p. 147: Third line from the top: when an ampersand is encountered in
+	  the comment field, it is replaced with the login name
+	  (capitalized).  The sentence should not imply that the entire
+	  name is capitalized--only the login name field is capitalized
+	  when it is substituted.  Also, this substitution of an ampersand
+	  is not done by the getpwXXX() functions, it is done by various
+	  utilities (such as finger).
+
+- p. 239: 9th line from bottom of page: In the sentence beginning with
+	  "The access permissions ..." the phrase "and group-read are enabled"
+	  should be "and group-write are enabled".
+
+- p. 339: In the description for ECHOPRT, "IECHO" should be "ECHO".
+
+- p. 459: In Figure 14.18, in the last line, SEMOPN should be SEMOPM.
+
+- p. 728: Delete the index entry for IECHO.
+
+- p. 736: The index entry for SEMOPN should be SEMOPM.
+
+The following error is corrected in the 7th printing and later (check the
+last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 422: Half way down page: "of the facility shown in {syslog_facility}"
+	  should be "of the facility shown in Figure 13.4".
+
+The following errors are corrected in the 6th printing and later (check the
+last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 26: Second sentence of 2.2.2: "POSIX stands for Portable Operating
+	 System Interface."  (Omit "for Computer Environments".)
+
+- p. 65: Fifth line on the page: "The following three commands ..." should be
+	 "The following four commands ..."
+
+- p. 146: Fifth line of second bullet item: the second lowercase z in the
+	  character set [a-zA-z0-9./] should be an uppercase Z.
+
+- p. 307: The declaration for TELL_WAIT() should be TELL_WAIT(void).
+
+- p. 331: In Figure 11.6, the typical values for START and STOP are flipped:
+	  START should be ^Q and STOP should be ^S.
+
+- p. 408: In the functions writen() and readn() the variables nwritten and
+	  nread should both be ssize_t, not size_t, since both can be
+	  negative.
+
+- p. 434: The declaration for TELL_WAIT() should be TELL_WAIT(void).
+
+- p. 493: The final argument to request() in Program 15.15 should be
+	  STDOUT_FILENO, not STDIN_FILENO.  (Notice that both descriptors
+	  refer to the same full-duplex stream pipe, so the code works,
+	  but for aesthetic reasons we shouldn't write to standard input.)
+
+- p. 494: The four references to STDOUT_FILENO in Program 15.16 should be using
+	  the "fd" argument instead (which will be STDOUT_FILENO, from the
+	  previous typo).
+
+- p. 579: Fifth line in Section 18.1: "while Berkeley systems calls it tip"
+	  should be "while Berkeley systems call it tip".
+
+- p. 584: Second line after list item 4 (just over halfway down the page):
+	  "the Devices file is already is use": "is use" should be "in use".
+
+- p. 598: One-third of the way down the page, the line log_sys("calloc error")
+	  should be log_sys("malloc error").
+
+- p. 606: In the 7th line of the comment at the top of the page,
+	  childptr->parity should be cliptr->parity.
+
+- p. 606: Third line of code from the bottom: the call to log_sys() should be
+		log_sys("writen error");
+
+- p. 611: The call to sprintf() at the bottom of the page should be:
+		sprintf(errmsg, "unknown send escape char: \\%s\n",
+
+- p. 628: Third line of code from the bottom: the comment "but newlines
+	  are written to the file" is wrong.  Change the comment to
+	  "increment and display line counter".
+
+- p. 733: Index entries for "Portable ..." and "POSIX": same change as for
+	  p. 26.
+
+The following errors are corrected in the 5th printing and later (check the
+last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+
+- p. 12:  In the function prototype for write, 7 lines from the bottom of
+	  the page, the second argument should be a constant pointer:
+	  	ssize_t write(int, const void *, size_t);
+
+- p. 31:  The first sentence of the final paragraph should read "the minimum
+	  number of standard I/O streams that the implementation guarantees
+	  can be open at once".  (This is a clarification, not a typo.)
+
+- p. 99:  Towards the end of first paragraph of Section 4.16: "can create
+	  a symbolic links" should be "can create a symbolic link".
+
+- p. 107: In the function prototype for readdir(), it returns NULL "at end
+	  of directory or error".
+
+- p. 146: Third last line of second bullet item: "used ID" should be "user ID".
+
+- p. 167: Second bullet item from the bottom (Uninitialized data segment):
+	  "initialized by the kernel to 0" should really be "initialized by
+	  the kernel to arithmetic 0 or null pointers".
+
+- p. 180: In the call to setvbuf() in Program 7.6, the final two arguments
+	  are swapped: should be setvbuf(fp, databuf, _IOLBF, BUFSIZ).
+
+- p. 201: First sentence after "Example": the reference to Section 8.3
+	  should be to Section 8.5.
+
+- p. 205: Second line on page: reference to Section 15.2 should be to
+	  Program 14.3.
+
+- p. 238: 4th sentence from top of page: "These parameters specify the baud
+	  rate of the terminal, for example" should be "One parameter is the
+	  baud rate of the terminal, for example."  (Rewording for clarity.)
+
+- p. 244: 7th line above "9.5 Sessions": "that is has happened" should be
+	  "that this has happened".
+
+- p. 248: 4th line from the bottom: "foreground of" should be "foreground or".
+
+- p. 270: signal function: returns SIG_ERR on error.
+
+- p. 273: 3rd sentence under "Program Start-up": "the exec functions change
+	  the status" should be "the exec functions change the disposition".
+
+- p. 273: Last sentence on page: "catches only the signal if" should be
+	  "catches the signal only if".
+
+- p. 298: 3rd line from bottom of page: "these other signal" should be
+	  "these other signals".
+
+- p. 307: In the two calls to err_sys() at the beginning of TELL_WAIT(),
+	  the error messages should refer to SIGUSR1 and SIGUSR2, respectively,
+	  not SIGINT and SIGQUIT.
+
+- p. 313: 4th line of text: "The catching of this signal in the parent ..."
+	  should be replaced with "The delivery of this signal in the
+	  parent ...".
+
+- p. 323: Exercise 10.3 should refer to Program 10.6, not 10.5.
+
+- p. 346: Label for Program 11.3: "termid" should be "ctermid".
+
+- p. 373: The 3rd line of output at the top of the page "child: fcntl error ..."
+	  should read "child: writew_lock error ...".
+
+- p. 378: First line following Figure 12.6, "file (every" should be
+	  "file locking (every".
+
+- p. 410: 3rd line of MAP_SHARED: "that is, as store" should be "that is,
+	  a store".
+
+- p. 481: In the 5th line of the 2nd paragraph, "(1-255)" should be
+	  "(1 through 255)" to reiterate this is a range, not subtraction.
+
+- p. 490: Item 1 after second paragraph: "similar to a library function" should
+	  be "similar to the client calling a library function".  (This is a
+	  rewording for clarity, not a typo.)
+
+- p. 511: The variable "n" in the function loop() is not needed.
+
+- p. 512: Storing the results of the poll() call into the variable "n" is
+	  not needed, since it's never used.
+
+- p. 512: The call to log_sys() after the poll() should say "poll error",
+	  not "select error".
+
+- p. 521: 6th line from the top: "to the called" should be "to the caller".
+
+- p. 528: First sentence after Program 16.4: "The size of the index buffer"
+	  should be "The sizes of the ...".
+
+- p. 533: In the call to err_dump() halfway down the page, it should say
+	  "read error of index record" (not "indexc record").
+
+- p. 545: In the 3rd line of the comment at the top of the page, "this is
+	  function" should be "this function".
+
+- p. 547: The first sentence of "Single-Process Results": the 100 should
+	  be 1000.
+
+- p. 560: First sentence after Program 17.3: "many of which can be ignored"
+	  "should be "most of which can be ignored".  (Rewording)
+
+- p. 623: 3rd line of comment at top of page: "charcter" should be
+	  "character".
+
+- p. 670: Function prototype for readdir(): same fix as on p. 107.
+
+- p. 695: Last line of answer to 5.6: "still be in" should be "still in".
+
+- p. 715: The SFIO package (Korn & Vo) is now freely available from AT&T:
+	  echo 'send attgifts/sfio.shar' | mail netlib@research.att.com
+
+- p. 738: Add page number 270 to the entry for SIG_ERR.
+
+The following errors are corrected in the 2nd printing and later (check the
+last line on the copyright page to determine the printing).
+-------------------------------------------------------------------------
+- p. 31:  Last sentence of third from bottom paragraph should read "we
+	  would have CHAR_MIN equal to 0 and ...".  (UCHAR_MIN does not
+	  exist.)
+
+- p. 55:  Next to last sentence in Section 3.7: "signed size_t" should be
+	  "unsigned size_t".
+
+- p. 119: Exercise 4.19: "is path is" should be "if path is".
+
+- p. 124: Last sentence of indented paragraph above Figure 5.1: "st_blksiz"
+	  should be "st_blksize".
+
+- p. 125: Indented paragraph at end of Section 5.4: "Non-ASNI" should be
+	  "Non-ANSI".
+
+- p. 139: Next to last sentence on page: "st_blksiz" should be "st_blksize".
+
+- p. 143: The sentence at the top of the page: "One way for the tempnam ..."
+	  should be removed, since access() uses the real user and group IDs
+	  and the test may not work right from a set-user-ID program.
+
+- p. 200: Last sentence in Figure 8.3: "The macro determines if" should be
+	  "The WIFSTOPPED macro determines if".
+
+- p. 224: Last line on page: "each command-line argument" should be
+	  "its command-line argument".
+
+- p. 225: In the heading for Program 8.14 change "each command-line argument"
+	  to "the command-line argument".
+
+- p. 240: The first sentence on the page should start: "login really does
+	  more than we've described here" (not init).
+
+- p. 250: Halfway down the page: "Doing this causes the shell to place the
+	  job into the foreground process group (setpgid)"; replace setpgid
+	  with tcsetpgrp.
+
+- p. 273: Second paragraph under "Program Start-up": "With any of the shells"
+	  should be "With a non-job-control shell".
+
+- p. 279: Second paragraph: Change "Note also that longjmp and siglongjmp
+	  are not in Figure 10.3" to "POSIX.1 does not include longjmp
+	  and siglongjmp in Figure 10.3".
+
+- p. 281: Third indented paragraph at the top of the page: "either signal
+	  of sigset" should be "either signal or sigset".
+
+- p. 342: For PARMRK, add the sentence "If ISTRIP is not set, a valid \377
+	  is passed to the process as \377, \377.
+
+- p. 550: Exercise 16.2: "that is was reading" should be "that it was reading".
+
+- p. 561: Remove the opening paren in the C comment at the top of the page.
+
+- p. 595: The "usage:" message generated at the beginning of the function
+	  should say "usage: call <options> <hostname>".
+
+- p. 623: The second line after the #ifdef VSUSP should be a call to
+	  tty_reset(STDIN_FILENO) and not to tty_cbreak(STDIN_FILENO).
+
+- p. 719: The reference to page 143 for "access" should be removed.
+
+- p. 728: Add a reference to page 342 for ISTRIP.
+
+- p. 737: Remove the reference to page 250 for setpgid.
+
+- p. 741: Add a reference to page 250 for tcsetpgrp.
+
+- p. 742: The reference to p. 623 for tty_cbreak should be removed and a
+	  reference to p. 623 should be added for tty_reset.
+
+- p. 742: The reference to UCHAR_MIN should be deleted.
