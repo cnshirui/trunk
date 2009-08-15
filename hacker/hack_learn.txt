@@ -16,3 +16,12 @@
 	run server: helloH.exe (check status: netstat -an)
 	run client:	nc -vv 127.0.0.1 1234
 	- I check out %Systemroot%\System32\ has no nc.exe, so I download it with src from http://www.securityfocus.com/data/tools/nc11nt.zip.
+	
+-- lesson 2
+0. use system() to run a command
+1. module program degisn
+	compile:	gcc -c -g main.c -o main.o (-g means debug version)
+	compile:	gcc -c -g door.c -o door.o
+	link:		gcc main.o door.o -o door.exe -lws2_32
+2. makefile
+	

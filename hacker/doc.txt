@@ -1,0 +1,62 @@
+黑客防线C/C++黑客编程.1.3.开辟条管道
+			ShellEx
+
+本节前置知识要求:
+1.基本的C语言语法的掌握
+2.对Windows数据结构有一定的基础
+3.有一定的自我学习能力.
+4.对上一节内容有切实的理解
+
+本节课主要内容:
+1.创建新进程的方法
+2.用管道(PIPE)进行进程间通信
+
+1.程序流程(伪代码):
+	在上一节的基础上...
+	这里是处理命令交互的函数
+	int open_door(...){
+		初始化
+		验证密码
+		while (还没有接受的退出程序的命令就保持循环) {
+			接受命令
+			*分析命令*
+                --> 退出命令: .bye
+                    退出
+				-->	如果是启动shell的命令：.shell
+					就启动一个cmd进入终端交互
+				-->	...
+		}
+	}
+
+	int get_shell(SOCKET lpv) {
+		创建两个管道pipe_write, pipe_read
+		pipe_write用于输入到cmd.exe
+		pipe_read用于读出cmd.exe的输出
+		创建进程cmd.exe
+		...
+	}
+    
+
+    管道通信示意图
+            read1                write1
+            <---------------------------
+    cmd.exe                             door.exe
+            --------------------------->
+            write2                 read2
+
+2.函数模块描述:
+	int get_shell(SOCKET lpv)
+
+3.使用管道重定向
+	SECURITY_ATTRIBUTES结构
+	CreatePipe函数
+
+4.开启一个新进程
+	STARTUPINFO结构
+	PROCESS_INFORMATION结构
+	GetStartupInfo函数
+	CreateProcess函数
+
+
+
+5.架起双方的桥梁
