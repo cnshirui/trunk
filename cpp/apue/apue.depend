@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1250429539 source:d:\perforce\git\trunk\cpp\apue\myls.c
+	<sys/types.h>
+	<dirent.h>
+	<stdio.h>
+	<stdlib.h>
+
+1250430389 source:d:\perforce\git\trunk\cpp\apue\mycat.c
+	"ourhdr.h"
+
+1250430161 d:\perforce\git\trunk\cpp\apue\ourhdr.h
+	<errno.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+
+1250430670 source:d:\perforce\git\trunk\cpp\apue\ls1.c
+	<sys/types.h>
+	<dirent.h>
+	"ourhdr.h"
+
