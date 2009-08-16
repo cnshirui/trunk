@@ -1,3 +1,4 @@
+68 640 临沂路 浦东南路 浦三路
 
     CString prompt;
     AfxFormatString1(prompt, IDP_ASK_TO_SAVE, name);

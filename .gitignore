@@ -9,3 +9,5 @@ index.yaml
 cpp/*/*/Debug/*
 hacker/*/*.o
 hacker/*/*.exe
+unix/*/*/*.o
+unix/*/*/*.exe

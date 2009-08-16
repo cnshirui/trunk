@@ -1,0 +1,30 @@
+黑客防线C/C++黑客编程.1.4.加点零件
+			ShellEx
+
+本节前置知识要求:
+1.基本的C语言语法的掌握
+2.对Windows数据结构有一定的基础
+3.有一定的自我学习能力.
+4.对上一节内容有切实的理解
+
+本节课主要内容:
+1.学习windows编程中的一些常用技术
+
+模块描述和涉及的知识点:
+/* 描述: 控制服务端OS的关机, 登出, 重启
+ * 相关知识: 相关API运用
+ * */
+int shutdown_os(SOCKET target, int flags);
+
+/* 描述: 得出进程列表
+ * 相关知识: 访问进程并且获得相关信息
+ * */
+int list_process(SOCKET target);
+
+/* 描述: 获取windows的默认登录密码和用户名
+ * 相关知识: 访问注册表
+ * */
+int get_default_pass(SOCKET target);
+
+
+

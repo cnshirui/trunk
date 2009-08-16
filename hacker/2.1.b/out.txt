@@ -1,0 +1,2167 @@
+[i]Create Threads...
+
+4-8
+adsp
+audio
+bus
+cdrom
+->a
+console
+core
+-
+disk
+dri
+dsp
+dvd
+-
+fd
+-
+fd0
+full
+fuse
+hda
+hpet
+initctl
+input
+kmem
+1234
+kmsg
+log
+loop0
+MAKEDEV
+-
+mem
+mixer
+net
+null
+nvidia0
+nvidiactl
+oldmem
+port
+ppp
+psaux
+ptmx
+pts
+ptya0
+ptya1
+ptya2
+ptya3
+ptya4
+ptya5
+ptya6
+ptya7
+ptya8
+ptya9
+ptyaa
+ptyab
+ptyac
+ptyad
+ptyae
+ptyaf
+ptyb0
+ptyb1
+ptyb2
+ptyb3
+ptyb4
+ptyb5
+ptyb6
+ptyb7
+ptyb8
+ptyb9
+ptyba
+ptybb
+ptybc
+ptybd
+ptybe
+ptybf
+ptyc0
+ptyc1
+ptyc2
+ptyc3
+ptyc4
+ptyc5
+ptyc6
+ptyc7
+ptyc8
+ptyc9
+ptyca
+ptycb
+ptycc
+ptycd
+ptyce
+ptycf
+ptyd0
+ptyd1
+ptyd2
+ptyd3
+ptyd4
+ptyd5
+ptyd6
+ptyd7
+ptyd8
+ptyd9
+ptyda
+ptydb
+ptydc
+ptydd
+ptyde
+ptydf
+ptye0
+ptye1
+ptye2
+ptye3
+ptye4
+ptye5
+ptye6
+ptye7
+ptye8
+ptye9
+ptyea
+ptyeb
+ptyec
+ptyed
+ptyee
+ptyef
+ptyp0
+ptyp1
+ptyp2
+ptyp3
+ptyp4
+ptyp5
+ptyp6
+ptyp7
+ptyp8
+ptyp9
+ptypa
+ptypb
+ptypc
+ptypd
+ptype
+ptypf
+ptyq0
+ptyq1
+ptyq2
+ptyq3
+ptyq4
+ptyq5
+ptyq6
+ptyq7
+ptyq8
+ptyq9
+ptyqa
+ptyqb
+ptyqc
+ptyqd
+ptyqe
+ptyqf
+ptyr0
+ptyr1
+ptyr2
+ptyr3
+ptyr4
+ptyr5
+ptyr6
+ptyr7
+ptyr8
+ptyr9
+ptyra
+ptyrb
+ptyrc
+ptyrd
+ptyre
+ptyrf
+ptys0
+ptys1
+ptys2
+ptys3
+ptys4
+ptys5
+ptys6
+ptys7
+ptys8
+ptys9
+ptysa
+ptysb
+ptysc
+ptysd
+ptyse
+ptysf
+ptyt0
+ptyt1
+ptyt2
+ptyt3
+ptyt4
+ptyt5
+ptyt6
+ptyt7
+ptyt8
+ptyt9
+ptyta
+ptytb
+ptytc
+ptytd
+ptyte
+ptytf
+ptyu0
+ptyu1
+ptyu2
+ptyu3
+ptyu4
+ptyu5
+ptyu6
+ptyu7
+ptyu8
+ptyu9
+ptyua
+ptyub
+ptyuc
+ptyud
+ptyue
+ptyuf
+ptyv0
+ptyv1
+ptyv2
+ptyv3
+ptyv4
+ptyv5
+ptyv6
+ptyv7
+ptyv8
+ptyv9
+ptyva
+ptyvb
+ptyvc
+ptyvd
+ptyve
+ptyvf
+ptyw0
+ptyw1
+ptyw2
+ptyw3
+ptyw4
+ptyw5
+ptyw6
+ptyw7
+ptyw8
+ptyw9
+ptywa
+ptywb
+ptywc
+ptywd
+ptywe
+ptywf
+ptyx0
+ptyx1
+ptyx2
+ptyx3
+ptyx4
+ptyx5
+ptyx6
+ptyx7
+ptyx8
+ptyx9
+ptyxa
+ptyxb
+ptyxc
+ptyxd
+ptyxe
+ptyxf
+ptyy0
+ptyy1
+ptyy2
+ptyy3
+ptyy4
+ptyy5
+ptyy6
+ptyy7
+ptyy8
+ptyy9
+ptyya
+ptyyb
+ptyyc
+ptyyd
+ptyye
+ptyyf
+ptyz0
+ptyz1
+ptyz2
+ptyz3
+ptyz4
+ptyz5
+ptyz6
+ptyz7
+ptyz8
+ptyz9
+ptyza
+ptyzb
+ptyzc
+ptyzd
+ptyze
+ptyzf
+ram0
+ram1
+ram10
+ram11
+ram12
+ram13
+ram14
+ram15
+ram2
+ram3
+ram4
+ram5
+ram6
+ram7
+ram8
+ram9
+random
+rtc
+sda
+sda1
+sda10
+sda11
+sda12
+sda13
+sda2
+sda5
+sda6
+sda7
+sda8
+sda9
+sdb
+sdb1
+sequencer
+sequencer2
+sg0
+sg1
+shm
+snapshot
+snd
+sndstat
+stderr
+-2
+stdin
+->
+stdout
+-1
+tty
+tty0
+tty1
+tty10
+tty11
+tty12
+tty13
+tty14
+tty15
+tty16
+tty17
+tty18
+tty19
+tty2
+tty20
+tty21
+tty22
+tty23
+tty24
+tty25
+tty26
+tty27
+tty28
+tty29
+tty3
+tty30
+tty31
+tty32
+tty33
+tty34
+tty35
+tty36
+tty37
+tty38
+tty39
+tty4
+tty40
+tty41
+tty42
+tty43
+tty44
+tty45
+tty46
+tty47
+tty48
+tty49
+tty5
+tty50
+tty51
+tty52
+tty53
+tty54
+tty55
+tty56
+tty57
+tty58
+tty59
+tty6
+tty60
+tty61
+tty62
+tty63
+tty7
+tty8
+tty9
+ttya0
+ttya1
+ttya2
+ttya3
+ttya4
+ttya5
+ttya6
+ttya7
+ttya8
+ttya9
+ttyaa
+ttyab
+ttyac
+ttyad
+ttyae
+ttyaf
+ttyb0
+ttyb1
+ttyb2
+ttyb3
+ttyb4
+ttyb5
+ttyb6
+ttyb7
+ttyb8
+ttyb9
+ttyba
+ttybb
+ttybc
+ttybd
+ttybe
+ttybf
+ttyc0
+ttyc1
+ttyc2
+ttyc3
+ttyc4
+ttyc5
+ttyc6
+ttyc7
+ttyc8
+ttyc9
+ttyca
+ttycb
+ttycc
+ttycd
+ttyce
+ttycf
+ttyd0
+ttyd1
+ttyd2
+ttyd3
+ttyd4
+ttyd5
+ttyd6
+ttyd7
+ttyd8
+ttyd9
+ttyda
+ttydb
+ttydc
+ttydd
+ttyde
+ttydf
+ttye0
+ttye1
+ttye2
+ttye3
+ttye4
+ttye5
+ttye6
+ttye7
+ttye8
+ttye9
+ttyea
+ttyeb
+ttyec
+ttyed
+ttyee
+ttyef
+ttyp0
+ttyp1
+ttyp2
+ttyp3
+ttyp4
+ttyp5
+ttyp6
+ttyp7
+ttyp8
+ttyp9
+ttypa
+ttypb
+ttypc
+ttypd
+ttype
+ttypf
+ttyq0
+ttyq1
+ttyq2
+ttyq3
+ttyq4
+ttyq5
+ttyq6
+ttyq7
+ttyq8
+ttyq9
+ttyqa
+ttyqb
+ttyqc
+ttyqd
+ttyqe
+ttyqf
+ttyr0
+ttyr1
+ttyr2
+ttyr3
+ttyr4
+ttyr5
+ttyr6
+ttyr7
+ttyr8
+ttyr9
+ttyra
+ttyrb
+ttyrc
+ttyrd
+ttyre
+ttyrf
+ttys0
+ttyS0
+ttys1
+ttyS1
+ttys2
+ttyS2
+ttys3
+ttyS3
+ttys4
+ttys5
+ttys6
+ttys7
+ttys8
+ttys9
+ttysa
+ttysb
+ttysc
+ttysd
+ttyse
+ttysf
+ttyt0
+ttyt1
+ttyt2
+ttyt3
+ttyt4
+ttyt5
+ttyt6
+ttyt7
+ttyt8
+ttyt9
+ttyta
+ttytb
+ttytc
+ttytd
+ttyte
+ttytf
+ttyu0
+ttyu1
+ttyu2
+ttyu3
+ttyu4
+ttyu5
+ttyu6
+ttyu7
+ttyu8
+ttyu9
+ttyua
+ttyub
+ttyuc
+ttyud
+ttyue
+ttyuf
+ttyv0
+ttyv1
+ttyv2
+ttyv3
+ttyv4
+ttyv5
+ttyv6
+ttyv7
+ttyv8
+ttyv9
+ttyva
+ttyvb
+ttyvc
+ttyvd
+ttyve
+ttyvf
+ttyw0
+ttyw1
+ttyw2
+ttyw3
+ttyw4
+ttyw5
+ttyw6
+ttyw7
+ttyw8
+ttyw9
+ttywa
+ttywb
+ttywc
+ttywd
+ttywe
+ttywf
+ttyx0
+ttyx1
+ttyx2
+ttyx3
+ttyx4
+ttyx5
+ttyx6
+ttyx7
+ttyx8
+ttyx9
+ttyxa
+ttyxb
+ttyxc
+ttyxd
+ttyxe
+ttyxf
+ttyy0
+ttyy1
+ttyy2
+ttyy3
+ttyy4
+ttyy5
+ttyy6
+ttyy7
+ttyy8
+ttyy9
+ttyya
+ttyyb
+ttyyc
+ttyyd
+ttyye
+ttyyf
+ttyz0
+ttyz1
+ttyz2
+ttyz3
+ttyz4
+ttyz5
+ttyz6
+ttyz7
+ttyz8
+ttyz9
+ttyza
+ttyzb
+ttyzc
+ttyzd
+ttyze
+ttyzf
+urandom
+usb1
+usb2
+usb3
+usb4
+usb5
+usb6
+usbdev1.1_ep00
+usbdev1.1_ep81
+usbdev2.1_ep00
+usbdev2.1_ep81
+usbdev3.1_ep00
+usbdev3.1_ep81
+usbdev4.1_ep00
+usbdev4.1_ep81
+usbdev4.2_ep00
+usbdev4.2_ep01
+usbdev4.2_ep81
+usbdev5.1_ep00
+usbdev5.1_ep81
+usbdev6.1_ep00
+usbdev6.1_ep81
+vboxdrv
+vcs
+vcs1
+vcs2
+vcs3
+vcs4
+vcs5
+vcs6
+vcs7
+vcs8
+vcsa
+vcsa1
+vcsa2
+vcsa3
+vcsa4
+vcsa5
+vcsa6
+vcsa7
+vcsa8
+xconsole
+zero
+[i]try              4-8 on             root 	 fail!
+[i]try             adsp on             root 	 fail!
+[i]try            audio on             root 	 fail!
+[i]try              4-8 on          shellex 	 fail!
+[i]try              4-8 on    Administrator 	 fail!
+[i]try              bus on             root 	 fail!
+[i]try             adsp on          shellex 	 fail!
+[i]try             adsp on    Administrator 	 fail!
+[i]try            cdrom on             root 	 fail!
+[i]try            audio on          shellex 	 fail!
+[i]try            audio on    Administrator 	 fail!
+[i]try              ->a on             root 	 fail!
+[i]try              bus on          shellex 	 fail!
+[i]try              bus on    Administrator 	 fail!
+[i]try          console on             root 	 fail!
+[i]try            cdrom on          shellex 	 fail!
+[i]try            cdrom on    Administrator 	 fail!
+[i]try             core on             root 	 fail!
+[i]try              ->a on          shellex 	 fail!
+[i]try              ->a on    Administrator 	 fail!
+[i]try                - on             root 	 fail!
+[i]try          console on          shellex 	 fail!
+[i]try          console on    Administrator 	 fail!
+[i]try             disk on             root 	 fail!
+[i]try             core on          shellex 	 fail!
+[i]try             core on    Administrator 	 fail!
+[i]try              dri on             root 	 fail!
+[i]try                - on          shellex 	 fail!
+[i]try                - on    Administrator 	 fail!
+[i]try              dsp on             root 	 fail!
+[i]try             disk on          shellex 	 fail!
+[i]try             disk on    Administrator 	 fail!
+[i]try              dvd on             root 	 fail!
+[i]try              dri on          shellex 	 fail!
+[i]try              dri on    Administrator 	 fail!
+[i]try                - on             root 	 fail!
+[i]try              dsp on          shellex 	 fail!
+[i]try              dsp on    Administrator 	 fail!
+[i]try               fd on             root 	 fail!
+[i]try              dvd on          shellex 	 fail!
+[i]try              dvd on    Administrator 	 fail!
+[i]try                - on             root 	 fail!
+[i]try                - on          shellex 	 fail!
+[i]try                - on    Administrator 	 fail!
+[i]try              fd0 on             root 	 fail!
+[i]try               fd on          shellex 	 fail!
+[i]try               fd on    Administrator 	 fail!
+[i]try             full on             root 	 fail!
+[i]try                - on          shellex 	 fail!
+[i]try                - on    Administrator 	 fail!
+[i]try             fuse on             root 	 fail!
+[i]try              fd0 on          shellex 	 fail!
+[i]try              fd0 on    Administrator 	 fail!
+[i]try              hda on             root 	 fail!
+[i]try             full on          shellex 	 fail!
+[i]try             full on    Administrator 	 fail!
+[i]try             hpet on             root 	 fail!
+[i]try             fuse on          shellex 	 fail!
+[i]try             fuse on    Administrator 	 fail!
+[i]try          initctl on             root 	 fail!
+[i]try              hda on          shellex 	 fail!
+[i]try              hda on    Administrator 	 fail!
+[i]try            input on             root 	 fail!
+[i]try             hpet on          shellex 	 fail!
+[i]try             hpet on    Administrator 	 fail!
+[i]try             kmem on             root 	 fail!
+[i]try          initctl on          shellex 	 fail!
+[i]try          initctl on    Administrator 	 fail!
+[i]try             1234 on             root 	 fail!
+[i]try            input on          shellex 	 fail!
+[i]try            input on    Administrator 	 fail!
+[i]try             kmsg on             root 	 fail!
+[i]try             kmem on          shellex 	 fail!
+[i]try             kmem on    Administrator 	 fail!
+[i]try              log on             root 	 fail!
+[i]try             1234 on    Administrator 	 fail!
+[i]try            loop0 on             root 	 fail!
+[i]try             kmsg on    Administrator 	 fail!
+[i]try          MAKEDEV on             root 	 fail!
+[i]try              log on    Administrator 	 fail!
+[i]try                - on             root 	 fail!
+[i]try            loop0 on    Administrator 	 fail!
+[i]try              mem on             root 	 fail!
+[i]try          MAKEDEV on    Administrator 	 fail!
+[i]try            mixer on             root 	 fail!
+[i]try                - on    Administrator 	 fail!
+[i]try              net on             root 	 fail!
+[i]try              mem on    Administrator 	 fail!
+[i]try             null on             root 	 fail!
+[i]try            mixer on    Administrator 	 fail!
+[i]try          nvidia0 on             root 	 fail!
+[i]try              net on    Administrator 	 fail!
+[i]try        nvidiactl on             root 	 fail!
+[i]try             null on    Administrator 	 fail!
+[i]try           oldmem on             root 	 fail!
+[i]try             1234 on          shellex 	 success!
+[t]thread 1 has got a password for <shellex>, EXIT thread.
+[i]try          nvidia0 on    Administrator 	 fail!
+[i]try             port on             root 	 fail!
+[i]try        nvidiactl on    Administrator 	 fail!
+[i]try              ppp on             root 	 fail!
+[i]try           oldmem on    Administrator 	 fail!
+[i]try            psaux on             root 	 fail!
+[i]try             port on    Administrator 	 fail!
+[i]try             ptmx on             root 	 fail!
+[i]try              ppp on    Administrator 	 fail!
+[i]try              pts on             root 	 fail!
+[i]try            psaux on    Administrator 	 fail!
+[i]try            ptya0 on             root 	 fail!
+[i]try             ptmx on    Administrator 	 fail!
+[i]try            ptya1 on             root 	 fail!
+[i]try              pts on    Administrator 	 fail!
+[i]try            ptya2 on             root 	 fail!
+[i]try            ptya0 on    Administrator 	 fail!
+[i]try            ptya3 on             root 	 fail!
+[i]try            ptya1 on    Administrator 	 fail!
+[i]try            ptya4 on             root 	 fail!
+[i]try            ptya2 on    Administrator 	 fail!
+[i]try            ptya5 on             root 	 fail!
+[i]try            ptya3 on    Administrator 	 fail!
+[i]try            ptya6 on             root 	 fail!
+[i]try            ptya4 on    Administrator 	 fail!
+[i]try            ptya7 on             root 	 fail!
+[i]try            ptya5 on    Administrator 	 fail!
+[i]try            ptya8 on             root 	 fail!
+[i]try            ptya6 on    Administrator 	 fail!
+[i]try            ptya9 on             root 	 fail!
+[i]try            ptya7 on    Administrator 	 fail!
+[i]try            ptyaa on             root 	 fail!
+[i]try            ptya8 on    Administrator 	 fail!
+[i]try            ptyab on             root 	 fail!
+[i]try            ptya9 on    Administrator 	 fail!
+[i]try            ptyac on             root 	 fail!
+[i]try            ptyaa on    Administrator 	 fail!
+[i]try            ptyad on             root 	 fail!
+[i]try            ptyab on    Administrator 	 fail!
+[i]try            ptyae on             root 	 fail!
+[i]try            ptyac on    Administrator 	 fail!
+[i]try            ptyaf on             root 	 fail!
+[i]try            ptyad on    Administrator 	 fail!
+[i]try            ptyb0 on             root 	 fail!
+[i]try            ptyae on    Administrator 	 fail!
+[i]try            ptyb1 on             root 	 fail!
+[i]try            ptyaf on    Administrator 	 fail!
+[i]try            ptyb2 on             root 	 fail!
+[i]try            ptyb0 on    Administrator 	 fail!
+[i]try            ptyb3 on             root 	 fail!
+[i]try            ptyb1 on    Administrator 	 fail!
+[i]try            ptyb4 on             root 	 fail!
+[i]try            ptyb2 on    Administrator 	 fail!
+[i]try            ptyb5 on             root 	 fail!
+[i]try            ptyb3 on    Administrator 	 fail!
+[i]try            ptyb6 on             root 	 fail!
+[i]try            ptyb4 on    Administrator 	 fail!
+[i]try            ptyb7 on             root 	 fail!
+[i]try            ptyb5 on    Administrator 	 fail!
+[i]try            ptyb8 on             root 	 fail!
+[i]try            ptyb6 on    Administrator 	 fail!
+[i]try            ptyb9 on             root 	 fail!
+[i]try            ptyb7 on    Administrator 	 fail!
+[i]try            ptyba on             root 	 fail!
+[i]try            ptyb8 on    Administrator 	 fail!
+[i]try            ptybb on             root 	 fail!
+[i]try            ptyb9 on    Administrator 	 fail!
+[i]try            ptybc on             root 	 fail!
+[i]try            ptyba on    Administrator 	 fail!
+[i]try            ptybd on             root 	 fail!
+[i]try            ptybb on    Administrator 	 fail!
+[i]try            ptybe on             root 	 fail!
+[i]try            ptybc on    Administrator 	 fail!
+[i]try            ptybf on             root 	 fail!
+[i]try            ptybd on    Administrator 	 fail!
+[i]try            ptyc0 on             root 	 fail!
+[i]try            ptybe on    Administrator 	 fail!
+[i]try            ptyc1 on             root 	 fail!
+[i]try            ptybf on    Administrator 	 fail!
+[i]try            ptyc2 on             root 	 fail!
+[i]try            ptyc0 on    Administrator 	 fail!
+[i]try            ptyc3 on             root 	 fail!
+[i]try            ptyc1 on    Administrator 	 fail!
+[i]try            ptyc4 on             root 	 fail!
+[i]try            ptyc2 on    Administrator 	 fail!
+[i]try            ptyc5 on             root 	 fail!
+[i]try            ptyc3 on    Administrator 	 fail!
+[i]try            ptyc6 on             root 	 fail!
+[i]try            ptyc4 on    Administrator 	 fail!
+[i]try            ptyc7 on             root 	 fail!
+[i]try            ptyc5 on    Administrator 	 fail!
+[i]try            ptyc8 on             root 	 fail!
+[i]try            ptyc6 on    Administrator 	 fail!
+[i]try            ptyc9 on             root 	 fail!
+[i]try            ptyc7 on    Administrator 	 fail!
+[i]try            ptyca on             root 	 fail!
+[i]try            ptyc8 on    Administrator 	 fail!
+[i]try            ptycb on             root 	 fail!
+[i]try            ptyc9 on    Administrator 	 fail!
+[i]try            ptycc on             root 	 fail!
+[i]try            ptyca on    Administrator 	 fail!
+[i]try            ptycd on             root 	 fail!
+[i]try            ptycb on    Administrator 	 fail!
+[i]try            ptyce on             root 	 fail!
+[i]try            ptycc on    Administrator 	 fail!
+[i]try            ptycf on             root 	 fail!
+[i]try            ptycd on    Administrator 	 fail!
+[i]try            ptyd0 on             root 	 fail!
+[i]try            ptyce on    Administrator 	 fail!
+[i]try            ptyd1 on             root 	 fail!
+[i]try            ptycf on    Administrator 	 fail!
+[i]try            ptyd2 on             root 	 fail!
+[i]try            ptyd0 on    Administrator 	 fail!
+[i]try            ptyd3 on             root 	 fail!
+[i]try            ptyd1 on    Administrator 	 fail!
+[i]try            ptyd4 on             root 	 fail!
+[i]try            ptyd2 on    Administrator 	 fail!
+[i]try            ptyd5 on             root 	 fail!
+[i]try            ptyd3 on    Administrator 	 fail!
+[i]try            ptyd6 on             root 	 fail!
+[i]try            ptyd4 on    Administrator 	 fail!
+[i]try            ptyd7 on             root 	 fail!
+[i]try            ptyd5 on    Administrator 	 fail!
+[i]try            ptyd8 on             root 	 fail!
+[i]try            ptyd6 on    Administrator 	 fail!
+[i]try            ptyd9 on             root 	 fail!
+[i]try            ptyd7 on    Administrator 	 fail!
+[i]try            ptyda on             root 	 fail!
+[i]try            ptyd8 on    Administrator 	 fail!
+[i]try            ptydb on             root 	 fail!
+[i]try            ptyd9 on    Administrator 	 fail!
+[i]try            ptydc on             root 	 fail!
+[i]try            ptyda on    Administrator 	 fail!
+[i]try            ptydd on             root 	 fail!
+[i]try            ptydb on    Administrator 	 fail!
+[i]try            ptyde on             root 	 fail!
+[i]try            ptydf on             root 	 fail!
+[i]try            ptye0 on             root 	 fail!
+[i]try            ptye1 on             root 	 fail!
+[i]try            ptydc on    Administrator 	 fail!
+[i]try            ptye2 on             root 	 fail!
+[i]try            ptydd on    Administrator 	 fail!
+[i]try            ptye3 on             root 	 fail!
+[i]try            ptyde on    Administrator 	 fail!
+[i]try            ptye4 on             root 	 fail!
+[i]try            ptydf on    Administrator 	 fail!
+[i]try            ptye5 on             root 	 fail!
+[i]try            ptye0 on    Administrator 	 fail!
+[i]try            ptye6 on             root 	 fail!
+[i]try            ptye1 on    Administrator 	 fail!
+[i]try            ptye7 on             root 	 fail!
+[i]try            ptye2 on    Administrator 	 fail!
+[i]try            ptye8 on             root 	 fail!
+[i]try            ptye3 on    Administrator 	 fail!
+[i]try            ptye9 on             root 	 fail!
+[i]try            ptye4 on    Administrator 	 fail!
+[i]try            ptyea on             root 	 fail!
+[i]try            ptye5 on    Administrator 	 fail!
+[i]try            ptyeb on             root 	 fail!
+[i]try            ptye6 on    Administrator 	 fail!
+[i]try            ptyec on             root 	 fail!
+[i]try            ptye7 on    Administrator 	 fail!
+[i]try            ptyed on             root 	 fail!
+[i]try            ptye8 on    Administrator 	 fail!
+[i]try            ptyee on             root 	 fail!
+[i]try            ptye9 on    Administrator 	 fail!
+[i]try            ptyef on             root 	 fail!
+[i]try            ptyea on    Administrator 	 fail!
+[i]try            ptyp0 on             root 	 fail!
+[i]try            ptyeb on    Administrator 	 fail!
+[i]try            ptyp1 on             root 	 fail!
+[i]try            ptyec on    Administrator 	 fail!
+[i]try            ptyp2 on             root 	 fail!
+[i]try            ptyed on    Administrator 	 fail!
+[i]try            ptyp3 on             root 	 fail!
+[i]try            ptyee on    Administrator 	 fail!
+[i]try            ptyp4 on             root 	 fail!
+[i]try            ptyef on    Administrator 	 fail!
+[i]try            ptyp5 on             root 	 fail!
+[i]try            ptyp0 on    Administrator 	 fail!
+[i]try            ptyp6 on             root 	 fail!
+[i]try            ptyp1 on    Administrator 	 fail!
+[i]try            ptyp7 on             root 	 fail!
+[i]try            ptyp2 on    Administrator 	 fail!
+[i]try            ptyp8 on             root 	 fail!
+[i]try            ptyp3 on    Administrator 	 fail!
+[i]try            ptyp9 on             root 	 fail!
+[i]try            ptyp4 on    Administrator 	 fail!
+[i]try            ptypa on             root 	 fail!
+[i]try            ptyp5 on    Administrator 	 fail!
+[i]try            ptypb on             root 	 fail!
+[i]try            ptyp6 on    Administrator 	 fail!
+[i]try            ptypc on             root 	 fail!
+[i]try            ptyp7 on    Administrator 	 fail!
+[i]try            ptypd on             root 	 fail!
+[i]try            ptyp8 on    Administrator 	 fail!
+[i]try            ptype on             root 	 fail!
+[i]try            ptyp9 on    Administrator 	 fail!
+[i]try            ptypf on             root 	 fail!
+[i]try            ptypa on    Administrator 	 fail!
+[i]try            ptyq0 on             root 	 fail!
+[i]try            ptypb on    Administrator 	 fail!
+[i]try            ptyq1 on             root 	 fail!
+[i]try            ptypc on    Administrator 	 fail!
+[i]try            ptyq2 on             root 	 fail!
+[i]try            ptypd on    Administrator 	 fail!
+[i]try            ptyq3 on             root 	 fail!
+[i]try            ptype on    Administrator 	 fail!
+[i]try            ptyq4 on             root 	 fail!
+[i]try            ptypf on    Administrator 	 fail!
+[i]try            ptyq5 on             root 	 fail!
+[i]try            ptyq0 on    Administrator 	 fail!
+[i]try            ptyq6 on             root 	 fail!
+[i]try            ptyq1 on    Administrator 	 fail!
+[i]try            ptyq7 on             root 	 fail!
+[i]try            ptyq8 on             root 	 fail!
+[i]try            ptyq9 on             root 	 fail!
+[i]try            ptyqa on             root 	 fail!
+[i]try            ptyq2 on    Administrator 	 fail!
+[i]try            ptyqb on             root 	 fail!
+[i]try            ptyq3 on    Administrator 	 fail!
+[i]try            ptyqc on             root 	 fail!
+[i]try            ptyq4 on    Administrator 	 fail!
+[i]try            ptyqd on             root 	 fail!
+[i]try            ptyq5 on    Administrator 	 fail!
+[i]try            ptyqe on             root 	 fail!
+[i]try            ptyq6 on    Administrator 	 fail!
+[i]try            ptyqf on             root 	 fail!
+[i]try            ptyq7 on    Administrator 	 fail!
+[i]try            ptyr0 on             root 	 fail!
+[i]try            ptyq8 on    Administrator 	 fail!
+[i]try            ptyr1 on             root 	 fail!
+[i]try            ptyq9 on    Administrator 	 fail!
+[i]try            ptyr2 on             root 	 fail!
+[i]try            ptyqa on    Administrator 	 fail!
+[i]try            ptyr3 on             root 	 fail!
+[i]try            ptyqb on    Administrator 	 fail!
+[i]try            ptyr4 on             root 	 fail!
+[i]try            ptyqc on    Administrator 	 fail!
+[i]try            ptyr5 on             root 	 fail!
+[i]try            ptyqd on    Administrator 	 fail!
+[i]try            ptyr6 on             root 	 fail!
+[i]try            ptyqe on    Administrator 	 fail!
+[i]try            ptyr7 on             root 	 fail!
+[i]try            ptyqf on    Administrator 	 fail!
+[i]try            ptyr8 on             root 	 fail!
+[i]try            ptyr0 on    Administrator 	 fail!
+[i]try            ptyr9 on             root 	 fail!
+[i]try            ptyr1 on    Administrator 	 fail!
+[i]try            ptyra on             root 	 fail!
+[i]try            ptyr2 on    Administrator 	 fail!
+[i]try            ptyrb on             root 	 fail!
+[i]try            ptyr3 on    Administrator 	 fail!
+[i]try            ptyrc on             root 	 fail!
+[i]try            ptyr4 on    Administrator 	 fail!
+[i]try            ptyrd on             root 	 fail!
+[i]try            ptyr5 on    Administrator 	 fail!
+[i]try            ptyre on             root 	 fail!
+[i]try            ptyr6 on    Administrator 	 fail!
+[i]try            ptyrf on             root 	 fail!
+[i]try            ptyr7 on    Administrator 	 fail!
+[i]try            ptys0 on             root 	 fail!
+[i]try            ptyr8 on    Administrator 	 fail!
+[i]try            ptys1 on             root 	 fail!
+[i]try            ptyr9 on    Administrator 	 fail!
+[i]try            ptys2 on             root 	 fail!
+[i]try            ptyra on    Administrator 	 fail!
+[i]try            ptys3 on             root 	 fail!
+[i]try            ptyrb on    Administrator 	 fail!
+[i]try            ptys4 on             root 	 fail!
+[i]try            ptyrc on    Administrator 	 fail!
+[i]try            ptys5 on             root 	 fail!
+[i]try            ptyrd on    Administrator 	 fail!
+[i]try            ptys6 on             root 	 fail!
+[i]try            ptyre on    Administrator 	 fail!
+[i]try            ptys7 on             root 	 fail!
+[i]try            ptyrf on    Administrator 	 fail!
+[i]try            ptys8 on             root 	 fail!
+[i]try            ptys0 on    Administrator 	 fail!
+[i]try            ptys9 on             root 	 fail!
+[i]try            ptys1 on    Administrator 	 fail!
+[i]try            ptysa on             root 	 fail!
+[i]try            ptys2 on    Administrator 	 fail!
+[i]try            ptysb on             root 	 fail!
+[i]try            ptys3 on    Administrator 	 fail!
+[i]try            ptysc on             root 	 fail!
+[i]try            ptys4 on    Administrator 	 fail!
+[i]try            ptysd on             root 	 fail!
+[i]try            ptys5 on    Administrator 	 fail!
+[i]try            ptyse on             root 	 fail!
+[i]try            ptys6 on    Administrator 	 fail!
+[i]try            ptysf on             root 	 fail!
+[i]try            ptys7 on    Administrator 	 fail!
+[i]try            ptyt0 on             root 	 fail!
+[i]try            ptys8 on    Administrator 	 fail!
+[i]try            ptyt1 on             root 	 fail!
+[i]try            ptys9 on    Administrator 	 fail!
+[i]try            ptyt2 on             root 	 fail!
+[i]try            ptysa on    Administrator 	 fail!
+[i]try            ptyt3 on             root 	 fail!
+[i]try            ptysb on    Administrator 	 fail!
+[i]try            ptyt4 on             root 	 fail!
+[i]try            ptysc on    Administrator 	 fail!
+[i]try            ptyt5 on             root 	 fail!
+[i]try            ptysd on    Administrator 	 fail!
+[i]try            ptyt6 on             root 	 fail!
+[i]try            ptyse on    Administrator 	 fail!
+[i]try            ptyt7 on             root 	 fail!
+[i]try            ptysf on    Administrator 	 fail!
+[i]try            ptyt8 on             root 	 fail!
+[i]try            ptyt0 on    Administrator 	 fail!
+[i]try            ptyt9 on             root 	 fail!
+[i]try            ptyt1 on    Administrator 	 fail!
+[i]try            ptyta on             root 	 fail!
+[i]try            ptyt2 on    Administrator 	 fail!
+[i]try            ptytb on             root 	 fail!
+[i]try            ptyt3 on    Administrator 	 fail!
+[i]try            ptytc on             root 	 fail!
+[i]try            ptyt4 on    Administrator 	 fail!
+[i]try            ptytd on             root 	 fail!
+[i]try            ptyt5 on    Administrator 	 fail!
+[i]try            ptyte on             root 	 fail!
+[i]try            ptyt6 on    Administrator 	 fail!
+[i]try            ptytf on             root 	 fail!
+[i]try            ptyt7 on    Administrator 	 fail!
+[i]try            ptyu0 on             root 	 fail!
+[i]try            ptyt8 on    Administrator 	 fail!
+[i]try            ptyu1 on             root 	 fail!
+[i]try            ptyt9 on    Administrator 	 fail!
+[i]try            ptyu2 on             root 	 fail!
+[i]try            ptyta on    Administrator 	 fail!
+[i]try            ptyu3 on             root 	 fail!
+[i]try            ptytb on    Administrator 	 fail!
+[i]try            ptyu4 on             root 	 fail!
+[i]try            ptytc on    Administrator 	 fail!
+[i]try            ptyu5 on             root 	 fail!
+[i]try            ptytd on    Administrator 	 fail!
+[i]try            ptyu6 on             root 	 fail!
+[i]try            ptyte on    Administrator 	 fail!
+[i]try            ptyu7 on             root 	 fail!
+[i]try            ptytf on    Administrator 	 fail!
+[i]try            ptyu8 on             root 	 fail!
+[i]try            ptyu0 on    Administrator 	 fail!
+[i]try            ptyu9 on             root 	 fail!
+[i]try            ptyu1 on    Administrator 	 fail!
+[i]try            ptyua on             root 	 fail!
+[i]try            ptyu2 on    Administrator 	 fail!
+[i]try            ptyub on             root 	 fail!
+[i]try            ptyu3 on    Administrator 	 fail!
+[i]try            ptyuc on             root 	 fail!
+[i]try            ptyu4 on    Administrator 	 fail!
+[i]try            ptyud on             root 	 fail!
+[i]try            ptyu5 on    Administrator 	 fail!
+[i]try            ptyue on             root 	 fail!
+[i]try            ptyu6 on    Administrator 	 fail!
+[i]try            ptyuf on             root 	 fail!
+[i]try            ptyu7 on    Administrator 	 fail!
+[i]try            ptyv0 on             root 	 fail!
+[i]try            ptyu8 on    Administrator 	 fail!
+[i]try            ptyv1 on             root 	 fail!
+[i]try            ptyu9 on    Administrator 	 fail!
+[i]try            ptyv2 on             root 	 fail!
+[i]try            ptyua on    Administrator 	 fail!
+[i]try            ptyv3 on             root 	 fail!
+[i]try            ptyub on    Administrator 	 fail!
+[i]try            ptyv4 on             root 	 fail!
+[i]try            ptyuc on    Administrator 	 fail!
+[i]try            ptyv5 on             root 	 fail!
+[i]try            ptyud on    Administrator 	 fail!
+[i]try            ptyv6 on             root 	 fail!
+[i]try            ptyue on    Administrator 	 fail!
+[i]try            ptyv7 on             root 	 fail!
+[i]try            ptyv8 on             root 	 fail!
+[i]try            ptyv9 on             root 	 fail!
+[i]try            ptyva on             root 	 fail!
+[i]try            ptyuf on    Administrator 	 fail!
+[i]try            ptyvb on             root 	 fail!
+[i]try            ptyv0 on    Administrator 	 fail!
+[i]try            ptyvc on             root 	 fail!
+[i]try            ptyv1 on    Administrator 	 fail!
+[i]try            ptyvd on             root 	 fail!
+[i]try            ptyv2 on    Administrator 	 fail!
+[i]try            ptyve on             root 	 fail!
+[i]try            ptyv3 on    Administrator 	 fail!
+[i]try            ptyvf on             root 	 fail!
+[i]try            ptyv4 on    Administrator 	 fail!
+[i]try            ptyw0 on             root 	 fail!
+[i]try            ptyv5 on    Administrator 	 fail!
+[i]try            ptyw1 on             root 	 fail!
+[i]try            ptyv6 on    Administrator 	 fail!
+[i]try            ptyw2 on             root 	 fail!
+[i]try            ptyv7 on    Administrator 	 fail!
+[i]try            ptyw3 on             root 	 fail!
+[i]try            ptyv8 on    Administrator 	 fail!
+[i]try            ptyw4 on             root 	 fail!
+[i]try            ptyv9 on    Administrator 	 fail!
+[i]try            ptyw5 on             root 	 fail!
+[i]try            ptyva on    Administrator 	 fail!
+[i]try            ptyw6 on             root 	 fail!
+[i]try            ptyvb on    Administrator 	 fail!
+[i]try            ptyw7 on             root 	 fail!
+[i]try            ptyvc on    Administrator 	 fail!
+[i]try            ptyw8 on             root 	 fail!
+[i]try            ptyvd on    Administrator 	 fail!
+[i]try            ptyw9 on             root 	 fail!
+[i]try            ptyve on    Administrator 	 fail!
+[i]try            ptywa on             root 	 fail!
+[i]try            ptyvf on    Administrator 	 fail!
+[i]try            ptywb on             root 	 fail!
+[i]try            ptyw0 on    Administrator 	 fail!
+[i]try            ptywc on             root 	 fail!
+[i]try            ptyw1 on    Administrator 	 fail!
+[i]try            ptywd on             root 	 fail!
+[i]try            ptyw2 on    Administrator 	 fail!
+[i]try            ptywe on             root 	 fail!
+[i]try            ptyw3 on    Administrator 	 fail!
+[i]try            ptywf on             root 	 fail!
+[i]try            ptyw4 on    Administrator 	 fail!
+[i]try            ptyx0 on             root 	 fail!
+[i]try            ptyw5 on    Administrator 	 fail!
+[i]try            ptyx1 on             root 	 fail!
+[i]try            ptyw6 on    Administrator 	 fail!
+[i]try            ptyx2 on             root 	 fail!
+[i]try            ptyw7 on    Administrator 	 fail!
+[i]try            ptyx3 on             root 	 fail!
+[i]try            ptyw8 on    Administrator 	 fail!
+[i]try            ptyx4 on             root 	 fail!
+[i]try            ptyw9 on    Administrator 	 fail!
+[i]try            ptyx5 on             root 	 fail!
+[i]try            ptywa on    Administrator 	 fail!
+[i]try            ptyx6 on             root 	 fail!
+[i]try            ptywb on    Administrator 	 fail!
+[i]try            ptyx7 on             root 	 fail!
+[i]try            ptywc on    Administrator 	 fail!
+[i]try            ptyx8 on             root 	 fail!
+[i]try            ptywd on    Administrator 	 fail!
+[i]try            ptyx9 on             root 	 fail!
+[i]try            ptywe on    Administrator 	 fail!
+[i]try            ptyxa on             root 	 fail!
+[i]try            ptywf on    Administrator 	 fail!
+[i]try            ptyxb on             root 	 fail!
+[i]try            ptyx0 on    Administrator 	 fail!
+[i]try            ptyxc on             root 	 fail!
+[i]try            ptyx1 on    Administrator 	 fail!
+[i]try            ptyxd on             root 	 fail!
+[i]try            ptyx2 on    Administrator 	 fail!
+[i]try            ptyxe on             root 	 fail!
+[i]try            ptyx3 on    Administrator 	 fail!
+[i]try            ptyxf on             root 	 fail!
+[i]try            ptyx4 on    Administrator 	 fail!
+[i]try            ptyy0 on             root 	 fail!
+[i]try            ptyy1 on             root 	 fail!
+[i]try            ptyy2 on             root 	 fail!
+[i]try            ptyy3 on             root 	 fail!
+[i]try            ptyx5 on    Administrator 	 fail!
+[i]try            ptyy4 on             root 	 fail!
+[i]try            ptyx6 on    Administrator 	 fail!
+[i]try            ptyy5 on             root 	 fail!
+[i]try            ptyx7 on    Administrator 	 fail!
+[i]try            ptyy6 on             root 	 fail!
+[i]try            ptyx8 on    Administrator 	 fail!
+[i]try            ptyy7 on             root 	 fail!
+[i]try            ptyx9 on    Administrator 	 fail!
+[i]try            ptyy8 on             root 	 fail!
+[i]try            ptyxa on    Administrator 	 fail!
+[i]try            ptyy9 on             root 	 fail!
+[i]try            ptyxb on    Administrator 	 fail!
+[i]try            ptyya on             root 	 fail!
+[i]try            ptyxc on    Administrator 	 fail!
+[i]try            ptyyb on             root 	 fail!
+[i]try            ptyxd on    Administrator 	 fail!
+[i]try            ptyyc on             root 	 fail!
+[i]try            ptyxe on    Administrator 	 fail!
+[i]try            ptyyd on             root 	 fail!
+[i]try            ptyxf on    Administrator 	 fail!
+[i]try            ptyye on             root 	 fail!
+[i]try            ptyy0 on    Administrator 	 fail!
+[i]try            ptyyf on             root 	 fail!
+[i]try            ptyy1 on    Administrator 	 fail!
+[i]try            ptyz0 on             root 	 fail!
+[i]try            ptyy2 on    Administrator 	 fail!
+[i]try            ptyz1 on             root 	 fail!
+[i]try            ptyy3 on    Administrator 	 fail!
+[i]try            ptyz2 on             root 	 fail!
+[i]try            ptyy4 on    Administrator 	 fail!
+[i]try            ptyz3 on             root 	 fail!
+[i]try            ptyy5 on    Administrator 	 fail!
+[i]try            ptyz4 on             root 	 fail!
+[i]try            ptyy6 on    Administrator 	 fail!
+[i]try            ptyz5 on             root 	 fail!
+[i]try            ptyy7 on    Administrator 	 fail!
+[i]try            ptyz6 on             root 	 fail!
+[i]try            ptyy8 on    Administrator 	 fail!
+[i]try            ptyz7 on             root 	 fail!
+[i]try            ptyy9 on    Administrator 	 fail!
+[i]try            ptyz8 on             root 	 fail!
+[i]try            ptyya on    Administrator 	 fail!
+[i]try            ptyz9 on             root 	 fail!
+[i]try            ptyyb on    Administrator 	 fail!
+[i]try            ptyza on             root 	 fail!
+[i]try            ptyyc on    Administrator 	 fail!
+[i]try            ptyzb on             root 	 fail!
+[i]try            ptyyd on    Administrator 	 fail!
+[i]try            ptyzc on             root 	 fail!
+[i]try            ptyye on    Administrator 	 fail!
+[i]try            ptyzd on             root 	 fail!
+[i]try            ptyyf on    Administrator 	 fail!
+[i]try            ptyze on             root 	 fail!
+[i]try            ptyz0 on    Administrator 	 fail!
+[i]try            ptyzf on             root 	 fail!
+[i]try            ptyz1 on    Administrator 	 fail!
+[i]try             ram0 on             root 	 fail!
+[i]try            ptyz2 on    Administrator 	 fail!
+[i]try             ram1 on             root 	 fail!
+[i]try            ptyz3 on    Administrator 	 fail!
+[i]try            ram10 on             root 	 fail!
+[i]try            ptyz4 on    Administrator 	 fail!
+[i]try            ram11 on             root 	 fail!
+[i]try            ptyz5 on    Administrator 	 fail!
+[i]try            ram12 on             root 	 fail!
+[i]try            ptyz6 on    Administrator 	 fail!
+[i]try            ram13 on             root 	 fail!
+[i]try            ptyz7 on    Administrator 	 fail!
+[i]try            ram14 on             root 	 fail!
+[i]try            ptyz8 on    Administrator 	 fail!
+[i]try            ram15 on             root 	 fail!
+[i]try            ptyz9 on    Administrator 	 fail!
+[i]try             ram2 on             root 	 fail!
+[i]try            ptyza on    Administrator 	 fail!
+[i]try             ram3 on             root 	 fail!
+[i]try             ram4 on             root 	 fail!
+[i]try             ram5 on             root 	 fail!
+[i]try             ram6 on             root 	 fail!
+[i]try            ptyzb on    Administrator 	 fail!
+[i]try             ram7 on             root 	 fail!
+[i]try            ptyzc on    Administrator 	 fail!
+[i]try             ram8 on             root 	 fail!
+[i]try            ptyzd on    Administrator 	 fail!
+[i]try             ram9 on             root 	 fail!
+[i]try            ptyze on    Administrator 	 fail!
+[i]try           random on             root 	 fail!
+[i]try            ptyzf on    Administrator 	 fail!
+[i]try              rtc on             root 	 fail!
+[i]try             ram0 on    Administrator 	 fail!
+[i]try              sda on             root 	 fail!
+[i]try             ram1 on    Administrator 	 fail!
+[i]try             sda1 on             root 	 fail!
+[i]try            ram10 on    Administrator 	 fail!
+[i]try            sda10 on             root 	 fail!
+[i]try            ram11 on    Administrator 	 fail!
+[i]try            sda11 on             root 	 fail!
+[i]try            ram12 on    Administrator 	 fail!
+[i]try            sda12 on             root 	 fail!
+[i]try            ram13 on    Administrator 	 fail!
+[i]try            sda13 on             root 	 fail!
+[i]try            ram14 on    Administrator 	 fail!
+[i]try             sda2 on             root 	 fail!
+[i]try            ram15 on    Administrator 	 fail!
+[i]try             sda5 on             root 	 fail!
+[i]try             ram2 on    Administrator 	 fail!
+[i]try             sda6 on             root 	 fail!
+[i]try             ram3 on    Administrator 	 fail!
+[i]try             sda7 on             root 	 fail!
+[i]try             ram4 on    Administrator 	 fail!
+[i]try             sda8 on             root 	 fail!
+[i]try             ram5 on    Administrator 	 fail!
+[i]try             sda9 on             root 	 fail!
+[i]try             ram6 on    Administrator 	 fail!
+[i]try              sdb on             root 	 fail!
+[i]try             ram7 on    Administrator 	 fail!
+[i]try             sdb1 on             root 	 fail!
+[i]try             ram8 on    Administrator 	 fail!
+[i]try        sequencer on             root 	 fail!
+[i]try             ram9 on    Administrator 	 fail!
+[i]try       sequencer2 on             root 	 fail!
+[i]try           random on    Administrator 	 fail!
+[i]try              sg0 on             root 	 fail!
+[i]try              rtc on    Administrator 	 fail!
+[i]try              sg1 on             root 	 fail!
+[i]try              sda on    Administrator 	 fail!
+[i]try              shm on             root 	 fail!
+[i]try             sda1 on    Administrator 	 fail!
+[i]try         snapshot on             root 	 fail!
+[i]try            sda10 on    Administrator 	 fail!
+[i]try              snd on             root 	 fail!
+[i]try            sda11 on    Administrator 	 fail!
+[i]try          sndstat on             root 	 fail!
+[i]try            sda12 on    Administrator 	 fail!
+[i]try           stderr on             root 	 fail!
+[i]try            sda13 on    Administrator 	 fail!
+[i]try               -2 on             root 	 fail!
+[i]try             sda2 on    Administrator 	 fail!
+[i]try            stdin on             root 	 fail!
+[i]try             sda5 on    Administrator 	 fail!
+[i]try               -> on             root 	 fail!
+[i]try             sda6 on    Administrator 	 fail!
+[i]try           stdout on             root 	 fail!
+[i]try             sda7 on    Administrator 	 fail!
+[i]try               -1 on             root 	 fail!
+[i]try             sda8 on    Administrator 	 fail!
+[i]try              tty on             root 	 fail!
+[i]try             sda9 on    Administrator 	 fail!
+[i]try             tty0 on             root 	 fail!
+[i]try              sdb on    Administrator 	 fail!
+[i]try             tty1 on             root 	 fail!
+[i]try             sdb1 on    Administrator 	 fail!
+[i]try            tty10 on             root 	 fail!
+[i]try        sequencer on    Administrator 	 fail!
+[i]try            tty11 on             root 	 fail!
+[i]try       sequencer2 on    Administrator 	 fail!
+[i]try            tty12 on             root 	 fail!
+[i]try              sg0 on    Administrator 	 fail!
+[i]try            tty13 on             root 	 fail!
+[i]try              sg1 on    Administrator 	 fail!
+[i]try            tty14 on             root 	 fail!
+[i]try              shm on    Administrator 	 fail!
+[i]try            tty15 on             root 	 fail!
+[i]try         snapshot on    Administrator 	 fail!
+[i]try            tty16 on             root 	 fail!
+[i]try              snd on    Administrator 	 fail!
+[i]try            tty17 on             root 	 fail!
+[i]try          sndstat on    Administrator 	 fail!
+[i]try            tty18 on             root 	 fail!
+[i]try           stderr on    Administrator 	 fail!
+[i]try            tty19 on             root 	 fail!
+[i]try               -2 on    Administrator 	 fail!
+[i]try             tty2 on             root 	 fail!
+[i]try            stdin on    Administrator 	 fail!
+[i]try            tty20 on             root 	 fail!
+[i]try               -> on    Administrator 	 fail!
+[i]try            tty21 on             root 	 fail!
+[i]try           stdout on    Administrator 	 fail!
+[i]try            tty22 on             root 	 fail!
+[i]try               -1 on    Administrator 	 fail!
+[i]try            tty23 on             root 	 fail!
+[i]try              tty on    Administrator 	 fail!
+[i]try            tty24 on             root 	 fail!
+[i]try             tty0 on    Administrator 	 fail!
+[i]try            tty25 on             root 	 fail!
+[i]try             tty1 on    Administrator 	 fail!
+[i]try            tty26 on             root 	 fail!
+[i]try            tty10 on    Administrator 	 fail!
+[i]try            tty27 on             root 	 fail!
+[i]try            tty11 on    Administrator 	 fail!
+[i]try            tty28 on             root 	 fail!
+[i]try            tty12 on    Administrator 	 fail!
+[i]try            tty29 on             root 	 fail!
+[i]try            tty13 on    Administrator 	 fail!
+[i]try             tty3 on             root 	 fail!
+[i]try            tty14 on    Administrator 	 fail!
+[i]try            tty30 on             root 	 fail!
+[i]try            tty15 on    Administrator 	 fail!
+[i]try            tty31 on             root 	 fail!
+[i]try            tty16 on    Administrator 	 fail!
+[i]try            tty32 on             root 	 fail!
+[i]try            tty17 on    Administrator 	 fail!
+[i]try            tty33 on             root 	 fail!
+[i]try            tty18 on    Administrator 	 fail!
+[i]try            tty34 on             root 	 fail!
+[i]try            tty19 on    Administrator 	 fail!
+[i]try            tty35 on             root 	 fail!
+[i]try             tty2 on    Administrator 	 fail!
+[i]try            tty36 on             root 	 fail!
+[i]try            tty20 on    Administrator 	 fail!
+[i]try            tty37 on             root 	 fail!
+[i]try            tty21 on    Administrator 	 fail!
+[i]try            tty38 on             root 	 fail!
+[i]try            tty22 on    Administrator 	 fail!
+[i]try            tty39 on             root 	 fail!
+[i]try            tty23 on    Administrator 	 fail!
+[i]try             tty4 on             root 	 fail!
+[i]try            tty24 on    Administrator 	 fail!
+[i]try            tty40 on             root 	 fail!
+[i]try            tty25 on    Administrator 	 fail!
+[i]try            tty41 on             root 	 fail!
+[i]try            tty26 on    Administrator 	 fail!
+[i]try            tty42 on             root 	 fail!
+[i]try            tty27 on    Administrator 	 fail!
+[i]try            tty43 on             root 	 fail!
+[i]try            tty28 on    Administrator 	 fail!
+[i]try            tty44 on             root 	 fail!
+[i]try            tty29 on    Administrator 	 fail!
+[i]try            tty45 on             root 	 fail!
+[i]try             tty3 on    Administrator 	 fail!
+[i]try            tty46 on             root 	 fail!
+[i]try            tty30 on    Administrator 	 fail!
+[i]try            tty47 on             root 	 fail!
+[i]try            tty48 on             root 	 fail!
+[i]try            tty49 on             root 	 fail!
+[i]try             tty5 on             root 	 fail!
+[i]try            tty31 on    Administrator 	 fail!
+[i]try            tty50 on             root 	 fail!
+[i]try            tty32 on    Administrator 	 fail!
+[i]try            tty51 on             root 	 fail!
+[i]try            tty33 on    Administrator 	 fail!
+[i]try            tty52 on             root 	 fail!
+[i]try            tty34 on    Administrator 	 fail!
+[i]try            tty53 on             root 	 fail!
+[i]try            tty35 on    Administrator 	 fail!
+[i]try            tty54 on             root 	 fail!
+[i]try            tty36 on    Administrator 	 fail!
+[i]try            tty55 on             root 	 fail!
+[i]try            tty37 on    Administrator 	 fail!
+[i]try            tty56 on             root 	 fail!
+[i]try            tty38 on    Administrator 	 fail!
+[i]try            tty57 on             root 	 fail!
+[i]try            tty39 on    Administrator 	 fail!
+[i]try            tty58 on             root 	 fail!
+[i]try             tty4 on    Administrator 	 fail!
+[i]try            tty59 on             root 	 fail!
+[i]try            tty40 on    Administrator 	 fail!
+[i]try             tty6 on             root 	 fail!
+[i]try            tty41 on    Administrator 	 fail!
+[i]try            tty60 on             root 	 fail!
+[i]try            tty42 on    Administrator 	 fail!
+[i]try            tty61 on             root 	 fail!
+[i]try            tty43 on    Administrator 	 fail!
+[i]try            tty62 on             root 	 fail!
+[i]try            tty44 on    Administrator 	 fail!
+[i]try            tty63 on             root 	 fail!
+[i]try            tty45 on    Administrator 	 fail!
+[i]try             tty7 on             root 	 fail!
+[i]try            tty46 on    Administrator 	 fail!
+[i]try             tty8 on             root 	 fail!
+[i]try            tty47 on    Administrator 	 fail!
+[i]try             tty9 on             root 	 fail!
+[i]try            tty48 on    Administrator 	 fail!
+[i]try            ttya0 on             root 	 fail!
+[i]try            tty49 on    Administrator 	 fail!
+[i]try            ttya1 on             root 	 fail!
+[i]try             tty5 on    Administrator 	 fail!
+[i]try            ttya2 on             root 	 fail!
+[i]try            tty50 on    Administrator 	 fail!
+[i]try            ttya3 on             root 	 fail!
+[i]try            tty51 on    Administrator 	 fail!
+[i]try            ttya4 on             root 	 fail!
+[i]try            tty52 on    Administrator 	 fail!
+[i]try            ttya5 on             root 	 fail!
+[i]try            tty53 on    Administrator 	 fail!
+[i]try            ttya6 on             root 	 fail!
+[i]try            tty54 on    Administrator 	 fail!
+[i]try            ttya7 on             root 	 fail!
+[i]try            tty55 on    Administrator 	 fail!
+[i]try            ttya8 on             root 	 fail!
+[i]try            tty56 on    Administrator 	 fail!
+[i]try            ttya9 on             root 	 fail!
+[i]try            tty57 on    Administrator 	 fail!
+[i]try            ttyaa on             root 	 fail!
+[i]try            tty58 on    Administrator 	 fail!
+[i]try            ttyab on             root 	 fail!
+[i]try            tty59 on    Administrator 	 fail!
+[i]try            ttyac on             root 	 fail!
+[i]try             tty6 on    Administrator 	 fail!
+[i]try            ttyad on             root 	 fail!
+[i]try            tty60 on    Administrator 	 fail!
+[i]try            ttyae on             root 	 fail!
+[i]try            tty61 on    Administrator 	 fail!
+[i]try            ttyaf on             root 	 fail!
+[i]try            tty62 on    Administrator 	 fail!
+[i]try            ttyb0 on             root 	 fail!
+[i]try            tty63 on    Administrator 	 fail!
+[i]try            ttyb1 on             root 	 fail!
+[i]try             tty7 on    Administrator 	 fail!
+[i]try            ttyb2 on             root 	 fail!
+[i]try             tty8 on    Administrator 	 fail!
+[i]try            ttyb3 on             root 	 fail!
+[i]try            ttyb4 on             root 	 fail!
+[i]try             tty9 on    Administrator 	 fail!
+[i]try            ttyb5 on             root 	 fail!
+[i]try            ttya0 on    Administrator 	 fail!
+[i]try            ttyb6 on             root 	 fail!
+[i]try            ttya1 on    Administrator 	 fail!
+[i]try            ttyb7 on             root 	 fail!
+[i]try            ttya2 on    Administrator 	 fail!
+[i]try            ttyb8 on             root 	 fail!
+[i]try            ttya3 on    Administrator 	 fail!
+[i]try            ttyb9 on             root 	 fail!
+[i]try            ttya4 on    Administrator 	 fail!
+[i]try            ttyba on             root 	 fail!
+[i]try            ttya5 on    Administrator 	 fail!
+[i]try            ttybb on             root 	 fail!
+[i]try            ttya6 on    Administrator 	 fail!
+[i]try            ttybc on             root 	 fail!
+[i]try            ttya7 on    Administrator 	 fail!
+[i]try            ttybd on             root 	 fail!
+[i]try            ttya8 on    Administrator 	 fail!
+[i]try            ttybe on             root 	 fail!
+[i]try            ttya9 on    Administrator 	 fail!
+[i]try            ttybf on             root 	 fail!
+[i]try            ttyaa on    Administrator 	 fail!
+[i]try            ttyc0 on             root 	 fail!
+[i]try            ttyab on    Administrator 	 fail!
+[i]try            ttyc1 on             root 	 fail!
+[i]try            ttyac on    Administrator 	 fail!
+[i]try            ttyc2 on             root 	 fail!
+[i]try            ttyad on    Administrator 	 fail!
+[i]try            ttyc3 on             root 	 fail!
+[i]try            ttyae on    Administrator 	 fail!
+[i]try            ttyc4 on             root 	 fail!
+[i]try            ttyaf on    Administrator 	 fail!
+[i]try            ttyc5 on             root 	 fail!
+[i]try            ttyb0 on    Administrator 	 fail!
+[i]try            ttyc6 on             root 	 fail!
+[i]try            ttyb1 on    Administrator 	 fail!
+[i]try            ttyc7 on             root 	 fail!
+[i]try            ttyb2 on    Administrator 	 fail!
+[i]try            ttyc8 on             root 	 fail!
+[i]try            ttyb3 on    Administrator 	 fail!
+[i]try            ttyc9 on             root 	 fail!
+[i]try            ttyb4 on    Administrator 	 fail!
+[i]try            ttyca on             root 	 fail!
+[i]try            ttyb5 on    Administrator 	 fail!
+[i]try            ttycb on             root 	 fail!
+[i]try            ttyb6 on    Administrator 	 fail!
+[i]try            ttycc on             root 	 fail!
+[i]try            ttyb7 on    Administrator 	 fail!
+[i]try            ttycd on             root 	 fail!
+[i]try            ttyb8 on    Administrator 	 fail!
+[i]try            ttyce on             root 	 fail!
+[i]try            ttyb9 on    Administrator 	 fail!
+[i]try            ttycf on             root 	 fail!
+[i]try            ttyba on    Administrator 	 fail!
+[i]try            ttyd0 on             root 	 fail!
+[i]try            ttybb on    Administrator 	 fail!
+[i]try            ttyd1 on             root 	 fail!
+[i]try            ttybc on    Administrator 	 fail!
+[i]try            ttyd2 on             root 	 fail!
+[i]try            ttybd on    Administrator 	 fail!
+[i]try            ttyd3 on             root 	 fail!
+[i]try            ttybe on    Administrator 	 fail!
+[i]try            ttyd4 on             root 	 fail!
+[i]try            ttybf on    Administrator 	 fail!
+[i]try            ttyd5 on             root 	 fail!
+[i]try            ttyc0 on    Administrator 	 fail!
+[i]try            ttyd6 on             root 	 fail!
+[i]try            ttyc1 on    Administrator 	 fail!
+[i]try            ttyd7 on             root 	 fail!
+[i]try            ttyc2 on    Administrator 	 fail!
+[i]try            ttyd8 on             root 	 fail!
+[i]try            ttyc3 on    Administrator 	 fail!
+[i]try            ttyd9 on             root 	 fail!
+[i]try            ttyc4 on    Administrator 	 fail!
+[i]try            ttyda on             root 	 fail!
+[i]try            ttyc5 on    Administrator 	 fail!
+[i]try            ttydb on             root 	 fail!
+[i]try            ttydc on             root 	 fail!
+[i]try            ttydd on             root 	 fail!
+[i]try            ttyde on             root 	 fail!
+[i]try            ttyc6 on    Administrator 	 fail!
+[i]try            ttydf on             root 	 fail!
+[i]try            ttyc7 on    Administrator 	 fail!
+[i]try            ttye0 on             root 	 fail!
+[i]try            ttyc8 on    Administrator 	 fail!
+[i]try            ttye1 on             root 	 fail!
+[i]try            ttyc9 on    Administrator 	 fail!
+[i]try            ttye2 on             root 	 fail!
+[i]try            ttyca on    Administrator 	 fail!
+[i]try            ttye3 on             root 	 fail!
+[i]try            ttycb on    Administrator 	 fail!
+[i]try            ttye4 on             root 	 fail!
+[i]try            ttycc on    Administrator 	 fail!
+[i]try            ttye5 on             root 	 fail!
+[i]try            ttycd on    Administrator 	 fail!
+[i]try            ttye6 on             root 	 fail!
+[i]try            ttyce on    Administrator 	 fail!
+[i]try            ttye7 on             root 	 fail!
+[i]try            ttycf on    Administrator 	 fail!
+[i]try            ttye8 on             root 	 fail!
+[i]try            ttyd0 on    Administrator 	 fail!
+[i]try            ttye9 on             root 	 fail!
+[i]try            ttyd1 on    Administrator 	 fail!
+[i]try            ttyea on             root 	 fail!
+[i]try            ttyd2 on    Administrator 	 fail!
+[i]try            ttyeb on             root 	 fail!
+[i]try            ttyd3 on    Administrator 	 fail!
+[i]try            ttyec on             root 	 fail!
+[i]try            ttyd4 on    Administrator 	 fail!
+[i]try            ttyed on             root 	 fail!
+[i]try            ttyd5 on    Administrator 	 fail!
+[i]try            ttyee on             root 	 fail!
+[i]try            ttyd6 on    Administrator 	 fail!
+[i]try            ttyef on             root 	 fail!
+[i]try            ttyd7 on    Administrator 	 fail!
+[i]try            ttyp0 on             root 	 fail!
+[i]try            ttyd8 on    Administrator 	 fail!
+[i]try            ttyp1 on             root 	 fail!
+[i]try            ttyd9 on    Administrator 	 fail!
+[i]try            ttyp2 on             root 	 fail!
+[i]try            ttyda on    Administrator 	 fail!
+[i]try            ttyp3 on             root 	 fail!
+[i]try            ttydb on    Administrator 	 fail!
+[i]try            ttyp4 on             root 	 fail!
+[i]try            ttydc on    Administrator 	 fail!
+[i]try            ttyp5 on             root 	 fail!
+[i]try            ttydd on    Administrator 	 fail!
+[i]try            ttyp6 on             root 	 fail!
+[i]try            ttyde on    Administrator 	 fail!
+[i]try            ttyp7 on             root 	 fail!
+[i]try            ttydf on    Administrator 	 fail!
+[i]try            ttyp8 on             root 	 fail!
+[i]try            ttye0 on    Administrator 	 fail!
+[i]try            ttyp9 on             root 	 fail!
+[i]try            ttye1 on    Administrator 	 fail!
+[i]try            ttypa on             root 	 fail!
+[i]try            ttye2 on    Administrator 	 fail!
+[i]try            ttypb on             root 	 fail!
+[i]try            ttye3 on    Administrator 	 fail!
+[i]try            ttypc on             root 	 fail!
+[i]try            ttye4 on    Administrator 	 fail!
+[i]try            ttypd on             root 	 fail!
+[i]try            ttye5 on    Administrator 	 fail!
+[i]try            ttype on             root 	 fail!
+[i]try            ttye6 on    Administrator 	 fail!
+[i]try            ttypf on             root 	 fail!
+[i]try            ttye7 on    Administrator 	 fail!
+[i]try            ttyq0 on             root 	 fail!
+[i]try            ttye8 on    Administrator 	 fail!
+[i]try            ttyq1 on             root 	 fail!
+[i]try            ttye9 on    Administrator 	 fail!
+[i]try            ttyq2 on             root 	 fail!
+[i]try            ttyea on    Administrator 	 fail!
+[i]try            ttyq3 on             root 	 fail!
+[i]try            ttyeb on    Administrator 	 fail!
+[i]try            ttyq4 on             root 	 fail!
+[i]try            ttyq5 on             root 	 fail!
+[i]try            ttyq6 on             root 	 fail!
+[i]try            ttyq7 on             root 	 fail!
+[i]try            ttyec on    Administrator 	 fail!
+[i]try            ttyq8 on             root 	 fail!
+[i]try            ttyed on    Administrator 	 fail!
+[i]try            ttyq9 on             root 	 fail!
+[i]try            ttyee on    Administrator 	 fail!
+[i]try            ttyqa on             root 	 fail!
+[i]try            ttyef on    Administrator 	 fail!
+[i]try            ttyqb on             root 	 fail!
+[i]try            ttyp0 on    Administrator 	 fail!
+[i]try            ttyqc on             root 	 fail!
+[i]try            ttyp1 on    Administrator 	 fail!
+[i]try            ttyqd on             root 	 fail!
+[i]try            ttyp2 on    Administrator 	 fail!
+[i]try            ttyqe on             root 	 fail!
+[i]try            ttyp3 on    Administrator 	 fail!
+[i]try            ttyqf on             root 	 fail!
+[i]try            ttyp4 on    Administrator 	 fail!
+[i]try            ttyr0 on             root 	 fail!
+[i]try            ttyp5 on    Administrator 	 fail!
+[i]try            ttyr1 on             root 	 fail!
+[i]try            ttyp6 on    Administrator 	 fail!
+[i]try            ttyr2 on             root 	 fail!
+[i]try            ttyp7 on    Administrator 	 fail!
+[i]try            ttyr3 on             root 	 fail!
+[i]try            ttyp8 on    Administrator 	 fail!
+[i]try            ttyr4 on             root 	 fail!
+[i]try            ttyp9 on    Administrator 	 fail!
+[i]try            ttyr5 on             root 	 fail!
+[i]try            ttypa on    Administrator 	 fail!
+[i]try            ttyr6 on             root 	 fail!
+[i]try            ttypb on    Administrator 	 fail!
+[i]try            ttyr7 on             root 	 fail!
+[i]try            ttypc on    Administrator 	 fail!
+[i]try            ttyr8 on             root 	 fail!
+[i]try            ttypd on    Administrator 	 fail!
+[i]try            ttyr9 on             root 	 fail!
+[i]try            ttype on    Administrator 	 fail!
+[i]try            ttyra on             root 	 fail!
+[i]try            ttypf on    Administrator 	 fail!
+[i]try            ttyrb on             root 	 fail!
+[i]try            ttyq0 on    Administrator 	 fail!
+[i]try            ttyrc on             root 	 fail!
+[i]try            ttyq1 on    Administrator 	 fail!
+[i]try            ttyrd on             root 	 fail!
+[i]try            ttyq2 on    Administrator 	 fail!
+[i]try            ttyre on             root 	 fail!
+[i]try            ttyq3 on    Administrator 	 fail!
+[i]try            ttyrf on             root 	 fail!
+[i]try            ttyq4 on    Administrator 	 fail!
+[i]try            ttys0 on             root 	 fail!
+[i]try            ttyq5 on    Administrator 	 fail!
+[i]try            ttyS0 on             root 	 fail!
+[i]try            ttyq6 on    Administrator 	 fail!
+[i]try            ttys1 on             root 	 fail!
+[i]try            ttyq7 on    Administrator 	 fail!
+[i]try            ttyS1 on             root 	 fail!
+[i]try            ttyq8 on    Administrator 	 fail!
+[i]try            ttys2 on             root 	 fail!
+[i]try            ttyq9 on    Administrator 	 fail!
+[i]try            ttyS2 on             root 	 fail!
+[i]try            ttyqa on    Administrator 	 fail!
+[i]try            ttys3 on             root 	 fail!
+[i]try            ttyqb on    Administrator 	 fail!
+[i]try            ttyS3 on             root 	 fail!
+[i]try            ttyqc on    Administrator 	 fail!
+[i]try            ttys4 on             root 	 fail!
+[i]try            ttyqd on    Administrator 	 fail!
+[i]try            ttys5 on             root 	 fail!
+[i]try            ttyqe on    Administrator 	 fail!
+[i]try            ttys6 on             root 	 fail!
+[i]try            ttyqf on    Administrator 	 fail!
+[i]try            ttys7 on             root 	 fail!
+[i]try            ttyr0 on    Administrator 	 fail!
+[i]try            ttys8 on             root 	 fail!
+[i]try            ttyr1 on    Administrator 	 fail!
+[i]try            ttys9 on             root 	 fail!
+[i]try            ttyr2 on    Administrator 	 fail!
+[i]try            ttysa on             root 	 fail!
+[i]try            ttyr3 on    Administrator 	 fail!
+[i]try            ttysb on             root 	 fail!
+[i]try            ttyr4 on    Administrator 	 fail!
+[i]try            ttysc on             root 	 fail!
+[i]try            ttyr5 on    Administrator 	 fail!
+[i]try            ttysd on             root 	 fail!
+[i]try            ttyr6 on    Administrator 	 fail!
+[i]try            ttyse on             root 	 fail!
+[i]try            ttyr7 on    Administrator 	 fail!
+[i]try            ttysf on             root 	 fail!
+[i]try            ttyr8 on    Administrator 	 fail!
+[i]try            ttyt0 on             root 	 fail!
+[i]try            ttyr9 on    Administrator 	 fail!
+[i]try            ttyt1 on             root 	 fail!
+[i]try            ttyra on    Administrator 	 fail!
+[i]try            ttyt2 on             root 	 fail!
+[i]try            ttyrb on    Administrator 	 fail!
+[i]try            ttyt3 on             root 	 fail!
+[i]try            ttyrc on    Administrator 	 fail!
+[i]try            ttyt4 on             root 	 fail!
+[i]try            ttyrd on    Administrator 	 fail!
+[i]try            ttyt5 on             root 	 fail!
+[i]try            ttyre on    Administrator 	 fail!
+[i]try            ttyt6 on             root 	 fail!
+[i]try            ttyrf on    Administrator 	 fail!
+[i]try            ttyt7 on             root 	 fail!
+[i]try            ttys0 on    Administrator 	 fail!
+[i]try            ttyt8 on             root 	 fail!
+[i]try            ttyS0 on    Administrator 	 fail!
+[i]try            ttyt9 on             root 	 fail!
+[i]try            ttys1 on    Administrator 	 fail!
+[i]try            ttyta on             root 	 fail!
+[i]try            ttyS1 on    Administrator 	 fail!
+[i]try            ttytb on             root 	 fail!
+[i]try            ttys2 on    Administrator 	 fail!
+[i]try            ttytc on             root 	 fail!
+[i]try            ttyS2 on    Administrator 	 fail!
+[i]try            ttytd on             root 	 fail!
+[i]try            ttys3 on    Administrator 	 fail!
+[i]try            ttyte on             root 	 fail!
+[i]try            ttyS3 on    Administrator 	 fail!
+[i]try            ttytf on             root 	 fail!
+[i]try            ttys4 on    Administrator 	 fail!
+[i]try            ttyu0 on             root 	 fail!
+[i]try            ttys5 on    Administrator 	 fail!
+[i]try            ttyu1 on             root 	 fail!
+[i]try            ttys6 on    Administrator 	 fail!
+[i]try            ttyu2 on             root 	 fail!
+[i]try            ttys7 on    Administrator 	 fail!
+[i]try            ttyu3 on             root 	 fail!
+[i]try            ttys8 on    Administrator 	 fail!
+[i]try            ttyu4 on             root 	 fail!
+[i]try            ttys9 on    Administrator 	 fail!
+[i]try            ttyu5 on             root 	 fail!
+[i]try            ttysa on    Administrator 	 fail!
+[i]try            ttyu6 on             root 	 fail!
+[i]try            ttysb on    Administrator 	 fail!
+[i]try            ttyu7 on             root 	 fail!
+[i]try            ttysc on    Administrator 	 fail!
+[i]try            ttyu8 on             root 	 fail!
+[i]try            ttysd on    Administrator 	 fail!
+[i]try            ttyu9 on             root 	 fail!
+[i]try            ttyse on    Administrator 	 fail!
+[i]try            ttyua on             root 	 fail!
+[i]try            ttysf on    Administrator 	 fail!
+[i]try            ttyub on             root 	 fail!
+[i]try            ttyt0 on    Administrator 	 fail!
+[i]try            ttyuc on             root 	 fail!
+[i]try            ttyt1 on    Administrator 	 fail!
+[i]try            ttyud on             root 	 fail!
+[i]try            ttyt2 on    Administrator 	 fail!
+[i]try            ttyue on             root 	 fail!
+[i]try            ttyt3 on    Administrator 	 fail!
+[i]try            ttyuf on             root 	 fail!
+[i]try            ttyt4 on    Administrator 	 fail!
+[i]try            ttyv0 on             root 	 fail!
+[i]try            ttyv1 on             root 	 fail!
+[i]try            ttyv2 on             root 	 fail!
+[i]try            ttyv3 on             root 	 fail!
+[i]try            ttyt5 on    Administrator 	 fail!
+[i]try            ttyv4 on             root 	 fail!
+[i]try            ttyt6 on    Administrator 	 fail!
+[i]try            ttyv5 on             root 	 fail!
+[i]try            ttyt7 on    Administrator 	 fail!
+[i]try            ttyv6 on             root 	 fail!
+[i]try            ttyt8 on    Administrator 	 fail!
+[i]try            ttyv7 on             root 	 fail!
+[i]try            ttyt9 on    Administrator 	 fail!
+[i]try            ttyv8 on             root 	 fail!
+[i]try            ttyta on    Administrator 	 fail!
+[i]try            ttyv9 on             root 	 fail!
+[i]try            ttytb on    Administrator 	 fail!
+[i]try            ttyva on             root 	 fail!
+[i]try            ttytc on    Administrator 	 fail!
+[i]try            ttyvb on             root 	 fail!
+[i]try            ttytd on    Administrator 	 fail!
+[i]try            ttyvc on             root 	 fail!
+[i]try            ttyte on    Administrator 	 fail!
+[i]try            ttyvd on             root 	 fail!
+[i]try            ttytf on    Administrator 	 fail!
+[i]try            ttyve on             root 	 fail!
+[i]try            ttyu0 on    Administrator 	 fail!
+[i]try            ttyvf on             root 	 fail!
+[i]try            ttyu1 on    Administrator 	 fail!
+[i]try            ttyw0 on             root 	 fail!
+[i]try            ttyu2 on    Administrator 	 fail!
+[i]try            ttyw1 on             root 	 fail!
+[i]try            ttyu3 on    Administrator 	 fail!
+[i]try            ttyw2 on             root 	 fail!
+[i]try            ttyu4 on    Administrator 	 fail!
+[i]try            ttyw3 on             root 	 fail!
+[i]try            ttyu5 on    Administrator 	 fail!
+[i]try            ttyw4 on             root 	 fail!
+[i]try            ttyu6 on    Administrator 	 fail!
+[i]try            ttyw5 on             root 	 fail!
+[i]try            ttyu7 on    Administrator 	 fail!
+[i]try            ttyw6 on             root 	 fail!
+[i]try            ttyu8 on    Administrator 	 fail!
+[i]try            ttyw7 on             root 	 fail!
+[i]try            ttyu9 on    Administrator 	 fail!
+[i]try            ttyw8 on             root 	 fail!
+[i]try            ttyua on    Administrator 	 fail!
+[i]try            ttyw9 on             root 	 fail!
+[i]try            ttyub on    Administrator 	 fail!
+[i]try            ttywa on             root 	 fail!
+[i]try            ttyuc on    Administrator 	 fail!
+[i]try            ttywb on             root 	 fail!
+[i]try            ttyud on    Administrator 	 fail!
+[i]try            ttywc on             root 	 fail!
+[i]try            ttyue on    Administrator 	 fail!
+[i]try            ttywd on             root 	 fail!
+[i]try            ttyuf on    Administrator 	 fail!
+[i]try            ttywe on             root 	 fail!
+[i]try            ttyv0 on    Administrator 	 fail!
+[i]try            ttywf on             root 	 fail!
+[i]try            ttyv1 on    Administrator 	 fail!
+[i]try            ttyx0 on             root 	 fail!
+[i]try            ttyv2 on    Administrator 	 fail!
+[i]try            ttyx1 on             root 	 fail!
+[i]try            ttyv3 on    Administrator 	 fail!
+[i]try            ttyx2 on             root 	 fail!
+[i]try            ttyv4 on    Administrator 	 fail!
+[i]try            ttyx3 on             root 	 fail!
+[i]try            ttyv5 on    Administrator 	 fail!
+[i]try            ttyx4 on             root 	 fail!
+[i]try            ttyv6 on    Administrator 	 fail!
+[i]try            ttyx5 on             root 	 fail!
+[i]try            ttyv7 on    Administrator 	 fail!
+[i]try            ttyx6 on             root 	 fail!
+[i]try            ttyv8 on    Administrator 	 fail!
+[i]try            ttyx7 on             root 	 fail!
+[i]try            ttyv9 on    Administrator 	 fail!
+[i]try            ttyx8 on             root 	 fail!
+[i]try            ttyva on    Administrator 	 fail!
+[i]try            ttyx9 on             root 	 fail!
+[i]try            ttyvb on    Administrator 	 fail!
+[i]try            ttyxa on             root 	 fail!
+[i]try            ttyvc on    Administrator 	 fail!
+[i]try            ttyxb on             root 	 fail!
+[i]try            ttyvd on    Administrator 	 fail!
+[i]try            ttyxc on             root 	 fail!
+[i]try            ttyve on    Administrator 	 fail!
+[i]try            ttyxd on             root 	 fail!
+[i]try            ttyvf on    Administrator 	 fail!
+[i]try            ttyxe on             root 	 fail!
+[i]try            ttyw0 on    Administrator 	 fail!
+[i]try            ttyxf on             root 	 fail!
+[i]try            ttyw1 on    Administrator 	 fail!
+[i]try            ttyy0 on             root 	 fail!
+[i]try            ttyw2 on    Administrator 	 fail!
+[i]try            ttyy1 on             root 	 fail!
+[i]try            ttyw3 on    Administrator 	 fail!
+[i]try            ttyy2 on             root 	 fail!
+[i]try            ttyw4 on    Administrator 	 fail!
+[i]try            ttyy3 on             root 	 fail!
+[i]try            ttyw5 on    Administrator 	 fail!
+[i]try            ttyy4 on             root 	 fail!
+[i]try            ttyw6 on    Administrator 	 fail!
+[i]try            ttyy5 on             root 	 fail!
+[i]try            ttyw7 on    Administrator 	 fail!
+[i]try            ttyy6 on             root 	 fail!
+[i]try            ttyw8 on    Administrator 	 fail!
+[i]try            ttyy7 on             root 	 fail!
+[i]try            ttyw9 on    Administrator 	 fail!
+[i]try            ttyy8 on             root 	 fail!
+[i]try            ttywa on    Administrator 	 fail!
+[i]try            ttyy9 on             root 	 fail!
+[i]try            ttywb on    Administrator 	 fail!
+[i]try            ttyya on             root 	 fail!
+[i]try            ttywc on    Administrator 	 fail!
+[i]try            ttyyb on             root 	 fail!
+[i]try            ttywd on    Administrator 	 fail!
+[i]try            ttyyc on             root 	 fail!
+[i]try            ttywe on    Administrator 	 fail!
+[i]try            ttyyd on             root 	 fail!
+[i]try            ttywf on    Administrator 	 fail!
+[i]try            ttyye on             root 	 fail!
+[i]try            ttyx0 on    Administrator 	 fail!
+[i]try            ttyyf on             root 	 fail!
+[i]try            ttyx1 on    Administrator 	 fail!
+[i]try            ttyz0 on             root 	 fail!
+[i]try            ttyx2 on    Administrator 	 fail!
+[i]try            ttyz1 on             root 	 fail!
+[i]try            ttyx3 on    Administrator 	 fail!
+[i]try            ttyz2 on             root 	 fail!
+[i]try            ttyx4 on    Administrator 	 fail!
+[i]try            ttyz3 on             root 	 fail!
+[i]try            ttyx5 on    Administrator 	 fail!
+[i]try            ttyz4 on             root 	 fail!
+[i]try            ttyx6 on    Administrator 	 fail!
+[i]try            ttyz5 on             root 	 fail!
+[i]try            ttyx7 on    Administrator 	 fail!
+[i]try            ttyz6 on             root 	 fail!
+[i]try            ttyx8 on    Administrator 	 fail!
+[i]try            ttyz7 on             root 	 fail!
+[i]try            ttyx9 on    Administrator 	 fail!
+[i]try            ttyz8 on             root 	 fail!
+[i]try            ttyxa on    Administrator 	 fail!
+[i]try            ttyz9 on             root 	 fail!
+[i]try            ttyxb on    Administrator 	 fail!
+[i]try            ttyza on             root 	 fail!
+[i]try            ttyxc on    Administrator 	 fail!
+[i]try            ttyzb on             root 	 fail!
+[i]try            ttyxd on    Administrator 	 fail!
+[i]try            ttyzc on             root 	 fail!
+[i]try            ttyxe on    Administrator 	 fail!
+[i]try            ttyzd on             root 	 fail!
+[i]try            ttyxf on    Administrator 	 fail!
+[i]try            ttyze on             root 	 fail!
+[i]try            ttyy0 on    Administrator 	 fail!
+[i]try            ttyzf on             root 	 fail!
+[i]try            ttyy1 on    Administrator 	 fail!
+[i]try          urandom on             root 	 fail!
+[i]try            ttyy2 on    Administrator 	 fail!
+[i]try             usb1 on             root 	 fail!
+[i]try            ttyy3 on    Administrator 	 fail!
+[i]try             usb2 on             root 	 fail!
+[i]try            ttyy4 on    Administrator 	 fail!
+[i]try             usb3 on             root 	 fail!
+[i]try            ttyy5 on    Administrator 	 fail!
+[i]try             usb4 on             root 	 fail!
+[i]try            ttyy6 on    Administrator 	 fail!
+[i]try             usb5 on             root 	 fail!
+[i]try            ttyy7 on    Administrator 	 fail!
+[i]try             usb6 on             root 	 fail!
+[i]try            ttyy8 on    Administrator 	 fail!
+[i]try   usbdev1.1_ep00 on             root 	 fail!
+[i]try            ttyy9 on    Administrator 	 fail!
+[i]try   usbdev1.1_ep81 on             root 	 fail!
+[i]try            ttyya on    Administrator 	 fail!
+[i]try   usbdev2.1_ep00 on             root 	 fail!
+[i]try            ttyyb on    Administrator 	 fail!
+[i]try   usbdev2.1_ep81 on             root 	 fail!
+[i]try            ttyyc on    Administrator 	 fail!
+[i]try   usbdev3.1_ep00 on             root 	 fail!
+[i]try            ttyyd on    Administrator 	 fail!
+[i]try   usbdev3.1_ep81 on             root 	 fail!
+[i]try            ttyye on    Administrator 	 fail!
+[i]try   usbdev4.1_ep00 on             root 	 fail!
+[i]try            ttyyf on    Administrator 	 fail!
+[i]try   usbdev4.1_ep81 on             root 	 fail!
+[i]try            ttyz0 on    Administrator 	 fail!
+[i]try   usbdev4.2_ep00 on             root 	 fail!
+[i]try            ttyz1 on    Administrator 	 fail!
+[i]try   usbdev4.2_ep01 on             root 	 fail!
+[i]try            ttyz2 on    Administrator 	 fail!
+[i]try   usbdev4.2_ep81 on             root 	 fail!
+[i]try            ttyz3 on    Administrator 	 fail!
+[i]try   usbdev5.1_ep00 on             root 	 fail!
+[i]try            ttyz4 on    Administrator 	 fail!
+[i]try   usbdev5.1_ep81 on             root 	 fail!
+[i]try            ttyz5 on    Administrator 	 fail!
+[i]try   usbdev6.1_ep00 on             root 	 fail!
+[i]try            ttyz6 on    Administrator 	 fail!
+[i]try   usbdev6.1_ep81 on             root 	 fail!
+[i]try            ttyz7 on    Administrator 	 fail!
+[i]try          vboxdrv on             root 	 fail!
+[i]try            ttyz8 on    Administrator 	 fail!
+[i]try              vcs on             root 	 fail!
+[i]try            ttyz9 on    Administrator 	 fail!
+[i]try             vcs1 on             root 	 fail!
+[i]try            ttyza on    Administrator 	 fail!
+[i]try             vcs2 on             root 	 fail!
+[i]try            ttyzb on    Administrator 	 fail!
+[i]try             vcs3 on             root 	 fail!
+[i]try            ttyzc on    Administrator 	 fail!
+[i]try             vcs4 on             root 	 fail!
+[i]try            ttyzd on    Administrator 	 fail!
+[i]try             vcs5 on             root 	 fail!
+[i]try            ttyze on    Administrator 	 fail!
+[i]try             vcs6 on             root 	 fail!
+[i]try            ttyzf on    Administrator 	 fail!
+[i]try             vcs7 on             root 	 fail!
+[i]try          urandom on    Administrator 	 fail!
+[i]try             vcs8 on             root 	 fail!
+[i]try             usb1 on    Administrator 	 fail!
+[i]try             vcsa on             root 	 fail!
+[i]try             usb2 on    Administrator 	 fail!
+[i]try            vcsa1 on             root 	 fail!
+[i]try             usb3 on    Administrator 	 fail!
+[i]try            vcsa2 on             root 	 fail!
+[i]try             usb4 on    Administrator 	 fail!
+[i]try            vcsa3 on             root 	 fail!
+[i]try             usb5 on    Administrator 	 fail!
+[i]try            vcsa4 on             root 	 fail!
+[i]try             usb6 on    Administrator 	 fail!
+[i]try            vcsa5 on             root 	 fail!
+[i]try   usbdev1.1_ep00 on    Administrator 	 fail!
+[i]try            vcsa6 on             root 	 fail!
+[i]try   usbdev1.1_ep81 on    Administrator 	 fail!
+[i]try            vcsa7 on             root 	 fail!
+[i]try   usbdev2.1_ep00 on    Administrator 	 fail!
+[i]try            vcsa8 on             root 	 fail!
+[i]try   usbdev2.1_ep81 on    Administrator 	 fail!
+[i]try         xconsole on             root 	 fail!
+[i]try   usbdev3.1_ep00 on    Administrator 	 fail!
+[i]try             zero on             root 	 fail!
+[t]thread 2 receives a END msg, EXIT thread.
+[i]try   usbdev3.1_ep81 on    Administrator 	 fail!
+[i]try   usbdev4.1_ep00 on    Administrator 	 fail!
+[i]try   usbdev4.1_ep81 on    Administrator 	 fail!
+[i]try   usbdev4.2_ep00 on    Administrator 	 fail!
+[i]try   usbdev4.2_ep01 on    Administrator 	 fail!
+[i]try   usbdev4.2_ep81 on    Administrator 	 fail!
+[i]try   usbdev5.1_ep00 on    Administrator 	 fail!
+[i]try   usbdev5.1_ep81 on    Administrator 	 fail!
+[i]try   usbdev6.1_ep00 on    Administrator 	 fail!
+[i]try   usbdev6.1_ep81 on    Administrator 	 fail!
+[i]try          vboxdrv on    Administrator 	 fail!
+[i]try              vcs on    Administrator 	 fail!
+[i]try             vcs1 on    Administrator 	 fail!
+[i]try             vcs2 on    Administrator 	 fail!
+[i]try             vcs3 on    Administrator 	 fail!
+[i]try             vcs4 on    Administrator 	 fail!
+[i]try             vcs5 on    Administrator 	 fail!
+[i]try             vcs6 on    Administrator 	 fail!
+[i]try             vcs7 on    Administrator 	 fail!
+[i]try             vcs8 on    Administrator 	 fail!
+[i]try             vcsa on    Administrator 	 fail!
+[i]try            vcsa1 on    Administrator 	 fail!
+[i]try            vcsa2 on    Administrator 	 fail!
+[i]try            vcsa3 on    Administrator 	 fail!
+[i]try            vcsa4 on    Administrator 	 fail!
+[i]try            vcsa5 on    Administrator 	 fail!
+[i]try            vcsa6 on    Administrator 	 fail!
+[i]try            vcsa7 on    Administrator 	 fail!
+[i]try            vcsa8 on    Administrator 	 fail!
+[i]try         xconsole on    Administrator 	 fail!
+[i]try             zero on    Administrator 	 fail!
+[t]thread 0 receives a END msg, EXIT thread.
+[i]Exit.
