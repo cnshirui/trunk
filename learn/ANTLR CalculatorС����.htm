@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=x-gbk" charset="gbk">
+<title>ÉçÇø_ÍøÒ×ÉçÇø_[Ô­´´]¾öÕ½ ANTLR3</title>
+<meta name="keywords" content="ÉçÇø">
+<meta name="description" content="ÈÏÖ¤¹¤³ÌÊ¦,°üº¬ÓĞÉçÇø,ÁÄÌìÊÒ,ÂÛÌ³,½»ÓÑ,ÁÄÌìÊÒ,¹µÍ¨,½»Á÷,ĞÅÏ¢,ÍøÂç,¼¼Êõ,¾­¼Ã,ÕşÊ·,Çé¸Ğ,ÎÄÑ§,ÒÕÊõ,ÌåÓı,½»Á÷µÈ´óĞÍÃÅ»§ÉçÇøÂÛÌ³Õ¾µã">
+<meta name="robots" content="index, follow">
+<meta name="GOOGLEBOT" content="INDEX, FOLLOW">
+<link href="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+#signature {overflow:hidden;}
+</style>
+
+<script language="javascript" src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/checkCommon.js"></script>
+<script language="javascript" src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/articleCheck.js"></script>
+<script language="javascript">
+var clickcounter=0;
+function submitit(){
+	clickcounter=clickcounter+1
+	if (clickcounter==1) {
+		return true;
+	}
+	else {
+	//	window.status="·¢ËÍÖĞ£¬ÇëÉÔ´ı..."
+		if (document.all) { return false }
+	}
+}
+function submits (form1) {
+		if( checkArticleInfo() ){
+			document.getElementById("submitImg").disabled="true";
+			//document.getElementById("reverting").style.display='';
+			//document.getElementById("reverting").style.visibility="visible";
+			//alert(""+document.getElementById("submitImg").disabled);
+			return submitit();
+		}else return false;
+}
+
+	function saveToClipboard () {
+		var txt = document.articleInfoForm.subject.value+"\r\n"+ document.articleInfoForm.body.value
+		clipboardData.setData("Text",txt);
+	}
+
+	function ban(){
+		var signs=document.getElementsByName("signature");
+
+		for(i=0;i<signs.length;i++){
+			if(parseInt(signs[i].offsetHeight)>200){
+				signs[i].style.pixelHeight=200;
+			}
+		}
+	}
+</script>
+</head><body leftmargin="0" topmargin="0" onload="reimgSize();" marginheight="0" marginwidth="0">
+<table id="NeteaseClubLeading" bgcolor="0767BB" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody><tr class="p12"> 
+
+    <td width="0%"></td>
+
+    <td align="center" width="3%"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/home2.gif" height="21" width="13"></td>
+
+    <td height="24" width="97%"><font color="#ffffff">
+
+
+
+<a title="µã»÷½øÈëÍøÒ×ÉçÇøÊ×Ò³" href="http://club.163.com/" target="_blank" class="nav">ÉçÇøÊ×Ò³</a>
+
+<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷·µ»Ø½øÕ¾»­Ãæ" href="http://club.163.com/viewRight.m" class="nav">ÉçÇø½øÕ¾</a>
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷²éÑ¯ÓÃ»§×ÊÁÏ" href="http://club.163.com/user/searchUser.jsp" class="nav">²éÑ¯ÍøÓÑ</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷ÁªÏµÉçÇø´óÂè" href="http://msg.club.163.com/ListMessage.m?receiver=netease" class="nav">¸æËß´óÂè</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷·¢ËÍÉçÇøÁôÑÔ" href="http://msg.club.163.com/ListMessage.m" class="nav">´«Ö½Ìõ</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="ÍøÒ×Ïà²á" href="http://photo.163.com/" target="_blank" class="nav">Ïà²á</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷ÕûÀíË½ÈËÕä²Ø" href="http://b7.club.163.com/userFavorite.jsp" class="nav">Õä²ØÅäÖÃ</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷ĞŞ¸Ä¸öÈË×ÊÁÏ" href="http://club.163.com/disposition.jsp" class="nav">×ÊÁÏÅäÖÃ</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷Á¬½Ó²©¿Í" href="http://blog.163.com/" target="_blank" class="a2a"><strong>ÍøÒ×²©¿Í</strong></a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷ÔÄ¶ÁÉçÇø¾«»ª" href="http://e1.club.163.com/viewEliteCover.m?catalogId=1" class="nav">ÉçÇø¾«»ª</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+	<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷ÁË½âÉçÇø²Ù×÷" href="http://p5.club.163.com/viewBoardByWWW.m?boardId=newbie" class="nav">ÉçÇø°ïÖú</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">|
+
+<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"><a title="µã»÷²©²Ê¾º²Â°æÃæ" href="http://club.163.com/viewBoard.m?boardId=bocai" target="_blank" class="nav">²©²Ê¾º²Â</a><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4">
+
+<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.gif" height="1" width="4"></font></td>
+
+  </tr>
+
+  <tr class="p12"> 
+
+    <td colspan="4" bgcolor="#ffffff" height="3"></td>
+
+  </tr>
+
+</tbody></table>
+
+
+	
+	
+	
+	
+
+	
+		
+	
+	
+	
+	
+	
+<table border="0" cellpadding="0" cellspacing="0" width="870">
+  <tbody><tr> <!--×ó±ß²¿·Ö¿ªÊ¼-->
+    <td valign="top" width="660"> 
+      <table class="tb1" style="table-layout: fixed; word-wrap: break-word;" bgcolor="EEF7FF" border="0" cellpadding="0" cellspacing="0" width="100%">
+	  <col width="36"><col width="420"><col width="204">
+        <tbody><tr> 
+          <td colspan="3" class="a4" height="30">¡¡<a href="http://club.163.com/" class="a4">ÍøÒ×ÉçÇø</a><font style="font-size: 12px; font-family: arial;">&#187;</font> 
+              
+              
+				
+    	    	    <a href="http://pub.club.163.com/sub/73.html" target="main" class="a4">µçÄÔÍøÂç</a> 
+				
+            <font style="font-size: 12px; font-family: arial;">&#187;</font>    
+               
+            <a href="http://club.163.com/viewBoardByBBS.m?boardId=program" class="a4">±à³ÌÓïÑÔ</a> 
+            <font style="font-size: 12px; font-family: arial;">&#187;</font>   
+               
+            <a href="http://club.163.com/viewBoardByBBS.m?boardId=java" class="a4">JAVA</a> 
+            <font style="font-size: 12px; font-family: arial;">&#187;</font>  </td>
+        </tr>
+        <tr> 
+          <td align="center" bgcolor="70A6FF"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/PP0.gif"></td>
+          <td bgcolor="70A6FF"><font color="#ffffff"><span class="p14221">[Ô­´´]¾öÕ½ ANTLR3</span></font></td>
+          <td align="right" bgcolor="70A6FF">
+			
+				<a href="http://club.163.com/viewArticleByBBS.m?boardId=java&amp;articleId=java_117fd3f712e0366_1&amp;boardOffset=0" class="nav">Í¬Ö÷ÌâÏÂÒ»Æª</a>
+			
+		  	
+		  	<a href="http://club.163.com/viewBoardByBBS.m?boardId=java&amp;offset=0" class="nav">·µ»Ø</a>&nbsp;&nbsp;</td>
+        </tr>
+        <tr> 
+          <td colspan="3" class="p121" bgcolor="F6FAFD" height="25" valign="middle">
+		  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<col width="360"><col width="300">
+              <tbody><tr> 
+                <td class="p12" align="left" nowrap="nowrap" height="20"><font color="#666666">×÷Õß£º<a href="http://club.163.com/ShowUserProfile.m?username=gb.lu" class="c">°×¿ªË®(gb.lu)</a> [<a href="http://pub.club.163.com/sub/title/help.htm" style="text-decoration: none;" target="_blank"><font style="color: limegreen;">¿ª±ÊÆôÃÉ</font></a>]2008-02-03 14:42:09</font></td>
+                <td align="right" nowrap="nowrap">				  
+				<span style="text-align: left; vertical-align: middle; color: rgb(5, 104, 189);" class="p12">¡¤<a href="mailto:gb.lu@163.com" class="a1">·¢ÓÊ¼ş</a>¡¤<a href="http://club.163.com/ListMessage.m?receiver=gb.lu" class="a1">·¢Ö½Ìõ</a>¡¤¡¤<a target="_blank" href="http://www.blog.163.com/gb.lu/" class="a1">²©¿Í</a></span>
+				</td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        <tr> 
+          <td colspan="4" bgcolor="BFD4E3" height="1"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.htm" height="1" width="1"></td>
+        </tr>
+        <tr> 
+          <td colspan="4" align="center"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.htm" height="2" width="1"> 
+            <table class="tb1" style="table-layout: fixed; word-wrap: break-word;" align="center" bgcolor="#ffffff" width="98%">
+              <tbody><tr> 
+                  <td rowspan="2" width="2%"></td>
+                  <td height="4" width="96%"></td>
+                  <td rowspan="2" width="2%"></td>
+                </tr>
+                <tr> 
+					<td class="p14a" style="table-layout: fixed; word-wrap: break-word;">
+&nbsp;&nbsp;Ç°²»¾ÃĞ´ÍêÁËÒ»¸ö¹¤¾ßÈí¼şNova&nbsp;StudioÓÃÀ´¿ª·¢×Ô¼º±àĞ´µÄJava&nbsp;Web&nbsp;¿ò¼Ü
+Nova£¬ÆäÖĞÓĞSQL±à¼­¿ò£¬ËäÈ»Í¨¹ıJavaÕıÔò±í´ïÊ½ÊµÏÖÁËÏÖÔÚÁ÷ĞĞµÄ´úÂë×Ô¶¯ÌáÊ¾¹¦ÄÜ£¬µ«¸Ğ¾õ¹ıÓÚÓ²±àÂë£¬ÓÚÊÇÏëÍ¨¹ıÓï·¨·ÖÎöµÄ·½·¨ÖØĞÂÊµÏÖÒ»
+ÏÂ¡£<br>&nbsp;&nbsp;ÍøÉÏËÑÁËËÑ£¬ÕÒµ½ÁËÓï·¨Éú³ÉÆ÷antlr£¬È¥¹Ù·½ÍøÕ¾ÏÂÔØÁËantlr3£¬ÕÒÁËÏàÓ¦µÄÀı×ÓºÍÎÄÕÂÊìÏ¤ÁËÁËÒ»ÏÂ£¬¿ªÊ¼Êµ¼ùCalculatorĞ¡Àı×Ó£¬ÖĞ¼ä³ö¹ı²»ÉÙ´íÎó£¬Ö÷ÒªÊÇantlr3ºÍantlr2ÓĞĞ©µØ·½²»Ì«Ò»Ñù£¬×ÜËã×îºó¶¼Ò»Ò»½â¾öÁË¡£<br>&nbsp;&nbsp;
+Êµ¼ù½á¹ûÓĞµãÈÃÈËĞ¹Æø£¬antlr3Ö»ÄÜ·ÖÎöÊäÈëµÄÎÄ±¾ÊÇ·ñÓï·¨ÕıÈ·£¬È´²»ÄÜ¸æËßÎÒºóĞøÓ¦¸Ã¸úËæ²Ù×÷Êı»¹ÊÇÔËËã·û£¬ÁíÍâ¼´Ê¹Óï·¨ÕıÈ·Ê±ËüÒ²²»ÄÜÏñ
+antlr2ÄÇÑù¸øÎÒÒ»¿ÃÇ¶Ì×µÄÓï·¨Ê÷£¬Ëü·µ»ØµÄÊÇËùÓĞµÄÒ¶½ÚµãÊı×é£¬ÊÇÒ»Î¬µÄ£¬ÕâÑùÎÒ¾ÍÃ»·¨Í¨¹ı±éÀúÇ¶Ì×Ê÷ÊµÏÖ²»Í¬ÓïÒå²»Í¬µÄÏÔÊ¾·ç¸ñ£¬Èç£ºSQL±£Áô
+×ÖºÚÌå£¬±íÃûºìÉ«µÈ¡£<br>&nbsp;&nbsp;ÄÑµÀ¼¸ÌìÑĞ¾¿Êµ¼ùµÄÅ¬Á¦°×·ÑÁË£¬ÊµÔÚÊÇĞÄÓĞ²»¸Ê£¬ÑĞ¾¿ÁËÒ»ÏÂantlr3Éú³ÉµÄÓï·¨·ÖÎöÀàCalculatorParser£¬·¢ÏÖËüÔÚÏòºóÆ¥ÅäÊ±»áµ÷ÓÃÕâ¸ö·½·¨£º<br>&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;match(input,OR,FOLLOW_OR_in_logic_expr111);<br><br>&nbsp;&nbsp;FOLLOW_OR_in_logic_expr111
+Õâ¸öfollow²ÎÊıÕıÊÇ'or'&nbsp;Âß¼­»ò²Ù×÷·ûºóÃæ¿ÉÒÔ¸úËæµÄ¸÷ÖÖ±ê¼Ç(Token)£¬Áé»úÒ»¶¯£¬Èç¹ûÖØÔØÕâ¸ö·½·¨°ÑÕâ¸öfollow±£´æÆğ
+À´£¬ÄÇÃ´²¶»ñµ½Óï·¨´íºó¾ÍÄÜÖªµÀÕıÈ·µÄºóĞø±ê¼ÇÁË¡£ĞĞ¶¯£¡<br>&nbsp;&nbsp;CalculatorParser&nbsp;ÊÇ¼Ì³Ğorg.antlr.runtime.ParserÀàµÄ£¬ÓÚÊÇÊ×ÏÈĞ´Ò»¸ö×Ô¼ºµÄÀ©Õ¹Àà&nbsp;MyAntlrParser£º<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;NovaAntlrParser&nbsp;extends&nbsp;MyAntlrParser<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;BitSet&nbsp;follow&nbsp;=&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;ttype;&nbsp;//&nbsp;µ±Ç°´¦ÀíµÄtokenµÄÊı×éÏÂ±ê<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;MyAntlrParser(TokenStream&nbsp;input)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(input);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;match(IntStream&nbsp;input,&nbsp;int&nbsp;ttype,&nbsp;BitSet&nbsp;follow)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throws&nbsp;RecognitionException<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.ttype&nbsp;=&nbsp;ttype;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.follow&nbsp;=&nbsp;follow;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.match(input,&nbsp;ttype,&nbsp;follow);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;CalculatorParserÀà¸Ä³É¼Ì³Ğ&nbsp;MyAntlrParserÀà£¬ÔÚ²âÊÔÀàMainÖĞ²¶»ñÒì³£½øĞĞ´¦Àí£¬´úÂëÈçÏÂ£º<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;java.io.IOException;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;java.io.StringReader;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.ANTLRReaderStream;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.CommonTokenStream;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.MismatchedSetException;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.MismatchedTokenException;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.RecognitionException;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;Main&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)&nbsp;throws&nbsp;IOException<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;content&nbsp;=&nbsp;"isprogrammer&nbsp;or&nbsp;";<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANTLRReaderStream&nbsp;input&nbsp;=&nbsp;new&nbsp;ANTLRReaderStream(new&nbsp;StringReader(content));&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CalculatorLexer&nbsp;lexer&nbsp;=&nbsp;new&nbsp;CalculatorLexer(input);&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTokenStream&nbsp;tokens&nbsp;=&nbsp;new&nbsp;CommonTokenStream(lexer);&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CalculatorParser&nbsp;parser&nbsp;=&nbsp;new&nbsp;CalculatorParser(tokens);&nbsp;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;¿ÉÄÜµÄºóĞøÆ¥Åä±ê¼ÇÃû<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;expecting&nbsp;=&nbsp;null;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTree&nbsp;tree&nbsp;=&nbsp;parser.expr().getTree();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;´¦Àítree<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(RecognitionException&nbsp;e)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expecting&nbsp;=&nbsp;expecting(parser,&nbsp;e);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;ExpectInfo&nbsp;expecting(MyAntlrParser&nbsp;parser,&nbsp;RecognitionException&nbsp;e)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(e&nbsp;instanceof&nbsp;MismatchedTokenException)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;expecting&nbsp;=&nbsp;&nbsp;parser.getTokenNames()[parser.ttype];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;String[]{expecting);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;if&nbsp;(e&nbsp;instanceof&nbsp;MismatchedSetException&nbsp;||<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;instanceof&nbsp;NoViableAltException)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;expecting&nbsp;=&nbsp;CollectionUtil.getElements(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.getTokenNames(),&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.follow.toArray());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;toExpectInfo(e,&nbsp;expecting);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;getRule(e),&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;String&nbsp;getRule(Exception&nbsp;e)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;e.getStackTrace()[0].getMethodName();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;Óï·¨ÎÄµµCalculator.gÈçÏÂ£º<br><br>&nbsp;&nbsp;&nbsp;&nbsp;grammar&nbsp;Calculator;<br>&nbsp;&nbsp;&nbsp;&nbsp;options&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backtrack=true;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;memoize=true;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k&nbsp;=&nbsp;10;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output=AST;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASTLabelType=CommonTree;<br>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;expr&nbsp;:&nbsp;basic_expr&nbsp;|&nbsp;logic_expr&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;basic_expr&nbsp;:&nbsp;operator&nbsp;WS?&nbsp;PLUS&nbsp;WS?&nbsp;operator&nbsp;;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;logic_expr&nbsp;:&nbsp;operator&nbsp;(&nbsp;WS&nbsp;OR&nbsp;WS&nbsp;operator&nbsp;)&nbsp;+&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;:&nbsp;(VAR&nbsp;|&nbsp;INT)&nbsp;;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;PLUS&nbsp;&nbsp;:&nbsp;'+'&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;:&nbsp;'or'&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;INT&nbsp;&nbsp;&nbsp;:&nbsp;('0'..'9')+&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;VAR&nbsp;&nbsp;:&nbsp;'a'..'z'&nbsp;('a'..'z'|'0'..'9'|'_'|'$'|'#')*&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;WS&nbsp;:&nbsp;(&nbsp;'&nbsp;'&nbsp;|&nbsp;'\t'&nbsp;|&nbsp;'\r'&nbsp;|&nbsp;'\n'&nbsp;)+&nbsp;;<br><br>&nbsp;&nbsp;½øĞĞ²âÊÔ£¬·¢ÏÖexpecting·µ»ØµÄ»ù±¾ÉÏÊÇÎÒËùÏ£ÍûµÄ£¬µÚÒ»²½Ëã³É¹¦ÁË¡£µ«»¹ÓĞÁ½¸ö<br>ÎÊÌâ¡£µÚÒ»¸ö£¬Å×³öÒì³£Ê±µÃ²»µ½tree¡£µÚ¶ş¸ö£¬¼´Ê¹Óï·¨ÕıÈ·²»Å×Òì³£µÃµ½ÁËtree£¬µ«<br>Õâ¸ötreeÊÇ±âÆ½µÄ£¬Ö»ÄÜµÃµ½PLUS,&nbsp;OR,&nbsp;INT,&nbsp;VAR,&nbsp;WS&nbsp;ÕâĞ©±ê¼ÇÃû£¬²»ÄÜÖªµÀÊÇbasic_expr<br>»¹ÊÇlogic_expr¡£<br>&nbsp;&nbsp;ÄÇÃ´ÄÜ²»ÄÜÔÙ´Î¼ÀÆğÖØÔØÀûÆ÷½â¾öÕâ¸öÄÑÌâÄØ£¿ÔÙ´Î·ÖÎöCalculatorParser.java´úÂë£¬<br>·¢ÏÖËü¶¼ÊÇÍ¨¹ıÒ»¸öCommonTreeAdaptor¶ÔÏóÀ´Éú³ÉÊ÷¡¢Ìí¼Ó×ÓÊ÷µÈ²Ù×÷£¬Èç¹ûÎÒ°Ñ×Ô¼ºµÄAdaptor<br>Ç¿ÖÆ¸³¸øËü²»¾ÍÓĞÏ£ÍûÔÚ×Ô¼ºµÄAdaptorÀàÖĞÉú³É×Ô¼º¶¨ÒåµÄÓï·¨Ê÷ÁËÂğ£¿<br>&nbsp;&nbsp;ÁíÍâÍ¨¹ıÆäËüµÄÀı×Ó·¢ÏÖ¿ÉÒÔÔÚ¶¨ÒåÓï·¨¹æÔòÊ±¶¨Òå¶ÔÓ¦µÄ´úÂëÆ¬¶Ï£¬Antlr3»á°ÑËü²åÈëµ½<br>¸Ã¹æÔò¶ÔÓ¦µÄ·½·¨ÖĞ£¨·½·¨ÃûºÍ¹æÔòÃûÏàÍ¬£©£¬ÕâÑù¾ÍÓĞ¿ÉÄÜÈÃ¹æÔò·½·¨µ÷ÓÃÎÒµÄ´úÂëÏò×Ô¼ºÉú³ÉµÄ<br>Óï·¨Ê÷²åÈë¹æÔòÃû¡£ÔÙ´Î¶¯ÊÖ£¡<br>&nbsp;&nbsp;Ê×ÏÈĞ´Ò»¸öÊ÷½á¹¹Àà&nbsp;NovaAntlrTree&nbsp;±£´æÎÒËùÏ£ÍûµÄ±ê¼ÇĞÅÏ¢£º<br><br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;java.util.ArrayList;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;java.util.List;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.tree.Tree;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;NovaAntlrTree&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;NovaAntlrTree&nbsp;parent&nbsp;=&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;rule&nbsp;=&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;String&nbsp;text&nbsp;=&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;int&nbsp;type;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;int&nbsp;line;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;int&nbsp;positionInLine;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;List&nbsp;children&nbsp;=&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;NovaAntlrTree(Tree&nbsp;node,&nbsp;String&nbsp;rule)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.rule&nbsp;=&nbsp;rule;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text&nbsp;=&nbsp;node.getText();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;=&nbsp;node.getType();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;=&nbsp;node.getLine();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;positionInLine&nbsp;=&nbsp;node.getCharPositionInLine();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;NovaAntlrTree&nbsp;getChild(int&nbsp;i)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;children==null&nbsp;||&nbsp;i&gt;=children.size()&nbsp;)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(NovaAntlrTree)children.get(i);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;getChildCount()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;children==null&nbsp;)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;children.size();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addChild(NovaAntlrTree&nbsp;t)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;t==null&nbsp;)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t.setParent(this);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;children==null&nbsp;)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children&nbsp;=&nbsp;new&nbsp;ArrayList();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children.add(t);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getFinalRule(NovaAntlrParser&nbsp;parser)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;realRule&nbsp;=&nbsp;rule;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(realRule&nbsp;==&nbsp;null&nbsp;&amp;&amp;&nbsp;type&nbsp;&gt;&nbsp;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;realRule&nbsp;=&nbsp;parser.getTokenNames()[type];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;realRule;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;NovaAntlrTree&nbsp;getStartTree()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(line&nbsp;&gt;&nbsp;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;getChild(0).getStartTree();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;NovaAntlrTree&nbsp;getEndTree()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(line&nbsp;&gt;&nbsp;0)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;this;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;getChild(getChildCount()-1).getEndTree();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;getLine()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;line;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;getPositionInLine()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;positionInLine;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getRule()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;rule;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setRule(String&nbsp;rule)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.rule&nbsp;=&nbsp;rule;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getText()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;text;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;int&nbsp;getType()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;type;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;NovaAntlrTree&nbsp;getParent()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;parent;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setParent(NovaAntlrTree&nbsp;parent)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.parent&nbsp;=&nbsp;parent;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br><br>&nbsp;&nbsp;Óï·¨¹æÔò&nbsp;Calculator.gÂÔ×÷ĞŞ¸Ä£º<br><br>&nbsp;&nbsp;&nbsp;&nbsp;......<br>&nbsp;&nbsp;&nbsp;&nbsp;basic_expr&nbsp;:&nbsp;(&nbsp;operator&nbsp;WS?&nbsp;PLUS&nbsp;WS?&nbsp;operator&nbsp;)&nbsp;{&nbsp;setRule("basic_expr");&nbsp;}&nbsp;;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;logic_expr&nbsp;:&nbsp;(&nbsp;operator&nbsp;(&nbsp;WS&nbsp;OR&nbsp;WS&nbsp;operator&nbsp;)&nbsp;+&nbsp;)&nbsp;{&nbsp;setRule("logic_expr");&nbsp;}&nbsp;;<br>&nbsp;&nbsp;&nbsp;&nbsp;operator&nbsp;:&nbsp;(VAR&nbsp;|&nbsp;INT)&nbsp;&nbsp;{&nbsp;setRule("operator");&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;......<br><br>&nbsp;&nbsp;ÏÖÔÚÀ´Ğ´×Ô¼ºµÄAdatorÀà£¬Ëü¼Ì³Ğ&nbsp;CommonTreeAdaptor<br><br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;java.util.HashSet;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.Token;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.tree.CommonTree;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.tree.CommonTreeAdaptor;<br>&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;org.antlr.runtime.tree.Tree;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;NovaTreeAdaptor&nbsp;extends&nbsp;CommonTreeAdaptor<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;NovaAntlrTree&nbsp;root&nbsp;=&nbsp;null;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;NovaAntlrTree&nbsp;current&nbsp;=&nbsp;null;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;HashSet&nbsp;addedTokenIndices&nbsp;=&nbsp;new&nbsp;HashSet();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;NovaTreeAdaptor()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;addChild(Object&nbsp;t,&nbsp;Object&nbsp;child)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super.addChild(t,&nbsp;child);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CommonTree&nbsp;ct&nbsp;=&nbsp;(CommonTree)&nbsp;child;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Token&nbsp;token&nbsp;=&nbsp;ct.getToken();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(token&nbsp;!=&nbsp;null)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;index&nbsp;=&nbsp;new&nbsp;Integer(token.getTokenIndex());<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!addedTokenIndices.contains(index))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.addChild(createTree(child));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addedTokenIndices.add(index);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object&nbsp;nil()&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;o&nbsp;=&nbsp;super.nil();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NovaAntlrTree&nbsp;t&nbsp;=&nbsp;createTree(o);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(current&nbsp;!=&nbsp;null)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.addChild(t);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;=&nbsp;t;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(root&nbsp;==&nbsp;null)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;current;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//System.out.println("rule:"+parser.getRule()+",&nbsp;nil&nbsp;object&nbsp;"+o);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;o;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;NovaAntlrTree&nbsp;createTree(Object&nbsp;o)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NovaAntlrTree&nbsp;t&nbsp;=&nbsp;new&nbsp;NovaAntlrTree((Tree)&nbsp;o,&nbsp;null);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;t;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;NovaAntlrTree&nbsp;getTree()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;root;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setRule(String&nbsp;rule)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(current&nbsp;!=&nbsp;null)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.setRule(rule);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current&nbsp;=&nbsp;current.getParent();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object&nbsp;rulePostProcessing(Object&nbsp;root)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;super.rulePostProcessing(root);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br><br>&nbsp;&nbsp;ÏÂÃæÎÒÃÇÀ´ÔöÇ¿MyAntlrParserÀà£¬ÏÈÖØÔØÈı¸öÒì³£´¦Àí·½·¨£¬Ä¿µÄÒ»ÊÇ¼õÉÙĞŞ¸ÄCalculatorParser.java<br>µÄ¹¤×÷Á¿£¬±Ï¾¹Óï·¨ÎÄ¼ş¿ÉÄÜ¾­³£»á×÷ĞŞ¸Ä£¬Ã¿´ÎÖØĞÂÉú³ÉCalculatorParser.javaÎÄ¼şºó¶ÔËü½øĞĞ±È½Ï¶àµÄÌæ»»<br>¶¯×÷×ÜÊÇ·³ÈËµÄ£¬¶şÊÇÏ£ÍûËüÄÜÖ±½ÓÅ×³öÒì³££¬ÈıÊÇ²»Ïë¿´µ½Ëü·³ÈËµÄÒì³£ĞÅÏ¢Êä³ö£º<br><br>public&nbsp;void&nbsp;recover(IntStream&nbsp;input,&nbsp;RecognitionException&nbsp;re)<br>{<br>}<br><br>public&nbsp;void&nbsp;reportError(RecognitionException&nbsp;e)&nbsp;<br>{<br>}<br><br>public&nbsp;void&nbsp;recoverFromMismatchedToken(IntStream&nbsp;input,<br>&nbsp;&nbsp;&nbsp;RecognitionException&nbsp;e,<br>&nbsp;&nbsp;&nbsp;int&nbsp;ttype,<br>&nbsp;&nbsp;&nbsp;BitSet&nbsp;follow)<br>throws&nbsp;RecognitionException<br>{<br>if&nbsp;(&nbsp;input.LA(2)==ttype&nbsp;)&nbsp;<br>{<br>beginResync();<br>input.consume();&nbsp;<br>endResync();<br>input.consume();&nbsp;<br>return;<br>}<br>if&nbsp;(&nbsp;!recoverFromMismatchedElement(input,e,follow)&nbsp;)&nbsp;<br>{<br>throw&nbsp;e;<br>}<br>}<br><br><br>&nbsp;&nbsp;È»ºóÖØÔØÁ½¸öºÍAdaptorÏà¹ØµÄ·½·¨£º<br><br>public&nbsp;TreeAdaptor&nbsp;getTreeAdaptor()<br>{<br>return&nbsp;null;<br>}<br>public&nbsp;void&nbsp;setTreeAdaptor(TreeAdaptor&nbsp;adaptor)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>public&nbsp;NovaTreeAdaptor&nbsp;getNovaTreeAdaptor()<br>{<br>return&nbsp;(NovaTreeAdaptor)&nbsp;getTreeAdaptor();<br>}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;È»ºóÊµÏÖÔÚÓï·¨ÎÄ¼şÖĞÔö¼ÓµÄ´úÂëÖĞµÄsetRule·½·¨£º<br><br>public&nbsp;void&nbsp;setRule(String&nbsp;rule)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>getNovaTreeAdaptor().setRule(rule);<br>}<br><br><br>&nbsp;&nbsp;×îºóÍ¨¹ıÃüÁîĞĞ&nbsp;java&nbsp;org.antlr.Tool&nbsp;Calculator.gÖØĞÂÉú³ÉCalculator.javaÎÄ¼ş£¬<br>²¢×÷ÒÔÏÂÁ½¸öÌæ»»¶¯×÷£¨ÒÔºóÃ¿´ÎĞŞ¸ÄÓï·¨ºó¶¼Òª×öÕâ¸ö¶¯×÷¼´¿É£©£º<br>&nbsp;&nbsp;°Ñ¸¸ÀàParserÌæ»»³ÉMyAntlrParser<br>&nbsp;&nbsp;°ÑËùÓĞµÄreportError(RecognitionException&nbsp;e);&nbsp;ÕâÒ»ĞĞÌæ»»Îªthrow&nbsp;e;<br><br>&nbsp;&nbsp;ºÃÁË£¬À´±àĞ´ĞÂµÄ²âÊÔ´úÂë²âÊÔÎÒÃÇ×Ô¼ºÉú³ÉµÄÓï·¨Ê÷ÓĞÃ»ÓĞ´ïµ½Ô¤ÆÚĞ§¹û£º<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;void&nbsp;main(String[]&nbsp;args)&nbsp;throws&nbsp;IOException<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.....<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.setTreeAdaptor(new&nbsp;NovaTreeAdaptor(parser));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parser.expr();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;(RecognitionException&nbsp;e)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterate(parser.getNovaTreeAdaptor().getTree(),&nbsp;0);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>private&nbsp;static&nbsp;void&nbsp;iterate(NovaAntlrTree&nbsp;t,&nbsp;int&nbsp;depth)<br>{<br>if&nbsp;(t&nbsp;==&nbsp;null)<br>return;<br><br>System.out.print(createSpace(depth*4));<br>System.out.println("rule:"+t.getRule()+"["+t.getText()+"]");<br>depth++;<br><br>for&nbsp;(int&nbsp;i=0;&nbsp;i&lt;t.getChildCount();&nbsp;i++)<br>{<br>iterate(t.getChild(i),&nbsp;depth);<br>}<br><br>}<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;String&nbsp;createSpace(int&nbsp;count)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer&nbsp;sb&nbsp;=&nbsp;new&nbsp;StringBuffer(count);<br>&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i=0;&nbsp;i&lt;count;&nbsp;i++)<br>&nbsp;&nbsp;&nbsp;&nbsp;sb.append('&nbsp;');<br>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;sb.toString();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br><br>&nbsp;&nbsp;ÔËĞĞ½á¹ûÈçÏÂ£º<br><br>&nbsp;&nbsp;rule:null[null]<br>&nbsp;&nbsp;&nbsp;&nbsp;rule:logic_expr[null]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:operator[null]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[isprogrammer]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[&nbsp;]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[or]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[&nbsp;]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:operator[null]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[3]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[&nbsp;]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[or]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[&nbsp;]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:operator[null]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rule:null[isantlr]<br><br><br>&nbsp;&nbsp;²âÊÔ³É¹¦ºó°ÑÀàÒÆÖ²µ½ÎÒµÄSQL±à¼­Æ÷ÖĞ£¬Ôö¼ÓÏÔÊ¾²»Í¬Style¹¦ÄÜºó£¬´ó¹¦¸æ³É£¬ÕâÊÇĞ§¹ûÍ¼£º<br><br><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/7b355b40-4697-3068-8fcc-7a30a845a8ec.jpg" alt=""><br><font style="display: none; visibility: hidden; position: relative; left: 0px; top: -50px;">Ô­ÌûÀ´×ÔÓÚÍøÒ×ÉçÇø:http://club.163.com/viewArticleByWWW.m?boardId=java&amp;articleId=java_117de07d1660b51_1</font>&nbsp;&nbsp;
+					</td>
+                </tr>
+                <tr> 
+                  <td colspan="2" class="p121" align="right">
+					   
+					  	 
+							[<a href="http://club.163.com/viewRevertArticleForm.m?boardId=java&amp;articleId=java_117de07d1660b51_1&amp;offset=&amp;boardOffset=0">»Ø¸´</a>] 
+					  	 
+					   
+					   
+						
+					   
+					   
+					   
+					   
+					   
+					   <!--
+					   -->
+					   
+					  
+						
+				  </td>
+                  <td class="p121" align="right">&nbsp;</td>
+                </tr>
+                <tr> 
+                  
+                <td colspan="2" class="p121" align="right"><font color="#666666"><span class="p9161"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/tb16.gif" height="9" width="9"></span></font> 
+                  <a href="#" class="B" onclick="clipboardData.setData('Text','http://club.163.com/viewArticleByBBS.m?boardId=java&amp;articleId=java_117de07d1660b51_1')">¸´ÖÆ±¾ÌûµØÖ·</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td class="p121" align="right">&nbsp;</td>
+                </tr>
+                <tr> 
+                  <td colspan="3"><table align="center" border="0" cellpadding="0" cellspacing="0" width="96%">
+                    <tbody><tr> 
+                      <td background="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/line_blue.gif" height="1"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.htm" height="1" width="1"></td>
+                    </tr>
+                    <tr> 
+                      <td><table class="p12a" style="table-layout: fixed; word-wrap: break-word;" border="0" cellpadding="5" cellspacing="0" width="100%">
+                          <tbody><tr> 
+                            <td style="table-layout: fixed; word-wrap: break-word;">	
+							  <div id="signature" style="word-wrap: break-word;">
+								<font color="#666666">
+								<img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/294985775593436556.jpg" height="200">
+								</font> 
+							  </div>
+							</td>
+                          </tr>
+						  
+                        </tbody></table></td>
+                    </tr>
+                    <tr> 
+                      <td background="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/line_blue.gif" height="1"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.htm" height="1" width="1"></td>
+                    </tr>
+                    <tr>
+                      <td height="1">&nbsp;</td>
+                    </tr>
+                  </tbody></table></td>
+              </tr></tbody></table>
+            <img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.htm" height="3" width="1"><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.htm" height="1" width="1">
+			</td>
+        </tr>        
+      </tbody></table> 
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+          <td><img src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/space.htm" height="1" width="1"></td>
+        </tr>
+      </tbody></table> 
+
+	  <table border="0" cellpadding="0" cellspacing="0" width="99%">
+        <tbody><tr> 
+		<td bgcolor="6AA6FC">&nbsp;</td>
+	  </tr>
+	  <tr>
+		  <td class="p12"> 
+            <div align="right"><font color="505050">   
+              <a class="a4" href="http://club.163.com/viewArticleByBBS.m?boardId=java&amp;articleId=java_117fd3f712e0366_1&amp;boardOffset=0">Í¬Ö÷ÌâÏÂÒ»Æª</a> 
+                 <a class="a4" href="http://club.163.com/viewBoardByBBS.m?boardId=java&amp;offset=0">·µ»Ø</a>¡¡ 
+               </font> </div>
+          </td>
+	  </tr>
+	</tbody></table>
+	<br>
+	<!--Ìû×Óä¯ÀÀÒ³Ãæµ×²¿µÄ¹ã¸æ-->
+	<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr><td align="center">
+		<div id="randomText2" style="overflow: hidden; font-size: 14px; padding-left: 20px;" class="a14"></div>
+			
+	</td></tr>
+	</tbody></table>
+	</td>
+	  
+    <!--ÓÒ±ß²¿·Ö¿ªÊ¼-->
+    <td rowspan="2" bgcolor="#eef7ff" valign="top" width="210"> 
+      
+
+<div id="root" style="background-color: rgb(238, 247, 255); width: 210px;">
+  <div id="netease/guanggao">
+    <div align="center"></div>
+  </div>
+  <div id="netease/dqjx">
+    <div class="p12" style="background-image: url(http://pimg.163.com/club/ces/images/bj031.gif); background-repeat: repeat-x;" align="center"><font color="#000000">±à¼­ÍÆ¼ö</font>
+    </div>
+    <div align="center"><iframe name="I1" marginwidth="1" marginheight="1" border="0" src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/dqjx.htm" frameborder="0" height="240" width="205">
+          ä¯ÀÀÆ÷²»Ö§³ÖÇ¶ÈëÊ½¿ò¼Ü£¬»ò±»ÅäÖÃÎª²»ÏÔÊ¾Ç¶ÈëÊ½¿ò¼Ü¡£</iframe></div>
+  </div>
+  <div id="netease/bjtj">
+    <div class="p12" style="background-image: url(http://pimg.163.com/club/ces/images/bj031.gif); background-repeat: repeat-x;" align="center"><font color="#000000">ÈÈµãÆÀÂÛ</font>
+    </div>
+    <div align="center"><iframe name="I2" marginwidth="1" marginheight="1" border="0" src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/bjtj.htm" frameborder="0" height="140" width="205">
+          ä¯ÀÀÆ÷²»Ö§³ÖÇ¶ÈëÊ½¿ò¼Ü£¬»ò±»ÅäÖÃÎª²»ÏÔÊ¾Ç¶ÈëÊ½¿ò¼Ü¡£</iframe></div>
+  </div>
+  <div id="netease/bjtj">
+    <div class="p12" style="background-image: url(http://pimg.163.com/club/ces/images/bj031.gif); background-repeat: repeat-x;" align="center"><font color="#000000">ÉçÇø»î¶¯</font>
+    </div>
+    <div align="center"><iframe name="I3" marginwidth="1" marginheight="1" border="0" src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/0014.htm" frameborder="0" height="140" width="205">
+          ä¯ÀÀÆ÷²»Ö§³ÖÇ¶ÈëÊ½¿ò¼Ü£¬»ò±»ÅäÖÃÎª²»ÏÔÊ¾Ç¶ÈëÊ½¿ò¼Ü¡£</iframe></div>
+  </div>
+</div>
+</td>
+  </tr>
+  
+</tbody></table>
+<!-- START NetEase Devilfish 2006 -->
+<script language="JavaScript">
+<!--
+    var oJS;
+    function setScript(){
+        oJS = document.getElementById("$$__$$");
+        oJS.src = 'http://analytics.163.com/ntes.js';
+        oJS.attachEvent && oJS.attachEvent("onreadystatechange",doAnaly);
+    }
+    function doAnaly(){
+        if (oJS && oJS.readyState && oJS.readyState!="loaded"){
+            return;
+        }
+        // do analytics
+       _ntes_nacc = "club";
+	neteaseTracker();
+     }
+//-->
+</script>
+<script src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/ntes.js" id="$$__$$" language="JavaScript" onload="doAnaly();"></script>
+<script language="JavaScript">
+<!--
+  if (!document.all){
+      window.addEventListener("load",setScript,false); 
+  }else{
+      window.attachEvent("onload",setScript);
+  }
+//-->
+</script>
+<!-- END NetEase Devilfish 2006 -->
+<script type="text/javascript" src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/util.js"></script>
+<script type="text/javascript" src="ANTLR%20Calculator%E5%B0%8F%E4%BE%8B%E5%AD%90_files/police.js"></script>
+
+<div style="text-align: center; position: absolute; width: 800px; left: 0px;" id="policeDiv"></div></body></html>

@@ -1,0 +1,515 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head profile="http://gmpg.org/xfn/11">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta name="verify-v1" content="+qqJxgloDDxkz0tA4yky1G5QBQId5a8inidsK/cZFI0=">
+
+<title>Simple Calculator with Antlr.</title>
+<script type="text/javascript" src="Simple%20Calculator%20with%20Antlr._files/script.js"></script>
+<link rel="stylesheet" href="Simple%20Calculator%20with%20Antlr._files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://floris.briolas.nl/floris/wp-content/themes/floris_v0/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://floris.briolas.nl/floris/wp-content/themes/floris_v0/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="a coder named Floris RSS Feed" href="http://floris.briolas.nl/floris/?feed=rss2">
+<link rel="alternate" type="application/atom+xml" title="a coder named Floris Atom Feed" href="http://floris.briolas.nl/floris/?feed=atom"> 
+
+<link rel="pingback" href="http://floris.briolas.nl/floris/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="a coder named Floris » Simple Calculator with Antlr. Comments Feed" href="http://floris.briolas.nl/floris/?feed=rss2&amp;p=12">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://floris.briolas.nl/floris/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://floris.briolas.nl/floris/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="a coder named Floris" href="http://floris.briolas.nl/floris">
+<link rel="start" title="Hello World" href="http://floris.briolas.nl/floris/?p=3">
+<link rel="prev" title="DataDriven Testing with Excel" href="http://floris.briolas.nl/floris/?p=11">
+<link rel="next" title="Antlr, AST and rewriting rules." href="http://floris.briolas.nl/floris/?p=14">
+<meta name="generator" content="WordPress 2.8.2">
+	<link href="Simple%20Calculator%20with%20Antlr._files/SyntaxHighlighter.css" type="text/css" rel="stylesheet">
+	</head><body>
+<div class="Main">
+<div class="Sheet">
+    <div class="Sheet-tl"></div>
+    <div class="Sheet-tr"></div>
+    <div class="Sheet-bl"></div>
+    <div class="Sheet-br"></div>
+    <div class="Sheet-tc"></div>
+    <div class="Sheet-bc"></div>
+    <div class="Sheet-cl"></div>
+    <div class="Sheet-cr"></div>
+    <div class="Sheet-cc"></div>
+    <div class="Sheet-body">
+<div class="Header">
+    <div class="Header-jpeg"></div>
+<div class="logo">
+    <h1 id="name-text" class="logo-name">
+        <a href="http://floris.briolas.nl/floris/">a coder named Floris</a></h1>
+    <div id="slogan-text" class="logo-text">
+        Just another WordPress weblog</div>
+</div>
+
+</div>
+<div class="nav">
+	<div class="l">	</div>
+	<div class="r">	</div>
+	<ul class="artmenu">
+		<li><a href="http://floris.briolas.nl/floris"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="separator"></span></li><li class="page_item page-item-89"><a href="http://floris.briolas.nl/floris/?page_id=89" title="Antlr 3.0 Tutorial"><span class="l"></span><span class="r"></span><span class="t">Antlr 3.0 Tutorial</span></a></li><li><span class="separator"></span></li>
+<li class="page_item page-item-2"><a href="http://floris.briolas.nl/floris/?page_id=2" title="About"><span class="l"></span><span class="r"></span><span class="t">About</span></a></li>
+	</ul>
+</div>
+<div class="contentLayout">
+<div class="content">
+
+<div class="Post">
+    <div class="Post-body">
+<div class="Post-inner article">
+
+<div class="PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://floris.briolas.nl/floris/?p=11">DataDriven Testing with Excel</a></div>
+	<div class="alignright"><a href="http://floris.briolas.nl/floris/?p=14">Antlr, AST and rewriting rules.</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+    </div>
+</div>
+
+<div class="Post">
+    <div class="Post-body">
+<div class="Post-inner article">
+<h2 class="PostHeaderIcon-wrapper">
+<span class="PostHeader"><a href="http://floris.briolas.nl/floris/?p=12" rel="bookmark" title="Permanent Link to Simple Calculator with Antlr.">
+Simple Calculator with Antlr.</a></span>
+</h2>
+<div class="PostHeaderIcons metadata-icons">
+July 27th, 2008
+</div>
+<div class="PostContent">
+<p>For quite some time I’ve been interested in creating scripting
+languages to make existing applications more flexible than thought
+possible. After writing a couple of parsers I’ve stumbled upon <a href="http://www.antlr.org/">ANTLR</a> (ANother Tool for Language Recognition) which is a <a href="http://en.wikipedia.org/wiki/Lexical_analysis">Lexer</a> and <a href="http://en.wikipedia.org/wiki/Parsing">Parser</a> all in one.</p>
+<p>Although I’m aware of the existence of a couple of other tools, such
+as “yacc, lex,gold parser,.. ” this is the first tool I’m going to try
+out. I see a appliance to read <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">svg</a> files, and generate code (c#/Java/vb/ada) that will draw the figure.</p>
+<p>Here is a preview of what this sample aims to:</p>
+<p><object data="Simple%20Calculator%20with%20Antlr._files/simplecalc1.swf" type="application/x-shockwave-flash" height="336" width="668"><param name="src" value="/floris/wp-content/uploads/2008/07/simplecalc1.swf"></object><br>
+But first things first, I longed to create a simple calculator, helping
+me to asses the possibilities of ANTLR, with a little help from :<a href="http://www.amazon.com/gp/offer-listing/0978739256?ie=UTF8&amp;tag=acodernamedfl-20&amp;linkCode=am2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0978739256">The Definitive ANTLR Reference: Building Domain-Specific Languages (Pragmatic Programmers)</a><img style="border: medium none  ! important; margin: 0px ! important;" src="Simple%20Calculator%20with%20Antlr._files/ir.gif" alt="" border="0" height="1" width="1"> (Rather helpfull), I’ve managed the job quite well.</p>
+<p>Since I’ve seen some questions on the Internet requesting a simple example for a simple calculator grammar, here it is:<br>
+<code><strong>grammar</strong> SimpleCalc;<br>
+<strong>tokens </strong>{<br>
+PLUS 	= '+' ;<br>
+MINUS	= '-' ;<br>
+MULT	= '*' ;<br>
+DIV	= '/' ;<br>
+RPAREN	= ')' ;<br>
+LPAREN	= '(' ;<br>
+ASSIGN	= '=' ;<br>
+}<br>
+/*----------------<br>
+* PARSER RULES<br>
+*----------------*/<br>
+<strong>prog </strong>:	stat+;<br>
+<strong>stat </strong>:	expr NEWLINE<br>
+|	ID ASSIGN expr NEWLINE<br>
+|	NEWLINE; 			//Do nothing<br>
+<strong>expr </strong>:	multExpr ((PLUS | MINUS )multExpr)*;<br>
+<strong>multExpr </strong>:	atom ((MULT | DIV) atom )*;<br>
+<strong>atom </strong>:	INT<br>
+|	ID<br>
+|	LPAREN expr RPAREN;<br>
+/*----------------<br>
+* LEXER RULES<br>
+*----------------*/<br>
+<strong>ID </strong>:	('a'..'z'|'A'..'Z')+;<br>
+<strong>INT </strong>:	'0'..'9'+;<br>
+<strong>NEWLINE </strong>:	'\r'?'\n';<br>
+<strong>WS </strong>:	(' '|'\t'|'\n'|'\r')+;</code><br>
+The grammar above can handle expressions such as:</p>
+<blockquote><p>1+2*3<br>
+a=4-5<br>
+c=a*(6/2)</p></blockquote>
+<p>Now one has to add actions to the rules these will look like:</p>
+<p><code><strong>atom </strong>returns[int value] <strong>&lt;==Tell Antlr this rule is implemented as a function, returning an int.</strong><br>
+:	INT				{$value = int.Parse($INT.text);} <strong>&lt;==The return value '$value' is assign the parsed as an integer string value of int.</strong><br>
+</code></p>
+<p>Now all you need to do is fill every thing in. When an ID follow by
+an assignment (a=6) is encounter it will be placed in a Dictionary.</p>
+<p>After adding the appropriate actions the calculator is finished, it
+works internally with an int, so all divisions are integer divisions!.
+Adaptation for doubles will be no problem at all, but is left to you.</p>
+<p><code><strong>grammar</strong> SimpleCalc3;<br>
+<strong>options </strong>{<br>
+language=CSharp;<br>
+}<br>
+<strong>tokens </strong>{<br>
+PLUS 	= '+' ;<br>
+MINUS	= '-' ;<br>
+MULT	= '*' ;<br>
+DIV	= '/' ;<br>
+RPAREN	= ')' ;<br>
+LPAREN	= '(' ;<br>
+ASSIGN	= '=' ;<br>
+}<br>
+<strong>@members</strong><br>
+<strong>{</strong><br>
+public static System.Collections.Generic.Dictionary IDTable = new System.Collections.Generic.Dictionary();<br>
+public static void Main(string[] args)<br>
+{<br>
+Console.WriteLine("type '@' to quit...");<br>
+string line = "";<br>
+while (true)<br>
+{<br>
+line = Console.ReadLine();<br>
+if (line.Contains("@"))<br>
+break;<br>
+SimpleCalc3Lexer lex = new SimpleCalc3Lexer(new ANTLRStringStream(line+Environment.NewLine));<br>
+CommonTokenStream tokens = new CommonTokenStream(lex);<br>
+SimpleCalc3Parser parser = new SimpleCalc3Parser(tokens);<br>
+try<br>
+{<br>
+parser.prog();<br>
+}<br>
+catch (RecognitionException e)<br>
+{<br>
+Console.Error.WriteLine(e.StackTrace);<br>
+}<br>
+}<br>
+}<br>
+<strong>}</strong><br>
+/*----------------<br>
+* PARSER RULES<br>
+*----------------*/<br>
+<strong>prog </strong>:	stat+;<br>
+<strong>stat </strong>:	expr NEWLINE			{System.Console.WriteLine($expr.value);}<br>
+|	ID ASSIGN expr NEWLINE		{IDTable[$ID.Text] =$expr.value;}<br>
+|	NEWLINE; 			//Do nothing<br>
+<strong>expr </strong>returns[int value]<br>
+:	a=multExpr {$value = $a.value;} (<br>
+PLUS b=multExpr {$value+=$b.value;}<br>
+|<br>
+MINUS b=multExpr{$value-=$b.value;})*;<br>
+<strong>multExpr </strong>returns[int value]<br>
+:	a=atom {$value = $a.value;} (<br>
+MULT b=atom {$value*=$b.value;}<br>
+|<br>
+DIV b=atom{$value/=$b.value;})*;<br>
+<strong>atom </strong>returns[int value]<br>
+:	INT				{$value = int.Parse($INT.text);}<br>
+|	ID				{if (IDTable.ContainsKey($ID.Text)){$value = IDTable[$ID.Text];}else{System.Console.WriteLine("ID does not exist");}}<br>
+|	LPAREN expr RPAREN		{$value = $expr.value;};<br>
+/*----------------<br>
+* LEXER RULES<br>
+*----------------*/<br>
+<strong>ID </strong>:	('a'..'z'|'A'..'Z')+;<br>
+<strong>INT </strong>:	'0'..'9'+;<br>
+<strong>NEWLINE </strong>:	'\r'?'\n';<br>
+<strong>WS </strong>:	(' '|'\t'|'\n'|'\r')+ {Skip();};</code></p>
+<p>If you desire a working example, please download <a href="http://floris.briolas.nl/floris/downloads/simplecalc.rar">this file</a>,
+Included are the .net binaries (.dll) from the antlr’s website. When
+your enviroment path is set correctly to the c# compiler, you will be
+able to run make.cmd to create the console application.<br>
+If you want to download the ANTLR binaries yourself, get them at <a href="http://www.antlr.org/download.html">the original site</a>, look for “ANTLR Tool Binaries”.</p>
+<p>enjoy!</p>
+<p>*Update 24-aug-2008: Added the grammars to the zip.<br>
+*Update 27-apr-2009: Added sample movie.</p>
+<p><strong>Please, if you have questions or comments, let us know.</strong></p>
+
+</div>
+<div class="cleared"></div>
+<div class="PostFooterIcons metadata-icons">
+<img src="Simple%20Calculator%20with%20Antlr._files/PostCategoryIcon.png" alt="PostCategoryIcon" height="18" width="18">
+Posted in <a href="http://floris.briolas.nl/floris/?cat=3" title="View all posts in Code" rel="category">Code</a> | <img src="Simple%20Calculator%20with%20Antlr._files/PostTagIcon.png" alt="PostTagIcon" height="18" width="18">
+Tags: <a href="http://floris.briolas.nl/floris/?tag=antlr" rel="tag">ANTLR</a>, <a href="http://floris.briolas.nl/floris/?tag=c" rel="tag">C#</a> 
+</div>
+
+</div>
+
+    </div>
+</div>
+
+<div class="Post">
+    <div class="Post-body">
+<div class="Post-inner article">
+
+<div class="PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://floris.briolas.nl/floris/?p=11">DataDriven Testing with Excel</a></div>
+	<div class="alignright"><a href="http://floris.briolas.nl/floris/?p=14">Antlr, AST and rewriting rules.</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+			<!-- If comments are open, but there are no comments. -->
+
+	 
+
+<div class="Post">
+    <div class="Post-body">
+<div class="Post-inner article">
+
+<div class="PostContent">
+
+<div id="respond">
+  
+  <h3>Leave a Reply</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://floris.briolas.nl/floris/?p=12#respond" style="display: none;">Click here to cancel reply.</a></small>
+</div>
+
+
+<form action="http://floris.briolas.nl/floris/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input name="author" id="author" size="22" tabindex="1" aria-required="true" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" size="22" tabindex="2" aria-required="true" type="text">
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input name="url" id="url" size="22" tabindex="3" type="text">
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+
+    <button class="Button" type="submit" name="submit" tabindex="5">
+		<span class="btn">
+		  <span class="l"></span>
+		  <span class="r"></span>
+		  <span class="t">Submit Comment</span>
+		</span>
+    </button>
+
+<input name="comment_post_ID" value="12" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+    </div>
+</div>
+
+
+</div>
+<div class="sidebar1">
+<div class="sidebar1">      
+<div class="Block">
+    <div class="Block-tl"></div>
+    <div class="Block-tr"></div>
+    <div class="Block-bl"></div>
+    <div class="Block-br"></div>
+    <div class="Block-tc"></div>
+    <div class="Block-bc"></div>
+    <div class="Block-cl"></div>
+    <div class="Block-cr"></div>
+    <div class="Block-cc"></div>
+    <div class="Block-body">
+<div class="BlockContent">
+    <div class="BlockContent-body">
+<form method="get" id="searchform" action="http://floris.briolas.nl/floris/">
+
+<label for="s">Search for:</label>
+
+<div><input name="s" id="s" style="width: 95%;" type="text">
+
+<button class="Button" type="submit" name="search">
+    <span class="btn">
+		<span class="l"></span>
+		<span class="r"></span>
+		<span class="t">Search</span>
+    </span>
+</button>
+</div>
+</form>
+
+
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="Block">
+    <div class="Block-tl"></div>
+    <div class="Block-tr"></div>
+    <div class="Block-bl"></div>
+    <div class="Block-br"></div>
+    <div class="Block-tc"></div>
+    <div class="Block-bc"></div>
+    <div class="Block-cl"></div>
+    <div class="Block-cr"></div>
+    <div class="Block-cc"></div>
+    <div class="Block-body">
+<div class="BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="header-tag-icon">
+        <div class="t">Pages</div>
+    </div>
+</div><div class="BlockContent">
+    <div class="BlockContent-body">
+		<ul>
+			<li class="page_item page-item-2"><a href="http://floris.briolas.nl/floris/?page_id=2" title="About">About</a></li>
+<li class="page_item page-item-89"><a href="http://floris.briolas.nl/floris/?page_id=89" title="Antlr 3.0 Tutorial">Antlr 3.0 Tutorial</a></li>
+		</ul>
+		
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="Block">
+    <div class="Block-tl"></div>
+    <div class="Block-tr"></div>
+    <div class="Block-bl"></div>
+    <div class="Block-br"></div>
+    <div class="Block-tc"></div>
+    <div class="Block-bc"></div>
+    <div class="Block-cl"></div>
+    <div class="Block-cr"></div>
+    <div class="Block-cc"></div>
+    <div class="Block-body">
+<div class="BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="header-tag-icon">
+        <div class="t">Categories</div>
+    </div>
+</div><div class="BlockContent">
+    <div class="BlockContent-body">
+		<ul>
+	<li class="cat-item cat-item-3"><a href="http://floris.briolas.nl/floris/?cat=3" title="View all posts filed under Code">Code</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://floris.briolas.nl/floris/?cat=4" title="View all posts filed under Personal">Personal</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://floris.briolas.nl/floris/?cat=1" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://floris.briolas.nl/floris/?cat=11" title="View all posts filed under WPF">WPF</a>
+</li>
+		</ul>
+
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="Block">
+    <div class="Block-tl"></div>
+    <div class="Block-tr"></div>
+    <div class="Block-bl"></div>
+    <div class="Block-br"></div>
+    <div class="Block-tc"></div>
+    <div class="Block-bc"></div>
+    <div class="Block-cl"></div>
+    <div class="Block-cr"></div>
+    <div class="Block-cc"></div>
+    <div class="Block-body">
+<div class="BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="header-tag-icon">
+        <div class="t">Meta</div>
+    </div>
+</div><div class="BlockContent">
+    <div class="BlockContent-body">
+			<ul>
+						<li><a href="http://floris.briolas.nl/floris/wp-login.php">Log in</a></li>
+			<li><a href="http://floris.briolas.nl/floris/?feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://floris.briolas.nl/floris/?feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+
+    </div>
+</div>
+
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+<div class="Footer">
+    <div class="Footer-inner">
+                <a href="http://floris.briolas.nl/floris/?feed=rss2" class="rss-tag-icon" title="RSS"></a>
+                <div class="Footer-text">
+<p>
+<a href="#">Contact Us</a> | <a href="#">Terms of Use</a> | <a href="#">Trademarks</a> | <a href="#">Privacy Statement</a><br>Copyright © 2009 a coder named Floris. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="Footer-background">
+    </div>
+</div>
+
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="page-footer">a coder named Floris is proudly powered by
+		<a href="http://wordpress.org/">WordPress</a>
+		<br><a href="http://floris.briolas.nl/floris/?feed=rss2">Entries (RSS)</a>
+		and <a href="http://floris.briolas.nl/floris/?feed=comments-rss2">Comments (RSS)</a>.
+</p>
+</div>
+
+<!-- 21 queries. 11.261 seconds. -->
+<div><script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shCore.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushCSharp.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushPhp.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushJScript.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushJava.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushVb.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushSql.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushXml.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushDelphi.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushPython.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushRuby.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushCss.js"></script>
+<script class="javascript" src="Simple%20Calculator%20with%20Antlr._files/shBrushCpp.js"></script>
+<script class="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = 'http://floris.briolas.nl/floris/wp-content/plugins/google-syntax-highlighter/Scripts/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+</div>
+
+<!--Google Trckr-->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Simple%20Calculator%20with%20Antlr._files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5255331-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body></html>
