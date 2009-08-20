@@ -1,0 +1,6 @@
+1. basic
+	compile:	gcc -c mycat.c -o mycat.o
+	link:		gcc mycat.o -o mycat.exe
+	total:		gcc mycat.c -o mycat.exe
+2. 
+	

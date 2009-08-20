@@ -1,0 +1,541 @@
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=x-gbk">
+<link rel="stylesheet" href="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/index.css">
+<link rel="alternate" type="application/rss+xml" title="ChinaUnix Blog RSS Feed" href="http://blog.chinaunix.net/u/rss.php?id=72333">
+<meta name="keywords" content="linux下《UNIX环境高级编程》(apue2)源码编译出错的处理方法汇总 - UNIX/LINUX C - non-promiscuous">
+<meta name="description" content="中国最大的IT技术博客-ChinaUnix博客：linux下《UNIX环境高级编程》(apue2)源码编译出错的处理方法汇总 - UNIX/LINUX C - non-promiscuous">
+<title>linux下《UNIX环境高级编程》(apue2)源码编译出错的处理方法汇总 - UNIX/LINUX C - non-promiscuous</title>
+</head><body leftmargin="0" topmargin="0" style="background: rgb(255, 255, 255) url() repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" align="center" marginheight="0" marginwidth="0">
+
+
+<table style="border-collapse: collapse; height: 25px;" background="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B(apue2)%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/tophem1.gif" border="0" cellpadding="0" cellspacing="0" height="25" width="100%">
+<tbody><tr> <td id="tool-bar" align="left" nowrap="nowrap" width="540">
+&nbsp;
+<a href="http://blog.chinaunix.net/" target="_blank">博客首页</a>
+<a href="http://blog.chinaunix.net/register.php" target="_blank">注册</a>
+<a href="http://bbs.chinaunix.net/forumdisplay.php?fid=51" target="_blank">建议与交流</a> 
+<a href="http://blog.chinaunix.net/top/" target="_blank">排行榜</a>
+<a href="" target="_blank" onclick="NewWindows('http://www.cublog.cn/addlink.php?url='+location.href+'&amp;title='+document.title);return false;">加入友情链接</a>
+
+</td><form id="loginForm" method="get" target="_blank" action="/search.php"></form>
+<td align="right" nowrap="nowrap">
+<img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/userstar.gif" id="starimg" alt="" border="0" height="12" width="55">
+<a href="http://blog.chinaunix.net/u2/star.php?blogid=72333" id="star" onclick="NewWindows(this.href);return false;" title="给此博客推荐值">推荐</a>
+<a href="http://blog.chinaunix.net/u2/complaint.php?blogid=72333" id="complaint" onclick="NewWindows(this.href);return false;" title="投诉此博客">投诉</a>
+
+ 搜索：<input name="q" size="20" type="text"> <input value="搜索" class="button1" type="submit"> <a href="http://blog.chinaunix.net/help/">帮助</a></td>
+</tr>
+<tr><td colspan="2">
+<table style="border-collapse: collapse;" border="0" bordercolor="#111111" cellpadding="0" cellspacing="0" width="1000">
+<tbody><tr><td width="1000"></td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+<script language="javascript">
+<!--
+
+navHover = function() {
+var lis = document.getElementById("navmenu").getElementsByTagName("LI");
+for (var i=0; i<lis.length; i++) {
+lis[i].onmouseover=function() {
+this.className+=" iehover";
+}
+lis[i].onmouseout=function() {
+this.className=this.className.replace(new RegExp(" iehover\\b"), "");
+}
+}
+}
+
+function NewWindows(shref){
+var xx=(window.screen.width-450)/2;
+var yy=(window.screen.height-200)/2;
+pp=window.open(shref,"win","menubar=no,location=no,resizable=no,scrollbars=no,status=no,left="+xx+",top="+yy+",Width=450,Height=200");
+}
+function $(s){return document.getElementById(s);}
+//-->
+</script>
+<table style="border-collapse: collapse; background-image: url(); background-repeat: repeat;" bgcolor="#204689" border="0" cellpadding="0" cellspacing="0" height="80" width="100%">
+<tbody><tr><td align="center" width="200">
+<p style="margin: 5px; line-height: 150%;">
+ <font style="font-size: 14px;" color="#ffffff">
+ 
+<b>
+ 
+ 
+ 
+ non-promiscuous 
+ 
+ 
+</b>
+ 
+ </font></p>
+ 
+</td><td style="color: rgb(170, 198, 246);">
+</td></tr>
+</tbody></table>
+
+<table style="border-collapse: collapse;" bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" height="27" width="100%">
+<tbody><tr><td>&nbsp;
+<a href="http://duanlian.cublog.cn/" class="list1" target="_blank">duanlian.cublog.cn</a>
+ 
+</td><td style="color: rgb(42, 82, 0);" align="right" width="680">
+<ul id="navmenu"><li class="ul0"><a href="http://control.cublog.cn/" target="_blank" class="list1">管理博客</a> </li>
+
+<li class="ul0"><a href="http://control.cublog.cn/article_new.php" target="_blank" class="list1">发表文章</a></li>
+<li class="ul0"><a href="http://blog.chinaunix.net/u2/72333/guestbook.html" class="list1">留言</a></li>
+<li class="ul0"><a href="http://blog.chinaunix.net/u2/72333/links.html" class="list1">收藏夹</a>
+<ul class="ul1"><li><a href="http://blog.chinaunix.net/u2/72333/links_16618.html"> · 网络高手<!-- a16618 --></a><!-- 16618 --></li>
+</ul>
+
+</li>
+<li class="ul0"><a href="http://blog.chinaunix.net/u2/72333/group.html" class="list1">博客圈</a></li>
+<li class="ul0"><a href="http://blog.chinaunix.net/u2/72333/music.html" class="list1">音乐</a>
+<!-- 0 -->
+</li>
+<li class="ul0"><a href="http://blog.chinaunix.net/u2/72333/photo.html" class="list1">相册</a>
+<!-- 0 -->
+</li> 
+ 
+<li class="ul0"><a href="http://blog.chinaunix.net/u2/72333/article.html" class="list1">文章</a>
+<ul class="ul1"><li><a href="http://blog.chinaunix.net/u2/72333/article_100229.html"> · UNIX/LINUX C<!-- a100229 --></a><!-- 100229 --></li>
+<li><a href="http://blog.chinaunix.net/u2/72333/article_89772.html"> · ARM9学习摘要<!-- a89772 --></a><!-- 89772 --></li>
+<li><a href="http://blog.chinaunix.net/u2/72333/article_90474.html"> · ARM9工作记录<!-- a90474 --></a><!-- 90474 --></li>
+<li><a href="http://blog.chinaunix.net/u2/72333/article_95736.html"> · C++ learning<!-- a95736 --></a><!-- 95736 --></li>
+</ul>
+
+</li> 
+<li class="ul0"><a href="http://blog.chinaunix.net/u2/72333/index.html" class="list1">首页</a></li>
+</ul>
+</td>
+<td width="2"></td>
+</tr>
+</tbody></table>
+<script language="javascript">
+function $(s){return document.getElementById(s);}
+function ShowHideDiv(divid,iImg){
+if($(divid).style.display == "none"){
+iImg.src="../../templates/tech/images/dot2.gif";
+$(divid).style.display = "block";
+iImg.title="收起";
+}else{
+iImg.src="../../templates/tech/images/dot4.gif";
+$(divid).style.display = "none";
+iImg.title="展开";
+}
+}
+if (window.attachEvent) window.attachEvent("onload", navHover);
+</script>
+
+<script language="javascript" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/pv.js"></script><div style="display: none;"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/count.htm" id="pv_img" height="1" width="1"></div>
+<script>
+function sendPV(){
+    var pvTrack = new PvTrack();
+    pvTrack.type = 10; // 频道类别ID
+    pvTrack.channel = 22; // 频道ID
+   
+    pvTrack.pageType = 0;
+    pvTrack.track();
+}
+window.setTimeout("sendPV()", 0);
+</script>
+<table style="border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td align="center" valign="top" width="235">
+<br>
+
+<table style="border-collapse: collapse;" border="0" bordercolor="#111111" cellpadding="0" cellspacing="0" width="220">
+<tbody><tr><td><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/left_bg_top.gif" alt="" border="0"></td></tr>
+<tr><td align="center" bgcolor="#edf2f2" height="25">
+<table style="border-collapse: collapse;" border="0" bordercolor="#111111" cellpadding="0" cellspacing="0" width="200">
+<tbody><tr><td align="center" width="180"><font style="font-size: 10pt;" color="#1f72d0"><b>关于作者</b></font></td><td width="20"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/dot2.gif" title="收起" onclick="ShowHideDiv('aboutwriter',this);return false;" border="0"></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td bgcolor="#d2dee2" height="1"></td></tr>
+<tr><td bgcolor="#ffffff" height="1"></td></tr>
+
+<tr><td style="color: rgb(2, 54, 141);" align="center" bgcolor="#f3f6f6">
+<table style="border-collapse: collapse; word-wrap: break-word; table-layout: fixed; color: rgb(2, 54, 141);" id="aboutwriter" border="0" cellpadding="0" cellspacing="0" width="200">
+<tbody><tr><td align="center">
+<a href="" target="_blank"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/up_user_pre.jpg" alt="" border="0"></a>
+<table style="border-collapse: collapse; word-wrap: break-word;" border="0" cellpadding="0" cellspacing="0" width="200">
+<tbody><tr><td width="200">
+<pre style="margin: 5px; line-height: 150%;" width="25"></pre>	
+</td></tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</td></tr>
+<tr><td>
+<table style="border: 1px solid rgb(210, 222, 226); padding: 1px; border-collapse: collapse;" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="220">
+<tbody><tr bgcolor="#edf2f2" height="20">
+<td style="color: rgb(31, 114, 208); font-size: 9pt;" title="上一年" onclick="pushBtm('YU')" align="center" width="14">||</td>
+<td style="color: rgb(31, 114, 208); font-size: 9pt;" title="上一月" onclick="pushBtm('MU')" align="center" width="14">&lt;&lt;</td>
+<td id="YMBG" style="color: rgb(31, 114, 208); font-size: 9pt;" align="center" nowrap="nowrap">2009年8月</td>
+<td id="GZ" style="color: rgb(31, 114, 208); font-size: 9pt;" align="center" nowrap="nowrap">己丑年（牛）</td>
+<td style="color: rgb(31, 114, 208); font-size: 9pt;" title="下一月" onclick="pushBtm('MD')" align="center" width="14">&gt;&gt;</td>
+<td style="color: rgb(31, 114, 208); font-size: 9pt;" title="下一年" onclick="pushBtm('YD')" align="center" width="14">||</td>
+</tr>
+<tr><td colspan="6">
+<div id="ttdiv" width="210" align="center"><table style="border-collapse: collapse;" id="datetable" bgcolor="#f6f8f8" border="0" cellpadding="0" cellspacing="0" width="216">
+	  <tbody><tr style="color: rgb(166, 170, 151);" align="center" bgcolor="#edf2f2">
+		<td height="24" width="32">日</td>
+		<td width="32">一</td>
+		<td width="32">二</td>
+		<td width="32">三</td>
+		<td width="32">四</td>
+		<td width="32">五</td>
+		<td width="32">六</td></tr>
+	  <tr align="center">
+	  <td nowrap="nowrap">
+<font class="" id="SD0" title="" color="#cdbc71" face="Arial Black" size="2"></font><br><font id="LD0" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD1" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD1" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD2" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD2" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD3" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD3" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD4" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD4" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD5" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD5" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD6" title="建军节 " color="#cdbc71" face="Arial Black" size="2">1</font><br><font id="LD6" style="font-size: 7pt;"><font color="#6fc2ff">建军节 </font></font></td>	  </tr>
+	  <tr align="center">
+	  <td nowrap="nowrap">
+<font style="color: rgb(205, 188, 113);" class="" id="SD7" title="十二" color="#cdbc71" face="Arial Black" size="2">2</font><br><font id="LD7" style="font-size: 7pt;">十二</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD8" title="十三" color="#a6aa97" face="Arial Black" size="2">3</font><br><font id="LD8" style="font-size: 7pt;">十三</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD9" title="十四" color="#a6aa97" face="Arial Black" size="2">4</font><br><font id="LD9" style="font-size: 7pt;">十四</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD10" title="十五" color="#a6aa97" face="Arial Black" size="2">5</font><br><font id="LD10" style="font-size: 7pt;">十五</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD11" title="十六" color="#a6aa97" face="Arial Black" size="2">6</font><br><font id="LD11" style="font-size: 7pt;">十六</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD12" title="立秋" color="#a6aa97" face="Arial Black" size="2">7</font><br><font id="LD12" style="font-size: 7pt;"><font color="limegreen">立秋</font></font></td>	  <td nowrap="nowrap">
+<font style="color: rgb(205, 188, 113);" class="" id="SD13" title="父亲节 " color="#cdbc71" face="Arial Black" size="2">8</font><br><font id="LD13" style="font-size: 7pt;"><font color="#6fc2ff">父亲节 </font></font></td>	  </tr>
+	  <tr align="center">
+	  <td nowrap="nowrap">
+<font style="color: rgb(205, 188, 113);" class="" id="SD14" title="十九" color="#cdbc71" face="Arial Black" size="2">9</font><br><font id="LD14" style="font-size: 7pt;">十九</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD15" title="二十" color="#a6aa97" face="Arial Black" size="2">10</font><br><font id="LD15" style="font-size: 7pt;">二十</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD16" title="廿一" color="#a6aa97" face="Arial Black" size="2">11</font><br><font id="LD16" style="font-size: 7pt;">廿一</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD17" title="廿二" color="#a6aa97" face="Arial Black" size="2">12</font><br><font id="LD17" style="font-size: 7pt;">廿二</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD18" title="廿三" color="#a6aa97" face="Arial Black" size="2">13</font><br><font id="LD18" style="font-size: 7pt;">廿三</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD19" title="廿四" color="#a6aa97" face="Arial Black" size="2">14</font><br><font id="LD19" style="font-size: 7pt;">廿四</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD20" title="廿五" color="#cdbc71" face="Arial Black" size="2">15</font><br><font id="LD20" style="font-size: 7pt;">廿五</font></td>	  </tr>
+	  <tr align="center">
+	  <td nowrap="nowrap">
+<font style="color: rgb(205, 188, 113);" class="todyaColor" id="SD21" title="廿六" color="#cdbc71" face="Arial Black" size="2">16</font><br><font id="LD21" style="font-size: 7pt;">廿六</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD22" title="廿七" color="#a6aa97" face="Arial Black" size="2">17</font><br><font id="LD22" style="font-size: 7pt;">廿七</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD23" title="廿八" color="#a6aa97" face="Arial Black" size="2">18</font><br><font id="LD23" style="font-size: 7pt;">廿八</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD24" title="廿九" color="#a6aa97" face="Arial Black" size="2">19</font><br><font id="LD24" style="font-size: 7pt;">廿九</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD25" title="&lt;b&gt;7月大&lt;/b&gt;" color="#a6aa97" face="Arial Black" size="2">20</font><br><font id="LD25" style="font-size: 7pt;"><b>7月大</b></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD26" title="初二" color="#a6aa97" face="Arial Black" size="2">21</font><br><font id="LD26" style="font-size: 7pt;">初二</font></td>	  <td nowrap="nowrap">
+<font style="color: rgb(205, 188, 113);" class="" id="SD27" title="初三" color="#cdbc71" face="Arial Black" size="2">22</font><br><font id="LD27" style="font-size: 7pt;">初三</font></td>	  </tr>
+	  <tr align="center">
+	  <td nowrap="nowrap">
+<font style="color: rgb(205, 188, 113);" class="" id="SD28" title="处暑" color="#cdbc71" face="Arial Black" size="2">23</font><br><font id="LD28" style="font-size: 7pt;"><font color="limegreen">处暑</font></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD29" title="初五" color="#a6aa97" face="Arial Black" size="2">24</font><br><font id="LD29" style="font-size: 7pt;">初五</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD30" title="初六" color="#a6aa97" face="Arial Black" size="2">25</font><br><font id="LD30" style="font-size: 7pt;">初六</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD31" title="七夕节 " color="#a6aa97" face="Arial Black" size="2">26</font><br><font id="LD31" style="font-size: 7pt;"><font color="#6fc2ff">七夕节 </font></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD32" title="初八" color="#a6aa97" face="Arial Black" size="2">27</font><br><font id="LD32" style="font-size: 7pt;">初八</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD33" title="初九" color="#a6aa97" face="Arial Black" size="2">28</font><br><font id="LD33" style="font-size: 7pt;">初九</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD34" title="初十" color="#cdbc71" face="Arial Black" size="2">29</font><br><font id="LD34" style="font-size: 7pt;">初十</font></td>	  </tr>
+	  <tr align="center">
+	  <td nowrap="nowrap">
+<font style="color: rgb(205, 188, 113);" class="" id="SD35" title="十一" color="#cdbc71" face="Arial Black" size="2">30</font><br><font id="LD35" style="font-size: 7pt;">十一</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD36" title="十二" color="#a6aa97" face="Arial Black" size="2">31</font><br><font id="LD36" style="font-size: 7pt;">十二</font></td>	  <td nowrap="nowrap">
+<font class="" id="SD37" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD37" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD38" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD38" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD39" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD39" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD40" title="" color="#a6aa97" face="Arial Black" size="2"></font><br><font id="LD40" style="font-size: 7pt;"></font></td>	  <td nowrap="nowrap">
+<font class="" id="SD41" title="" color="#cdbc71" face="Arial Black" size="2"></font><br><font id="LD41" style="font-size: 7pt;"></font></td>	  </tr>
+</tbody></table></div>
+</td></tr>
+<tr><td colspan="6" height="1"></td></tr>
+</tbody></table>
+
+<script src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/mdate.js"></script>
+<script language="javascript">
+var arrArtdate=new Array('20080630','20080709','20080711','20080717','20080718','20080925','20081124');
+
+initial("ttdiv");
+
+</script>
+
+</td></tr>
+<tr><td bgcolor="#d2dee2" height="1"></td></tr>
+<tr><td bgcolor="#ffffff" height="1"></td></tr>
+<tr><td align="center" bgcolor="#edf2f2" height="25">
+<table style="border-collapse: collapse;" border="0" bordercolor="#111111" cellpadding="0" cellspacing="0" width="200">
+<tbody><tr><td align="center" width="180"><font style="font-size: 10pt;" color="#1f72d0"><b>我的分类</b></font></td><td width="20"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/dot2_002.gif" title="收起" onclick="ShowHideDiv('lefttree',this);return false;" border="0"></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td bgcolor="#d2dee2" height="1"></td></tr>
+<tr><td bgcolor="#ffffff" height="1"></td></tr>
+<tr><td style="color: rgb(2, 54, 141);" bgcolor="#f3f6f6">
+<script src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/tree.js"></script>
+<div style="overflow: auto;" id="lefttree"><div><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(1,true);"><img id="signContentsTree1" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Minus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/article.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(1,false);"><img id="iconContentsTree1" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/OpenFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/article.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(1,false);">我的文章分类</a></td></tr></tbody></table></div><div id="divContentsTree1" style="display: block;"><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/TreeBlank.gif" alt="" style="border: 0px none ;" height="19" width="19"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(5,true);"><img id="signContentsTree5" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Plus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/article_100229.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(5,false);"><img id="iconContentsTree5" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/ClosedFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/article_100229.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(5,false);">UNIX/LINUX C</a></td></tr></tbody></table></div><div id="divContentsTree5" style="display: none;"></div><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/TreeBlank.gif" alt="" style="border: 0px none ;" height="19" width="19"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(6,true);"><img id="signContentsTree6" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Plus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/article_89772.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(6,false);"><img id="iconContentsTree6" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/ClosedFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/article_89772.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(6,false);">ARM9学习摘要</a></td></tr></tbody></table></div><div id="divContentsTree6" style="display: none;"></div><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/TreeBlank.gif" alt="" style="border: 0px none ;" height="19" width="19"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(7,true);"><img id="signContentsTree7" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Plus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/article_90474.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(7,false);"><img id="iconContentsTree7" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/ClosedFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/article_90474.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(7,false);">ARM9工作记录</a></td></tr></tbody></table></div><div id="divContentsTree7" style="display: none;"></div><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/TreeBlank.gif" alt="" style="border: 0px none ;" height="19" width="19"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(8,true);"><img id="signContentsTree8" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Plus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/article_95736.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(8,false);"><img id="iconContentsTree8" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/ClosedFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/article_95736.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(8,false);">C++ learning</a></td></tr></tbody></table></div><div id="divContentsTree8" style="display: none;"></div></div><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(2,true);"><img id="signContentsTree2" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Minus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/photo.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(2,false);"><img id="iconContentsTree2" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/OpenFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/photo.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(2,false);">我的图片分类</a></td></tr></tbody></table></div><div id="divContentsTree2" style="display: block;"></div><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(3,true);"><img id="signContentsTree3" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Minus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/links.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(3,false);"><img id="iconContentsTree3" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/OpenFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/links.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(3,false);">我的链接分类</a></td></tr></tbody></table></div><div id="divContentsTree3" style="display: block;"><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/TreeBlank.gif" alt="" style="border: 0px none ;" height="19" width="19"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(9,true);"><img id="signContentsTree9" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Plus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/links_16618.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(9,false);"><img id="iconContentsTree9" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/ClosedFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/links_16618.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(9,false);">网络高手</a></td></tr></tbody></table></div><div id="divContentsTree9" style="display: none;"></div></div><div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap" valign="middle"><a href="javascript:void(0)" onclick="javascript: ContentsTree.OnNodeClick(4,true);"><img id="signContentsTree4" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/Minus.gif" alt="" style="border: 0px none ;" height="19" width="19"></a><a href="http://blog.chinaunix.net/u2/72333/music.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(4,false);"><img id="iconContentsTree4" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/OpenFolder.gif" alt="" style="border: 0px none ;" height="19" width="19"></a></td><td nowrap="nowrap" valign="middle"><a href="http://blog.chinaunix.net/u2/72333/music.html" class="listtree" onclick="javascript: ContentsTree.OnNodeClick(4,false);">我的音乐分类</a></td></tr></tbody></table></div><div id="divContentsTree4" style="display: block;"></div></div></div>
+<script language="javascript">
+ContentsTree = new CTree("ContentsTree");
+ContentsTree.bAutoClose = false;
+ContentsTree.stTarget = "";
+a0 = ContentsTree.AddNode(null, "我的文章分类", "article.html");
+a0.bOpen=true;
+p0 = ContentsTree.AddNode(null, "我的图片分类", "photo.html");
+p0.bOpen=true;
+f0 = ContentsTree.AddNode(null, "我的链接分类", "links.html");
+f0.bOpen=true;
+m0 = ContentsTree.AddNode(null, "我的音乐分类", "music.html");
+m0.bOpen=true;
+a100229 = ContentsTree.AddNode(a0, "UNIX/LINUX C", "article_100229.html");
+a89772 = ContentsTree.AddNode(a0, "ARM9学习摘要", "article_89772.html");
+a90474 = ContentsTree.AddNode(a0, "ARM9工作记录", "article_90474.html");
+a95736 = ContentsTree.AddNode(a0, "C++ learning", "article_95736.html");
+ 
+ 
+f16618 = ContentsTree.AddNode(f0, "网络高手", "links_16618.html");
+ 
+ 
+//document.write(ContentsTree.GetHTMLCode());
+document.getElementById("lefttree").innerHTML=ContentsTree.GetHTMLCode();
+</script>	
+</td></tr>
+<tr><td bgcolor="#d2dee2" height="1"></td></tr>
+<tr><td bgcolor="#ffffff" height="1"></td></tr>
+
+<tr><td><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/left_bg_bottom.gif" alt="" border="0"></td></tr>
+
+</tbody></table>
+
+
+</td><td width="10"></td><td align="center" valign="top">
+
+<br>
+
+
+<table style="border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_left_top.gif" alt="" border="0"></td>
+<td bgcolor="#dddddd" height="11" width="99%"></td>
+<td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_right_top.gif" alt="" border="0"></td>
+</tr>
+
+<tr><td colspan="3" align="center" bgcolor="#dddddd" valign="top" width="100%"> 
+
+
+
+
+
+
+
+
+<br>
+<table style="border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0" width="96%">
+<tbody><tr><td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_left_top.gif" alt="" border="0"></td>
+<td bgcolor="#f3f3f3" width="100%"></td>
+<td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_right_top.gif" alt="" border="0"></td>
+</tr>
+<tr><td colspan="3" align="center" bgcolor="#f3f3f3">
+
+<table style="border-collapse: collapse; word-wrap: break-word;" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td align="center" height="25">
+<font style="font-size: 14pt;" color="#02368d"><b>linux下《UNIX环境高级编程》(apue2)源码编译出错的处理方法汇总</b></font><br>
+</td></tr>
+<tr><td bgcolor="#d2dee2" height="1"></td></tr>
+<tr><td bgcolor="#ffffff" height="1"></td></tr>
+<tr><td align="center">
+<table style="border-collapse: collapse; word-wrap: break-word;" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td width="100%">
+<div id="art" width="100%" style="margin: 15px;">
+<div><font size="4"><strong>linux下《UNIX环境高级编程》(apue2)源码编译出错的处理方法</strong><br></font>文章出处：<a href="http://www.diybl.com/course/3_program/c++/cppjs/2008617/126036.html">http://www.diybl.com/course/3_program/c++/cppjs/2008617/126036.html</a></div>
+<div>&nbsp;</div>
+<div>相信很多跟我一样想要学习unix编程的朋友在兴冲冲拿到《unix环境高级编程》后，准备拿源码练练手时，执行第一个myls就出现一大堆的
+错误，这未免时个不小的打击。今天把解决方法写下来，第一自己有个记录，第二也帮助那些被同样问题困扰的朋友尽快的进入linux美丽的世界。(只限
+linux系统） </div>
+<div>首先需要make一次源代码</div>
+<div>编辑源码解压生成的apue.2e文件夹下的Make.defines.linux</div>
+<div>修改WKDIR=/home/var/apue.2e为你的apue.2e目录，比如我的apue源码解压在/usr/local,那我就改为：</div>
+<div>WKDIR=/<font size="2">usr/local/apue</font>.2e</div>
+<div>然后进入apue.2e/std 目录，编辑linux.mk。修改里面所有的nawk为awk。</div>
+<div>最后返回apue.2e目录，执行make命令。</div>
+<div>以下是编译源码时的错误提示跟解决方法（假定你的工作目录跟我的一样，为/usr/local/apue.2e)</div>
+<div>错误提示1：</div>
+<div>myls.c:1:19: apue.h: No such file or directory<br>myls.c: In function `main':<br>myls.c:13: error: `NULL' undeclared (first use in this function)<br>myls.c:13: error: (Each undeclared identifier is reported only once<br>myls.c:13: error: for each function it appears in.)</div>
+<div>解决办法：</div>
+<div>拷贝apue.h到系统默认头文件目录中</div>
+<div>$cp /usr/local/apue.2e/include/apue.h /usr/include</div>
+<div>错误提示2：</div>
+<div>/tmp/ccBBopm0.o(.text+0x2b): In function `main':<br>: undefined reference to `err_quit'<br>/tmp/ccBBopm0.o(.text+0x5f): In function `main':<br>: undefined reference to `err_sys'<br>collect2: ld returned 1 exit status</div>
+<div>解决办法：</div>
+<div>err_quit跟err_sys是作者自己定义的错误处理函数,需要单独定义头文件</div>
+<div>在/usr/include 下新建一个名为myerr.h的文件，拷贝在原书的附录B中头文件到其中。</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div><strong><font color="#000066" size="4">《UNIX环境高级编程》源码编译方法</font></strong> </div>
+<div><font color="#000066" size="4"><font size="2"><font face="Courier"><font color="#000000">这里要谈到的一个问题就是该书中的源代码编译的问题。此书中差不多每个历程中，都会有这样一行源码：<br style="font-family: Courier;"></font><span style="color: rgb(255, 0, 0); font-family: Courier;">＃include "ourhdr.h"</span></font><br style="font-family: Courier;"></font><font size="2"><font color="#000000"><span style="font-family: Courier;">&nbsp;&nbsp; </span><br style="font-family: Courier;"><span style="font-family: Courier;">在第二版中改为：</span><br style="font-family: Courier;"></font><span style="color: rgb(255, 0, 0); font-family: Courier;">＃include "apue.h"</span><br style="font-family: Courier;"><br style="font-family: Courier;"></font><font color="#000000"><font size="2"><span style="font-family: Courier;">&nbsp;&nbsp;&nbsp;
+这个头文件是作者把把每个例程中常用的标准头文件，一些常用的出错处理函数（err_**（）之类的函数）和一些常用的宏定义给整理在一个头文件中。这个
+可以省去在每个例程中录入较多的重复代码，这样可以减少每个例程的长度。但是，这样就给读者带来了不少麻烦。因为我们还要去搞明白如和把这个头文件编译，
+然后做成库文件，添加到我们的系统中。特别读于初学者，本来满怀信心的，结果在编译第一个程序的时候就出现了问题。我也没有搞明白如何把
+"ourhdr.h"静态的编译到系统中。</span><br style="font-family: Courier;"><br style="font-family: Courier;"><span style="font-family: Courier;">&nbsp;&nbsp;&nbsp;
+不过，不明白如何使用"ourhdr.h"这个头文件，并不会影响我们学习APUE，也不会影响我们编译和运行每一个例程。其实，简单的想一下，如果一个
+C程序要能顺利的编译和运行，除了我们要语法正确等方面外，最根本的是要保证我们程序中所调用的函数以及宏等等都要有完整的来源，也就是必须包含所有调用
+函数和宏所在的头文件。对于一个具体的源程序，如果我们正确的包含了头文件，那么剩下的就是程序本生语法方面应该注意的事项。</span><br style="font-family: Courier;"><br style="font-family: Courier;"><span style="font-family: Courier;">&nbsp;&nbsp;&nbsp;
+如何确定系统调用函数包含在那个头文件中呢？这在Unix/Linux系统下并非一件难事。Unix/Linux下命令man可以帮助我们找到。man命
+令不仅可以帮助我们查找一般命令的用法，同时提供不同层次的帮助诸如系统调用或者管理员级别的命令等等（譬如FreeBSD6.1中，man
+1是用户专用手册，man 2是系统调用，man 3是库函数查询等等）。</span><br style="font-family: Courier;"><br style="font-family: Courier;"><span style="font-family: Courier;">&nbsp;&nbsp;&nbsp;
+下面我们就以APUE书中程序1-1
+（实现ls命令部分功能）为例，来说明如何将书中的程序改编成全部使用标准头文件的程序。其中，操作系统用的是FreeBSD6.1，经过相应的修改可以
+在书中所说的几个Unix系统及Linux系统中运行，我也曾在Debian Linux下成功编译和运行该程序。书中1-1.c的原始代码如下：</span><br style="font-family: Courier;"><br style="font-family: Courier;"></font></font><font size="2"><span style="color: rgb(255, 0, 0); font-family: Courier;">#include &lt;sys/types.h&gt;<br>#include &lt;dirent.h&gt;<br>#include "ourhdr.h"<br style="color: rgb(255, 0, 0);"></span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">int</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">main(int argc, char *argv[])</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">{</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; DIR&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; *dp;</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; struct dirent&nbsp;&nbsp;&nbsp; *dirp;</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; if (argc != 2)</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; err_quit("usage: ls directory_name");</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; if ((dp = opendir(argv[1])) == NULL)</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; err_sys("can't open %s", argv[1]);</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; while ((dirp = readdir(dp)) != NULL)</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; printf("%s\n", dirp-&gt;d_name);</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; closedir(dp);</span><br style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(255, 0, 0); font-family: Courier;">&nbsp;&nbsp;&nbsp; exit(0);</span><br style="color: rgb(255, 0, 0); font-family: Courier;"></font><span style="color: rgb(255, 0, 0); font-family: Courier;"><font size="2">}<br><br>&nbsp;&nbsp;&nbsp; </font><span style="color: rgb(0, 0, 0);"><font size="2">从书后面的附录中可以看到"ourhdr.h"的内容比较多，包含了比较多的常用头文件，一些宏定义和一些常用函数和出错函数的定义。其实，对于每一个具体的程序，我们只需要找到该程序中用到的头文件即可。<br><br>&nbsp;&nbsp;&nbsp; 该1-1.c中所用到的系统函数调用有：opnedir()，readdir()，printf()，closedir()和exit()。<br>其中，对于常用的函数prinft()和exit()，它们所在的头文件一般都知道，分别是&lt;stdio.h&gt;和&lt;stdlib.h&gt;。而对于</font></span><span style="color: rgb(0, 0, 0);"><font size="2">opnedir
+()，readdir()和closedir()，我们可以通过man opendir，man readdir，man
+closedir得到这三个关于目录操作的函数所在的头文件都是：&lt;sys/types.h&gt;和&lt;dirent.h&gt;。这两个头
+文件在源程序中也已经列出。<br><br>&nbsp;&nbsp;&nbsp;
+其次，1-1.c中还用到了作者自定义的两个函数：err_quit()和err_sys()。这两个函数主要使用来进行出错处理的。当然，使用这两个函
+数对错误信息的处理是比较完善的。但是，作为我们学习来讲，了解程序的核心功能是首要的，我们可以将出错处理简化一点，即当遇到错误的时候，我们只简单的
+使用printf()函数来提示一下有错误发生。当然，用printf()来进行出错处理并不是一种很合理的方法，而且往往我们看不到更关键的错误信息，
+但对于我们仅仅作为学习来用还是可以接受的。毕竟我们要理解的核心部分是程序的功能实现，出错处理在于其次。<br><br>&nbsp;&nbsp; 通过以上的说明，我们可以将1-1.c修改为如下内容：<br><br><span style="color: rgb(255, 0, 0);">#include &lt;sys/types.h&gt;</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">#include &lt;dirent.h&gt;</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">#include &lt;stdio.h&gt;</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">#include &lt;stdlib.h&gt;</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">int main(int argc, char* argv[])</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">{</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; DIR *dp;</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; struct dirent *dirp;</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; </span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; if(argc != 2)</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; {</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; printf("You need input the directory name.\n");</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; exit(1); &nbsp; </span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; }</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; </span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; if((dp = opendir(argv[1])) == NULL)</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; {</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; printf("cannot open %s\n", argv[1]);</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; exit(1);&nbsp;&nbsp;&nbsp; </span></font></span></span><span style="color: rgb(0, 0, 128); font-family: Courier;"></span><span style="color: rgb(255, 0, 0); font-family: Courier;"><span style="color: rgb(0, 0, 0);"><span style="color: rgb(255, 0, 0);"></span><br style="color: rgb(255, 0, 0);"><font size="2"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; }</span><br style="color: rgb(255, 0, 0);"><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; while ((dirp = readdir(dp)) != NULL)</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; printf("%s\n", dirp-&gt;d_name);</span><br style="color: rgb(255, 0, 0);"><br style="color: rgb(255, 0, 0);"><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; closedir(dp);</span><br style="color: rgb(255, 0, 0);"><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">&nbsp;&nbsp;&nbsp; exit(0);</span><br style="color: rgb(255, 0, 0);"></font><span style="color: rgb(255, 0, 0);"><font size="2">}<br><br>&nbsp;&nbsp;&nbsp; </font><span style="color: rgb(0, 0, 0);"><font size="2">这样修改后的程序已经与作者的头文件"ourhdr.h"没有关系，可以单独的进行编译。我使用的是root用户，执行命令：<br><br><span style="color: rgb(255, 0, 0);"># gcc 1-1.c&nbsp; //生成目标文件a.out</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">或者</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">＃ gcc -o 1-1 1-1.c&nbsp; //生成目标文件1-1</span><br><br>&nbsp;&nbsp;&nbsp; 没有任何错误和警告，说明编译成功。这时我们执行生成的目标文件：<br><br><span style="color: rgb(255, 0, 0);">＃ ./a.out /home</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">或者</span><br style="color: rgb(255, 0, 0);"><span style="color: rgb(255, 0, 0);">＃ ./1-1 /home</span><br><br>&nbsp;&nbsp;&nbsp; 则会列出/home路径下的所有文件，包括目录(.)和(..)。<br><br>&nbsp;&nbsp;&nbsp;
+通过这样的方法，基本上我们可以将该书中所有的例程修改成不包含"ourhdr.h"的程序。这样，我们就可以单独的编译每一个例程，而不用顾及作者所给
+的杂凑的头文件。同时这种比较笨的方法，反而有利于帮助我们了解不同系统调用所对应的头文件，对于学习来说，这应该是一件好事。<br><br>&nbsp;&nbsp;&nbsp; 现在，我也才学到APUE的第四章了。前四章的程序，我都是采用这种方法进行编译和运行。如果也有在学习APUE的朋友，我们可以一起交流。</font><br></span></span></span></span></font></div>
+<div><strong><font color="#000066" size="4"></font></strong>&nbsp;</div>
+<div><strong><font color="#000066" size="4">APUE2作者提供的源码编译方法及单个源码编译的实现</font></strong> </div>
+<div>按照源代码文件夹中的<span lang="EN-US">README</span>的步骤，对整个源代码进行了编译。<span lang="EN-US"><o:p></o:p></span>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>（一）作者提供的编译方法的实现<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp; </span>README</span><span>文件中给出的编译方法如下：<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp; </span>To
+build the source, edit the Make.defines.* file for your system and set
+WKDIR to the pathname of the tree containing the source code.<span>&nbsp; </span>Then just run "make".<span>&nbsp; </span>It should figure out the system type and build the source for that platform utomatically. <o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>参照该方法，我将源码的编译分为三步。整个步骤都是在<span lang="EN-US">root</span>超级用户下进行的，如果其他用户没有权限进行编译，可以通过<span lang="EN-US">su</span>命令切换到超级用户。<span lang="EN-US"> <o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>第一步，编辑<span lang="EN-US">Make.defines.*</span>文件。由于我所使用的操作系统是<span lang="EN-US">FreeBSD6.1</span>，所以应该编辑文件<span lang="EN-US">Make.defines.freebsd</span>。其实，编辑该文件的内容主要是修改其中的<span lang="EN-US">WKDIR</span>，即我们源码所在文件夹的绝对路径名。原文件中<span lang="EN-US">WKDIR</span>＝<span lang="EN-US">/home/sar/apue.2e</span>，我们可以根据我们实际文件夹所在的位置进行相应的修改。我的<span lang="EN-US">apue.2e</span>文件夹直接放在/<span lang="EN-US">home</span>下了，所以我将<span lang="EN-US">WKDIR</span>修改为<span lang="EN-US">WKDIR</span>＝<span lang="EN-US">/home/apue.2e</span>。其余内容不用修改，保存修改后的文件。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>第二步，修改脚本文件<span lang="EN-US">systype.sh</span>的权限。由于原始的<span lang="EN-US">systype.sh</span>文件不具有可执行的权限。通过执行命令<span lang="EN-US">:<o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#chmod +x systype.sh</span><span>&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>给当前用户及其所在组和其他组添加可执行权限；<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>或者<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#chmod u+x systype.sh</span><span><span style="color: rgb(255, 1, 2);">&nbsp;</span> </span><o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>仅给当前用户添加可执行权限。<span lang="EN-US"> <o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>该脚本文件的功能主要是检测操作系统的类型。它可以检测到系统的类型有：<span lang="EN-US">FreeBSD</span>，<span lang="EN-US">Linux</span>，<span lang="EN-US">MacOS</span>和<span lang="EN-US">Solaris</span>等。如果单独执行这个<span lang="EN-US">shell</span>脚本：<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span><span style="color: rgb(255, 1, 2);">＃</span><span lang="EN-US"><span style="color: rgb(255, 1, 2);">./systype.sh</span><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>则输出结果为：<span lang="EN-US">freebsd</span>。即检测本机的操作系统为<span lang="EN-US">FreeBSD</span>。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp; </span></span><span>第三步，进行源码的编译。在命令行下执行<span lang="EN-US">make</span>命令。通过查看<span lang="EN-US">Makefile</span>文件可知，<span lang="EN-US">make</span>之后，首先执行<span lang="EN-US">systype.sh</span>脚本，即首先确定操作系统的类型，然后在进行源码的编译。在编译的过程中，会有一些<span lang="EN-US">Warning</span>。这些都是正常的，导致警告的原因可能是采用编译起的版本不同或者是同一类型操作系统的版本不同。但是，只要<span lang="EN-US">make</span>的过程不出现<span lang="EN-US">error</span>，就会顺利的生成可执行文件。我的在编译过程中没有出现<span lang="EN-US">error</span>，因此意味着编译成功。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>注意：编译的过程中可能会出现的一个问题，也是一个网友曾经问到的问题，就是在编译中出现这个的错误，提示<span lang="EN-US">nawk command cannot be found</span>。这个问题可能的原因是，有些操作系统的内核版本较低，可能还不支持<span lang="EN-US">nawk(new awk)</span>这个命令。但应该支持<span lang="EN-US">awk</span>命令。因此，问题的解决方法就是将相关文件中的<span lang="EN-US">nawk</span>命令替换为<span lang="EN-US">awk</span>，或者为系统添加一个别名<span lang="EN-US">alias</span>，<span lang="EN-US">alias nawk awk</span>。这样在编一的过程中，遇到<span lang="EN-US">nawk</span>命令时，实际会去执行<span lang="EN-US">awk</span>命令。如果还有其他问题，可以去网上搜索相关的解决方法。因为我在编译的过程中没有遇到这样的问题，不再一一赘述。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>（二）编译生成可执行文件的位置<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>在路径<span lang="EN-US">/home/apue.2e/</span>下虽然有所有的源文件，都是以<span lang="EN-US">figx.x</span>的形式命名。但是实际编译的过程并不是编译的这些文件。而是编译在该路径下各个文件夹中的后缀名为＊<span lang="EN-US">.c</span>的程序。作者把同一章节或者相近几个章节的源代码放在某一个文件夹下面（<span lang="EN-US">include</span>和<span lang="EN-US">lib</span>文件夹除外）。而文件夹的命名一般是和该章对应的标题是一致的，采用的是英文标题的全称或简写。譬如，<span lang="EN-US">advio</span>文件夹对应<span lang="EN-US">Chapter 14. Advanced I/O</span>，该章的代码就放在该文件夹下面。还有文件夹<span lang="EN-US">proc</span>对应<span lang="EN-US">Chapter 8. Process Control</span>，文件夹<span lang="EN-US">termios</span>对应<span lang="EN-US">Chapter 18. Terminal I/O</span>等等，基本上每一章的代码都可以在这些文件夹中找到。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>（三）如何编译单独的源文件<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span>通过<span lang="EN-US">make</span>命令是直接将所有的源程序编译成可执行文件的。对于喜欢修改和调试程序的朋友来说，<span lang="EN-US">make</span>生成的可执行文件显然不具有这样的功能，而且，也不可能修改了一个源文件，然后还要<span lang="EN-US">make</span>。如何需要编译和调试单个程序的话，方法如下：<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US">1.</span><span>首先还是要用<span lang="EN-US">make</span>对所有文件进行编译。成功编译后，会在<span lang="EN-US">WKDIR</span>／<span lang="EN-US">lib</span>／下生成库文件<span lang="EN-US">libapue.a</span>，主要是将<span lang="EN-US">apue.h</span>（位于<span lang="EN-US">WKDIR</span>／<span lang="EN-US">include/</span>）中定义的所有内容生成一个静态的库，这样可以方便调用。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US">2.</span><span>我们以<span lang="EN-US">WKDIR/</span>下的<span lang="EN-US">fig1.3</span>（实现<span lang="EN-US">ls</span>部分功能）文件为例说明需要修改的地方。将<span lang="EN-US">fig1.3</span>文件重命名为<span lang="EN-US">fig<st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">1.3.c</st1:chsdate></span>，然后编辑该文件，将包含头文件的一行代码：<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#include "apue.h"</span><span>&nbsp; </span>//</span><span>默认所引用头文件的位置为当前的路径<span lang="EN-US">WKDIR=/home/apue.2e<o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>修改为<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#include "include/apue.h"</span> <o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>即头文件<span lang="EN-US">apue.h</span>的位置为当前路径下<span lang="EN-US">inlucde</span>文件夹中，这个就正确的指定了<span lang="EN-US">apue.h</span>的位置。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>这样就可以进行编译了，但在编译的时候还要加上库文件<span lang="EN-US">libapue.a</span>，因为该文件实现了<span lang="EN-US">apue.h</span>中的所有功能，主要有常用头文件，宏定义以及自定义函数的实现。<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>输入命令<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#gcc fig</span><st1:chsdate style="color: rgb(255, 1, 2);" isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">1.3.c</st1:chsdate><span style="color: rgb(255, 1, 2);"> lib/libapue.a</span><span><span style="color: rgb(255, 1, 2);">&nbsp;&nbsp;</span> </span><o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>则会生成可执行文件<span lang="EN-US">a.out</span>。执行命令<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#./a.out /home</span><o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>则列出我的<span lang="EN-US">/home</span>路径下的所有文件和文件夹：<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">.<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">..<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">david<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">simsun .ttc<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">simkai.ttf<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">simsun.ttf<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">MYKERNEL<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">unix_advance_program<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">freebsd<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">APUE Source Code<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">LumaQQ<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">apue.2e<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">bash-script<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">lumaqq_2005_patch_2006.01.<st1:chsdate isrocdate="False" islunardate="False" day="30" month="12" year="1899" w:st="on">22.15.00</st1:chsdate>.zip<o:p></o:p></span></p>
+<p class="MsoPlainText" style="color: rgb(255, 1, 2); font-family: Courier New;"><span lang="EN-US">lumaqq_2005-linux_gtk2_x86_with_jre.tar<o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">apue_src_complied.tar</span><o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp; </span></span><span>当然，如果需要编译的是各个文件夹中的一个源程序时，则只需对所包含的头文件<span lang="EN-US">apue.h</span>的路径作相对修改，改为<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#include "../include/apue.h"</span><o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span>以及编译是库文件的位置也相应修改，改为：<span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span style="color: rgb(255, 1, 2);">#gcc sourcefile.c ../lib/libapue.a</span><o:p></o:p></span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span lang="EN-US"><span>&nbsp;&nbsp;&nbsp; </span></span><span>至此，<span lang="EN-US">APUE</span>第二版作者提供的源码编译方法和单独源码的编译都已经实现。</span></p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span></span>&nbsp;</p>
+<p class="MsoPlainText" style="font-family: Courier New;"><span></span>&nbsp;</p></div>
+<div><br>&nbsp;</div>
+</div>
+</td></tr>
+</tbody></table>
+
+
+<p style="margin: 5px; line-height: 150%;">
+ 
+ 
+</p>
+</td></tr>
+<tr><td height="25">
+&nbsp;<font color="#000099"><b>原文地址</b></font>
+<a href="http://blog.chinaunix.net/u/33048/showart_260473.html" target="_blank">http://blog.chinaunix.net/u/33048/showart_260473.html</a>
+</td></tr>
+ 
+ 
+<tr><td align="center" height="25">
+<font color="#295200">发表于： 2008-11-24，修改于： 2008-11-24 09:50，已浏览256次，有评论0条</font> 
+<a href="http://blog.chinaunix.net/u2/star.php?blogid=72333&amp;artid=1662235" id="star" onclick="NewWindows(this.href);return false;" title="推荐这篇文章">推荐</a>
+<a href="http://blog.chinaunix.net/u2/complaint.php?blogid=72333&amp;artid=1662235" id="complaint" onclick="NewWindows(this.href);return false;" title="投诉这篇文章">投诉</a>
+</td></tr>
+
+
+
+
+</tbody></table>
+
+
+</td></tr>
+<tr><td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_left_buttom.gif" alt="" border="0"></td>
+<td bgcolor="#f3f3f3"></td>
+<td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_right_buttom.gif" alt="" border="0"></td>
+</tr>
+</tbody></table>
+
+
+</td></tr><tr><td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_left_bottom.gif" alt="" border="0"></td>
+<td bgcolor="#dddddd"></td>
+<td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_right_bottom.gif" alt="" border="0"></td>
+</tr>
+</tbody></table>
+<br>
+<br>
+<table style="border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_left_top.gif" alt="" border="0"></td>
+<td bgcolor="#dddddd" height="11" width="99%"></td>
+<td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_right_top.gif" alt="" border="0"></td>
+</tr>
+
+<tr><td colspan="3" align="center" bgcolor="#dddddd" valign="top" width="100%"> 
+<b>网友评论</b>
+<br>
+<table style="border-collapse: collapse;" border="0" cellpadding="0" cellspacing="0" width="96%">
+<tbody><tr><td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_left_top.gif" alt="" border="0"></td>
+<td bgcolor="#f3f3f3" width="100%"></td>
+<td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_right_top.gif" alt="" border="0"></td>
+</tr>
+<tr><td colspan="3" align="center" bgcolor="#f3f3f3">
+<table style="border-collapse: collapse;" align="center" border="0" cellpadding="0" cellspacing="0" width="700">
+
+<tbody><tr><td style="color: rgb(0, 0, 204);" height="25">
+　发表评论
+</td></tr>
+<tr><td height="25">
+ 
+<iframe name="comment" src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/comment.htm" frameborder="0" height="160" width="640"></iframe>
+ 
+</td></tr>
+
+</tbody></table>
+
+</td></tr>
+<tr><td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_left_buttom.gif" alt="" border="0"></td>
+<td bgcolor="#f3f3f3"></td>
+<td height="7" width="7"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/w_right_buttom.gif" alt="" border="0"></td>
+</tr>
+</tbody></table>
+
+
+</td></tr><tr><td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_left_bottom.gif" alt="" border="0"></td>
+<td bgcolor="#dddddd"></td>
+<td height="11" width="11"><img src="linux%E4%B8%8B%E3%80%8AUNIX%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E3%80%8B%28apue2%29%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%87%BA%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB_files/g_right_bottom.gif" alt="" border="0"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+
+
+
+</body></html>

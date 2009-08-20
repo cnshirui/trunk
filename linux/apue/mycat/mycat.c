@@ -1,4 +1,4 @@
-#include	"ourhdr.h"
+#include	"../ourhdr.h"
 
 #define	BUFFSIZE	8192
 

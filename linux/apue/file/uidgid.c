@@ -1,4 +1,6 @@
-#include	"ourhdr.h"
+#include	"../ourhdr.h"
+#include <unistd.h>         // for read/write
+#include <sys/types.h>
 
 int
 main(void)

@@ -1,4 +1,4 @@
-#include	"ourhdr.h"
+#include	"../ourhdr.h"
 
 int
 main(void)

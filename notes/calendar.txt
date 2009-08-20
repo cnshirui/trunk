@@ -1,3 +1,18 @@
+Monday, August 17, 2009
+I've learnt APUE(Advanced Programming in Unix Environment, 1st edition) for several days. 
+When I bought the book, I encountered a problem with building libmisc.a. Without experiment, I didn't understand what I learnt.
+So I break learning this famous book.
+
+Later I installed Ubuntu in VMWare, and managed to build libapue.a for Linux. But there's no time to learn the book. Recently I 
+became interested in Compiler and Linux kernal programming. So I began to review it. With KISS(Keep It Simple and Stupid) pricinple,
+I modified "ourhdr.h" and build experiment with MinGW. It's light-weight, and only need to <30M memory.
+
+But it can't emulate the whole Unix environment, such as getuid/getgid, fork. So have to move Cygwin(a emulated Unix environment on Windows).
+The following commands are usual to check modified files:
+head -n file_name:	check the first n lines of the file
+tail -n file_name:	check the last n lines of the file
+sed -n 'm,np':		check  m-n lines in the file
+
 Monday, April 13, 2009
 1. build merged c++ dev environment
 2. swap component xuewei

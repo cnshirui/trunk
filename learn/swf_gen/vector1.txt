@@ -1,3 +1,0 @@
-Exception during generation: Failed to initialise generator
-The thread 'Win32 Thread' (0x2588) has exited with code 0 (0x0).
-The thread 'Win32 Thread' (0x1754) has exited with code 0 (0x0).

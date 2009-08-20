@@ -1,6 +1,6 @@
 #include	<sys/types.h>
 #include	<sys/wait.h>
-#include	"ourhdr.h"
+#include	"../ourhdr.h"
 
 int
 main(void)
