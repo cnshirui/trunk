@@ -100,3 +100,25 @@ a:hover { color: #fff; background-color:#000; }
   padding-bottom: 1em;
   width: 20%;
 }
+
+body.yellow {
+	background: #fffdd2 url('/images/yellow_background.png') repeat-x; 
+}
+body.purple {
+	background: #650040 url('/images/purple_background.png') repeat-x;
+	color: white; 
+}
+body.red {
+	background: #fb6968 url('/images/red_background.png') repeat-x;
+	color: white; 
+}
+body.blue {
+	background: #00c5f5 url('/images/blue_background.png') repeat-x; 
+}
+body.green {
+	background: #37d9a2 url('/images/green_background.png') repeat-x;
+	color: white; 
+}
+body.green a {
+  color: white; 
+}
