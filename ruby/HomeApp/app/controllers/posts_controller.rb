@@ -2,7 +2,7 @@ require 'utils/time'
 
 class PostsController < ApplicationController
   
-  before_filter :authorize, :except => [:index]
+  before_filter :authorize, :except => [:index, :show]
 
   # GET /posts
   # GET /posts.xml
@@ -110,7 +110,6 @@ class PostsController < ApplicationController
 
   def search
     content = params[:posts_search][:keys]
-    content ||= "bec"
     @results_count, results = Post.find_id_by_contents(content)
     @posts = results.map { |result| Post.find(result[:id] )}
 

@@ -39,7 +39,7 @@
 
 </script>
 
-<body class="yui-skin-sam">
+<div class="yui-skin-sam">
   <%= render :partial => @post %>
   <p>
     <%= link_to 'Edit', edit_post_path(@post) %> |
@@ -68,4 +68,4 @@
   <div id="comments">
     <%= render :partial => @post.comments %>
   </div>
-</body>
+</div>

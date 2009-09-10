@@ -1,0 +1,466 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="verify-v1" content="J75JQ+WGFRjBEnhNT4hhYxgVTQmRHjd0v3JF+izUFvA=">
+	<title>Heroku | Background Jobs</title>
+	<link type="text/css" rel="stylesheet" href="Background%20Jobs_files/docs.css" media="screen">
+	<link type="text/css" rel="stylesheet" href="Background%20Jobs_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="Background%20Jobs_files/shThemeHeroku.css">
+	<script type="text/javascript" src="Background%20Jobs_files/jquery-1.js"></script>
+	<script type="text/javascript" src="Background%20Jobs_files/shCore.js"></script>
+	<script type="text/javascript" src="Background%20Jobs_files/shBrushRuby.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			SyntaxHighlighter.config.tagName = 'code'
+			SyntaxHighlighter.defaults['tag'] = false;
+			SyntaxHighlighter.defaults['gutter'] = false;
+			SyntaxHighlighter.defaults['toolbar'] = false;
+			SyntaxHighlighter.all();
+		});
+	</script>
+</head><body>
+<div id="bodywrap">
+
+	<style type="text/css">
+#header { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; margin-bottom: 15px; }
+
+#header { background-color: #29264d; border-bottom-style: solid; border-bottom-width: 3px; border-bottom-color: #494573; overflow: hidden; display: inline-block; }
+#header { display: block; }
+#header a { color: #c9c3e6; text-decoration: none; font-weight: normal; }
+#header a:hover { color: #fff; }
+#header #logo { margin: 20px 0 15px 25px; float: left; }
+#header #logo a { display: block; text-indent: -9999px; width: 177px; height: 56px; overflow: hidden; background-image: url(http://heroku.com/images/v2/logo.png); background-repeat: no-repeat; }
+#header ul { list-style-type: none; overflow: hidden; display: inline-block; float: right; margin-top: 30px; padding: 10px; }
+#header ul { display: block; }
+#header ul li { float: left; margin-left: 10px; }
+#header ul li:first-child { margin-left: 0; }
+#header ul li { border-left-style: solid; border-left-width: 2px; border-left-color: #534890; padding-left: 10px; font-size: 16px; }
+#header ul li:first-child, #header ul li#account_login { border: none; margin-left: 0; padding-left: 0; }
+#header ul li a.active { color: #bff740; }
+#header ul li a.active:hover { color: #bff740; }
+#header ul.account-links { background-color: #231d40; padding-left: 15px; padding-right: 15px; margin-right: 25px; margin-left: 10px; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#header ul.account-links a { color: #45a4ff; }
+#header ul.account-links a:hover { color: #74d0f4; }
+#header ul.account-links a.active { color: #bff740; }
+#header ul.account-links a.active:hover { color: #bff740; }
+
+</style>
+
+
+<div id="header">
+	
+		<h5 id="logo"><a href="http://heroku.com/">Heroku</a></h5>
+	
+
+	<ul class="account-links inline">
+		<div id="logged-in-links" style="display: none;">
+			<li><a href="http://heroku.com/myapps">My Apps</a></li>
+			<li><a href="http://heroku.com/account">My Account</a></li>
+			<li><a href="http://heroku.com/logout">Logout</a></li>
+		</div>
+		<li id="account_login"><a href="http://heroku.com/login">Login</a></li>
+	</ul>
+	<ul class="info-links inline">
+		<!-- <li><a href="http://heroku.com/about">About</a></li> -->
+		<li><a href="http://heroku.com/how">How it Works</a></li>
+		<li><a href="http://heroku.com/pricing">Pricing</a></li>
+		<!-- <li><a href="http://blog.heroku.com/">Blog</a></li> -->
+		<li><a href="http://docs.heroku.com/" class="active">Docs</a></li>
+		<li><a href="http://support.heroku.com/" id="support_link">Support</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	if (document.cookie.indexOf('heroku_session=') != -1) {
+		document.getElementById('support_link').href = 'http://heroku.com/helpdesk/login';
+		document.getElementById('logged-in-links').style.display = 'block';
+		document.getElementById('account_login').style.display = 'none';
+	}
+</script>
+
+
+
+	<div id="docsnav">
+		<form action="/search" id="cse-search-box">
+			<div id="search">
+				<input name="cx" value="011016403564345195107:s5fypn6csxi" type="hidden">
+				<input name="cof" value="FORID:10;NB:1" type="hidden">
+				<input name="ie" value="UTF-8" type="hidden">
+				<input style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: rgb(255, 255, 255) url(http://www.google.com/coop/intl/en/images/google_custom_search_watermark.gif) no-repeat scroll left center; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" name="q" size="31" type="text">
+			</div>
+		<input value="14d5058e-f79f-0935-acbc-c29344a71d2a" name="vid" type="hidden"></form>
+
+		<ul>
+			
+				<li>
+				<h3>Getting Started</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku">What is Heroku?</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/quickstart">Quickstart Guide</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Application Management</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku-command">Installing the Heroku command-line tool</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/creating-apps">Creating apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/renaming-apps">Renaming apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/git">Deploying with Git</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/sharing">Collaborating with others</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/gems">Managing Gems</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/taps">Database import / export</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/console">Using the console</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/rake">Running rake tasks</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/config-vars">Config vars</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/backups">Backups</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/addons">Managing Addons</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Platform Features</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/technologies">System Infrastructure</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/dynos">Dynos</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/database">SQL Database</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/http-caching">HTTP cache</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/rack">Rack apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/custom-domains">Custom domains</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/ssl">SSL</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/cron">Cron</a></li>
+						
+					
+						
+							<li class="current"><a>Background jobs</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/s3">Storing uploads in S3</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/smtp">Outbound email</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/full-text-indexing">Full text search indexing</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Troubleshooting</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/constraints">Application constraints</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/logs-exceptions">Logs and exceptions</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/errors">Error pages</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/performance">Performance</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/support">Getting support</a></li>
+						
+					
+				</ul>
+				</li>
+			
+		</ul>
+	</div>
+
+	<div id="content">
+		<div class="topic_content">
+			<h1>Background Jobs</h1>
+
+
+
+<p>Queueing is the key to building truly scalable web apps. Don’t do any heavy
+lifting in the web processes (Mongrel/Thin); instead, put things on a queue
+and do the work in a background process. This ensures that web requests can
+always return immediately.</p>
+
+<p>A good rule of thumb is to avoid web requests which run longer than 500ms.
+If you find that your app has requests which are take one, two, or more
+seconds to complete, then you should consider using background jobs instead.</p>
+
+<ul>
+<li>You can find another great tutorial at <a href="http://www.therailsway.com/2009/7/22/do-it-later-with-delayed-job">The Rails Way Blog</a></li>
+</ul>
+
+
+<a name="introduction-to-job-queues"></a>
+
+
+	<ul id="toc">
+		
+			<li><a href="#introduction-to-job-queues">Introduction to job queues</a></li>
+		
+			<li><a href="#delayed-job-dj-ndash-background-jobs-for-rails">Delayed Job (DJ) – background jobs for Rails</a></li>
+		
+			<li><a href="#using-the-dj-heroku-addon">Using the DJ Heroku addon</a></li>
+		
+			<li><a href="#see-also">See Also</a></li>
+		
+	</ul>
+
+
+<h2>Introduction to job queues</h2>
+
+<p>Fetching data from remote APIs, reading RSS feeds, resizing images, and
+uploading data to S3 are all examples of tasks that should be processed as
+background jobs. The web hit that requests the job places it in queue and
+returns to the client immediately. The client can then poll for updates to
+see when their job is complete.</p>
+
+<p>Consider the example of a web-based RSS reader. An app like this will have
+a form where users can submit a new feed URL to be read. After a delay, the
+user will be taken to a page where they can see the contents of the feed. A
+simple but non-scalable way to do this would be to run it directly inside
+the web request, like this:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_152923"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">class</code> <code class="plain">FeedsController</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="plain">create</code></span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">feed = Feed.create! params</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">feed.fetch</code></span></span></div><div class="line alt1"><code class="number">5.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">redirect_to feed_url(feed)</code></span></span></div><div class="line alt2"><code class="number">6.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt1"><code class="number">7.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p>The fetch action in the model is the potentially heavy part of this:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_676285"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">class</code> <code class="plain">Feed &lt; ActiveRecord::Base</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="plain">fetch</code></span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">xml = RestClient.get url</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="comments"># ... do read and parse the feed, putting the results in the database</code></span></span></div><div class="line alt1"><code class="number">5.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt2"><code class="number">6.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p>In the example, <code>feed.fetch</code> will go out to the network and pull down the
+data from the feed, inserting the results into the database. Sometimes this
+may happen in as little as a few hundred milliseconds, other times it may
+take several seconds. If the feed’s server is down, it could hang for 30
+seconds or more until the request times out. Tying up your app’s dyno during
+this time prevents it from handling other requests, and leaves your user
+hanging, wondering if your app is working properly. This is okay for a
+single user, but as soon as your app has multiple simultaneous users, you’ll
+find that response times become more and more inconsistent.</p>
+
+<p>A better approach is to add the work-to-be-done to a queue:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_43778"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">class</code> <code class="plain">FeedController</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="plain">create</code></span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">feed = Feed.create! params</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">Delayed::Job.enqueue feed</code></span></span></div><div class="line alt1"><code class="number">5.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">redirect_to url_for(feed)</code></span></span></div><div class="line alt2"><code class="number">6.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt1"><code class="number">7.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p>One or more worker processes, running separately (not serving web requests)
+will read items off the queue one by one and do the work asynchronously.  The
+results will be placed in the database when finished.</p>
+
+<p>Handling long-running work with background workers has many benefits.  It
+avoids tying up your web dynos, preventing them from serving other requests,
+and keeping your site snappy.  You can monitor and control the worker
+processes independently, and manage and introspect the queue to manage your
+site’s load.  And the user experience for those visiting your site will be
+greatly improved when they get an immediate response to any page viewed,
+even if that response is only to say that their request has been received
+and is currently being processed.</p>
+
+<a name="delayed-job-dj-ndash-background-jobs-for-rails"></a><h2>Delayed Job (DJ) – background jobs for Rails</h2>
+
+<p><a href="http://github.com/tobi/delayed_job/tree/master" title="tobi’s delayed_job at master">Delayed Job</a>, also known as DJ, is a queueing system for Rails written
+by Tobias Lütke of Shopify. It stores jobs in a table named <code>delayed_jobs</code>
+in your app’s database.</p>
+
+<p>To use, install the DJ plugin in your Rails app:</p>
+
+<pre><code>$ script/plugin install git://github.com/tobi/delayed_job.git
+</code></pre>
+
+<p>Create a database migration for the delayed_jobs table:</p>
+
+<pre><code>$ script/generate migration create_delayed_jobs
+</code></pre>
+
+<p>Edit the created migration to contain:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_909299"><div class="lines"><div class="line alt1"><code class="number">01.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">class</code> <code class="plain">CreateDelayedJobs &lt; ActiveRecord::Migration</code></span></span></div><div class="line alt2"><code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="keyword">self</code><code class="plain">.up</code></span></span></div><div class="line alt1"><code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">create_table </code><code class="color2">:delayed_jobs</code><code class="plain">, </code><code class="color2">:force</code> <code class="plain">=&gt; </code><code class="keyword">true</code> <code class="keyword">do</code> <code class="plain">|table|</code></span></span></div><div class="line alt2"><code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.integer&nbsp; </code><code class="color2">:priority</code><code class="plain">, </code><code class="color2">:default</code> <code class="plain">=&gt; </code><code class="constants">0</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># jobs can jump to the front of</code></span></span></div><div class="line alt1"><code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.integer&nbsp; </code><code class="color2">:attempts</code><code class="plain">, </code><code class="color2">:default</code> <code class="plain">=&gt; </code><code class="constants">0</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># retries, but still fail eventually</code></span></span></div><div class="line alt2"><code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.text&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="color2">:handler</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># YAML object dump</code></span></span></div><div class="line alt1"><code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.text&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="color2">:last_error</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># last failure</code></span></span></div><div class="line alt2"><code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.datetime </code><code class="color2">:run_at</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># schedule for later</code></span></span></div><div class="line alt1"><code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.datetime </code><code class="color2">:locked_at</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># set when client working this job</code></span></span></div><div class="line alt2"><code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.datetime </code><code class="color2">:failed_at</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># set when all retries have failed</code></span></span></div><div class="line alt1"><code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.text&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="color2">:locked_by</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code class="comments"># who is working on this object</code></span></span></div><div class="line alt2"><code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 42px ! important;"><code class="plain">table.timestamps</code></span></span></div><div class="line alt1"><code class="number">13.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt2"><code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt1"><code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="keyword">self</code><code class="plain">.down</code></span></span></div><div class="line alt2"><code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">drop_table </code><code class="color2">:delayed_jobs</code></span></span></div><div class="line alt1"><code class="number">17.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt2"><code class="number">18.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p>Run your migrations, and now you’re ready to put something in your queue.
+(John Nunemaker has an <a href="http://railstips.org/2008/11/19/delayed-gratification-with-rails">excellent tutorial</a> that goes into more detail
+on setting up DJ.)</p>
+
+<p>Continuing the feed example from the previous section, you might have a
+class like this:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_383062"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">class</code> <code class="plain">Feed &lt; ActiveRecord::Base</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="plain">perform</code></span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="plain">xml = RestClient.get url</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px ! important;"><code class="comments"># ... do work to read and parse the feed and place it in the database</code></span></span></div><div class="line alt1"><code class="number">5.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt2"><code class="number">6.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p>DJ can queue any object that responds to a <code>perform</code> method.  In this case,
+calling <code>perform</code> will cause the feed to go out and fetch the latest info
+from the URL, and store the results in the database. Now we can queue it
+with this bit of code:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_864236"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Delayed::Job.enqueue Feed.create!(</code><code class="color2">:url</code> <code class="plain">=&gt; </code><code class="string">'<a href="http://adam.blog.heroku.com/feed">http://adam.blog.heroku.com/feed</a>'</code><code class="plain">)</code></span></span></div></div></div></pre>
+
+<p>This returns immediately, as no work has been done yet. The job is now on
+the queue, which you can see in your Rails console:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_512024"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">&gt;&gt; Delayed::Job.find(</code><code class="color2">:first</code><code class="plain">)</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">=&gt; </code><code class="comments">#&lt;Delayed::Job id: 8, priority: 0, attempts: 0, handler: "--- !ruby/obj ...</code></span></span></div></div></div></pre>
+
+<p>The job won’t execute until a worker process exists to consume it.  Start
+the worker process like this:</p>
+
+<pre><code>$ rake jobs:work
+(in /home/adam/feedreader)
+*** Starting job worker host:silver pid:4227
+1 jobs processed at 7.0823 j/s, 0 failed ...
+</code></pre>
+
+<p>The worker process finds the job in queue, and performs it.  If you leave
+this running and add more jobs to the queue, you’ll see those jobs being
+processed by the worker. Press <code>Ctrl-C</code> to exit when you no longer wish to
+process jobs.</p>
+
+<a name="using-the-dj-heroku-addon"></a><h2>Using the DJ Heroku addon</h2>
+
+<p>Once your app uses DJ, you can start workers locally, or on a traditional
+host, using <code>rake jobs:work</code>.  On Heroku, you can’t start a worker this way
+due to our dyno grid architecture; but you can use a DJ-powered app out of
+the box by enabling the DJ addon.</p>
+
+<pre><code>$ cd myapp
+$ heroku addons:add dj
+Adding dj to widgets...done.
+</code></pre>
+
+<p>Once the addon is installed, Heroku will start and manage a single DJ worker
+process for this app. You can verify that the DJ process started without
+error by inspecting the logs:</p>
+
+<pre><code>$ heroku logs
+==&gt; log/Dj-6.log &lt;==
+(in /disk1/home/slugs/10818_59891ee_3440/mnt)
+*** Starting job worker host:railgun64.5985 pid:2476
+</code></pre>
+
+<p>To shut down the worker process, remove the addon:</p>
+
+<pre><code>$ heroku addons:remove dj
+Removing dj from widgets...done.
+</code></pre>
+
+<a name="see-also"></a><h2>See Also</h2>
+
+<ul>
+<li><a href="http://blog.leetsoft.com/2008/2/17/delayed-job-dj" title="Delayed Job (DJ)">Tobias Lütke’s introductory blog post on DJ</a></li>
+<li><a href="http://github.com/tobi/delayed_job/tree/master" title="tobi’s delayed_job at master">The delayed_job github project</a></li>
+<li><a href="http://railstips.org/2008/11/19/delayed-gratification-with-rails">John Nunemaker’s DJ tutorial</a></li>
+<li><a href="http://adam.blog.heroku.com/past/2009/4/14/building_a_queuebacked_feed_reader_part_1/">Building a Queue-Backed Feed Reader</a></li>
+<li><a href="http://www.therailsway.com/2009/7/22/do-it-later-with-delayed-job">The Rails Way on Delayed Job</a></li>
+</ul>
+
+
+
+
+	<div id="next_section">Next: <a href="http://docs.heroku.com/s3">Storing uploads in S3 →</a></div>
+
+
+<a href="http://docs.heroku.com/s3">		</a></div>
+<a href="http://docs.heroku.com/s3">	</a></div>
+</div>
+
+<!-- google site search -->
+<script type="text/javascript" src="Background%20Jobs_files/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script><script src="Background%20Jobs_files/a" type="text/javascript"></script><a href="http://docs.heroku.com/s3"><link href="Background%20Jobs_files/transliteration.css" type="text/css" rel="stylesheet"><script src="Background%20Jobs_files/transliteration.js" type="text/javascript"></script>
+<script type="text/javascript" src="Background%20Jobs_files/t13n.htm"></script>
+<script type="text/javascript" src="Background%20Jobs_files/brand.htm"></script>
+
+
+<!-- loopfuse -->
+<script src="Background%20Jobs_files/listen.js" type="text/javascript"></script>
+<script type="text/javascript">
+_lf_cid = "LF_024e931f";
+_lf_remora();
+</script>
+
+<!-- google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Background%20Jobs_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try{
+var pageTracker = _gat._getTracker("UA-2989055-1");
+pageTracker._setDomainName(".heroku.com");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+
+</a></body></html>

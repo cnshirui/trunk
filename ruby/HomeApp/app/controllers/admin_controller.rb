@@ -1,11 +1,12 @@
 require 'rexml/document'
 require 'utils/time'
+require 'yaml_db'
 
 class AdminController < ApplicationController
 
   before_filter :admin
 
-  def export
+  def export_as_xml
     models = []
     Dir["#{RAILS_ROOT}/app/models/*.rb"].each do |file|
       models << File.basename(file,".rb").camelize.constantize
@@ -20,7 +21,15 @@ class AdminController < ApplicationController
     send_data data, :filename => "data_#{Time.now.convert_zone(8).to_s.gsub(" ", "_")}.xml"
   end
 
-  def import
+  # export as yaml
+  def export
+    io = StringIO.new()
+    YamlDb::Dump.dump(io)
+    data = io.string
+    send_data data, :filename => "data_#{Time.now.convert_zone(8).to_s.gsub(" ", "_")}.yaml"
+  end
+
+  def import_from_xml
     begin
       xml = REXML::Document.new(params[:file].read)
 
@@ -45,5 +54,23 @@ class AdminController < ApplicationController
       puts e.to_s, e.backtrace.join("\n")
       render :text => "Import Error!"
     end
+  end
+
+  # import from yaml
+  def import
+    begin
+      # yaml = REXML::Document.new(.read)
+
+      YamlDb::Load.load(params[:file])
+      render :text => "Import Success!"
+    rescue Exception => e
+      puts e.to_s, e.backtrace.join("\n")
+      render :text => "Import Error!"
+    end
+  end
+
+  # send mail
+  def send_mail
+    Gmailer.deliver_signup_notification(User.find(1))
   end
 end

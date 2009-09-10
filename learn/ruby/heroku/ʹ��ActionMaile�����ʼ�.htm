@@ -1,0 +1,523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head>
+
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>使用ActionMaile发送邮件 - rails - Ruby - JavaEye论坛</title>
+    <meta name="description" content="使用ActionMaile发送邮件 更改config目录下的配置文件environment.rb 在最下面追加一段： ActionMailer::Base.delivery_method = :smtp #以简单邮件传送协议发送邮件 ActionMailer::Base.default_charset = &quot;GBK&quot; #设置邮件的默认编码为国标码否则发送的邮件主题可能会乱码 Ac ...">
+    <meta name="keywords" content=" rails Ruby">
+    <link rel="shortcut icon" href="http://www.javaeye.com/images/favicon.ico" type="image/x-icon">
+    <link href="http://www.javaeye.com/rss/board/Ruby" rel="alternate" title="JavaEye论坛" type="application/rss+xml">
+    <link href="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/forum.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/application.js" type="text/javascript"></script>
+      <link href="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/hotkey.js" type="text/javascript"></script>
+          <script src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/dragdrop.js" type="text/javascript"></script>
+          </head><body>
+    <div id="page">
+      <div id="header">
+        <div class="clearfix"><div id="user_nav">
+      <a href="http://cnshirui.javaeye.com/" title="查看我的博客首页" class="welcome">欢迎cnshirui</a>
+    
+      <a href="http://app.javaeye.com/messages" title="发送站内短信">收件箱</a>
+    
+    
+      <a href="http://app.javaeye.com/" title="我的应用首页">我的应用</a>
+    
+    <div class="quick_menu" style="display: none;">
+      <a href="http://app.javaeye.com/feed" title="我订阅的好友动态消息">我的订阅</a>
+      <a href="http://app.javaeye.com/feed/my" title="我参与的话题更新的消息">我的参与</a>
+      <a href="http://app.javaeye.com/chat" title="用闲聊发表简短的话题">我的闲聊</a>
+      <a href="http://app.javaeye.com/mygroup" title="我加入的圈子最新话题">我的圈子</a>
+      <a href="http://app.javaeye.com/links" title="我收藏的网络资源链接">我的收藏</a>
+      <a href="http://app.javaeye.com/myresume" title="我的个人简历">我的简历</a>
+    </div>
+        <a href="http://cnshirui.javaeye.com/admin" title="管理我的博客">我的博客</a>
+    <a href="http://app.javaeye.com/profile" title="修改我的个人设置">设置</a>
+    <a href="http://www.javaeye.com/logout" class="nobg" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'put'); f.appendChild(m);f.submit();return false;">退出</a>
+  </div></div>
+        <div class="clearfix">
+          <div id="branding">
+            <a href="http://www.javaeye.com/"><img alt="JavaEye-最棒的软件开发交流社区" src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/logo.gif" title="JavaEye-最棒的软件开发交流社区"></a>
+          </div>
+          <div id="ad"><img src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/banner.jpg"></div>
+        </div>
+      </div>
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+          
+
+<div class="clearfix">
+  <div class="crumbs">
+    <a href="http://www.javaeye.com/forums">论坛首页</a> <span class="arrow">→</span>
+    <a href="http://www.javaeye.com/forums/board/Ruby">Ruby版</a> <span class="arrow">→</span>
+    <a href="http://www.javaeye.com/forums/tag/rails">rails</a> <span class="arrow">→</span>
+    <h1>使用ActionMaile发送邮件</h1>
+  </div>
+</div>
+
+<div id="forum_tag_list">
+  <a href="http://www.javaeye.com/forums/board/Ruby">全部</a>
+      <a href="http://www.javaeye.com/forums/tag/ruby">ruby</a>
+      <a href="http://www.javaeye.com/forums/tag/rails">rails</a>
+  </div>
+
+<div class="actions">
+  <div class="buttons"></div>
+  <div class="wrapper">
+    <div id="forum_advert_f4"></div>
+    
+    <div class="info">浏览 2740 次</div>
+  </div>
+</div>
+
+
+
+<table id="forum_main" cellspacing="1">
+  <thead>
+    <tr>
+      <th colspan="2" class="topic_title">
+        <div class="wrapper"><span class="locked">锁定老贴子</span> <a href="http://www.javaeye.com/topic/40778">主题：使用ActionMaile发送邮件</a></div>
+        <div id="topic_rate_box"><a href="#" onclick="rate_topic('good'); return false;">精华帖</a> (0) :: <a href="#" onclick="rate_topic('mid'); return false;">良好帖</a> (0) :: <a href="#" onclick="rate_topic('new'); return false;">新手帖</a> (0) :: <a href="#" onclick="rate_topic('hidden'); return false;">隐藏帖</a> (0)</div>
+      </th>
+    </tr>
+    <tr>
+      <td class="first_col">作者</td>
+      <td class="last_col">正文</td>
+    </tr>
+  </thead>
+  <tbody id="posts">
+    <tr id="192890">
+  <td class="postauthor">
+    <ul>
+      <li class="name">ddtlby</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://world.javaeye.com/" target="_blank"><img alt="ddtlby的博客" class="logo" src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/14b67946-488f-3897-a94d-890963db7a9d.jpg" title="ddtlby的博客: ddtlby"></a></li>
+      <li>文章: 25</li>
+      <li>积分: 45</li>
+      <li>来自: 无锡</li>
+      <li><img src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        发表时间：2006-12-26
+        
+      </div>
+      <div class="links">
+        
+          
+          
+            
+            <a href="http://app.javaeye.com/links?user_favorite%5Btitle%5D=%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.javaeye.com%2Ftopic%2F40778" target="_blank" class="favorite">收藏</a>
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+                                            <div style="position: relative;" id="related_topics">相关文章: <span class="close"><a href="#" onclick="$('related_topics').hide();return false;" title="关闭">&nbsp;</a></span>
+              <ul>
+                                    <li><a href="http://www.javaeye.com/topic/68165" title="一键备份到GMail或别的什么东西" target="_blank">一键备份到GMail或别的什么东西</a></li>
+                                      <li><a href="http://www.javaeye.com/topic/38192" title="ActionMailer发送大量邮件(ar_mailer hacks)" target="_blank">ActionMailer发送大量邮件(ar_mailer hacks)</a></li>
+                                      <li><a href="http://www.javaeye.com/topic/76951" title="Ubuntu下用Rails的ActionMail发送Email" target="_blank">Ubuntu下用Rails的ActionMail发送Email</a></li>
+                                  </ul>
+                <br><span>推荐圈子: <a href="http://ext.group.javaeye.com/" target="_blank">EXT</a></span>
+                <br><a href="http://www.javaeye.com/wiki/topic/40778" target="_blank">更多相关推荐</a>
+              </div>
+              <script type="text/javascript">
+                new Draggable("related_topics");
+              </script>
+                              
+        <div align="center"><strong>使用</strong><strong>ActionMaile</strong><strong>发送邮件</strong></div>
+<div><strong>更改</strong><strong>config</strong><strong>目录下的配置文件</strong><strong>environment.rb </strong><strong>在最下面追加一段：</strong></div>
+<div align="left">ActionMailer::Base.delivery_method = <strong>:smtp</strong></div>
+<div align="left"><strong>#</strong><strong>以简单邮件传送协议发送邮件</strong></div>
+<div align="left">ActionMailer::Base.default_charset = "GBK"</div>
+<div align="left"><strong>#</strong><strong>设置邮件的默认编码为国标码</strong><strong>否则发送的邮件主题可能会乱码</strong></div>
+<div align="left">ActionMailer::Base.server_settings = {</div>
+<div align="left"><strong>:address</strong> =&gt; "192.168.1.110",</div>
+<div align="left"><strong>:port</strong> =&gt; <strong>25</strong>,</div>
+<div align="left"><strong>:domain</strong> =&gt; "xxx.com",</div>
+<div align="left"><strong>:authentication</strong> =&gt; <strong>:login</strong>,</div>
+<div align="left"><strong>:user_name</strong> =&gt; "xxx",</div>
+<div align="left"><strong>:password</strong> =&gt; "xxx",</div>
+<div>}</div>
+<div><span>&nbsp;&nbsp;&nbsp; </span><strong>1</strong><strong>、</strong><strong>:address =&gt; and :port =&gt; </strong><strong>决定你将使用的</strong><strong>SMTP</strong><strong>的地址和端口。这些缺省值分别为</strong><strong>localhost</strong><strong>和</strong><strong>25</strong><strong>。</strong></div>
+<div><strong>2</strong><strong>、</strong><strong>:domain =&gt; </strong><strong>当识别自己是服务器时</strong><strong> mailer</strong><strong>应该使用的域名。这是对</strong><strong>HELO(</strong><strong>因为</strong><strong>HELO</strong><strong>是命令客户端发送服务来启动一个连接</strong><strong>)</strong><strong>域的调用。你通常应该使用顶级域名机制来发送</strong><strong>e-mail</strong><strong>，但这依赖于你的</strong><strong>SMTP</strong><strong>服务的设置</strong><strong>(some don’t check, and some check to try to reduce spam and socalled open-relay issues)</strong></div>
+<div><strong>3</strong><strong>、</strong><strong>:user_name =&gt; and :password =&gt; </strong><strong>如果</strong><strong>:authentication</strong><strong>被设置则要求有此。</strong></div>
+<div><strong>4</strong><strong>、</strong><strong>:authentication =&gt; :plain</strong><strong>，</strong><strong>:login</strong><strong>，或</strong><strong>:cram_md</strong><strong>中的一个。你的服务器管理员将帮助选择正确的选项。当前没使用</strong><strong>TLS(SSL)</strong><strong>来从</strong><strong>Rails</strong><strong>连接邮件服务器的方式。这个参数应该被忽略，如果你的服务器不要求确认。</strong></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div><strong>创建一个</strong><strong>mailer</strong><strong>的</strong><strong>models</strong></div>
+<div align="left"><strong>class</strong> OrderMailer &lt; ActionMailer::Base</div>
+<div align="left">&nbsp;<strong>def</strong> signup(domain, sent_at = Time.now)</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; </span><strong>@subject</strong><span>&nbsp;&nbsp;&nbsp; = </span>'Welcome to Beast'</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; </span><strong>@body</strong><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = </span>"hello world"</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; </span><strong>@recipients</strong> = "yyy@yyy.com"</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; </span><strong>@from</strong> = 'yyy@yyy.com'</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; </span><strong>@sent_on</strong><span>&nbsp;&nbsp;&nbsp; = sent_at</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; </span><strong>@headers</strong><span>&nbsp;&nbsp;&nbsp; = {}</span></div>
+<div align="left">&nbsp;<strong>end</strong></div>
+<div align="left"><strong>end</strong></div>
+<div align="left"><strong>&nbsp;</strong></div>
+<div align="left"><strong>@subject:</strong><strong>邮件标题</strong></div>
+<div align="left"><strong>@body:</strong><strong>邮件正文</strong><strong>可以使用</strong><strong>html</strong><strong>标签</strong><strong>但需要设置</strong><strong>参考下面</strong></div>
+<div align="left"><strong>@recipients:</strong><strong>收件人可以接收数组进行群发</strong></div>
+<div align="left"><strong>多人发送：</strong><strong>@recipients = [ "1@a.com"</strong><strong>，</strong><strong>"</strong><strong><a href="mailto:2@b.com"><span>2@b.com</span></a></strong><strong>"]</strong></div>
+<div align="left"><strong>@from:</strong><strong>发件人</strong></div>
+<div align="left"><strong>@sent_on:</strong><strong>用于设置邮件</strong><strong> Date: header</strong><strong>的</strong><strong>Time </strong><strong>对象</strong></div>
+<div align="left"><strong>@headers:</strong><strong>一个</strong><strong>header name/value </strong><strong>对的哈希望表，用于添加任意</strong><strong>header</strong><strong>行给邮件</strong></div>
+<div align="left"><strong>&nbsp;</strong><strong>如：</strong><strong>@headers["Organization"] = "Pragmatic Programmers, LLC"</strong></div>
+<div align="left"><strong>既要使用</strong><strong>HTML</strong><strong>格式发送邮件又要增加附件的话，需要在</strong><strong>model</strong><strong>里就对</strong><strong>content-type</strong><strong>进行设置</strong><strong> @content-type=”text/html”</strong></div>
+<div>&nbsp;</div>
+<div><strong>创建一个</strong><strong>controller </strong><strong>用于发送邮件</strong></div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>def send_mailer</div>
+<div>email = OrderMailer.deliver_signup(request.host_with_port)</div>
+<div>Puts email.encoded #邮件内容打印</div>
+<div>&nbsp;</div>
+<div align="left">#email = OrderMailer.create_signup(request.host_with_port)</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;#email.set_content_type(</span>"text/html") 可在模型中设置</div>
+<div>#OrderMailer.deliver(email)</div>
+<div>#发送HTML格式的邮件的设置</div>
+<div>&nbsp;</div>
+<div>end</div>
+<div>
+<div>&nbsp;</div>
+<div><strong>发送</strong><strong>HTML</strong><strong>模板邮件</strong></div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>在views中创建一个模板：_mail_content.rhtml</div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;html&gt;</span></div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>……</div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/html&gt;</span></div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model</span>中的mailer类改成如下：</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&nbsp;<strong>def</strong> signup(domain,content,sent_at = Time.now)</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@subject</strong><span>&nbsp;&nbsp;&nbsp; = </span>"xxx"</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@body</strong><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = content</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@recipients</strong> = "xxx@xxx.com"</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@from</strong> = 'xxx@xxx.com'</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@sent_on</strong><span>&nbsp;&nbsp;&nbsp; = sent_at</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@headers</strong><span>&nbsp;&nbsp;&nbsp; = {}</span></div>
+<div>&nbsp;<strong>end</strong></div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; controller</span>中更改发送方法：</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&nbsp;&nbsp;<strong>def</strong> send_mail</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; content = </span></div>
+<div align="left">render_to_string <strong>:partial</strong>=&gt;" mail_content "</div>
+<div align="left">email = OrderMailer.create_signup(request.host_with_port,content)</div>
+<div align="left">&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;email.set_content_type(</span>"text/html")</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OrderMailer.deliver(email)</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render :text=&gt;</span>"发送成功"</div>
+<div>&nbsp;<strong>end</strong></div>
+<div><strong>&nbsp;</strong></div>
+<div>render_to_string方法返回的是String 与render不同的是它返回后不会发送给客户端。</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>
+<div>&nbsp;</div>
+<div><strong>发送附件</strong></div>
+<div><strong>&nbsp;</strong>修改model中的mailer类，如下：</div>
+<div align="left">&nbsp;<strong>def</strong> signup(domain,content,sent_at = Time.now)</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@subject</strong><span>&nbsp;&nbsp;&nbsp; = </span>"xxx"</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@body</strong><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = content</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@recipients</strong> = "xxx@xxx.com"</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@from</strong> = 'xxx@xxx.com'</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@sent_on</strong><span>&nbsp;&nbsp;&nbsp; = sent_at</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </span><strong>@headers</strong><span>&nbsp;&nbsp;&nbsp; = {}</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>@data</strong> = ""</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; File.open(</span>"D:\\Tools\\FastAIT.rar", "rb") { |fp|</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><strong>@data</strong>&lt;&lt;fp.read()</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</span>参数的含义rb表示只读并且以二进制方式创建一个file对象</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</span>不写r会出现丢失数据的问题，发送的附件也就被破坏了</div>
+<table border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td valign="top">
+            <div align="left">``r''</div>
+            </td>
+            <td valign="top">
+            <div align="left">Read-only, starts at beginning of file (default mode).</div>
+            <div align="left">只读，清除原有内容（默认方式）</div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+            <div align="left">``r+''</div>
+            </td>
+            <td valign="top">
+            <div align="left">Read-write, starts at beginning of file.</div>
+            <div align="left">读写，清除原有内容</div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+            <div align="left">``w''</div>
+            </td>
+            <td valign="top">
+            <div align="left">Write-only, truncates existing file to zero length or creates a new file for writing.</div>
+            <div align="left">只写，创建一个新的文件覆盖旧的</div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+            <div align="left">``w+''</div>
+            </td>
+            <td valign="top">
+            <div align="left">Read-write, truncates existing file to zero length or creates a new file for reading and writing.</div>
+            <div align="left">读写，创建一个新的文件覆盖旧的</div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+            <div align="left">``a''</div>
+            </td>
+            <td valign="top">
+            <div align="left">Write-only, starts at end of file if file exists, otherwise creates a new file for writing.</div>
+            <div align="left">只写，追加</div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+            <div align="left">``a+''</div>
+            </td>
+            <td valign="top">
+            <div align="left">Read-write, starts at end of file if file exists, otherwise creates a new file for reading and writing.</div>
+            <div align="left">读写，追加</div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+            <div align="left">``b''</div>
+            </td>
+            <td valign="top">
+            <div align="left">(DOS/Windows only) Binary file mode (may appear with any of the key letters listed above).</div>
+            <div align="left">二进制模式</div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div align="left">&nbsp;</div>
+<div align="left"><span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; attachment </span><strong>:content_type</strong> =&gt; "application/rar",</div>
+<div align="left"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong>:filename</strong><span>&nbsp;&nbsp;&nbsp;&nbsp; =&gt; "FastAIT.rar" ,</span></div>
+<div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong>:body</strong> =&gt; <strong>@data</strong></div>
+<div>&nbsp;<strong>end</strong></div>
+<div>&nbsp;</div>
+<div>邮件附件的content_type（内容类型表）</div>
+<div><br>
+&nbsp;".asf"<span>&nbsp;&nbsp;&nbsp;&nbsp; ContentType = "video/x-ms-asf" <br>
+&nbsp;".avi"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ContentType = "video/avi" <br>
+&nbsp;".doc"&nbsp;&nbsp;&nbsp; ContentType = "application/msword" <br>
+&nbsp;".zip" &nbsp;&nbsp;&nbsp; ContentType = "application/zip" <br>
+&nbsp;".xls" &nbsp;&nbsp;&nbsp; ContentType = "application/vnd.ms-excel" <br>
+&nbsp;".gif" &nbsp;&nbsp;&nbsp; ContentType = "image/gif" <br>
+&nbsp;".jpg", "jpeg" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ContentType = "image/jpeg" <br>
+&nbsp;".wav" &nbsp;ContentType = "audio/wav" <br>
+&nbsp;".mp3" &nbsp;ContentType = "audio/mpeg3" <br>
+&nbsp;".mpg", "mpeg" &nbsp;&nbsp; ContentType = "video/mpeg" <br>
+&nbsp;".rtf" &nbsp;&nbsp;&nbsp; ContentType = "application/rtf" <br>
+&nbsp;".htm", "html" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ContentType = "text/html" <br>
+&nbsp;".txt" &nbsp;&nbsp;&nbsp; ContentType = "text/plain" </span></div>
+<div>".pdf" <span>&nbsp;&nbsp; ContentType = "</span>application/pdf"<br>
+&nbsp;其他 <span><span>&nbsp;&nbsp;&nbsp;&nbsp; ContentType = "application/octet-stream" </span></span></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div></div></div>
+      </div>
+
+      
+      
+
+              <div id="topic_copyright">声明：JavaEye文章版权属于作者，受法律保护。没有作者书面许可不得转载。 </div>
+        <div id="forum_advert_f5"><span>推荐链接</span><ul class="adverts"><li><a href="http://www.javaeye.com/adverts/170" target="_blank"><span style="color: blue; font-weight: bold;"> 【8月推荐】JAVA技术沙龙活动通知--欢迎并期待您的参与!</span></a></li></ul></div>
+          </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://world.javaeye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://world.javaeye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=ddtlby" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://world.javaeye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        
+                
+      </div>
+                        </td>
+  </tr>
+  <tr class="sep2"><td colspan="2"></td></tr>
+<tr id="328855">
+  <td class="postauthor">
+    <ul>
+      <li class="name">blackanger</li>
+      <li>等级: 初级会员</li>
+      <li><a href="http://blackanger.javaeye.com/" target="_blank"><img alt="blackanger的博客" class="logo" src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/18422847-dddb-39a4-8a53-c09afffc114c.jpg" title="blackanger的博客: 一个人的战争"></a></li>
+      <li>文章: 119</li>
+      <li>积分: 30</li>
+      <li>来自: 上海</li>
+      <li><img src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/offline.gif"></li>
+    </ul>
+  </td>
+  <td class="postcontent">
+    <div class="postactions">
+      <div class="description">
+        发表时间：2007-07-06
+        
+      </div>
+      <div class="links">
+        
+          
+          
+            
+            <a href="http://app.javaeye.com/links?user_favorite%5Btitle%5D=blackanger%E5%9B%9E%E8%B4%B4%3A%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6&amp;user_favorite%5Burl%5D=http%3A%2F%2Fwww.javaeye.com%2Ftopic%2F40778%23328855" target="_blank" class="favorite">收藏</a>
+            
+            
+          
+        
+      </div>
+    </div>
+    <div class="postbody clearfix">
+      
+        你这能发出去吗？你自己试过？
+      </div>
+
+      
+      
+
+          </td>
+  </tr>
+  <tr>
+    <td class="postauthor"><a href="#">返回顶楼</a></td>
+    <td class="postcontent">
+      <div class="icons">
+        <a href="http://blackanger.javaeye.com/" class="icon_www" title="浏览作者的博客">&nbsp;</a>
+        <a href="http://blackanger.javaeye.com/blog/profile" class="icon_profile" title="浏览作者资料">&nbsp;</a>
+        <a href="http://app.javaeye.com/messages/new?message%5Breceiver_name%5D=blackanger" class="icon_pm" title="发送站内短信">&nbsp;</a>
+        <a href="http://blackanger.javaeye.com/blog/guest_book" class="icon_guestbook" title="给作者留言">&nbsp;</a>
+        
+                  <a href="#328855" title="blackanger回帖:使用ActionMaile发送邮件">回帖地址</a>
+                
+      </div>
+                        <div id="post_rate_box_328855" class="post_rate_box"><a href="#" onclick='rate_post(328855, "good"); return false;' class="good" title="好">0</a> <a href="#" onclick='rate_post(328855, "hidden"); return false;' class="hidden" title="差">0</a> </div>                  </td>
+  </tr>
+  <tr class="sep2"><td colspan="2"></td></tr>
+
+  </tbody>
+</table>
+
+
+<div class="actions">
+  <div class="buttons"></div>
+  <div class="wrapper"></div>
+</div>
+
+<div>
+  <div class="crumbs">
+    <a href="http://www.javaeye.com/forums">论坛首页</a> <span class="arrow">→</span>
+    <a href="http://www.javaeye.com/forums/board/Ruby">Ruby版</a>
+     <span class="arrow">→</span> <a href="http://www.javaeye.com/forums/tag/rails">rails</a>
+    <br><br>跳转论坛:<select id="forum_urlname" name="forum[urlname]" onchange="window.location='/forums/board/'+this.value"><option value="Java">Java编程和Java企业应用</option>
+<option value="web">Web前端技术：AJAX和RIA</option>
+<option value="mobile">移动编程和手机应用开发</option>
+<option value="Ruby" selected="selected">Ruby</option>
+<option value="Python">Python</option>
+<option value="PHP">PHP</option>
+<option value="dotnet">Microsoft .Net</option>
+<option value="Tech">综合技术</option>
+<option value="New">入门讨论</option>
+<option value="develop">软件开发和项目管理</option>
+<option value="Industry">行业应用</option>
+<option value="vendor">厂商论坛</option>
+<option value="Job">招聘求职</option>
+<option value="Life">海阔天空</option></select>
+    <div id="forum_advert_f6"></div>
+  </div>
+
+  
+</div>
+
+<div style="display: none;">
+  <form action="/posts/rate" id="post_rate_form" method="post" onsubmit="new Ajax.Request('/posts/rate', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;">
+    <input id="post_rate_id" name="id" type="hidden">
+    <input id="post_rate_type" name="type" type="hidden">
+  </form></div>
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  fix_image_size($$('div.postbody img'), 760);
+
+  function rate_post(id, type) {
+    Element.update('post_rate_box_' + id, '提交中...');
+    new Ajax.Request('/posts/rate', {asynchronous:true, evalScripts:true, parameters:{"id":id, "type":type}});
+  }
+
+  function rate_topic(type) {
+    Element.update('topic_rate_box', '提交中...');
+    new Ajax.Request('/topics/rate', {asynchronous:true, evalScripts:true, parameters:{"id":40778, "type":type}});
+  }
+</script>
+
+
+        </div>
+        <div id="nav">
+  <div class="wrapper">
+    <ul>
+            <li><a href="http://www.javaeye.com/">首页</a></li>
+      <li><a href="http://www.javaeye.com/news">新闻</a></li>
+      <li><a href="http://www.javaeye.com/forums" class="selected">论坛</a></li>
+      <li><a href="http://www.javaeye.com/ask">问答</a></li>
+      <li><a href="http://www.javaeye.com/wiki">知识库</a></li>
+      <li><a href="http://www.javaeye.com/blogs">博客</a></li>
+      <li><a href="http://www.javaeye.com/groups">圈子</a></li>
+      <li><a href="http://www.javaeye.com/job">招聘</a></li>
+      <li><a href="http://www.javaeye.com/index/service">服务</a></li>
+      <li class="last"><a href="http://www.javaeye.com/search">搜索</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="channel_nav">
+  <ul>
+    <li><a href="http://java.javaeye.com/">Java</a></li>
+    <li><a href="http://ajax.javaeye.com/">AJAX</a></li>    
+    <li><a href="http://ruby.javaeye.com/">Ruby</a></li>
+    <li><a href="http://python.javaeye.com/">Python</a></li>
+    <li><a href="http://agile.javaeye.com/">敏捷</a></li>
+    <li><a href="http://mysql.javaeye.com/">MySQL</a></li>
+    <li><a href="http://primeton.javaeye.com/">普元</a></li>
+    <!--<li><a href="http://kingdee.javaeye.com" >金蝶中间件</a></li>-->
+    <li><a href="http://dorado.javaeye.com/">Dorado</a></li>
+    <li class="last"><a href="http://book.javaeye.com/">图书</a></li>
+  </ul>
+</div>
+      </div>
+      <div id="footer">
+  <div id="site_nav">
+    <ul>
+      <li><a href="http://www.javaeye.com/index/service">广告服务</a></li>
+      <li><a href="http://webmaster.javaeye.com/">JavaEye黑板报</a></li>
+      <li><a href="http://www.javaeye.com/index/aboutus">关于我们</a></li>
+      <li><a href="http://www.javaeye.com/index/contactus">联系我们</a></li>
+      <li class="last"><a href="http://www.javaeye.com/index/friend_links">友情链接</a></li>
+    </ul>
+  </div>
+  <div id="copyright">
+    © 2003-2009 JavaEye.com.   All rights reserved. 上海炯耐计算机软件有限公司 [ 沪ICP备05023328号 ] 
+  </div>
+</div>
+
+    </div>
+    
+  <div id="chat_input" style="display: none;">
+    <iframe id="chat_iframe" marginwidth="0" marginheight="0" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <div id="chat_button"><a href="#" style="text-decoration: none; color: black;" onclick="$('chat_input').show();$('chat_iframe').src='/chat/widget';return false;">说点啥吧 <img alt="Chat" src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/chat.gif"></a></div>
+
+<script type="text/javascript">
+  document.write("<img src='http://stat.javaeye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&logged_in=yes" + "' width='0' height='0' />");
+</script><img src="%E4%BD%BF%E7%94%A8ActionMaile%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6_files/a.gif" width="0" height="0">
+  </body></html>

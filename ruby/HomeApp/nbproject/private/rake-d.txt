@@ -3,10 +3,14 @@ db\:charset=Retrieves the charset for the current environment's database
 db\:collation=Retrieves the collation for the current environment's database
 db\:create=Create the database defined in config/database.yml for the current RAILS_ENV
 db\:create\:all=Create all the local databases defined in config/database.yml
+db\:data\:dump=Dump contents of database to db/data.yml
+db\:data\:load=Load contents of db/data.yml into database
 db\:drop=Drops the database for the current RAILS_ENV
 db\:drop\:all=Drops all the local databases defined in config/database.yml
+db\:dump=Dump schema and data to db/schema.rb and db/data.yml
 db\:fixtures\:identify=Search for a fixture given a LABEL or ID. Specify an alternative path (eg. spec/fixtures) using FIXTURES_PATH=spec/fixtures.
 db\:fixtures\:load=Load fixtures into the current environment's database.  Load specific fixtures using FIXTURES=x,y. Load from subdirectory in test/fixtures using FIXTURES_DIR=z. Specify an alternative path (eg. spec/fixtures) using FIXTURES_PATH=spec/fixtures.
+db\:load=Load schema and data from db/schema.rb and db/data.yml
 db\:load_config=
 db\:migrate=Migrate the database through scripts in db/migrate and update db/schema.rb by invoking db:schema:dump. Target specific version with VERSION=x. Turn off output with VERBOSE=false.
 db\:migrate\:down=Runs the "down" for a given migration VERSION.
@@ -41,6 +45,7 @@ doc\:guides=Generate Rails guides
 doc\:plugins=Generate documentation for all installed plugins
 doc\:plugins\:acts_as_ferret=Generate documentation for the acts_as_ferret plugin
 doc\:plugins\:will_paginate=Generate documentation for the will_paginate plugin
+doc\:plugins\:yaml_db=Generate documentation for the yaml_db plugin
 doc\:rails=Build the RDOC HTML Files
 doc\:reapp=Force a rebuild of the RDOC files
 doc\:rerails=Force a rebuild of the RDOC files

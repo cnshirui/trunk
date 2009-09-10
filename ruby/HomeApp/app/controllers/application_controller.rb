@@ -23,8 +23,14 @@ class ApplicationController < ActionController::Base
   end
 
   def admin
-    unless User.find_by_id(session[:user_id]).is_admin
-      redirect_to(:controller => "posts")
+    user = User.find_by_id(session[:user_id])
+    if user
+      unless user.is_admin
+        redirect_to(:controller => "posts")
+      end
+    else
+      flash[:notice] = "Please log in"
+      redirect_to(:controller => "users", :action => "login")
     end
   end
 end

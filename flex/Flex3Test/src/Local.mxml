@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!-- Flex application loaded by the SWFLoader control. -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" height="75" width="450">
+
+    <mx:Label color="blue" fontSize="14" fontWeight="bold" text="The Label control of the embedded application."/>
+
+</mx:Application>

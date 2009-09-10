@@ -40,7 +40,7 @@
 </script>
 
 <h1>Editing post</h1>
-<body class="yui-skin-sam">
+<div class="yui-skin-sam">
 
 <% form_for(@post) do |f| %>
   <%= f.error_messages %>
@@ -68,4 +68,4 @@
 
 <%= link_to 'Show', @post %> |
 <%= link_to 'Back', posts_path %>
-</body>
+</div>

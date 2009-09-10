@@ -11,13 +11,14 @@
   <%= javascript_include_tag 'application' %>
 
 </head>
+
 <body id="main"class="yellow">
   <div id="banner">
     <%= link_to 'Home', :controller => 'posts' %>
     <span/>
     <%= link_to 'New post', new_post_path %>
     <span/>
-    <%= link_to 'People', :controller => 'users', :action => 'list' %>
+    <%= link_to 'People', :controller => 'users' %>
     <span/>
     <%= link_to 'Account', :controller => 'accounts' %>
     <span/>

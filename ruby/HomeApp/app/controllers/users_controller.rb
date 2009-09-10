@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authorize, :except => :login
 
   def index
-    redirect_to :action => 'list'
+#    redirect_to :action => 'list'
   end
 
   def login

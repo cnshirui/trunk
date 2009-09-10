@@ -1,0 +1,433 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="verify-v1" content="J75JQ+WGFRjBEnhNT4hhYxgVTQmRHjd0v3JF+izUFvA=">
+	<title>Heroku | Deploying Rack-based Apps</title>
+	<link type="text/css" rel="stylesheet" href="Deploying%20Rack-based%20Apps_files/docs.css" media="screen">
+	<link type="text/css" rel="stylesheet" href="Deploying%20Rack-based%20Apps_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="Deploying%20Rack-based%20Apps_files/shThemeHeroku.css">
+	<script type="text/javascript" src="Deploying%20Rack-based%20Apps_files/jquery-1.js"></script>
+	<script type="text/javascript" src="Deploying%20Rack-based%20Apps_files/shCore.js"></script>
+	<script type="text/javascript" src="Deploying%20Rack-based%20Apps_files/shBrushRuby.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			SyntaxHighlighter.config.tagName = 'code'
+			SyntaxHighlighter.defaults['tag'] = false;
+			SyntaxHighlighter.defaults['gutter'] = false;
+			SyntaxHighlighter.defaults['toolbar'] = false;
+			SyntaxHighlighter.all();
+		});
+	</script>
+</head><body>
+<div id="bodywrap">
+
+	<style type="text/css">
+#header { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; margin-bottom: 15px; }
+
+#header { background-color: #29264d; border-bottom-style: solid; border-bottom-width: 3px; border-bottom-color: #494573; overflow: hidden; display: inline-block; }
+#header { display: block; }
+#header a { color: #c9c3e6; text-decoration: none; font-weight: normal; }
+#header a:hover { color: #fff; }
+#header #logo { margin: 20px 0 15px 25px; float: left; }
+#header #logo a { display: block; text-indent: -9999px; width: 177px; height: 56px; overflow: hidden; background-image: url(http://heroku.com/images/v2/logo.png); background-repeat: no-repeat; }
+#header ul { list-style-type: none; overflow: hidden; display: inline-block; float: right; margin-top: 30px; padding: 10px; }
+#header ul { display: block; }
+#header ul li { float: left; margin-left: 10px; }
+#header ul li:first-child { margin-left: 0; }
+#header ul li { border-left-style: solid; border-left-width: 2px; border-left-color: #534890; padding-left: 10px; font-size: 16px; }
+#header ul li:first-child, #header ul li#account_login { border: none; margin-left: 0; padding-left: 0; }
+#header ul li a.active { color: #bff740; }
+#header ul li a.active:hover { color: #bff740; }
+#header ul.account-links { background-color: #231d40; padding-left: 15px; padding-right: 15px; margin-right: 25px; margin-left: 10px; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#header ul.account-links a { color: #45a4ff; }
+#header ul.account-links a:hover { color: #74d0f4; }
+#header ul.account-links a.active { color: #bff740; }
+#header ul.account-links a.active:hover { color: #bff740; }
+
+</style>
+
+
+<div id="header">
+	
+		<h5 id="logo"><a href="http://heroku.com/">Heroku</a></h5>
+	
+
+	<ul class="account-links inline">
+		<div id="logged-in-links" style="display: none;">
+			<li><a href="http://heroku.com/myapps">My Apps</a></li>
+			<li><a href="http://heroku.com/account">My Account</a></li>
+			<li><a href="http://heroku.com/logout">Logout</a></li>
+		</div>
+		<li id="account_login"><a href="http://heroku.com/login">Login</a></li>
+	</ul>
+	<ul class="info-links inline">
+		<!-- <li><a href="http://heroku.com/about">About</a></li> -->
+		<li><a href="http://heroku.com/how">How it Works</a></li>
+		<li><a href="http://heroku.com/pricing">Pricing</a></li>
+		<!-- <li><a href="http://blog.heroku.com/">Blog</a></li> -->
+		<li><a href="http://docs.heroku.com/" class="active">Docs</a></li>
+		<li><a href="http://support.heroku.com/" id="support_link">Support</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	if (document.cookie.indexOf('heroku_session=') != -1) {
+		document.getElementById('support_link').href = 'http://heroku.com/helpdesk/login';
+		document.getElementById('logged-in-links').style.display = 'block';
+		document.getElementById('account_login').style.display = 'none';
+	}
+</script>
+
+
+
+	<div id="docsnav">
+		<form action="/search" id="cse-search-box">
+			<div id="search">
+				<input name="cx" value="011016403564345195107:s5fypn6csxi" type="hidden">
+				<input name="cof" value="FORID:10;NB:1" type="hidden">
+				<input name="ie" value="UTF-8" type="hidden">
+				<input style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: rgb(255, 255, 255) url(http://www.google.com/coop/intl/en/images/google_custom_search_watermark.gif) no-repeat scroll left center; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" name="q" size="31" type="text">
+			</div>
+		<input value="14d5058e-f79f-0935-acbc-c29344a71d2a" name="vid" type="hidden"></form>
+
+		<ul>
+			
+				<li>
+				<h3>Getting Started</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku">What is Heroku?</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/quickstart">Quickstart Guide</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Application Management</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku-command">Installing the Heroku command-line tool</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/creating-apps">Creating apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/renaming-apps">Renaming apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/git">Deploying with Git</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/sharing">Collaborating with others</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/gems">Managing Gems</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/taps">Database import / export</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/console">Using the console</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/rake">Running rake tasks</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/config-vars">Config vars</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/backups">Backups</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/addons">Managing Addons</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Platform Features</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/technologies">System Infrastructure</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/dynos">Dynos</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/database">SQL Database</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/http-caching">HTTP cache</a></li>
+						
+					
+						
+							<li class="current"><a>Rack apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/custom-domains">Custom domains</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/ssl">SSL</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/cron">Cron</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/background-jobs">Background jobs</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/s3">Storing uploads in S3</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/smtp">Outbound email</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/full-text-indexing">Full text search indexing</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Troubleshooting</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/constraints">Application constraints</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/logs-exceptions">Logs and exceptions</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/errors">Error pages</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/performance">Performance</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/support">Getting support</a></li>
+						
+					
+				</ul>
+				</li>
+			
+		</ul>
+	</div>
+
+	<div id="content">
+		<div class="topic_content">
+			<h1>Deploying Rack-based Apps</h1>
+
+
+
+<p>Heroku supports <a href="http://rack.rubyforge.org/">Rack</a> and Rack-based web
+frameworks like <a href="http://www.sinatrarb.com/">Sinatra</a>,
+<a href="http://merbivore.com/">Merb</a>, <a href="http://ramaze.net/">Ramaze</a>, and
+<a href="http://camping.rubyforge.org/files/README.html">Camping</a>.</p>
+
+<p>To run a Rack-based app, include a rackup file named <code>config.ru</code> in the app’s
+root directory. The <code>config.ru</code> file convention has become common, so most
+existing Rack applications should not require changes to deploy to Heroku.</p>
+
+<a name="creating-and-deploying-pure-rack-apps"></a>
+
+
+	<ul id="toc">
+		
+			<li><a href="#creating-and-deploying-pure-rack-apps">Creating and Deploying Pure Rack Apps</a></li>
+		
+			<li><a href="#sinatra">Sinatra</a></li>
+		
+			<li><a href="#merb">Merb</a></li>
+		
+			<li><a href="#ramaze">Ramaze</a></li>
+		
+			<li><a href="#camping">Camping</a></li>
+		
+			<li><a href="#using-activerecord">Using ActiveRecord</a></li>
+		
+			<li><a href="#using-datamapper-or-sequel">Using DataMapper or Sequel</a></li>
+		
+	</ul>
+
+
+<h2>Creating and Deploying Pure Rack Apps</h2>
+
+<p>First, create a new directory and write a simple <code>config.ru</code> file:</p>
+
+<pre><code>$ mkdir hello
+$ cd hello
+$ cat &gt; config.ru
+run lambda { |env| [200, {'Content-Type'=&gt;'text/plain'}, StringIO.new("Hello World!\n")] }
+[Ctrl-D]
+</code></pre>
+
+<p>Test it locally:</p>
+
+<pre><code>$ gem install rack
+$ rackup -p 9292 config.ru &amp;
+$ curl http://localhost:9292
+Hello World!
+$ kill %1
+</code></pre>
+
+<p>Deploy to Heroku:</p>
+
+<pre><code>$ git init
+$ git add .
+$ git commit -m 'pure rack app'
+$ heroku create
+$ git push heroku master
+</code></pre>
+
+<p>The app is now deployed to Heroku. Test by executing <code>heroku open</code> or by
+visiting your app’s URL in your browser. You should see <em>Hello, World!</em>.</p>
+
+<a name="sinatra"></a><h2>Sinatra</h2>
+
+<p>hello.rb:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_947086"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'sinatra'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">get </code><code class="string">'/'</code> <code class="keyword">do</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="string">"Hello World!"</code></span></span></div><div class="line alt1"><code class="number">5.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p>config.ru:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_279760"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'hello'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">run Sinatra::Application</code></span></span></div></div></div></pre>
+
+<a name="merb"></a><h2>Merb</h2>
+
+<p>The following <code>config.ru</code> file can be used for all Merb apps.</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_90182"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'merb-core'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Merb::Config.setup(</code><code class="color2">:merb_root</code> <code class="plain">=&gt; </code><code class="string">"."</code><code class="plain">, </code><code class="color2">:environment</code> <code class="plain">=&gt; </code><code class="constants">ENV</code><code class="plain">[</code><code class="string">'RACK_ENV'</code><code class="plain">])</code></span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Merb.environment = Merb::Config[</code><code class="color2">:environment</code><code class="plain">]</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Merb.root = Merb::Config[</code><code class="color2">:merb_root</code><code class="plain">]</code></span></span></div><div class="line alt1"><code class="number">5.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Merb::BootLoader.run</code></span></span></div><div class="line alt2"><code class="number">6.</code><span class="content"><span class="block" style="margin-left: 0px ! important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">7.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">use Merb::Rack::Static, Merb.dir_for(</code><code class="color2">:public</code><code class="plain">)</code></span></span></div><div class="line alt2"><code class="number">8.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">run Merb::Rack::Application.</code><code class="keyword">new</code></span></span></div></div></div></pre>
+
+<a name="ramaze"></a><h2>Ramaze</h2>
+
+<p>hello.rb:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_324089"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'ramaze'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">class</code> <code class="plain">MainController &lt; Ramaze::Controller</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="plain">index</code></span></span></div><div class="line alt1"><code class="number">5.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 35px ! important;"><code class="string">"Hello World!"</code></span></span></div><div class="line alt2"><code class="number">6.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt1"><code class="number">7.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p>config.ru:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_317971"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'hello'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Ramaze.trait[</code><code class="color2">:essentials</code><code class="plain">].delete Ramaze::Adapter</code></span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Ramaze.start!</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">run Ramaze::Adapter::Base</code></span></span></div></div></div></pre>
+
+<a name="camping"></a><h2>Camping</h2>
+
+<p><code>hello.rb</code>:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_783547"><div class="lines"><div class="line alt1"><code class="number">01.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'camping'</code></span></span></div><div class="line alt2"><code class="number">02.</code><span class="content"><span class="block" style="margin-left: 0px ! important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">03.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Camping.goes :Hello</code></span></span></div><div class="line alt2"><code class="number">04.</code><span class="content"><span class="block" style="margin-left: 0px ! important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">05.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">module</code> <code class="plain">Hello::Controllers</code></span></span></div><div class="line alt2"><code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">class</code> <code class="plain">Index &lt; </code><code class="constants">R</code> <code class="string">'/'</code></span></span></div><div class="line alt1"><code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 35px ! important;"><code class="keyword">def</code> <code class="plain">get</code></span></span></div><div class="line alt2"><code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 56px ! important;"><code class="plain">render </code><code class="color2">:hello</code></span></span></div><div class="line alt1"><code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 35px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt2"><code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt1"><code class="number">11.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt2"><code class="number">12.</code><span class="content"><span class="block" style="margin-left: 0px ! important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">13.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">module</code> <code class="plain">Hello::Views</code></span></span></div><div class="line alt2"><code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">def</code> <code class="plain">hello</code></span></span></div><div class="line alt1"><code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 35px ! important;"><code class="plain">p&nbsp; </code><code class="string">"Hello World!"</code></span></span></div><div class="line alt2"><code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 14px ! important;"><code class="keyword">end</code></span></span></div><div class="line alt1"><code class="number">17.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="keyword">end</code></span></span></div></div></div></pre>
+
+<p><code>config.ru</code>:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_306664"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'hello'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">run Rack::Adapter::Camping.</code><code class="keyword">new</code><code class="plain">(Hello)</code></span></span></div></div></div></pre>
+
+<table class="note">
+<tbody><tr><td class="icon"></td><td class="content">Camping 2.0 does not require the Rack adapter; use `run Hello` instead.</td>
+</tr></tbody></table>
+
+
+<a name="using-activerecord"></a><h2>Using ActiveRecord</h2>
+
+<p>Rails or Merb will automatically read <code>config/database.yml</code>, which is written
+with the PostgreSQL config information at compile time.  For other frameworks,
+put this code into your application to access the database with ActiveRecord:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_358924"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'activerecord'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">3.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">dbconfig = </code><code class="constants">YAML</code><code class="plain">.load(</code><code class="color1">File</code><code class="plain">.read(</code><code class="string">'config/database.yml'</code><code class="plain">))</code></span></span></div><div class="line alt2"><code class="number">4.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">ActiveRecord::Base.establish_connection dbconfig[</code><code class="string">'production'</code><code class="plain">]</code></span></span></div></div></div></pre>
+
+<p>For local development, you should create a <code>config/database.yml</code> file in your
+which contains a pointer to your local database.  A good technique is to
+copy <code>config/database.yml</code> from a blank Rails app, which uses the SQLite
+database <code>db/development.sqlite3</code>.</p>
+
+<a name="using-datamapper-or-sequel"></a><h2>Using DataMapper or Sequel</h2>
+
+<p>DataMapper and Sequel both use database URLs instead of config hashes.  You
+could read <code>config/database.yml</code> and construct the URL, but an easier way is to
+use the <code>DATABASE_URL</code> environment variable set by Heroku.</p>
+
+<p>For DataMapper:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_321529"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'rubygems'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">DataMapper.setup(</code><code class="color2">:default</code><code class="plain">, </code><code class="constants">ENV</code><code class="plain">[</code><code class="string">'DATABASE_URL'</code><code class="plain">] || </code><code class="string">'<a href="sqlite3://my.db">sqlite3://my.db</a>'</code><code class="plain">)</code></span></span></div></div></div></pre>
+
+<p>For Sequel:</p>
+
+<pre><div class="syntaxhighlighter nogutter " id="highlighter_850237"><div class="lines"><div class="line alt1"><code class="number">1.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">require </code><code class="string">'sequel'</code></span></span></div><div class="line alt2"><code class="number">2.</code><span class="content"><span class="block" style="margin-left: 0px ! important;"><code class="plain">Sequel.connect(</code><code class="constants">ENV</code><code class="plain">[</code><code class="string">'DATABASE_URL'</code><code class="plain">] || </code><code class="string">'<a href="sqlite://my.db">sqlite://my.db</a>'</code><code class="plain">)</code></span></span></div></div></div></pre>
+
+<p>This defaults to a SQLite database named <code>my.db</code> when no <code>DATABASE_URL</code> is set.
+You can also make use of the <code>DATABASE_URL</code> environment variable when running
+locally or on another host. For example:</p>
+
+<pre><code>$ DATABASE_URL='mysql://user:pass@localhost/mydb' thin start --rackup config.ru
+</code></pre>
+
+
+
+	<div id="next_section">Next: <a href="http://docs.heroku.com/custom-domains">Custom domains →</a></div>
+
+
+<a href="http://docs.heroku.com/custom-domains">		</a></div>
+<a href="http://docs.heroku.com/custom-domains">	</a></div>
+</div>
+
+<!-- google site search -->
+<script type="text/javascript" src="Deploying%20Rack-based%20Apps_files/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script><script src="Deploying%20Rack-based%20Apps_files/a" type="text/javascript"></script><a href="http://docs.heroku.com/custom-domains"><link href="Deploying%20Rack-based%20Apps_files/transliteration.css" type="text/css" rel="stylesheet"><script src="Deploying%20Rack-based%20Apps_files/transliteration.js" type="text/javascript"></script>
+<script type="text/javascript" src="Deploying%20Rack-based%20Apps_files/t13n.htm"></script>
+<script type="text/javascript" src="Deploying%20Rack-based%20Apps_files/brand.htm"></script>
+
+
+<!-- loopfuse -->
+<script src="Deploying%20Rack-based%20Apps_files/listen.js" type="text/javascript"></script>
+<script type="text/javascript">
+_lf_cid = "LF_024e931f";
+_lf_remora();
+</script>
+
+<!-- google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Deploying%20Rack-based%20Apps_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try{
+var pageTracker = _gat._getTracker("UA-2989055-1");
+pageTracker._setDomainName(".heroku.com");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+
+</a></body><xdTrailArea><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 735px; top: 197px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 736px; top: 201px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 7px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 737px; top: 205px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 738px; top: 211px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 7px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 739px; top: 215px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 740px; top: 221px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 7px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 741px; top: 225px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 742px; top: 231px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 7px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 743px; top: 235px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 744px; top: 241px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 745px; top: 245px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 7px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 746px; top: 249px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 747px; top: 255px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 7px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 748px; top: 259px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 749px; top: 265px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 7px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 750px; top: 269px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 751px; top: 275px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 5px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 752px; top: 279px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 2px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 754px; top: 282px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 5px; height: 2px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 756px; top: 283px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 2px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 760px; top: 284px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 2px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 762px; top: 285px;"></xdTrailDot><xdTrailDot style="border: 0px none ; background: rgb(51, 255, 51) none repeat scroll 0% 0%; width: 2px; height: 2px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 2147483647; left: 764px; top: 286px;"></xdTrailDot></xdTrailArea></html>

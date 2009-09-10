@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="verify-v1" content="J75JQ+WGFRjBEnhNT4hhYxgVTQmRHjd0v3JF+izUFvA=">
+	<title>Heroku | Heroku Quickstart Guide</title>
+	<link type="text/css" rel="stylesheet" href="quickstart_files/docs.css" media="screen">
+	<link type="text/css" rel="stylesheet" href="quickstart_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="quickstart_files/shThemeHeroku.css">
+	<script type="text/javascript" src="quickstart_files/jquery-1.js"></script>
+	<script type="text/javascript" src="quickstart_files/shCore.js"></script>
+	<script type="text/javascript" src="quickstart_files/shBrushRuby.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			SyntaxHighlighter.config.tagName = 'code'
+			SyntaxHighlighter.defaults['tag'] = false;
+			SyntaxHighlighter.defaults['gutter'] = false;
+			SyntaxHighlighter.defaults['toolbar'] = false;
+			SyntaxHighlighter.all();
+		});
+	</script>
+</head><body>
+<div id="bodywrap">
+
+	<style type="text/css">
+#header { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; margin-bottom: 15px; }
+
+#header { background-color: #29264d; border-bottom-style: solid; border-bottom-width: 3px; border-bottom-color: #494573; overflow: hidden; display: inline-block; }
+#header { display: block; }
+#header a { color: #c9c3e6; text-decoration: none; font-weight: normal; }
+#header a:hover { color: #fff; }
+#header #logo { margin: 20px 0 15px 25px; float: left; }
+#header #logo a { display: block; text-indent: -9999px; width: 177px; height: 56px; overflow: hidden; background-image: url(http://heroku.com/images/v2/logo.png); background-repeat: no-repeat; }
+#header ul { list-style-type: none; overflow: hidden; display: inline-block; float: right; margin-top: 30px; padding: 10px; }
+#header ul { display: block; }
+#header ul li { float: left; margin-left: 10px; }
+#header ul li:first-child { margin-left: 0; }
+#header ul li { border-left-style: solid; border-left-width: 2px; border-left-color: #534890; padding-left: 10px; font-size: 16px; }
+#header ul li:first-child, #header ul li#account_login { border: none; margin-left: 0; padding-left: 0; }
+#header ul li a.active { color: #bff740; }
+#header ul li a.active:hover { color: #bff740; }
+#header ul.account-links { background-color: #231d40; padding-left: 15px; padding-right: 15px; margin-right: 25px; margin-left: 10px; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#header ul.account-links a { color: #45a4ff; }
+#header ul.account-links a:hover { color: #74d0f4; }
+#header ul.account-links a.active { color: #bff740; }
+#header ul.account-links a.active:hover { color: #bff740; }
+
+</style>
+
+
+<div id="header">
+	
+		<h5 id="logo"><a href="http://heroku.com/">Heroku</a></h5>
+	
+
+	<ul class="account-links inline">
+		<div id="logged-in-links" style="display: none;">
+			<li><a href="http://heroku.com/myapps">My Apps</a></li>
+			<li><a href="http://heroku.com/account">My Account</a></li>
+			<li><a href="http://heroku.com/logout">Logout</a></li>
+		</div>
+		<li id="account_login"><a href="http://heroku.com/login">Login</a></li>
+	</ul>
+	<ul class="info-links inline">
+		<!-- <li><a href="http://heroku.com/about">About</a></li> -->
+		<li><a href="http://heroku.com/how">How it Works</a></li>
+		<li><a href="http://heroku.com/pricing">Pricing</a></li>
+		<!-- <li><a href="http://blog.heroku.com/">Blog</a></li> -->
+		<li><a href="http://docs.heroku.com/" class="active">Docs</a></li>
+		<li><a href="http://support.heroku.com/" id="support_link">Support</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	if (document.cookie.indexOf('heroku_session=') != -1) {
+		document.getElementById('support_link').href = 'http://heroku.com/helpdesk/login';
+		document.getElementById('logged-in-links').style.display = 'block';
+		document.getElementById('account_login').style.display = 'none';
+	}
+</script>
+
+
+
+	<div id="docsnav">
+		<form action="/search" id="cse-search-box">
+			<div id="search">
+				<input name="cx" value="011016403564345195107:s5fypn6csxi" type="hidden">
+				<input name="cof" value="FORID:10;NB:1" type="hidden">
+				<input name="ie" value="UTF-8" type="hidden">
+				<input style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: rgb(255, 255, 255) url(http://www.google.com/coop/intl/en/images/google_custom_search_watermark.gif) no-repeat scroll left center; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" name="q" size="31" type="text">
+			</div>
+		<input value="14d5058e-f79f-0935-acbc-c29344a71d2a" name="vid" type="hidden"></form>
+
+		<ul>
+			
+				<li>
+				<h3>Getting Started</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku">What is Heroku?</a></li>
+						
+					
+						
+							<li class="current"><a>Quickstart Guide</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Application Management</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku-command">Installing the Heroku command-line tool</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/creating-apps">Creating apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/renaming-apps">Renaming apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/git">Deploying with Git</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/sharing">Collaborating with others</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/gems">Managing Gems</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/taps">Database import / export</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/console">Using the console</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/rake">Running rake tasks</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/config-vars">Config vars</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/backups">Backups</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/addons">Managing Addons</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Platform Features</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/technologies">System Infrastructure</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/dynos">Dynos</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/database">SQL Database</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/http-caching">HTTP cache</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/rack">Rack apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/custom-domains">Custom domains</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/ssl">SSL</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/cron">Cron</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/background-jobs">Background jobs</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/s3">Storing uploads in S3</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/smtp">Outbound email</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/full-text-indexing">Full text search indexing</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Troubleshooting</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/constraints">Application constraints</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/logs-exceptions">Logs and exceptions</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/errors">Error pages</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/performance">Performance</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/support">Getting support</a></li>
+						
+					
+				</ul>
+				</li>
+			
+		</ul>
+	</div>
+
+	<div id="content">
+		<div class="topic_content">
+			<h1>Heroku Quickstart Guide</h1>
+
+
+
+<p>Heroku is a completely novel approach to deploying web applications. Forget
+about servers; the fundamental unit is the app. Develop locally on your
+machine just like you always do. When you’re ready to deploy, use the Heroku
+client gem to create your application in our cloud, then deploy with a
+single <code>git push</code>. Git allows you to have multiple source repositories all
+at the same time. By making Heroku just another source repository, you can
+push your code and deploy your application in one easy step.</p>
+
+<a name="prerequisites"></a>
+
+
+	<ul id="toc">
+		
+			<li><a href="#prerequisites">Prerequisites</a></li>
+		
+			<li><a href="#getting-your-app-on-heroku">Getting your app on Heroku</a></li>
+		
+			<li><a href="#next-steps">Next steps</a></li>
+		
+			<li><a href="#additional-resources">Additional Resources</a></li>
+		
+	</ul>
+
+
+<h2>Prerequisites</h2>
+
+<p>Before using Heroku there are three simple requirements:</p>
+
+<ol>
+<li><p><strong>Run your Ruby application locally:</strong>
+<a href="http://guides.rubyonrails.org/getting_started.html">Getting Started with Rails</a>,
+<a href="http://developer.apple.com/Tools/developonrailsleopard.html">Developing Rails apps on Mac OS X</a></p></li>
+<li><p><strong>Install Git:</strong> <a href="http://github.com/guides/get-git-on-mac">On a Mac</a>,
+<a href="http://nathanj.github.com/gitguide/installing.html">Windows</a>, or
+<a href="http://book.git-scm.com/2_installing_git.html">UNIX/Linux</a></p></li>
+<li><p><a href="http://heroku.com/signup">Create a Heroku account</a> and
+<a href="http://docs.heroku.com/heroku-command">Install the Heroku gem</a></p></li>
+</ol>
+
+
+<a name="getting-your-app-on-heroku"></a><h2>Getting your app on Heroku</h2>
+
+<p>Now that you have your application running locally, let’s deploy it to
+Heroku:</p>
+
+<h3>1. Track your application with Git</h3>
+
+<p>If you’re already using Git with your application, skip to the next step.
+If you’re not yet using Git to track your application, run this:</p>
+
+<pre><code>$ git init
+Initialized empty Git repository in .git/
+$ git add .
+$ git commit -m "new app"
+Created initial commit 5df2d09: new app
+44 files changed, 8393 insertions(+), 0 deletions(-)
+</code></pre>
+
+<h3>2. Create your application on Heroku</h3>
+
+<p>At the command line, run “heroku create”. When prompted for
+credentials, use the username and password from when you signed up;
+they’ll be saved on ~/.heroku/credentials so that you aren’t prompted
+on future runs. It will also upload your public key to allow you to
+push and pull code.</p>
+
+<pre><code>$ heroku create
+Enter your Heroku credentials.
+Email: joe@example.com
+Password: 
+Uploading ssh public key /Users/joe/.ssh/id_rsa.pub
+Created http://high-sunrise-58.heroku.com/ | git@heroku.com:high-sunrise-58.git
+Git remote heroku added
+</code></pre>
+
+<p>Looking at the second to last line, you can see your app is called
+“high-sunrise-58”, and is available at
+http://high-sunrise-58.heroku.com. If you visit that URL now, you’ll
+see a standard welcome page, until you push your application up. The
+second URL – git@heroku.com:high-sunrise-58.git – is for the Git
+repository. Normally you would need to add this as a git remote; the
+“heroku create” command has done this for you automatically.</p>
+
+<h3>3. Push your application to Heroku</h3>
+
+<pre><code>$ git push heroku master
+Counting objects: 65, done.
+Compressing objects: 100% (58/58), done.
+Writing objects: 100% (65/65), 80.54 KiB, done.
+Total 65 (delta 14), reused 0 (delta 0)
+
+-----&gt; Heroku receiving push
+-----&gt; Rails app detected
+       Compiled slug size is 0.1MB
+-----&gt; Launching....... done
+       App deployed to Heroku
+
+To git@heroku.com:vivid-mountain-91.git
+ * [new branch]      master -&gt; master
+</code></pre>
+
+<h3>4. Bootstrap your database</h3>
+
+<p>Your app is now running on Heroku with an empty database. Depending
+on your framework, run the appropriate command to setup your DB. For
+Ruby on Rails, run:</p>
+
+<pre><code>$ heroku rake db:migrate
+(in /mnt/home/slugs/41913_b81cc1e5813c58c443e4120aff984d006f36ef20/mnt)
+== 20081118092504 CreateWidgets: migrating ====================================
+-- create_table(:widgets)
+   -&gt; 0.0519s
+== 20081118092504 CreateWidgets: migrated (0.0520s) ===========================
+</code></pre>
+
+<p>That’s it, your app is now running on Heroku!</p>
+
+<p>Run <code>heroku open</code> to open your site in your default web browser.</p>
+
+<a name="next-steps"></a><h2>Next steps</h2>
+
+<p>Now that your application is running you can push updates anytime with three
+easy steps:</p>
+
+<ol>
+<li>Develop and test changes locally.</li>
+<li>Commit code to git.</li>
+<li>Push your changes to Heroku with <code>git push heroku</code>.</li>
+</ol>
+
+
+<a name="additional-resources"></a><h2>Additional Resources</h2>
+
+<ul>
+<li><a href="http://docs.heroku.com/renaming-apps">Renaming your application</a></li>
+<li><a href="http://docs.heroku.com/git">More about Git</a></li>
+</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<!-- google site search -->
+<script type="text/javascript" src="quickstart_files/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script><script src="quickstart_files/a" type="text/javascript"></script><link href="quickstart_files/transliteration.css" type="text/css" rel="stylesheet"><script src="quickstart_files/transliteration.js" type="text/javascript"></script>
+<script type="text/javascript" src="quickstart_files/t13n.htm"></script>
+<script type="text/javascript" src="quickstart_files/brand.htm"></script>
+
+
+<!-- loopfuse -->
+<script src="quickstart_files/listen.js" type="text/javascript"></script>
+<script type="text/javascript">
+_lf_cid = "LF_024e931f";
+_lf_remora();
+</script>
+
+<!-- google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="quickstart_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try{
+var pageTracker = _gat._getTracker("UA-2989055-1");
+pageTracker._setDomainName(".heroku.com");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+
+</body></html>

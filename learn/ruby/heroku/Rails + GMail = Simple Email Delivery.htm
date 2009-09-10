@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="js" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+<title>Rails + GMail = Simple Email Delivery | Ruby Zone</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="alternate" type="application/rss+xml" title="Comments for &quot;Rails + GMail = Simple Email Delivery&quot;" href="http://ruby.dzone.com/crss/node/997">
+
+<link rel="shortcut icon" href="http://ruby.dzone.com/misc/favicon.ico" type="image/x-icon">
+	<link rel="alternate" type="application/rss+xml" title="Ruby Zone RSS" href="http://feeds.dzone.com/zones/ruby">
+	<link type="text/css" rel="stylesheet" media="all" href="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/83d47f4d51af1edb3dbbfad2af84726b.css">
+<link type="text/css" rel="stylesheet" media="print" href="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/0d24a8ce1284c2b5ff8368b7bb5f0c29.css">
+			<meta name="Description" content="Want to send email from your gmail account on your Rails site?  Using this simple method you will be able to quickly achieve reliable email in your Rails app...">
+		
+</head><body class="sidebar-right">
+
+<div id="header-region" class="clear-block"></div>
+
+<div id="wrapper" class="fewerAds">
+<div id="container" class="clear-block">
+	<div id="header">
+		<div id="masthead">
+			<div class="join">
+			  								<img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/default_64.gif" class="mh_avatar">
+				<a href="http://ruby.dzone.com/user" title="Login">Login</a><br>
+								<a href="http://ruby.dzone.com/user/register" title="Join DZone">Join DZone</a>
+											</div>
+			<div id="site_id">
+				<a href="http://www.dzone.com/" title="DZone: Your Personal Tech Universe"><img class="dz_logo" src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/mh_dzone_logo.gif" alt="DZone: Your Personal Tech Universe" title="DZone: Your Personal Tech Universe"></a>
+				<a href="http://ruby.dzone.com/" title="Ruby Zone"><img class="site_logo" src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/mh_logo_ruby.gif" alt="Ruby Zone" title="Ruby Zone"></a>
+				<span class="site_slogan">Resources for Ruby and Rails developers</span>
+			</div>
+			<div class="global_menu">
+								<ul class="nice-menu nice-menu-down" id="nice-menu-1"><li id="menu-211" class="menu-path-front"><a href="http://ruby.dzone.com/">Home</a></li>
+<li id="menu-125" class="menuparent menu-path-domain"><a href="http://ruby.dzone.com/domain">Zones</a><ul><li id="menu-295" class="menu-path-domain-dotnet.dzone.com"><a href="http://ruby.dzone.com/domain/dotnet.dzone.com">.NET Zone</a></li>
+<li id="menu-358" class="menu-path-domain-agile.dzone.com"><a href="http://ruby.dzone.com/domain/agile.dzone.com" title="Go to agile.dzone.com">Agile Zone</a></li>
+<li id="menu-189" class="menu-path-domain-architects.dzone.com"><a href="http://ruby.dzone.com/domain/architects.dzone.com" title="Go to architects.dzone.com">Architects Zone</a></li>
+<li id="menu-400" class="menu-path-domain-books.dzone.com"><a href="http://ruby.dzone.com/domain/books.dzone.com" title="Go to books.dzone.com">Book Zone</a></li>
+<li id="menu-413" class="menu-path-domain-eclipse.dzone.com"><a href="http://ruby.dzone.com/domain/eclipse.dzone.com" title="Go to eclipse.dzone.com">Eclipse Zone</a></li>
+<li id="menu-416" class="menu-path-domain-groovy.dzone.com"><a href="http://ruby.dzone.com/domain/groovy.dzone.com" title="Go to groovy.dzone.com">Groovy Zone</a></li>
+<li id="menu-426" class="menu-path-domain-java.dzone.com"><a href="http://ruby.dzone.com/domain/java.dzone.com" title="Go to java.dzone.com">Javalobby</a></li>
+<li id="menu-317" class="menu-path-domain-jetbrains.dzone.com"><a href="http://ruby.dzone.com/domain/jetbrains.dzone.com" title="Go to jetbrains.dzone.com">JetBrains Zone</a></li>
+<li id="menu-431" class="menu-path-domain-netbeans.dzone.com"><a href="http://ruby.dzone.com/domain/netbeans.dzone.com" title="Go to netbeans.dzone.com">NetBeans Zone</a></li>
+<li id="menu-433" class="menu-path-domain-php.dzone.com"><a href="http://ruby.dzone.com/domain/php.dzone.com" title="Go to php.dzone.com">PHP Zone</a></li>
+<li id="menu-438" class="menu-path-domain-ria.dzone.com"><a href="http://ruby.dzone.com/domain/ria.dzone.com" title="Go to ria.dzone.com">RIA Zone</a></li>
+<li id="menu-441" class="menu-path-domain-refcardz.dzone.com"><a href="http://ruby.dzone.com/domain/refcardz.dzone.com" title="Go to refcardz.dzone.com">Refcardz</a></li>
+<li id="menu-141" class="menu-path-domain-ruby.dzone.com"><a href="http://ruby.dzone.com/domain/ruby.dzone.com">Ruby Zone</a></li>
+<li id="menu-314" class="menu-path-domain-soa.dzone.com"><a href="http://ruby.dzone.com/domain/soa.dzone.com" title="Go to soa.dzone.com">SOA Zone</a></li>
+<li id="menu-142" class="menu-path-domain-sql.dzone.com"><a href="http://ruby.dzone.com/domain/sql.dzone.com">SQL Zone</a></li>
+<li id="menu-287" class="menu-path-domain-server.dzone.com"><a href="http://ruby.dzone.com/domain/server.dzone.com">Server Zone</a></li>
+<li id="menu-454" class="menu-path-domain-css.dzone.com"><a href="http://ruby.dzone.com/domain/css.dzone.com" title="Go to css.dzone.com">Web Builder Zone</a></li>
+</ul>
+</li>
+<li id="menu-367" class="menu-path-library.dzone.com"><a href="http://library.dzone.com/">Library</a></li>
+<li id="menu-167" class="menu-path-refcardz.dzone.com-"><a href="http://refcardz.dzone.com/">Refcardz</a></li>
+<li id="menu-169" class="menu-path-forums.dzone.com"><a href="http://forums.dzone.com/">Forums</a></li>
+<li id="menu-215" class="menu-path-www.dzone.com-links"><a href="http://www.dzone.com/links">Links</a></li>
+<li id="menu-1349" class="menu-path-snippets.dzone.com"><a href="http://snippets.dzone.com/" title="">Snippets</a></li>
+</ul>
+			</div>
+				<div class="mh_leader">
+	<div class="leaderboard">
+    <!-- BEGIN ADVERTPRO ADVANCED CODE BLOCK -->
+      <script language="JavaScript" type="text/javascript">
+    <!--
+    document.write('<SCR'+'IPT src="http://avpa.dzone.com/servlet/view/banner/javascript/zone?zid=107&keywords=ruby.dzone.com&pid=0&random='+Math.floor(89999999*Math.random()+10000000)+'&millis='+new Date().getTime()+'" language="JavaScript" type="text/javascript"></SCR'+'IPT>');
+    //-->
+    </script><script src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/zone_002" language="JavaScript" type="text/javascript"></script><a href="http://avpa.dzone.com/servlet/click/zone?zid=107&amp;cid=554&amp;mid=1184&amp;pid=0&amp;default=false&amp;random=47310717&amp;timestamp=20090822134459&amp;test=false&amp;keywords=ruby.dzone.com&amp;referrer=http%3A%2F%2Fruby.dzone.com%2Fnews%2Frails-gmail-simple-email-deliv&amp;redirect=http%3A%2F%2Fwww.refcardz.com%3Foid%3Dban00028-0" target="_top"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/file.gif" alt="Click Here!" border="0" vspace="0" width="728" height="90" hspace="0"></a>
+
+      <noscript>
+<A
+href="http://avpa.dzone.com/servlet/click/zone?zid=107&pid=0&lookup=true&position=1"
+target="_top"> <IMG
+src="http://avpa.dzone.com/servlet/view/banner/image/zone?zid=107&pid=0&position=1"
+height="90" width="728" hspace="0" vspace="0" border="0" alt="Click
+Here!"> </A> </noscript>
+      <!-- END ADVERTPRO ADVANCED CODE BLOCK -->
+    </div>
+    </div>
+		
+		</div>
+	</div>
+	<!-- end of header -->
+	<div id="center"><div id="squeeze">
+		<div id="article"> <div class="breadcrumb"><a href="http://ruby.dzone.com/">Home</a></div>						 
+						<div id="articleHead">
+		   <div id="dzone_vote_widget" style="float: left; margin-right: 8px;">
+		   <script type="text/javascript">var dzone_title = 'Rails + GMail = Simple Email Delivery';</script>
+			 		   <script type="text/javascript">var dzone_url = 'http://ruby.dzone.com/news/rails-gmail-simple-email-deliv';</script>
+		   <script language="javascript" src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/zoneit.js"></script><iframe src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/zoneit.htm" width="50" frameborder="0" height="70" scrolling="no"></iframe></div>		   <h1>Rails + GMail = Simple Email Delivery</h1>
+														</div>
+							
+			<div id="articleText">
+						
+			
+			<div id="node-997" class="node node-page node-story">
+
+
+  <div class="meta"> 
+    <span class="submitted">Submitted by Jason Palmer on Wed, 2008/02/13 - 10:05am</span>
+    <div class="serviceTags">
+    	<div class="service-links"><div class="item-list"><ul><li class="first"><a href="http://del.icio.us/post?url=http%3A%2F%2Fruby.dzone.com%2Fnews%2Frails-gmail-simple-email-deliv&amp;title=Rails+%2B+GMail+%3D+Simple+Email+Delivery" title="Bookmark this post on del.icio.us." rel="nofollow"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/delicious.png" alt="Delicious"></a></li>
+<li class="first"><a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fruby.dzone.com%2Fnews%2Frails-gmail-simple-email-deliv&amp;title=Rails+%2B+GMail+%3D+Simple+Email+Delivery" title="Digg this post on digg.com." rel="nofollow"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/digg.png" alt="Digg"></a></li>
+<li class="first"><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fruby.dzone.com%2Fnews%2Frails-gmail-simple-email-deliv&amp;title=Rails+%2B+GMail+%3D+Simple+Email+Delivery" title="Thumb this up at StumbleUpon." rel="nofollow"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/stumbleit.png" alt="StumbleUpon"></a></li>
+<li class="first"><a href="http://reddit.com/submit?url=http%3A%2F%2Fruby.dzone.com%2Fnews%2Frails-gmail-simple-email-deliv&amp;title=Rails+%2B+GMail+%3D+Simple+Email+Delivery" title="Submit this post on reddit.com." rel="nofollow"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/reddit.png" alt="Reddit"></a></li>
+<li class="first"><a href="http://technorati.com/search/http%3A%2F%2Fruby.dzone.com%2Fnews%2Frails-gmail-simple-email-deliv" title="Search Technorati for links to this post." rel="nofollow"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/technorati.png" alt="Technorati"></a></li>
+</ul></div></div>        <span class="terms">Tags: <ul class="links inline"><li class="taxonomy_term_905 first"><a href="http://ruby.dzone.com/category/tags/actionmailer" rel="tag" title="">actionmailer</a></li>
+<li class="taxonomy_term_883"><a href="http://ruby.dzone.com/category/tags/gmail" rel="tag" title="">gmail</a></li>
+<li class="taxonomy_term_74"><a href="http://ruby.dzone.com/taxonomy/term/74" rel="tag" title="">Rails</a></li>
+<li class="taxonomy_term_167 last"><a href="http://ruby.dzone.com/category/tags/ruby" rel="tag" title="">Ruby</a></li>
+</ul></span>
+    </div>
+  </div>
+ 
+  <div class="content" style="margin-bottom: 5px;">      		<div style="float: right;" class="textads"><div class="ad"></div><span class="sponsored">Ads by DZone</span></div>		<span class="print-link"></span><p>Want
+to send email from your gmail account on your Rails site? Using this
+simple method you will be able to quickly achieve reliable email in
+your Rails app and not have to worry about maintaining multiple email
+configurations for every environment!</p>
+
+<p>Start off by installing the action_mailer_tls plugin:</p>
+<pre class="ruby">cd vendor/plugins/<br>svn export https://openrain.com/opensource/public/rails/plugins/action_mailer_tls action_mailer_tls</pre>
+<p>Now setup your environment.rb.</p>
+<pre class="ruby">require "smtp_tls"<br><br>ActionMailer::Base.raise_delivery_errors = true<br>ActionMailer::Base.delivery_method = :smtp<br>ActionMailer::Base.server_settings = {<br>  :address  =&gt; "smtp.gmail.com",<br>  :port  =&gt; 587, <br>  :domain =&gt; 'yourdomain.com',<br>  :user_name  =&gt; "you@yourdomain.com",<br>  :password  =&gt; "password",<br>  :authentication  =&gt; :plain<br>}<br></pre>
+
+<p><b>That's it!</b></p>
+<p>Now you'll be able to send email through your GMail account while running in development, test, or production modes.</p><div class="fivestar-static-form-item"><div class="form-item">
+ <label>Your rating: </label>
+ <div class="fivestar-widget-static fivestar-widget-static-vote fivestar-widget-static-5 clear-block"><div class="star star-1 star-odd star-first"><span class="off">0</span></div><div class="star star-2 star-even"><span class="off"></span></div><div class="star star-3 star-odd"><span class="off"></span></div><div class="star star-4 star-even"><span class="off"></span></div><div class="star star-5 star-odd star-last"><span class="off"></span></div></div>
+ <div class="description"><div class="fivestar-summary fivestar-summary-"></div></div>
+</div>
+</div>	
+			<div style="clear: both;"></div>
+
+    </div>
+<ul class="links inline"><li class="comment_forbidden first"><span><a href="http://ruby.dzone.com/user/login?destination=node/997%2523comment-form">Login</a> or <a href="http://ruby.dzone.com/user/register?destination=node/997%2523comment-form">register</a> to post comments</span></li>
+<li class="statistics_counter"><span>3988 reads</span></li>
+<li class="print_html last"><a href="http://ruby.dzone.com/print/997" title="Display a printer-friendly version of this page." class="print-page" rel="nofollow">Printer-friendly version</a></li>
+</ul><p style="font-size: 11px; padding-left: 1em;" class="disclaimer"><em>(Note:
+Opinions expressed in this article and its replies are the opinions of
+their respective authors and not those of DZone, Inc.)</em></p></div>
+<div id="comments"><h2 class="comments">Comments</h2><a id="comment-885"></a>
+<div class="comment odd">
+		
+		  	   		<a href="http://ruby.dzone.com/users/palmerj3"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/picture-244345_002.jpg" alt="" title="" class="avatar" width="48" height="48"></a> 
+    <div class="comment-wrap">
+      <div class="tl"><!-- --></div>  
+	    	<h3>Jason Palmer replied on Wed, 2008/02/13 - 10:10am</h3>
+  	   	
+	<div class="comment-content">
+		   <!--paging_filter--><p>I would highly recommend that you switch raise_delivery_errors to false when you open your application to the public.&nbsp;</p><p><b>Jason Palmer</b><br>
+Web Developer &amp; Zone Leader<br>
+<br>
+<a href="http://www.fanboom.com/" title="Fanboom - Your Sports.  Your Way.">http://www.fanboom.com/</a></p>		       			<div class="actions"><ul class="links"><li class="comment_forbidden first last"><span><a href="http://ruby.dzone.com/user/login?destination=node/997%2523comment-form">Login</a> or <a href="http://ruby.dzone.com/user/register?destination=node/997%2523comment-form">register</a> to post comments</span></li>
+</ul></div>
+  				</div>
+ </div>
+</div><a id="comment-7376"></a>
+<div class="comment even">
+		
+		  	   		<a href="http://ruby.dzone.com/users/m3talsmith"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/picture-345356.jpg" alt="" title="" class="avatar" width="48" height="48"></a> 
+    <div class="comment-wrap">
+      <div class="tl"><!-- --></div>  
+	    	<h3>m3talsmith replied on Wed, 2008/10/15 - 8:12pm</h3>
+  	   	
+	<div class="comment-content">
+		   <!--paging_filter--><p>A quick fix. The current SVN REPO is not valid. Use:</p><p>svn export http://code.openrain.com/rails/action_mailer_tls action_mailer_tls</p><p>instead.&nbsp;</p>		       			<div class="actions"><ul class="links"><li class="comment_forbidden first last"><span><a href="http://ruby.dzone.com/user/login?destination=node/997%2523comment-form">Login</a> or <a href="http://ruby.dzone.com/user/register?destination=node/997%2523comment-form">register</a> to post comments</span></li>
+</ul></div>
+  				</div>
+ </div>
+</div><form action="/news/rails-gmail-simple-email-deliv" accept-charset="UTF-8" method="post" id="comment-controls">
+<div><div class="box">
+
+  <h2>Comment viewing options</h2>
+
+  <div class="content"><div class="container-inline"><input name="form_build_id" id="form-95517af88c025a28841c692c6031fc4f" value="form-95517af88c025a28841c692c6031fc4f" type="hidden">
+<input name="form_id" id="edit-comment-controls" value="comment_controls" type="hidden">
+<div class="form-item" id="edit-mode-wrapper">
+ <select name="mode" class="form-select" id="edit-mode"><option value="1">Flat list - collapsed</option><option value="2" selected="selected">Flat list - expanded</option><option value="3">Threaded list - collapsed</option><option value="4">Threaded list - expanded</option></select>
+</div>
+<div class="form-item" id="edit-order-wrapper">
+ <select name="order" class="form-select" id="edit-order"><option value="1">Date - newest first</option><option value="2" selected="selected">Date - oldest first</option></select>
+</div>
+<div class="form-item" id="edit-comments-per-page-wrapper">
+ <select name="comments_per_page" class="form-select" id="edit-comments-per-page"><option value="10">10 comments per page</option><option value="30" selected="selected">30 comments per page</option><option value="50">50 comments per page</option><option value="70">70 comments per page</option><option value="90">90 comments per page</option><option value="150">150 comments per page</option><option value="200">200 comments per page</option><option value="250">250 comments per page</option><option value="300">300 comments per page</option></select>
+</div>
+<input name="op" id="edit-submit" value="Save settings" class="form-submit" type="submit">
+</div><div class="description">Select your preferred way to display the comments and click "Save settings" to activate your changes.</div></div>
+</div>
+
+</div></form>
+</div></div>
+		</div>
+	</div></div>
+	<!-- end of squeeze, center (main content) -->
+						<div id="sidebar-right" class="sidebar">
+					<div id="search_bar" style="margin-bottom: 0px; padding-bottom: 0pt;">
+	<form action="/news/rails-gmail-simple-email-deliv" accept-charset="UTF-8" method="post" id="search-block-form">
+<div><div class="container-inline">
+  <div class="form-item" id="edit-search-block-form-1-wrapper">
+ <label for="edit-search-block-form-1">Search this site: </label>
+ <input maxlength="128" name="search_block_form" id="edit-search-block-form-1" size="15" title="Enter the terms you wish to search for." class="form-text" type="text">
+</div>
+<input name="op" id="edit-submit-2" value="Search" class="form-submit" type="submit">
+<input name="form_build_id" id="form-bc0ea3fdfc4d04fb2514c8c2029be4f8" value="form-bc0ea3fdfc4d04fb2514c8c2029be4f8" type="hidden">
+<input name="form_id" id="edit-search-block-form" value="search_block_form" type="hidden">
+</div>
+
+</div></form>
+	
+</div>
+							<div id="feedLinks">		
+													<a href="http://feeds.dzone.com/zones/ruby"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/feed-icon-24x24.gif" style="border: 0pt none ; vertical-align: bottom; padding-right: 6px;">
+							<img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/ruby.gif" style="border: 0pt none ; vertical-align: bottom;" alt="" width="88" height="26"></a>
+											</div>
+										<div id="mh_rectangle">
+			<!-- BEGIN ADVERTPRO ADVANCED CODE BLOCK -->
+			<script language="JavaScript" type="text/javascript">
+<!--
+document.write('<SCR'+'IPT src="http://avpa.dzone.com/servlet/view/banner/javascript/zone?zid=106&keywords=ruby.dzone.com&pid=0&random='+Math.floor(89999999*Math.random()+10000000)+'&millis='+new Date().getTime()+'" language="JavaScript" type="text/javascript"></SCR'+'IPT>');
+//-->
+</script><script src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/zone" language="JavaScript" type="text/javascript"></script><a href="http://avpa.dzone.com/servlet/click/zone?zid=106&amp;cid=792&amp;mid=1590&amp;pid=0&amp;default=false&amp;random=78025582&amp;timestamp=20090822134500&amp;test=false&amp;keywords=ruby.dzone.com&amp;referrer=http%3A%2F%2Fruby.dzone.com%2Fnews%2Frails-gmail-simple-email-deliv&amp;redirect=http%3A%2F%2Fwww.jboss.org%2Fevents%2Fjavaone.html" target="_top"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/file.png" alt="Click Here!" border="0" vspace="0" width="300" height="250" hspace="0"></a>
+
+			<noscript>
+<a
+href="http://avpa.dzone.com/servlet/click/zone?zid=106&pid=0&lookup=true&position=1"
+target="_top"> <IMG
+src="http://avpa.dzone.com/servlet/view/banner/image/zone?zid=106&pid=0&position=1"
+hspace="0" vspace="0" border="0" alt="Click Here!"> </a> </noscript>
+			<!-- END ADVERT PRO ADVANCED CODE BLOCK -->
+		</div>
+														<div id="block-dzone_extprofile-0" class="block block-dzone_extprofile">
+  <h2>About the author</h2>
+
+  <div class="content">
+    <div class="author_info"><div class="node_author_pic" style="float: left;"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/picture-244345.jpg" alt="" title="" width="90" height="90"></div><div class="node_author_fields"><p><strong>First Name</strong>: Jason</p><p><strong>Last Name</strong>: Palmer</p><p><b></b></p><p><strong>Posts:</strong> 5</p><p><strong>Joined:</strong> 09/05/2007</p><p><a href="http://ruby.dzone.com/users/palmerj3">View full user profile</a></p></div></div><div style="clear: both;"></div>  </div>
+</div>
+<div id="block-block-5" class="block block-block">
+
+  <div class="content">
+    <div id="sidebar_features"><h2 class="header">Spotlight Features</h2>				
+				  	<div>
+	  		<a href="http://ruby.dzone.com/click/12204/1"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/servicemix_spotlight.png" alt="" title="" class="node_author_pic" width="80" height="60"></a>
+	  		<h2><a href="http://ruby.dzone.com/click/12204/1">Getting Started with ServiceMix 4</a></h2>
+	  		<p>Covers the key elements of
+ServiceMix 4.0, including its architecture, configuration and thread management features. </p>	
+	  	</div>
+	  	<div>
+	  		<a href="http://ruby.dzone.com/click/12267/1"><img src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/coldfusion_spotlight_0.png" alt="" title="" class="node_author_pic" width="80" height="60"></a>
+	  		<h2><a href="http://ruby.dzone.com/click/12267/1">Getting Started with ColdFusion 9</a></h2>
+	  		<p>Get up to speed on the ColdFusion 9 platform - learn how it integrates with databases, services and other languages.</p>	
+	  	</div>
+</div>  </div>
+</div>
+<div id="block-block-3" class="block block-block">
+
+  <div class="content">
+    <ul class="sidebarlinks"><li><h2>Popular at DZone</h2></li><li><a href="http://www.dzone.com/links/why_the_lucky_stiff_vanishes.html">"why the lucky stiff" Vanishes</a></li>
+			<li><a href="http://www.dzone.com/links/flightcaster_built_on_clojurehadoop_with_a_rails.html">FlightCaster built on Clojure/Hadoop, with a Rails and Heroku web UI</a></li>
+			<li><a href="http://www.dzone.com/links/living_on_the_edge_of_rails_part_1.html">Living on the Edge of Rails, Part 1</a></li>
+			<li><a href="http://www.dzone.com/links/charles_oliver_nutter_on_ruby_mutants.html">Charles Oliver Nutter on "Ruby Mutants"</a></li>
+			<li><a href="http://www.dzone.com/links/ruby_on_rails_testing_out_edge_rails.html">Ruby on Rails: Testing out Edge Rails</a></li>
+			<li><a href="http://www.dzone.com/links/speaker_focus_charles_oliver_nutter_on_ruby_mutan.html">Speaker Focus: Charles Oliver Nutter on Ruby Mutants</a></li>
+			<li><a href="http://www.dzone.com/links/a_refactoring_example.html">A Refactoring Example </a></li>
+			<li><a href="http://www.dzone.com/links/netbeans_weekly_newsletter_405_aug_17_2009.html">NetBeans Weekly Newsletter # 405 - Aug 17, 2009</a></li>
+			<li><a href="http://www.dzone.com/links/macros_facilitate_expressive_code.html">Macros Facilitate Expressive Code</a></li>
+			<li><a href="http://www.dzone.com/links/method_arguments_in_ruby.html">Method Arguments In Ruby</a></li>
+			<li><a class="moredz" href="http://www.dzone.com/">See more popular at DZone</a></li><li><a class="rss" href="http://feeds.dzone.com/dzone/frontpage">Subscribe to the RSS feed</a></li></ul>  </div>
+</div>
+								</div>
+		<!-- end of right sidebar -->
+			
+	<div id="footer"><div id="legal"><a href="http://ruby.dzone.com/page/tos">Terms of Service</a> - <a href="http://ruby.dzone.com/page/privacy">Privacy</a> - © 1997-2009, DZone, Inc.</div>
+	</div>
+	<!-- end of footer -->
+
+</div><!-- end of container -->
+</div><!-- end of wrapper -->
+<script type="text/javascript" src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/8662377c8ea8bef68b766dd2df4638d4.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/", "fivestar": { "titleUser": "Your rating: ", "titleAverage": "Average: ", "feedbackSavingVote": "Saving your vote...", "feedbackVoteSaved": "Your vote has been saved.", "feedbackDeletingVote": "Deleting your vote...", "feedbackVoteDeleted": "Your vote has been deleted." }, "jstools": { "cleanurls": true, "basePath": "/" }, "activemenu": { "#block-book-0": "activemenu/book", "#block-menu-devel": "activemenu/menu", "#block-menu-menu-library-navigat": "activemenu/menu", "#block-menu-primary-links": "activemenu/menu", "#block-menu-secondary-links": "activemenu/menu", "#block-menu-menu-sections": "activemenu/menu", "#block-menu-menu-zones": "activemenu/menu", "#block-user-1": "activemenu/menu" } });
+//--><!]]>
+</script>
+<script type="text/javascript"> 
+    SyntaxHighlighter.config.bloggerMode = true;
+    SyntaxHighlighter.config.taName = "pre";
+    SyntaxHighlighter.config.clipboardSwf = '/sites/all/themes/dzone/scripts/syntaxHighlighter/clipboard.swf';
+    SyntaxHighlighter.all();
+    dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/ga.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-410289-1");
+pageTracker._setDomainName(".dzone.com");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+ 
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+_qoptions={
+qacct:"p-ebK_XdQH1HeLo"
+};
+</script>
+<script type="text/javascript" src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/quant.js"></script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-ebK_XdQH1HeLo.gif"
+style="display: none;" border="0" height="1" width="1"
+alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+<script type="text/javascript" language="JavaScript" src="Rails%20+%20GMail%20=%20Simple%20Email%20Delivery_files/atrk.js"></script>
+<script type="text/javascript" language="JavaScript">_atrk_opts = {
+atrk_acct: "2Zc291a0g0y12X" }; atrk ();</script>
+<noscript><img
+src="http://certify.alexametrics.com/atrk.gif?account=2Zc291a0g0y12X&jsv=20080822" style="display:none" height="1" width="1"></noscript></body></html>

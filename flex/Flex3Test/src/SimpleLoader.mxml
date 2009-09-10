@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- Simple example to demonstrate the SWFLoader control. -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init()">
+
+	<mx:Script>
+		<![CDATA[
+			private function init():void {
+				Security.allowDomain("*");
+			}
+		]]>
+	</mx:Script>
+
+    <mx:Panel title="SWFLoader Control Example"  height="90%" width="90%"
+        paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
+
+        <mx:Label text="The Label control of the outer application. true"/>
+
+        <mx:SWFLoader id="Load1" source="http://localhost/Local.swf" height="100" width="100"/>
+
+        <mx:Label text="The Label control of the outer application. false"/>
+
+        <mx:SWFLoader id="Load2" source="http://localhost/Local.swf" height="100" width="100" scaleContent="false"/>
+
+<!--		
+		http://localhost/Local.swf
+		@Embed(source='Local.swf')
+-->		
+    </mx:Panel>
+</mx:Application>

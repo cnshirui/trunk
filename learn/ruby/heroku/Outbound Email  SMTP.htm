@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="verify-v1" content="J75JQ+WGFRjBEnhNT4hhYxgVTQmRHjd0v3JF+izUFvA=">
+	<title>Heroku | Outbound Email / SMTP</title>
+	<link type="text/css" rel="stylesheet" href="Outbound%20Email%20%20SMTP_files/docs.css" media="screen">
+	<link type="text/css" rel="stylesheet" href="Outbound%20Email%20%20SMTP_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="Outbound%20Email%20%20SMTP_files/shThemeHeroku.css">
+	<script type="text/javascript" src="Outbound%20Email%20%20SMTP_files/jquery-1.js"></script>
+	<script type="text/javascript" src="Outbound%20Email%20%20SMTP_files/shCore.js"></script>
+	<script type="text/javascript" src="Outbound%20Email%20%20SMTP_files/shBrushRuby.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			SyntaxHighlighter.config.tagName = 'code'
+			SyntaxHighlighter.defaults['tag'] = false;
+			SyntaxHighlighter.defaults['gutter'] = false;
+			SyntaxHighlighter.defaults['toolbar'] = false;
+			SyntaxHighlighter.all();
+		});
+	</script>
+</head><body>
+<div id="bodywrap">
+
+	<style type="text/css">
+#header { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: arial, helvetica, sans-serif; vertical-align: baseline; margin-bottom: 15px; }
+
+#header { background-color: #29264d; border-bottom-style: solid; border-bottom-width: 3px; border-bottom-color: #494573; overflow: hidden; display: inline-block; }
+#header { display: block; }
+#header a { color: #c9c3e6; text-decoration: none; font-weight: normal; }
+#header a:hover { color: #fff; }
+#header #logo { margin: 20px 0 15px 25px; float: left; }
+#header #logo a { display: block; text-indent: -9999px; width: 177px; height: 56px; overflow: hidden; background-image: url(http://heroku.com/images/v2/logo.png); background-repeat: no-repeat; }
+#header ul { list-style-type: none; overflow: hidden; display: inline-block; float: right; margin-top: 30px; padding: 10px; }
+#header ul { display: block; }
+#header ul li { float: left; margin-left: 10px; }
+#header ul li:first-child { margin-left: 0; }
+#header ul li { border-left-style: solid; border-left-width: 2px; border-left-color: #534890; padding-left: 10px; font-size: 16px; }
+#header ul li:first-child, #header ul li#account_login { border: none; margin-left: 0; padding-left: 0; }
+#header ul li a.active { color: #bff740; }
+#header ul li a.active:hover { color: #bff740; }
+#header ul.account-links { background-color: #231d40; padding-left: 15px; padding-right: 15px; margin-right: 25px; margin-left: 10px; -moz-border-radius: 7px; -webkit-border-radius: 7px; }
+#header ul.account-links a { color: #45a4ff; }
+#header ul.account-links a:hover { color: #74d0f4; }
+#header ul.account-links a.active { color: #bff740; }
+#header ul.account-links a.active:hover { color: #bff740; }
+
+</style>
+
+
+<div id="header">
+	
+		<h5 id="logo"><a href="http://heroku.com/">Heroku</a></h5>
+	
+
+	<ul class="account-links inline">
+		<div id="logged-in-links" style="display: none;">
+			<li><a href="http://heroku.com/myapps">My Apps</a></li>
+			<li><a href="http://heroku.com/account">My Account</a></li>
+			<li><a href="http://heroku.com/logout">Logout</a></li>
+		</div>
+		<li id="account_login"><a href="http://heroku.com/login">Login</a></li>
+	</ul>
+	<ul class="info-links inline">
+		<!-- <li><a href="http://heroku.com/about">About</a></li> -->
+		<li><a href="http://heroku.com/how">How it Works</a></li>
+		<li><a href="http://heroku.com/pricing">Pricing</a></li>
+		<!-- <li><a href="http://blog.heroku.com/">Blog</a></li> -->
+		<li><a href="http://docs.heroku.com/" class="active">Docs</a></li>
+		<li><a href="http://support.heroku.com/" id="support_link">Support</a></li>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	if (document.cookie.indexOf('heroku_session=') != -1) {
+		document.getElementById('support_link').href = 'http://heroku.com/helpdesk/login';
+		document.getElementById('logged-in-links').style.display = 'block';
+		document.getElementById('account_login').style.display = 'none';
+	}
+</script>
+
+
+
+	<div id="docsnav">
+		<form action="/search" id="cse-search-box">
+			<div id="search">
+				<input name="cx" value="011016403564345195107:s5fypn6csxi" type="hidden">
+				<input name="cof" value="FORID:10;NB:1" type="hidden">
+				<input name="ie" value="UTF-8" type="hidden">
+				<input style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: rgb(255, 255, 255) url(http://www.google.com/coop/intl/en/images/google_custom_search_watermark.gif) no-repeat scroll left center; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" name="q" size="31" type="text">
+			</div>
+		<input value="14d5058e-f79f-0935-acbc-c29344a71d2a" name="vid" type="hidden"></form>
+
+		<ul>
+			
+				<li>
+				<h3>Getting Started</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku">What is Heroku?</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/quickstart">Quickstart Guide</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Application Management</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/heroku-command">Installing the Heroku command-line tool</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/creating-apps">Creating apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/renaming-apps">Renaming apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/git">Deploying with Git</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/sharing">Collaborating with others</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/gems">Managing Gems</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/taps">Database import / export</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/console">Using the console</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/rake">Running rake tasks</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/config-vars">Config vars</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/backups">Backups</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/addons">Managing Addons</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Platform Features</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/technologies">System Infrastructure</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/dynos">Dynos</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/database">SQL Database</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/http-caching">HTTP cache</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/rack">Rack apps</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/custom-domains">Custom domains</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/ssl">SSL</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/cron">Cron</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/background-jobs">Background jobs</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/s3">Storing uploads in S3</a></li>
+						
+					
+						
+							<li class="current"><a>Outbound email</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/full-text-indexing">Full text search indexing</a></li>
+						
+					
+				</ul>
+				</li>
+			
+				<li>
+				<h3>Troubleshooting</h3>
+				<ul>
+					
+						
+							<li><a href="http://docs.heroku.com/constraints">Application constraints</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/logs-exceptions">Logs and exceptions</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/errors">Error pages</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/performance">Performance</a></li>
+						
+					
+						
+							<li><a href="http://docs.heroku.com/support">Getting support</a></li>
+						
+					
+				</ul>
+				</li>
+			
+		</ul>
+	</div>
+
+	<div id="content">
+		<div class="topic_content">
+			<h1>Outbound Email / SMTP</h1>
+
+
+
+<p>Heroku does not provide an outgoing mail service but does allow the use of an
+external SMTP server. If you only need to send a moderate amount of emails,
+Gmail is a good bet. Otherwise, check out a commerical solution like
+<a href="http://www.authsmtp.com/">AuthSMTP</a>.</p>
+
+<a name="external-smtp-providers"></a>
+
+
+	<ul id="toc">
+		
+			<li><a href="#external-smtp-providers">External SMTP Providers</a></li>
+		
+			<li><a href="#sending-email-from-rails">Sending email from Rails</a></li>
+		
+	</ul>
+
+
+<h2>External SMTP Providers</h2>
+
+<p>There are a large number of free and commercial SMTP providers that can be taken
+advantage of by apps running on Heroku. The following list are the most popular
+services we see in use on Heroku:</p>
+
+<h3>AuthSMTP</h3>
+
+<p>Heroku recommends <a href="http://www.authsmtp.com/">AuthSMTP</a> for app’s that have
+serious email demands. They have a <a href="http://www.authsmtp.com/auth-smtp/pricing.html">range of plans</a>
+and are known for exceptional performance and availability.</p>
+
+<h3>Gmail</h3>
+
+<p>Google offers free outbound SMTP services as part of Gmail. You’re limited
+to a maximum of 500 emails per day. There’s an <a href="http://ruby.dzone.com/news/rails-gmail-simple-email-deliv">excellent tutorial</a>
+on using Gmail with ActionMailer. Be sure to set the <code>From</code> address in your
+mailer class to your actual Gmail address.</p>
+
+<a name="sending-email-from-rails"></a><h2>Sending email from Rails</h2>
+
+<p>Here’s a quick guide to setting up a Rails app to send email with an external
+SMTP provider.</p>
+
+<h3>1. Set the delivery method</h3>
+
+<p>In <code>config/environment.rb</code> set ActionMailer’s delivery method to SMTP:</p>
+
+<pre><code>config.action_mailer.delivery_method = :smtp
+</code></pre>
+
+<h3>2. Configure your SMTP connection</h3>
+
+<pre><code>ActionMailer::Base.smtp_settings = {
+  :address  =&gt; "smtp.someserver.net",
+  :port  =&gt; 25,
+  :user_name  =&gt; "someone@someserver.net",
+  :password  =&gt; "mypass",
+  :authentication  =&gt; :login
+}
+</code></pre>
+
+<p>You’ll want to make sure Rails raises errors on mail delivery, so turn that on
+as well like this:</p>
+
+<pre><code>config.action_mailer.raise_delivery_errors = true
+</code></pre>
+
+<h3>3. Build a Mailer class</h3>
+
+<p>Start by creating a mailer class:</p>
+
+<pre><code>script/generate mailer &lt;name&gt;
+</code></pre>
+
+<p>Where <code>&lt;name&gt;</code> is the class name (like, Notifier). Rails mailers are somewhat
+similar to controllers in that both have one method for each action, each one
+having one template under <code>views/&lt;class_name&gt;</code>. For mailers, each method is the
+definition of an email message: who is the recipient, what’s the subject, etc.
+The email body is contained in the view.</p>
+
+<p>Here’s an example:</p>
+
+<pre><code>class UserMailer &lt; ActionMailer::Base
+  def signup_notification(user)
+    recipients "#{user.name} &lt;#{user.email}&gt;"
+    from       "My Forum "
+    subject    "Please activate your new account"
+    sent_on    Time.now
+    body       { :user =&gt; user, :url =&gt; activate_url(user.activation_code, :host =&gt; user.site.host }
+  end
+end
+</code></pre>
+
+<p>And the view in <code>app/views/user_mailer/signup_notification.rhtml</code> looks like
+this:</p>
+
+<pre><code>Your account has been created.
+
+Username: 
+Password: 
+Visit this url to activate your account:
+</code></pre>
+
+<p>Now you are ready to send emails. You can manually send one from the console to
+make sure it’s working:</p>
+
+<pre><code>$ heroku console
+&gt;&gt;&gt; user = User.new(:name =&gt; 'Me', :email =&gt; 'me@gmail.com', :login =&gt; 'me', :password =&gt; '1234')
+&gt;&gt;&gt; UserMailer.deliver_signup_notification(user)
+</code></pre>
+
+<p>Or you can of course hook it in your user model. For instance</p>
+
+<pre><code>after_create :deliver_signup_notification
+def deliver_signup_notification
+  UserMailer.deliver_signup_notification(self)
+end
+</code></pre>
+
+
+
+	<div id="next_section">Next: <a href="http://docs.heroku.com/full-text-indexing">Full text search indexing →</a></div>
+
+
+<a href="http://docs.heroku.com/full-text-indexing">		</a></div>
+<a href="http://docs.heroku.com/full-text-indexing">	</a></div>
+</div>
+
+<!-- google site search -->
+<script type="text/javascript" src="Outbound%20Email%20%20SMTP_files/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script><script src="Outbound%20Email%20%20SMTP_files/a" type="text/javascript"></script><a href="http://docs.heroku.com/full-text-indexing"><link href="Outbound%20Email%20%20SMTP_files/transliteration.css" type="text/css" rel="stylesheet"><script src="Outbound%20Email%20%20SMTP_files/transliteration.js" type="text/javascript"></script>
+<script type="text/javascript" src="Outbound%20Email%20%20SMTP_files/t13n.htm"></script>
+<script type="text/javascript" src="Outbound%20Email%20%20SMTP_files/brand.htm"></script>
+
+
+<!-- loopfuse -->
+<script src="Outbound%20Email%20%20SMTP_files/listen.js" type="text/javascript"></script>
+<script type="text/javascript">
+_lf_cid = "LF_024e931f";
+_lf_remora();
+</script>
+
+<!-- google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="Outbound%20Email%20%20SMTP_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try{
+var pageTracker = _gat._getTracker("UA-2989055-1");
+pageTracker._setDomainName(".heroku.com");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+
+</a></body></html>

@@ -1,0 +1,1 @@
+This file is used to remain the log folder.
