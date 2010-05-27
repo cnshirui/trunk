@@ -1,33 +1,8 @@
-========================================================================
-    CONSOLE APPLICATION : programming Project Overview
-========================================================================
-
-AppWizard has created this programming application for you.  
-
-This file contains a summary of what you will find in each of the files that
-make up your programming application.
-
-
-programming.vcproj
-    This is the main project file for VC++ projects generated using an Application Wizard. 
-    It contains information about the version of Visual C++ that generated the file, and 
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
-
-programming.cpp
-    This is the main application source file.
-
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named programming.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
+9.2 迭代法 iterative
+9.3 穷举搜索法 exhaustive search
+9.4 递推法 recursion with memoization
+9.5 递归法 recursion
+9.6 回溯法 back tracking
+9.7 贪心法 贪心 greedy algorithm
+9.8 分治法 devide and conquer
+9.9 动态规划法 dynamic programming

@@ -1,7 +1,7 @@
 // stl_sample.cpp : Defines the entry point for the console application.
 //
+#include <tchar.h>
 
-#include "stdafx.h"
 #include <vector>
 #include <set>
 #include <iostream>

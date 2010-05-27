@@ -1,388 +1,422 @@
-ÎÒÕâ¸ö¶©µ¥2009030216502£¬µ±Ê±Ã»ÓĞ¸øÎÒ·¢Æ±£¬²ÅÓÃÁË¼¸´Î¾Í»µÁË£¬ÏÖÔÚÒª±£ĞŞ£¬Òª·¢Æ±£¬ÄÜ¸øÎÒ²¹Ò»¸öÃ´£¿
-µêÖ÷»Ø¸´2009-08-03 13:50:04
-ÄúºÃ£¡¸ñÍş¶û£¨Gameware£©Ğ¡¾«ÁéAT0255 PC-USB ÓÎÏ·ÊÖ±ú ÊÇ20ÔªÒÔÏÂÉÌÆ·£¬²»¿ª·¢Æ±µÄ£¬ÔÚ±£ĞŞÆÚÄÚ£¬Èç¹ûÓĞÖÊÁ¿ÎÊÌâ£¬Çë´øºÃÉÌÆ·µ½ÎÒË¾µ÷»»¡£¸ĞĞ»Äú¶ÔÂÌó«òëÊıÂëÍøµÄ¹Ø×¢£¬×£Äú¹ºÎïÓä¿ì£¡
-ÔÚÏß¿Í·ş ·şÎñÊ±¼ä£ºÖÜÒ»ÖÁÖÜÎå9£º30ÖÁ17£º30
+ï»¿6222
 
-ÓÊ¼ş·şÎñ
+6222021001065422641 xdny
+æ”¯ä»˜æˆåŠŸ
 
-¿Í»§·şÎñ£ºsupport@lvtanglang.com
+è®¢å•å·ï¼š201005020000000000000780656320 
 
-¿Í»§Í¶Ëß£ºcomplain@lvtanglang.com
-
-ÊĞ³¡ÍÆ¹ã£ºMKT@lvtanglang.com
-
-²É¹º¡¢¹©Ó¦ÉÌºÏ×÷£ºBuyer@lvtanglang.com
-
-·şÎñÈÈÏß£º400-881-0080
-
-¹«Ë¾µØÖ·£ºÉÏº£ÊĞĞì»ãÇøÄÏµ¤Â·169ºÅ2012ÊÒ ÓÊ±à£º200030
+äº¤æ˜“æµæ°´å·ä¸ºï¼šHFG000001520420678 
 
 
-°æÈ¨ËùÓĞ£º ÂÌó«òëÊıÂëÍøÁ¥ÊôÓÚÉÏº£Á÷ÏèÃ³Ò×ÓĞÏŞ¹«Ë¾
 
-·şÎñÊ±¼ä£ºÖÜÒ»ÖÁÖÜÎå9£º30ÖÁ17£º30
-
-===================================================
-
-5ÔªµÖÓÃÈ¯  	5.00  	2009-04-08  	2009-10-10  	Î´Ê¹ÓÃ  	Î´Ê¹ÓÃ
-
-68 640 ÁÙÒÊÂ· ÆÖ¶«ÄÏÂ· ÆÖÈıÂ·
-
-    CString prompt;
-    AfxFormatString1(prompt, IDP_ASK_TO_SAVE, name);
-    switch (AfxMessageBox(prompt, MB_YESNOCANCEL, AFX_IDP_ASK_TO_SAVE))
-
-	CString temp;
-	temp.LoadString(IDS_ADDON_REMOVE);
-
-	CString packageName;
-	int index = getCurrentSelection(&packageName);
-
-	CString message;
-	message.Format(temp, packageName);
-
-ÃÀÅ®£¬Çë½ÌÄãÒ»¸öÎÊÌâ
-ÎÒ±¨ÁË¸öÔÚÖ°Ë¶Ê¿£¬Ñ§Ğ£·¢µÄ×Ê¸ñÉó²é±íĞèÒªµ¥Î»ÈËÊÂ²¿ÃÅµÄ¸ÇÕÂ£¬ÄãÄÇ¶ù¿ÉÒÔ¸ÇÃ´£¿
-=======
-			if(_tcscmp(_T("labels"), p->GetName()) == 0) {
+å¦‚æœæ‚¨æ²¡æœ‰å–å¾—æ‚¨æ‰€è´­ä¹°çš„å•†å“ï¼Œè¯·ç‚¹å‡»é“¾æ¥ï¼šåˆ°å•†åŸå–è´§
 
 
-	}
-	else {
-		if ( range.length() == 0 && !a ) return NULL;
-	}
+xulei8823873@hotmail.com:10points!
 
+<style type="text/css"> 
+html { 
+   filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); 
+     } 
+
+/* 
+   æˆ–è€… 
+   html *{filter:gray;} 
+   æˆ–è€… 
+   body *{filter:gray;} 
+  */ 
+
+</style> 
+
+090010292117:id6-
+
+ubuntu 10.04 lucid server:	accelops:accelops
+- chs encode
+- static ip
+  - ifconfig virbr0 192.168.0.109 netmask 255.255.255.0 gateway 192.168.0.1
+sudo vim /etc/network/interfaces
+auto eth0
+iface eth0 inet static
+address xxx.xxx.xxx.xxx #IPåœ°å€
+netmask xxx.xxx.xxx.xxx #å­ç½‘æ©ç 
+gateway xxx.xxx.xxx.xxx #ç½‘å…³	
+sudo /etc/init.d/networking restart
+sudo service network restart
+sudo ifdown/ifup eth0
+sudo ifconfig eth0 down/up
+- ftp server
+- desktop gui
+
+
+æ¡¥æ¥æ˜¯é€šè¿‡ç½‘æ¡¥æ¥è¿æ¥çš„è‹¥å¹²å±€åŸŸç½‘ï¼Œä»–å·¥ä½œåœ¨æ•°æ®é“¾è·¯å±‚
+natæ˜¯å·¥ä½œåœ¨ç½‘è·¯å±‚ï¼Œæ˜¯è§£å†³ç½‘ç»œåœ°å€ä¸è¶³çš„æŠ€æœ¯ï¼Œå®ƒå¯ä»¥ä¿æŠ¤å†…éƒ¨ä¸»æœºå…å—å¤–éƒ¨æ”»å‡»ï¼Œå¯ä»¥å®ç°æœåŠ¡å™¨è´Ÿè½½å‡è¡¡ã€‚æœ‰å¤šä¸­ç±»å‹ï¼ŒåŒ…æ‹¬é™æ€åœ°å€è½¬æ¢ï¼ŒåŠ¨æ€åœ°å€è½¬æ¢ï¼Œå¤ç”¨åŠ¨æ€åœ°å€è½¬æ¢ã€‚ 
+
+1. vi /root/.bashrc 
+æœ€ååŠ  export LANG=zh.CN.GBK ,ä¿å­˜é€€å‡ºï¼Œviä¼šç”¨å—.....   
+2ã€sudo locale-gen zh.CN.GBK 
+3ã€exitåé‡æ–°ç™»é™†å°±å¯ä»¥äº†
+
+
+I worked over time till twenty to ten today. I got a call from my monther immediately I left my seat. She heard I am walking when calling, and asked about it. I told her I just went out of office.(Maybe I should let her warry aboiut me).
+
+2.2-457 2.3-34 2.5-7
+sp_who 
+SELECT SUSER_SNAME()
+
+telnet 192.168.0.107 3000
+
+clean up notes
+implement jdbc performance monitor
+
+user: id
+wiki: id, title, content
+wiki_change_history: user_id, wiki_id, modified_time
+comments: wiki_id, 
+
+
+cnshirui means china shi rui
+csr#jd means cnshirui @ jiaoda
+
+åŸŸåï¼šphptest1.123server.cn
+1.FTPå¸å·
+ä¸»æœºï¼šphptest1.123server.cn
+ç”¨æˆ·åï¼š123server.cn_phptest1
+å¯†ç ï¼šsjf93v3k
+è¯·å°†ä¸Šä¼ æ–‡ä»¶æ”¾äºweb ç›®å½•ä¸‹
+2.æ•°æ®åº“
+åªæä¾›ä¸€ä¸ªæ•°æ®åº“
+æ•°æ®åº“å:web90_db1
+ç”¨æˆ·å:web90_u1
+å¯†ç ï¼šsjf93v3k
+æˆ‘ä»¬æä¾›åœ¨çº¿æ•°æ®åº“ç®¡ç†phpMyAdmin http://61.152.123.46:81/phpmyadmin/ä¹Ÿå¯ä»¥è¿œç¨‹æ¥å…¥
+
+WikiSysop
+
+ubuntu vmware copy *.vmx and *.vmdk
+ubuntu virtual box, create a new and mount *.vdi
+    - switch network from NAT to bridger adapter
+	- install enchance tools
+	- apt-cache search ruby
+	- apt-get install ruby=1.8.7
+	- SSH Secure Shell Client
+sudo apt-get -y install libc6-dev libssl-dev libmysql++-dev libsqlite3-dev make build-essential libssl-dev libreadline5-dev zlib1g-dev	
+
+save the attached  file to  C:\Program Files\Cisco Systems\VPN Client\Profiles
+Then open your VPN client,  select  â€œaccelops-shâ€,  login with rui.shi
+Passwd ProsHai456!
+
+
+EB040607X4
+2281176
+
+C02-2955009-0913400
+C01-1999006-9972637
+[ä¸Šæµ·]è…¾èµ·ä¿¡æ¯ç³»ç»Ÿï¼ˆä¸Šæµ·ï¼‰æœ‰é™å…¬å¸
+æµ¦ä¸œæ–°åŒºæ¾æ¶›è·¯489å·Båº§201å®¤
+todo: clean notes on saturday morning
+
+cmb 25-25, 5 pay
+icbc 1-30, 25 pay
+moe price for performance
+Gore book & movie
+english movie with script
+* serviceMon vs serviceMonAction
+* performAction detail
+grep all file in the folder
+
+Rubyç³»ç»Ÿç®¡ç†å®æˆ˜ ; Practical Ruby for system administration ; (è‹±)Andre Ben Hamouè‘— ; ä»²ç”°ç­‰è¯‘
+è‘—è€…(è‹±) æ±‰é»˜ A. B.
+æœºæ¢°å·¥ä¸šå‡ºç‰ˆç¤¾
+2008
+01/31/2010	03/14/2010	1
 	
-		protected function setDefaultTableScale():void {
-			setTableScale();
-		}
-
-        <property id="7">
-          <object>
-            <property id="name">
-              <string>_isAutoColorpercentages</string>
-            </property>
-            <property id="value">
-              <false/>
-            </property>
-          </object>
-        </property>
-
-
+Visual C++å¼€å‘åŸºäºSNMPçš„ç½‘ç»œç®¡ç†è½¯ä»¶ ; æ­¦å­Ÿå†›,å¾î¡£,ä»»ç›¸è‡£ç¼–è‘—
+è‘—è€…æ­¦å­Ÿå†›
+äººæ°‘é‚®ç”µå‡ºç‰ˆç¤¾
+2009
+02/23/2010	03/23/2010	0
 	
-	PropertySheetGlobal.PropertySheet.initProperty("maximum", false, this, "maxSeriesIndex");
+å“æœ‰æˆæ•ˆçš„ç¨‹åºå‘˜ ; The productive programmer ; (ç¾)å¼—å¾·(Neal Ford)è‘— ; ThoughtWorksä¸­å›½å…¬å¸è¯‘
+è‘—è€…(ç¾) å¼—å¾· N.
+æœºæ¢°å·¥ä¸šå‡ºç‰ˆç¤¾
+2009
+01/31/2010	03/14/2010	1
+	
+é›†ä½“æ™ºæ…§ç¼–ç¨‹ ; Programming collective intelligence ; (ç¾)Toby Segaranè‘— ; è«æ˜ ,ç‹å¼€ç¦è¯‘
+è‘—è€…(ç¾) è¥¿æ ¼å…° T.
+ç”µå­å·¥ä¸šå‡ºç‰ˆç¤¾
+2009
 
-		[Bindable]
-		public function get maxSeriesIndex1():Number
-		{
-			return _maxSeriesIndex;	
-		}
-		public function set maxSeriesIndex1(value:Number):void
-		{
-			if(this._maxSeriesIndex != value)
-			{
-				this._maxSeriesIndex = value;
-				buildSelectableItems();
-			}
-		}
-		
 
-		[Bindable]
-		public function get maxSeriesIndex():*
-		{
-			return super.maximum;	
-		}
-		
-		public function set maxSeriesIndex(newValue:*):void
-		{
-			super.maximum = newValue;
-		}  
+music, book
 
+ubuntu install snmpd, set official source
+config snmpd, 
+
+vmware share folder, vmware workstation set share folder, install linux.iso, then checn /mnt/hgfs
+
+todo
+rails: flex, ferret, reset password, rss, plugin heroku
+cpp: string class, qsork, hafman, greedy, var args, _std_call
+java: thread, unix thread, flex - event
+os: å·´å£«æ¥äº†ï¼Œæ‰¾å…¬äº¤ï¼Œå…¬äº¤æ¥äº†ï¼Œæˆ‘çš„å…¬äº¤ï¼Œæˆ‘çš„å·´å£«
+snps: script/shell, c/cpp, digital circurt,
+pdfs: c, linux, perl, data struct, algorithm, data
+
+********************************
+1. without flashplayer
+2. loading flash slowly
+********************************
+1100332023
+320623198411095437
+git pull ..\trunk.git master
+check WinXP actived, run "oobe/msoobe /a"
+
+win7-aemon: GHFMY-9H6JC-Y8KJT-8D7W7-8XW6Y
+data.promptText + ' <font color='gray'>' + data.operator + '</font>'}
+Intel PRO/Wireless 3945ABG Network Connection (requires Windows Vista or 7) *
+ntuser.dat
+Windows.edb
+15821865365
+470676727
+
+D:\dev\Apache2.2\bin\httpd.exe -w -n "Apache2.2" -k start
+D:\dev\Apache2.2\bin\httpd.exe -w -n "Apache2.2" -k stop 
+D:\dev\Apache2.2\bin\httpd.exe -w -n "Apache2.2" -k restart
+
+//GetCursorPos(&point);
+//ScreenToClient(&point);
+
+èƒ½æ­£ç¡®å¼€å¯AHCIç¡®å®èƒ½å¤Ÿæ”¹å–„æ€§èƒ½ã€‚å…³é”®æ˜¯å¦‚æœæ²¡æœ‰å¼€å¯ï¼Œç³»ç»Ÿå·²ç»åœ¨vista/win7ä¸‹å·¥ä½œï¼Œæ€ä¹ˆåŠã€‚
+é¦–å…ˆæ˜¯å¿…é¡»ä¿®æ”¹æ³¨å†Œè¡¨HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Msahci é‡Œé¢çš„Startæ”¹ä¸º0
+å¦‚æœå…ˆæ›´æ”¹bios,ä¼šç›´æ¥å¯¼è‡´ç³»ç»Ÿæ— æ³•è¿›å…¥ï¼Œåˆ‡å¿Œã€‚
+è‡³äºé©±åŠ¨ï¼Œä¸€èˆ¬æƒ…å†µä¸‹æ˜¯è‡ªåŠ¨å®‰è£…çš„ã€‚
+æˆ‘çš„ç³»ç»Ÿæ˜¯vistaã€win7åŒå¯åŠ¨ï¼Œç„¶åå†æ›´æ”¹çš„AHCI
+
+é¦–å…ˆè¿›å…¥ä¸€ä¸ªç³»ç»Ÿï¼Œä¿®æ”¹æ³¨å†Œè¡¨HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Msahci é‡Œé¢çš„Startæ”¹ä¸º0
+ç„¶åé‡å¯è¿›å…¥å¦ä¸€ä¸ªç³»ç»Ÿï¼Œå†æ¬¡ä¿®æ”¹æ³¨å†Œè¡¨HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Msahci é‡Œé¢çš„Startæ”¹ä¸º0
+å†è¿›å…¥biosï¼Œåœ¨é«˜çº§é‡Œæ‰¾åˆ°AHCIé€‰é¡¹å¹¶ä¿®æ”¹ï¼ˆå› æœºè€Œå¼‚ï¼‰
+æœ€ååˆ†åˆ«è¿›å…¥åˆ°å…¶ä¸­çš„ä¸€ä¸ªç³»ç»Ÿï¼Œç³»ç»Ÿä¼šè‡ªåŠ¨å®‰è£…é©±åŠ¨å¹¶é‡å¯ï¼Œç„¶åæ¢å¦ä¸€ä¸ªï¼Œå…¶å®å¾ˆæ–¹ä¾¿ã€‚
+
+è‡³äºèƒ½æé«˜å¤šå°‘ï¼Œæˆ‘å€’æ˜¯æ„Ÿè§‰ä¸æ˜¯å¥½å¾ˆå¤šã€‚
+é¡ºä¾¿è¯´ä¸‹XPä¸‹æ€§èƒ½æå‡éå¸¸æœ‰é™
+-------------------
+åœ¨ç”¨æˆ·ä¸»ç›®å½•ä¸‹æœ‰ä¸€ä¸ª .bashrc æ–‡ä»¶ï¼Œå¯ä»¥åœ¨æ­¤æ–‡ä»¶ä¸­åŠ å…¥ PATH çš„è®¾ç½®å¦‚ä¸‹ï¼š
+export PATH=â€$PATH:/your path1/:/your path2/â€¦..â€
+excute when user open shell
+
+åœ¨ .bash_profileä¸­å¢åŠ ã€‚
+PATH="$PATH:/usr/local/arm/2.95.3/bin"
+export PATH
+run: source profile
+execute when user login
+
+From what I can gather it that is because the chrome browser, sitting on the chrome os, is trying to get the chrome os proxy, which there currently isn't a way to set. You can get to a terminal though by pressing Ctrl+alt+t. So if some Linux god knows how to set the proxy via terminal then we may be sorted! Tried the export method & that doesn't seem to work. gedit doesn't seem to work either.
+set http_proxy env
+export http_proxy=http://Usernameassword@proxyserver.netort/
+export ftp_proxy=http://usernameassword@proxyserver.netort/
+
+junction j:\git\trunk_ibm d:\perforce\git\trunk
+#include "com/infostor_i.c"
+
+git clone trunk_ibm trunk
+
+
+#pragma   warning(disable:4706)   
+#define MODE_RESULT_OBJECT	L"modeResultObject"
+#define MODE_PROMPT			L"modePrompt"
+15821865365
+470676727
+//GetCursorPos(&point);
+//ScreenToClient(&point);
+ffmpeg.exe -y -i "è½¬æ¢è§†é¢‘è·¯å¾„" -s 320x240 -vcodec h264 -qscale 4   -ar 24000 -f psp -muxvb 768 "ä¿å­˜è·¯å¾„"
+wmic process where caption="ffmpeg.exe" get caption,commandline /value
+Caption=ffmpeg.exe
+CommandLine=ffmpeg -y -i "1.flv" -ac 2 -ab 64k -ar 48000 -vcodec mpeg4 -s 320x240 -padtop 0 -padbottom 0 -padleft 0 -padright 0 "1.mp4"
+æˆ‘çš„ç³»ç»Ÿæ˜¯vistaã€win7åŒå¯åŠ¨ï¼Œç„¶åå†æ›´æ”¹çš„AHCI
+//connection/bindings/property[name/string='prompts']/value/binding/endpoint[@id='BOC88D60A605C748AEA82C1B266C46F3C6']
+ç„¶åé‡å¯è¿›å…¥å¦ä¸€ä¸ªç³»ç»Ÿï¼Œå†æ¬¡ä¿®æ”¹æ³¨å†Œè¡¨HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\Msahci é‡Œé¢çš„Startæ”¹ä¸º0
+å†è¿›å…¥biosï¼Œåœ¨é«˜çº§é‡Œæ‰¾åˆ°AHCIé€‰é¡¹å¹¶ä¿®æ”¹ï¼ˆå› æœºè€Œå¼‚ï¼‰
+æœ€ååˆ†åˆ«è¿›å…¥åˆ°å…¶ä¸­çš„ä¸€ä¸ªç³»ç»Ÿï¼Œç³»ç»Ÿä¼šè‡ªåŠ¨å®‰è£…é©±åŠ¨å¹¶é‡å¯ï¼Œç„¶åæ¢å¦ä¸€ä¸ªï¼Œå…¶å®å¾ˆæ–¹ä¾¿ã€‚
+		// 
+		// int j=0; j++;
+////component/bindings/property/value/binding/endpoint/@id/../../../../../../@id
+////component/bindings/property/value/binding/endpoint/@id/../../../../../../@displayName	
+  //      MSXML2::IXMLDOMNamedNodeMapPtr map = pCompNode->Getattributes();
+  //      MSXML2::IXMLDOMAttributePtr atrb = map->getNamedItem("className");
+åœ¨ .bash_profileä¸­å¢åŠ ã€‚
+PATH="$PATH:/usr/local/arm/2.95.3/bin"
+export PATH
+			// hide tool tip and set cursor busy
+			return _selected;
+		[Bindable]		
+		public function set selected(selected:Boolean):void 
+		{
+	//m_csProp = L"propertySheets/DSLPromptPropertySheet.swf";
+junction j:\git\trunk_ibm d:\perforce\git\trunk
+#include "BCGCBPro.rc"
+		// center dialog in screen
+<xn:swf imgsrc="http://roamer.shirui.org/opensocial/loading_001.gif" width = "200" height="200" flashvars="haha=hehe&a=b"
+        swfbgcolor="#FFFFFF" waitforclick="true" swfsrc="http://roamer.shirui.org/opensocial/CampusRoamer.swf"
+        salign="br" loop="false" quality="high" scale="showall" align="center" wmode="transparent" />
+-------------		
+<div id="swf_div"></div>
+
+<style type="text/css">
+  .flash_img {
+    border-width: 1px;
+    border-style: dashed;
+  }
+</style>
+
+<script type="text/javascript">
+    var swf = document.createElement('xn:swf');
+    swf.setSWFSrc('http://roamer.shirui.org/opensocial/CampusRoamer.swf');
+    swf.setWidth(400);
+    swf.setHeight(200);
+    swf.setWaitForClick(true);
+    swf.setImgSrc('http://roamer.shirui.org/opensocial/loading_001.gif');
+    swf.setImgStyle({'opacity':0.5});
+    swf.setImgClass('flash_img');
+    swf.setScale('exactfit');
+    swf.setSWFBGColor('#ffffff');
+    swf.setLoop(false);
+    swf.setQuality('low');
+    swf.setAlign('r');
+    swf.setSAlign('br');
+    var swf_div = document.getElementById('swf_div');
+    swf_div.appendChild(swf);
+</script>
+----------------		
+
+if config ssh for git, then put "C:\Program Files\Git\cmd" on the top;
+
+ style="font-family: Verdana, Arial, Helvetica, sans-serif"
+ 
+  <script type=Â¡Â®text/javascript'>
+
+      function readyLoad() {
+            // $("loading_div").slideUp();
+      }
+
+  </script>
   
-
-		// lastNotEmpty is an index, we'll return the count of non-black elements
-            return lastNotEmpty + 1;
-			
-					
-			//PropertySheetGlobal.Proxy.setProperty("maximum", 60);
-			
-			// init maxSeriesIndex
-/* 			var proxy:IPropertySheetProxy = PropertySheetGlobal.Proxy;
-			var array:Array = proxy.getProperties(["maxSeriesIndex", "displayKey"]);
-			maxSeriesIndex = array[0].value;	 */			
-
-			
-			// init maxSeriesIndex
-			maxSeriesIndex = PropertySheetGlobal.Proxy.getProperties(["maximum"])[0].value;
-			
-ÏÈ³´Ìâ²Ä¹É,ÔÙ×ö´óÅÌ¹É,°ëÄê×öÁËÁ½²¨ĞĞÇé,µÈÓÚÊÇ×¬ÁËÒ»ÄêµÄÇ®
-
-GuangFa	027001023941:May16, 2009
-
-¶©µ¥±àºÅ£º	6277371
-±±¾©  	±±¾©¡¢Ìì½ò¡¢ºÓ±±¡¢É½Î÷¡¢ºÓÄÏ¡¢ÁÉÄş¡¢¼ªÁÖ¡¢ºÚÁú½­¡¢ÄÚÃÉ¹Å¡¢É½¶«¡¢ºş±±¡¢ËÄ´¨¡¢ÖØÇì¡¢¹óÖİ¡¢ÔÆÄÏ¡¢Î÷²Ø¡¢ÉÂÎ÷¡¢¸ÊËà¡¢Çàº£¡¢ÄşÏÄ¡¢ĞÂ½®  	010-82625500
-ÉÏº£ 	½­ËÕ¡¢Õã½­¡¢ÉÏº£¡¢°²»Õ¡¢µöÓãµº 	021-51785500
-¹ãÖİ 	¹ã¶«¡¢¹ãÎ÷¡¢¸£½¨¡¢ºşÄÏ¡¢½­Î÷¡¢º£ÄÏ¡¢Ì¨Íå¡¢Ïã¸Û¡¢°ÄÃÅ 	020-83963900
-
-  if(m_hXlfFile) 
-		{
-			// close file, give access control to copy from the temp zip file to the original file
-			CloseHandle(m_hXlfFile);
-			BOOL b = CopyFile(tmpFileName.c_str(), fileName.c_str(), FALSE);
-
-			// create a new file handle to lock the xlf file
-			m_hXlfFile = CreateFile(fileName.c_str(),		// open file
-								  GENERIC_READ,             // open for reading
-								  0,                        // do not share
-								  NULL,                     // no security
-								  OPEN_EXISTING,            // existing file only
-								  FILE_ATTRIBUTE_NORMAL,    // normal file
-								  NULL);					// no attr. template
-			LockFile(m_hXlfFile, 0, 0, GetFileSize(m_hXlfFile,  NULL), 0);
-
-			DWORD errorCode = GetLastError();
-
-027001023941	0270010239415 	Ç×°®µÄ¹ã·¢¿Í»§£¬»¶Ó­ÄúµÇÂ¼¹ã·¢ÍøÕ¾¡£Èç¹ûÄãÊÇµÚÒ»´ÎµÇÂ¼±¾ÍøÕ¾£¬ÇëÊ¹ÓÃ¡°¿Í»§±àºÅ·½Ê½¡±µÇÂ¼£¬Í¬Ê±ÎÒÃÇÎªÄúÔ¤ÉèÁËÃÜÂë¡£ Ê×´ÎµÇÂ¼ÇëÊ¹ÓÃÄúÉí·İÖ¤µÄºóÁùÎ»Êı×÷ÎªÃÜÂë£¬µ±È»ÄãÒÔºóÒ²¿ÉÒÔĞŞ¸ÄÄúµÄÃÜÂë£¬´ÓµÚ¶ş´ÎÆğ¾Í¿ÉÒÔÊ¹ÓÃ¡°ÓÃ»§êÇ³Æ¡±µÇÂ¼¡£
-					
-Test case:
-Open xlf_version_50, should popup a previous_version warning. The file should be locked, open another file, the file should be unlocked. The opened file should be locked. Create a new document, the second file should be unlocked.
-
-Open xlf_version_60, should popup a newer_version warning. Click "Yes" should open xlf as usual.
-
-Open xlf_version_53, then open xlf_version_60, give an above warning, Click "No", 
-
-		MSXML2::IXMLDOMCDATASectionPtr cData = noteNode->GetfirstChild();
-		if(cData) {
-			cData->data = _bstr_t(csNote);
-		}
-		else {
-			cData = pDom->createCDATASection(_bstr_t(csNote));
-			noteNode->appendChild(cData);
-		}
-
-www.fescoshanghai.com: id-cnshirui@fesco
-
-{"Open method of Workbooks class failed" (1)}
-"Unknown error 0x800A03EC"
-=======
-https://docs.google.com/View?id=dcwptqgd_160d4j37qct
-
-È»ºóĞèÒª https ·ÃÎÊ£¬
-ÓÃ»ğºüµÄÍ¬Ñ§ÓĞ¸£ÁË£¬¿ÉÒÔÖ±½Ó°²×° http ×ª https µÄÓÍºï×Ó½Å±¾£¬
-
-https://addons.mozilla.org/zh-CN/firefox/addon/748 ÓÍºï×Ó
-https://userscripts.org/scripts/show/29090 ×Ô¶¯×ª»» https ½Å±¾£¬Ôö¼ÓÅäÖÃ facebook.com/*
-
-¾ßÌå²½Öè¿É·ÂÕÕ·ÃÎÊ Twitter µÄ·½Ê½
-http://www.kenengba.com/post/1298.html
-
-%Systemroot%\System32\Drivers\Etc
-124.40.42.105 www.facebook.com
-69.63.180.173 login.facebook.com
-69.192.34.110 s-static.ak.facebook.com
-69.63.176.69 secure-profile.facebook.com
-69.63.176.59 secure-media-sf2p.facebook.com
-69.63.178.13 ssl.facebook.com
-96.6.122.57 profile.ak.facebook.com
-64.211.21.152 b.static.ak.facebook.com
-
-===========
-
-ADSL: ad44076357@90088282
-
-graduate: 102841200705150103
-		  10284120070515103
-		  
-ÇëÀÎ¼ÇÄúµÄ±¨Ãû±àºÅ£º 093102004018
-http://www.shmeea.edu.cn cnshirui cnshirui@_sjtu
-https://www.chsi.com.cn
-shiruide@gmail.com: 777777		  
-
-
-sgsine15.sin.sap.corp
-Shi, Roy
-
-
-		try {
-			// add your block here
-		}
-		catch (_com_error &e) {
-			_bstr_t source = e.Source ();
-			_bstr_t description = e.Description ();
-			std::wstring errorMessage (e.ErrorMessage ());
-
-			// include <sstream>
-			std::wstringstream message;
-
-			message << L"COM error - source: <" << source 
-				<< L">, description: <" << description 
-				<< L">, error message: <" << errorMessage 
-				<< L">" 
-				<< std::endl;
-
-			::OutputDebugString (message.str ().c_str ());
-		}
-		  
-shg-s-xi31
-administrator/Bo123456
-http://shg-s-xi31:8080/dswsbobje/services/session
-
-
-
-
-  1¡¢ÄãÈç¹ûÒªÔÚÄãºÍ³ÌĞòÖĞ¼ÓÈëword   µÄ´úÂë£ºCtrl+W->Add   Class->form   ...  
-  ´ò¿ªofficeÄ¿Â¼ÏÂµÄmsword9.olb£¬È«Ñ¡ÆäÖĞµÄÀà¡£  
-   
-  2¡¢ÓÃÄãµÄ³ÌĞòµ÷ÓÃword   :  
-  °´ÕÕMSDN   Q221992   µÄ²½ÖèÔÚÄãºÍ³ÌĞòÖĞ¼ÓÈëºê(ÒÔOnInitialUpdate()Îª»ù×¼º¯Êı)£¬ÔÚµ÷ÓÃºêµÄµØ·½ÊäÈë    
-  Set   obj=CreateObject("word.application")  
-  obj.visible=true  
-  msgbox("ok")  
-  Set   Obj=nothing
   
-=========
+var appConfig = new Object();
 
-  ÔÚOfficeÓ¦ÓÃ³ÌĞòÖĞ£¬²Ëµ¥ºÍ¹¤¾ßÀ¸±»ºÏ³ÉÔÚÒ»¸ö¿É±à³ÌµÄÃûÎªCommandBarsµÄ¼¯ºÏÖĞ¡£×÷ÎªÒ»ÖÖÍ¨ÓÃµÄ¿É±à³Ì¶ÔÏó£¬CommandBars¿ÉÒÔ³ÉÎªÈÎºÎµÄOfficeÓ¦ÓÃ³ÌĞò¶ÔÏóÄ£ĞÍµÄÒ»²¿·Ö£¬CommandBarsËùÑÚ¸ÇµÄÊÇÒ»ÖÖÍ³Ò»µÄ±à³Ì»úÖÆ£¬¸Ã»úÖÆÊ¹µÃµ¥¸öµÄ¹¤¾ßÀ¸ºÍ²Ëµ¥Ïî¿ÉÒÔ±»Ìí¼Óµ½ÏàÓ¦µÄÓ¦ÓÃ³ÌĞòÖĞ¡£Ã¿Ò»¸öCommandBars¼¯ºÏ¶¼ÊÇÓĞ²»Í¬µÄCommandBar   Objects×é³É£»Ã¿Ò»¸öCommandBars   Object   ÓĞÓÖ²»Í¬µÄ³ÆÎªCommandBarControlsµÄ¶ÔÏó×é³É£¡  
-  CommadBarControls   Ëù±íÊ¾µÄÊÇÓÉ²»Í¬µÄ¶ÔÏóºÍ×Ó¶ÔÏó¹¹³ÉµÄ¸´ÔÓµÄ¼Ü¹¹£¬½ø¶øÓÃÕâĞ©¶ÔÏóºÍ×Ó¶ÔÏó×é³ÉÒ»¸öµ¥¶ÀµÄ¶ÔÏóÄ£ĞÍ¡£Ò»¸öCommandBarControl   ±¾Éí°üº¬Ò»¸öCommandBar   ¶ÔÏó£¨¿ÉÒÔ·ÃÎÊ²å¼şÖĞµÄ¸Ã¶ÔÏóµÄÊôĞÔ£©¡£Òò´Ë£¬×îÖÕÊ¹µÃÃ¿Ò»¸ö´¦ÓÚCommandBarControls   ¼¯ºÏÖĞCommandBarControl   ¶ÔÏó¼È¿ÉÒÔÊÇÒ»¸öCommandBarComoboBox(Toolbar   combobox),Ò²¿ÉÒÔÊÇÒ»¸öCommandBarButton(Toolbar   button),ÒÖ»òÊÇÒ»¸öCommandBarPopup(Popup   menu).ÎÒ¿ÊÍûÄÜ»æ³öÒ»¸öÇåÎúµÄ±íÊ¾¶ÔÏó¹ØÏµµÄÊ¾ÒâÍ¼£¬µ«ÊÇÎÒÈ·Êµ²»ÉÃ³¤»æÍ¼£¨ËµĞÄÀï»°£©£¬µ±È»ÁË£¬ÎÒÒ²È·ĞÅÕâÑùµÄ¹ØÏµÍ¼ÔÚmsdnÖĞ¹ØÓÚÈçºÎÃèÊö MS   Office   CommandBarsµÄÕÂ½ÚÖĞÓĞÇåÎúµØËµÃ÷£¡
-  
-#ifndef SWFOBJ_LIST_AS_VECTOR	
-#else	
-#endif
+function getAppConfig() {
+    
+    appConfig.appID = 25256;
+    appConfig.appVersion = 27;
+    appConfig.appURL = "http://apps.renren.com/opensocial_test";
+    appConfig.serverURL = "http://shirui.xicp.net:81";
+    appConfig.profilePath = "http://xiaonei.com/profile.do?id=";
 
-#ifndef SWFOBJ_LIST_AS_VECTOR
-    std::list<swfObj*>::iterator m_itrBeforeSymbolClass;
-    std::list<swfObj*>::iterator m_itrBeforeShowFrame;
-#else	
-    std::vector<swfObj*>::iterator m_itrBeforeSymbolClass;
-    std::vector<swfObj*>::iterator m_itrBeforeShowFrame;
-#endif
-
-  Ò²¾ÍÊÇËµ£¬ÔÚµÚ¶ş´Îvec.push_backµÄÊ±ºò£¬vecµÄcapacity¼Ó±¶ÁË¡£  
-  Ò²¾ÍÊÇËµ£¬µÚ¶ş´Îpush_backµÄÊ±ºò£¬ÏµÍ³½«vecµÄÈİÁ¿¼Ó±¶£¬È»ºó½«Ô­ÏÈµÄÖµ¿½±´µ½ĞÂÄÚ´æÖĞ£¬ÊÍ·ÅÔ­ÏÈµÄÄÚ´æ¡£  
-  ËùÒÔÄãÄÇ¸ö±ä³ÉÒ°Ö¸ÕëÁË
-  
-  +		iter2	-17891602	std::_Vector_iterator<int,std::allocator<int> >
-
-
-	/*
-	std::vector<boost::shared_ptr<swfObj>>::iterator iter = m_mapFrames[p];
-	boost::shared_ptr<swfObj> obj = *iter;
-	std::vector<boost::shared_ptr<swfObj>>::iterator iter2 = swfObjList.end();
-	if(m_mapFrames[p] == swfObjList.end())
-	{
-		return boost::shared_ptr<swfObj> ();
-	}*/
-
-
-ÄãÖ±½ÓÓÃftp¿´°É 221.231.137.111 ¶Ë¿Ú21 hsenviro 1985918
-peter.wll Ëµ (5:50 PM):
-ÓÃ»§Ãûhsenviro ÃÜÂë1985918
-
-
-20  4270305600196313 2009-05-25 2009-05-25 ÈËÃñ±Ò×Ô¶¯×ªÕÊ»¹¿î µÚÒ»Ö§ĞĞ(ĞÅÓÃ¿¨ÒµÎñ 1,342.55  ÈËÃñ±Ò 1,342.55  ÈËÃñ±Ò -1,315.92 
-
-
-1. swfObjList, quick delete blank element
-2. shared_ptr usage
-3. 
-
-========
-		std::list<boost::shared_ptr<swfObj>> swfObjList;
-        shared_ptr<swfObj> pObj = ( *cursor);
-
-        //Check refcount for all objects other than template bucket
-        if (ut.isInUse (pObj.get ()))
-========		
-		
-// #include <windows.h>
-// #include <sstream>
-// #include <boost/timer.hpp>
-// boost::timer readPart;
-// report(readPart, L"---------------> ");
-static void report (boost::timer &t, const wchar_t *prefix)
-{
-    std::wstringstream message;
-    message << prefix << ": ";
-    message << t.elapsed();
-    message << "\n";
-    ::OutputDebugString (message.str().c_str());
-    t.restart();
+    return appConfig;
 }
 
-#include <boost/timer.hpp>
-first chance exception	0x80000001	Not implemented
-[Frames below may be incorrect and/or missing, no symbols loaded for FlDbg10b.ocx]	
-The details of how to suppress this error are different for every IDE, but in VC7, you go to Debug->Exceptionsa€|, select Win32 Exceptions, then hit Adda€| - for number input 0?¡ª80000001, and description can be whatever you like. Ia€?d recommend a€?page guarda€
+        // confirm("Are you sure to recommend this application to friends?");
+
+        // 34257572
+        // opensocial.requestShareApp(recipients, reason, opt_callback, opt_params)
+        // VIEWER, OWNER, VIEWER_FRIENDS, OWNER_FRIENDS, or a single ID within one of those groups
+
+        // var opt_params = {"appId": 24820, "returnUrl":"http://apps.renren.com/campus_roamer"};
+        
+        // appConfig = getAppConfig();
+        // var opt_params = {"appId": appConfig.appID; "returnUrl": appConfig.appURL };
+        // opensocial.requestShareApp ("VIEWER_FRIENDS", "Welcome to Campus Roamer1", callback, opt_params);
+        // opensocial.requestShareApp (null, "message abc", callback, opt_params);
+        // opensocial.requestShareApp ("VIEWER_FRIENDS", "Welcome to Campus Roamer1", callback, opt_params);
+		
+//function getServerURL() {
+//    // return "http://roamer.shirui.org";
+//    return "http://shirui.xicp.net:81";
+//}
+//
+//function getProfilePath() {
+//    // return "http://www.yiqi.com/home.php?tab=parlor&uid=";
+//    return "http://xiaonei.com/profile.do?id=";
+//}
+
+function getAppConfig() {
+    // opensical test
+    appConfig.appID = 25256;
+    appConfig.appVersion = 27;
+    appConfig.appURL = "http://apps.renren.com/opensocial_test";
+    appConfig.serverURL = "http://116.227.21.231:3000";
+    appConfig.profilePath = "http://xiaonei.com/profile.do?id=";
+
+    // campus roamer
+//    appConfig.appID = 25256;
+//    appConfig.appVersion = 27;
+//    appConfig.appURL = "http://apps.renren.com/opensocial_test";
+//    appConfig.serverURL = "http://shirui.xicp.net:81";
+//    appConfig.profilePath = "http://xiaonei.com/profile.do?id=";
+
+    return appConfig;
+}
+
+    <div>
+    <button type="button" id="myButton"  onclick='shareApp()'>Invite Friends</button><br/>
+    <p>flash container div 20</p>
+    <div>
+	
+	xnml: only use rshi instead of ruby_client
+	
+	http://www.cygwin.cn/pub/
 
 
-keytool -list -v -keystore certificate.p12 -storepass bobobo123
-keytool -list -v -keystore d2aapplet.keystore -storepass 12345678 -storetype IAIKKeystore
-1: 	openssl pkcs12 -in certificate.p12
-2:	keytool -list -v -storetype pkcs12 -keystore certificate.p12 -storepass bobobo123
+1. write a plugin for backup heroku
+2. set frame color as red, and not out of frame
+
+- livecd & manual 6.5
+- create vmware with SCSI-BusLogic
+- create two primary disk
+  - mkswap /dev/sda1
+  - mkfs.xfs /dev/sda2
+- add the disk file to Ubuntu as /dev/sdb2
+
+Business Objects 2008 ChartSupport
+photoSketh print
+clean up webs
+LFS CHS
+MFC 4 big
+- Desserting MFC
+- 
+- Inside Visual Studio 5.0
+- Programming Windows with MFC
+
+Visual Studio User Guide
+dazi's spring song
+ctex
+ã€ŠPragmatic Programmerã€‹, 
+ã€ŠThe Art of UNIX Programmingã€‹, 
+ã€ŠElements of Programming Styleã€‹ å’Œ 
+ã€ŠThe Productive Programmerã€‹
+
+http://src.chromium.org/viewvc/chrome/releases/
+
+//connection[@className='xcelsius.rpc.dsl.QueryConnection' and properties/property[name/string='prompts']/value/array/property]
+
+201720186
+207459413
+
+æ‚¨å¥½ï¼æˆ‘ä»Šå¤©æ”¶åˆ°å°ç”µ teclast TL-C400HD-K8GB é«˜æ¸…æ’­æ”¾å™¨ï¼Œä½†æ˜¯ä¸èƒ½æ’­æ”¾FLVæ–‡ä»¶ï¼Œè€Œå•†å“æè¿°é‡Œè¯´è¿‡æ”¯æŒFLVæ ¼å¼çš„ã€‚èƒ½ä¸èƒ½é€€è´§ï¼Œæˆ–è€…æ¢è´§ï¼ˆå°ç”µ C410HD é«˜æ¸…æ’­æ”¾å™¨ï¼‰ã€‚è°¢è°¢ï¼
 
 
+å•†å“ä¸€åˆ‡å®Œå¥½ï¼Œé‚£å°±é€€è´§å§ï¼
 
+201720186
+207459413
 
-Ê±¼ä´Á
+OLEDB: ADO
+server:	adaptrptdb.pgdev.sap.corp
+user:	adapt_rpt
+pwd:	bosap123
+db: 	ADAPT
 
-¶Ô AIR ÎÄ¼ş½øĞĞÇ©ÃûÊ±£¬´ò°ü¹¤¾ß»á²éÑ¯Ê±¼ä´Á»ú¹¹µÄ·şÎñÆ÷£¬ÒÔ»ñÈ¡¿É¶ÀÁ¢ÑéÖ¤µÄÇ©ÃûÈÕÆÚºÍÊ±¼ä¡£»ñÈ¡µÄÊ±¼ä´ÁÇ¶ÈëÔÚ AIR ÎÄ¼şÖĞ¡£Ö»ÒªÇ©ÃûÊ±Ç©ÃûÖ¤ÊéÓĞĞ§£¬¼´Ê¹ÔÚÖ¤Êé¹ıÆÚºóÒ²¿ÉÒÔ°²×° AIR ÎÄ¼ş¡£ÁíÒ»·½Ãæ£¬Èç¹ûÎ´»ñÈ¡Ê±¼ä´Á£¬ÔòÔÚÖ¤Êé¹ıÆÚ»ò±»µõÏúÖ®ºó£¬AIR ÎÄ¼ş½«±äµÃ²»¿É°²×°¡£
-
-Ä¬ÈÏÇé¿öÏÂ£¬AIR ´ò°ü¹¤¾ß»á»ñÈ¡Ê±¼ä´Á¡£È»¶ø£¬ÈôÒªÔÊĞíÔÚÊ±¼ä´Á·şÎñ²»¿ÉÓÃÊ±´ò°üÓ¦ÓÃ³ÌĞò£¬Äú¿ÉÒÔ½ûÓÃÊ±¼ä´Á¡£Adobe ½¨ÒéÊ¹ËùÓĞ¹«¿ª·Ö·¢µÄ AIR ÎÄ¼ş¶¼°üº¬Ò»¸öÊ±¼ä´Á¡£
-
-AIR ´ò°ü¹¤¾ßËù²ÉÓÃµÄÄ¬ÈÏÊ±¼ä´Á»ú¹¹ÊÇ Geotrust¡£
-
-java -jar adt.jar -package -storetype PKCS12 -keystore certificate.p12 -tsa none -storepass bobobo123 1.air application.xml  -C "d:" 1.swf wrap.swf abidStyle.swf
-mxmlc.exe +configname=air -locale en_US -include-libraries=framework.swc wrap.mxml
-
-\\10.58.0.28\Public\Slide for Share & Learn Session\ABAP Compiler Infrastructure and ABAP Code Search.ppt
-https://wiki.wdf.sap.corp/display/bprsh
-StandardFocus#getLinerFocus
-
-
-¹ØÓÚ7290ÊäÈë·¨ÉèÖÃµÄ¾ßÌåº¬Òå
-
-¸ÕÈëÊÖ7290Ã»¼¸Ìì£¬Ò»Ö±ÔÚ×ÁÄ¥£¬¹ØÓÚÊäÈë·¨µÄÉèÖÃÓĞ¼¸µã·¢ÏÖ£¬´ó¼Ò¿ÉÒÔÊÔÊÔ¡£
-ÔÚÑ¡Ïî£­£­ÓïÑÔ£­£­ÊäÈë·¨½øÈë±à¼­ÊäÈë·¨Ñ¡Ïî£º
-Éù    Òô£ºÈç¹û¿ªµÄ»°£¬ÓÃshift¼ÓÊı×Ö1£¬2£¬3£¬4¾ÍÊÇÆ´ÒôµÄ4Éù
-¼Ç    Òä£º¾ÍÊÇ¼ÇÂ¼´ó¼Ò¾­³£´òµÄ´Ê×é£¬·½±ãÏÂ´ÎÊäÈë£¬±ÈÈçºÚİ®Õâ¸ö´Ê£¬µÚÒ»´ÎÊäÈëµÄÊ±ºò£¬İ®×ÖÒªÑ¡Ôñ£¬µÚ¶ş´ÎÊäÈëµÄÊ±ºòİ®×Ö¾ÍÊÇµÚÒ»¸öÁË
-ÊäÈë¶ÌÓï£º¹ËÃûË¼Òå¾ÍÊÇ¿ÉÒÔÖ±½ÓÊäÈëÒ»Ğ©´Ê£¬±ÈÈç£ºÎªÊ²Ã´=wsm
-Ô¤    ²â£º¾ÍÊÇÁªÏë¹¦ÄÜ£¬Õâ¸úÊÖ»ú×Ô´øµÄ´Ê¿â´óĞ¡ÓĞ¹ØÏµ£¬²»¹ıÆ½³£ÓÃµÄ¶ÌÓï»¹ÊÇÄÜÌáÇ°Ô¤²â³öÀ´µÄ
-ÖÇÄÜ±àºÅ£ºÎÒ¾õµÃÕâ¸ö¹¦ÄÜ±È½ÏºÃ£¬ÔÚÑ¡Ôñ×ÖµÄÊ±ºòÖ±½Ó°´Êı×Ö¼ü¾Í¿ÉÒÔÁË£¬²»ÓÃÔÙ°´shift
-
-
-ÉÌÎñ ÈÕ±¾ txt
-ÌìÌÃµÄÀ×öªºÅ
-
-À×öªºÅ
-¡¡¡¡µçÊÓ¾çÃû³Æ£º¡¶À×öªºÅ¡·
-¡¡¡¡ÁíÒëÃû£º¡¶ÌìÌÃµÄÀ×öªºÅ¡·
-¡¡¡¡¹ÊÊÂ¹£¸Å£º
-¡¡¡¡ÔÚÒ»¸ö½ĞÌìÌÃµÄº£Ì²£¬×¡×ÅÍËÎéµÄº£¾üÂ½Õ½¶ÓÔ±Ë¹±öÈûºÍËûµÄÅóÓÑÂŞ±öÒÔ¼°Ë¹±öÈûµÄÅ®¶ù£¬ËûÃÇÓĞÒ»Ìõ¸ß¿Æ¼¼µÄ¿ìÍ§"À×öªºÅ" ¡£"À×öªºÅ"ÊÇÒ»ËÒ´ø¸ß¼¶µçÄÔ£¨ÄÜÊ¶±ğÍ¼Ïñ¡¢ÓïÒô£©£¬ÅäÓĞ¼ÓËÙÒıÇæ¡¢»úÆ÷ÈË³µ£¬ÓĞ×Ô¼ºµÄÎäÆ÷ÏµÍ³µÄ¿ìÍ§£¬·Àµ¯¡£Ë¹±öÈûÊÇ¼¡ÈâÄĞ£¬Á¦´óÎŞ±È£¬ºÍËûµÄÅóÓÑÂŞ±öÒ»ÑùÒÔÇ°ÊÇº£¾üÂ½Õ½¶ÓµÄ£¬ÓĞ·á¸»µÄÕ½¶·¾­Ñé£¬Ã¿Ò»¼¯¶¼ÓĞÒ»¸öĞ¡¹ÊÊÂ£¬´øÓĞĞ©¿Æ»ÃÒÔ¼°Ã°ÏÕµÄÉ«²Ê¡£
-¡¡¡¡ÆäËûÏà¹Ø×ÊÁÏ£º
-¡¡¡¡³ı´ËÖ®Íâ»¹ÓĞÁ½²¿ÓĞ¹ØµÄµçÊÓ¾ç£¬×Ü¹²´Õ³É¡°º£¡¢Â·¡¢¿Õ¡±Èı²¿¡£ËûÃÇÊÇ
-¡¡¡¡¡¶Åùö¨ÓÎÏÀ¡·ÊÇËµµÄÒ»Á¾ÉñÆøµÄºÚÉ«½Î³µ£¬¿ÉÒÔËµ»°¡¢×Ô¶¯¼İÊ»¡¢µ¶Ç¹²»ÈëµÈµÈµÄ¹¦ÄÜ¡£
-¡¡¡¡¡¶·ÉÀÇ¡·µÄÔ­ĞÎÀ´×ÔÓÚÃÀ¹úµÄ°¡ÅÁÆëÎä×°Ö±Éı»ú¡£ÆäËû×ÊÁÏ²»Ïê¡£
-
-Åùö¨ÓÎÏÀ
-Ò»¹²ÓĞ4¼¾
-2000ÄêÓĞÒ»²¿µçÓ°
-08ÄêÖØ³ö½­ºş£¬ÏÈÊÇÒ»²¿µçÓ°½éÉÜÁË08ÄêÖØĞÂ¿ªÊ¼µÄ¾ç¼¯µÄÖØÒªÈËÎï
-È»ºó¾ÍÊÇÏÂ°ëÄê¿ªÊ¼ĞÂÒ»¼¾£¬Ö÷½ÇÊÇÏÈÇ°²¿µÄÄĞÖ÷½ÇµÄ¶ù×Ó
-ÉÏĞÇÆÚ²¥Íê£¬Ò»¹²17¼¯
-¿ÉÒÔÔÚµçÂ¿ÉÏÕÒµ½È«²¿¾ç¼¯µÄ×ÊÔ´ 
-
-¡¶Åùö¨ÓÎÏÀ¡·¡£¡¶Åùö¨ÓÎÏÀ¡·ÊÇ×Ô1982ÄêÖÁ1986ÄêÆğÔ´×ÔÃÀ¹úµÄÈÈÃÅµçÊÓ¾ç£¬Ôø·ÅÓ³¹ıÅùö¨ÓÎÏÀµÄ¹ú¼Ò³¬¹ı80¹ú¡£¾¯¹ÙÂó¿ËÀÊÔÚÒ»´ÎÖ´ĞĞÈÎÎñÖĞ±»×Óµ¯»÷ÖĞÍ·²¿£¬ĞÑÀ´ºó·¢ÏÖ×Ô¼º¾¹È»±ä³ÉÁËÒ»¸öÄ°ÉúÈËµÄÄ£Ñù£¡²»½öÈç´Ë£¬ËûµÄÉí·İÒ²ÍêÈ«¸Ä±äÁË¡£¾È»îËûµÄÊÇÕş¸®Á¢·¨»ùµØµÄ´÷ÎÄ£¬´÷ÎÄ¸æËßËû£ºÂó¿ËÀÊÒÑ¾­ËÀÁË£¬´úÌæËûµÄ½«ÊÇÂó¿ËÄÎÌØ£¡²¢ÇÒ½»¸øËûÒ»Á¾¶ÀÒ»ÎŞ¶şµÄÆû³µ¡ª¡ª»ùÌØ£¨K.I.T.T.£©£¬´Ó´Ë£¬ÊÀ½çÉÏ¶àÁËÒ»Î»×¨ÃÅ³ÍÖÎÌÓ±Ü·¨ÂÉÖÆ²ÃµÄ×ï·¸µÄ¡ª¡ªÅùö¨ÓÎÏÀ£¨Knight Rider£©¡£ 
-
-
-
-ÉÏº£ÊĞÆÖ¶«ĞÂÇø³¿êÍÂ·1001ºÅ PVG03,B4.40 Ê±î£ PH:13817261528 ZIP:201023
-
-
-
-×îÀÏÌ×µÄ°ì·¨¾ÍÊÇ ÖØÆô»úÆ÷È»ºó¾Í¿ÉÒÔ¼ìË÷ÁË
-»¹ÓĞ¾ÍÊÇ¹ØµôÊı¾İ·şÎñ ÔÙ¹ØµôĞÅºÅ  ×îºóÔÚÒ»´ÎÒÀ´Î´ò¿ªĞÅºÅ Êı¾İ·şÎñ ÔÚ¼ìË÷¾Í¿ÉÒÔÁË
-»¹ÓĞ¾ÍÊÇÔÚSMSÀïÃæ°Ñ·¢ËÍÍøÂçÉèÖÃ³ÉÊ×Ñ¡PS¾Í¿ÉÒÔ×Ô¶¯¼ìË÷ÁË µ«ÊÇÅ¼¶û»¹»áµÃÊÖ¶¯µÄ ¾ßÌåÎªÊ²Ã´ÎÒÔÚÒ»Ö±ÑĞ¾¿ÖĞ
-°Ñ¹öÂÖ°´ÏÂ ¿ÉÒÔÖØĞÂ¼ìË÷
-²ÊĞÅÕı³£Ê¹ÓÃ±ØĞëÇ°ÌáÊÇ¼¤»î×Ô´øä¯ÀÀÆ÷¡£¼Ç×¡Õâ¡£
-²»ÒªÎª ´Ó²»¾ÍºÃÁË   ÎÒÉè µÄÊÇ¹éÊôµØ¼ìË÷  ¿ÉÒÔÕı³£ÊÕ·¢²ÊĞÅ
-
+- install vista in first partition
+- create unallocated partition for leopard, at least 5G
+- restart with leopar dvd iATKOS v1.0
+- press F8, type -v

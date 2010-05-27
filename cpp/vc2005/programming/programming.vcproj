@@ -40,6 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="$(TBB22_INSTALL_DIR)\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,6 +62,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="$(TBB22_INSTALL_DIR)\ia32\vc8\lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -115,9 +117,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(TBB22_INSTALL_DIR)\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
@@ -134,6 +137,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(TBB22_INSTALL_DIR)\ia32\vc8\lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -175,7 +179,23 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\horse_chess.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\horse_chess_sample.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\judge_is_two_exp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\k_color.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\main.cpp"
 				>
 			</File>
 			<File
@@ -190,26 +210,6 @@
 				RelativePath=".\ProgrammingBeauty.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\stdafx.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -217,7 +217,51 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\0_1_bag.h"
+				>
+			</File>
+			<File
+				RelativePath=".\8_queen.h"
+				>
+			</File>
+			<File
+				RelativePath=".\binary_search.h"
+				>
+			</File>
+			<File
+				RelativePath=".\combination.h"
+				>
+			</File>
+			<File
 				RelativePath=".\HDOJ_1427.h"
+				>
+			</File>
+			<File
+				RelativePath=".\linklist_reverse.h"
+				>
+			</File>
+			<File
+				RelativePath=".\max.h"
+				>
+			</File>
+			<File
+				RelativePath=".\mcs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ms_atc2.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ms_mini_words.h"
+				>
+			</File>
+			<File
+				RelativePath=".\passenger.h"
+				>
+			</File>
+			<File
+				RelativePath=".\permutation.h"
 				>
 			</File>
 			<File
@@ -229,7 +273,35 @@
 				>
 			</File>
 			<File
-				RelativePath=".\stdafx.h"
+				RelativePath=".\prime.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sort_bubble.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sort_heap.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sort_insert.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sort_merge.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sort_merge_recursive.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sort_quick.h"
+				>
+			</File>
+			<File
+				RelativePath=".\sort_shell.h"
 				>
 			</File>
 			<File
@@ -244,12 +316,48 @@
 				RelativePath=".\struct_node.h"
 				>
 			</File>
+			<File
+				RelativePath=".\sum_prime.h"
+				>
+			</File>
+			<File
+				RelativePath=".\target_shot.h"
+				>
+			</File>
+			<File
+				RelativePath=".\temp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\vector.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+		</Filter>
+		<Filter
+			Name="My Amplifier Results"
+			>
+			<File
+				RelativePath=".\My Amplifier Results\r000hs\r000hs.ampl"
+				>
+			</File>
+			<File
+				RelativePath=".\My Amplifier Results\r001hs\r001hs.ampl"
+				>
+			</File>
+			<File
+				RelativePath=".\My Amplifier Results\r002hs\r002hs.ampl"
+				>
+			</File>
+			<File
+				RelativePath=".\My Amplifier Results\r003cc\r003cc.ampl"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"

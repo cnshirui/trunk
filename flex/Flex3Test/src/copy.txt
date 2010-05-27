@@ -1,0 +1,12 @@
+					actionItem.beginTime = Date.parse(item.beginTime);
+					actionItem.remindTime = Date.parse(item.remindTime);
+					actionItem.dueTime = Date.parse(item.dueTime);
+					
+    	[Bindable]
+    	public var beginTime:Date;
+    	
+    	[Bindable]
+    	public var remindTime:Date;
+    	
+    	[Bindable]
+    	public var dueTime:Date;					

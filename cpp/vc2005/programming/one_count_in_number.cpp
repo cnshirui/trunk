@@ -89,7 +89,7 @@ int count_4_0(unsigned x)
 	return x;
 }
 
-void main() {
+void main_one() {
 	int v = 342144321;
 	cout << count_1(v) << endl;
 	cout << count_2(v) << endl;

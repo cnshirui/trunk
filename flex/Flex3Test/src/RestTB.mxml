@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onCreationComplete()">
+	
+    <mx:Script>
+        <![CDATA[
+            
+            private function onCreationComplete():void
+            {
+            	var urlSample:String = "http://gw.api.tbsandbox.com/router/rest?app_key=test&method=taobao.taobaoke.items.get&format=json&v=1.0&timestamp=2009-06-24+11%3A09%3A13&fields=iid%2Ctitle%2Cnick%2Cpic_url%2Cprice%2Cclick_url&pid=mm_5410_0_0&cid=1512&sign=DA944624C718CAA806A5E5555D78ED9B";
+            	
+            	var loader:URLLoader = new URLLoader();
+            	loader.addEventListener(Event.COMPLETE, completeHandler);
+                        	
+            	var request:URLRequest = new URLRequest(urlSample);
+	            try {
+	                loader.load(request);
+	            } catch (error:Error) {
+	                trace("Unable to load requested document.");
+	            }
+            }
+
+	        private function completeHandler(event:Event):void {
+	            var loader:URLLoader = URLLoader(event.target);
+	            trace("completeHandler: " + loader.data);
+	        }
+            
+       ]]>
+    </mx:Script>
+    
+</mx:Application>

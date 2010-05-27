@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<filter name="And" type="logic">
+  <filter id="OBJ_6" name="Country" type="dimension" operator="Equal">
+    <value mode="Prompt">
+      <prompt newParams="true" promptText="Enter Country" asListOfValues="true" keepLastValues="true" selectOnlyFromList="false" optionalPrompt="false" setDafaultValue="false" guid="QB125DE9A3011D6E14307DD51FC3836C"/>
+    </value>
+    <value mode="Constant"/>
+  </filter>
+  <filter id="OBJ_20" name="Number of guests" type="measure" operator="Equal">
+    <value mode="Prompt">
+      <prompt newParams="true" promptText="Enter Number of guests" asListOfValues="true" keepLastValues="true" selectOnlyFromList="false" optionalPrompt="false" setDafaultValue="false" guid="QB125DE9A30014CE1AEBB2791B1CC08A"/>
+    </value>
+    <value mode="Constant"/>
+  </filter>
+  <filter id="FIL_1" name="Bahamas resort" type="filter" operator="Equal">
+    <value mode="Constant"/>
+  </filter>
+  <filter id="OBJ_4" name="Service Line" type="dimension" operator="Equal">
+    <value mode="Prompt">
+      <prompt newParams="true" promptText="Enter Service Line" asListOfValues="true" keepLastValues="true" selectOnlyFromList="false" optionalPrompt="false" setDafaultValue="false" guid="QB125DE9A2FF10C3113D0651153DE7DE"/>
+    </value>
+    <value mode="Constant"/>
+  </filter>
+</filter>

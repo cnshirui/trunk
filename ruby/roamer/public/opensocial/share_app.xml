@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Campus Roamer">
+    <Require feature="flash"/>
+    <Require feature="opensocial-0.8"/>
+  </ModulePrefs>
+  <Content type="html">
+  
+  <![CDATA[
+
+<script type=text/javascript'>
+
+// gadgets.util.registerOnLoadHandler(init);
+
+function shareApp() {
+    // confirm("Are you sure to recommend this application to friends?");
+    // var opt_params = {"appId": 24820, "returnUrl":"http://apps.renren.com/campus_roamer"};
+    var opt_params = {"appId": 25256, "returnUrl":"http://apps.renren.com/opensocial_test"};
+    opensocial.requestShareApp (null, null, null, opt_params);
+}
+
+function callback(data) {
+  if (data.hadError()) {
+    alert("There was a problem:" + data.getErrorCode());
+  } else {
+    alert('callback ok!')
+    output("Ok");
+  }
+}
+
+</script>
+
+<div>
+<button type="button" id="myButton"  onclick='shareApp()'>Invite Friends</button><br/>
+<p>flash container div 25256 null</p>
+<div>
+
+<div id='flash_container'></div>
+
+  ]]>
+
+
+  
+  </Content>
+</Module>

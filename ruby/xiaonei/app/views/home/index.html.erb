@@ -1,0 +1,39 @@
+﻿<p class="large-font">
+    Hello，
+   <xn:name uid="loggedinuser" linked="true" />
+</p>
+<p class="title">
+    第一步，选择朋友：
+</p>
+<%#*<xn:multi-friend-select-panel max="3" />%>
+*************************************<br/>
+<xn:profile-pic uid="loggedinuser" linked="true" size="tiny" /><br/>
+<form> <xn:multi-friend-selector max="5" include_me="true" mode="af"/> </form> <br/>
+
+<div id="swf_div"></div>
+
+<style type="text/css">
+  .flash_img {
+    border-width: 1px;
+    border-style: dashed;
+  }
+</style>
+
+<script type="text/javascript">
+    var swf = document.createElement('xn:swf');
+    swf.setSWFSrc('http://roamer.shirui.org/opensocial/CampusRoamer.swf');
+    swf.setWidth(400);
+    swf.setHeight(200);
+    swf.setWaitForClick(true);
+    swf.setImgSrc('http://roamer.shirui.org/opensocial/loading_001.gif');
+    swf.setImgStyle({'opacity':0.5});
+    swf.setImgClass('flash_img');
+    swf.setScale('exactfit');
+    swf.setSWFBGColor('#ffffff');
+    swf.setLoop(false);
+    swf.setQuality('low');
+    swf.setAlign('r');
+    swf.setSAlign('br');
+    var swf_div = document.getElementById('swf_div');
+    swf_div.appendChild(swf);
+</script>

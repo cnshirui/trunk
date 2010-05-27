@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>RIGHT CLICK DEMO / AS3</title>
+
+<script type="text/javascript" src="swfobject.js"></script>
+<script type="text/javascript" src="rightClick.js"></script>
+</head>
+
+<body onload="RightClick.init();">
+	<div id="flashcontent">&nbsp;</div>
+	<script type="text/javascript">
+	   var so = new SWFObject("RightClick.swf", "customRightClick", "560", "420", "9", "#CCCCCC");
+		so.addParam("quality", "high");
+		so.addParam("name", "customRightClick");
+		so.addParam("id", "customRightClick");
+		so.addParam("AllowScriptAccess", "always");
+		so.addParam("wmode", "opaque");
+		so.addParam("menu", "false");
+		so.addVariable("variable1", "value1");
+		so.write("flashcontent");
+	</script>
+</body>
+</html>

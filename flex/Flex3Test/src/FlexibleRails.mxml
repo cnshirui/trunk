@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+                xmlns="*" layout="absolute" 
+                creationComplete="reviewRequest.send()"> 
+    <mx:HTTPService id="reviewRequest" 
+                    url="http://localhost:3002/reviews/list" 
+                    useProxy="false"/> 
+    <mx:DataGrid id="dgReviews" x="40" y="85" width="800" 
+                 height="134" 
+                 dataProvider="{reviewRequest.lastResult.reviews.review}"> 
+        <mx:columns> 
+            <mx:DataGridColumn headerText="Title" dataField="title" width="480"/> 
+            <mx:DataGridColumn headerText="Author" dataField="author" width="240"/> 
+            <mx:DataGridColumn headerText="Score" dataField="score" width="80"/> 
+        </mx:columns> 
+    </mx:DataGrid> 
+
+    <mx:TextArea x="40" y="245" width="800" 
+                 htmlText="{dgReviews.selectedItem.text}" /> 
+                 
+    <mx:HTTPService contentType="application/xml" id="reviewCreateRequest" 
+                    url="http://localhost:3002/reviews/create" 
+                    useProxy="false" method="POST"> 
+        <mx:request xmlns=""> 
+            <review> 
+                <title>{fTitle.text}</title> 
+                <author>{fAuthor.text}</author> 
+                <score>{fScore.text}</score> 
+                <text>{fText.text}</text> 
+            </review> 
+        </mx:request> 
+    </mx:HTTPService> 
+    <mx:Form x="40" y="300" width="800"> 
+    <mx:Grid> 
+        <mx:GridRow> 
+            <mx:GridItem> 
+                <mx:Label text="Title"/> 
+            </mx:GridItem> 
+            <mx:GridItem> 
+                <mx:TextInput width="260" id="fTitle"/> 
+            </mx:GridItem> 
+        </mx:GridRow> 
+        <mx:GridRow> 
+            <mx:GridItem> 
+                <mx:Label text="Author"/> 
+            </mx:GridItem> 
+            <mx:GridItem> 
+                <mx:TextInput width="140" id="fAuthor"/> 
+            </mx:GridItem> 
+        </mx:GridRow> 
+        <mx:GridRow> 
+            <mx:GridItem> 
+                <mx:Label text="Score"/> 
+            </mx:GridItem> 
+            <mx:GridItem> 
+                <mx:TextInput width="20" id="fScore"/> 
+            </mx:GridItem> 
+        </mx:GridRow> 
+        <mx:GridRow> 
+            <mx:GridItem> 
+                <mx:Label text="Text"/> 
+            </mx:GridItem> 
+            <mx:GridItem> 
+                <mx:TextArea width="600" height="200" id="fText"/> 
+            </mx:GridItem> 
+        </mx:GridRow> 
+        <mx:GridRow> 
+            <mx:GridItem> 
+                <mx:Button label="Submit" 
+                   click="reviewCreateRequest.send();reviewRequest.send()"/> 
+            </mx:GridItem> 
+            <mx:GridItem> 
+            </mx:GridItem> 
+        </mx:GridRow> 
+    </mx:Grid> 
+    </mx:Form>                  
+</mx:Application> 
+<!--
+<?xml version="1.0" encoding="utf-8"?> 
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+                         xmlns="*" layout="absolute" xmlns:fr="frComponents.*"> 
+    <fr:reviewsPanel x="0" y="0"> 
+    </fr:reviewsPanel> 
+    <fr:reviewsPanel x="52" y="247">
+    </fr:reviewsPanel>
+</mx:Application> 
+-->

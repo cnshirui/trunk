@@ -1,14 +1,13 @@
 // Win32ConsoleXML.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 #include <stdio.h>
 #include <atlstr.h>  
 #import <msxml4.dll>
 using namespace MSXML2;
 
 
-int main(int argc, char* argv[])
+int main_pretty(int argc, char* argv[])
 {
 	CoInitialize(NULL);
 	try{

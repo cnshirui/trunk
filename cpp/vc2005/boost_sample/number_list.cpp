@@ -1,4 +1,3 @@
-#include "stdafx.h"
 /*=============================================================================
     Copyright (c) 2002-2003 Joel de Guzman
     http://spirit.sourceforge.net/

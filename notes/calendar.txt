@@ -1,4 +1,9 @@
-Monday, August 17, 2009
+- Monday, Nov 2st, 2009
+昨天我去闵行考GCT了，早上六点起床，八点一刻才到考场的。好的就不说，提一些感悟。语文许多地方模棱两可，平常要注意话语的深层含义。数学简单的还好，难的基本不会，像理科的，还是要多做题目。感觉自己的逻辑思考能力太迟钝了，中间的题目比较费神，最后难的题目都来不及做，平常倒是练过几次。只留了半个小时给英语，感觉阅读还是不那么流利，有点走马观花的感觉。中午吃的骨头汤，暖了身子，中午小咪了一会儿。然后整理考场的时候在草坪上复习，对着大纲，才发现好多都没有复习到，只顾做模拟试卷了。像用格林公式求曲线积分，从没有看过，一阶的微分方程看了一下，大概有个印象，二阶的就不知道了。下午考试时间是足够了，能做到都做完了，五点结束时，许多人都走了。感觉最近几年很压抑，在考试之前有许多都没时间做，考完了终于有机会了。但是要合理安排，重点放在Linux，Cpp，MFC上。
+
+Today write Sorrento summary in the morning, then build Aurora development environment in the afternoon. Near supper, I received a bug about saving xlf to BOE from Joey. I checked the detail, but not saw David Xiong, only who has BOE installed in Windows 2008. So I came back at 6:30.
+
+- Monday, August 17, 2009
 I've learnt APUE(Advanced Programming in Unix Environment, 1st edition) for several days. 
 When I bought the book, I encountered a problem with building libmisc.a. Without experiment, I didn't understand what I learnt.
 So I break learning this famous book.

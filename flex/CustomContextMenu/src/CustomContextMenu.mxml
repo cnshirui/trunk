@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	applicationComplete="onAppCreated()" width="495" height="342" viewSourceURL="srcview/index.html">
+	
+	
+	 <!-- Define the menu data. This is an official example from livedoc -->
+    <mx:XML format="e4x" id="myMenuData">
+        <root>
+            <menuitem label="MenuItem A">
+                <menuitem label="SubMenuItem A-1" enabled="false"/>
+                <menuitem label="SubMenuItem A-2"/>
+            </menuitem>
+            <menuitem label="MenuItem B" type="check" toggled="true"/>
+            <menuitem label="MenuItem C" type="check" toggled="false"/>
+            <menuitem type="separator"/>     
+            <menuitem label="MenuItem D">
+                <menuitem label="SubMenuItem D-1" type="radio" groupName="one" />
+                <menuitem label="SubMenuItem D-2" type="radio" groupName="one" toggled="true"/>
+                <menuitem label="SubMenuItem D-3" type="radio" groupName="one" />
+            </menuitem>
+            <menuitem type="separator"/>  
+            <menuitem label="Custom View Source"/>
+        </root>
+    </mx:XML>
+
+	
+	
+	<mx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+			import mx.events.MenuEvent;
+			import mx.controls.Menu;
+			import mx.controls.Alert;
+			
+			//my Menu Instance
+			private var myMenu:Menu;
+			
+			//In the application created event, we initialize a callback for
+			//ExternalInterface using a same name "rightClick" used on the javascript code.
+			private function onAppCreated():void{
+				ExternalInterface.addCallback("rightClick",onMouseRightButtonClicked);
+			}
+			
+			//the magic method, called by javascript through ExternalInterface.
+			private function onMouseRightButtonClicked():void{
+				//if exists an before Menu, simpply hide it.
+				if (myMenu != null) myMenu.hide();
+				
+				//creating a Menu
+				myMenu = Menu.createMenu(null, myMenuData,false);
+                myMenu.labelField="@label";
+                
+                //add a eventListener
+                myMenu.addEventListener(MenuEvent.ITEM_CLICK,myMenuItemClicked);
+                
+                //show the Menu where the mouse pointer is located.
+                myMenu.show(stage.mouseX, stage.mouseY);
+                
+                /*
+                Bug Acknowledgment: (Aviso de Bug)
+                
+                Pt-br: Se vc clicar numa área muito perto do limite de altura e largura da
+                Aplicação, o seu menu não será exibido corretamente, ele pode ficar
+                com alguma parte oculta. O ideal seria que o menu "subisse" em vez de "descer".
+                Uma solução para isso, seria vc recalcular a posição inicial do Menu
+                a partir da posição do mouse, levando em consideração a altura e largura da
+                sua aplicação.
+                
+                En-US: If you click in an area very close to the limit of height and width of 
+                this Application, the Menu component will not show correctly, it can appear
+                with some part hidden. Ideally, the menu "go up" instead of "down".
+                The solution to do this, would you recalculate the starting position of the 
+                Menu from the position of the mouse, considering the height and width of
+                your application.
+                
+                ###################################################################
+                Greetings and congratulations to:
+                "Right Click in AS3" project:
+                http://code.google.com/p/custom-context-menu/ (google code home)
+                http://www.uza.lt/rightclick/index.php (demo page)
+                ###################################################################
+                
+                ###################################################################
+                Mário Júnior (Java and Flex developer) 
+                contact@mariojunior.com
+                juninhog12@gmail.com
+                
+                Florianópolis, SC, Brazil.
+                ###################################################################
+                
+               */
+                
+			}
+			
+			//This method is invoked when a menu item was clicked.
+			private function myMenuItemClicked(e:MenuEvent):void {
+				
+				//if "customViewSource" alias was clicked...
+				if (e.label=="Custom View Source") {
+					//... then, show the view source page. 
+					navigateToURL(new URLRequest("srcview/index.html"));
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	<mx:Label x="18.5" y="10" text="Clique com o botão direito do Mouse sobre a área da aplicação" fontWeight="bold" fontSize="13"/>
+	<mx:Label x="49.5" y="310" text="Click the right mouse button over the application area" fontWeight="bold" fontSize="13"/>
+	
+</mx:Application>

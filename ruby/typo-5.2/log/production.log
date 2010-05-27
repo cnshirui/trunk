@@ -186,3 +186,319 @@ Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-05-31 20:43:08) [G
   Parameters: {"filename"=>"colors.css"}
 Completed in 30ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/colors.css]
 Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:48:39) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 393ms (View: 0, DB: 138) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:48:40) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 88ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:48:40) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 85ms (View: 1, DB: 2) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:48:40) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 125ms (View: 0, DB: 0) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ArticlesController#search (for 127.0.0.1 at 2009-11-22 23:49:03) [GET]
+  Session ID: b6af4231332e34673c57fb62366c9eb9
+  Parameters: {"q"=>"google"}
+
+
+NameError (undefined local variable or method `on_empty' for #<ArticlesController:0x793680c>):
+    /app/controllers/articles_controller.rb:67:in `search'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:638:in `run_before_filters'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:206:in `call'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:206:in `around_proc'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/callbacks.rb:182:in `call'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/callbacks.rb:182:in `evaluate_method'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:184:in `call'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:635:in `run_before_filters'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:615:in `call_filters'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    D:/dev/ruby-1.8.6/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:76:in `process'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/../lib/mongrel/rails.rb:74:in `process'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:282:in `run'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `each'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/configurator.rb:281:in `run'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:128:in `run'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel/command.rb:212:in `run'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/bin/mongrel_rails:281
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load_without_new_constant_marking'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:142:in `load'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/servers/mongrel.rb:64
+    D:/dev/ruby-1.8.6/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    D:/dev/ruby-1.8.6/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/dependencies.rb:153:in `require'
+    D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/rails-2.2.2/lib/commands/server.rb:49
+    D:/dev/ruby-1.8.6/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    D:/dev/ruby-1.8.6/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+Rendering D:/dev/ruby-1.8.6/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing ArticlesController#show (for 127.0.0.1 at 2009-11-22 23:49:14) [GET]
+  Session ID: b6af4231332e34673c57fb62366c9eb9
+  Parameters: {"month"=>"03", "id"=>"hi-im-ray", "day"=>"26", "year"=>"2009"}
+Rendering template within ../../themes/typographic/layouts/default.html.erb
+Rendering articles/read
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/page_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/category_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/archives_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/static_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/xml_sidebar/views/content.rhtml
+Completed in 1037ms (View: 509, DB: 1043) | 200 OK [http://localhost/2009/03/26/hi-im-ray]
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:49:15) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 244ms (View: 0, DB: 5) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:49:15) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 105ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 46ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 47ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"spinner.gif"}
+Completed in 99ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/spinner.gif]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/spinner.gif
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"meta.png"}
+Completed in 102ms (View: 0, DB: 0) | 200 OK [http://localhost/images/theme/meta.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/meta.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"tag.png"}
+Completed in 50ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/tag.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/tag.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"user50.png"}
+Completed in 51ms (View: 0, DB: 0) | 200 OK [http://localhost/images/theme/user50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/user50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"email_open50.png"}
+Completed in 82ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/email_open50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/email_open50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"world_link50.png"}
+Completed in 51ms (View: 0, DB: 0) | 200 OK [http://localhost/images/theme/world_link50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/world_link50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:16) [GET]
+  Parameters: {"filename"=>"page_edit50.png"}
+Completed in 227ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/page_edit50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/page_edit50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:17) [GET]
+  Parameters: {"filename"=>"accept50.png"}
+Completed in 65ms (View: 0, DB: 0) | 200 OK [http://localhost/images/theme/accept50.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/accept50.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:23) [GET]
+  Parameters: {"filename"=>"user.png"}
+Completed in 90ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/user.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/user.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:33) [GET]
+  Parameters: {"filename"=>"world_link.png"}
+Completed in 88ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/world_link.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/world_link.png
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:36) [GET]
+  Parameters: {"filename"=>"page_edit.png"}
+Completed in 88ms (View: 0, DB: 1) | 200 OK [http://localhost/images/theme/page_edit.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/page_edit.png
+
+
+Processing CommentsController#preview (for 127.0.0.1 at 2009-11-22 23:49:37) [POST]
+  Session ID: b6af4231332e34673c57fb62366c9eb9
+  Parameters: {"article_month"=>"03", "article_day"=>"26", "commit"=>"Submit", "authenticity_token"=>"e1c659cdef22800ce04cc494a01e5f46437ea6c5", "article_year"=>"2009", "article_id"=>"hi-im-ray", "preview"=>"Preview!", "comment"=>{"body"=>"shi", "url"=>"shi", "author"=>"rshi", "email"=>"goo@g.com"}}
+Rendering articles/comment_preview
+Completed in 15ms (View: 3, DB: 2) | 200 OK [http://localhost/2009/03/26/hi-im-ray/comments/new/preview]
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:49:41) [GET]
+  Parameters: {"filename"=>"accept.png"}
+Completed in 94ms (View: 0, DB: 0) | 200 OK [http://localhost/images/theme/accept.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/accept.png
+
+
+Processing CommentsController#create (for 127.0.0.1 at 2009-11-22 23:49:42) [POST]
+  Session ID: b6af4231332e34673c57fb62366c9eb9
+  Parameters: {"article_month"=>"03", "article_day"=>"26", "commit"=>"Submit", "authenticity_token"=>"e1c659cdef22800ce04cc494a01e5f46437ea6c5", "article_year"=>"2009", "article_id"=>"hi-im-ray", "preview"=>"Preview!", "comment"=>{"body"=>"shi", "url"=>"shi", "author"=>"rshi", "email"=>"goo@g.com"}}
+Cookie set: author=rshi; path=/comments; expires=Sun, 03 Jan 2010 15:49:42 GMT
+Cookie set: gravatar_id=ead67221a21a5712af62c525d5972fed; path=/comments; expires=Sun, 03 Jan 2010 15:49:42 GMT
+Cookie set: url=shi; path=/comments; expires=Sun, 03 Jan 2010 15:49:42 GMT
+Completed in 745ms (View: 12, DB: 192) | 200 OK [http://localhost/2009/03/26/hi-im-ray/comments]
+
+
+Processing ArticlesController#search (for 127.0.0.1 at 2009-11-22 23:50:22) [GET]
+  Session ID: b6af4231332e34673c57fb62366c9eb9
+  Parameters: {"q"=>"ray"}
+Rendering template within ../../themes/typographic/layouts/default.html.erb
+Rendering articles/search
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/page_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/category_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/archives_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/static_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/xml_sidebar/views/content.rhtml
+Completed in 96ms (View: 37, DB: 3) | 200 OK [http://localhost/search?q=ray]
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:50:22) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 51ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:50:22) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 43ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:50:22) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 40ms (View: 0, DB: 0) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:50:22) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 45ms (View: 0, DB: 0) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ArticlesController#index to rss (for 127.0.0.1 at 2009-11-22 23:51:43) [GET]
+  Session ID: b6af4231332e34673c57fb62366c9eb9
+Completed in 199ms (View: 22, DB: 116) | 200 OK [http://localhost/articles.rss]
+
+
+Processing XmlController#feed to rss (for 127.0.0.1 at 2009-11-22 23:51:51) [GET]
+  Parameters: {"type"=>"trackbacks"}
+Rendering xml/feed
+Completed in 23ms (View: 2, DB: 9) | 200 OK [http://localhost/xml/rss/trackbacks/feed.xml]
+
+
+Processing ArticlesController#index (for 127.0.0.1 at 2009-11-22 23:52:02) [GET]
+  Session ID: b6af4231332e34673c57fb62366c9eb9
+  Parameters: {"month"=>"03", "year"=>"2009"}
+Rendering template within ../../themes/typographic/layouts/default.html.erb
+Rendering articles/index
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/page_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/category_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/archives_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/static_sidebar/views/content.rhtml
+Rendering D:/perforce/git/trunk/ruby/typo-5.2/vendor/plugins/xml_sidebar/views/content.rhtml
+Completed in 331ms (View: 51, DB: 3) | 200 OK [http://localhost/2009/03]
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:52:03) [GET]
+  Parameters: {"filename"=>"style.css"}
+Completed in 47ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/style.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/style.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:52:03) [GET]
+  Parameters: {"filename"=>"reset.css"}
+Completed in 51ms (View: 0, DB: 1) | 200 OK [http://localhost/stylesheets/theme/reset.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/reset.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:52:03) [GET]
+  Parameters: {"filename"=>"layout.css"}
+Completed in 41ms (View: 0, DB: 0) | 200 OK [http://localhost/stylesheets/theme/layout.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/layout.css
+
+
+Processing ThemeController#stylesheets (for 127.0.0.1 at 2009-11-22 23:52:03) [GET]
+  Parameters: {"filename"=>"colors.css"}
+Completed in 41ms (View: 1, DB: 0) | 200 OK [http://localhost/stylesheets/theme/colors.css]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/stylesheets/colors.css
+
+
+Processing ThemeController#images (for 127.0.0.1 at 2009-11-22 23:58:02) [GET]
+  Parameters: {"filename"=>"email_open.png"}
+Completed in 60ms (View: 0, DB: 2) | 200 OK [http://localhost/images/theme/email_open.png]
+Streaming file D:/perforce/git/trunk/ruby/typo-5.2/themes/typographic/images/email_open.png

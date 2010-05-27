@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Who is rich?">
+    <Require feature="opensocial-0.8"/>
+    <Require feature="dynamic-height" />
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[
+	
+<script type="text/javascript" src="http://visapi-gadgets.googlecode.com/svn/trunk/pilesofmoney/pom.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+	
+function init() {
+  // loadFriends();
+
+  google.load("visualization", "1");
+  // google.setOnLoadCallback(drawChart);
+  gadgets.window.adjustHeight();
+}
+
+function shareApp1() {
+        var opt_params = {"appId": 25256, "returnUrl":"http://apps.renren.com/opensocial_test"};
+        opensocial.requestShareApp(null, null, null, opt_params);
+}
+
+function shareApp() {
+    var opt_params = {"appId": 25256, "returnUrl":"http://apps.xiaonei.com/opensocial_test"};
+    opensocial.requestShareApp (null, null, null, opt_params);
+}
+
+function callback(data) {
+  if (data.hadError()) {
+        alert("There was a problem:" + data.getErrorCode());
+  } else {
+        alert('callback ok!')
+        output("Ok");
+  }
+}
+
+gadgets.util.registerOnLoadHandler(init);
+
+</script>
+
+        <div>
+        <button type="button" id="myButton"  onclick='shareApp()'>Invite Friends</button><br/>
+        <p>flash container div 08</p>
+        <div>
+
+      <div id='main' style="float:left;">
+        <div style="float:left; width:100%;">
+        <div id='me' style="float:left; margin:10px; padding:10px; font-size:120%;"></div>
+        <div id="chartdiv" style="float:left;"></div>
+        </div>
+        <div style="float:left; width:100%;">
+        <div id='friends'></div>
+        </div>
+      </div>
+    ]]>
+  </Content>
+</Module>

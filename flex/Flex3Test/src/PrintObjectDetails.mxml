@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onInit()">
+	<mx:Script>
+		<![CDATA[
+			private function onInit():void
+			{
+				var obj:Object = new Object();
+				obj.first = "1";
+				obj.name = "shirui"
+				printObject(obj);
+			}
+			
+			private function printObject(obj:Object):void
+			{
+				for(var key:String in obj)
+				{
+					trace(key + ":	" + obj[key]);
+				}
+			}
+		]]>
+	</mx:Script>
+</mx:Application>

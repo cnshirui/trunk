@@ -5,8 +5,6 @@
 // It then writes two strings into the file
 // and then closes the file.
 
-#include "stdafx.h"
-
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>

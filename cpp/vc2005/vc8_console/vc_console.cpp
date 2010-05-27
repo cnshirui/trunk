@@ -1,7 +1,7 @@
 // VC8ConsoleTest.cpp : Defines the entry point for the console application.
 //
+#include <tchar.h>
 
-#include "stdafx.h"
 //#include "afxwin.h"
 #include "windows.h"
 #include <iostream>

@@ -2,7 +2,7 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:fc="com.adobe.flex.extras.controls.springgraph.*"
 	creationComplete="onCreationComplete()" 
-	layout="absolute">
+	layout="absolute" borderStyle="solid" borderColor="#0B10E0" borderThickness="4" cornerRadius="12">
 	
 	<mx:Style>
 		.text {
@@ -16,18 +16,19 @@
 		itemRenderer="PersonItemView" repulsionFactor="{rep.value}">
 	</fc:SpringGraph>
 		
-	<mx:Label x="536" y="10" text="@Resource(bundle='resources', key='TIPS_DISTANCE')" fontSize="12" styleName="text" width="109"/>
-	<mx:HSlider x="225" y="10" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
-	<mx:Label x="339" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"  fontSize="12" styleName="text" width="80"/>
-	<mx:HSlider id="rep" x="427" y="10" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
-	<mx:Button id="_showBefore" x="233" y="37" label="@Resource(bundle='resources', key='SHOW_NEXT')" fontSize="11" styleName="text" click="showBefore()" width="80" enabled="false"/>
-	<mx:Button id="_showNext" x="321" y="37" label="@Resource(bundle='resources', key='SHOW_BEFORE')" fontSize="11" styleName="text" click="showNext()" width="74"/>
-	<mx:Button x="408"  y="37" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105"/>
-	<mx:ComboBox id="_selectFavorites" x="521" y="37" dataProvider="{favorites}" width="150" color="0x000000" close="onCloseSelect(event);"/>
+	<mx:Label x="457" y="10" text="@Resource(bundle='resources', key='TIPS_DISTANCE')" fontSize="12" styleName="text" width="109"/>
+	<mx:HSlider x="146" y="10" value="1.0" minimum="0.05" maximum="1.5" liveDragging="true" change="scaleFactor = event.currentTarget.value; s.refresh();" width="101"/>
+	<mx:Label x="260" y="10" text="@Resource(bundle='resources', key='TIPS_ZOOM')"  fontSize="12" styleName="text" width="80"/>
+	<mx:HSlider id="rep" x="348" y="10" value="0.4" minimum="0.05" maximum="1.5" liveDragging="true" change="s.refresh();" width="101"/>
+	<mx:Button id="_showBefore" x="154" y="37" label="@Resource(bundle='resources', key='SHOW_NEXT')" fontSize="11" styleName="text" click="showBefore()" width="80" enabled="false"/>
+	<mx:Button id="_showNext" x="242" y="37" label="@Resource(bundle='resources', key='SHOW_BEFORE')" fontSize="11" styleName="text" click="showNext()" width="74"/>
+	<mx:Button x="329"  y="37" label="@Resource(bundle='resources', key='RESET')" fontSize="11" styleName="text" click="reset()" width="105" height="23"/>
+	<mx:ComboBox id="_selectFavorites" x="442" y="37" dataProvider="{favorites}" fontSize="11" width="124" color="0x000000" close="onCloseSelect(event);" height="23"/>
+	<mx:Button x="577" y="11" label="@Resource(bundle='resources', key='INVITE_FRIENDS')" visible="true" width="95" height="49" fontSize="16" fontFamily="Verdana" color="#2111F1" themeColor="#FE0315" click="shareApp();"/>
 	
 	<mx:Label x="10" y="10" text="@Resource(bundle='resources', key='CAMPUS_ROAMER')" styleName="text" fontSize="18" fontWeight="bold" width="208"/>
 	<mx:Text fontSize="9" textAlign="left" styleName="text" x="10" y="32" useHandCursor="true" buttonMode="true" mouseChildren="false"
-		text="http://apps.xiaonei.com/campus_roamer?9" click="gotoApplicationPage()"/>
+		text="http://roamer.shirui.org" click="gotoApplicationPage()"/>
 		
 	<mx:Label x="10" y="48" text="@Resource(bundle='resources', key='TIPS_DOUBLE_CLICK')" fontSize="12" styleName="text" id="help0"/>
 	<mx:Label x="10" y="64" text="@Resource(bundle='resources', key='TIPS_RIGHT_CLICK')" fontSize="12" styleName="text" id="help1"/>
@@ -36,6 +37,7 @@
 
 	<mx:Script>
 		<![CDATA[
+			import mx.resources.ResourceManager;
 			import mx.collections.ArrayCollection;
 			import mx.controls.Alert;
 			import flash.net.navigateToURL;
@@ -58,8 +60,12 @@
 			public var scaleFactor:Number = 0.618;
 
 			// "http://roamer.heroku.com"
-			// "http://127.0.0.1:3000"
-			public static const SERVER_URL:String = "http://roamer.heroku.com";
+			// "http://roamer.shirui.org"
+			private static var _serverURL:String = "http://127.0.0.1";
+			
+			public static function get SERVER_URL():String {
+				return _serverURL;
+			}
 
 			// spring graph
 			private var items:Graph;
@@ -82,7 +88,7 @@
 			private var existingPersons:Dictionary = new Dictionary();
 
 			[Bindable]
-			public var favorites:ArrayCollection = new ArrayCollection([{label:"Select in favorites", data:0}]);
+			public var favorites:ArrayCollection = new ArrayCollection([{label: ResourceManager.getInstance().getString('resources', 'SELECT_IN_FAVORITES'), data:0}]);
 
 			private function onCreationComplete():void
 			{
@@ -97,6 +103,7 @@
 
 				if (checkJavaScriptReady())
 				{
+					_serverURL = ExternalInterface.call("getServerURL");
 					ExternalInterface.call("loadFriends");
 				}
 				else
@@ -313,6 +320,11 @@
 				_autoClose = false;
 				_selectFavorites.selectedIndex = 0;
 			}
+			
+			private function shareApp():void {
+				ExternalInterface.call("shareApp");
+			}
+			
 		]]>
 		
 	</mx:Script>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:local="*" layout="absolute">
+	<local:Mover id="_mover" x="150" y="150"/>
+	<mx:HSlider id="_slider" change="onChangeSlider(event)" maximum="1000"/>
+	
+	<mx:Script>
+		<![CDATA[
+			private function onChangeSlider(event:Event):void
+			{
+				trace(event);
+				// _mover.y = _slider.value;
+			}
+		]]>
+	</mx:Script>
+<!--
+<local:MovingEllipse id="_moveEllips"/>
+x="150" y="150"
+-->
+</mx:Application>

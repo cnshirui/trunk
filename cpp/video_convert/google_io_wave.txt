@@ -1,0 +1,41 @@
+General
+Complete name                    : D:\download\ruby_convert\flvs\google io wave .flv
+Format                           : Flash Video
+File size                        : 396 MiB
+Duration                         : 1h 20mn
+Overall bit rate                 : 691 Kbps
+
+Video
+Format                           : AVC
+Format/Info                      : Advanced Video Codec
+Format profile                   : Main@L3.0
+Format settings, CABAC           : Yes
+Format settings, ReFrames        : 3 frames
+Muxing mode                      : Container profile=Unknown@3.0
+Duration                         : 1h 20mn
+Bit rate                         : 585 Kbps
+Width                            : 640 pixels
+Height                           : 360 pixels
+Display aspect ratio             : 16:9
+Frame rate                       : 29.970 fps
+Resolution                       : 24 bits
+Colorimetry                      : 4:2:0
+Scan type                        : Progressive
+Bits/(Pixel*Frame)               : 0.085
+Stream size                      : 336 MiB (85%)
+
+Audio
+Format                           : AAC
+Format/Info                      : Advanced Audio Codec
+Format version                   : Version 4
+Format profile                   : LC
+Format settings, SBR             : No
+Duration                         : 1h 20mn
+Bit rate                         : 96.7 Kbps
+Channel(s)                       : 2 channels
+Channel positions                : L R
+Sampling rate                    : 44.1 KHz
+Resolution                       : 16 bits
+Stream size                      : 55.5 MiB (14%)
+
+

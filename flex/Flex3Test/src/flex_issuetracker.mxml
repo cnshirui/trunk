@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2006 Derek Wischusen
+
+This work is licensed under a BSD License.  You may freely 
+duplicate, distribute, display and alter this application for both 
+commercial and non-commercial uses.
+
+For more information email: dwischus@flexonrails.net
+-->
+
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="listBugs.send()">
+	<mx:Script>
+		<![CDATA[
+			
+			[Bindable]
+			private var statusArray:Array = ["Opened", "Assigned", "Closed"];
+			
+			[Bindable]
+			private var priorityArray:Array = ["Blocker", "Critical", "Major", "Minor", "Trivial"];
+			
+			private function clearForm():void
+			{
+				reportedby.text = ""
+				assignedto.text = "";
+				description.text = "";
+				status.selectedIndex = 0;
+				priority.selectedIndex = 0;
+			}
+			
+			private function sendBugUpdate():void
+        	{      	
+	        	var bugUpdate:Object = new Object();
+	            bugUpdate['id'] = bugs_dg.selectedItem.id;
+	            bugUpdate['bug[reportedby]'] = reportedby.text;
+	            bugUpdate['bug[assignedto]'] = assignedto.text;
+	            bugUpdate['bug[description]'] = description.text;
+	            bugUpdate['bug[status]'] = status.text;
+	            bugUpdate['bug[priority]'] = priority.text;
+	            
+	            updateBug.send(bugUpdate);
+         	}
+         	
+		]]>
+	</mx:Script>
+	<mx:HTTPService id="listBugs" url="http://localhost:3000/bugs/list" useProxy="false" method="GET"/>
+	<mx:HTTPService id="updateBug" url="http://localhost:3000/bugs/update" useProxy="false" method="POST" result="listBugs.send()"/>
+	<mx:HTTPService id="deleteBug" url="http://localhost:3000/bugs/delete" useProxy="false" method="POST" result="listBugs.send()"/>
+	<mx:HTTPService id="createBug" url="http://localhost:3000/bugs/create" useProxy="false" method="POST" result="listBugs.send()" contentType="application/xml">
+        <mx:request xmlns="">
+            <bug>
+                <reportedby>{reportedby.text}</reportedby>
+                <assignedto>{assignedto.text}</assignedto>
+                <description>{description.text}</description>
+                <status>{status.text}</status>
+                <priority>{priority.text}</priority>
+            </bug>
+        </mx:request>
+	</mx:HTTPService>
+	
+	<mx:VDividedBox x="0" y="0" height="100%" width="100%">
+		<mx:Panel width="100%" height="376" layout="absolute" title="Create/Update Bugs">
+			<mx:Form x="10" y="10" width="930" height="280">
+				<mx:FormItem label="Reported by">
+					<mx:TextInput width="220" id="reportedby" text="{bugs_dg.selectedItem.reportedby}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Assigned to">
+					<mx:TextInput width="220" id="assignedto" text="{bugs_dg.selectedItem.assignedto}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Description">
+					<mx:TextArea width="336" height="111" id="description" text="{bugs_dg.selectedItem.description}"/>
+				</mx:FormItem>
+				<mx:FormItem label="Status" width="287">
+					<mx:ComboBox width="199" id="status" selectedIndex="{statusArray.indexOf(bugs_dg.selectedItem.status)}">
+					    <mx:dataProvider>
+							{statusArray}
+    					</mx:dataProvider>					
+					</mx:ComboBox>
+				</mx:FormItem>
+				<mx:FormItem label="Priority">
+					<mx:ComboBox width="199" id="priority" selectedIndex="{priorityArray.indexOf(bugs_dg.selectedItem.priority)}">
+					    <mx:dataProvider>
+							{priorityArray}
+    					</mx:dataProvider>
+					</mx:ComboBox>
+				</mx:FormItem>
+			</mx:Form>
+			<mx:ControlBar horizontalAlign="right">
+				<mx:Button label="Clear" click="clearForm()"/>
+				<mx:Button label="Update" click="sendBugUpdate(); clearForm()"/>
+				<mx:Button label="Create" click="createBug.send(); clearForm()"/>
+			</mx:ControlBar>
+		</mx:Panel>
+		<mx:Panel width="100%" height="444" layout="absolute" title="Bugs">
+			<mx:DataGrid x="0" y="0" width="100%" height="100%" id="bugs_dg" dataProvider="{listBugs.lastResult.bugs.bug}">
+				<mx:columns>
+					<mx:DataGridColumn headerText="Reported by" dataField="reportedby"/>
+					<mx:DataGridColumn headerText="Assigned to" dataField="assignedto"/>
+					<mx:DataGridColumn headerText="Description" dataField="description"/>
+					<mx:DataGridColumn headerText="Status" dataField="status"/>
+					<mx:DataGridColumn headerText="Priority" dataField="priority"/>
+				</mx:columns>
+			</mx:DataGrid>
+			<mx:ControlBar horizontalAlign="right">
+				<mx:Button label="Delete" click="deleteBug.send({id:bugs_dg.selectedItem.id})"/>
+			</mx:ControlBar>
+		</mx:Panel>
+	</mx:VDividedBox>
+	
+</mx:Application>

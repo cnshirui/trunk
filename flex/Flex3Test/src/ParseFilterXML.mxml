@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onInit()">
+	<mx:XML id="filter" source="filter_object_info.xml"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.messaging.channels.StreamingAMFChannel;
+		
+			private function onInit():void
+			{
+				trace(filter);	
+				trace("----------------");
+				var prompts:XMLList = filter..prompt;
+				for each(var prompt:XML in prompts)
+				{
+					var promptText:String = prompt.@promptText;
+					var promptID:String = prompt.@guid;
+					var filter:XML = prompt.parent().parent() as XML;
+					var operator:String = filter.@operator;
+					var type:String = filter.@type;
+					trace("----------------");
+				}
+			}
+			
+		]]>
+	</mx:Script>
+		
+	
+</mx:Application>

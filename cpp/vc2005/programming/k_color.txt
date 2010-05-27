@@ -1,0 +1,134 @@
+
+	map<string, int> vertex;
+	vector<pair<string, string>> edges;
+
+
+
+	//for(int i=0; i<=n_vertex; i++) {
+	//	current_state[i] = 0;
+	//}
+	
+	//	n_vertex = srand(max_vertex);
+//string vertex_name_from_int(int i) {
+//	int oct = 0;
+//}
+
+// #include <stdlib.h>
+
+std::vector<std::string> vertex;
+
+
+			if(vertex.in
+		string sb = iter->substr(2, 2);
+
+
+	int max_count_points = edges.size();
+	a = new bool*[];
+	for(int i=0; i<e
+	
+	std::vector<std::string> edges;
+	
+			edges.push_back(std::string(edge));
+			// string edge = buffer;
+			
+			// edges => points, n
+	int edges_count = 0;
+	
+	for(vector<string>::iterator iter=edges.begin(); iter!=edges.end(); iter++) {
+		for(int i=0; i<2; i++) {
+			string point = iter->substr(i*2, 2);
+			if(!vertex[point]) {
+				vertex[point] = edges_count++;
+			}
+		}
+	}
+
+for(map<string, int>::iterator iter=vertex.begin; iter!=vertex.end(); iter++) {
+vertex[*iter]
+
+AABB
+AAKK
+AAZZ
+ZZBB
+BBKK
+KKZZ
+
+	for(int i=0; i<count_vertex; i++) {
+		cout << vertex
+	}	
+	
+// default constructor, set random graph
+kColor::kColor() {
+	n_color = n_vertex = 26;
+
+	sum_result = 0;
+	min_color = n_color;
+
+	current_state = new int[n_vertex+1];
+	memset(current_state, 0, n_vertex+1);
+	best_result = new int[n_vertex+1];
+	memset(best_result, 0, n_vertex+1);
+
+	a = new bool*[n_vertex];
+	for(int i=0; i<n_vertex; i++) {
+		a[i] = new bool[n_vertex];
+	}
+
+	for(int i=0; i<n_vertex; i++) {
+		for(int j=0; j<n_vertex; j++) {
+			a[i][j] = a[j][i] = true;
+		}
+	}
+
+	print_matrix(a, n_vertex);
+}
+
+AB
+AC
+AD
+AE
+AF
+AG
+AH
+AI
+AJ
+AK
+AL
+AM
+BL
+BM
+CM
+CH
+DH
+DI
+EI
+EJ
+FJ
+FK
+GK
+GL	
+
+AABB
+AACC
+AADD
+AAEE
+AAFF
+AAGG
+AAHH
+AAII
+AAJJ
+AAKK
+AALL
+AAMM
+BBLL
+BBMM
+CCMM
+CCHH
+DDHH
+DDII
+EEII
+EEJJ
+FFJJ
+FFKK
+GGKK
+GGLL

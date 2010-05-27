@@ -1,0 +1,13 @@
+0. project setting -> configuration -> all (not debug/release)
+
+1. add include path
+- cpp -> General -> additional include directoties
+
+2. remove stdafx.h
+- cpp -> procomiled headers -> create/use precomplied header
+
+3. add imported libs
+- linker -> General -> additional library directoties
+
+4. command line arguments
+- configuration properties -> debugging -> command arguments

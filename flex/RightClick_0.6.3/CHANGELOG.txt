@@ -1,0 +1,30 @@
+Latest changes and fixes, version history
+
+== v0.6.3 ==
+
+  * a010 : Now Flash Player Context menu, can be enabled/disabled based on need, during the same session using Init/uninit function respectively.
+
+== v0.6.2 ==
+
+  * a009 FIX: Internet Explorer bug was causing unwanted calls to Flash when context menu was opened below flash container.
+
+== v0.6.1 ==
+
+  * a008 CODECHANGE: Code restructured to fit new functionality.
+  * a007 FIX: Pass events only if the mouse was clicked over Flash.
+  * a006 FEATURE: Cache for Safari 3 ensures that the first click will not pass an event.
+
+== v0.6.0 ==
+
+  * a005 FEATURE: Cache for Internet Explorer ensures that the first click will not pass an event.
+  * a004 FEATURE: Code is now enclosed in a Javascript Object
+
+== v0.5.1 ==
+
+  * a003 FIX: Internet Explorer performance improvement
+  * a002 FIX: call event in Internet Explorer onmousedown and not onmouseup
+  * a001 FIX: hide context menu only if mouse is over flash, not the whole page
+
+== v0.5.0 ==
+
+  * a000 FEATURE: Public Release

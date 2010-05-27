@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!-- Simple example to demonstrate the HDividedBox layout -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+
+	<mx:Model id="mystates">
+		<states>
+			<state label="Alabama 11111111111 22222222222 33333333333333 444444444444 55555555555555555 666666666666"
+				   data="AL"/>
+			<state label="Alaska"
+				   data="AK"/>
+			<state label="Arizona"
+				   data="AZ"/>
+			<state label="Arkansas"
+				   data="AR"/>
+			<state label="California"
+				   data="CA"/>
+			<state label="Colorado"
+				   data="CO"/>
+			<state label="Connecticut"
+				   data="CT"/>
+		</states>
+	</mx:Model>
+
+	<mx:Panel title="HDividedBox Container Example"
+			  width="90%"
+			  height="90%"
+			  paddingTop="10"
+			  paddingLeft="10"
+			  paddingRight="10"
+			  paddingBottom="10">
+
+		<mx:Text width="100%"
+				 color="blue"
+				 text="Drag the divider side to side to resize the children."/>
+
+		<mx:HDividedBox width="100%"
+						height="100%">
+
+			<mx:Canvas label="Canvas 1"
+					   width="100%"
+					   height="100%"
+					   backgroundColor="#FFFFCC">
+				<mx:VBox height="100%">
+					<mx:Button label="hah..."
+							   height="100%"/>
+					<mx:Label text="aaaaaaaaaabbbbbbbbbb" width="50"
+							  fontWeight="bold"/>
+				</mx:VBox>
+			</mx:Canvas>
+
+
+			<mx:VBox horizontalScrollPolicy="on">
+				<mx:Label text="Add components here"
+						  fontWeight="bold"/>
+				<mx:Canvas horizontalScrollPolicy="on" width="100%">
+
+					<mx:List id="source" horizontalScrollPolicy="on"
+							 width="100%" maxHorizontalScrollPosition="200"
+							 color="blue"
+							 dataProvider="{mystates.state}"/>
+				</mx:Canvas>
+			</mx:VBox>
+		</mx:HDividedBox>
+	</mx:Panel>
+</mx:Application>

@@ -5,6 +5,7 @@ File.read("../.gitignore").each_line do |line|
 	dirs << line[0...-1]
 end
 
+Dir.chdir("..")
 dirs.each do |dir|
 	Dir[dir].each do |file|
 		begin

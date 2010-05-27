@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "unicode.h"
 #include <vector>
 

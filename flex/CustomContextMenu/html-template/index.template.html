@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>RIGHT CLICK DEMO / AS3 (Flex Version, by Mario Junior)</title>
+
+<script type="text/javascript" src="swfobject.js"></script>
+<script type="text/javascript" src="rightClick.js"></script>
+
+<!-- ##### Google Analytics begin ##### -->
+<script type="text/javascript">
+   var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+   document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+   var pageTracker = _gat._getTracker("UA-7655349-1");
+   pageTracker._trackPageview();
+} catch(err) {}
+
+</script>
+<!-- ##### Google Analytics end ##### -->
+
+</head>
+
+<body onload="RightClick.init();">
+	
+	<h1>Using "Right Click in AS3" with Flex.</h1>
+	<h2>A true Custom ContextMenu</h2>
+	<p>
+	<div id="flashcontent">&nbsp;</div>
+	<script type="text/javascript">
+	   var so = new SWFObject("${swf}.swf", "customRightClick", "${width}", "${height}", "0", "#CCCCCC");
+		so.addParam("quality", "high");
+		so.addParam("name", "${application}");
+		so.addParam("id", "${application}");
+		so.addParam("AllowScriptAccess", "sameDomain");
+		so.addParam("wmode", "opaque");
+		so.addParam("menu", "false");
+		so.addVariable("variable1", "value1");
+		so.write("flashcontent");
+	</script>
+</p>
+<p><a href="http://www.mariojunior.com"/>www.mariojunior.com</a></p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+搬数字，八字码，滑块问题，
+------------------------------------------------------------------
+[Proxy]
+172.16.64.139
+255.255.255.128
+172.16.64.129
+172.16.64.248
+weiwei	jessica
+------------------------------------------------------------------
+[TASK]
+Daily: TOEFL，毕业设计，编程珠玑，人工智能，自动机
+Life: Reading, Sleep, Alarm, Vocabulary
+C++: effective，设计模式
+面试：面试题整理，买的书，
+课程：算法作业+数据结构，
+阅读：设计模式，J2ME服务器
+
+身份证 高新公安局	84421965 11-24＋15 days
+--------------------------------------------------------------------
+[BOOK]
+Thinking in C++/Java
+CLRS
+TAOCP
+TCPL
+三年自习论文，国际学术动态，CMU(Embedded,SE)/Stanford(AI)/MIT Research
+---------------------------------------------------------------------
+[QUESTION]
+OSI，TCP/IP,虚纯虚的区别，J2ME/MIDP/CLDC
+
+shift key reason
+波兰 逆波兰
+怎么处理析构函数异常，设计模式整理，C实现面向对象，
+experience in usa, ge healthcare
+talk about your mother school, 
+experience as cpp board manager
+移动窗口
+优势：个人潜力，动手能力，创新能力，团队能力，本科生，项目经历，比赛经历
+死锁和饥饿，
+JSP多线程	操作系统页面置换算法
+
+喜福会怨妇子女成长，
+
+0、面试英语，程序员职业规划
+1、搜索：VPN、单元测试、单射双满
+5、嵌入式:ARM太抽象，改点Linux/OS SAN,ARM规范/指令系统，机顶盒，ARM面试题，看门狗
+7、授予权限
+8、请教：亮角斜如何回家，何翔MotoLinux开发规范，
+13、苏：阳光教室文档，SunnyClass文档，AntiHunter测试过程，
+16、Alssendro Q：被侵略后，投降or牺牲 国家机密or钱
+19、Moto客服-相机近处模糊/A780水印
+
+
+

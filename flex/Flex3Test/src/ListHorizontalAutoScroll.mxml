@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- http://blog.flexexamples.com/2008/01/26/scrolling-a-flex-list-control-horizontally/ -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+        layout="horizontal"
+        verticalAlign="middle"
+        backgroundColor="white">
+
+    <mx:Script>
+        <![CDATA[
+            private function init():void {
+                list2.maxHorizontalScrollPosition = list2.columnWidth;
+            }
+            
+            private function onDragDrop():void
+            {
+            	trace("-------------");
+            }
+            
+            private function onDragStart():void
+            {
+            	trace("-------------");
+            }
+        ]]>
+    </mx:Script>
+
+    <mx:XML id="xmlDP">
+        <root>
+            <node>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</node>
+            <node>Donec sit amet dui nec pede aliquam auctor.</node>
+            <node>Integer vestibulum sodales dui.</node>
+            <node>Sed nonummy ligula et tortor.</node>
+            <node>Aenean varius neque vel felis.</node>
+            <node>Phasellus venenatis ipsum sit amet nisi.</node>
+            <node>Nullam vitae turpis et ipsum cursus venenatis.</node>
+            <node>Pellentesque tincidunt pede non arcu.</node>
+            <node>Aliquam ut massa quis ante dignissim egestas.</node>
+            <node>Curabitur facilisis velit sit amet metus.</node>
+            <node>Vivamus ornare massa ac massa.</node>
+            <node>Nam accumsan rutrum purus.</node>
+        </root>
+    </mx:XML>
+
+    <mx:List id="list1"
+            dataProvider="{xmlDP.node}"
+            horizontalScrollPolicy="on"
+            verticalScrollPolicy="on" dragMoveEnabled="true"
+            
+            rowCount="6"
+            width="150" />
+
+    <mx:List id="list2"
+            dataProvider="{xmlDP.node}"
+            horizontalScrollPolicy="on"
+            verticalScrollPolicy="on"
+            rowCount="6" dragDrop="onDragDrop()"
+            width="150" dragEnabled="true" dragStart="onDragStart()"
+            
+            creationComplete="init();" />
+
+</mx:Application>

@@ -1,0 +1,17 @@
+C++ Primer 3rd chs 
+Charpter 4.14
+
+int ival = 3.14 + 3;
+int ival = static_cast<int>(3.14) + 3;
+int ival = (int)3.14 + 3;
+
+implict type convertion
+
+
+explict type convertion(cpp closes type checking)
+- risk: 显式强制转换又允许我们暂时挂起强类型检查
+- static_cast: 完成编译器隐式执行的任何类型转换
+	- wrong: void* => char*, int => enum, Base => Derived
+- dynamic_cast: 支持在运行时刻识别由指针或引用指向的类对象
+- const_cast: 转换掉表达式的常量性 以及volatile 对象的volatile性 
+- reinterpret_cast: 对于操作数的位模式执行一个比较低层次的重新解释

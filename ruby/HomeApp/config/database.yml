@@ -21,7 +21,7 @@ development:
   database: home_app
   pool: 5
   username: root
-  password:
+  password: bobobo
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -34,7 +34,7 @@ test:
   database: home_app_test
   pool: 5
   username: root
-  password:
+  password: bobobo
   host: localhost
 
 production:
@@ -44,6 +44,6 @@ production:
   database: home_app
   pool: 5
   username: root
-  password:
+  password: bobobo
   host: localhost
 

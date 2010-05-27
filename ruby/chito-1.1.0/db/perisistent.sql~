@@ -1,0 +1,8 @@
+drop table if exists persistent_logins;
+create table persistent_logins (
+id	    int		not null auto_increment,
+uid	    text,
+user_id	    int,
+created_on  datetime,
+primary key (id)
+)

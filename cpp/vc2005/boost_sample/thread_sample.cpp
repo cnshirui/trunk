@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include <boost/thread.hpp>
 #include <iostream>
 #include <boost/progress.hpp>

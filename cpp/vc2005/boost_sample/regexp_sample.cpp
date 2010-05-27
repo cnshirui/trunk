@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include <boost/regex.hpp>
 #include <iostream>
 #include <string>

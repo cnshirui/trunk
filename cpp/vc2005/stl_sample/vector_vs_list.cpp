@@ -1,4 +1,3 @@
-#include "stdafx.h"
 /*
 STL中的container各有专长，最常用的是std::vector，可以完全取代array，第二常用的是std::list。 std::vector的优点在于non-sequential access超快，新增数据于数据后端超快，但insert和erase任意资料则相当缓慢；std::list则是insert和erase速度超快，但non-sequential access超慢，此范例以实际时间比较vector和list间的优缺点。
 

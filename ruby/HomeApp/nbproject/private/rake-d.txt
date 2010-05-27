@@ -43,6 +43,7 @@ doc\:clobber_plugins=Remove plugin documentation
 doc\:clobber_rails=Remove rdoc products
 doc\:guides=Generate Rails guides
 doc\:plugins=Generate documentation for all installed plugins
+doc\:plugins\:action_mailer_tls=Generate documentation for the action_mailer_tls plugin
 doc\:plugins\:acts_as_ferret=Generate documentation for the acts_as_ferret plugin
 doc\:plugins\:will_paginate=Generate documentation for the will_paginate plugin
 doc\:plugins\:yaml_db=Generate documentation for the yaml_db plugin
